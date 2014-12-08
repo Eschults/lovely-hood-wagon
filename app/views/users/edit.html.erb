@@ -3,43 +3,91 @@
     <div class="col-sm-3">
       <div class="sidenav">
         <ul class="list-unstyled">
-          <li>Mes informations</li>
+          <li><strong>Mes informations</strong></li>
           <li>Photo de profil</li>
-          <li>Confiance et vérification</li>
+          <li>Confiance et vérif.</li>
           <li>Commentaires</li>
           <li>Recommandations</li>
         </ul>
       </div>
     </div>
     <div class="col-sm-9">
-      <%= form_for(current_user) do |f| %>
+      <div class="form-horizontal white-bg form">
+        <%= form_for(current_user) do |f| %>
 
-        <div class="form-group"
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true %>
+          <div class="form-group">
+            <%= f.label :email, "E-mail", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= f.label :firt_name %>
-        <%= f.text_field :first_name, autofocus: true %>
+          <div class="form-group">
+            <%= f.label :first_name, "Prénom", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, autocomplete: "off" %>
+          <div class="form-group">
+            <%= f.label :last_name, "Nom", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= f.label :gender %>
-        <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], autocomplete: "off" %>
+          <div class="form-group">
+            <%= f.label :gender, "Sexe", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], {}, { class: "form-control" } %>
+            </div>
+          </div>
 
-        <%= f.label :birthday %>
-        <%= f.date_field :birthday, autocomplete: "off" %>
+          <div class="form-group">
+            <%= f.label :birthday, "Date de naissance", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.date_field :birthday, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= f.label :phone %>
-        <%= f.text_field :phone, autocomplete: "off" %>
+          <div class="form-group">
+            <%= f.label :phone, "Téléphone", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :phone, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= f.label :description %>
-        <%= f.text_area :description, autocomplete: "off" %>
+          <div class="form-group">
+            <%= f.label :description, "Description", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_area :description, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= f.submit "Update" %>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <%= f.submit "Sauvegarder", class: "btn btn-primary btn-wide" %>
+            </div>
+            <div class="col-sm-10">
+              <%= link_to "Change your password", edit_user_registration_path(current_user), class: "btn btn-default" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-        <%= link_to "Change your password", edit_user_registration_path(current_user) %>
-      <% end %>
+      <div class="form-horizontal white-bg form ">
+        <div class="col-sm-3">
+          <%= image_tag @user.picture.url %>
+        </div>
+        <div class="col-sm-9">
+          <%= form_for(@user, html: { multipart: true }) do |f| %>
+            <div class="form-group">
+              <%= f.file_field :picture %>
+              <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

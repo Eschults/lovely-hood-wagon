@@ -75,16 +75,16 @@
         <% end %>
       </div>
 
-      <div class="form-horizontal white-bg form ">
+      <div class="white-bg form height-200">
         <div class="col-sm-3">
-          <%= image_tag @user.picture.url %>
+          <%= image_tag @user.picture.url :medium, class: "img-thumbnail img-profile" %>
         </div>
         <div class="col-sm-9">
+          <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
           <%= form_for(@user, html: { multipart: true }) do |f| %>
-            <div class="form-group">
-              <%= f.file_field :picture %>
-              <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
-            </div>
+            <%= f.file_field :picture, label: "Parcourir" %>
+            <br>
+            <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>

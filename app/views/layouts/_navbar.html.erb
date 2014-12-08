@@ -1,16 +1,23 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-wagon" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header padding-top-5">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to root_path do %>
-      <%= image_tag "logo.png", id: "logo" %>
-      <% end %>
+      <table>
+        <td>
+          <%= link_to root_path do %>
+            <%= image_tag "logo.png", id: "logo" %>
+          <% end %>
+        </td>
+        <td>
+          &nbsp;<%= link_to "lovely hood", root_path, id: "brand" %>
+        </td>
+      </table>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -1,9 +1,9 @@
-$bg: rgb(10, 10, 10);
+$bg: #ddd;
 $border: 2px solid white;
 $vertical-padding: 40px;
 
 
-#footer {
+footer {
   background-color: $bg;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
@@ -12,26 +12,25 @@ $vertical-padding: 40px;
   width: 100%;
 }
 
-#footer li {
-  padding: 3px;
-  margin: 0 6px;
-  width: 25px;
+footer li {
+  margin: 0 2px;
+}
+
+
+footer > .container > .row > .col-xs-12 > #social > li > a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  border: $border;
-}
-
-
-#footer li a {
-
   color: white;
-  font-size: 28px;
+  font-size: 25px;
+  border: $border;
+  line-height: 140%;
 }
 
-#footer li a:hover {
-  color: #48AEE3;
-  transition: color 1s ease;
+footer > .container > .row > .col-xs-12 > #social > li > a:hover {
+  color: rgba(200, 200, 200, 1);
+  border-color: rgba(200, 200, 200, 1);
 }
 
 .copy {

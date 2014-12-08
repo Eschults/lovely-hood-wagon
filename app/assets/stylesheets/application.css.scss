@@ -1,6 +1,9 @@
+$font-family-sans-serif: 'Ubuntu', sans-serif;
+
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Pacifico);
 
 @import "navbar";
 @import "footer";
@@ -8,7 +11,7 @@
 $bg-color: rgba(240, 240, 240, 1);
 
 body {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .bg-color {
@@ -61,4 +64,17 @@ body {
 
 .btn-wide {
   width: 100%;
+}
+
+.img-profile {
+  height: 160px;
+  width: 160px;
+}
+
+.height-200 {
+  min-height: 200px;
+}
+
+.padding-top-5 {
+  padding-top: 5px;
 }

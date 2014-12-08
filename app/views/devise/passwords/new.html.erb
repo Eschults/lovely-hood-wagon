@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="white-bg frame">
+        <%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="form-inputs">
+            <%= f.email_field :email, required: true, autofocus: true %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Recevoir un lien par mail", class: "btn btn-primary btn-wide" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

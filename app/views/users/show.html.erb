@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="white-bg frame">
+        <%= image_tag @user.picture.url :medium, class: "img-thumbnail img-profile" %>
+      </div>
+      <div class="white-bg frame">
+        Identification vérifiée
+      </div>
+      <div class="white-bg frame">
+        Annonces
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="user-info">
+        <h1>Profil de <%= @user.first_name %></h1>
+        <p><strong><%= @user.city %></strong> - Membre depuis <%= @user.created_at.strftime("%B %Y") %></p>
+        <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
+        <p><%= @user.description %></p>
+      </div>
+      <div class="activity">
+        <h2>Activité récente</h2>
+        <p><%= @user.description %></p>
+      </div>
+      <div class="reviews">
+        <h2>Commentaires</h2>
+
+      </div>
+    </div>
+  </div>
+</div>

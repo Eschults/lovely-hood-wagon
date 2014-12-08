@@ -1,5 +1,26 @@
 source 'https://rubygems.org'
 
+gem 'activeadmin', github: 'activeadmin'
+gem "gmaps4rails"
+gem "rails-assets-underscore"
+gem "geocoder"
+gem "letter_opener", group: :development
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'font-awesome-sass', '~> 4.2.0'
+gem 'bootstrap_form'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'figaro'
+gem 'aws-sdk'
+gem 'paperclip'
+gem 'rails_12factor', group: :production
+
+ruby '2.1.2'
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

@@ -2,7 +2,7 @@
   <div class="form-group">
     <%= f.label :type, "Type", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.select :type, "Type", [["Location", :rent], ["Vente", :sell]], ["Service", :service]], {}, { class: "form-control" } %>
+      <%= f.select :type, [["Location", :rent], ["Vente", :sell], ["Service", :service]], {}, { class: "form-control" } %>
     </div>
   </div>
 
@@ -41,24 +41,25 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :street_name, "Rue", class: "col-sm-2 control-label" %>
+  <div class="form-group sell">
+    <%= f.label :price, "Prix", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :street_name, class: "form-control" %>
+      <%= f.text_field :price, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :zip_code, "Code postal", class: "col-sm-2 control-label" %>
+    <%= f.label :photo, "Photo", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :zip_code, class: "form-control" %>
+      <%= f.file_field :picture, label: "Parcourir" %>
     </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :city, "Ville", class: "col-sm-2 control-label" %>
+    <br>
+  <div class="form-group margin-btm-none">
+    <div class="col-sm-2">
+    </div>
     <div class="col-sm-10">
-      <%= f.text_field :city, class: "form-control" %>
+      <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>

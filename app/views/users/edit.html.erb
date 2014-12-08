@@ -3,11 +3,12 @@
     <div class="col-sm-3">
       <div class="sidenav">
         <ul class="list-unstyled">
-          <li><strong>Mes informations</strong></li>
-          <li>Photo de profil</li>
-          <li>Confiance et vérif.</li>
-          <li>Commentaires</li>
-          <li>Recommandations</li>
+          <li><a><strong>Mes informations</strong></a></li>
+          <li><a>Photo de profil</a></li>
+          <li><a>Confiance et vérif.</a></li>
+          <li><a>Commentaires</a></li>
+          <li><a>Recommandations</a></li>
+          <li><%= link_to "Voir mon profil", user_path(current_user), class: "btn btn-default btn-wide" %></a></li>
         </ul>
       </div>
     </div>
@@ -69,7 +70,7 @@
               <%= f.submit "Sauvegarder", class: "btn btn-primary btn-wide" %>
             </div>
             <div class="col-sm-10">
-              <%= link_to "Change your password", edit_user_registration_path(current_user), class: "btn btn-default" %>
+              <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
             </div>
           </div>
         <% end %>

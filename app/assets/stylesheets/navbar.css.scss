@@ -55,6 +55,11 @@ $profile-border-width: 2px;
   padding-bottom: $vertical-padding;
 }
 
+.navbar-wagon .navbar-header > table td > a:hover {
+  text-decoration: none;
+  color: rgba(150, 150, 150, 1);
+}
+
 .navbar-wagon .navbar-nav>.open>a,
 .navbar-wagon .navbar-nav>.open>a:hover,
 .navbar-wagon .navbar-nav>.open>a:focus {

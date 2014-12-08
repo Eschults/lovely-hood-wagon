@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
-      <div class="white-bg form">
+      <div class="white-bg frame">
         <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%- if devise_mapping.omniauthable? %>
             <%- resource_class.omniauth_providers.each do |provider| %>

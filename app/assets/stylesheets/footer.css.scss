@@ -1,0 +1,38 @@
+$bg: #ddd;
+$border: 2px solid white;
+$vertical-padding: 40px;
+
+
+footer {
+  background-color: $bg;
+  padding-top: $vertical-padding;
+  padding-bottom: $vertical-padding;
+  font-size: 15px;
+  position: absolute;
+  width: 100%;
+}
+
+footer li {
+  margin: 0 2px;
+}
+
+
+footer > .container > .row > .col-xs-12 > #social > li > a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-size: 25px;
+  border: $border;
+  line-height: 140%;
+}
+
+footer > .container > .row > .col-xs-12 > #social > li > a:hover {
+  color: rgba(150, 150, 150, 1);
+  border-color: rgba(150, 150, 150, 1);
+}
+
+.copy {
+  color: white;
+}

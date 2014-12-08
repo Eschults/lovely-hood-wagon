@@ -1,0 +1,116 @@
+$font-family-sans-serif: 'Ubuntu', sans-serif;
+$gray-base: #000;
+$gray: lighten($gray-base, 33.5%);
+$gray-darker: lighten($gray-base, 13.5%);
+$gray-light: lighten($gray-base, 46.7%);
+$gray-dark: lighten($gray-base, 20%);
+$gray-lighter: lighten($gray-base, 93.5%);
+
+
+
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Pacifico);
+
+@import "navbar";
+@import "footer";
+
+$bg-color: rgba(240, 240, 240, 1);
+
+body {
+  margin-top: 60px;
+}
+
+a {
+  color: red;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: red;
+  text-decoration: underline;
+}
+
+.bg-color {
+  background-color: $bg-color;
+}
+
+.white-bg {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.padding-15 {
+  padding: 15px;
+}
+
+.margin-btm-10 {
+  margin-bottom: 10px;
+}
+
+.btn-facebook {
+  background-color: #3A5795;
+  color: white;
+}
+
+.frame {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 2px;
+}
+
+.sidenav {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 16px;
+}
+
+.sidenav li {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.sidenav > ul > li > a {
+  color: rgba(100, 100, 100, 1)
+}
+
+.sidenav > ul > li > a:hover {
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.btn-wide {
+  width: 100%;
+}
+
+.btn-half-wide {
+  width: 50%;
+}
+
+.img-profile {
+  height: 160px;
+  width: 160px;
+}
+
+.height-200 {
+  min-height: 200px;
+}
+
+.padding-top-5 {
+  padding-top: 5px;
+}
+
+.margin-btm-none {
+  margin-bottom: 0;
+}

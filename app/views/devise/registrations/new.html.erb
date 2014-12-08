@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="white-bg frame text-center">
+        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <%= link_to "Inscription avec #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide" %><br />
+            <% end -%>
+          <% end -%>
+          <br>
+          <div class="btn btn-default btn-hide-on-click margin-btm-10 btn-wide">Inscription avec un email</div>
+          <div class="hidden">
+            <div class="text-align-left">
+              <%= f.text_field :first_name, autofocus: true, required: true %>
+              <%= f.text_field :last_name, required: true %>
+              <%= f.email_field :email, required: true %>
+              <% if @validatable %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", required: true %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+            </div>
+            <%= f.submit "Créer un compte", class: "btn btn-primary btn-wide"%>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:js) do %>
+  <script>
+    $(document).ready(function() {
+    $('.btn-hide-on-click').on('click', function(event) {
+       $('.hidden').removeClass('hidden');
+       $(this).addClass('hidden');
+      });
+    });
+  </script>
+<% end %>

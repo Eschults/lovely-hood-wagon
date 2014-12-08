@@ -1,0 +1,39 @@
+$bg: rgb(10, 10, 10);
+$border: 2px solid white;
+$vertical-padding: 40px;
+
+
+#footer {
+  background-color: $bg;
+  padding-top: $vertical-padding;
+  padding-bottom: $vertical-padding;
+  font-size: 15px;
+  position: absolute;
+  width: 100%;
+}
+
+#footer li {
+  padding: 3px;
+  margin: 0 6px;
+  width: 25px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border: $border;
+}
+
+
+#footer li a {
+
+  color: white;
+  font-size: 28px;
+}
+
+#footer li a:hover {
+  color: #48AEE3;
+  transition: color 1s ease;
+}
+
+.copy {
+  color: white;
+}

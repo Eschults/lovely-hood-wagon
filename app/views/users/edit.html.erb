@@ -1,2 +1,45 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="sidenav">
+        <ul class="list-unstyled">
+          <li>Mes informations</li>
+          <li>Photo de profil</li>
+          <li>Confiance et vérification</li>
+          <li>Commentaires</li>
+          <li>Recommandations</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <%= form_for(current_user) do |f| %>
+
+        <div class="form-group"
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+
+        <%= f.label :firt_name %>
+        <%= f.text_field :first_name, autofocus: true %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, autocomplete: "off" %>
+
+        <%= f.label :gender %>
+        <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], autocomplete: "off" %>
+
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday, autocomplete: "off" %>
+
+        <%= f.label :phone %>
+        <%= f.text_field :phone, autocomplete: "off" %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description, autocomplete: "off" %>
+
+        <%= f.submit "Update" %>
+
+        <%= link_to "Change your password", edit_user_registration_path(current_user) %>
+      <% end %>
+    </div>
+  </div>
+</div>

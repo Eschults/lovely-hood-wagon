@@ -16,9 +16,11 @@
     <%= render "layouts/notices" %>
   </div>
 
-  <%= yield %>
+  <div class="bg-color">
+    <%= yield %>
+  </div>
 
   <%= render "layouts/footer" %>
-
+  <%= yield :js %>
 </body>
 </html>

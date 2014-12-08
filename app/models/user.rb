@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :offers
 
-  validates_presence_of :last_name, :first_name, :email
+  validates_presence_of :email
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

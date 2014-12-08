@@ -4,3 +4,47 @@
 
 @import "navbar";
 @import "footer";
+
+$bg-color: rgba(240, 240, 240, 1);
+
+body {
+  margin-top: 50px;
+}
+
+.bg-color {
+  background-color: $bg-color;
+}
+
+.white-bg {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.padding-15 {
+  padding: 15px;
+}
+
+.margin-btm-10 {
+  margin-bottom: 10px;
+}
+
+.btn-facebook {
+  background-color: #3A5795;
+  color: white;
+}
+
+.form {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 2px;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.btn-wide {
+  width: 100%;
+}

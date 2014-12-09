@@ -12,6 +12,7 @@ $gray-lighter: lighten($gray-base, 93.5%);
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Pacifico);
+@import "chosen";
 
 @import "navbar";
 @import "footer";

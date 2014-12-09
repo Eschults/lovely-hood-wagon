@@ -32,7 +32,7 @@
               <p><%= @offer.hourly_price %>€/ heure</p>
             <% end %>
           <% elsif @offer.type_of_offer == "rent" %>
-            <% if @offer.hourly_price %>
+            <% if @offer.daily_price %>
               <p><%= @offer.daily_price %>€/ jour</p>
             <% end %>
             <% if @offer.weekly_price %>

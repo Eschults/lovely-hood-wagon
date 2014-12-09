@@ -1,4 +1,5 @@
 var type;
+var value;
 $(document).ready(function() {
   $('#type-select').on('change', function(e) {
     type = $('#type-select').val();
@@ -17,5 +18,11 @@ $(document).ready(function() {
       $('.show-service').addClass("hidden");
       $('.show-sell').addClass("hidden");
     }
-  });
+  })
+
+  $('.active-result').on('change', function(e) {
+    $('.active-result').attr("name", "offer[nature]");
+    value = $('.active-result').val();
+    $('.active-result').attr("value", value);
+  })
 });

@@ -43,6 +43,6 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:type, :nature, :description, :hourly_price, :daily_price, :weekly_price, :picture)
+    params.require(:offer).permit(:type_of_offer, :nature, :description, :hourly_price, :daily_price, :weekly_price, :picture)
   end
 end

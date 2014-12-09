@@ -65,6 +65,13 @@ a:focus {
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
 }
 
+
+.frame-header {
+  background-color: $bg-color;
+  margin: 20px 30px -20px 30px;
+  padding: 10px 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+}
 .sidenav {
   padding: 20px;
   margin-top: 20px;
@@ -119,4 +126,21 @@ a:focus {
 
 .margin-btm-none {
   margin-bottom: 0;
+}
+
+.margin-none {
+  margin: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.padding-vertical-6 {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }

@@ -26,6 +26,7 @@ class OffersController < ApplicationController
   end
 
   def update
+    raise
     if @offer.update(offer_params)
       redirect_to offer_path(@offer)
     else

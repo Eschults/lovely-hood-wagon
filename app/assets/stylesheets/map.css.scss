@@ -1,0 +1,23 @@
+html, body {
+  overflow: hidden;
+}
+
+#map {
+  position: absolute;
+  top: 60px;
+  right: 40%;
+  width: 40%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#sidebar {
+  position: absolute;
+  width: 60%;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  padding: 15px;
+}

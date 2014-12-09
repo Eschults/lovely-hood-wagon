@@ -1,10 +1,14 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_offer, only: [:show, :edit, :update]
-  # layout 'map', only: [:index]
+  layout 'map', only: [:index]
 
   def index
     @offers = Offer.all
+    @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
+      marker.lat offer.user.latitude
+      marker.lng offer.user.longitude
+    end
   end
 
   def new
@@ -26,7 +30,6 @@ class OffersController < ApplicationController
   end
 
   def update
-    raise
     if @offer.update(offer_params)
       redirect_to offer_path(@offer)
     else

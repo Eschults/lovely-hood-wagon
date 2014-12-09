@@ -1,10 +1,53 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-
+      <div class="white-bg frame">
+        <%= image_tag(@offer.picture.url(:medium), { class: "img img-thumbnail" }) %>
+      </div>
+      <div class="white-bg frame">
+        <%= link_to "Demande d'info", "#", class: "btn btn-default btn-wide" %>
+        <br>
+        <br>
+        <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
+        <br>
+        <br>
+        <%= link_to "Reservation", "#", class: "btn btn-primary btn-wide" %>
+        <% if current_user.id == @offer.user.id %>
+          <br>
+          <br>
+          <%= link_to "Modifier l'annonce", edit_offer_path(@offer) %>
+        <% end %>
+      </div>
     </div>
     <div class="col-sm-9">
-      <h1>Profil de <%= @user.first_name %></h1>
+      <div class="offer">
+        <h1><%= @offer.nature %></h1>
+        <p><%= @offer.user.street_name.capitalize %>, <%= @offer.user.zip_code %> (Pas encore de revues)</p>
+        <p><%= @offer.description %></p>
+      </div>
+      <div class="prices">
+        <h2>Tarifs</h2>
+          <% if @offer.type_of_offer == "service" %>
+            <% if @offer.hourly_price %>
+              <p><%= @offer.hourly_price %>€/ heure</p>
+            <% end %>
+          <% elsif @offer.type_of_offer == "rent" %>
+            <% if @offer.hourly_price %>
+              <p><%= @offer.daily_price %>€/ jour</p>
+            <% end %>
+            <% if @offer.weekly_price %>
+              <p><%= @offer.weekly_price %>€/ semaine</p>
+            <% end %>
+          <% else %>
+            <% if @offer.price %>
+              <p><%= @offer.price %>€</p>
+            <% end %>
+          <% end %>
+      </div>
+      <div class="reviews">
+        <h2>Commentaires</h2>
+          <p>(Pas encore de revues)</p>
+      </div>
     </div>
   </div>
 </div>

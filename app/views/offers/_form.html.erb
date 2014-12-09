@@ -1,12 +1,12 @@
 <%= form_for(@offer) do |f| %>
   <div class="form-group">
-    <%= f.label :type, "Type", class: "col-sm-2 control-label" %>
+    <%= f.label :type_of_offer, "Type", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.select :type, [["Location", :rent], ["Vente", :sell], ["Service", :service]], {}, { class: "form-control", id: "type-select" } %>
+      <%= f.select :type_of_offer, [["Location", :rent], ["Vente", :sell], ["Service", :service]], {}, { class: "form-control", id: "type-select" } %>
     </div>
   </div>
 
-  <div class="form-group" id="nature-select-rent">
+  <div class="form-group show-rent" >
     <%= f.label :nature, "Titre", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.select :nature, NATURES[:rent],
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="form-group hidden" id="nature-select-service">
+  <div class="form-group hidden show-service" id="nature-select-service">
     <%= f.label :nature, "Titre", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.select :nature, NATURES[:service],
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div class="form-group hidden" id="nature-select-sell">
+  <div class="form-group hidden show-sell" id="nature-select-sell">
     <%= f.label :nature, "Titre", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :nature, class: 'form-control' %>
@@ -38,29 +38,29 @@
     </div>
   </div>
 
-  <div class="form-group service">
-    <%= f.label :hourly_price, "Prix (/heure)", class: "col-sm-2 control-label" %>
+  <div class="form-group service show-service hidden">
+    <%= f.label :hourly_price, "Prix (€/heure)", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :hourly_price, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group rent">
-    <%= f.label :daily_price, "Prix (/jour)", class: "col-sm-2 control-label" %>
+  <div class="form-group show-rent">
+    <%= f.label :daily_price, "Prix (€/jour)", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :daily_price, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group rent">
-    <%= f.label :weekly_price, "Prix (/semaine)", class: "col-sm-2 control-label" %>
+  <div class="form-group show-rent">
+    <%= f.label :weekly_price, "Prix (€/semaine)", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :weekly_price, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group sell">
-    <%= f.label :price, "Prix", class: "col-sm-2 control-label" %>
+  <div class="form-group show-sell hidden">
+    <%= f.label :price, "Prix (€)", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :price, class: "form-control" %>
     </div>

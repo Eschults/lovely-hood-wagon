@@ -13,5 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require chosen-jquery
+//= require underscore
+//= require gmaps/google
+//= require chosen
+//= require offers
 //= require_tree .
 

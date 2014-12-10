@@ -1,15 +1,34 @@
 <%= form_for(@offer) do |f| %>
   <div class="form-group">
-    <%= f.label :type, "Type", class: "col-sm-2 control-label" %>
+    <%= f.label :type_of_offer, "Type", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.select :type, [["Location", :rent], ["Vente", :sell], ["Service", :service]], {}, { class: "form-control" } %>
+      <%= f.select :type_of_offer, [["Location", :rent], ["Vente", :sell], ["Service", :service]], {}, { class: "form-control", id: "type-select" } %>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group hidden show-service" id="nature-select-service">
     <%= f.label :nature, "Titre", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :nature, class: "form-control" %>
+
+      <%= f.select :nature, NATURES[:service],
+                   { include_blank: true },
+                   { class: "chosen-select", id: 'service' } %>
+    </div>
+  </div>
+
+  <div class="form-group hidden show-sell" id="nature-select-sell">
+    <%= f.label :nature, "Titre", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :nature, class: 'form-control', id: 'sell' %>
+    </div>
+  </div>
+
+  <div class="form-group show-rent" >
+    <%= f.label :nature, "Titre", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :nature, NATURES[:rent],
+                   { include_blank: true },
+                   { class: "chosen-select", id: 'rent' } %>
     </div>
   </div>
 
@@ -20,29 +39,38 @@
     </div>
   </div>
 
-  <div class="form-group service">
-    <%= f.label :hourly_price, "Prix (/heure)", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+  <div class="form-group service show-service hidden">
+    <%= f.label :hourly_price, "Prix", class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
       <%= f.text_field :hourly_price, class: "form-control" %>
     </div>
+    <div class="col-sm-5 padding-vertical-6">
+      €/ heure
+    </div>
   </div>
 
-  <div class="form-group rent">
-    <%= f.label :daily_price, "Prix (/jour)", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+  <div class="form-group show-rent">
+    <%= f.label :daily_price, "Prix", class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
       <%= f.text_field :daily_price, class: "form-control" %>
     </div>
-  </div>
-
-  <div class="form-group rent">
-    <%= f.label :weekly_price, "Prix (/semaine)", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :weekly_price, class: "form-control" %>
+    <div class="col-sm-5 padding-vertical-6">
+      €/ jour
     </div>
   </div>
 
-  <div class="form-group sell">
-    <%= f.label :price, "Prix", class: "col-sm-2 control-label" %>
+  <div class="form-group show-rent">
+    <%= f.label :weekly_price, "Prix", class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.text_field :weekly_price, class: "form-control" %>
+    </div>
+    <div class="col-sm-5 padding-vertical-6">
+      €/ semaine
+    </div>
+  </div>
+
+  <div class="form-group show-sell hidden">
+    <%= f.label :price, "Prix (€)", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :price, class: "form-control" %>
     </div>
@@ -51,10 +79,18 @@
   <div class="form-group">
     <%= f.label :photo, "Photo", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.file_field :picture, label: "Parcourir" %>
+      <%= f.file_field :picture, label: "Parcour" %>
     </div>
   </div>
-    <br>
+
+  <div class="form-group">
+    <%= f.label :public, "Publique ?", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :public %>
+      <p>En cochant cette case, vous autorisez les visiteurs du site qui ne sont pas membres de Lovely hood à voir votre annonce et à vous contacter pour vous faire une demande.</p>
+    </div>
+  </div>
+  <br>
   <div class="form-group margin-btm-none">
     <div class="col-sm-2">
     </div>

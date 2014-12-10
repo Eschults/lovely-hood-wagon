@@ -1,19 +1,24 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_offer, only: [:show, :edit, :update]
-  # layout 'map', only: [:index]
+  layout 'map', only: [:index]
 
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
+    @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
+      marker.lat offer.user.latitude
+      marker.lng offer.user.longitude
+    end
   end
 
   def new
-    @offer = Offer.new
+    @offer = current_user.offers.new
+    authorize @offer
   end
 
   def create
-    @offer = Offer.new(offer_params)
-    @offer.user = current_user
+    @offer = current_user.offers.new(offer_params)
+    authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
     else
@@ -22,7 +27,6 @@ class OffersController < ApplicationController
   end
 
   def edit
-    redirect_to root unless current_user.id == @offer.user.id
   end
 
   def update
@@ -40,9 +44,10 @@ class OffersController < ApplicationController
 
   def set_offer
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def offer_params
-    params.require(:offer).permit(:type, :nature, :description, :hourly_price, :daily_price, :weekly_price, :picture)
+    params.require(:offer).permit(:type_of_offer, :nature, :description, :hourly_price, :daily_price, :weekly_price, :picture)
   end
 end

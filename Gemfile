@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
+gem 'pundit'
+gem 'chosen-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem "gmaps4rails"
 gem "rails-assets-underscore"

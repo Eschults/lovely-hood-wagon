@@ -1,0 +1,97 @@
+html, body {
+  overflow: hidden;
+}
+
+#map {
+  height: 600px;
+
+}
+
+#map-box {
+  position: absolute;
+  top: 60px;
+  right: 50%;
+  width: 50%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#sidebar {
+  position: absolute;
+  width: 50%;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.frame-body-map {
+  margin: -10px 7px 15px 15px;
+  border-radius-bottom-left: 2px;
+  border-radius-bottom-right: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+}
+
+.body-box-map {
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.frame-header-map {
+  background-color: rgba(240, 240, 240, 1);
+  margin: 20px 7px -10px 15px;
+  padding: 10px 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-bottom: 1px solid rgb(220, 220, 220);
+  border-radius-top-left: 2px;
+  border-radius-top-right: 2px;
+  z-index: 1;
+}
+
+.header-box-map {
+  padding: 0 0 10px 0;
+  margin-bottom: -10px;
+  overflow: hidden;
+}
+
+.frame-body-side {
+  margin: -10px 5px 20px 8px;
+  border-radius-bottom-left: 2px;
+  border-radius-bottom-right: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+}
+
+.body-box-side {
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.frame-header-side {
+  background-color: rgba(240, 240, 240, 1);
+  margin: 20px 5px -10px 8px;
+  padding: 10px 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-bottom: 1px solid rgb(220, 220, 220);
+  border-radius-top-left: 2px;
+  border-radius-top-right: 2px;
+  z-index: 1;
+}
+
+.header-box-side {
+  padding: 0 0 10px 0;
+  margin-bottom: -10px;
+  overflow: hidden;
+}
+
+.margin-top-neg-10 {
+  margin-top: -10px;
+}
+
+.outside-box {
+  margin-top: -20px;
+}

@@ -7,6 +7,25 @@ class Offer < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
+  def one_price
+    if self.type_of_offer == "service"
+      if self.hourly_price
+        "#{self.hourly_price} €/ heure"
+      end
+    elsif self.type_of_offer == "rent"
+      if self.weekly_price
+        "#{self.weekly_price} €/ semaine"
+      end
+      if self.daily_price
+        "#{self.daily_price} €/ jour"
+      end
+    else
+      if self.price
+        "#{self.price} €"
+      end
+    end
+  end
+
   # def available?(first_day, last_day)
   #   output = true
   #   if self.bookings

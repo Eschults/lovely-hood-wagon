@@ -1,0 +1,55 @@
+<div class="map-box bg-color" id="map-box">
+  <div class="header-box-map">
+    <div class="frame-header-map">
+      <h3 class="margin-none">Mon hood</h3>
+    </div>
+  </div>
+  <div class="body-box-map">
+    <div class="white-bg frame-body-map">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="bg-color" id="sidebar">
+
+  <div class="header-box-side">
+    <div class="frame-header-side">
+      <h3 class="margin-none">Rechercher une annonce</h3>
+    </div>
+  </div>
+  <div class="body-box-side">
+    <div class="white-bg frame-body-side search">
+      <p>TO DO</p>
+    </div>
+  </div>
+
+  <div class="outside-box">
+    <div class="header-box-side">
+      <div class="frame-header-side">
+        <h3 class="margin-none">Annonces</h3>
+      </div>
+    </div>
+    <div class="body-box-side">
+      <div class="white-bg frame-body-side padding-none offers">
+        <% @offers.each do |offer| %>
+          <%= render "offer_preview", offer: offer %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
+<% end %>

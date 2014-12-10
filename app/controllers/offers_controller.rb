@@ -26,7 +26,7 @@ class OffersController < ApplicationController
   end
 
   def edit
-    redirect_to root unless current_user.id == @offer.user.id
+    redirect_to root unless current_user == @offer.user
   end
 
   def update

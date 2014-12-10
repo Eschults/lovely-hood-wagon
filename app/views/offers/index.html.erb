@@ -1,12 +1,12 @@
 <div class="map-box bg-color" id="map-box">
-  <div class="header-box">
-    <div class="frame-header">
+  <div class="header-box-map">
+    <div class="frame-header-map">
       <h3 class="margin-none">Mon hood</h3>
     </div>
   </div>
-  <div class="body-box">
-    <div class="white-bg frame-body padding-none">
-      <div class="box-shadow" id="map"></div>
+  <div class="body-box-map">
+    <div class="white-bg frame-body-map">
+      <div id="map"></div>
     </div>
   </div>
 </div>
@@ -14,26 +14,29 @@
 
 <div class="bg-color" id="sidebar">
 
-  <div class="header-box">
-    <div class="frame-header">
+  <div class="header-box-side">
+    <div class="frame-header-side">
       <h3 class="margin-none">Rechercher une annonce</h3>
     </div>
   </div>
-  <div class="body-box">
-    <div class="white-bg frame-body search">
+  <div class="body-box-side">
+    <div class="white-bg frame-body-side search">
       <p>TO DO</p>
     </div>
   </div>
-  <div class="header-box">
-    <div class="frame-header">
-      <h3 class="margin-none">Annonces</h3>
+
+  <div class="outside-box">
+    <div class="header-box-side">
+      <div class="frame-header-side">
+        <h3 class="margin-none">Annonces</h3>
+      </div>
     </div>
-  </div>
-  <div class="body-box">
-    <div class="white-bg frame-body padding-none offers">
-      <% @offers.each do |offer| %>
-        <%= render "offer_preview", offer: offer %>
-      <% end %>
+    <div class="body-box-side">
+      <div class="white-bg frame-body-side padding-none offers">
+        <% @offers.each do |offer| %>
+          <%= render "offer_preview", offer: offer %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

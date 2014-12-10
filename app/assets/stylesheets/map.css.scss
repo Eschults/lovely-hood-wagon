@@ -27,24 +27,22 @@ html, body {
 }
 
 .frame-body-map {
-  padding: 10px 20px 20px 20px;
-  margin: -10px 30px 20px 30px;
+  margin: -10px 7px 15px 15px;
   border-radius-bottom-left: 2px;
   border-radius-bottom-right: 2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
-  z-index: -1;
 }
 
-.body-box {
+.body-box-map {
   margin-top: 10px;
   padding: 10px 0 0 0;
   overflow: hidden;
   z-index: 1;
 }
 
-.frame-header {
-  background-color: $bg-color;
-  margin: 20px 30px -10px 30px;
+.frame-header-map {
+  background-color: rgba(240, 240, 240, 1);
+  margin: 20px 7px -10px 15px;
   padding: 10px 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
   border-bottom: 1px solid rgb(220, 220, 220);
@@ -53,8 +51,47 @@ html, body {
   z-index: 1;
 }
 
-.header-box {
+.header-box-map {
   padding: 0 0 10px 0;
   margin-bottom: -10px;
   overflow: hidden;
+}
+
+.frame-body-side {
+  margin: -10px 5px 20px 8px;
+  border-radius-bottom-left: 2px;
+  border-radius-bottom-right: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+}
+
+.body-box-side {
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.frame-header-side {
+  background-color: rgba(240, 240, 240, 1);
+  margin: 20px 5px -10px 8px;
+  padding: 10px 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-bottom: 1px solid rgb(220, 220, 220);
+  border-radius-top-left: 2px;
+  border-radius-top-right: 2px;
+  z-index: 1;
+}
+
+.header-box-side {
+  padding: 0 0 10px 0;
+  margin-bottom: -10px;
+  overflow: hidden;
+}
+
+.margin-top-neg-10 {
+  margin-top: -10px;
+}
+
+.outside-box {
+  margin-top: -20px;
 }

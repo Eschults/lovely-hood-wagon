@@ -4,7 +4,7 @@ $gray: lighten($gray-base, 33.5%);
 $gray-darker: lighten($gray-base, 13.5%);
 $gray-light: lighten($gray-base, 46.7%);
 $gray-dark: lighten($gray-base, 20%);
-$gray-lighter: lighten($gray-base, 93.5%);
+$gray-lighter: lighten($gray-base, 85%);
 
 
 
@@ -49,6 +49,10 @@ a:focus {
 
 .margin-btm-10 {
   margin-bottom: 10px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
 }
 
 .btn-facebook {
@@ -212,4 +216,42 @@ a:focus {
 
 .margin-right-15 {
   margin-right: 15px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.offer-stream-box {
+  padding: 10px;
+}
+
+.offer-stream-box ul > li > a {
+  color: $gray-lighter;
+}
+
+.offer-stream-box ul > li > a:hover {
+  color: $gray-light;
+  text-decoration: none;
+}
+
+.offer-stream-box:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.offer-nature-link {
+  color: $gray-light;
+  font-weight: bold;
+}
+
+.padding-left-30 {
+  padding-left: 30px;
+}
+
+.outside-box {
+  margin-top: -10px;
 }

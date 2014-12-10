@@ -4,7 +4,7 @@ class OffersController < ApplicationController
   layout 'map', only: [:index]
 
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
     @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
       marker.lat offer.user.latitude
       marker.lng offer.user.longitude
@@ -18,6 +18,7 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.user = current_user
+    raise
     if @offer.save
       redirect_to offer_path(@offer)
     else

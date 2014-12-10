@@ -1,24 +1,34 @@
 <div class="offer-stream-box">
   <div class="row">
-    <div class="offer-preview-box">
-      <div class="col-xs-1">
-        <div class="img-nature-box">
-          <%= image_tag "drill.png", class: "img img-nature" %>
-        </div>
+    <div class="col-xs-1">
+      <div class="img-nature-box">
+        <%= image_tag "drill.png", class: "img img-nature" %>
       </div>
-      <div class="col-xs-9">
-        <h4><%= link_to offer.nature, offer_path(offer), class: "" %></h4>
-        <p><%= offer.description %> <%=link_to "Voir l'annonce complète", offer_path(offer) %></p>
-        <ul class="list-unstyled list-inline">
-          <li><%= link_to "Voir la photo", "#" %></li>
-          <li><%= link_to "Enregistrer", "#" %></li>
-          <li><%= link_to "Contacter propr.", "#" %></li>
-          <li><%= link_to "Voir dispo.", "#" %></li>
-        </ul>
-      </div>
-      <div class="col-xs-2">
-        <h4><%= offer.one_price %></h4>
-      </div>
+    </div>
+    <div class="col-xs-9 padding-left-30">
+      <h4 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h4>
+      <p class="margin-top-10"><%= offer.description %> <%=link_to "Voir l'annonce complète", offer_path(offer) %></p>
+      <ul class="list-unstyled list-inline">
+        <li class="float-left">
+          <%= link_to "#" do %>
+            <i class="fa fa-camera"></i> Voir la photo
+          <% end %>
+        </li>
+        <li class="float-left">
+          <%= link_to "#" do %>
+            <i class="fa fa-envelope"></i> Demande d'info
+          <% end %>
+        </li>
+        <li class="float-left">
+          <%= link_to "#" do %>
+            <i class="fa fa-star"></i> Enregistrer
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-2">
+      <h4><%= offer.one_price %></h4>
+        <%= link_to "Réserver", "#", class: "btn btn-primary" %>
     </div>
   </div>
 </div>

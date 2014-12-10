@@ -1,19 +1,38 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="white-bg frame">
+      <div class="white-bg frame padding-none">
         <% if @user.picture_file_name %>
-          <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail" }) %>
+          <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
         <% else %>
           <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
         <% end %>
 
       </div>
-      <div class="white-bg frame">
-        Identification vérifiée
+      <div class="header-box">
+        <div class="frame-header">
+          <h4>Vérifications</h4>
+        </div>
       </div>
-      <div class="white-bg frame">
-        Annonces
+      <div class="body-box">
+        <div class="white-bg frame-body">
+          <p><i class="fa fa-check"></i> Identité vérifiée</p>
+          <p><i class="fa fa-check"></i> Adresse vérifiée</p>
+          <p><i class="fa fa-check"></i> Facebook</p>
+        </div>
+      </div>
+      <div class="header-box">
+        <div class="frame-header">
+          <h4>Annonces (<%= @user.offers.count %>)</h4>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="white-bg frame-body">
+          <% @user.offers.each do |offer| %>
+            <p><%= image_tag offer.picture.url(:medium), { id: "profile-pic"} %>
+            <%= link_to offer.nature, offer_path(offer) %> (<%= offer.one_price %>)</p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-sm-9">
@@ -25,11 +44,11 @@
       </div>
       <div class="activity">
         <h2>Activité récente</h2>
-        <p><%= @user.description %></p>
+        <p>Pas encore d'activité</p>
       </div>
       <div class="reviews">
         <h2>Commentaires</h2>
-
+        <p>Pas encore de revues</p>
       </div>
     </div>
   </div>

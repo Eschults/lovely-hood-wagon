@@ -3,15 +3,15 @@ $color: white;
 $bg: #ddd;
 $height: 40px;
 $vertical-padding: 10px;
-$horizontal-padding: 50px;
+$horizontal-padding: 15px;
 $border-bottom-width: 0;
 $border-bottom-color: grey;
 $box-shadow: 0 0 5px rgba(0, 0, 0, .4);
 
 // Set your navbar button
 $btn-height: 40px;
-$btn-bg: lightgrey;
-$btn-color: black;
+$btn-bg: white;
+$btn-color: $gray;
 $btn-horizontal-padding: 10px;
 $btn-top-border-width: 0;
 $btn-top-border-color: transparent;
@@ -50,14 +50,17 @@ $profile-border-width: 2px;
 
 .navbar-wagon .navbar-nav > li > a:hover {
   color: $color;
+  font-weight: bold;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
 }
 
-.navbar-wagon .navbar-header > table td > a:hover {
+#brand:hover {
   text-decoration: none;
-  color: rgba(150, 150, 150, 1);
+  color: $color;
+  // font-weight: bold;
+  color: rgba(200, 200, 200, 1);
 }
 
 .navbar-wagon .navbar-nav>.open>a,
@@ -71,7 +74,6 @@ $profile-border-width: 2px;
 }
 
 .navbar-wagon .navbar-brand,
-.navbar-wagon .navbar-brand:hover
  {
   display: block;
   color: $color;
@@ -115,8 +117,9 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 #brand {
   font-family: 'Pacifico', cursive;
-  color: white;
+  color: $color;
   font-size: 30px;
+  margin-left: 15px;
 }
 
 #profile-pic{
@@ -145,7 +148,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   width: 10px;
   content: "\00a0";
   display: block;
-  left: 50%;
+  left: 85%;
   margin-left: -5px;
   position: absolute;
   bottom: 110px; // 28 * nb of lines in dropdown
@@ -160,7 +163,6 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
     height: 50px;
   }
   .navbar-wagon .navbar-brand,
-  .navbar-wagon .navbar-brand:hover
    {
     display: block;
     color: $color;

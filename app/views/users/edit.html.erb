@@ -13,111 +13,125 @@
       </div>
     </div>
     <div class="col-sm-9">
-      <div class="form-horizontal white-bg frame">
-        <%= form_for(current_user) do |f| %>
+      <div class="header-box">
+        <div class="frame-header">
+          <h3 class="margin-none">Mes informations</h3>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="form-horizontal white-bg frame-body">
+          <%= form_for(current_user) do |f| %>
 
-          <div class="form-group">
-            <%= f.label :email, "E-mail", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.email_field :email, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :first_name, "Prénom", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :first_name, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :last_name, "Nom", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :last_name, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :street_number, "N°", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :street_number, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :street_name, "Rue", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :street_name, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :zip_code, "Code postal", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :zip_code, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :city, "Ville", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :city, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :gender, "Sexe", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], {}, { class: "form-control" } %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :birthday, "Date de naissance", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.date_field :birthday, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :phone, "Téléphone", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :phone, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :description, "Description", class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_area :description, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group margin-btm-none">
-            <div class="col-sm-2">
+            <div class="form-group">
+              <%= f.label :email, "E-mail", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
             </div>
 
-            <div class="col-sm-10">
-              <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
-              <br>
-              <br>
-              <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+            <div class="form-group">
+              <%= f.label :first_name, "Prénom", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :first_name, class: "form-control" %>
+              </div>
             </div>
-          </div>
-        <% end %>
+
+            <div class="form-group">
+              <%= f.label :last_name, "Nom", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :last_name, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :street_number, "N°", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :street_number, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :street_name, "Rue", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :street_name, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :zip_code, "Code postal", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :zip_code, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :city, "Ville", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :city, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :gender, "Sexe", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], {}, { class: "form-control" } %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :birthday, "Date de naissance", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.date_field :birthday, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :phone, "Téléphone", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :phone, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :description, "Description", class: "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_area :description, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group margin-btm-none">
+              <div class="col-sm-2">
+              </div>
+
+              <div class="col-sm-10">
+                <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
+                <br>
+                <br>
+                <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
 
-      <div class="white-bg frame height-200">
-        <div class="col-sm-3">
-          <%= image_tag @user.picture.url :medium, class: "img-thumbnail img-profile" %>
+      <div class="header-box">
+        <div class="frame-header">
+          <h3 class="margin-none">Photo de profil</h3>
         </div>
-        <div class="col-sm-9">
-          <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
-          <%= form_for(@user, html: { multipart: true }) do |f| %>
-            <%= f.file_field :picture, label: "Parcourir" %>
-            <br>
-            <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
-          <% end %>
+      </div>
+      <div class="body-box">
+        <div class="white-bg frame-body height-200">
+          <div class="col-sm-3">
+            <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+          </div>
+          <div class="col-sm-9">
+            <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
+            <%= form_for(@user, html: { multipart: true }) do |f| %>
+              <%= f.file_field :picture, label: "Parcourir" %>
+              <br>
+              <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

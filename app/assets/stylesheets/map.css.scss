@@ -3,10 +3,15 @@ html, body {
 }
 
 #map {
+  height: 600px;
+
+}
+
+#map-box {
   position: absolute;
   top: 60px;
-  right: 40%;
-  width: 40%;
+  right: 50%;
+  width: 50%;
   bottom: 0;
   left: 0;
   z-index: 1;
@@ -14,10 +19,42 @@ html, body {
 
 #sidebar {
   position: absolute;
-  width: 60%;
+  width: 50%;
   top: 60px;
   right: 0;
   bottom: 0;
   overflow: auto;
-  padding: 15px;
+}
+
+.frame-body-map {
+  padding: 10px 20px 20px 20px;
+  margin: -10px 30px 20px 30px;
+  border-radius-bottom-left: 2px;
+  border-radius-bottom-right: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  z-index: -1;
+}
+
+.body-box {
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.frame-header {
+  background-color: $bg-color;
+  margin: 20px 30px -10px 30px;
+  padding: 10px 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-bottom: 1px solid rgb(220, 220, 220);
+  border-radius-top-left: 2px;
+  border-radius-top-right: 2px;
+  z-index: 1;
+}
+
+.header-box {
+  padding: 0 0 10px 0;
+  margin-bottom: -10px;
+  overflow: hidden;
 }

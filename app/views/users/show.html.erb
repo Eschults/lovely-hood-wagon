@@ -30,7 +30,7 @@
         <div class="white-bg frame-body">
           <% @user.offers.each do |offer| %>
             <p><%= image_tag offer.picture.url(:medium), { id: "profile-pic"} %>
-            <%= link_to offer.nature, offer_path(offer) %> (<%= offer.one_price %>)</p>
+            <%= link_to offer.nature[0..10] + " (...)", offer_path(offer) %> (<%= offer.one_price %>)</p>
           <% end %>
         </div>
       </div>
@@ -39,7 +39,9 @@
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>
         <p><strong><%= @user.city %></strong> - Membre depuis <%= @user.created_at.strftime("%B %Y") %></p>
+        <% if policy(@user).update? %>
         <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
+        <% end %>
         <p><%= @user.description %></p>
       </div>
       <div class="activity">

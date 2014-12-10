@@ -12,13 +12,13 @@ class OffersController < ApplicationController
   end
 
   def new
-    @offer = Offer.new
+    @offer = current_user.offers.new
+    authorize @offer
   end
 
   def create
-    @offer = Offer.new(offer_params)
-    @offer.user = current_user
-    raise
+    @offer = current_user.offers.new(offer_params)
+    authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
     else
@@ -27,7 +27,6 @@ class OffersController < ApplicationController
   end
 
   def edit
-    redirect_to root unless current_user == @offer.user
   end
 
   def update
@@ -45,6 +44,7 @@ class OffersController < ApplicationController
 
   def set_offer
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def offer_params

@@ -2,13 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    redirect_to root unless current_user.id == @user.id
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       redirect_to user_path(@user)
     else

@@ -1,4 +1,16 @@
-<div class="box-shadow" id="map"></div>
+<div class="map-box bg-color" id="map-box">
+  <div class="header-box">
+    <div class="frame-header">
+      <h3 class="margin-none">Mon hood</h3>
+    </div>
+  </div>
+  <div class="body-box">
+    <div class="white-bg frame-body padding-none">
+      <div class="box-shadow" id="map"></div>
+    </div>
+  </div>
+</div>
+
 
 <div class="bg-color" id="sidebar">
 
@@ -18,8 +30,10 @@
     </div>
   </div>
   <div class="body-box">
-    <div class="white-bg frame-body offers">
-      <p>TO DO</p>
+    <div class="white-bg frame-body padding-none offers">
+      <% @offers.each do |offer| %>
+        <%= render "offer_preview", offer: offer %>
+      <% end %>
     </div>
   </div>
 </div>

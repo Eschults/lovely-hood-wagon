@@ -13,33 +13,43 @@
 
 
 <div class="bg-color" id="sidebar">
-
-  <div class="header-box-side">
-    <div class="frame-header-side">
-      <h3 class="margin-none">Rechercher une annonce</h3>
-    </div>
-  </div>
-  <div class="body-box-side">
-    <div class="white-bg frame-body-side search">
-      <p>TO DO</p>
-    </div>
-  </div>
-
   <div class="outside-box">
     <div class="header-box-side">
-      <div class="frame-header-side">
+      <div class="frame-header-side height-fixed-47">
         <h3 class="margin-none">Annonces</h3>
+          <div class="pull-right margin-top-neg-25">
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle btn-xs" data-toggle="dropdown">
+                <span class="sort-by">Trier par pertinence</span> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" onclick="sortBy('', this); return false;">Trier par pertinence</a></li>
+                <li><a href="#" onclick="sortBy('_price_desc', this); return false;">Prix</a></li>
+              </ul>
+            </div>
+          </div>
+          <span id="stats">&nbsp;</span>
+        </div>
       </div>
     </div>
     <div class="body-box-side">
       <div class="white-bg frame-body-side padding-none offers">
-        <% @offers.each do |offer| %>
-          <%= render "offer_preview", offer: offer %>
-        <% end %>
+        <div class="search-bar">
+          <div class="input-group input-group m-t">
+            <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+          </div>
+        </div>
+        <div id="hits">
+        </div>
+
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <% content_for(:js) do %>
   <%= javascript_tag do %>
@@ -50,6 +60,100 @@
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
       });
-    })
+    });
   <% end %>
+
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      // Replace the following values by your ApplicationID and ApiKey.
+      var algolia = new AlgoliaSearch(
+        '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
+        '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>'
+      );
+
+
+      var helper = new AlgoliaSearchHelper(algolia, 'Offer<%= ENV['ALGOLIA_SUFFIX']%>', {
+        // number of results per page
+        hitsPerPage: 20
+      });
+
+      var $hits = $('#hits');
+      var $q = $('#q');
+      var $hitTemplate = Hogan.compile($('#hit-template').text());
+
+      function searchCallback(success, content) {
+        if (!success || content.query !== $q.val()) {
+          // do not consider the result if there is an error
+          // or if it is outdated -> query != $q.val()
+          return;
+        }
+
+        var html = '';
+        for (var i = 0; i < content.hits.length; ++i) {
+          html += $hitTemplate.render(content.hits[i]);
+        }
+        $hits.html(html);
+      }
+
+      function search() {
+        // perform the query
+        helper.search($q.val(), searchCallback);
+      }
+
+      // input binding
+      var lastQuery = $q.val();
+      $q.on('keyup change', function() {
+        if ($q.val() != lastQuery) {
+          lastQuery = $q.val();
+          search();
+        }
+      }).focus();
+
+      // load results
+      search();
+    });
+  <% end %>
+  <script type="text/template" id="hit-template">
+    <div class="offer-stream-box">
+      <div class="row">
+        <div class="col-xs-1">
+          <div class="img-nature-box">
+            <a href="#">
+              <img src="../../assets/images/drill.png">
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-9 padding-left-30">
+          <h4 class="margin-none"><a href="#" class="offer-nature-link">{{ nature }}</a></h4>
+          <p class="margin-top-10">{{ description }} <a href="#">Voir l'annonce complète</a></p>
+          <ul class="list-unstyled list-inline">
+            <li class="float-left">
+              <a href="#">
+                <i class="fa fa-camera"></i> Voir la photo
+              </a>
+            </li>
+            <li class="float-left">
+              <a href="#">
+                <i class="fa fa-envelope"></i> Demande d'info
+              </a>
+            </li>
+            <li class="float-left">
+              <a href="#">
+                <i class="fa fa-star"></i> Enregistrer
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-2">
+          <h4>{{ price }}</h4>
+            <a href="#", class="btn btn-primary">Réserver</a>
+        </div>
+      </div>
+    </div>
+  </script>
+  <!-- Hogan -->
+  <script src="//cdn.jsdelivr.net/hogan.js/3.0.0/hogan.common.js"></script>
+  <!-- Algolia -->
+  <script src="//cdn.jsdelivr.net/algoliasearch/latest/algoliasearch.js"></script>
 <% end %>
+

@@ -17,6 +17,5 @@
 //= require underscore
 //= require gmaps/google
 //= require chosen
-//= require offers
 //= require_tree .
 

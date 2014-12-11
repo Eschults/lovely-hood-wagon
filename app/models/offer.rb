@@ -12,13 +12,13 @@ class Offer < ActiveRecord::Base
   algoliasearch index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
     # associated index settings can be configured from here
 
-    attributesToIndex ['nature', 'description', 'price']
+    attributesToIndex ['nature', 'description']
 
     # attributesToFaceting [ 'year' ]
 
-    # add_attribute :users do
-    #   users.map &:address
-    # end
+    add_attribute :_geoloc do
+      { lat: user.latitude, lng: user.longitude }
+    end
   end
 
   def one_price

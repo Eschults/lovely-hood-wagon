@@ -1,7 +1,7 @@
 <div class="map-box bg-color" id="map-box">
   <div class="header-box-map">
     <div class="frame-header-map">
-      <h3 class="margin-none">Mon hood</h3>
+      <h4 class="margin-none">Mon quartier</h4>
     </div>
   </div>
   <div class="body-box-map">
@@ -15,16 +15,13 @@
 <div class="bg-color" id="sidebar">
   <div class="outside-box">
     <div class="header-box-side">
-      <div class="frame-header-side height-fixed-47">
-        <h3 class="margin-none">Annonces</h3>
-          <div class="pull-right margin-top-neg-25">
+      <div class="frame-header-side height-fixed-40">
+        <h4 class="margin-none">Annonces</h4>
+          <div class="pull-right margin-top-neg-19">
             <div class="btn-group">
-              <button type="button" class="btn btn-success dropdown-toggle btn-xs" data-toggle="dropdown">
-                <span class="sort-by">Trier par pertinence</span> <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#" onclick="sortBy('', this); return false;">Trier par pertinence</a></li>
-                <li><a href="#" onclick="sortBy('_price_desc', this); return false;">Prix</a></li>
+              <ul class="list-unstyled list-inline">
+                <li><a href="#" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
+                <li><a href="#" onclick="sortBy('_daily_price_asc', this); return false;">Trier par prix</a></li>
               </ul>
             </div>
           </div>
@@ -89,7 +86,10 @@
         }
 
         var html = '';
+
         for (var i = 0; i < content.hits.length; ++i) {
+          var url = "<%= offer_path(id: ":id") %>".replace(":id", content.hits[i].id);
+          content.hits[i].url = url;
           html += $hitTemplate.render(content.hits[i]);
         }
         $hits.html(html);
@@ -119,13 +119,13 @@
         <div class="col-xs-1">
           <div class="img-nature-box">
             <a href="#">
-              <img src="../../assets/images/drill.png">
+              <%= image_tag("drill.png", width: "40") %>
             </a>
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
-          <h4 class="margin-none"><a href="#" class="offer-nature-link">{{ nature }}</a></h4>
-          <p class="margin-top-10">{{ description }} <a href="#">Voir l'annonce complète</a></p>
+          <h4 class="margin-none"><a href="{{url}}" class="offer-nature-link">{{ nature }}</a></h4>
+          <p class="margin-top-10">{{ description }} <a href="{{url}}">Voir l'annonce complète</a></p>
           <ul class="list-unstyled list-inline">
             <li class="float-left">
               <a href="#">
@@ -144,9 +144,42 @@
             </li>
           </ul>
         </div>
-        <div class="col-xs-2">
-          <h4>{{ price }}</h4>
-            <a href="#", class="btn btn-primary">Réserver</a>
+        <div class="col-xs-2 text-center">
+          <h3 class="margin-none">
+            {{#daily_price}}
+              {{ daily_price }}€
+            {{/daily_price}}
+            {{^daily_price}}
+              {{#weekly_price}}
+                {{ weekly_price }}€
+              {{/weekly_price}}
+              {{^weekly_price}}
+                {{#hourly_price}}
+                  {{ hourly_price }}€
+                {{/hourly_price}}
+                {{^hourly_price}}
+                  {{ price }}€
+                {{/hourly_price}}
+              {{/weekly_price}}
+            {{/daily_price}}
+          </h3>
+          <p>
+            {{#daily_price}}
+              / jour
+            {{/daily_price}}
+            {{^daily_price}}
+              {{#weekly_price}}
+                / semaine
+              {{/weekly_price}}
+              {{^weekly_price}}
+                {{#hourly_price}}
+                  / heure
+                {{/hourly_price}}
+
+              {{/weekly_price}}
+            {{/daily_price}}
+          </p>
+          <a href="#", class="btn btn-primary">Réserver</a>
         </div>
       </div>
     </div>

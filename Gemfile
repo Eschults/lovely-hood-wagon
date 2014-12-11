@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+gem 'algoliasearch-rails'
 gem 'mailboxer'
 gem 'pundit'
 gem 'chosen-rails'

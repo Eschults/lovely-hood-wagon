@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [ :facebook ]
   geocoded_by :address
   after_validation :geocode
+  acts_as_messageable
 
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" }
@@ -31,5 +32,9 @@ class User < ActiveRecord::Base
 
   def address
     "#{self.street_number} #{self.street_name}, #{self.zip_code} #{self.city}"
+  end
+
+  def name
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
 end

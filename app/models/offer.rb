@@ -3,9 +3,23 @@ class Offer < ActiveRecord::Base
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" }
 
-  validates_presence_of :user, :type_of_offer, :description
+  validates_presence_of :user, :nature, :type_of_offer, :description
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
+
+  include AlgoliaSearch
+
+  algoliasearch index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
+    # associated index settings can be configured from here
+
+    attributesToIndex ['nature', 'description']
+
+    # attributesToFaceting [ 'year' ]
+
+    add_attribute :_geoloc do
+      { lat: user.latitude, lng: user.longitude }
+    end
+  end
 
   def one_price
     if self.type_of_offer == "service"

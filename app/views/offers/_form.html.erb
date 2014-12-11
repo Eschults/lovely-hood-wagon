@@ -70,9 +70,12 @@
   </div>
 
   <div class="form-group show-sell hidden">
-    <%= f.label :price, "Prix (€)", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <%= f.label :price, "Prix", class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
       <%= f.text_field :price, class: "form-control" %>
+    </div>
+    <div class="col-sm-5 padding-vertical-6">
+      €
     </div>
   </div>
 
@@ -98,4 +101,68 @@
       <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
     </div>
   </div>
+<% end %>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    var type;
+    var name;
+    $(document).ready(function() {
+      type = $('#type-select').val();
+      if(type == "service") {
+        $('.show-service').removeClass("hidden");
+        $('.show-rent').addClass("hidden");
+        $('.show-sell').addClass("hidden");
+        $('#sell').attr('name', '');
+        $('#rent').attr('name', '');
+        $('#service').attr('name', 'offer[nature]');
+      }
+      if(type == "sell") {
+        $('.show-sell').removeClass("hidden");
+        $('.show-rent').addClass("hidden");
+        $('.show-service').addClass("hidden");
+        $('#service').attr('name', '');
+        $('#rent').attr('name', '');
+        $('#sell').attr('name', 'offer[nature]');
+      }
+      if(type =="rent") {
+        $('.show-rent').removeClass("hidden");
+        $('.show-service').addClass("hidden");
+        $('.show-sell').addClass("hidden");
+        $('#service').attr('name', '');
+        $('#sell').attr('name', '');
+        $('#rent').attr('name', 'offer[nature]');
+      }
+
+      $('#type-select').on('change', function(e) {
+        type = $('#type-select').val();
+        if(type == "service") {
+          $('.show-service').removeClass("hidden");
+          $('.show-rent').addClass("hidden");
+          $('.show-sell').addClass("hidden");
+          $('#sell').attr('name', '');
+          $('#rent').attr('name', '');
+          $('#service').attr('name', 'offer[nature]');
+        }
+        if(type == "sell") {
+          $('.show-sell').removeClass("hidden");
+          $('.show-rent').addClass("hidden");
+          $('.show-service').addClass("hidden");
+          $('#service').attr('name', '');
+          $('#rent').attr('name', '');
+          $('#sell').attr('name', 'offer[nature]');
+        }
+        if(type =="rent") {
+          $('.show-rent').removeClass("hidden");
+          $('.show-service').addClass("hidden");
+          $('.show-sell').addClass("hidden");
+          $('#service').attr('name', '');
+          $('#sell').attr('name', '');
+          $('#rent').attr('name', 'offer[nature]');
+        }
+      })
+
+
+    });
+  <% end %>
 <% end %>

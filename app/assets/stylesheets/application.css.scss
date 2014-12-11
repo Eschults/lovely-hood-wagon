@@ -16,12 +16,14 @@ $gray-lighter: lighten($gray-base, 85%);
 
 @import "navbar";
 @import "footer";
+@import "algolia";
 
 $bg-color: rgba(240, 240, 240, 1);
 
 body {
   margin-top: 60px;
   color: $gray-light;
+  font-weight: 200;
 }
 
 a {
@@ -189,10 +191,6 @@ a:focus {
   padding-bottom: 6px;
 }
 
-.offer-stream-box {
-  border-bottom: 1px solid rgb(220, 220, 220);
-}
-
 .nature-group {
   display: inline;
 }
@@ -218,6 +216,14 @@ a:focus {
   margin-right: 15px;
 }
 
+.margin-top-neg-25 {
+  margin-top: -25px;
+}
+
+.height-fixed-47 {
+  height: 47px;
+}
+
 .float-left {
   float: left;
 }
@@ -228,6 +234,7 @@ a:focus {
 
 .offer-stream-box {
   padding: 10px;
+  border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .offer-stream-box ul > li > a {
@@ -250,5 +257,10 @@ a:focus {
 
 .padding-left-30 {
   padding-left: 30px;
+}
+
+.search-bar {
+  padding: 10px;
+  border-bottom: 1px solid rgb(220, 220, 220);
 }
 

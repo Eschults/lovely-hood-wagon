@@ -95,12 +95,16 @@ html, body {
   margin-top: -10px;
 }
 
+.margin-left-neg-20 {
+  margin-left: -20px;
+}
+
 .outside-box {
   margin-top: -20px;
 }
 
 .offer-stream-box {
-  padding: 10px;
+  padding: 15px;
   border-bottom: 1px solid rgb(220, 220, 220);
 }
 
@@ -115,6 +119,7 @@ html, body {
 
 .offer-stream-box:hover {
   background-color: #F2F2F2;
+  cursor: pointer;
 }
 
 .offer-nature-link {
@@ -165,4 +170,13 @@ a:hover {
 .panel-default > .panel-heading h3 {
   margin: 5px 0;
   font-weight: bold;
+}
+
+.offer-stream-box ul > li > #see-img {
+  color: rgb(0, 132, 180);
+}
+
+.offer-stream-box ul > li > #see-img:hover {
+  color: rgb(0, 132, 180);
+  text-decoration: underline;
 }

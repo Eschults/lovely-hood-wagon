@@ -8,9 +8,10 @@ class BookingsController < ApplicationController
 
   def create
     @booking = set_offer.bookings.new(booking_params)
+    @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to offer_booking_path(@booking.offer, @booking)
     else
       render :new
     end
@@ -20,6 +21,11 @@ class BookingsController < ApplicationController
   end
 
   def update
+    if @booking.update(offer_params)
+      redirect_to offer_path(@booking.offer)
+    else
+      render :edit
+    end
   end
 
   def show
@@ -29,6 +35,7 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def set_offer

@@ -1,2 +1,16 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="header-box">
+        <div class="frame-header">
+          <h2 class="margin-none">Réserver <%= @booking.offer.nature %></h2>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="form-horizontal white-bg frame-body">
+          <%= render "form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

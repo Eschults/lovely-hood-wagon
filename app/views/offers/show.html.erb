@@ -15,7 +15,7 @@
         <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
         <br>
         <br>
-        <%= link_to "Reservation", "#", class: "btn btn-primary btn-wide" %>
+        <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>
         <% if policy(@offer).update? %>
           <br>
           <br>

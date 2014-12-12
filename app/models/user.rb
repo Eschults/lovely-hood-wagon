@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_attached_file :address_proof, styles: { large: "600x600>", medium: "300x300>" }
 
   has_many :offers
+  has_many :bookings
 
   validates_presence_of :email
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/

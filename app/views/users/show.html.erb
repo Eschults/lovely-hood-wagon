@@ -29,7 +29,12 @@
       <div class="body-box">
         <div class="white-bg frame-body">
           <% @user.offers.each do |offer| %>
-            <p><%= image_tag offer.picture.url(:medium), { id: "profile-pic"} %>
+            <p>
+              <% if offer.picture_file_name %>
+                <%= image_tag offer.picture.url(:medium), { class: "img img-circle img-small"} %>
+              <% else %>
+                <%= image_tag("no-image.png", { class: "img img-circle img-small" }) %>
+              <% end %>
             <%= link_to offer.nature[0..10] + " (...)", offer_path(offer) %> (<%= offer.one_price %>)</p>
           <% end %>
         </div>

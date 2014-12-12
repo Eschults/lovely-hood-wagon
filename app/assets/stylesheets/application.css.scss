@@ -257,3 +257,10 @@ a:focus {
 .strong {
   font-weight: bold;
 }
+
+.img-small {
+  height: 32px;
+  width: 32px;
+  border: 2px solid white;
+  box-shadow: 0 0 2px #c8c8c8;
+}

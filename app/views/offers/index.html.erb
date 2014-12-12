@@ -1,52 +1,37 @@
 <div class="map-box bg-color" id="map-box">
-  <div class="header-box-map">
-    <div class="frame-header-map">
-      <h4 class="margin-none">Mon quartier</h4>
+  <div class="panel panel-default white-bg">
+    <div class="panel-heading">
+      <h3>Mon quartier</h3>
     </div>
-  </div>
-  <div class="body-box-map">
-    <div class="white-bg frame-body-map">
+    <div class="panel-body padding-none">
       <div id="map"></div>
     </div>
   </div>
 </div>
 
-
 <div class="bg-color" id="sidebar">
-  <div class="outside-box">
-    <div class="header-box-side">
-      <div class="frame-header-side height-fixed-40">
-        <h4 class="margin-none">Annonces</h4>
-          <div class="pull-right margin-top-neg-19">
-            <div class="btn-group">
-              <ul class="list-unstyled list-inline">
-                <li><a href="#" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
-                <li><a href="#" onclick="sortBy('_daily_price_asc', this); return false;">Trier par prix</a></li>
-              </ul>
-            </div>
-          </div>
-          <span id="stats">&nbsp;</span>
+  <div class="panel panel-default white-bg">
+    <div class="panel-heading">
+      <h3>Annonces</h3>
+      <!-- <div class="btn-group">
+        <ul class="list-unstyled list-inline">
+          <li><a href="#" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
+          <li><a href="#" onclick="sortBy('_daily_price_asc', this); return false;">Trier par prix</a></li>
+        </ul>
+      </div> -->
+    </div>
+    <div class="panel-body padding-none">
+      <div class="search-bar">
+        <div class="input-group input-group m-t">
+          <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
         </div>
       </div>
-    </div>
-    <div class="body-box-side">
-      <div class="white-bg frame-body-side padding-none offers">
-        <div class="search-bar">
-          <div class="input-group input-group m-t">
-            <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-          </div>
-        </div>
-        <div id="hits">
-        </div>
-
+      <div id="hits">
       </div>
     </div>
   </div>
 </div>
-
-
-
 
 <% content_for(:js) do %>
   <%= javascript_tag do %>

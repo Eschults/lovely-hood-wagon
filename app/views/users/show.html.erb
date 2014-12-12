@@ -35,7 +35,11 @@
               <% else %>
                 <%= image_tag("no-image.png", { class: "img img-circle img-small" }) %>
               <% end %>
-            <%= link_to offer.nature[0..10] + " (...)", offer_path(offer) %> (<%= offer.one_price %>)</p>
+            <% if offer.nature.length >= 8 %>
+              <%= link_to offer.nature[0..7] + " (...)", offer_path(offer) %> (<%= offer.one_price %>)</p>
+            <% else %>
+              <%= link_to offer.nature, offer_path(offer) %> (<%= offer.one_price %>)</p>
+            <% end %>
           <% end %>
         </div>
       </div>

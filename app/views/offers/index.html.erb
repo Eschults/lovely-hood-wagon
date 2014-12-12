@@ -75,6 +75,8 @@
         for (var i = 0; i < content.hits.length; ++i) {
           var url = "<%= offer_path(id: ":id") %>".replace(":id", content.hits[i].id);
           content.hits[i].url = url;
+          var new_booking_url = "<%= new_offer_booking_path(offer_id: ":offer_id") %>".replace(":offer_id", content.hits[i].offer_id);
+          content.hits[i].new_booking_url = new_booking_url;
           html += $hitTemplate.render(content.hits[i]);
         }
         $hits.html(html);
@@ -159,7 +161,7 @@
               </a>
             </li>
             <li class="float-right">
-              <a href="#">
+              <a href="{{ new_booking_url }}">
                 <i class="fa fa-check"></i> Réserver
               </a>
             </li>

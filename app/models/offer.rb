@@ -24,18 +24,18 @@ class Offer < ActiveRecord::Base
   def one_price
     if self.type_of_offer == "service"
       if self.hourly_price
-        "#{self.hourly_price} €/ heure"
+        "#{self.hourly_price}€/ heure"
       end
     elsif self.type_of_offer == "rent"
       if self.weekly_price
-        "#{self.weekly_price} €/ semaine"
+        "#{self.weekly_price}€/ semaine"
       end
       if self.daily_price
-        "#{self.daily_price} €/ jour"
+        "#{self.daily_price}€/ jour"
       end
     else
       if self.price
-        "#{self.price} €"
+        "#{self.price}€"
       end
     end
   end

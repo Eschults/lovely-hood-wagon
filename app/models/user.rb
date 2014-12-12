@@ -8,14 +8,16 @@ class User < ActiveRecord::Base
   after_validation :geocode
   acts_as_messageable
 
-  has_attached_file :picture,
-    styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :identity_proof, styles: { large: "600x600>", medium: "300x300>" }
+  has_attached_file :address_proof, styles: { large: "600x600>", medium: "300x300>" }
 
   has_many :offers
 
   validates_presence_of :email
-  validates_attachment_content_type :picture,
-    content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :identity_proof, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :address_proof, content_type: /\Aimage\/.*\z/
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

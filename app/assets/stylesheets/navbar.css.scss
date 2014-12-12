@@ -1,6 +1,6 @@
 // Set your navbar general settings
 $color: white;
-$bg: #25AAE1;
+$bg: #ddd;
 $height: 40px;
 $vertical-padding: 10px;
 $horizontal-padding: 15px;
@@ -116,7 +116,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 }
 
 #brand {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Pacifico';
   color: $color;
   font-size: 30px;
   margin-left: 15px;

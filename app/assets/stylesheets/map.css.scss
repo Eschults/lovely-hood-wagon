@@ -1,10 +1,10 @@
 html, body {
   overflow: hidden;
+  font-family: 'Helvetica';
 }
 
 #map {
-  height: 600px;
-
+  min-height: 675px;
 }
 
 #map-box {
@@ -95,3 +95,58 @@ html, body {
 .outside-box {
   margin-top: -20px;
 }
+
+.offer-stream-box {
+  padding: 10px;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.offer-stream-box ul > li > a {
+  color: rgb(217, 217, 217);
+}
+
+.offer-stream-box ul > li > a:hover {
+  color: rgb(119, 119, 119);
+  text-decoration: none;
+}
+
+.offer-stream-box:hover {
+  background-color: #F2F2F2;
+}
+
+.offer-nature-link {
+  color: rgb(79, 79, 79);
+  font-weight: bold;
+}
+
+.offer-preview-box {
+  padding: 10px;
+}
+
+.nature-group {
+  display: inline;
+}
+
+.price {
+  color: rgb(79, 79, 79);
+  font-weight: bold;
+}
+
+a {
+  color: rgb(0, 132, 180);
+}
+
+a:hover {
+  color: rgb(0, 132, 180);
+}
+
+.frame-header-side {
+  background-color: white;
+  border-radius-top-left: 3px;
+  border-radius-top-right: 3px;
+}
+
+.frame-header-map {
+  background-color: white;
+}
+

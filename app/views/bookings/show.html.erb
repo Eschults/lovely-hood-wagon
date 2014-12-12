@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="white-bg frame padding-none">
+        <% if @booking.offer.picture_file_name %>
+          <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-thumbnail" }) %>
+        <% else %>
+          <%= image_tag("no-image.png", { class: "img img-thumbnail" }) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="booking">
+        <h1>Réservation de <%= @booking.offer.nature %></h1>
+        <p><strong>Envoyée le : </strong><%= @booking.created_at.strftime("%d %B %Y") %></p>
+        <p><strong>Statut : </strong>
+          <% if @booking.accepted %>
+            Félicitations, votre réservation a été acceptée !
+          <% elsif @booking.accepted.nil? %>
+            En attente de réponse du destinataire.
+          <% else %>
+            Votre réservation a été déclinée. Consulter d'autres <%= link_to "annonces", offers_path %>.
+          <% end %>
+        </p>
+        <p>Revoir l'<%= link_to "annonce", offers_path(@booking.offer) %></p>
+      </div>
+    </div>
+  </div>
+</div>

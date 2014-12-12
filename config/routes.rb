@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root to: "pages#home"
   resources :users, only: [:show, :edit, :update]
-  resources :offers, except: [:destroy]
+  resources :offers, except: [:destroy] do
+    resources :bookings, only: [:new, :create, :edit, :update, :show]
+  end
 
   # get "inbox", to: "inbox#index"
   # get "inbox/conversation_with/:user_id", to: "inbox#conversation_with"

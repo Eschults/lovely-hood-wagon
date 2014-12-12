@@ -118,15 +118,15 @@
       <div class="row">
         <div class="col-xs-1">
           <div class="img-nature-box">
-            <a href="#">
-              <%= image_tag("drill.png", width: "40") %>
+            <a href="{{url}}">
+              <%= image_tag("drill.png", width: "60") %>
             </a>
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
           <h4 class="margin-none"><a href="{{url}}" class="offer-nature-link">{{ nature }}</a></h4>
           <p class="margin-top-10">{{ description }} <a href="{{url}}">Voir l'annonce complète</a></p>
-          <ul class="list-unstyled list-inline">
+          <ul class="list-unstyled list-inline padding-top-10">
             <li class="float-left">
               <a href="#">
                 <i class="fa fa-camera"></i> Voir la photo
@@ -145,7 +145,7 @@
           </ul>
         </div>
         <div class="col-xs-2 text-center">
-          <h3 class="margin-none">
+          <h3 class="margin-none price">
             {{#daily_price}}
               {{ daily_price }}€
             {{/daily_price}}

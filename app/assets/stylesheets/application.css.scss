@@ -11,7 +11,7 @@ $gray-lighter: lighten($gray-base, 85%);
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Pacifico);
+@import url("http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Pacifico");
 @import "chosen";
 
 @import "navbar";
@@ -166,6 +166,10 @@ a:focus {
   min-height: 200px;
 }
 
+.height-100 {
+  min-height: 100px;
+}
+
 .padding-top-5 {
   padding-top: 5px;
 }
@@ -268,3 +272,19 @@ a:focus {
   border-bottom: 1px solid rgb(220, 220, 220);
 }
 
+.small {
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+.margin-top-6 {
+  margin-top: 6px;
+}
+
+.strong {
+  font-weight: bold;
+}

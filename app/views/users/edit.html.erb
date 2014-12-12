@@ -3,137 +3,293 @@
     <div class="col-sm-3">
       <div class="sidenav">
         <ul class="list-unstyled">
-          <li><a href="#"><strong>Mes informations</strong></a></li>
-          <li><a href="#">Photo de profil</a></li>
-          <li><a href="#">Confiance et vérif.</a></li>
-          <li><a href="#">Commentaires</a></li>
-          <li><a href="#">Recommandations</a></li>
+          <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
+          <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
+          <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a></li>
+          <li><a href="#" class="edit-link" id="my-comments">Commentaires</a></li>
+          <li><a href="#" class="edit-link" id="my-recos">Recommandations</a></li>
           <li><%= link_to "Voir mon profil", user_path(current_user), class: "btn btn-default btn-wide" %></a></li>
         </ul>
       </div>
     </div>
-    <div class="col-sm-9">
-      <div class="header-box">
-        <div class="frame-header">
-          <h3 class="margin-none">Mes informations</h3>
+    <div class="col-sm-9 margin-top-15">
+
+      <div class="box" id="user-info">
+        <div class="header-box">
+          <div class="frame-header">
+            <h4 class="margin-none">Mes informations</h4>
+          </div>
+        </div>
+        <div class="body-box">
+          <div class="form-horizontal white-bg frame-body">
+            <%= form_for(current_user) do |f| %>
+
+              <div class="form-group">
+                <%= f.label :email, "E-mail", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.email_field :email, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :first_name, "Prénom", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :first_name, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :last_name, "Nom", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :last_name, class: "form-control" %>
+                  <%= render "data_sharing_message" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :street_number, "N°", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :street_number, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :street_name, "Rue", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :street_name, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :zip_code, "Code postal", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :zip_code, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :city, "Ville", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :city, class: "form-control" %>
+                  <%= render "data_sharing_message" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :gender, "Sexe", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], {}, { class: "form-control" } %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :birthday, "Date de naissance", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.date_field :birthday, class: "form-control" %>
+                  <p class="small">Nous utilisons cette donnée à des fins d'analyse et ne la partageons jamais avec d'autres  utilisateurs.</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :phone, "Téléphone", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :phone, class: "form-control" %>
+                  <%= render "data_sharing_message" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :description, "Description", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_area :description, class: "form-control" %>
+                  <p class="small">Aidez les utilisateurs de votre communauté à mieux vous connaitre.</p>
+
+                  <p class="small">Pour cela, présentez-vous brièvement en résumant votre parcours et en mentionnant vos activités personnelles, professionnelles ou encore votre situation amoureuse.</p>
+                </div>
+              </div>
+
+              <div class="form-group margin-btm-none">
+                <div class="col-sm-3">
+                </div>
+
+                <div class="col-sm-9">
+                  <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
+                  <br>
+                  <br>
+                  <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="body-box">
-        <div class="form-horizontal white-bg frame-body">
-          <%= form_for(current_user) do |f| %>
 
-            <div class="form-group">
-              <%= f.label :email, "E-mail", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.email_field :email, class: "form-control" %>
-              </div>
+      <div class="box hidden" id="user-picture">
+        <div class="header-box">
+          <div class="frame-header">
+            <h4 class="margin-none">Photo de profil</h4>
+          </div>
+        </div>
+        <div class="body-box">
+          <div class="white-bg frame-body height-200">
+            <div class="col-sm-3">
+              <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
             </div>
-
-            <div class="form-group">
-              <%= f.label :first_name, "Prénom", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :first_name, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :last_name, "Nom", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :last_name, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :street_number, "N°", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :street_number, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :street_name, "Rue", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :street_name, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :zip_code, "Code postal", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :zip_code, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :city, "Ville", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :city, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :gender, "Sexe", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], {}, { class: "form-control" } %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :birthday, "Date de naissance", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.date_field :birthday, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :phone, "Téléphone", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :phone, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :description, "Description", class: "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_area :description, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group margin-btm-none">
-              <div class="col-sm-2">
-              </div>
-
-              <div class="col-sm-10">
-                <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
-                <br>
+            <div class="col-sm-9">
+              <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
+              <%= form_for(@user, html: { multipart: true }) do |f| %>
+                <%= f.file_field :picture, label: "Parcourir" %>
                 <br>
                 <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
-              </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
 
-      <div class="header-box">
-        <div class="frame-header">
-          <h3 class="margin-none">Photo de profil</h3>
+      <div class="box hidden" id="user-trust">
+        <div class="header-box">
+          <div class="frame-header">
+            <h4 class="margin-none">Confiance et vérifications</h4>
+          </div>
+        </div>
+        <div class="body-box">
+          <div class="form-horizontal white-bg frame-body">
+            <%= form_for(current_user) do |f| %>
+              <div class="col-sm-12">
+                <p><b>Vérifiez votre identité et votre adresse postale</b></p>
+                <p class="small">La vérification de votre identité et de votre adresse est à la fois un prérequis pour le bon fonctionnement du service et une façon simple de contribuer à la confiance au sein de la communauté Lovely hood.</p>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :identity_proof, "Identité", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.file_field :identity_proof, class: "margin-top-6"%>
+                  <p class="small">Carte d'identité, passeport ou permis de conduire uniquement</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :address_proof, "Adresse", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.file_field :address_proof, class: "margin-top-6" %>
+                  <p class="small">Dans le cas où votre adresse est différente de l'adresse indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                  <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="body-box">
-        <div class="white-bg frame-body height-200">
-          <div class="col-sm-3">
-            <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+
+      <div class="box hidden" id="user-comments">
+        <div class="header-box">
+          <div class="frame-header">
+            <h4 class="margin-none">Commentaires</h4>
           </div>
-          <div class="col-sm-9">
-            <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
-            <%= form_for(@user, html: { multipart: true }) do |f| %>
-              <%= f.file_field :picture, label: "Parcourir" %>
-              <br>
-              <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
-            <% end %>
+        </div>
+        <div class="body-box">
+          <div class="white-bg frame-body height-100">
+            <p><b>Après chaque réservation sur Lovely hood, les deux utilisateurs rédigent un commentaire qui est rendu visible sur le profil de l'autre.</b></p>
+            <p>Pas encore de commentaires</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="box hidden" id="user-recommendations">
+        <div class="header-box">
+          <div class="frame-header">
+            <h4 class="margin-none">Recommandations</h4>
+          </div>
+        </div>
+        <div class="body-box">
+          <div class="white-bg frame-body">
+            <p><b>Lovely hood est basée sur la confiance et la réputation.</b> Nous vous conseillons vivement de demander des recommandations auprès de votre réseau personnel. Elles apparaitront sur votre profil, et aideront votre communauté à mieux vous connaitre.</p>
+            <p>Pas encore de recommandations</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    var id;
+    var name;
+    $(document).ready(function() {
+
+      $('.edit-link').on('click', function(e) {
+        id = $(this).attr('id');
+        if(id == "my-info") {
+          $('#user-info').removeClass("hidden");
+          $('#user-picture').addClass("hidden");
+          $('#user-trust').addClass("hidden");
+          $('#user-comments').addClass("hidden");
+          $('#user-recommendations').addClass("hidden");
+          $('#my-info').addClass("strong");
+          $('#my-pic').removeClass("strong");
+          $('#my-trust').removeClass("strong");
+          $('#my-comments').removeClass("strong");
+          $('#my-recos').removeClass("strong");
+        }
+        if(id == "my-pic") {
+          $('#user-info').addClass("hidden");
+          $('#user-picture').removeClass("hidden");
+          $('#user-trust').addClass("hidden");
+          $('#user-comments').addClass("hidden");
+          $('#user-recommendations').addClass("hidden");
+          $('#my-info').removeClass("strong");
+          $('#my-pic').addClass("strong");
+          $('#my-trust').removeClass("strong");
+          $('#my-comments').removeClass("strong");
+          $('#my-recos').removeClass("strong");
+        }
+        if(id == "my-trust") {
+          $('#user-info').addClass("hidden");
+          $('#user-picture').addClass("hidden");
+          $('#user-trust').removeClass("hidden");
+          $('#user-comments').addClass("hidden");
+          $('#user-recommendations').addClass("hidden");
+          $('#my-info').removeClass("strong");
+          $('#my-pic').removeClass("strong");
+          $('#my-trust').addClass("strong");
+          $('#my-comments').removeClass("strong");
+          $('#my-recos').removeClass("strong");
+        }
+        if(id == "my-comments") {
+          $('#user-info').addClass("hidden");
+          $('#user-picture').addClass("hidden");
+          $('#user-trust').addClass("hidden");
+          $('#user-comments').removeClass("hidden");
+          $('#user-recommendations').addClass("hidden");
+          $('#my-info').removeClass("strong");
+          $('#my-pic').removeClass("strong");
+          $('#my-trust').removeClass("strong");
+          $('#my-comments').addClass("strong");
+          $('#my-recos').removeClass("strong");
+        }
+        if(id == "my-recos") {
+          $('#user-info').addClass("hidden");
+          $('#user-picture').addClass("hidden");
+          $('#user-trust').addClass("hidden");
+          $('#user-comments').addClass("hidden");
+          $('#user-recommendations').removeClass("hidden");
+          $('#my-info').removeClass("strong");
+          $('#my-pic').removeClass("strong");
+          $('#my-trust').removeClass("strong");
+          $('#my-comments').removeClass("strong");
+          $('#my-recos').addClass("strong");
+        }
+      })
+
+
+    });
+  <% end %>
+<% end %>

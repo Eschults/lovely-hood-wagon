@@ -1,25 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 white-bg padding-btm-15 margin-top-20 padding-sides-30">
-      <h1>Vous avez une demande de réservation sur <%= @booking.offer.title %></h1>
-
-      <h3>Votre guest est <%= link_to @booking.user.first_name, user_path(@booking.user) %></h3>
-
-      <p>La période concernée va du <strong><%= @booking.start_date %></strong> au <strong><%= @booking.end_date %></strong></p>
-
-      <p>Le nombre de nuits : <%= (@booking.end_date - @booking.start_date).to_i %> nuits</p>
-
-      <p>Vous pourriez gagner : <strong><%= (@booking.end_date - @booking.start_date).to_i * @booking.offer.price %> <%= @booking.offer.currency %></strong></p>
+    <div class="col-sm-3">
+      <div class="white-bg frame padding-none">
+        <% if @booking.offer.picture_file_name %>
+          <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-thumbnail" }) %>
+        <% else %>
+          <%= image_tag("no-image.png", { class: "img img-thumbnail" }) %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-xs-12 white-bg padding-btm-15">
-      <%= simple_form_for(@booking, method: :patch, url: offer_booking_path, html:{ multipart: true, class: "col-xs-1" }) do |f| %>
-          <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
+    <div class="col-sm-9">
+      <div class="booking">
+        <h1>Vous avez une demande de réservation : <%= @booking.offer.nature %></h1>
+
+        <h3>De la part de <%= link_to @booking.user.first_name, user_path(@booking.user) %></h3>
+
+        <p><%= link_to @booking.user.first_name, user_path(@booking.user) %> souhaiterait réserver <%= @booking.offer.nature %>, du <strong><%= @booking.start_date %></strong> au <strong><%= @booking.end_date %></strong></p>
+
+        <p>Vous pourriez gagner : <strong><%= (@booking.end_date - @booking.start_date).to_i * @booking.offer.daily_price %>€</strong></p>
+      </div>
+    </div>
+    <div class="booking-answer">
+      <div class="col-sm-1">
+        <%= form_for([@booking.offer, @booking]) do |f| %>
+          <%= f.text_field :accepted, class: "hidden", input_html: { value: true } %>
           <%= f.submit 'Accepter', class: "btn btn-success" %>
-      <% end %>
-      <%= simple_form_for(@booking, method: :patch, url: offer_booking_path, html:{ multipart: true, class: "col-xs-1" }) do |f| %>
-          <%= f.input :accepted, as: :hidden, input_html: { value: false } %>
+        <% end %>
+        </div>
+      <div class="col-sm-1">
+        <%= form_for([@booking.offer, @booking]) do |f| %>
+          <%= f.text_field :accepted, class: "hidden", input_html: { value: false } %>
           <%= f.submit 'Refuser', class: "btn btn-danger" %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

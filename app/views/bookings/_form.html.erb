@@ -1,5 +1,5 @@
 <%= form_for([@offer, @booking]) do |f| %>
-  <% if @booking.type == "rent" %>
+  <% if @offer.type_of_offer == "rent" %>
     <div class="form-group">
       <%= f.label :start_date, "Début", class: "col-sm-2 control-label" %>
       <div class="col-sm-10">

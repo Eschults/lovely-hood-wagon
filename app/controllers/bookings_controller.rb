@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    if @booking.update(offer_params)
+    if @booking.update(booking_params)
       redirect_to offer_path(@booking.offer)
     else
       render :edit

@@ -131,17 +131,23 @@
           </div>
         </div>
         <div class="body-box">
-          <div class="white-bg frame-body height-200">
-            <div class="col-sm-3">
-              <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
-            </div>
-            <div class="col-sm-9">
-              <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
-              <%= form_for(@user, html: { multipart: true }) do |f| %>
-                <%= f.file_field :picture, label: "Parcourir" %>
-                <br>
-                <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
-              <% end %>
+          <div class="white-bg frame-body form-horizontal">
+            <div class="form-group">
+              <div class="col-sm-3">
+                <% if @user.picture_file_name %>
+                  <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+                <% else %>
+                  <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
+                <% end %>
+              </div>
+              <div class="col-sm-9">
+                <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
+                <%= form_for(@user, html: { multipart: true }) do |f| %>
+                  <%= f.file_field :picture, label: "Parcourir" %>
+                  <br>
+                  <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

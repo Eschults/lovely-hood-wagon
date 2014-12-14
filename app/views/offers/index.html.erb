@@ -21,6 +21,8 @@
       </div> -->
     </div>
     <div class="panel-body padding-none">
+      <div id="facets">
+      </div>
       <div class="search-bar">
         <div class="input-group input-group m-t">
           <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
@@ -53,15 +55,29 @@
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>'
       );
 
+      var $hits = $('#hits');
+      var $q = $('#q');
+      var $hitTemplate = Hogan.compile($('#hit-template').text());
+      var $facets = $('#facets');
+      var $facetTemplate = Hogan.compile($('#facet-template').text());
 
       var helper = new AlgoliaSearchHelper(algolia, 'Offer<%= ENV['ALGOLIA_SUFFIX']%>', {
+        facets: [],
+        // list of disjunctive facets (checkbox to refine)
+        disjunctiveFacets: ['type_of_offer'],
         // number of results per page
         hitsPerPage: 20
       });
 
-      var $hits = $('#hits');
-      var $q = $('#q');
-      var $hitTemplate = Hogan.compile($('#hit-template').text());
+      function sortByCountDesc(a, b) { return b.count - a.count; }
+      function sortByNumAsc(a, b) { return parseInt(a.label) - parseInt(b.label); }
+      var FACETS = [
+        { name: 'type_of_offer', title: 'Type' },
+      ];
+
+      var refinements = {};
+      var minReviewsCount = 0;
+
 
       function searchCallback(success, content) {
         if (!success || content.query !== $q.val()) {
@@ -75,11 +91,82 @@
         for (var i = 0; i < content.hits.length; ++i) {
           var url = "<%= offer_path(id: ":id") %>".replace(":id", content.hits[i].id);
           content.hits[i].url = url;
-          var new_booking_url = "<%= new_offer_booking_path(offer_id: ":offer_id") %>".replace(":offer_id", content.hits[i].offer_id);
+          var new_booking_url = "<%= new_offer_booking_path(offer_id: ":offer_id") %>".replace(":offer_id", content.hits[i].id);
           content.hits[i].new_booking_url = new_booking_url;
           html += $hitTemplate.render(content.hits[i]);
         }
         $hits.html(html);
+
+        // facets: display the conjunctive+disjunctive facets
+        html = '';
+        var facetResult = null;
+        var facetConfig = null;
+        var isDisjunctive = null;
+
+        for (var j=0; j<FACETS.length; ++j) {
+          facetConfig = FACETS[j];
+          facetResult = content['disjunctiveFacets'][facetConfig.name] || null;
+          isDisjunctive = (content['disjunctiveFacets'][facetConfig.name]) ? true : false;
+
+          if (facetResult) {
+
+            // collect all values from `facetResult` to sort them by facetConfig.sortFunction
+            var values = [];
+            for (var v in facetResult) {
+              values.push({ label: v, value: v, count: facetResult[v], refined: helper.isRefined(facetConfig.name, v) });
+            }
+            // sort the values
+            values.sort(function(a, b) {
+              // If topListIfRefined === true: sort by the refined states first (put them on top if they are refined).
+              if (facetConfig.topListIfRefined) {
+                if (a.refined !== b.refined) {
+                  if (a.refined) return -1;
+                  if (b.refined) return 1;
+                }
+              }
+
+              // then fallback on the standard sort function
+              return facetConfig.sortFunction(a,b);
+            });
+
+            // render the facet
+            html += $facetTemplate.render({
+              facet: facetConfig.name,
+              title: facetConfig.title,
+              values: values.slice(0, 10),
+              has_other_values: values.length > 10,
+              other_values: values.slice(10),
+              disjunctive: isDisjunctive
+            });
+          }
+        }
+        $facets.html(html);
+
+
+
+        // update URL anchor
+        var refinements = [];
+        for (var refine in helper.refinements) {
+          if (helper.refinements[refine]) {
+            var i = refine.indexOf(':');
+            var r = {};
+            r[refine.slice(0, i)] = refine.slice(i + 1);
+            refinements.push(r);
+          }
+        }
+        for (var refine in helper.disjunctiveRefinements) {
+          for (var value in helper.disjunctiveRefinements[refine]) {
+            if (helper.disjunctiveRefinements[refine][value]) {
+              var r = {};
+              r[refine] = value;
+              refinements.push(r);
+            }
+          }
+        }
+        location.replace('#q=' + encodeURIComponent(content.query) + '&page=' + content.page + '&minReviewsCount=' + minReviewsCount + '&refinements=' + encodeURIComponent(JSON.stringify(refinements)));
+
+        // scroll on top
+        window.scrollTo(0, 0);
       }
 
       function search() {
@@ -92,6 +179,10 @@
       $q.on('keyup change', function() {
         if ($q.val() != lastQuery) {
           lastQuery = $q.val();
+          // performing a new full-text query reset the pagination and the refinements
+          minReviewsCount = 0;
+          helper.setPage(0);
+          helper.clearRefinements();
           search();
         }
       }).focus();
@@ -100,6 +191,9 @@
       search();
     });
   <% end %>
+  <script type="text/template" id="facet-template">
+    TEST
+  </script>
   <script type="text/template" id="hit-template">
     <div class="offer-stream-box">
       <div class="row">
@@ -111,8 +205,8 @@
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
-          <h4 class="margin-none"><a href="{{url}}" class="offer-nature-link">{{ nature }}</a></h4>
-          <p class="margin-top-10">{{ description }} <a href="{{url}}">Voir l'annonce complète</a></p>
+          <h4 class="margin-none"><a href="{{url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
+          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{url}}">Voir l'annonce complète</a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-right-20">
           <h3 class="margin-none price">

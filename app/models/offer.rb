@@ -14,7 +14,7 @@ class Offer < ActiveRecord::Base
   algoliasearch index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
     # associated index settings can be configured from here
 
-    attributesToIndex ['nature', 'description']
+    attributesToIndex ['nature', 'description', 'type_of_offer']
 
     # attributesToFaceting [ 'year' ]
 

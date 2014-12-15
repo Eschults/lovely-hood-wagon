@@ -163,7 +163,9 @@
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>',
         'Offer<%= ENV['ALGOLIA_SUFFIX']%>',
         "<%= offer_path(id: ":id") %>",
-        "<%= new_offer_booking_path(offer_id: ":offer_id") %>"
+        "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
+        '<%= current_user.latitude %>',
+        '<%= current_user.longitude %>'
         );
     })
   <% end %>

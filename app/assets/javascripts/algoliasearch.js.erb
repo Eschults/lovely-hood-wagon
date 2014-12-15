@@ -1,4 +1,4 @@
-function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath) {
+function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, lat, lng) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
     applicationId,
@@ -196,7 +196,10 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     }
 
     // perform the query
-    helper.search($q.val(), searchCallback);
+    helper.search($q.val(), searchCallback, {
+      aroundLatLng: lat + ',' + lng,
+      aroundRadius: 1000 // 1km around
+    });
   }
 
   // init: fetch anchor params and init the associated variables

@@ -21,6 +21,7 @@ class Offer < ActiveRecord::Base
     add_attribute :_geoloc do
       { lat: user.latitude, lng: user.longitude }
     end
+
   end
 
   def one_price

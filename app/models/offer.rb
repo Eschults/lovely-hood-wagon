@@ -16,7 +16,7 @@ class Offer < ActiveRecord::Base
 
     attributesToIndex ['nature', 'description', 'type_of_offer']
 
-    # attributesToFaceting [ 'year' ]
+    attributesForFaceting [ 'type_of_offer' ]
 
     add_attribute :_geoloc do
       { lat: user.latitude, lng: user.longitude }

@@ -35,6 +35,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
   var minReviewsCount = 0;
 
 
+
   function searchCallback(success, content) {
     if (!success || content.query !== $q.val()) {
       // do not consider the result if there is an error
@@ -45,6 +46,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     var html = '';
 
     var markers = [];
+    handler.removeMarkers();
 
     for (var i = 0; i < content.hits.length; ++i) {
       markers[i] = content.hits[i]._geoloc;
@@ -56,7 +58,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     }
     $hits.html(html);
 
-    googlemaps(markers, lat, lng);
+
     markers = [];
 
     // facets: display the conjunctive+disjunctive facets

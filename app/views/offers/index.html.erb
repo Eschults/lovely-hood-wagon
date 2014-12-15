@@ -156,6 +156,11 @@
 
   <%= javascript_tag do %>
     $(document).ready(function() {
+      googlemaps(
+        <%= raw @markers.to_json %>,
+        '<%= current_user.latitude %>',
+        '<%= current_user.longitude %>'
+      );
       initAlgolia(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>',

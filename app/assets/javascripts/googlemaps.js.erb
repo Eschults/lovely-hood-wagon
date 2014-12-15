@@ -1,13 +1,13 @@
 function googlemaps(markers, lat, lng) {
   handler = Gmaps.build('Google');
   handler.buildMap({ internal: { id: 'map' }}, function(){
-    markers = handler.addMarkers(markers);
-    // handler.getMap().setCenter(lat + ',' + lng);
-    // handler.getMap().setZoom(19);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    if(markers.length == 1) {
-      handler.getMap().setZoom(18);
-    }
+    handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
+    handler.getMap().setZoom(16);
+    handler.addMarkers(markers);
+    // handler.bounds.extendWith(markers);
+    // handler.fitMapToBounds();
+    // if(markers.length == 1) {
+    //   handler.getMap().setZoom(18);
+    // }
   });
 }

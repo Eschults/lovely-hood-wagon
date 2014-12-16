@@ -1,8 +1,14 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   helper_method :mailbox, :conversation
+  skip_after_action :verify_policy_scoped
+
+  # def index
+  #   @conversations = policy_scope(current)
+  # end
 
   def create
+    authorize :conversation, :create?
     recipient_emails = conversation_params(:recipients).split(',')
     recipients = User.where(email: recipient_emails).all
 
@@ -13,16 +19,19 @@ class ConversationsController < ApplicationController
   end
 
   def reply
+    authorize :conversation, :reply?
     current_user.reply_to_conversation(conversation, *message_params(:body, :subject))
     redirect_to conversation_path(conversation)
   end
 
   def trash
+    authorize :conversation, :trash?
     conversation.move_to_trash(current_user)
     redirect_to :conversations
   end
 
   def untrash
+    authorize :conversation, :untrash?
     conversation.untrash(current_user)
     redirect_to :conversations
   end
@@ -35,6 +44,7 @@ class ConversationsController < ApplicationController
 
   def conversation
     @conversation ||= mailbox.conversations.find(params[:id])
+    authorize @conversation
   end
 
   def conversation_params(*keys)

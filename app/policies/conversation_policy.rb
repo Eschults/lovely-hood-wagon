@@ -6,11 +6,11 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.user1 != record.user2
   end
 
   def reply?
-    true
+    record.user1 == user || record.user2 == user
   end
 
   def index?
@@ -18,6 +18,6 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.user1 == user || record.user2 == user
   end
 end

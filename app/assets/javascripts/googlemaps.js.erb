@@ -1,0 +1,8 @@
+function buildMap(markers, lat, lng) {
+  handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' }}, function(){
+    handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
+    handler.getMap().setZoom(16);
+    handler.addMarkers(markers);
+  });
+}

@@ -24,6 +24,13 @@ body {
   margin-top: 60px;
   color: $gray-light;
   font-weight: 300;
+  height: 100%;
+}
+
+#wrapper {
+  min-height:100%;
+  position:relative;
+  padding-bottom: 192px;
 }
 
 a {
@@ -238,6 +245,10 @@ a:focus {
 
 .padding-left-30 {
   padding-left: 30px;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
 }
 
 .search-bar {

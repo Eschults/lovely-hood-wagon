@@ -7,11 +7,4 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create, :edit, :update, :show]
   end
 
-  resources :conversations, only: [:index, :show, :new, :create] do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
-  end
 end

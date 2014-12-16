@@ -36,38 +36,34 @@
 </div>
 
 <% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    });
-  <% end %>
-
   <script type="text/template" id="facet-template">
     <div class="facet">
-      <div class="container">
-        <!-- facet title -->
-        <div class="col-xs-2 facet-title">
-          Je recherche :
-        </div>
-        <ul class="list-inline list-unstyled margin-btm-none">
-          {{#values}}
-          <li class="{#refined}">
-            {{#disjunctive}}
-              <div class="checkbox">
-                <label>
-                  <input class="checkbox" type="checkbox" {{#refined}}checked="checked"{{/refined}} onclick="toggleRefine('{{ facet }}', '{{ value }}'); return false;">
-                  <a href="#" onclick="toggleRefine('{{ facet }}', '{{ value }}'); return false;">{{ label }}</a> ({{ count }})
-                </label>
-              </div>
-            {{/disjunctive}}
-          </li>
-          {{/values}}
-        </ul>
+      <!-- facet title -->
+        <table>
+          <td>
+            <div class="facet-title">
+              Je veux voir :
+            </div>
+          </td>
+          <td>
+          </td>
+          <td>
+            <ul class="list-inline list-unstyled margin-btm-none">
+              {{#values}}
+                <li class="{#refined}">
+                  {{#disjunctive}}
+                    <div class="checkbox padding-left-10">
+                      <label>
+                        <input class="checkbox" type="checkbox" {{#refined}}checked="checked"{{/refined}} onclick="toggleRefine('{{ facet }}', '{{ value }}'); return false;">
+                        <a href="#" onclick="toggleRefine('{{ facet }}', '{{ value }}'); return false;">{{ label }}</a> ({{ count }})
+                      </label>
+                    </div>
+                  {{/disjunctive}}
+                </li>
+              {{/values}}
+            </ul>
+          </td>
+        </table>
       </div>
     </div>
   </script>
@@ -156,15 +152,31 @@
   <!-- Algolia -->
   <script src="//cdn.jsdelivr.net/algoliasearch/latest/algoliasearch.js"></script>
 
+
+
   <%= javascript_tag do %>
     $(document).ready(function() {
+      var myLatlng = new google.maps.LatLng(
+        '<%= current_user.latitude %>',
+        '<%= current_user.longitude %>'
+      );
+      var mapOptions = {
+        zoom: 16,
+        center: myLatlng
+      }
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      var markers = [];
       initAlgolia(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>',
         'Offer<%= ENV['ALGOLIA_SUFFIX']%>',
         "<%= offer_path(id: ":id") %>",
-        "<%= new_offer_booking_path(offer_id: ":offer_id") %>"
-        );
-    })
+        "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
+        '<%= current_user.latitude %>',
+        '<%= current_user.longitude %>',
+        map,
+        markers
+      );
+    });
   <% end %>
 <% end %>

@@ -1,4 +1,10 @@
-class ConversationPolicy < Struct.new(:user, :conversation)
+class ConversationPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end
+
   def create?
     true
   end
@@ -7,11 +13,11 @@ class ConversationPolicy < Struct.new(:user, :conversation)
     true
   end
 
-  def trash?
+  def index?
     true
   end
 
-  def untrash?
+  def show?
     true
   end
 end

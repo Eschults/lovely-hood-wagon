@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :bookings
 
+  def conversations
+    Conversation.where("user1_id = :id OR user2_id = :id", id: self.id)
+  end
+
+  # def conversations=
+
+  # end
+
   validates_presence_of :email
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   validates_attachment_content_type :identity_proof, content_type: /\Aimage\/.*\z/

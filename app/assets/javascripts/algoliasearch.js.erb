@@ -1,4 +1,4 @@
-function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, lat, lng) {
+function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, lat, lng, map, markers) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
     applicationId,
@@ -44,12 +44,25 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     }
 
     var html = '';
+    var latLng;
 
-    var markers = [];
-    handler.removeMarkers();
+
+    if(markers) {
+      for(var i = 0; i < markers.length; ++i) {
+        markers[i].setMap(null);
+      }
+    }
+
+    markers = [];
 
     for (var i = 0; i < content.hits.length; ++i) {
-      markers[i] = content.hits[i]._geoloc;
+      latLng = new google.maps.LatLng(content.hits[i]._geoloc["lat"],content.hits[i]._geoloc["lng"]);
+      var marker = new google.maps.Marker({
+        position: latLng,
+        title: content.hits[i].nature
+      });
+      marker.setMap(map);
+      markers[i] = marker;
       var url = offerPath.replace(":id", content.hits[i].id);
       content.hits[i].url = url;
       var new_booking_url = newOfferBookingPath.replace(":offer_id", content.hits[i].id);
@@ -58,8 +71,6 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     }
     $hits.html(html);
 
-
-    markers = [];
 
     // facets: display the conjunctive+disjunctive facets
     html = '';
@@ -85,7 +96,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
           for (var v in facetResult) {
             if(v === "rent") {
               values.push({
-                label: 'Un objet à louer',
+                label: 'Les objets à louer',
                 value: v,
                 count: facetResult[v],
                 refined: helper.isRefined(facetConfig.name, v)
@@ -93,7 +104,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
             }
             if(v === "service") {
               values.push({
-                label: 'Un service',
+                label: 'Les services',
                 value: v,
                 count: facetResult[v],
                 refined: helper.isRefined(facetConfig.name, v)
@@ -101,26 +112,13 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
             }
             if(v === "sell") {
               values.push({
-                label: 'Un achat d\'occasion',
+                label: 'Les objets à acheter',
                 value: v,
                 count: facetResult[v],
                 refined: helper.isRefined(facetConfig.name, v)
               });
             }
           }
-          // // sort the values
-          // values.sort(function(a, b) {
-          //   // If topListIfRefined === true: sort by the refined states first (put them on top if they are refined).
-          //   if (facetConfig.topListIfRefined) {
-          //     if (a.refined !== b.refined) {
-          //       if (a.refined) return -1;
-          //       if (b.refined) return 1;
-          //     }
-          //   }
-
-          //   // then fallback on the standard sort function
-          //   return facetConfig.sortFunction(a,b);
-          // });
 
           // render the facet
           html += $facetTemplate.render({

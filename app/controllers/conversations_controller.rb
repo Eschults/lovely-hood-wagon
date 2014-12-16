@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :reply]
+  before_action :set_offer, only: [:new, :create]
 
   def index
     @conversations = policy_scope(Conversation)
@@ -7,14 +8,22 @@ class ConversationsController < ApplicationController
 
   def new
     @conversation = current_user.conversations.new
+    @conversation.user1 = current_user
+    @conversation.user2 = @offer.user
+    @conversation.messages.build
     authorize @conversation
   end
 
   def create
-    @conversation = current_user.offers.new(conversation_params)
+    @conversation = current_user.conversations.new(conversation_params)
+    @conversation.user1 = current_user
+    @conversation.user2 = @offer.user
+    @message = @conversation.messages.build
+    @message.writer = current_user
     authorize @conversation
+    raise
     if @conversation.save
-      redirect_to offer_path(@conversation)
+      redirect_to conversation_path(@conversation)
     else
       render :new
     end
@@ -40,11 +49,11 @@ class ConversationsController < ApplicationController
     authorize @conversation
   end
 
-  def message_params
-    params.require(:message).permit(:writer, :content)
+  def set_offer
+    @offer = Offer.find(params[:offer_id])
   end
 
   def conversation_params
-    params.require(:conversation).permit(:user1, :user2)
+    params.require(:conversation).permit(:user1, :user2, messages_attributes: [:content])
   end
 end

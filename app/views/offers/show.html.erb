@@ -9,7 +9,9 @@
         <% end %>
       </div>
       <div class="white-bg frame">
-        <%= link_to "Demande d'info", "#", class: "btn btn-default btn-wide" %>
+        <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+          Demande d'info
+        <% end %>
         <br>
         <br>
         <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>

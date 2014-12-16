@@ -1,0 +1,10 @@
+<%= content_for(:li, conversation) do |conversation| %>
+  <p>
+    <%= link_to conversation.subject, conversation_path(conversation) %>
+
+    <% if conversation.is_completely_trashed?(current_user) %>
+      <%= link_to "Enlever de la corbeille", untrash_conversation_path(conversation), method: :post %>
+    <% else %>
+      <%= link_to "Placer dans la corbeille", trash_conversation_path(conversation), method: :post %>
+    <% end %>
+  </p>

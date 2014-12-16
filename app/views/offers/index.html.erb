@@ -33,6 +33,7 @@
       </div>
     </div>
   </div>
+  <div id="pagination"></div>
 </div>
 
 <% content_for(:js) do %>
@@ -145,6 +146,17 @@
           </ul>
         </div>
       </div>
+    </div>
+  </script>
+  <script type="text/template" id="pagination-template">
+    <div class="text-center">
+      <ul class="pagination">
+        <li {{^prev_page}}class="disabled"{{/prev_page}}><a href="#" onclick="{{#prev_page}}gotoPage({{ prev_page }});{{/prev_page}} return false;">&laquo;</a></li>
+        {{#pages}}
+          <li class="{{#current}}active{{/current}}{{#disabled}}disabled{{/disabled}}"><a href="#" onclick="{{^disabled}}gotoPage({{ number }});{{/disabled}} return false;">{{ number }}</a></li>
+        {{/pages}}
+        <li {{^next_page}}class="disabled"{{/next_page}}><a href="#" onclick="{{#next_page}}gotoPage({{ next_page }});{{/next_page}} return false;">&raquo;</a></li>
+      </ul>
     </div>
   </script>
   <!-- Hogan -->

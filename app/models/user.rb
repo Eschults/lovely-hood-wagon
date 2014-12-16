@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [ :facebook ]
   geocoded_by :address
   after_validation :geocode
-  acts_as_messageable
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }
   has_attached_file :identity_proof, styles: { large: "600x600>", medium: "300x300>" }

@@ -42,7 +42,7 @@
         <table>
           <td>
             <div class="facet-title">
-              Je recherche :
+              Je veux voir :
             </div>
           </td>
           <td>
@@ -156,11 +156,16 @@
 
   <%= javascript_tag do %>
     $(document).ready(function() {
-      googlemaps(
-        <%= raw @markers.to_json %>,
+      var myLatlng = new google.maps.LatLng(
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>'
       );
+      var mapOptions = {
+        zoom: 16,
+        center: myLatlng
+      }
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      var markers = [];
       initAlgolia(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>',
@@ -168,8 +173,10 @@
         "<%= offer_path(id: ":id") %>",
         "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
         '<%= current_user.latitude %>',
-        '<%= current_user.longitude %>'
+        '<%= current_user.longitude %>',
+        map,
+        markers
       );
-    })
+    });
   <% end %>
 <% end %>

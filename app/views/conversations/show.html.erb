@@ -9,34 +9,20 @@
           <%= @conversation.user1.first_name %>
         <% end %>
       </h2>
-      <div class="frame padding-none margin-sides-none">
-        <% @conversation.messages.each do |message| %>
-            <div class="message white-bg col-xs-12">
-              <div class="message-date">
-                <%= message.created_at.strftime("%A, %e %B") %>
-              </div>
-              <div class="message-content">
-                <div class="col-xs-1">
-                  <% if message.writer.picture_file_name %>
-                    <%= image_tag(message.writer.picture.url(:medium), { class: "img img-circle img-small img-nature" }) %>
-                  <% else %>
-                    <%= image_tag "logo.png", class: "img-circle img-nature img-small bg-color" %>
-                  <% end %>
-                </div>
-                <div class="col-xs-11 padding-left-10">
-                  <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "message-profile-link" %></h5>
-                        <p class=""><%= message.content %></p>
-                </div>
-              </div>
-            </div>
-        <% end %>
-        <div class="reply">
-          <%= form_for([@conversation, @message], method: :put, url: reply_conversation_path(@conversation)) do |f| %>
+      <div class="row frame padding-none margin-sides-none">
+        <div id="messages">
+          <% @conversation.messages.each do |message| %>
+            <%= render "message", message: message %>
+          <% end %>
+        </div>
+        <div class="col-xs-12 reply">
+          <%= form_for([@conversation, @message], method: :put, remote: true, url: reply_conversation_path(@conversation)) do |f| %>
             <div class="form-group">
-              <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control" %>
+              <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
             </div>
             <div class="form-group margin-btm-none">
               <%= f.submit "Envoyer", class: "btn btn-primary" %>
+              <%= link_to "Retour aux messages", conversations_path,class: "btn btn-success margin-left-10" %>
             </div>
           <% end %>
         </div>

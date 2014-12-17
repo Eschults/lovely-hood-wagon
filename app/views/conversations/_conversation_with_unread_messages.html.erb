@@ -1,4 +1,4 @@
-<div class="conversation-preview">
+<div class="conversation-preview unread-messages">
   <div class="row">
     <div class="col-xs-1">
       <% if conversation.other_user(current_user).picture_file_name %>
@@ -11,8 +11,15 @@
       <p class="margin-btm-5"><%= link_to conversation.other_user(current_user).first_name, user_path(conversation.other_user(current_user)), class:"message-profile-link" %></p>
       <p class="small"><%= conversation.messages.last.created_at.strftime("%e %B") %></p>
     </div>
-    <div class="col-xs-9">
-      <%= link_to conversation.messages.last.content, conversation_path(conversation, anchor: "message-input"), class: "link-unstyled" %>
+    <div class="col-xs-8">
+      <%= link_to conversation_path(conversation, anchor: "message-input"), class: "link-unstyled" do %>
+        <%= conversation.messages.last.content %>
+      <% end %>
+    </div>
+    <div class="col-xs-1">
+      <span class="badge margin-top-15">
+        <%= conversation.unread_messages(current_user) %>
+      </span>
     </div>
   </div>
 </div>

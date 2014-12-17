@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     Conversation.where("user1_id = :id OR user2_id = :id", id: self.id)
   end
 
-  def conversation(recipient)
+  def conversation_with(recipient)
     if Conversation.where("(user1_id = :my_id AND user2_id = :her_id) OR (user1_id = :her_id AND user2_id = :my_id)", my_id: self.id, her_id: recipient.id).first
       Conversation.where("(user1_id = :my_id AND user2_id = :her_id) OR (user1_id = :her_id AND user2_id = :my_id)", my_id: self.id, her_id: recipient.id).first
     else

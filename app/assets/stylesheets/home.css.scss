@@ -22,7 +22,7 @@
 }
 
 #mosaic {
-  background-image: url('<%= asset_path("background.png") %>');
+  background-image: url("background.png");
   height: 800px;
   background-size: cover;
   padding-top: 5%;

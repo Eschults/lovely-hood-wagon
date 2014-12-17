@@ -1,5 +1,5 @@
 <%= form_for([@offer, @conversation]) do |f| %>
-  <%= f.fields_for :message do |m| %>
+  <%= f.fields_for :messages do |m| %>
     <div class="form-group">
       <%= m.label :content, "Message", class: "col-sm-2 control-label" %>
       <div class="col-sm-10">

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :show] do
     member do
       put :reply
+      put :reply_server
     end
   end
 

@@ -13,6 +13,10 @@ class ConversationPolicy < ApplicationPolicy
     record.user1 == user || record.user2 == user
   end
 
+  def reply_server?
+    record.user1 == user || record.user2 == user
+  end
+
   def index?
     true
   end

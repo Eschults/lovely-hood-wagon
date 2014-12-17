@@ -1,0 +1,6 @@
+<% if @message.content %>
+  $('#messages').append("<%= j render "message", message: @message %>");
+  $('#message-input').val("");
+<% else %>
+  $('.notices').val("Votre message est vide !");
+<% end %>

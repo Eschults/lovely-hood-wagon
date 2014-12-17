@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :reply]
   before_action :set_offer, only: [:new, :create]
+  respond_to :js, only: :reply
 
   def index
     @conversations = policy_scope(Conversation)
@@ -38,12 +39,8 @@ class ConversationsController < ApplicationController
     @message = Message.new(message_params)
     @message.writer = current_user
     @message.conversation = @conversation
-    if @message.save
-      redirect_to conversation_path(@conversation)
-    else
-      render :show
-
-    end
+    @message.save
+    respond_with(@message)
   end
 
   private

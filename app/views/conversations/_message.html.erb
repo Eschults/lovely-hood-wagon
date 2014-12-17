@@ -1,0 +1,18 @@
+<div class="message white-bg col-xs-12">
+  <div class="message-date">
+    <%= message.created_at.strftime("%A, %e %B - %H:%M") %>
+  </div>
+  <div class="message-content">
+    <div class="col-xs-1">
+      <% if message.writer.picture_file_name %>
+        <%= image_tag(message.writer.picture.url(:medium), { class: "img img-circle img-small img-nature" }) %>
+      <% else %>
+        <%= image_tag "logo.png", class: "img-circle img-nature img-small bg-color" %>
+      <% end %>
+    </div>
+    <div class="col-xs-11 padding-left-10">
+      <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "message-profile-link" %></h5>
+            <p class=""><%= message.content %></p>
+    </div>
+  </div>
+</div>

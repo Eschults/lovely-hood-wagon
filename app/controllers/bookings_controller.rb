@@ -12,6 +12,8 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save
       redirect_to offer_booking_path(@booking.offer, @booking)
+      # @message = Message.new(content: "Bravo, une nouvelle réservation !")
+      # @message.writer = @booking.user
     else
       render :new
     end

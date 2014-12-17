@@ -14,8 +14,6 @@
           <div class="btn btn-default btn-hide-on-click margin-btm-10 btn-wide">Inscription avec un email</div>
           <div class="hidden">
             <div class="text-align-left">
-              <%= f.text_field :first_name, label: "Prénom", autofocus: true, required: true %>
-              <%= f.text_field :last_name, label: "Nom", required: true %>
               <%= f.email_field :email, label: "Email", required: true %>
               <% if @validatable %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>

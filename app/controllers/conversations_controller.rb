@@ -11,6 +11,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new
     @conversation.user1 = current_user
     @conversation.user2 = @offer.user
+    @message = Message.new
     authorize @conversation
   end
 
@@ -18,14 +19,13 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new
     @conversation.user1 = current_user
     @conversation.user2 = @offer.user
-    @message = Message.new
-    @message.content = params[:conversation][:message][:content]
+    @message = Message.new(message_params)
     @message.writer = current_user
     @message.conversation = @conversation
     @message.save
     authorize @conversation
     if @conversation.save
-      redirect_to conversation_path(@conversation)
+      redirect_to conversation_path(@conversation, anchor: "message-input")
     else
       render :new
     end

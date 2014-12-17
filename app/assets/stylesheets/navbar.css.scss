@@ -63,6 +63,13 @@ $profile-border-width: 2px;
   color: rgba(200, 200, 200, 1);
 }
 
+#brand:focus {
+  text-decoration: none;
+  color: $color;
+  // font-weight: bold;
+  color: rgba(200, 200, 200, 1);
+}
+
 .navbar-wagon .navbar-nav>.open>a,
 .navbar-wagon .navbar-nav>.open>a:hover,
 .navbar-wagon .navbar-nav>.open>a:focus {

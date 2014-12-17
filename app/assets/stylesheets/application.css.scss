@@ -317,3 +317,16 @@ a:focus {
 .message-profile-link {
   color: #25AAE1;
 }
+
+.message-profile-link:hover {
+  color: #25AAE1;
+}
+
+.notices {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  margin-top: 15px;
+  margin-left: -150px;
+  z-index: 2;
+}

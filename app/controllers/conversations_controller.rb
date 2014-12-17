@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show, :reply]
+  before_action :set_conversation, only: [:show, :reply, :reply_server]
   before_action :set_offer, only: [:new, :create]
   respond_to :js, only: :reply
 
@@ -47,6 +47,17 @@ class ConversationsController < ApplicationController
     @message.conversation = @conversation
     @message.save
     respond_with(@message)
+  end
+
+  def reply_server
+    @message = Message.new(message_params)
+    @message.writer = current_user
+    @message.conversation = @conversation
+    if @message.save
+      redirect_to conversation_path(@conversation, anchor: "message-input")
+    else
+      render :new
+    end
   end
 
   private

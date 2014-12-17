@@ -79,8 +79,8 @@
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
-          <h4 class="margin-none"><a href="{{url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
-          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{url}}">Voir l'annonce complète</a></p>
+          <h4 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
+          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}">Voir l'annonce complète</a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-right-20">
           <h3 class="margin-none price">
@@ -134,7 +134,7 @@
               </a>
             </li>
             <li class="float-right">
-              <a href="#">
+              <a href="{{ message_url }}">
                 <i class="fa fa-envelope"></i> Demande d'info
               </a>
             </li>
@@ -188,6 +188,7 @@
         'Offer<%= ENV['ALGOLIA_SUFFIX']%>',
         "<%= offer_path(id: ":id") %>",
         "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
+        "<%= new_offer_conversation_path(offer_id: ":offer_id") %>",
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,

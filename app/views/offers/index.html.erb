@@ -33,6 +33,7 @@
       </div>
     </div>
   </div>
+  <div id="pagination"></div>
 </div>
 
 <% content_for(:js) do %>
@@ -72,14 +73,14 @@
       <div class="row">
         <div class="col-xs-1">
           <div class="img-nature-box">
-            <a href="{{url}}">
+            <a href="{{offer_url}}">
               <%= image_tag("drill.png", width: "60") %>
             </a>
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
-          <h4 class="margin-none"><a href="{{url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
-          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{url}}">Voir l'annonce complète</a></p>
+          <h4 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
+          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}">Voir l'annonce complète</a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-right-20">
           <h3 class="margin-none price">
@@ -133,7 +134,7 @@
               </a>
             </li>
             <li class="float-right">
-              <a href="#">
+              <a href="{{ message_url }}">
                 <i class="fa fa-envelope"></i> Demande d'info
               </a>
             </li>
@@ -145,6 +146,17 @@
           </ul>
         </div>
       </div>
+    </div>
+  </script>
+  <script type="text/template" id="pagination-template">
+    <div class="text-center">
+      <ul class="pagination">
+        <li {{^prev_page}}class="disabled"{{/prev_page}}><a href="#" onclick="{{#prev_page}}gotoPage({{ prev_page }});{{/prev_page}} return false;">&laquo;</a></li>
+        {{#pages}}
+          <li class="{{#current}}active{{/current}}{{#disabled}}disabled{{/disabled}}"><a href="#" onclick="{{^disabled}}gotoPage({{ number }});{{/disabled}} return false;">{{ number }}</a></li>
+        {{/pages}}
+        <li {{^next_page}}class="disabled"{{/next_page}}><a href="#" onclick="{{#next_page}}gotoPage({{ next_page }});{{/next_page}} return false;">&raquo;</a></li>
+      </ul>
     </div>
   </script>
   <!-- Hogan -->
@@ -161,8 +173,12 @@
         '<%= current_user.longitude %>'
       );
       var mapOptions = {
-        zoom: 16,
-        center: myLatlng
+        zoom: 15,
+        center: myLatlng,
+        draggable: false,
+        scrollwheel: false,
+        minZoom: 15,
+        maxZoom: 18
       }
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
       var markers = [];
@@ -172,6 +188,7 @@
         'Offer<%= ENV['ALGOLIA_SUFFIX']%>',
         "<%= offer_path(id: ":id") %>",
         "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
+        "<%= new_offer_conversation_path(offer_id: ":offer_id") %>",
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,

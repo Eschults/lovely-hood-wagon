@@ -1,0 +1,41 @@
+.lead {
+  background: rgba(0, 0, 0, .4);
+  border-radius: 5px;
+  padding: 15px;
+  color: white;
+}
+
+.lead h1 {
+  font-family: Pacifico;
+  font-size: 92px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, .8);
+}
+
+.lead h2 {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 100;
+  font-family: 'Ubuntu';
+  /*color: yellow;*/
+  font-weight: 300;
+  /*text-shadow: 0 0 4px yellow;*/
+}
+
+#mosaic {
+  background-image: url('background.png');
+  height: 800px;
+  background-size: cover;
+  padding-top: 5%;
+  text-align: center;
+  margin-top: 47px;
+}
+
+.lead a {
+  color: white;
+  text-decoration: none;
+}
+
+.lead a:hover {
+  color: yellow;
+  text-decoration: none;
+}

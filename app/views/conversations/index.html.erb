@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="header-box">
+        <div class="frame-header">
+          <h2 class="margin-none">Boîte de réception</h2>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="white-bg frame-body padding-none">
+          <% current_user.conversations.each do |conversation| %>
+            <% if conversation.messages.select{ |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
+              <%= render "conversation_with_unread_messages", conversation: conversation %>
+            <% else %>
+              <%= render "conversation", conversation: conversation %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

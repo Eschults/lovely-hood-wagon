@@ -17,6 +17,7 @@ $gray-lighter: lighten($gray-base, 85%);
 @import "navbar";
 @import "footer";
 @import "algolia";
+@import "home";
 
 $bg-color: rgba(240, 240, 240, 1);
 
@@ -58,6 +59,10 @@ a:focus {
 
 .margin-btm-10 {
   margin-bottom: 10px;
+}
+
+.margin-btm-5 {
+  margin-bottom: 5px;
 }
 
 .margin-top-10 {
@@ -223,6 +228,10 @@ a:focus {
   margin-left: 90px;
 }
 
+.margin-left-10 {
+  margin-left: 10px;
+}
+
 .margin-right-15 {
   margin-right: 15px;
 }
@@ -269,6 +278,11 @@ a:focus {
   margin-top: 6px;
 }
 
+.margin-sides-none {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .strong {
   font-weight: bold;
 }
@@ -283,3 +297,64 @@ a:focus {
 .padding-right-20 {
   padding-right: 20px;
 }
+
+.message {
+  border-bottom: 1px solid rgb(220, 220, 220);
+  padding: 5px;
+}
+
+.message-date {
+  font-size: 13px;
+  text-align: center;
+  color: $gray-lighter;
+}
+
+.reply {
+  padding: 10px;
+  background-color: $bg-color;
+
+}
+
+.block {
+  display: block;
+}
+
+.message-profile-link {
+  color: #25AAE1;
+}
+
+.message-profile-link:hover {
+  color: #25AAE1;
+}
+
+.notices {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  margin-top: 15px;
+  margin-left: -150px;
+  z-index: 2;
+}
+
+#messages-box {
+  max-height: 600px;
+  scroll: auto;
+}
+
+.link-unstyled,
+.link-unstyled:hover,
+.link-unstyled:focus {
+  color: lighten($gray-light, 20%);
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.conversation-preview {
+  padding: 10px;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.unread-messages {
+  background-color: lighten($gray-light, 50%);
+}
+

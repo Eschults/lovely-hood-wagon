@@ -9,7 +9,15 @@
         <% end %>
       </div>
       <div class="white-bg frame">
-        <%= link_to "Demande d'info", "#", class: "btn btn-default btn-wide" %>
+        <% if current_user.conversation_with(@offer.user) %>
+          <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
+            Demande d'info
+          <% end %>
+        <% else %>
+          <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+            Demande d'info
+          <% end %>
+        <% end %>
         <br>
         <br>
         <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>

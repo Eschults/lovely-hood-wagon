@@ -1,4 +1,4 @@
-function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, lat, lng, map, markers) {
+function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, messagePath, lat, lng, map, markers) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
     applicationId,
@@ -22,7 +22,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     // list of disjunctive facets (checkbox to refine)
     disjunctiveFacets: ['type_of_offer'],
     // number of results per page
-    hitsPerPage: 20
+    hitsPerPage: 5
   });
 
   function sortByCountDesc(a, b) { return b.count - a.count; }
@@ -63,10 +63,12 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
       });
       marker.setMap(map);
       markers[i] = marker;
-      var url = offerPath.replace(":id", content.hits[i].id);
-      content.hits[i].url = url;
+      var offer_url = offerPath.replace(":id", content.hits[i].id);
+      content.hits[i].offer_url = offer_url;
       var new_booking_url = newOfferBookingPath.replace(":offer_id", content.hits[i].id);
       content.hits[i].new_booking_url = new_booking_url;
+      var message_url = messagePath.replace(":offer_id", content.hits[i].id);
+      content.hits[i].message_url = message_url;
       html += $hitTemplate.render(content.hits[i]);
     }
     $hits.html(html);

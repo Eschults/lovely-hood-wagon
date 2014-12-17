@@ -174,7 +174,11 @@
       );
       var mapOptions = {
         zoom: 15,
-        center: myLatlng
+        center: myLatlng,
+        draggable: false,
+        scrollwheel: false,
+        minZoom: 15,
+        maxZoom: 18
       }
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
       var markers = [];

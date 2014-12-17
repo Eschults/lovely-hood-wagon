@@ -32,6 +32,12 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @conversation.messages.each do |message|
+      unless message.writer == current_user
+        message.read_at = Time.now unless message.read_at
+      end
+      message.save
+    end
     @message = Message.new
   end
 

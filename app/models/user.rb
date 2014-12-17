@@ -65,4 +65,14 @@ class User < ActiveRecord::Base
     #if false
     #return nil
   end
+
+  def unread_conversations
+    output = 0
+    conversations.each do |conversation|
+      if conversation.messages.select{ |message| message.writer != self }.map{ |message| message.read_at }.include? nil
+        output += 1
+      end
+    end
+    output
+  end
 end

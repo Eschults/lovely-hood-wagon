@@ -60,6 +60,10 @@ a:focus {
   margin-bottom: 10px;
 }
 
+.margin-btm-5 {
+  margin-bottom: 5px;
+}
+
 .margin-top-10 {
   margin-top: 10px;
 }
@@ -330,3 +334,26 @@ a:focus {
   margin-left: -150px;
   z-index: 2;
 }
+
+#messages-box {
+  max-height: 600px;
+  scroll: auto;
+}
+
+.link-unstyled,
+.link-unstyled:hover,
+.link-unstyled:focus {
+  color: lighten($gray-light, 20%);
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.conversation-preview {
+  padding: 10px;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.unread-messages {
+  background-color: lighten($gray-light, 50%);
+}
+

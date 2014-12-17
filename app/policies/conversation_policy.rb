@@ -1,7 +1,7 @@
 class ConversationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where("")
+      scope.where("record.user1 == user OR record.user2 == user")
     end
   end
 

@@ -22,7 +22,7 @@ class Offer < ActiveRecord::Base
       { lat: user.latitude, lng: user.longitude }
     end
 
-    add_index "#{self}_daily_price_asc" do
+    add_index "Offer_daily_price_asc#{ENV['ALGOLIA_SUFFIX']}" do
       attributesToIndex ['nature', 'description']
     end
   end

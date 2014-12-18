@@ -56,21 +56,21 @@
               <div class="form-group">
                 <%= f.label :street_name, "Rue", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :street_name, class: "form-control" %>
+                  <%= f.text_field :street_name, placeholder: "rue du petit musc", class: "form-control" %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :zip_code, "Code postal", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :zip_code, class: "form-control" %>
+                  <%= f.text_field :zip_code, placeholder: "75004", class: "form-control" %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :city, "Ville", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :city, class: "form-control" %>
+                  <%= f.text_field :city, placeholder: "Paris", class: "form-control" %>
                   <%= render "data_sharing_message" %>
                 </div>
               </div>

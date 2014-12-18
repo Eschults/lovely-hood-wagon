@@ -8,7 +8,7 @@
       </div>
       <div class="body-box">
         <div class="white-bg frame-body padding-none">
-          <% current_user.conversations.each do |conversation| %>
+          <% current_user.conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
             <% if conversation.messages.select{ |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
               <%= render "conversation_with_unread_messages", conversation: conversation %>
             <% else %>

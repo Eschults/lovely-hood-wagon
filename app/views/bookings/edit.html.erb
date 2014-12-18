@@ -23,13 +23,13 @@
     <div class="booking-answer">
       <div class="col-sm-1">
         <%= form_for([@booking.offer, @booking]) do |f| %>
-          <%= f.text_field :accepted, class: "hidden", input_html: { value: true } %>
+          <%= f.text_field :accepted, class: "hidden", value: true %>
           <%= f.submit 'Accepter', class: "btn btn-success" %>
         <% end %>
         </div>
       <div class="col-sm-1">
         <%= form_for([@booking.offer, @booking]) do |f| %>
-          <%= f.text_field :accepted, class: "hidden", input_html: { value: false } %>
+          <%= f.text_field :accepted, class: "hidden", value: false %>
           <%= f.submit 'Refuser', class: "btn btn-danger" %>
         <% end %>
       </div>

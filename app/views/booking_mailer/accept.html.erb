@@ -1,0 +1,4 @@
+<h1>Félicitations ! Votre réservation a été acceptée par <%= @booking.offer.user.first_name %> !</h1>
+<%= link_to "Voir le détail", offer_booking_url(@booking.offer, @booking) %>
+
+

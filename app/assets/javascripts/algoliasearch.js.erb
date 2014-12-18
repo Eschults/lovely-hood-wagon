@@ -264,7 +264,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
   window.sortBy = function(index_suffic, link) {
     $(link).closest('.btn-group').find('.sort-by').text($(link).text());
     // set target index name
-    helper.index = index + index_suffic;
+    helper.index = indexName + index_suffic;
     // reset page
     helper.setPage(0);
     // perform the query

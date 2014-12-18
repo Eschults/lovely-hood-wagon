@@ -22,8 +22,14 @@ class Offer < ActiveRecord::Base
       { lat: user.latitude, lng: user.longitude }
     end
 
-    add_index "Offer_daily_price_asc#{ENV['ALGOLIA_SUFFIX']}" do
+    add_index "Offer#{ENV['ALGOLIA_SUFFIX']}_daily_price_asc" do
       attributesToIndex ['nature', 'description']
+
+      attributesForFaceting [ 'type_of_offer' ]
+
+      add_attribute :_geoloc do
+        { lat: user.latitude, lng: user.longitude }
+      end
     end
   end
 

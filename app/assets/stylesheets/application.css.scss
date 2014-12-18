@@ -20,21 +20,26 @@ $gray-lighter: lighten($gray-base, 85%);
 @import "navbar";
 @import "footer";
 @import "algolia";
-@import "home";
+// @import "home";
 
 $bg-color: rgba(240, 240, 240, 1);
 
-body {
+html {
+  height: 100%;
   margin-top: 60px;
+  margin-bottom: -60px;
+}
+
+body {
   color: $gray-light;
   font-weight: 300;
+  min-height: 650px;
   height: 100%;
 }
 
 #wrapper {
-  min-height:100%;
+  min-height: 100%;
   position:relative;
-  padding-bottom: 192px;
 }
 
 a {
@@ -365,4 +370,8 @@ a.disabled {
   color: lighten($gray-light, 30%);
   pointer-events: none;
   cursor: default;
+}
+
+#wrapper > .container {
+  padding-bottom: 192px;
 }

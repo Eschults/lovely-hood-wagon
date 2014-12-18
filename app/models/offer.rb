@@ -14,7 +14,7 @@ class Offer < ActiveRecord::Base
   algoliasearch index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
     # associated index settings can be configured from here
 
-    attributesToIndex ['nature', 'description', 'type_of_offer']
+    attributesToIndex ['nature', 'description']
 
     attributesForFaceting [ 'type_of_offer' ]
 
@@ -22,6 +22,9 @@ class Offer < ActiveRecord::Base
       { lat: user.latitude, lng: user.longitude }
     end
 
+    add_index "#{self}_daily_price_asc" do
+      attributesToIndex ['nature', 'description']
+    end
   end
 
   def one_price

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [ :facebook ]
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, if: :address_changed?
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }
   has_attached_file :identity_proof, styles: { large: "600x600>", medium: "300x300>" }
@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :bookings
   has_many :messages, foreign_key: :writer_id
+
+  def address_changed?
+    :street_number_changed? || :zipcode_changed?
+  end
 
   def conversations
     Conversation.where("user1_id = :id OR user2_id = :id", id: self.id)

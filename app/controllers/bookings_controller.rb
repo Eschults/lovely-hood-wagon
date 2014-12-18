@@ -11,9 +11,31 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
+      if current_user.conversation_with(@booking.offer.user)
+        @conversation = current_user.conversation_with(@booking.offer.user)
+        @message = Message.new(
+          content: "
+            Bravo, vous avez une réservation !
+            Consultez vos mails !
+          "
+        )
+        @message.writer = current_user
+        @message.conversation = @conversation
+      else
+        @conversation = Conversation.new
+        @conversation.user1 = current_user
+        @conversation.user2 = @offer.user
+        @message = Message.new(
+          content: "
+            Bravo, vous avez une réservation !
+            Consultez vos mails !
+          "
+        )
+        @message.writer = current_user
+        @message.conversation = @conversation
+        @message.save
+      end
       redirect_to offer_booking_path(@booking.offer, @booking)
-      # @message = Message.new(content: "Bravo, une nouvelle réservation !")
-      # @message.writer = @booking.user
     else
       render :new
     end

@@ -46,6 +46,15 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
+      @conversation = current_user.conversation_with(@booking.offer.user)
+      @message = Message.new(
+        content: "
+          Vous avez une réponse à votre réservation !
+          Consultez vos mails !
+        "
+      )
+      @message.writer = current_user
+      @message.conversation = @conversation
       redirect_to offer_path(@booking.offer)
     else
       render :edit

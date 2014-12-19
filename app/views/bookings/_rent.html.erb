@@ -1,0 +1,3 @@
+<p><%= link_to @booking.user.first_name, user_path(@booking.user) %> souhaiterait réserver <%= @booking.offer.nature %>, du <strong><%= @booking.start_date %></strong> au <strong><%= @booking.end_date %></strong></p>
+
+<p>Vous pourriez gagner : <strong><%= (@booking.end_date - @booking.start_date).to_i * @booking.offer.daily_price %>€</strong></p>

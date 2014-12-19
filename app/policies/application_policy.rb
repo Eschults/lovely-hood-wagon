@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    false || user.admin
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    user.admin
   end
 
   def scope

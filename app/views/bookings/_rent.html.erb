@@ -1,3 +1,7 @@
+<h1>Vous avez une demande de réservation : <%= @booking.offer.nature %></h1>
+
+<h3>De la part de <%= link_to @booking.user.first_name, user_path(@booking.user) %></h3>
+
 <p><%= link_to @booking.user.first_name, user_path(@booking.user) %> souhaiterait réserver <%= @booking.offer.nature %>, du <strong><%= @booking.start_date %></strong> au <strong><%= @booking.end_date %></strong></p>
 
 <p>Vous pourriez gagner : <strong><%= (@booking.end_date - @booking.start_date).to_i * @booking.offer.daily_price %>€</strong></p>

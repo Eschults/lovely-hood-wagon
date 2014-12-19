@@ -11,9 +11,6 @@
     </div>
     <div class="col-sm-9">
       <div class="booking">
-        <h1>Vous avez une demande de réservation : <%= @booking.offer.nature %></h1>
-
-        <h3>De la part de <%= link_to @booking.user.first_name, user_path(@booking.user) %></h3>
 
         <% if @booking.offer.type_of_offer == "rent" %>
           <%= render "rent" %>
@@ -38,5 +35,3 @@
     </div>
   </div>
 </div>
-<br>
-<br>

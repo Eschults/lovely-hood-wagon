@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :reply, :reply_server]
   before_action :set_offer, only: [:new, :create]
+  after_action :verify_policy_scoped, :only => :index
   respond_to :js, only: :reply
 
   def index

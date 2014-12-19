@@ -15,9 +15,11 @@
 
         <h3>De la part de <%= link_to @booking.user.first_name, user_path(@booking.user) %></h3>
 
-        <p><%= link_to @booking.user.first_name, user_path(@booking.user) %> souhaiterait réserver <%= @booking.offer.nature %>, du <strong><%= @booking.start_date %></strong> au <strong><%= @booking.end_date %></strong></p>
-
-        <p>Vous pourriez gagner : <strong><%= (@booking.end_date - @booking.start_date).to_i * @booking.offer.daily_price %>€</strong></p>
+        <% if @booking.offer.type_of_offer == "rent" %>
+          <%= render "rent" %>
+        <% elsif @booking.offer.type_of_offer == "service" %>
+          <%= render "service" %>
+        <% end %>
       </div>
     </div>
     <div class="booking-answer">

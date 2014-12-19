@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update]
+  after_action :verify_policy_scoped, :only => :index
 
   def new
     @booking = set_offer.bookings.new

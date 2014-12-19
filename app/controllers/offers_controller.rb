@@ -4,10 +4,10 @@ class OffersController < ApplicationController
 
   def index
     @offers = policy_scope(Offer)
-    @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
-      marker.lat offer.user.latitude
-      marker.lng offer.user.longitude
-    end
+    # @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
+    #   marker.lat offer.user.latitude
+    #   marker.lng offer.user.longitude
+    # end
   end
 
   def new

@@ -7,6 +7,8 @@ class Booking < ActiveRecord::Base
 
   validates_presence_of :offer, :user, :start_date
 
+  private
+
   def send_book_email
     BookingMailer.book(self).deliver
   end

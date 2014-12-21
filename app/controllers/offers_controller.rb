@@ -4,14 +4,12 @@ class OffersController < ApplicationController
   layout 'map', only: [:index]
 
   def index
+    name_and_address_validations
     @offers = policy_scope(Offer)
-    # @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
-    #   marker.lat offer.user.latitude
-    #   marker.lng offer.user.longitude
-    # end
   end
 
   def new
+    name_and_address_validations
     @offer = current_user.offers.new
     authorize @offer
   end
@@ -41,6 +39,41 @@ class OffersController < ApplicationController
   end
 
   private
+
+  def name_and_address_validations
+    if current_user.first_name != ""
+      if current_user.last_name != ""
+        if current_user.street_number != ""
+          if current_user.street_name != ""
+            if current_user.zip_code != ""
+              if current_user.city != ""
+
+              else
+                flash[:alert] = "Merci de renseigner votre ville"
+                redirect_to edit_user_path(current_user)
+              end
+            else
+              flash[:alert] = "Merci de renseigner votre code postal"
+              redirect_to edit_user_path(current_user)
+            end
+          else
+            flash[:alert] = "Merci de renseigner votre rue"
+            redirect_to edit_user_path(current_user)
+          end
+        else
+          flash[:alert] = "Merci de renseigner votre n° de rue"
+          redirect_to edit_user_path(current_user)
+        end
+      else
+        flash[:alert] = "Merci de renseigner votre nom de famille"
+        redirect_to edit_user_path(current_user)
+      end
+    else
+      flash[:alert] = "Merci de renseigner votre prénom"
+      redirect_to edit_user_path(current_user)
+    end
+  end
+
 
   def set_offer
     @offer = Offer.find(params[:id])

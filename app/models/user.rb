@@ -65,14 +65,6 @@ class User < ActiveRecord::Base
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
 
-  def mailboxer_email(object)
-    #Check if an email should be sent for that object
-    #if true
-    email
-    #if false
-    #return nil
-  end
-
   def unread_conversations
     output = 0
     conversations.each do |conversation|

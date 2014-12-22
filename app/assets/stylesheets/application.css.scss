@@ -166,6 +166,11 @@ a:focus {
   font-weight: 900;
 }
 
+.sidenav > ul > li > a:focus {
+  text-decoration: none;
+  font-weight: 900;
+}
+
 .text-align-left {
   text-align: left;
 }

@@ -2,10 +2,20 @@
   <div class="row">
     <div class="col-sm-3">
       <div class="white-bg frame padding-none">
-        <% if @offer.picture_file_name %>
-          <%= image_tag(@offer.picture.url(:medium), { class: "img img-thumbnail" }) %>
+        <!-- si l'offer est un service, la photo est celle du user -->
+        <% if @offer.type_of_offer =="service" %>
+          <% if @offer.user.picture_file_name %>
+            <%= image_tag(@offer.user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+          <% else %>
+            <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
+          <% end %>
+        <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
         <% else %>
-          <%= image_tag("no-image.png", { class: "img img-thumbnail" }) %>
+          <% if @offer.picture_file_name %>
+            <%= image_tag(@offer.picture.url(:medium), { class: "img img-thumbnail" }) %>
+          <% else %>
+            <%= image_tag("no-image.png", { class: "img img-thumbnail" }) %>
+          <% end %>
         <% end %>
       </div>
       <div class="white-bg frame">

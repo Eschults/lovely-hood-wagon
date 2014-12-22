@@ -20,7 +20,7 @@
           <% else %>
             <br>
             <br>
-            <%= link_to edit_user_path(current_user, click: "my-trust"), class: "btn btn-default btn-wide" do %>
+            <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
               <%= @verif %> étapes pour publier
             <% end %>
           <% end %>

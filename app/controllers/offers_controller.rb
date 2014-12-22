@@ -36,6 +36,13 @@ class OffersController < ApplicationController
   end
 
   def show
+    @verif = 0
+    unless @offer.user.identity_verified
+      @verif += 1
+    end
+    unless @offer.user.address_verified
+      @verif += 1
+    end
   end
 
   private

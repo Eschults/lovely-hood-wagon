@@ -9,25 +9,37 @@
         <% end %>
       </div>
       <div class="white-bg frame">
-        <% if current_user.conversation_with(@offer.user) %>
-          <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
-            Demande d'info
+        <% if policy(@offer).update? %>
+          <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide" %>
+          <% if @verif == 0 %>
+            <br>
+            <%= form_for @offer, method: :patch, url: offer_path(@offer)  do |f| %>
+              <%= f.select :published, [["Publiée", true], ["Masquée", false]] %>
+              <%= f.submit "Enregistrer" %>
+            <% end %>
+          <% else %>
+            <br>
+            <br>
+            <%= link_to edit_user_path(current_user, click: "my-trust"), class: "btn btn-default btn-wide" do %>
+              <%= @verif %> étapes pour publier
+            <% end %>
           <% end %>
         <% else %>
-          <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
-            Demande d'info
+          <% if current_user.conversation_with(@offer.user) %>
+            <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
+              Demande d'info
+            <% end %>
+          <% else %>
+            <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+              Demande d'info
+            <% end %>
           <% end %>
-        <% end %>
-        <br>
-        <br>
-        <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
-        <br>
-        <br>
-        <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>
-        <% if policy(@offer).update? %>
           <br>
           <br>
-          <%= link_to "Modifier l'annonce", edit_offer_path(@offer) %>
+          <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
+          <br>
+          <br>
+          <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>
         <% end %>
       </div>
     </div>

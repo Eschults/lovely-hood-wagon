@@ -44,9 +44,10 @@
               <% end %>
               <strong><%= current_user.first_name %><span class="caret"></span></strong></a>
             <ul class="dropdown-menu" role="menu">
-              <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
               <li><%= link_to "Voir mon profil", user_path(current_user) %></li>
+              <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
               <li><%= link_to "Toutes les annonces", offers_path %></li>
+              <li><%= link_to "Mes annonces", mine_path %></li>
               <li><%= link_to 'Deconnexion', destroy_user_session_path, method: 'delete' %></li>
             </ul>
           </li>

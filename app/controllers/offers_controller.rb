@@ -8,6 +8,11 @@ class OffersController < ApplicationController
     @offers = policy_scope(Offer)
   end
 
+  def mine
+    @offers = current_user.offers
+    authorize @offers
+  end
+
   def new
     name_and_address_validations
     @offer = current_user.offers.new
@@ -51,13 +56,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    @verif = 0
-    unless @offer.user.identity_verified
-      @verif += 1
-    end
-    unless @offer.user.address_verified
-      @verif += 1
-    end
   end
 
   private

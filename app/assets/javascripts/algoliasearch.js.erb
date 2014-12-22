@@ -49,7 +49,9 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
 
     if(markers) {
       for(var i = 0; i < markers.length; ++i) {
-        markers[i].setMap(null);
+        if(markers[i]) {
+          markers[i].setMap(null);
+        }
       }
     }
 

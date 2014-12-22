@@ -16,9 +16,8 @@ class BookingsController < ApplicationController
         @conversation = current_user.conversation_with(@booking.offer.user)
         @message = Message.new(
           content: "
-            Bravo, vous avez une réservation !
-            Consultez vos mails !
-          "
+            Bravo, vous avez une <a href='#{offer_booking_path(@booking.offer, @booking)}'>réservation</a> !
+          ".html_safe
         )
         @message.writer = current_user
         @message.conversation = @conversation
@@ -77,7 +76,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :accepted)
+    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted)
   end
 
 end

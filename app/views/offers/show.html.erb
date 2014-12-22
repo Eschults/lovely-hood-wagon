@@ -21,7 +21,7 @@
       <div class="white-bg frame">
         <% if policy(@offer).update? %>
           <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide" %>
-          <% if @verif == 0 %>
+          <% if current_user.verif == 0 %>
             <br>
             <%= form_for @offer, method: :patch, url: offer_path(@offer)  do |f| %>
               <%= f.select :published, [["Publiée", true], ["Masquée", false]] %>
@@ -31,7 +31,7 @@
             <br>
             <br>
             <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
-              <%= pluralize(@verif, 'étape') %> pour publier
+              <%= pluralize(current_user.verif, 'étape') %> pour publier
             <% end %>
           <% end %>
         <% else %>

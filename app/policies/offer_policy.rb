@@ -9,6 +9,10 @@ class OfferPolicy < ApplicationPolicy
     true  # Anyone can view an offer
   end
 
+  def mine?
+    true  # Anyone can view his own offers
+  end
+
   def create?
     true  # Anyone can create an offer
   end

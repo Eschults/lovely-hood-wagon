@@ -18,7 +18,11 @@ class OffersController < ApplicationController
     @offer = current_user.offers.new(offer_params)
     authorize @offer
     if @offer.save
-      redirect_to offer_path(@offer)
+      if @offer.one_price
+        redirect_to offer_path(@offer)
+      else
+        flash[:alert] = "Merci de renseigner un prix"
+      end
     else
       render :new
     end
@@ -29,7 +33,12 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      redirect_to offer_path(@offer)
+      if @offer.one_price
+        redirect_to offer_path(@offer)
+      else
+        flash[:alert] = "Merci de renseigner un prix"
+        render :edit
+      end
     else
       render :edit
     end

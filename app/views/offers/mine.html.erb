@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="header-box">
+        <div class="frame-header">
+          <h2 class="margin-none">Mes annonces</h2>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="white-bg frame-body padding-none">
+          <% current_user.offers.sort_by(&:updated_at).reverse.each do |offer| %>
+            <%= render "offer", offer: offer %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

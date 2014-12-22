@@ -8,6 +8,11 @@ class OffersController < ApplicationController
     @offers = policy_scope(Offer)
   end
 
+  def mine
+    @offers = current_user.offers
+    authorize @offers
+  end
+
   def new
     name_and_address_validations
     @offer = current_user.offers.new
@@ -18,7 +23,17 @@ class OffersController < ApplicationController
     @offer = current_user.offers.new(offer_params)
     authorize @offer
     if @offer.save
-      redirect_to offer_path(@offer)
+      if @offer.one_price
+        if (@offer.type_of_offer == "rent" || @offer.type_of_offer == "sell") && @offer.picture_file_name
+          redirect_to offer_path(@offer)
+        else
+          flash[:alert] = "Ajoutez une photo"
+          render :new
+        end
+      else
+        flash[:alert] = "Merci de renseigner un prix"
+        render :new
+      end
     else
       render :new
     end
@@ -29,7 +44,12 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      redirect_to offer_path(@offer)
+      if @offer.one_price
+        redirect_to offer_path(@offer)
+      else
+        flash[:alert] = "Merci de renseigner un prix"
+        render :edit
+      end
     else
       render :edit
     end

@@ -166,6 +166,11 @@ a:focus {
   font-weight: 900;
 }
 
+.sidenav > ul > li > a:focus {
+  text-decoration: none;
+  font-weight: 900;
+}
+
 .text-align-left {
   text-align: left;
 }
@@ -278,6 +283,10 @@ a:focus {
   margin-top: 3px;
 }
 
+.gray-lighter {
+  color: $gray-lighter;
+}
+
 .margin-top-15 {
   margin-top: 15px;
 }
@@ -374,4 +383,57 @@ a.disabled {
 
 #wrapper > .container {
   padding-bottom: 192px;
+}
+
+.offer-stream-box {
+  padding: 15px;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.offer-stream-box ul > li > a {
+  color: rgb(217, 217, 217);
+}
+
+.offer-stream-box ul > li > a:hover {
+  color: rgb(119, 119, 119);
+  text-decoration: none;
+}
+
+.offer-stream-box:hover {
+  background-color: #F2F2F2;
+  cursor: pointer;
+}
+
+.offer-nature-link, .nice-link {
+  color: rgb(79, 79, 79);
+  font-weight: bold;
+}
+
+.offer-nature-link:hover, .nice-link:hover {
+  color: #25AEE1;
+  text-decoration: none;
+}
+
+.offer-preview-box {
+  padding: 10px;
+}
+
+.nature-group {
+  display: inline;
+}
+
+.btn-margin {
+  margin: 15px 0;
+}
+
+.img-box {
+  padding: 0 5px 0 0;
+}
+
+.margin-vertical-5 {
+  margin: 5px 0;
+}
+
+.padding-left-none {
+  padding-left: 0;
 }

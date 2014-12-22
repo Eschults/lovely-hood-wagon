@@ -32,27 +32,27 @@ class UsersController < ApplicationController
                 redirect_to path
               else
                 flash[:alert] = "Merci de renseigner votre ville"
-                redirect_to edit_user_path(current_user)
+                render :edit
               end
             else
               flash[:alert] = "Merci de renseigner votre code postal"
-              redirect_to edit_user_path(current_user)
+              render :edit
             end
           else
             flash[:alert] = "Merci de renseigner votre rue"
-            redirect_to edit_user_path(current_user)
+            render :edit
           end
         else
           flash[:alert] = "Merci de renseigner votre n° de rue"
-          redirect_to edit_user_path(current_user)
+          render :edit
         end
       else
         flash[:alert] = "Merci de renseigner votre nom de famille"
-        redirect_to edit_user_path(current_user)
+        render :edit
       end
     else
       flash[:alert] = "Merci de renseigner votre prénom"
-      redirect_to edit_user_path(current_user)
+      render :edit
     end
   end
 

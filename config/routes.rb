@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :conversations, only: [:new, :create]
   end
 
+  get "/mine", to: "offers#mine"
+
   resources :conversations, only: [:index, :show] do
     member do
       put :reply

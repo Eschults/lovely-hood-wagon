@@ -179,7 +179,7 @@
                 <%= f.label :address_proof, "Adresse", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.file_field :address_proof, class: "margin-top-6" %>
-                  <p class="small">Dans le cas où votre adresse est différente de l'adresse indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>
+                  <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>
                 </div>
               </div>
 
@@ -230,72 +230,28 @@
     var id;
     var name;
     $(document).ready(function() {
+      if(window.location.hash == "#my-trust") {
+      showTrust();
+      }
 
       $('.edit-link').on('click', function(e) {
         id = $(this).attr('id');
         if(id == "my-info") {
-          $('#user-info').removeClass("hidden");
-          $('#user-picture').addClass("hidden");
-          $('#user-trust').addClass("hidden");
-          $('#user-comments').addClass("hidden");
-          $('#user-recommendations').addClass("hidden");
-          $('#my-info').addClass("strong");
-          $('#my-pic').removeClass("strong");
-          $('#my-trust').removeClass("strong");
-          $('#my-comments').removeClass("strong");
-          $('#my-recos').removeClass("strong");
+          showInfo();
         }
         if(id == "my-pic") {
-          $('#user-info').addClass("hidden");
-          $('#user-picture').removeClass("hidden");
-          $('#user-trust').addClass("hidden");
-          $('#user-comments').addClass("hidden");
-          $('#user-recommendations').addClass("hidden");
-          $('#my-info').removeClass("strong");
-          $('#my-pic').addClass("strong");
-          $('#my-trust').removeClass("strong");
-          $('#my-comments').removeClass("strong");
-          $('#my-recos').removeClass("strong");
+          showPic();
         }
         if(id == "my-trust") {
-          $('#user-info').addClass("hidden");
-          $('#user-picture').addClass("hidden");
-          $('#user-trust').removeClass("hidden");
-          $('#user-comments').addClass("hidden");
-          $('#user-recommendations').addClass("hidden");
-          $('#my-info').removeClass("strong");
-          $('#my-pic').removeClass("strong");
-          $('#my-trust').addClass("strong");
-          $('#my-comments').removeClass("strong");
-          $('#my-recos').removeClass("strong");
+          showTrust();
         }
         if(id == "my-comments") {
-          $('#user-info').addClass("hidden");
-          $('#user-picture').addClass("hidden");
-          $('#user-trust').addClass("hidden");
-          $('#user-comments').removeClass("hidden");
-          $('#user-recommendations').addClass("hidden");
-          $('#my-info').removeClass("strong");
-          $('#my-pic').removeClass("strong");
-          $('#my-trust').removeClass("strong");
-          $('#my-comments').addClass("strong");
-          $('#my-recos').removeClass("strong");
+          showComments();
         }
         if(id == "my-recos") {
-          $('#user-info').addClass("hidden");
-          $('#user-picture').addClass("hidden");
-          $('#user-trust').addClass("hidden");
-          $('#user-comments').addClass("hidden");
-          $('#user-recommendations').removeClass("hidden");
-          $('#my-info').removeClass("strong");
-          $('#my-pic').removeClass("strong");
-          $('#my-trust').removeClass("strong");
-          $('#my-comments').removeClass("strong");
-          $('#my-recos').addClass("strong");
+          showRecos();
         }
       })
-
-
     });
   <% end %>
 <% end %>

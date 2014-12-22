@@ -9,18 +9,23 @@
       <h4 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h4>
       <p class="margin-top-10"><%= link_to "Modifier l'annonce", edit_offer_path(offer) %></p>
     </div>
-    <div class="col-xs-4">
-      <% if current_user.verif == 0 %>
-        <br>
-        <%= form_for offer, method: :patch, url: offer_path(offer)  do |f| %>
-          <%= f.select :published, [["Publiée", true], ["Masquée", false]] %>
-          <%= f.submit "Enregistrer" %>
+    <% if current_user.verif == 0 %>
+      <%= form_for offer, method: :patch, url: offer_path(offer)  do |f| %>
+        <div class="col-xs-3">
+          <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin" } %>
+        </div>
+        <div class="col-xs-1 padding-left-none">
+          <%= button_tag(type: 'submit', class: "btn btn-primary btn-margin btn-wide") do %>
+            <i class="fa fa-save"></i>
+          <% end %>
+        </div>
         <% end %>
       <% else %>
+      <div class="col-xs-4">
         <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
           <%= pluralize(current_user.verif, 'étape') %> pour publier
         <% end %>
+      </div>
       <% end %>
-    </div>
   </div>
 </div>

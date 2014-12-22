@@ -75,6 +75,17 @@ class User < ActiveRecord::Base
     output
   end
 
+  def verif
+    output = 0
+    unless identity_verified
+      output += 1
+    end
+    unless address_verified
+      output += 1
+    end
+    return output
+  end
+
   private
 
   def send_welcome_email

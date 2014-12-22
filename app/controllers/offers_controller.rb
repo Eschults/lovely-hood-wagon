@@ -19,7 +19,11 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.save
       if @offer.one_price
-        redirect_to offer_path(@offer)
+        if (@offer.type_of_offer == "rent" || @offer.type_of_offer == "sell") && @offer.picture_file_name
+          redirect_to offer_path(@offer)
+        else
+          flash[:alert] = "Ajoutez une photo"
+        end
       else
         flash[:alert] = "Merci de renseigner un prix"
       end

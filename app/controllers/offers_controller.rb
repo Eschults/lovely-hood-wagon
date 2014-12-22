@@ -23,9 +23,11 @@ class OffersController < ApplicationController
           redirect_to offer_path(@offer)
         else
           flash[:alert] = "Ajoutez une photo"
+          render :new
         end
       else
         flash[:alert] = "Merci de renseigner un prix"
+        render :new
       end
     else
       render :new

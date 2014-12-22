@@ -192,7 +192,8 @@
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,
-        markers
+        markers,
+        '<%= current_user.id %>'
       );
       $('#default_sort').on('click', function(e) {
         $(this).addClass("disabled");

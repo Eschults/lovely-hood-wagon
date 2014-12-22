@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
-    if @user.update(user_params)
-      @user.save
-      name_and_address_validations(user_path(@user))
+    @user.update(user_params)
+    if @user.save
+      name_and_address_validations(user_path(current_user))
     else
       render :edit
     end
@@ -23,12 +23,12 @@ class UsersController < ApplicationController
   private
 
   def name_and_address_validations(path)
-    if current_user.first_name != ""
-      if current_user.last_name != ""
-        if current_user.street_number != ""
-          if current_user.street_name != ""
-            if current_user.zip_code != ""
-              if current_user.city != ""
+    if @user.first_name != ""
+      if @user.last_name != ""
+        if @user.street_number != ""
+          if @user.street_name != ""
+            if @user.zip_code != ""
+              if @user.city != ""
                 redirect_to path
               else
                 flash[:alert] = "Merci de renseigner votre ville"

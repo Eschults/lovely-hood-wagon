@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"
 
-  post 'bookings/:booking_id/reviews', to: "reviews#create"
+  post 'bookings/:booking_id/reviews', to: "reviews#create", as: "booking_review"
+
+  get 'bookings/:booking_id/reviews/edit', to: "reviews#edit", as: "edit_booking_review"
+
+  patch 'bookings/:booking_id/reviews', to: "reviews#update"
 
   get 'reviews/:id', to: "reviews#show", as: "review"
 

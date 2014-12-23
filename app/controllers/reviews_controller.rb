@@ -1,11 +1,37 @@
 class ReviewsController < ApplicationController
   before_action :set_booking, only: [:new, :create]
-  before_action :set_offer, only: [:show]
+  before_action :set_review, only: [:edit, :update, :show]
 
   def new
+    @review = @booking.reviews.new
+    authorize @review
   end
 
   def create
+    @review = @booking.reviews.new(review_params)
+    authorize @review
+    if @booking.user == current_user
+      @review.review_type = "cto"
+    else
+      @review.review_type = "otc"
+    end
+    if @review.save
+      redirect_to edit_booking_review(@review)
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @review.update(review_params)
+      redirect_to review_path(@review)
+      flash[:alert] = "Votre revue a bien été prise en compte"
+    else
+      render :edit
+    end
   end
 
   def show

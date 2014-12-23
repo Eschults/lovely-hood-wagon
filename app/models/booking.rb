@@ -4,6 +4,7 @@ class Booking < ActiveRecord::Base
 
   belongs_to :offer
   belongs_to :user
+  has_many :reviews
 
   validates_presence_of :offer, :user, :start_date
 

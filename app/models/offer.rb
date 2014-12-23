@@ -22,7 +22,11 @@ class Offer < ActiveRecord::Base
       { lat: user.latitude, lng: user.longitude }
     end
 
-    add_index "Offer#{ENV['ALGOLIA_SUFFIX']}_daily_price_asc" do
+    add_attribute :one_price_int do
+      one_price_int
+    end
+
+    add_index "Offer#{ENV['ALGOLIA_SUFFIX']}_price_asc" do
       attributesToIndex ['nature', 'description']
 
       attributesForFaceting [ 'type_of_offer' ]
@@ -30,24 +34,47 @@ class Offer < ActiveRecord::Base
       add_attribute :_geoloc do
         { lat: user.latitude, lng: user.longitude }
       end
+
+      add_attribute :one_price_int do
+        one_price_int
+      end
     end
   end
 
   def one_price
-    if self.type_of_offer == "service"
-      if self.hourly_price
-        "#{self.hourly_price}€/ heure"
+    if type_of_offer == "service"
+      if hourly_price
+        "#{hourly_price}€/ heure"
       end
-    elsif self.type_of_offer == "rent"
-      if self.weekly_price
-        "#{self.weekly_price}€/ semaine"
+    elsif type_of_offer == "rent"
+      if weekly_price
+        "#{weekly_price}€/ semaine"
       end
-      if self.daily_price
-        "#{self.daily_price}€/ jour"
+      if daily_price
+        "#{daily_price}€/ jour"
       end
     else
-      if self.price
-        "#{self.price}€"
+      if price
+        "#{price}€"
+      end
+    end
+  end
+
+  def one_price_int
+    if type_of_offer == "service"
+      if hourly_price
+        hourly_price
+      end
+    elsif type_of_offer == "rent"
+      if weekly_price
+        weekly_price
+      end
+      if daily_price
+        daily_price
+      end
+    else
+      if price
+        price
       end
     end
   end

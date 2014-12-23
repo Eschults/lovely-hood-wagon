@@ -72,6 +72,9 @@
             <% if @offer.weekly_price %>
               <p><%= @offer.weekly_price %>€/ semaine</p>
             <% end %>
+            <% if @offer.guarantee %>
+              <p>Caution : <%= @offer.guarantee %>€</p>
+            <% end %>
           <% else %>
             <% if @offer.price %>
               <p><%= @offer.price %>€</p>

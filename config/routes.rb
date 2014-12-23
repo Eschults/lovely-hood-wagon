@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookings/:booking_id/reviews/new' to: "reviews#new"
-
-  post 'bookings/:booking_id/reviews' to: "reviews#create"
-
-  get 'reviews/:id' to: "reviews#show"
 
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
@@ -13,6 +8,12 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create, :edit, :update, :show]
     resources :conversations, only: [:new, :create]
   end
+
+  get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"
+
+  post 'bookings/:booking_id/reviews', to: "reviews#create"
+
+  get 'reviews/:id', to: "reviews#show", as: "review"
 
   get "/mine", to: "offers#mine"
 

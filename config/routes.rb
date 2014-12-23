@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'bookings/:booking_id/reviews/new' to: "reviews#new"
+
+  post 'bookings/:booking_id/reviews' to: "reviews#create"
+
+  get 'reviews/:id' to: "reviews#show"
+
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
   root to: "pages#home"

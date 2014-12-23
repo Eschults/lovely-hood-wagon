@@ -315,6 +315,10 @@ a:focus {
   padding-right: 20px;
 }
 
+.padding-right-10 {
+  padding-right: 10px;
+}
+
 .message {
   border-bottom: 1px solid rgb(220, 220, 220);
   padding: 5px;
@@ -436,4 +440,9 @@ a.disabled {
 
 .padding-left-none {
   padding-left: 0;
+}
+
+.padding-sides-6 {
+  padding-left: 6px;
+  padding-right: 6px;
 }

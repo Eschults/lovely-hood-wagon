@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_booking, only: [:new, :create, :edit, :update]
   before_action :set_review, only: [:edit, :update, :show]
+  respond_to :js, only: :update
 
   def new
     @review = @booking.reviews.new
@@ -26,12 +27,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update(review_params)
-      redirect_to review_path(@review)
-      flash[:alert] = "Votre revue a bien été prise en compte"
-    else
-      render :edit
-    end
+    @review.update(review_params)
   end
 
   def show

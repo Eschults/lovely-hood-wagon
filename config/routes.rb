@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'bookings/:booking_id/reviews/:id/edit', to: "reviews#edit", as: "edit_booking_review"
 
-  patch 'bookings/:booking_id/reviews', to: "reviews#update"
+  put 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review"
 
   get 'reviews/:id', to: "reviews#show", as: "review"
 

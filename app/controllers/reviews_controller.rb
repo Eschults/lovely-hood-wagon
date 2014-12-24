@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_booking, only: [:new, :create]
+  before_action :set_booking, only: [:new, :create, :edit, :update]
   before_action :set_review, only: [:edit, :update, :show]
 
   def new
@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
       @review.review_type = "otc"
     end
     if @review.save
-      redirect_to edit_booking_review(@review)
+      redirect_to edit_booking_review_path(@booking, @review)
     else
       render :new
     end
@@ -45,6 +45,7 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+    authorize @review
   end
 
   def review_params

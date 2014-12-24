@@ -44,9 +44,9 @@ function setStarValue(id, stars) {
 
 function setThumbsValue(id) {
   if(id == 'thumbs-up') {
-    $('#recommendation').val(1);
+    $('#recommendation').val(true);
   } else if(id == 'thumbs-down') {
-    $('#recommendation').val(0);
+    $('#recommendation').val(false);
   }
 }
 
@@ -59,7 +59,7 @@ function highlightAll() {
     }
   }
   var bool = $('#recommendation').val();
-  if(bool == "1") {
+  if(bool == "t") {
     $('#thumbs-up').removeClass('recommendation-thumbs').addClass('recommendation-thumbs-highlight');
   } else {
     $('#thumbs-down').addClass('recommendation-thumbs').removeClass('recommendation-thumbs-highlight');

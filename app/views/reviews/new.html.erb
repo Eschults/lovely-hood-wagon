@@ -12,31 +12,7 @@
             <div class="form-group">
               <%= f.label :comment, "Commentaire :", class: "col-sm-3 control-label" %>
               <div class="col-sm-9">
-                <%= f.text_area :comment, placeholder: "Décrivez votre expérience, les points positifs, les points négatifs...", class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :communication_rating, "Communication :", class: "col-sm-3 control-label" %>
-              <div class="col-sm-9">
-                <%= f.hidden_field :communication_rating %>
-                <ul class="communication_rating list-unstyle list-inline">
-                  <% (1..5).each do |i| %>
-                    <li class="rating-star" id=<%= "communication_rating_#{i}" %>><i class="fa fa-star"></i></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :punctuality_rating, "Ponctualité :", class: "col-sm-3 control-label" %>
-              <div class="col-sm-9">
-                <%= f.hidden_field :punctuality_rating %>
-                <ul class="punctuality_rating list-unstyle list-inline">
-                  <% (1..5).each do |i| %>
-                    <li class="rating-star" id=<%= "punctuality_rating_#{i}" %>><i class="fa fa-star"></i></li>
-                  <% end %>
-                </ul>
+                <%= f.text_area :comment, placeholder: "Décrivez votre expérience, les points positifs, les points négatifs...", rows: 5, class: "form-control" %>
               </div>
             </div>
 
@@ -44,7 +20,7 @@
               <div class="col-sm-3">
               </div>
               <div class="col-sm-9">
-                <%= f.submit "Continuer", class: "btn btn-primary" %>
+                <%= f.submit "Suivant", class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
@@ -53,15 +29,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:js) do %>
-  <% javascript_tag do %>
-    $(document).ready(function() {
-      $('.rating-star').on({
-        click: function(e) {
-          highlightStars($(this));
-        }
-      });
-    });
-  <% end %>
-<% end %>

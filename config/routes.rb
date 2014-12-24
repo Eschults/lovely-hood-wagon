@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   post 'bookings/:booking_id/reviews', to: "reviews#create", as: "booking_review"
 
-  get 'bookings/:booking_id/reviews/edit', to: "reviews#edit", as: "edit_booking_review"
+  get 'bookings/:booking_id/reviews/:id/edit', to: "reviews#edit", as: "edit_booking_review"
 
   patch 'bookings/:booking_id/reviews', to: "reviews#update"
 

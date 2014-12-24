@@ -234,6 +234,10 @@
       showTrust();
       }
 
+      $('.edit-link').on('focus', function(e) {
+        window.scrollTo(0, 0);
+      })
+
       $('.edit-link').on('click', function(e) {
         id = $(this).attr('id');
         if(id == "my-info") {

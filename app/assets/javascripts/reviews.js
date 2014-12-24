@@ -44,8 +44,24 @@ function setStarValue(id, stars) {
 
 function setThumbsValue(id) {
   if(id == 'thumbs-up') {
-    $('#recommendation').val(true);
+    $('#recommendation').val(1);
   } else if(id == 'thumbs-down') {
-    $('#recommendation').val(false);
+    $('#recommendation').val(0);
+  }
+}
+
+function highlightAll() {
+  var ids = ['communication', 'punctuality', 'quality_price', 'respect']
+  for(i in ids) {
+    var score = parseInt($('#' + ids[i]).val());
+    for(j = 1; j <= score; j++) {
+      $('#' + ids[i] + '_' + j).removeClass('rating-star').addClass('rating-star-highlight');
+    }
+  }
+  var bool = $('#recommendation').val();
+  if(bool == "1") {
+    $('#thumbs-up').removeClass('recommendation-thumbs').addClass('recommendation-thumbs-highlight');
+  } else {
+    $('#thumbs-down').addClass('recommendation-thumbs').removeClass('recommendation-thumbs-highlight');
   }
 }

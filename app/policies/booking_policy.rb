@@ -6,7 +6,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user   # Only booking creator can view a booking
+    record.user == user  # Only booking creator can view a booking
   end
 
   def create?

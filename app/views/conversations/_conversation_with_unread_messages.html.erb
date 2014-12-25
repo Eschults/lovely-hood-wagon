@@ -9,11 +9,11 @@
     </div>
     <div class="col-xs-2 padding-left-10">
       <p class="margin-btm-5"><%= link_to conversation.other_user(current_user).first_name, user_path(conversation.other_user(current_user)), class:"message-profile-link" %></p>
-      <p class="small"><%= conversation.messages.last.created_at.strftime("%e %B") %></p>
+      <p class="small"><%= conversation.messages.sort_by(&:updated_at).last.created_at.strftime("%e %B") %></p>
     </div>
     <div class="col-xs-8">
       <%= link_to conversation_path(conversation, anchor: "message-input"), class: "link-unstyled" do %>
-        <%= conversation.messages.last.content %>
+        <%= conversation.messages.sort_by(&:updated_at).last.content %>
       <% end %>
     </div>
     <div class="col-xs-1">

@@ -15,21 +15,17 @@ class BookingsController < ApplicationController
       if current_user.conversation_with(@booking.offer.user)
         @conversation = current_user.conversation_with(@booking.offer.user)
         @message = Message.new(
-          content: "
-            Bravo, vous avez une <a href='#{offer_booking_path(@booking.offer, @booking)}'>réservation</a> !
-          ".html_safe
+          content: "Bravo, vous avez une <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit>réservation</a> !"
         )
         @message.writer = current_user
         @message.conversation = @conversation
+        @message.save
       else
         @conversation = Conversation.new
         @conversation.user1 = current_user
         @conversation.user2 = @offer.user
         @message = Message.new(
-          content: "
-            Bravo, vous avez une réservation !
-            Consultez vos mails !
-          "
+          content: "Bravo, vous avez une <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit>réservation</a> !"
         )
         @message.writer = current_user
         @message.conversation = @conversation

@@ -13,7 +13,7 @@
         <p class="small gray-lighter"><%= conversation.messages.sort_by(&:updated_at).last.created_at.strftime("%e %B") %></p>
       </div>
       <div class="col-xs-9">
-        <%= simple_format conversation.messages.sort_by(&:updated_at).last.content %>
+        <%= conversation.messages.sort_by(&:updated_at).last.content.html_safe %>
       </div>
     </div>
   </div>

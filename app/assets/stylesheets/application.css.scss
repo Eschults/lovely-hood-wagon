@@ -457,3 +457,13 @@ a.disabled {
   font-size: 23px;
   color: #FFB400;
 }
+
+.conversation-preview-link,
+.conversation-preview-link:hover {
+  text-decoration: none;
+  color: $gray-light;
+}
+
+.conversation-preview:hover {
+  background-color: #F2F2F2;
+}

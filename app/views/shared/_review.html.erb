@@ -1,0 +1,52 @@
+<div class="review">
+  <div class="row">
+    <div class="col-xs-2 text-center">
+      <% if review.review_type == "cto" %>
+        <%= link_to user_path(booking.user) do %>
+          <div class="img-box">
+            <% if booking.user.picture_file_name %>
+              <%= image_tag(booking.user.picture.url(:medium), { class: "img img-circle img-medium" }) %>
+            <% else %>
+              <%= image_tag "logo.png", class: "img-circle img-medium bg-color" %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="user-name text-center">
+          <%= link_to booking.user.first_name, user_path(booking.user), class: "link-unstyled" %>
+        </div>
+      <% elsif review.review_type == "otc" %>
+        <%= link_to user_path(booking.offer.user) do %>
+          <div class="img-box">
+            <% if booking.offer.user.picture_file_name %>
+              <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img img-circle img-medium" }) %>
+            <% else %>
+              <%= image_tag "logo.png", class: "img-circle img-medium bg-color" %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="user-name text-center">
+          <%= link_to booking.offer.user.first_name, user_path(booking.offer.user), class: "link-unstyled" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-10">
+      <div class="review-content">
+        <div class="row">
+          <div class="col-xs-12 comment">
+            <%= review.comment %>
+          </div>
+        </div>
+        <div class="review-footer">
+          <div class="review-date">
+            <%= review.created_at.strftime("%B %Y") %>
+          </div>
+          <div class="offer-link">
+            <%= link_to offer_path(booking.offer) do %>
+              <%= booking.offer.nature %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

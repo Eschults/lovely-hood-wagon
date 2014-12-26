@@ -311,6 +311,14 @@ a:focus {
   box-shadow: 0 0 2px #c8c8c8;
 }
 
+.img-medium {
+  height: 64px;
+  width: 64px;
+  border: 2px solid white;
+  box-shadow: 0 0 2px #c8c8c8;
+}
+
+
 .padding-right-20 {
   padding-right: 20px;
 }
@@ -466,4 +474,37 @@ a.disabled {
 
 .conversation-preview:hover {
   background-color: #F2F2F2;
+}
+
+.review {
+  padding: 10px;
+}
+
+.review-content {
+  border-bottom: 1px solid rgb(220, 220, 220);
+  min-height: 100px;
+  position: relative;
+}
+
+.user-name {
+  margin-top: 10px;
+}
+
+.review-date {
+  font-size: 13px;
+  color: $gray-lighter;
+  display: block;
+  float: left;
+}
+
+.review-footer {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.offer-link {
+  display: block;
+  float: right;
 }

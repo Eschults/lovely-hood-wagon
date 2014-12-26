@@ -3,9 +3,9 @@
     <div class="col-sm-3">
       <div class="white-bg frame padding-none">
         <% if @user.picture_file_name %>
-          <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+          <%= image_tag(@user.picture.url(:medium), { class: "img img-profile" }) %>
         <% else %>
-          <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
+          <%= image_tag "logo.png", class: "img bg-color" %>
         <% end %>
 
       </div>
@@ -93,28 +93,18 @@
       <div class="reviews">
         <h2>Commentaires</h2>
         <h5><strong>Commentaires des "clients"</strong></h5>
-        <% if @user.offers.map { |offer| offer.bookings.map { |booking| booking.reviews.select { |review| review.review_type == "cto" } } }.flatten.size >= 1 %>
-          <% @user.offers.each do |offer| %>
-            <% offer.bookings.each do |booking| %>
-              <% booking.reviews.each do |review| %>
-                <% if review.review_type == "cto" %>
-                  <%= render "shared/review", { user: @user, booking: booking, review: review } %>
-                <% end %>
-              <% end %>
-            <% end %>
+        <% if @user.cto_reviews.size >= 1 %>
+          <% @user.cto_reviews.each do |review| %>
+            <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
           <% end %>
         <% else %>
           <p>Pas encore de commentaire rédigé à propos d'une annonce publiée par <%= @user.first_name %></p>
         <% end %>
 
         <h5><strong>Commentaires des "propriétaires"</strong></h5>
-        <% if @user.bookings.map { |booking| booking.reviews.select { |review| review.review_type == "otc" } }.flatten.size >= 1 %>
-          <% @user.bookings.each do |booking| %>
-            <% booking.reviews.each do |review| %>
-              <% if review.review_type == "otc" %>
-                <%= render "shared/review", { user: @user, booking: booking, review: review } %>
-              <% end %>
-            <% end %>
+        <% if @user.otc_reviews.size >= 1 %>
+          <% @user.otc_reviews.each do |review| %>
+            <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
           <% end %>
         <% else %>
           <p>Pas encore de commentaire rédigé à propos d'une réservation réalisée par <%= @user.first_name %></p>

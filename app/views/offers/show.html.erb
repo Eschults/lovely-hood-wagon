@@ -5,16 +5,16 @@
         <!-- si l'offer est un service, la photo est celle du user -->
         <% if @offer.type_of_offer =="service" %>
           <% if @offer.user.picture_file_name %>
-            <%= image_tag(@offer.user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+            <%= image_tag(@offer.user.picture.url(:medium), { class: "img" }) %>
           <% else %>
-            <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
+            <%= image_tag "logo.png", class: "img bg-color" %>
           <% end %>
         <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
         <% else %>
           <% if @offer.picture_file_name %>
-            <%= image_tag(@offer.picture.url(:medium), { class: "img img-thumbnail" }) %>
+            <%= image_tag(@offer.picture.url(:medium), { class: "img" }) %>
           <% else %>
-            <%= image_tag("no-image.png", { class: "img img-thumbnail" }) %>
+            <%= image_tag("no-image.png", { class: "img" }) %>
           <% end %>
         <% end %>
       </div>
@@ -82,9 +82,81 @@
           <% end %>
       </div>
       <div class="reviews">
-        <h2>Commentaires</h2>
-          <p>(Pas encore de revues)</p>
+        <% if @offer.cto_reviews.size >= 1 %>
+          <div class="row">
+            <div class="col-xs-3">
+              <h4><strong><%= pluralize(@offer.cto_reviews.size.to_i, "commentaire")%></strong></h4>
+            </div>
+            <div class="col-xs-3 text-right">
+              <h4 class="gray-lighter">
+                <% @offer.average_score.round.times do %>
+                  <i class="fa fa-star rating-star-highlight"></i>
+                <% end %>
+                <% (5 - @offer.average_score.round).times do %>
+                  <i class="fa fa-star rating-star"></i>
+                <% end %>
+                (<%= @offer.average_score %>)
+              </h4>
+            </div>
+            <div class="col-xs-6">
+            </div>
+          </div>
+
+          <div class="ratings">
+            <div class="row">
+              <div class="col-xs-3">
+                <p>Communication : </p>
+                <p>Ponctualité : </p>
+                <p>Qualité/ prix : </p>
+              </div>
+              <div class="col-xs-3 text-right">
+                <p class="gray-lighter">
+                  <% @offer.communication_score.round.times do %>
+                    <i class="fa fa-star small-star-gold"></i>
+                  <% end %>
+                  <% (5 - @offer.communication_score.round).times do %>
+                    <i class="fa fa-star small-star"></i>
+                  <% end %>
+                  (<%= @offer.communication_score %>)
+                </p>
+                <p class="gray-lighter">
+                  <% @offer.punctuality_score.round.times do %>
+                    <i class="fa fa-star small-star-gold"></i>
+                  <% end %>
+                  <% (5 - @offer.punctuality_score.round).times do %>
+                    <i class="fa fa-star small-star"></i>
+                  <% end %>
+                  (<%= @offer.punctuality_score %>)
+                </p>
+                <p class="gray-lighter">
+                  <% @offer.quality_price_score.round.times do %>
+                    <i class="fa fa-star small-star-gold"></i>
+                  <% end %>
+                  <% (5 - @offer.quality_price_score.round).times do %>
+                    <i class="fa fa-star small-star"></i>
+                  <% end %>
+                  (<%= @offer.quality_price_score %>)
+                </p>
+              </div>
+              <div class="col-xs-6">
+              </div>
+            </div>
+          </div>
+          <% @offer.cto_reviews.each do |review| %>
+            <%= render "shared/review", { offer: @offer, booking: review.booking, review: review } %>
+          <% end %>
+        <% else %>
+          <h2>Commentaires</h2>
+          <p>Pas encore de commentaire rédigé à propos de cette annonce</p>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<% content_for(:js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function() {
+      $('.offer-link').addClass('hidden');
+    });
+  <% end %>
+<% end %>

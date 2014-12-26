@@ -343,6 +343,11 @@ a:focus {
   width: 100%;
 }
 
+.img {
+  width: 100%;
+  padding: 1%;
+}
+
 .img-review-box {
   padding-left: 50%;
   margin-left: -32px;
@@ -366,7 +371,6 @@ a:focus {
 .reply {
   padding: 10px;
   background-color: $bg-color;
-
 }
 
 .block {
@@ -485,6 +489,16 @@ a.disabled {
   color: #FFB400;
 }
 
+.small-star-gold {
+  font-size: 14px;
+  color: #FFB400;
+}
+
+.small-star {
+  font-size: 14px;
+  color: $gray-lighter;
+}
+
 .recommendation-thumbs {
   font-size: 23px;
   color: $gray-lighter;
@@ -513,6 +527,10 @@ a.disabled {
   border-bottom: 1px solid rgb(220, 220, 220);
   min-height: 100px;
   position: relative;
+}
+
+.ratings {
+  border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .user-name {

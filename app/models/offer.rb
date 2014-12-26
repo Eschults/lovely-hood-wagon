@@ -25,20 +25,6 @@ class Offer < ActiveRecord::Base
     add_attribute :one_price_int do
       one_price_int
     end
-
-    add_index "Offer#{ENV['ALGOLIA_SUFFIX']}_price_asc" do
-      attributesToIndex ['nature', 'description']
-
-      attributesForFaceting [ 'type_of_offer' ]
-
-      add_attribute :_geoloc do
-        { lat: user.latitude, lng: user.longitude }
-      end
-
-      add_attribute :one_price_int do
-        one_price_int
-      end
-    end
   end
 
   def one_price
@@ -90,5 +76,45 @@ class Offer < ActiveRecord::Base
       end
     end
     output
+  end
+
+  def cto_reviews
+    bookings.map { |booking| booking.reviews.select { |review| review.review_type == "cto" } }.flatten.sort_by { |review| review.created_at }.reverse
+  end
+
+  def average_score
+    score = 0
+    cto_reviews.each do |review|
+      score += review.cto_score
+    end
+    score.fdiv(cto_reviews.size)
+  end
+
+  def communication_score
+    score = 0
+    cto_reviews.each do |review|
+      score += review.communication_rating
+    end
+    score.fdiv(cto_reviews.size)
+  end
+
+  def punctuality_score
+    score = 0
+    cto_reviews.each do |review|
+      score += review.punctuality_rating
+    end
+    score = score.fdiv(cto_reviews.size)
+  end
+
+  def quality_price_score
+    score = 0
+    cto_reviews.each do |review|
+      score += review.quality_price_rating
+    end
+    score = score.fdiv(cto_reviews.size)
+  end
+
+  def otc_reviews
+    bookings.map { |booking| booking.reviews.select { |review| review.review_type == "otc" } }.flatten
   end
 end

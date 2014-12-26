@@ -3,28 +3,32 @@
     <div class="col-xs-2 text-center">
       <% if review.review_type == "cto" %>
         <%= link_to user_path(booking.user) do %>
-          <div class="img-box">
-            <% if booking.user.picture_file_name %>
-              <%= image_tag(booking.user.picture.url(:medium), { class: "img img-circle img-medium" }) %>
-            <% else %>
-              <%= image_tag "logo.png", class: "img-circle img-medium bg-color" %>
-            <% end %>
+          <div class="img-review-box">
+            <div class="img-medium">
+              <% if booking.user.picture_file_name %>
+                <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
+              <% else %>
+                <%= image_tag "logo.png", class: "bg-color" %>
+              <% end %>
+            </div>
           </div>
         <% end %>
-        <div class="user-name text-center">
+        <div class="user-name">
           <%= link_to booking.user.first_name, user_path(booking.user), class: "link-unstyled" %>
         </div>
       <% elsif review.review_type == "otc" %>
         <%= link_to user_path(booking.offer.user) do %>
-          <div class="img-box">
-            <% if booking.offer.user.picture_file_name %>
-              <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img img-circle img-medium" }) %>
-            <% else %>
-              <%= image_tag "logo.png", class: "img-circle img-medium bg-color" %>
-            <% end %>
+          <div class="img-review-box">
+            <div class="img-medium">
+              <% if booking.offer.user.picture_file_name %>
+                <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
+              <% else %>
+                <%= image_tag "logo.png", class: "bg-color" %>
+              <% end %>
+            </div>
           </div>
         <% end %>
-        <div class="user-name text-center">
+        <div class="user-name">
           <%= link_to booking.offer.user.first_name, user_path(booking.offer.user), class: "link-unstyled" %>
         </div>
       <% end %>

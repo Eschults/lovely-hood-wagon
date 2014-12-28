@@ -3,9 +3,9 @@
     <div class="col-sm-3">
       <div class="white-bg frame padding-none">
         <% if @user.picture_file_name %>
-          <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+          <%= image_tag(@user.picture.url(:medium), { class: "img img-profile" }) %>
         <% else %>
-          <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
+          <%= image_tag "logo.png", class: "img bg-color" %>
         <% end %>
 
       </div>
@@ -92,7 +92,23 @@
       </div>
       <div class="reviews">
         <h2>Commentaires</h2>
-        <p>Pas encore de revues</p>
+        <h5><strong>Commentaires des "clients"</strong></h5>
+        <% if @user.cto_reviews.size >= 1 %>
+          <% @user.cto_reviews.each do |review| %>
+            <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
+          <% end %>
+        <% else %>
+          <p>Pas encore de commentaire rédigé à propos d'une annonce publiée par <%= @user.first_name %></p>
+        <% end %>
+
+        <h5><strong>Commentaires des "propriétaires"</strong></h5>
+        <% if @user.otc_reviews.size >= 1 %>
+          <% @user.otc_reviews.each do |review| %>
+            <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
+          <% end %>
+        <% else %>
+          <p>Pas encore de commentaire rédigé à propos d'une réservation réalisée par <%= @user.first_name %></p>
+        <% end %>
       </div>
     </div>
   </div>

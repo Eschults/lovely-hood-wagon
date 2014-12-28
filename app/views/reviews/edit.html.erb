@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="header-box">
+        <div class="frame-header">
+          <h2 class="margin-none">Votre revue de : <%= @booking.offer.nature %></h2>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="form-horizontal white-bg frame-body">
+          <%= form_for([@booking, @review], method: :put, url: update_booking_review_path(@booking, @review), remote: true, html: { id: "edit-review" }) do |f| %>
+
+            <div class="form-group">
+              <%= f.label :communication_rating, "Communication :", class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.hidden_field :communication_rating, id: "communication" %>
+                <ul class="communication_rating list-unstyle list-inline">
+                  <% (1..5).each do |i| %>
+                    <li class="rating-star" data-stars="<%= i %>" data-nature="communication" id="<%= "communication_#{i}" %>"><i class="fa fa-star"></i></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :punctuality_rating, "Ponctualité :", class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.hidden_field :punctuality_rating, id: "punctuality" %>
+                <ul class="punctuality_rating list-unstyle list-inline">
+                  <% (1..5).each do |i| %>
+                    <li class="rating-star" data-stars="<%= i %>" data-nature="punctuality" id="<%= "punctuality_#{i}" %>"><i class="fa fa-star"></i></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+
+            <% if @review.review_type == "cto" %>
+              <%= render "quality", f: f %>
+            <% else %>
+              <% if @booking.offer.type_of_offer == "rent" %>
+                <%= render "respect", f: f %>
+              <% end %>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :recommendation, "Recommandation :", class: "col-sm-4 control-label" %>
+              <div class="col-sm-8">
+                <%= f.hidden_field :recommendation, id: "recommendation" %>
+                <ul class="recommendation list-unstyle list-inline">
+                  <li class="recommendation-thumbs" id="thumbs-up"><i class="fa fa-thumbs-up"></i></li>
+                  <li class="recommendation-thumbs" id="thumbs-down"><i class="fa fa-thumbs-down"></i></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group margin-btm-none">
+              <div class="col-sm-4">
+              </div>
+              <div class="col-sm-8">
+                <%= link_to "Terminer", offers_path, class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for(:js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function() {
+      highlightAll();
+      $('.rating-star').click(function(e) {
+        highlightStars($(this));
+      });
+      $('.recommendation-thumbs').click(function(e) {
+        highlightThumbs($(this));
+      });
+    });
+  <% end %>
+<% end %>

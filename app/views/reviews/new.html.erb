@@ -3,7 +3,14 @@
     <div class="col-xs-8 col-xs-offset-2">
       <div class="header-box">
         <div class="frame-header">
-          <h2 class="margin-none">Votre revue de : <%= @booking.offer.nature %></h2>
+          <h2 class="margin-none">
+            Revue de <%= @booking.offer.nature %> avec
+            <% if current_user == @booking.user %>
+              <%= @booking.offer.user.first_name %>
+            <% else %>
+              <%= @booking.user.first_name %>
+            <% end %>
+          </h2>
         </div>
       </div>
       <div class="body-box">

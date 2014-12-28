@@ -10,6 +10,6 @@ class ReviewMailer < ActionMailer::Base
   def view(review, recipient)
     @review = review
 
-    mail(to: recipient.email, subject: "#{@review.booking.user.first_name} vous a laissé un commentaire")
+    mail(to: recipient.email, subject: "#{@review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name} vous a laissé un commentaire")
   end
 end

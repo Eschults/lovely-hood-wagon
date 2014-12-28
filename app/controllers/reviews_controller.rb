@@ -28,6 +28,39 @@ class ReviewsController < ApplicationController
 
   def update
     @review.update(review_params)
+
+    # validations spécifiques
+    if @review.review_type == "cto"
+      if @review.quality_rating
+      else
+        flash[:alert] = "Merci de noter entre 1 et 5 le rapport qualité/prix"
+        render :edit
+      end
+    elsif @review.booking.offer.type_of_offer == "rent"
+      if @review.respect_rating
+      else
+        flash[:alert] = "Merci de noter entre 1 et 5 le respect du matériel"
+        render :edit
+      end
+    end
+
+    # validations générales
+    if @review.communication_rating
+      if @review.punctuality_rating
+        if @review.recommendation
+          redirect_to offers_path
+        else
+          flash[:alert] = "Merci de nous donner votre recommandation"
+          render :edit
+        end
+      else
+        flash[:alert] = "Merci de noter entre 1 et 5 la ponctualité"
+        render :edit
+      end
+    else
+      flash[:alert] = "Merci de noter entre 1 et 5 la communication"
+      render :edit
+    end
   end
 
   def show

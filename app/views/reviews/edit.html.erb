@@ -8,7 +8,7 @@
       </div>
       <div class="body-box">
         <div class="form-horizontal white-bg frame-body">
-          <%= form_for([@booking, @review], method: :put, url: update_booking_review_path(@booking, @review), remote: true, html: { id: "edit-review" }) do |f| %>
+          <%= form_for([@booking, @review], method: :put, url: update_booking_review_path(@booking, @review), html: { id: "edit-review" }) do |f| %>
 
             <div class="form-group">
               <%= f.label :communication_rating, "Communication :", class: "col-sm-4 control-label" %>
@@ -57,7 +57,7 @@
               <div class="col-sm-4">
               </div>
               <div class="col-sm-8">
-                <%= link_to "Terminer", offers_path, class: "btn btn-primary" %>
+                <%= f.submit "Terminer", class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
@@ -71,6 +71,9 @@
     $(document).ready(function() {
       highlightAll();
       $('.rating-star').click(function(e) {
+        highlightStars($(this));
+      });
+      $('.rating-star-highlight').click(function(e) {
         highlightStars($(this));
       });
       $('.recommendation-thumbs').click(function(e) {

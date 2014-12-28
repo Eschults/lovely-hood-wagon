@@ -25,7 +25,16 @@
             <br>
             <br>
             <%= form_for @offer, method: :patch, url: offer_path(@offer)  do |f| %>
-              <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control" } %>
+            <div class="row">
+              <div class="col-xs-8 padding-right-10">
+                <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control" } %>
+              </div>
+              <div class="col-xs-3 padding-none">
+                <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
+                  <i class="fa fa-save"></i>
+                <% end %>
+              </div>
+            </div>
             <% end %>
           <% else %>
             <br>

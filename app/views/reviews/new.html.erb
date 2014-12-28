@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="header-box">
+        <div class="frame-header">
+          <h2 class="margin-none">
+            Revue de <%= @booking.offer.nature %> avec
+            <% if current_user == @booking.user %>
+              <%= @booking.offer.user.first_name %>
+            <% else %>
+              <%= @booking.user.first_name %>
+            <% end %>
+          </h2>
+        </div>
+      </div>
+      <div class="body-box">
+        <div class="form-horizontal white-bg frame-body">
+          <%= form_for([@booking, @review], url: booking_review_path(@booking, @review)) do |f| %>
+            <div class="form-group">
+              <%= f.label :comment, "Commentaire :", class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= f.text_area :comment, placeholder: "Décrivez votre expérience, les points positifs, les points négatifs...", rows: 5, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group margin-btm-none">
+              <div class="col-sm-3">
+              </div>
+              <div class="col-sm-9">
+                <%= f.submit "Suivant", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
       </h2>
       <div class="row frame padding-none margin-sides-none">
         <div id="messages">
-          <% @conversation.messages.each do |message| %>
+          <% @conversation.messages.sort_by(&:updated_at).each do |message| %>
             <%= render "message", message: message %>
           <% end %>
         </div>

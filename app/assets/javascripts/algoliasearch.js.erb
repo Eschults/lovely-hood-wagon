@@ -59,7 +59,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
 
     for (var i = 0; i < content.hits.length; ++i) {
       latLng = new google.maps.LatLng(content.hits[i]._geoloc["lat"],content.hits[i]._geoloc["lng"]);
-      if(content.hits[i].user_id != currentUserId) {
+      // if(content.hits[i].user_id != currentUserId) {
         var marker = new google.maps.Marker({
           position: latLng,
           title: content.hits[i].nature
@@ -73,7 +73,7 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
         var message_url = messagePath.replace(":offer_id", content.hits[i].id);
         content.hits[i].message_url = message_url;
         html += $hitTemplate.render(content.hits[i]);
-      }
+      // }
     }
     $hits.html(html);
 

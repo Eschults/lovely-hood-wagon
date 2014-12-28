@@ -86,6 +86,32 @@ class User < ActiveRecord::Base
     return output
   end
 
+  def cto_reviews
+    output = []
+    offers.each do |offer|
+      offer.bookings.each do |booking|
+        booking.reviews.each do |review|
+          if review.review_type == "cto"
+            output << review
+          end
+        end
+      end
+    end
+    output
+  end
+
+  def otc_reviews
+    output = []
+    bookings.each do |booking|
+      booking.reviews.each do |review|
+        if review.review_type == "otc"
+          output << review
+        end
+      end
+    end
+    output
+  end
+
   private
 
   def send_welcome_email

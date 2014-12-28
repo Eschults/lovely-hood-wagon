@@ -1,25 +1,25 @@
-<div class="conversation-preview unread-messages">
-  <div class="row">
-    <div class="col-xs-1">
-      <% if conversation.other_user(current_user).picture_file_name %>
-        <%= image_tag(conversation.other_user(current_user).picture.url(:medium), { class: "img img-circle img-small img-nature" }) %>
-      <% else %>
-        <%= image_tag "logo.png", class: "img-circle img-nature img-small bg-color" %>
-      <% end %>
-    </div>
-    <div class="col-xs-2 padding-left-10">
-      <p class="margin-btm-5"><%= link_to conversation.other_user(current_user).first_name, user_path(conversation.other_user(current_user)), class:"message-profile-link" %></p>
-      <p class="small"><%= conversation.messages.last.created_at.strftime("%e %B") %></p>
-    </div>
-    <div class="col-xs-8">
-      <%= link_to conversation_path(conversation, anchor: "message-input"), class: "link-unstyled" do %>
-        <%= conversation.messages.last.content %>
-      <% end %>
-    </div>
-    <div class="col-xs-1">
-      <span class="badge margin-top-15">
-        <%= conversation.unread_messages(current_user) %>
-      </span>
+<a href="<%= conversation_path(conversation, anchor: "message-input") %>", class="conversation-preview-link">
+  <div class="conversation-preview unread-messages">
+    <div class="row">
+      <div class="col-xs-1">
+        <% if conversation.other_user(current_user).picture_file_name %>
+          <%= image_tag(conversation.other_user(current_user).picture.url(:medium), { class: "img img-circle img-small img-nature" }) %>
+        <% else %>
+          <%= image_tag "logo.png", class: "img-circle img-nature img-small bg-color" %>
+        <% end %>
+      </div>
+      <div class="col-xs-2 padding-left-10">
+        <p class="margin-btm-5"><strong><%= conversation.other_user(current_user).first_name %></strong></p>
+        <p class="small gray-lighter"><%= conversation.messages.sort_by(&:updated_at).last.created_at.strftime("%e %B") %></p>
+      </div>
+      <div class="col-xs-8">
+        <%= simple_format conversation.messages.sort_by(&:updated_at).last.content %>
+      </div>
+      <div class="col-xs-1">
+        <span class="badge margin-top-15">
+          <%= conversation.unread_messages(current_user) %>
+        </span>
+      </div>
     </div>
   </div>
-</div>
+</a>

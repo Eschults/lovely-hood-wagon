@@ -1,0 +1,11 @@
+<div class="form-group">
+  <%= f.label :quality_price_rating, "Rapport qualité/ prix :", class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <%= f.hidden_field :quality_price_rating, id: "quality_price" %>
+    <ul class="quality_price_rating list-unstyle list-inline">
+      <% (1..5).each do |i| %>
+        <li class="rating-star" data-stars="<%= i %>" data-nature="quality_price" id="<%= "quality_price_#{i}" %>"><i class="fa fa-star"></i></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

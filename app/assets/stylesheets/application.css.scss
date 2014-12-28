@@ -309,6 +309,48 @@ a:focus {
   width: 32px;
   border: 2px solid white;
   box-shadow: 0 0 2px #c8c8c8;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.img-navbar {
+  height: 38px;
+  width: 38px;
+  border: 2px solid white;
+  box-shadow: 0 0 2px #c8c8c8;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.img-medium {
+  height: 64px;
+  width: 64px;
+  border: 2px solid white;
+  box-shadow: 0 0 2px #c8c8c8;
+  overflow: hidden;
+  margin-left: 25%;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.img-medium > img,
+.img-navbar > img,
+.img-small > img {
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+  padding: 1%;
+}
+
+.img-review-box {
+  padding-left: 50%;
+  margin-left: -32px;
 }
 
 .padding-right-20 {
@@ -333,7 +375,6 @@ a:focus {
 .reply {
   padding: 10px;
   background-color: $bg-color;
-
 }
 
 .block {
@@ -341,11 +382,14 @@ a:focus {
 }
 
 .message-profile-link {
-  color: #25AAE1;
+  color: rgb(119, 119, 119);
+  font-weight: bold;
 }
 
 .message-profile-link:hover {
   color: #25AAE1;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .notices {
@@ -440,6 +484,83 @@ a.disabled {
 
 .padding-left-none {
   padding-left: 0;
+}
+
+.rating-star {
+  font-size: 23px;
+  color: $gray-lighter;
+}
+
+.rating-star-highlight {
+  font-size: 23px;
+  color: #FFB400;
+}
+
+.small-star-gold {
+  font-size: 14px;
+  color: #FFB400;
+}
+
+.small-star {
+  font-size: 14px;
+  color: $gray-lighter;
+}
+
+.recommendation-thumbs {
+  font-size: 23px;
+  color: $gray-lighter;
+}
+
+.recommendation-thumbs-highlight {
+  font-size: 23px;
+  color: #FFB400;
+}
+
+.conversation-preview-link,
+.conversation-preview-link:hover {
+  text-decoration: none;
+  color: $gray-light;
+}
+
+.conversation-preview:hover {
+  background-color: #F2F2F2;
+}
+
+.review {
+  padding: 10px;
+}
+
+.review-content {
+  border-bottom: 1px solid rgb(220, 220, 220);
+  min-height: 100px;
+  position: relative;
+}
+
+.ratings {
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.user-name {
+  margin-top: 10px;
+}
+
+.review-date {
+  font-size: 13px;
+  color: $gray-lighter;
+  display: block;
+  float: left;
+}
+
+.review-footer {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.offer-link {
+  display: block;
+  float: right;
 }
 
 .padding-sides-6 {

@@ -7,7 +7,6 @@
         <% else %>
           <%= image_tag "logo.png", class: "img bg-color" %>
         <% end %>
-
       </div>
       <div class="header-box">
         <div class="frame-header">
@@ -32,8 +31,6 @@
           <% end %>
           <% if current_user.provider == "facebook" %>
             <p><i class="fa fa-check"></i> Facebook</p>
-          <% else %>
-            <p><i class="fa fa-close"></i> Facebook non vérifié</p>
           <% end %>
         </div>
       </div>
@@ -48,41 +45,39 @@
       </div>
       <div class="body-box">
         <div class="white-bg frame-body">
-          <% @user.offers.each do |offer| %>
-            <div class="row margin-vertical-5">
-              <div class="col-xs-3 padding-none">
-
-
-
-
-                <div class="img-review-box">
-                  <div class="img-small">
-                    <% if offer.picture_file_name %>
-                      <%= image_tag(offer.picture.url(:medium), { class: "img" }) %>
-                    <% elsif offer.type_of_offer == "service" && offer.user.picture_file_name %>
-                      <%= image_tag(offer.user.picture.url(:medium), { class: "img" }) %>
+          <% if @user.offers.count == 0 %>
+            <%= link_to "Publier une annonce", new_offer_path %>
+          <% else %>
+            <% @user.offers.each do |offer| %>
+              <div class="row margin-vertical-5">
+                <div class="col-xs-3 padding-none">
+                  <div class="img-review-box">
+                    <div class="img-small">
+                      <% if offer.picture_file_name %>
+                        <%= image_tag(offer.picture.url(:medium), { class: "img" }) %>
+                      <% elsif offer.type_of_offer == "service" && offer.user.picture_file_name %>
+                        <%= image_tag(offer.user.picture.url(:medium), { class: "img" }) %>
+                      <% else %>
+                        <%= image_tag "no-image.png", class: "bg-color" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-9 padding-none">
+                  <div class="small gray-lighter">
+                    <% if offer.nature.length >= 20 %>
+                      <%= link_to offer.nature[0..19] + "...", offer_path(offer) %>
+                      <br>
+                      <%= offer.one_price %>
                     <% else %>
-                      <%= image_tag "no-image.png", class: "bg-color" %>
+                      <%= link_to offer.nature, offer_path(offer) %>
+                      <br>
+                      <%= offer.one_price %>
                     <% end %>
                   </div>
                 </div>
-
-
               </div>
-              <div class="col-xs-9 padding-none">
-                <div class="small gray-lighter">
-                  <% if offer.nature.length >= 20 %>
-                    <%= link_to offer.nature[0..19] + "...", offer_path(offer) %>
-                    <br>
-                    <%= offer.one_price %>
-                  <% else %>
-                    <%= link_to offer.nature, offer_path(offer) %>
-                    <br>
-                    <%= offer.one_price %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -96,10 +91,41 @@
         <% end %>
         <p><%= @user.description %></p>
       </div>
-      <div class="activity">
-        <h2>Activité récente</h2>
-        <p>Pas encore d'activité</p>
-      </div>
+
+      <% if @user == current_user %>
+
+        <% if @user.passed_bookings_to_validate.size >= 1 %>
+          <div class="passed-bookings">
+            <h2>Prestations passées - à confirmer</h2>
+            <% @user.passed_bookings_to_validate.each do |booking| %>
+              <%= render "shared/booking", { user: @user, booking: booking } %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="upcoming-bookings">
+          <h2>A venir</h2>
+          <h5><strong>Vous avez réservé</strong></h5>
+          <% if @user.upcoming_cto_bookings.size >= 1 %>
+            <% @user.upcoming_cto_bookings.each do |booking| %>
+              <%= render "shared/booking", { user: @user, booking: booking } %>
+            <% end %>
+          <% else %>
+            <p>Pas de réservation à venir.</p>
+          <% end %>
+
+          <h5><strong>On vous a réservé</strong></h5>
+          <% if @user.upcoming_otc_bookings.size >= 1 %>
+            <% @user.upcoming_otc_bookings.each do |booking| %>
+              <%= render "shared/booking", { user: @user, booking: booking } %>
+            <% end %>
+          <% else %>
+            <p>Pas de réservation à venir.</p>
+          <% end %>
+
+        </div>
+      <% end %>
+
       <div class="reviews">
         <h2>Commentaires</h2>
         <h5><strong>Commentaires des "clients"</strong></h5>
@@ -110,7 +136,6 @@
         <% else %>
           <p>Pas encore de commentaire rédigé à propos d'une annonce publiée par <%= @user.first_name %></p>
         <% end %>
-
         <h5><strong>Commentaires des "propriétaires"</strong></h5>
         <% if @user.otc_reviews.size >= 1 %>
           <% @user.otc_reviews.each do |review| %>

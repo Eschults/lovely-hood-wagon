@@ -10,24 +10,25 @@ class BookingsController < ApplicationController
   def create
     @booking = set_offer.bookings.new(booking_params)
     @booking.user = current_user
+    lh = User.find_by_first_name("Lovely hood")
     authorize @booking
     if @booking.save
-      if current_user.conversation_with(@booking.offer.user)
-        @conversation = current_user.conversation_with(@booking.offer.user)
+      if current_user.conversation_with(lh)
+        @conversation = current_user.conversation_with(lh)
         @message = Message.new(
-          content: "Bravo, vous avez une <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>réservation</a> !"
+          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )
-        @message.writer = current_user
+        @message.writer = lh
         @message.conversation = @conversation
         @message.save
       else
         @conversation = Conversation.new
-        @conversation.user1 = current_user
+        @conversation.user1 = lh
         @conversation.user2 = @offer.user
         @message = Message.new(
-          content: "Bravo, vous avez une <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>réservation</a> !"
+          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )
-        @message.writer = current_user
+        @message.writer = lh
         @message.conversation = @conversation
         @message.save
       end

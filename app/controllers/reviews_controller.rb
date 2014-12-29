@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
 
     # validations spécifiques
     if @review.review_type == "cto"
-      if @review.quality_rating
+      if @review.quality_price_rating
       else
         flash[:alert] = "Merci de noter entre 1 et 5 le rapport qualité/prix"
         render :edit

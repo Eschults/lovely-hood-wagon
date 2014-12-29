@@ -149,7 +149,8 @@ NATURES = {
     'Masque (mer)',
     'Tuba',
     'Palmes',
-    'Chauffe-eau'
+    'Chauffe-eau',
+    'Ustensiles de cuisine'
   ],
 
   service: [

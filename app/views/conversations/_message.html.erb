@@ -7,7 +7,7 @@
       <% if message.writer.picture_file_name %>
         <%= image_tag(message.writer.picture.url(:medium), { class: "img-small" }) %>
       <% else %>
-        <%= image_tag "logo.png", class: "img-circle img-nature img-small bg-color" %>
+        <%= image_tag "logo.png", class: "img-small bg-color" %>
       <% end %>
     </div>
     <div class="col-xs-11 padding-left-10">

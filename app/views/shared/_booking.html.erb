@@ -33,7 +33,7 @@
                 <% if booking.start_date == Date.today %>
                   Aujourd'hui
                 <% else %>
-                  Dans <strong><%= pluralize(booking.start_date - Date.today, "jour") %></strong>
+                  Il y a <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong>
                 <% end %>
                 (<%= booking.start_date.strftime("%d %B") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %B") %> à <%= booking.end_hour.strftime("%H:%M") %>).
               </p>

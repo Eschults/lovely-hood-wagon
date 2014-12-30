@@ -25,6 +25,18 @@ class Offer < ActiveRecord::Base
     add_attribute :one_price_int do
       one_price_int
     end
+
+    add_attribute :picture_url do
+      picture.url(:medium)
+    end
+
+    add_attribute :picture? do
+      if picture.url(:medium) == "/pictures/medium/missing.png"
+        nil
+      else
+        true
+      end
+    end
   end
 
   def one_price

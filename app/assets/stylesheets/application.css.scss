@@ -1,7 +1,7 @@
 //= depend_on_asset "logo.png"
 //= depend_on_asset "background.png"
 
-$font-family-sans-serif: 'Ubuntu', sans-serif;
+$font-family-sans-serif: 'Open sans', sans-serif;
 $gray-base: #000;
 $gray: lighten($gray-base, 33.5%);
 $gray-darker: lighten($gray-base, 13.5%);
@@ -14,7 +14,7 @@ $gray-lighter: lighten($gray-base, 85%);
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico");
 @import "chosen";
 
 @import "navbar";
@@ -620,7 +620,17 @@ a.disabled {
   float: right;
 }
 
-.padding-sides-6 {
-  padding-left: 6px;
-  padding-right: 6px;
+
+.panel-default > .panel-heading {
+  background-color: white;
+  color: rgb(119, 119, 119);
+}
+
+.panel-default > .panel-heading h3 {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.panel-default {
+  font-family: Helvetica;
 }

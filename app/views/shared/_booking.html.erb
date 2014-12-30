@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-2 text-center">
       <div class="img-nature-box">
-        <%= link_to offer_booking_path(booking.offer, booking), class: "link-unstyled" do %>
+        <%= link_to offer_path(booking.offer), class: "link-unstyled" do %>
           <% if booking.offer.type_of_offer == "sell" %>
             <%= image_tag "sell.png", width: "60" %>
           <% else %>

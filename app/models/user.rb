@@ -86,6 +86,59 @@ class User < ActiveRecord::Base
     return output
   end
 
+  def passed_bookings_to_validate
+    client_bookings = []
+    bookings.each do |booking|
+      if booking.start_date <= Date.today && booking.accepted && (booking.client_validation.nil? || booking.owner_validation.nil?)
+        client_bookings << booking
+      end
+    end
+    owner_bookings = []
+    offers.each do |offer|
+      offer.bookings.each do |booking|
+        if booking.start_date <= Date.today && booking.accepted && booking.owner_validation.nil?
+          owner_bookings << booking
+        end
+      end
+    end
+    {
+      owner: owner_bookings,
+      client: client_bookings
+    }
+  end
+
+  def upcoming_cto_bookings
+    output = []
+    bookings.each do |booking|
+      if booking.start_date > Date.today && booking.accepted
+        output << booking
+      end
+    end
+    output
+  end
+
+  def upcoming_otc_bookings
+    output = []
+    offers.each do |offer|
+      offer.bookings.each do |booking|
+        if booking.start_date > Date.today && booking.accepted
+          output << booking
+        end
+      end
+    end
+    output
+  end
+
+  def upcoming_pending_cto_bookings
+    output = []
+    bookings.each do |booking|
+      if booking.start_date >= Date.today && booking.accepted.nil?
+        output << booking
+      end
+    end
+    output
+  end
+
   def cto_reviews
     output = []
     offers.each do |offer|

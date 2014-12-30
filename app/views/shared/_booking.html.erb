@@ -1,0 +1,103 @@
+<div class="booking">
+  <div class="row">
+    <div class="col-xs-2 text-center">
+      <div class="img-nature-box">
+        <%= link_to offer_booking_path(booking.offer, booking), class: "link-unstyled" do %>
+          <% if booking.offer.type_of_offer == "sell" %>
+            <%= image_tag "sell.png", width: "60" %>
+          <% else %>
+            <%= image_tag "#{booking.offer.nature}.png", width: "60" %>
+          <% end %>
+      </div>
+      <div class="user-name">
+          <%= booking.offer.nature %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-10">
+      <div class="booking-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <% if booking.offer.type_of_offer == "rent" %>
+              <p>
+                <% if booking.start_date == Date.today %>
+                  Aujourd'hui
+                <% else %>
+                  Il y a  <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong>
+                <% end %>
+                (du <%= booking.start_date.strftime("%d %B") %> au <%= booking.end_date.strftime("%d %B") %>).
+              </p>
+            <% elsif booking.offer.type_of_offer == "service" %>
+              <p>
+                <% if booking.start_date == Date.today %>
+                  Aujourd'hui
+                <% else %>
+                  Il y a <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong>
+                <% end %>
+                (<%= booking.start_date.strftime("%d %B") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %B") %> à <%= booking.end_hour.strftime("%H:%M") %>).
+              </p>
+            <% else %>
+              <p><strong>Rendez-vous : </strong> le <%= booking.start_date.strftime("%d %B") %>.</p>
+            <% end %>
+
+            <!-- après la prestation, pour mettre à true l'attribut client_validation ou owner_validation du booking -->
+
+
+            <% if booking.user == current_user && booking.client_validation.nil? && booking.owner_validation %>
+              <ul class="confirmation list-unstyle list-inline">
+                <li>
+                  Confirmer que la prestation est terminée :
+                </li>
+                <li class="confirmation-thumbs">
+                  <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
+                    <%= f.hidden_field :client_validation, value: true %>
+                    <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+                      <i class="fa fa-check"></i>
+                    <% end %>
+                  <% end %>
+                </li>
+              </p>
+            <% elsif booking.offer.user == current_user && booking.owner_validation.nil? %>
+              <p>
+                <ul class="confirmation list-unstyle list-inline">
+                  <li>
+                    Confirmer que la prestation est terminée, et déclencher le paiement :
+                  </li>
+                  <li class="confirmation-thumbs">
+                    <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
+                      <%= f.hidden_field :owner_validation, value: true %>
+                      <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+                        <i class="fa fa-check"></i>
+                      <% end %>
+                    <% end %>
+                  </li>
+                </ul>
+              </p>
+            <% else %>
+              <p>
+                En attente de confirmation du propriétaire.
+              </p>
+            <% end %>
+          </div>
+        </div>
+        <div class="booking-footer">
+          <div class="booking-date">
+            <%= booking.created_at.strftime("%B %Y") %>
+          </div>
+          <div class="user-link">
+            <% if booking.offer.user == current_user %>
+              <%= link_to user_path(booking.user) do %>
+                <%= booking.user.first_name %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(booking.offer.user) do %>
+                <%= booking.offer.user.first_name %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

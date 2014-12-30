@@ -1,0 +1,7 @@
+Félicitations !
+
+<%= @booking.user.first_name %> nous a confirmé avoir bénéficié de <%= @booking.offer.nature %>, nous déclenchons immédiatement le paiement sur ton compte.
+
+Pense à laisser un commentaire sur <%= @booking.user.first_name %> <%= link_to "ici", new_booking_review_url(@booking) %> afin de contribuer à une meilleure transparence au sein de la communauté.
+
+A bientôt sur Lovely hood !

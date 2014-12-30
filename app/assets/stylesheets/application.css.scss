@@ -228,6 +228,11 @@ a:focus {
   padding-bottom: 6px;
 }
 
+.padding-vertical-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .img-nature {
   display: block;
   float: left;
@@ -315,13 +320,16 @@ a:focus {
 }
 
 .img-navbar {
-  height: 38px;
-  width: 38px;
+  height: 42px;
+  width: 42px;
   border: 2px solid white;
   box-shadow: 0 0 2px #c8c8c8;
   overflow: hidden;
-  margin: auto;
+  margin-right: 10px;
   border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 .img-medium {
@@ -338,8 +346,13 @@ a:focus {
 }
 
 .img-medium > img,
-.img-navbar > img,
 .img-small > img {
+  width: 100%;
+}
+
+.img-navbar > img {
+  margin-top: -15%;
+  margin-left: 1%;
   width: 100%;
 }
 
@@ -506,7 +519,8 @@ a.disabled {
   color: $gray-lighter;
 }
 
-.recommendation-thumbs {
+.recommendation-thumbs,
+.confirmation-thumbs {
   font-size: 23px;
   color: $gray-lighter;
 }
@@ -526,11 +540,13 @@ a.disabled {
   background-color: #F2F2F2;
 }
 
-.review {
+.review,
+.booking {
   padding: 10px;
 }
 
-.review-content {
+.review-content,
+.booking-content {
   border-bottom: 1px solid rgb(220, 220, 220);
   min-height: 100px;
   position: relative;
@@ -544,21 +560,24 @@ a.disabled {
   margin-top: 10px;
 }
 
-.review-date {
+.review-date,
+.booking-date {
   font-size: 13px;
   color: $gray-lighter;
   display: block;
   float: left;
 }
 
-.review-footer {
+.review-footer,
+.booking-footer {
   position: absolute;
   bottom: 0;
   padding-bottom: 10px;
   width: 100%;
 }
 
-.offer-link {
+.offer-link,
+.user-link {
   display: block;
   float: right;
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223111135) do
+ActiveRecord::Schema.define(version: 20141229140927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20141223111135) do
     t.datetime "updated_at"
     t.time     "start_hour"
     t.time     "end_hour"
+    t.boolean  "client_validation"
+    t.boolean  "owner_validation"
   end
 
   add_index "bookings", ["offer_id"], name: "index_bookings_on_offer_id", using: :btree
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 20141223111135) do
     t.string   "type_of_offer"
     t.boolean  "published"
     t.integer  "guarantee"
+    t.boolean  "sell"
   end
 
   add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree

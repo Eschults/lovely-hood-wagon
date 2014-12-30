@@ -94,11 +94,22 @@
 
       <% if @user == current_user %>
 
-        <% if @user.passed_bookings_to_validate.size >= 1 %>
+        <% if @user.passed_bookings_to_validate[:owner].size >= 1 || @user.passed_bookings_to_validate[:client].size >= 1 %>
           <div class="passed-bookings">
             <h2>Prestations passées - à confirmer</h2>
-            <% @user.passed_bookings_to_validate.each do |booking| %>
-              <%= render "shared/booking", { user: @user, booking: booking } %>
+            <% if @user.passed_bookings_to_validate[:owner].size >= 1 %>
+              <h5><strong>On vous a sollicité pour :</strong></h5>
+              <% @user.passed_bookings_to_validate[:owner].each do |booking| %>
+                <%= render "shared/booking", { user: @user, booking: booking } %>
+              <% end %>
+            <% else %>
+            <% end %>
+            <% if @user.passed_bookings_to_validate[:client].size >= 1 %>
+              <h5><strong>Vous avez bénéficié de :</strong></h5>
+              <% @user.passed_bookings_to_validate[:client].each do |booking| %>
+                <%= render "shared/booking", { user: @user, booking: booking } %>
+              <% end %>
+            <% else %>
             <% end %>
           </div>
         <% end %>
@@ -126,11 +137,11 @@
         </div>
       <% end %>
 
-      <div class="reviews">
+      <div id="reviews">
         <h2>Commentaires</h2>
         <h5><strong>Commentaires des "clients"</strong></h5>
         <% if @user.cto_reviews.size >= 1 %>
-          <% @user.cto_reviews.each do |review| %>
+          <% @user.cto_reviews.sort_by(&:updated_at).reverse.each do |review| %>
             <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
           <% end %>
         <% else %>
@@ -138,7 +149,7 @@
         <% end %>
         <h5><strong>Commentaires des "propriétaires"</strong></h5>
         <% if @user.otc_reviews.size >= 1 %>
-          <% @user.otc_reviews.each do |review| %>
+          <% @user.otc_reviews.sort_by(&:updated_at).reverse.each do |review| %>
             <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
           <% end %>
         <% else %>

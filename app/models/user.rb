@@ -87,20 +87,24 @@ class User < ActiveRecord::Base
   end
 
   def passed_bookings_to_validate
-    output = []
+    client_bookings = []
     bookings.each do |booking|
       if booking.start_date <= Date.today && booking.accepted && (booking.client_validation.nil? || booking.owner_validation.nil?)
-        output << booking
+        client_bookings << booking
       end
     end
+    owner_bookings = []
     offers.each do |offer|
       offer.bookings.each do |booking|
-        if booking.start_date <= Date.today && booking.accepted && (booking.client_validation.nil? || booking.owner_validation.nil?)
-          output << booking
+        if booking.start_date <= Date.today && booking.accepted && booking.owner_validation.nil?
+          owner_bookings << booking
         end
       end
     end
-    output
+    {
+      owner: owner_bookings,
+      client: client_bookings
+    }
   end
 
   def upcoming_cto_bookings

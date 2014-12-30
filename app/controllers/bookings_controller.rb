@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update, :confirm]
   after_action :verify_policy_scoped, :only => :index
 
   def new
@@ -56,6 +56,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def confirm
+    if @booking.update(booking_params)
+      redirect_to offers_path
+    else
+      redirect_to root
+    end
+  end
+
   def show
   end
 
@@ -71,7 +79,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted)
+    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted, :owner_validation, :client_validation)
   end
 
 end

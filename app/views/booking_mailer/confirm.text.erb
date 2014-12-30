@@ -1,0 +1,9 @@
+Merci d'avoir utilisé Lovely hood !
+
+<%= @booking.offer.user.first_name %> nous a confirmé que la prestation que tu as demandée a bien eu lieu.
+
+Rends-toi <%= link_to "ici", user_url(@booking.user) %> à ton tour pour confirmer que tu as bien bénéficié de la prestation <%= @booking.offer.nature %>.
+
+Pense également à laisser un commentaire sur <%= @booking.offer.user.first_name %> et son offre <%= @booking.offer.nature %> <%= link_to "ici", new_booking_review_url(@booking) %>
+
+A bientôt sur Lovely hood !

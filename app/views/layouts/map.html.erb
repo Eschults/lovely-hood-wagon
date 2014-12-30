@@ -11,13 +11,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render "layouts/navbar" %>
+  <div class="bg-color" id="wrapper">
+    <%= render "layouts/navbar" %>
 
-  <div class="notices">
-    <%= render "layouts/notices" %>
-  </div>
+    <div class="notices">
+      <%= render "layouts/notices" %>
+    </div>
 
-  <div class="bg-color">
     <%= yield %>
   </div>
 

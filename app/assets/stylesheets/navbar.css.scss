@@ -48,7 +48,8 @@ $profile-border-width: 2px;
   padding-bottom: $vertical-padding;
 }
 
-.navbar-wagon .navbar-nav > li > a:hover {
+.navbar-wagon .navbar-nav > li > a:hover,
+.navbar-wagon .navbar-nav > li > a:focus {
   color: $color;
   font-weight: bold;
   line-height: $height;
@@ -161,8 +162,8 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   position: absolute;
   bottom: 136px; // 28 * nb of lines in dropdown
   transform: rotate(45deg);
-  border-top: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
   z-index: -1;
 }
 

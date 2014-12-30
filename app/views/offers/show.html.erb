@@ -104,7 +104,7 @@
                 <% (5 - @offer.average_score.round).times do %>
                   <i class="fa fa-star rating-star"></i>
                 <% end %>
-                (<%= @offer.average_score %>)
+                (<%= @offer.average_score.round(1) %>)
               </h4>
             </div>
             <div class="col-xs-6">
@@ -126,7 +126,7 @@
                   <% (5 - @offer.communication_score.round).times do %>
                     <i class="fa fa-star small-star"></i>
                   <% end %>
-                  (<%= @offer.communication_score %>)
+                  (<%= @offer.communication_score.round(1) %>)
                 </p>
                 <p class="gray-lighter">
                   <% @offer.punctuality_score.round.times do %>
@@ -135,7 +135,7 @@
                   <% (5 - @offer.punctuality_score.round).times do %>
                     <i class="fa fa-star small-star"></i>
                   <% end %>
-                  (<%= @offer.punctuality_score %>)
+                  (<%= @offer.punctuality_score.round(1) %>)
                 </p>
                 <p class="gray-lighter">
                   <% @offer.quality_price_score.round.times do %>
@@ -144,7 +144,7 @@
                   <% (5 - @offer.quality_price_score.round).times do %>
                     <i class="fa fa-star small-star"></i>
                   <% end %>
-                  (<%= @offer.quality_price_score %>)
+                  (<%= @offer.quality_price_score.round(1) %>)
                 </p>
               </div>
               <div class="col-xs-6">

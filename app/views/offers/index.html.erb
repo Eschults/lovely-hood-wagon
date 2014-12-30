@@ -78,11 +78,11 @@
             </a>
           </div>
         </div>
-        <div class="col-xs-9 padding-left-30">
+        <div class="col-xs-10 padding-left-30">
           <h4 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
           <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}">Voir l'annonce complète<a></p>
         </div>
-        <div class="col-xs-2 text-right padding-top-15 padding-right-20">
+        <div class="col-xs-1 text-right padding-top-15 padding-left-none padding-right-20">
           <h3 class="margin-none price">
             {{#daily_price}}
               {{ daily_price }}€
@@ -101,7 +101,7 @@
               {{/weekly_price}}
             {{/daily_price}}
           </h3>
-          <p>
+          <p class="small">
             {{#daily_price}}
               / jour
             {{/daily_price}}
@@ -217,6 +217,7 @@
 
       $('.see-img').on('click', function(e) {
         showOrHidePicture(13, $(this));
+        paokdzpaozkdapozkdapozkd
       });
 
       $('.offer-stream-box').on('click', function(e) {

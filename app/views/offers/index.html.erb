@@ -187,15 +187,6 @@
 
   <%= javascript_tag do %>
     $(document).ready(function() {
-
-      $('.see-img').on('click', function(e) {
-        showOrHidePicture(13, $(this));
-      });
-
-      $('.offer-stream-box').on('click', function(e) {
-        showOrHidePicture(6, $(this));
-      });
-
       var myLatlng = new google.maps.LatLng(
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>'
@@ -224,11 +215,19 @@
         '<%= current_user.id %>'
       );
 
+      $('.see-img').on('click', function(e) {
+        showOrHidePicture(13, $(this));
+      });
+
+      $('.offer-stream-box').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
 
       $('#default_sort').on('click', function(e) {
         $(this).addClass("disabled");
         $('#price_sort').removeClass("disabled");
       });
+
       $('#price_sort').on('click', function(e) {
         $(this).addClass("disabled");
         $('#default_sort').removeClass("disabled");

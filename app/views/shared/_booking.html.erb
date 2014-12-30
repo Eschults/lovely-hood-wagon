@@ -42,23 +42,35 @@
             <% end %>
 
             <!-- après la prestation, pour mettre à true l'attribut client_validation ou owner_validation du booking -->
+
+
             <% if booking.user == current_user && booking.client_validation.nil? && booking.owner_validation %>
               <ul class="confirmation list-unstyle list-inline">
                 <li>
                   Confirmer que la prestation est terminée :
                 </li>
                 <li class="confirmation-thumbs">
-                  &nbsp;<i class="fa fa-thumbs-up confirmation-thumbs"></i>
+                  <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
+                    <%= f.hidden_field :client_validation, value: true %>
+                    <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+                      <i class="fa fa-check"></i>
+                    <% end %>
+                  <% end %>
                 </li>
               </p>
             <% elsif booking.offer.user == current_user && booking.owner_validation.nil? %>
               <p>
                 <ul class="confirmation list-unstyle list-inline">
                   <li>
-                    Confirmer que la prestation est terminée, et générer le versement sur votre compte :
+                    Confirmer que la prestation est terminée, et déclencher le paiement :
                   </li>
                   <li class="confirmation-thumbs">
-                    <i class="fa fa-thumbs-up"></i>
+                    <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
+                      <%= f.hidden_field :owner_validation, value: true %>
+                      <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+                        <i class="fa fa-check"></i>
+                      <% end %>
+                    <% end %>
                   </li>
                 </ul>
               </p>

@@ -23,4 +23,16 @@ class BookingMailer < ActionMailer::Base
 
     mail(to: @booking.user.email, subject: "Demande de réservation")
   end
+
+  def confirm(booking)
+    @booking = booking
+
+    mail(to: @booking.user.email, subject: "Pensez à laisser un commentaire sur #{@booking.offer.user.first_name}")
+  end
+
+  def review(booking)
+    @booking = booking
+
+    mail(to: @booking.offer.user.email, subject: "Pensez à laisser un commentaire sur #{@booking.user.first_name}")
+  end
 end

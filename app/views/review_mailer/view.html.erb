@@ -1,0 +1,6 @@
+<p>
+  <%= @review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name %> vous a laissé un commentaire, vous pouvez le consulter <%= link_to "ici", user_url(@review.review_type == "cto" ? @review.booking.offer.user : @review.booking.user, anchor: "reviews") %>.
+</p>
+<p>
+  A bientôt sur Lovely hood !
+</p>

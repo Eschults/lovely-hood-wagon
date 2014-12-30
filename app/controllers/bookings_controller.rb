@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update, :confirm]
   after_action :verify_policy_scoped, :only => :index
 
   def new
@@ -10,24 +10,25 @@ class BookingsController < ApplicationController
   def create
     @booking = set_offer.bookings.new(booking_params)
     @booking.user = current_user
+    lh = User.find_by_first_name("Lovely hood")
     authorize @booking
     if @booking.save
-      if current_user.conversation_with(@booking.offer.user)
-        @conversation = current_user.conversation_with(@booking.offer.user)
+      if current_user.conversation_with(lh)
+        @conversation = current_user.conversation_with(lh)
         @message = Message.new(
-          content: "Bravo, vous avez une <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>réservation</a> !"
+          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )
-        @message.writer = current_user
+        @message.writer = lh
         @message.conversation = @conversation
         @message.save
       else
         @conversation = Conversation.new
-        @conversation.user1 = current_user
+        @conversation.user1 = lh
         @conversation.user2 = @offer.user
         @message = Message.new(
-          content: "Bravo, vous avez une <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>réservation</a> !"
+          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )
-        @message.writer = current_user
+        @message.writer = lh
         @message.conversation = @conversation
         @message.save
       end
@@ -55,6 +56,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def confirm
+    if @booking.update(booking_params)
+      redirect_to offers_path
+    else
+      redirect_to root
+    end
+  end
+
   def show
   end
 
@@ -70,7 +79,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted)
+    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted, :owner_validation, :client_validation)
   end
 
 end

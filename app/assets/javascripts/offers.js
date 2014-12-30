@@ -25,3 +25,17 @@ function showRent() {
   $('#rent').attr('name', 'offer[nature]');
 }
 
+function showOrHidePicture(lettersBeforeId, item) {
+  var id = item.attr('id');
+  id = id.slice(lettersBeforeId, id.size);
+  if($('#picture_' + id).attr('class').indexOf('hidden') > -1) {
+    $('#picture_' + id).removeClass("hidden");
+    $('#hide_picture_' + id).removeClass("hidden");
+    $('#show_picture_' + id).addClass("hidden");
+  } else {
+    $('#picture_' + id).addClass("hidden");
+    $('#hide_picture_' + id).addClass("hidden");
+    $('#show_picture_' + id).removeClass("hidden");
+  }
+}
+

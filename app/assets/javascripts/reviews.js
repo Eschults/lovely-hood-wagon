@@ -12,11 +12,11 @@ function highlightStars(star) {
 
   setStarValue(id, stars);
 
-  $.ajax({
-    type: "PUT",
-    url: $('#edit-review').attr('action'),
-    data: $('#edit-review').serialize()
-  });
+  // $.ajax({
+  //   type: "PUT",
+  //   url: $('#edit-review').attr('action'),
+  //   data: $('#edit-review').serialize()
+  // });
 }
 
 function highlightThumbs(thumbs) {
@@ -31,11 +31,11 @@ function highlightThumbs(thumbs) {
 
   setThumbsValue(id);
 
-  $.ajax({
-    type: "PUT",
-    url: $('#edit-review').attr('action'),
-    data: $('#edit-review').serialize()
-  });
+  // $.ajax({
+  //   type: "PUT",
+  //   url: $('#edit-review').attr('action'),
+  //   data: $('#edit-review').serialize()
+  // });
 }
 
 function setStarValue(id, stars) {

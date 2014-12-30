@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :users, only: [:show, :edit, :update]
   resources :offers, except: [:destroy] do
-    resources :bookings, only: [:new, :create, :edit, :update, :show]
+    resources :bookings, only: [:new, :create, :edit, :update, :show] do
+      member do
+        put :confirm
+      end
+    end
     resources :conversations, only: [:new, :create]
   end
 

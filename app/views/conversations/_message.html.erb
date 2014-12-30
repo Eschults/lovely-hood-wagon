@@ -5,7 +5,7 @@
   <div class="message-content">
     <div class="col-xs-1">
       <% if message.writer.picture_file_name %>
-        <%= image_tag(message.writer.picture.url(:medium), { class: "img img-circle img-small img-nature" }) %>
+        <%= image_tag(message.writer.picture.url(:medium), { class: "img-small" }) %>
       <% else %>
         <%= image_tag "logo.png", class: "img-circle img-nature img-small bg-color" %>
       <% end %>

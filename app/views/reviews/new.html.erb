@@ -4,11 +4,11 @@
       <div class="header-box">
         <div class="frame-header">
           <h2 class="margin-none">
-            Revue de <%= @booking.offer.nature %> avec
+            Commentaire : <%= @booking.offer.nature %>
             <% if current_user == @booking.user %>
-              <%= @booking.offer.user.first_name %>
+               (<%= @booking.offer.user.first_name %>)
             <% else %>
-              <%= @booking.user.first_name %>
+               (<%= @booking.user.first_name %>)
             <% end %>
           </h2>
         </div>

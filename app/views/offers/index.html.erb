@@ -69,7 +69,7 @@
     </div>
   </script>
   <script type="text/template" id="hit-template">
-    <div class="offer-stream-box">
+    <div class="offer-stream-box" id="offer_{{id}}">
       <div class="row">
         <div class="col-xs-1">
           <div class="img-nature-box">
@@ -119,15 +119,34 @@
           </p>
         </div>
       </div>
+      {{#picture?}}
+      <div class="row">
+        <div class="col-xs-12 text-center padding-vertical-10 hidden" id="picture_{{ id }}">
+          <img src="{{ picture_url }}" max-width="300px" class="img-thumbnail"/>
+        </div>
+      </div>
+      {{/picture?}}
       <div class="row">
         <div class="col-xs-1"></div>
         <div class="col-xs-11 padding-left-30">
           <ul class="list-unstyled list-inline">
+            {{#picture?}}
             <li class="float-left">
-              <a href="#" id="see-img">
+              <a href="#" class="see-img" id="show_picture_{{id}}">
+                Voir photo
+              </a>
+              <a href="#" class="see-img hidden" id="hide_picture_{{id}}">
+                Cacher photo
+              </a>
+            </li>
+            {{/picture?}}
+            {{^picture?}}
+            <li class="float-left">
+              <a href="#" class="disabled">
                 Voir photo
               </a>
             </li>
+            {{/picture?}}
             <li class="float-right">
               <a href="{{ new_booking_url }}">
                 <i class="fa fa-check"></i> Réserver
@@ -168,6 +187,15 @@
 
   <%= javascript_tag do %>
     $(document).ready(function() {
+
+      $('.see-img').on('click', function(e) {
+        showOrHidePicture(13, $(this));
+      });
+
+      $('.offer-stream-box').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
+
       var myLatlng = new google.maps.LatLng(
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>'
@@ -195,6 +223,8 @@
         markers,
         '<%= current_user.id %>'
       );
+
+
       $('#default_sort').on('click', function(e) {
         $(this).addClass("disabled");
         $('#price_sort').removeClass("disabled");

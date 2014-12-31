@@ -1,12 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="white-bg frame padding-none">
-        <% if @booking.offer.picture_file_name %>
-          <%= image_tag(@booking.offer.picture.url(:medium), { class: "img" }) %>
-        <% else %>
-          <%= image_tag("no-image.png", { class: "img" }) %>
-        <% end %>
+      <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
+        <div class="panel-body padding-none border-none transparent-bg">
+          <!-- si l'offer est un service, la photo est celle du user -->
+          <% if @booking.offer.type_of_offer =="service" %>
+            <% if @booking.offer.user.picture_file_name %>
+              <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
+            <% else %>
+              <%= image_tag "#{@booking.offer.nature}.png", class: "img-thumbnail white-bg" %>
+            <% end %>
+          <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
+          <% else %>
+            <% if @booking.offer.picture_file_name %>
+              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img-thumbnail" }) %>
+            <% else %>
+              <%= image_tag("no-image.png", { class: "img-thumbnail transparent-bg" }) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-sm-9">

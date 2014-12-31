@@ -1,65 +1,70 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="white-bg frame padding-none">
-        <!-- si l'offer est un service, la photo est celle du user -->
-        <% if @offer.type_of_offer =="service" %>
-          <% if @offer.user.picture_file_name %>
-            <%= image_tag(@offer.user.picture.url(:medium), { class: "img" }) %>
+      <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
+        <div class="panel-body padding-none border-none transparent-bg">
+          <!-- si l'offer est un service, la photo est celle du user -->
+          <% if @offer.type_of_offer =="service" %>
+            <% if @offer.user.picture_file_name %>
+              <%= image_tag(@offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
+            <% else %>
+              <%= image_tag "logo.png", class: "img-thumbnail transparent-bg" %>
+            <% end %>
+          <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>
-            <%= image_tag "logo.png", class: "img bg-color" %>
+            <% if @offer.picture_file_name %>
+              <%= image_tag(@offer.picture.url(:medium), { class: "img-thumbnail" }) %>
+            <% else %>
+              <%= image_tag("no-image.png", { class: "img-thumbnail white-bg" }) %>
+            <% end %>
           <% end %>
-        <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
-        <% else %>
-          <% if @offer.picture_file_name %>
-            <%= image_tag(@offer.picture.url(:medium), { class: "img" }) %>
-          <% else %>
-            <%= image_tag("no-image.png", { class: "img" }) %>
-          <% end %>
-        <% end %>
+        </div>
       </div>
-      <div class="white-bg frame">
-        <% if policy(@offer).update? %>
-          <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide" %>
-          <% if current_user.verif == 0 %>
-            <br>
-            <br>
-            <%= form_for @offer, method: :patch, url: offer_path(@offer)  do |f| %>
-            <div class="row">
-              <div class="col-xs-8 padding-right-10">
-                <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control" } %>
+
+      <div class="panel panel-default margin-20-30 padding-none">
+        <div class="panel-body border-none">
+          <% if policy(@offer).update? %>
+            <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide" %>
+            <% if current_user.verif == 0 %>
+              <br>
+              <br>
+              <%= form_for @offer, method: :patch, url: offer_path(@offer)  do |f| %>
+              <div class="row">
+                <div class="col-xs-8 padding-right-10">
+                  <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control" } %>
+                </div>
+                <div class="col-xs-3 padding-none">
+                  <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
+                    <i class="fa fa-save"></i>
+                  <% end %>
+                </div>
               </div>
-              <div class="col-xs-3 padding-none">
-                <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
-                  <i class="fa fa-save"></i>
-                <% end %>
-              </div>
-            </div>
+              <% end %>
+            <% else %>
+              <br>
+              <br>
+              <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
+                <%= pluralize(current_user.verif, 'étape') %> pour publier
+              <% end %>
             <% end %>
           <% else %>
+            <% if current_user.conversation_with(@offer.user) %>
+              <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
+                Demande d'info
+              <% end %>
+            <% else %>
+              <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+                Demande d'info
+              <% end %>
+            <% end %>
             <br>
             <br>
-            <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
-              <%= pluralize(current_user.verif, 'étape') %> pour publier
-            <% end %>
+            <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
+            <br>
+            <br>
+            <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>
           <% end %>
-        <% else %>
-          <% if current_user.conversation_with(@offer.user) %>
-            <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
-              Demande d'info
-            <% end %>
-          <% else %>
-            <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
-              Demande d'info
-            <% end %>
-          <% end %>
-          <br>
-          <br>
-          <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
-          <br>
-          <br>
-          <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="col-sm-9">

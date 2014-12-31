@@ -1,13 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <div class="header-box">
-        <div class="frame-header">
-          <h2 class="margin-none">Boîte de réception</h2>
+      <div class="panel panel-default margin-top-15 padding-none white-bg">
+        <div class="panel-heading">
+          <h3>Boîte de réception</h3>
         </div>
-      </div>
-      <div class="body-box">
-        <div class="white-bg frame-body padding-none">
+        <div class="panel-body padding-none">
           <% current_user.conversations.sort_by { |c| c.messages.last.updated_at }.reverse.each do |conversation| %>
             <% if conversation.messages.select{ |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
               <%= render "conversation_with_unread_messages", conversation: conversation %>

@@ -15,13 +15,11 @@
     <div class="col-sm-9 margin-top-15">
 
       <div class="box" id="user-info">
-        <div class="header-box">
-          <div class="frame-header">
-            <h4 class="margin-none">Mes informations</h4>
+        <div class="panel panel-default margin-top-15 padding-none">
+          <div class="panel-heading">
+            <h4>Mes informations</h4>
           </div>
-        </div>
-        <div class="body-box">
-          <div class="form-horizontal white-bg frame-body">
+          <div class="panel-body form-horizontal white-bg">
             <%= form_for(current_user) do |f| %>
 
               <div class="form-group">
@@ -125,17 +123,15 @@
       </div>
 
       <div class="box hidden" id="user-picture">
-        <div class="header-box">
-          <div class="frame-header">
-            <h4 class="margin-none">Photo de profil</h4>
+        <div class="panel panel-default margin-top-15 padding-none">
+          <div class="panel-heading">
+            <h4>Photo de profil</h4>
           </div>
-        </div>
-        <div class="body-box">
-          <div class="white-bg frame-body form-horizontal">
+          <div class="panel-body form-horizontal white-bg">
             <div class="form-group">
               <div class="col-sm-3">
                 <% if @user.picture_file_name %>
-                  <%= image_tag(@user.picture.url(:medium), { class: "img img-thumbnail img-profile" }) %>
+                  <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
                 <% else %>
                   <%= image_tag "logo.png", class: "img-thumbnail bg-color" %>
                 <% end %>
@@ -153,14 +149,13 @@
         </div>
       </div>
 
+
       <div class="box hidden" id="user-trust">
-        <div class="header-box">
-          <div class="frame-header">
-            <h4 class="margin-none">Confiance et vérifications</h4>
+        <div class="panel panel-default margin-top-15 padding-none">
+          <div class="panel-heading">
+            <h4>Confiance et vérifications</h4>
           </div>
-        </div>
-        <div class="body-box">
-          <div class="form-horizontal white-bg frame-body">
+          <div class="panel-body form-horizontal white-bg">
             <%= form_for(current_user) do |f| %>
               <div class="col-sm-12">
                 <p><b>Vérifiez votre identité et votre adresse postale</b></p>
@@ -195,27 +190,39 @@
       </div>
 
       <div class="box hidden" id="user-comments">
-        <div class="header-box">
-          <div class="frame-header">
-            <h4 class="margin-none">Commentaires</h4>
+        <div class="panel panel-default margin-top-15 padding-none">
+          <div class="panel-heading">
+            <h4>Commentaires</h4>
           </div>
-        </div>
-        <div class="body-box">
-          <div class="white-bg frame-body height-100">
-            <p><b>Après chaque réservation sur Lovely hood, les deux utilisateurs rédigent un commentaire qui est rendu visible sur le profil de l'autre.</b></p>
-            <p>Pas encore de commentaires</p>
+          <div class="panel-body white-bg">
+            <div id="reviews">
+              <h5><strong>Commentaires des "clients"</strong></h5>
+              <% if @user.cto_reviews.size >= 1 %>
+                <% @user.cto_reviews.sort_by(&:updated_at).reverse.each do |review| %>
+                  <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
+                <% end %>
+              <% else %>
+                <p>Pas encore de commentaire rédigé à propos d'une annonce publiée par <%= @user.first_name %></p>
+              <% end %>
+              <h5><strong>Commentaires des "propriétaires"</strong></h5>
+              <% if @user.otc_reviews.size >= 1 %>
+                <% @user.otc_reviews.sort_by(&:updated_at).reverse.each do |review| %>
+                  <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
+                <% end %>
+              <% else %>
+                <p>Pas encore de commentaire rédigé à propos d'une réservation réalisée par <%= @user.first_name %></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="box hidden" id="user-recommendations">
-        <div class="header-box">
-          <div class="frame-header">
-            <h4 class="margin-none">Recommandations</h4>
+        <div class="panel panel-default margin-top-15 padding-none">
+          <div class="panel-heading">
+            <h4>Recommandations</h4>
           </div>
-        </div>
-        <div class="body-box">
-          <div class="white-bg frame-body">
+          <div class="white-bg panel-body">
             <p><b>Lovely hood est basée sur la confiance et la réputation.</b> Nous vous conseillons vivement de demander des recommandations auprès de votre réseau personnel. Elles apparaitront sur votre profil, et aideront votre communauté à mieux vous connaitre.</p>
             <p>Pas encore de recommandations</p>
           </div>
@@ -232,6 +239,10 @@
     $(document).ready(function() {
       if(window.location.hash == "#my-trust") {
       showTrust();
+      }
+
+      if(window.location.hash == "#my-pic") {
+      showPic();
       }
 
       $('.edit-link').on('focus', function(e) {

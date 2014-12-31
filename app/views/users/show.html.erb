@@ -1,24 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="white-bg frame padding-none">
-        <% if @user.picture_file_name %>
-          <%= image_tag(@user.picture.url(:medium), { class: "img img-profile" }) %>
-        <% else %>
-          <%= image_tag "logo.png", class: "img bg-color" %>
-        <% end %>
+      <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
+        <div class="panel-body padding-none border-none transparent-bg">
+
+          <% if current_user == @user %>
+            <%= link_to edit_user_path(current_user, anchor: "my-pic") do %>
+              <% if @user.picture_file_name %>
+                <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <% else %>
+                <%= image_tag "logo.png", class: "img-thumbnail transparent-bg" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <% if @user.picture_file_name %>
+              <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
+            <% else %>
+              <%= image_tag "logo.png", class: "img-thumbnail transparent-bg" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-      <div class="header-box">
-        <div class="frame-header">
-          <h4 class="margin-none">
-            <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "nice-link" do %>
-            Vérifications
+
+      <div class="panel panel-default margin-20-30 padding-none">
+        <div class="panel-heading">
+          <h4>
+            <% if current_user == @user %>
+              <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "nice-link" do %>
+              Vérifications
+              <% end %>
+            <% else %>
+              Vérifications
             <% end %>
           </h4>
         </div>
-      </div>
-      <div class="body-box">
-        <div class="white-bg frame-body">
+        <div class="panel-body">
           <% if current_user.identity_verified %>
             <p><i class="fa fa-check"></i> Identité vérifiée</p>
           <% else %>
@@ -34,17 +50,20 @@
           <% end %>
         </div>
       </div>
-      <div class="header-box">
-        <div class="frame-header">
-          <h4 class="margin-none">
-            <%= link_to mine_path, class: "nice-link" do %>
-              Annonces (<%= @user.offers.count %>)
+
+      <div class="panel panel-default margin-20-30 padding-none">
+        <div class="panel-heading">
+          <h4>
+            <% if current_user == @user %>
+              <%= link_to mine_path, class: "nice-link" do %>
+                Annonces (<%= @user.offers.count %>)
+              <% end %>
+            <% else %>
+              Annonces
             <% end %>
           </h4>
         </div>
-      </div>
-      <div class="body-box">
-        <div class="white-bg frame-body">
+        <div class="panel-body">
           <% if @user.offers.count == 0 %>
             <%= link_to "Publier une annonce", new_offer_path %>
           <% else %>
@@ -82,6 +101,7 @@
         </div>
       </div>
     </div>
+
     <div class="col-sm-9">
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>

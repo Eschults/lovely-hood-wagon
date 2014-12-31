@@ -1,24 +1,30 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <div class="header-box">
-        <div class="frame-header">
-          <h2 class="margin-none">
-            Commentaire : <%= @booking.offer.nature %>
-            <% if current_user == @booking.user %>
-               (<%= @booking.offer.user.first_name %>)
-            <% else %>
-               (<%= @booking.user.first_name %>)
-            <% end %>
+      <div class="panel panel-default margin-top-15 padding-none">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-3 text-right">
+              <h4>Commentaire : </h4>
+            </div>
+            <div class="col-sm-9 text-left">
+              <h4>
+                <%= @booking.offer.nature %>
+                <% if current_user == @booking.user %>
+                   (<%= @booking.offer.user.first_name %>)
+                <% else %>
+                   (<%= @booking.user.first_name %>)
+                <% end %>
+              </h4>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="body-box">
-        <div class="form-horizontal white-bg frame-body">
+        <div class="panel-body form-horizontal">
           <%= form_for([@booking, @review], method: :put, url: update_booking_review_path(@booking, @review), html: { id: "edit-review" }) do |f| %>
 
             <div class="form-group">
-              <%= f.label :communication_rating, "Communication :", class: "col-sm-4 control-label" %>
-              <div class="col-sm-8">
+              <%= f.label :communication_rating, "Communication :", class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
                 <%= f.hidden_field :communication_rating, id: "communication" %>
                 <ul class="communication_rating list-unstyle list-inline">
                   <% (1..5).each do |i| %>
@@ -29,8 +35,8 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :punctuality_rating, "Ponctualité :", class: "col-sm-4 control-label" %>
-              <div class="col-sm-8">
+              <%= f.label :punctuality_rating, "Ponctualité :", class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
                 <%= f.hidden_field :punctuality_rating, id: "punctuality" %>
                 <ul class="punctuality_rating list-unstyle list-inline">
                   <% (1..5).each do |i| %>
@@ -49,8 +55,8 @@
             <% end %>
 
             <div class="form-group">
-              <%= f.label :recommendation, "Recommandation :", class: "col-sm-4 control-label" %>
-              <div class="col-sm-8">
+              <%= f.label :recommendation, "Recommandation :", class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
                 <%= f.hidden_field :recommendation, id: "recommendation" %>
                 <ul class="recommendation list-unstyle list-inline">
                   <li class="recommendation-thumbs" id="thumbs-up"><i class="fa fa-thumbs-up"></i></li>
@@ -60,9 +66,9 @@
             </div>
 
             <div class="form-group margin-btm-none">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-9">
                 <%= f.submit "Terminer", class: "btn btn-primary" %>
               </div>
             </div>

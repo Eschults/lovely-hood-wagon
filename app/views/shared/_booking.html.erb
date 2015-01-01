@@ -23,6 +23,8 @@
               <p>
                 <% if booking.start_date == Date.today %>
                   Aujourd'hui
+                <% elsif booking.start_date >= Date.today %>
+                  Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
                 <% else %>
                   Il y a  <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong>
                 <% end %>
@@ -32,6 +34,8 @@
               <p>
                 <% if booking.start_date == Date.today %>
                   Aujourd'hui
+                <% elsif booking.start_date >= Date.today %>
+                  Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
                 <% else %>
                   Il y a <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong>
                 <% end %>

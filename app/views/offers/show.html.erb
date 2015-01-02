@@ -70,7 +70,23 @@
     <div class="col-sm-9">
       <div class="offer">
         <h1><%= @offer.nature %></h1>
-        <p><%= @offer.user.street_name.capitalize %>, <%= @offer.user.zip_code %> (Pas encore de revues)</p>
+        <p>
+          <%= @offer.user.street_name.capitalize %>, <%= @offer.user.zip_code %>
+          &nbsp;&nbsp;&nbsp;
+          <% if @offer.cto_reviews.size.to_i >= 1 %>
+            <%= link_to("#comments", {class: "link-unstyled"}) do %>
+              <% @offer.average_score.round.times do %>
+                <i class="fa fa-star small-star-gold"></i>
+              <% end %>
+              <% (5 - @offer.average_score.round).times do %>
+                <i class="fa fa-star small-star"></i>
+              <% end %>
+              (<%= @offer.cto_reviews.size.to_i %>)
+            <% end %>
+          <% else %>
+            (Pas encore de commentaires)
+          <% end %>
+        </p>
         <p><%= @offer.description %></p>
       </div>
       <div class="prices">
@@ -95,14 +111,14 @@
             <% end %>
           <% end %>
       </div>
-      <div class="reviews">
+      <div class="reviews" id="comments">
         <% if @offer.cto_reviews.size >= 1 %>
           <div class="row">
             <div class="col-xs-3">
               <h4><strong><%= pluralize(@offer.cto_reviews.size.to_i, "commentaire")%></strong></h4>
             </div>
             <div class="col-xs-3 text-right">
-              <h4 class="gray-lighter">
+              <h4 class="gray-light ">
                 <% @offer.average_score.round.times do %>
                   <i class="fa fa-star rating-star-highlight"></i>
                 <% end %>
@@ -124,7 +140,7 @@
                 <p>Qualité/ prix : </p>
               </div>
               <div class="col-xs-3 text-right">
-                <p class="gray-lighter">
+                <p class="gray-light">
                   <% @offer.communication_score.round.times do %>
                     <i class="fa fa-star small-star-gold"></i>
                   <% end %>
@@ -133,7 +149,7 @@
                   <% end %>
                   (<%= @offer.communication_score.round(1) %>)
                 </p>
-                <p class="gray-lighter">
+                <p class="gray-light">
                   <% @offer.punctuality_score.round.times do %>
                     <i class="fa fa-star small-star-gold"></i>
                   <% end %>
@@ -142,7 +158,7 @@
                   <% end %>
                   (<%= @offer.punctuality_score.round(1) %>)
                 </p>
-                <p class="gray-lighter">
+                <p class="gray-light">
                   <% @offer.quality_price_score.round.times do %>
                     <i class="fa fa-star small-star-gold"></i>
                   <% end %>

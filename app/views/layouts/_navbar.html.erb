@@ -26,6 +26,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
+            <%= link_to offers_path do %>
+              <i class="fa fa-home"></i> Annonces
+            <% end %>
+          </li>
+          <li>
             <%= link_to conversations_path do %>
               <i class="fa fa-envelope"></i> Messages
               <% if current_user.unread_conversations > 0 %>

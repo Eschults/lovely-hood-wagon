@@ -344,6 +344,10 @@ input,
   color: $gray-lighter;
 }
 
+.gray-light {
+  color: lighten($gray-light, 20%);
+}
+
 .margin-top-15 {
   margin-top: 15px;
 }

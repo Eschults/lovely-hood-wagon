@@ -20,6 +20,7 @@ $gray-lighter: lighten($gray-base, 85%);
 @import "navbar";
 @import "footer";
 @import "algolia";
+@import "fa-placeholder";
 // @import "home";
 
 $bg-color: rgba(240, 240, 240, 1);
@@ -61,7 +62,7 @@ a:focus {
 }
 
 .white-bg {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 input:focus {
@@ -352,6 +353,14 @@ input,
   margin-top: 15px;
 }
 
+.margin-top-13 {
+  margin-top: 13px;
+}
+
+.margin-btm-13 {
+  margin-bottom: 13px;
+}
+
 .margin-top-6 {
   margin-top: 6px;
 }
@@ -510,6 +519,11 @@ a.disabled {
 .offer-stream-box {
   padding: 15px;
   border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.side-borders {
+  border-left: 1px solid rgb(220, 220, 220);
+  border-right: 1px solid rgb(220, 220, 220);
 }
 
 .offer-stream-box ul > li > a {
@@ -675,3 +689,4 @@ a.disabled {
 .border-none {
   border: none;
 }
+

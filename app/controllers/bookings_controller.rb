@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
       if current_user.conversation_with(lh)
         @conversation = current_user.conversation_with(lh)
         @message = Message.new(
-          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
+          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )
         @message.writer = lh
         @message.conversation = @conversation
@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
         @conversation.user1 = lh
         @conversation.user2 = @offer.user
         @message = Message.new(
-          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
+          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )
         @message.writer = lh
         @message.conversation = @conversation

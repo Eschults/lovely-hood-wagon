@@ -26,6 +26,8 @@ class OffersController < ApplicationController
       if @offer.one_price
         if (@offer.type_of_offer == "rent" || @offer.type_of_offer == "sell") && @offer.picture_file_name
           redirect_to offer_path(@offer)
+        elsif (@offer.type_of_offer == "service")
+          redirect_to offer_path(@offer)
         else
           flash[:alert] = "Ajoutez une photo"
           render :new

@@ -3,6 +3,7 @@ class ConversationsController < ApplicationController
   before_action :set_offer, only: [:new, :create]
   after_action :verify_policy_scoped, :only => :index
   respond_to :js, only: :reply
+  layout "inbox", only: :show
 
   def index
     @conversations = policy_scope(Conversation)

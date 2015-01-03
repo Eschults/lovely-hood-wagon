@@ -72,7 +72,7 @@ $profile-border-width: 2px;
 .navbar-wagon .navbar-nav > li > a:hover,
 .navbar-wagon .navbar-nav > li > a:focus {
   color: $color;
-  font-weight: bold;
+  font-weight: 700;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
@@ -146,7 +146,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 #brand {
   font-family: 'Pacifico';
-  color: $color;
+  color: white;
   font-size: 30px;
   margin-left: 15px;
 }
@@ -188,19 +188,74 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   z-index: -1;
 }
 
+@media screen and (min-width: 1200px) {
+  .appear {
+    display: none;
+  }
+
+  .disappear {
+    display: visible;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .appear {
+    display: visible;
+  }
+
+  .navbar-wagon .navbar-nav > li > .dropdown-menu:before {
+    bottom: 162px; // 28 * nb of lines in dropdown
+  }
+
+  .nav > li.disappear {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar-wagon .navbar-form {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #logo {
     height: 50px;
   }
-  .navbar-wagon .navbar-brand,
-   {
+
+  .navbar-wagon .navbar-brand {
     display: block;
     color: $color;
     padding-top: 0;
     padding-bottom: 0;
   }
+
+  .navbar-wagon .navbar-header {
+    padding-bottom: 5px;
+  }
+
+  .navbar-wagon .navbar-form {
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+  }
+
+  .navbar-wagon ul li {
+    text-align: center;
+  }
+
+  .navbar-wagon .navbar-nav > li > .dropdown-menu:before {
+    display: none;
+  }
 }
 
 .navbar-bg-color {
   background-color: $bg;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
 }

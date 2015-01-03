@@ -30,14 +30,14 @@
         </form>
 
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="disappear">
             <%= link_to offers_path do %>
-              <i class="fa fa-home"></i> Annonces
+              <i class="fa fa-home"></i> <strong>Annonces</strong>
             <% end %>
           </li>
-          <li>
-            <%= link_to conversations_path do %>
-              <i class="fa fa-envelope"></i> Messages
+          <li class="disappear">
+            <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+              <i class="fa fa-envelope"></i> <strong>Messages</strong>
               <% if current_user.unread_conversations > 0 %>
                 <span class="badge">
                   <%= current_user.unread_conversations %>
@@ -70,6 +70,16 @@
               <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
               <li><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
+              <li class="appear">
+                <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+                  Messages
+                  <% if current_user.unread_conversations > 0 %>
+                    <span class="badge">
+                      <%= current_user.unread_conversations %>
+                    </span>
+                  <% end %>
+                <% end %>
+              </li>
               <li><%= link_to 'Deconnexion', destroy_user_session_path, method: 'delete' %></li>
             </ul>
           </li>

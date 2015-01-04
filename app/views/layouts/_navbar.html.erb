@@ -30,19 +30,22 @@
         </form>
 
         <ul class="nav navbar-nav navbar-right">
-          <li class="disappear">
+          <li class="disappear middle-weight">
             <%= link_to offers_path do %>
-              <i class="fa fa-home"></i> <strong>Annonces</strong>
+              <i class="fa fa-home"></i> Annonces
             <% end %>
           </li>
-          <li class="disappear">
-            <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
-              <i class="fa fa-envelope"></i> <strong>Messages</strong>
-              <% if current_user.unread_conversations > 0 %>
-                <span class="badge">
-                  <%= current_user.unread_conversations %>
-                </span>
+          <li class="disappear middle-weight">
+            <% if current_user.conversations.size > 0 %>
+              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+                <i class="fa fa-envelope"></i> Messages
+                <% if current_user.unread_conversations > 0 %>
+                  <span class="badge">
+                    <%= current_user.unread_conversations %>
+                  </span>
+                <% end %>
               <% end %>
+            <% else %>
             <% end %>
           </li>
           <li class="dropdown">
@@ -71,13 +74,16 @@
               <li><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
               <li class="appear">
-                <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
-                  Messages
-                  <% if current_user.unread_conversations > 0 %>
-                    <span class="badge">
-                      <%= current_user.unread_conversations %>
-                    </span>
+                <% if current_user.conversations.size > 0 %>
+                  <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+                    Messages
+                    <% if current_user.unread_conversations > 0 %>
+                      <span class="badge">
+                        <%= current_user.unread_conversations %>
+                      </span>
+                    <% end %>
                   <% end %>
+                <% else %>
                 <% end %>
               </li>
               <li><%= link_to 'Deconnexion', destroy_user_session_path, method: 'delete' %></li>
@@ -125,7 +131,7 @@
                     '</a>' +
                   '</div>' +
                 '</div>' +
-                '<div class="col-xs-10 padding-left-30">' +
+                '<div class="col-xs-9 padding-left-30">' +
                   '<h5 class="margin-none"><a href="/offers/' + hit.id + '" class="offer-nature-link">' + hit._highlightResult.nature.value + '</a></h5>' +
                   '<p class="small margin-top-10">' +
                     '<a href="/offers/' + hit.id + '" class="link-unstyled">' +
@@ -133,8 +139,8 @@
                     '</a>' +
                   '</p>' +
                 '</div>' +
-                '<div class="col-xs-1 text-right padding-top-15 padding-left-none padding-right-20">' +
-                  '<h5 class="margin-none price">' +
+                '<div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">' +
+                  '<h5 class="margin-none text-right price">' +
                     hit.one_price_int + '€' +
                   '</h5>' +
                 '</div>' +

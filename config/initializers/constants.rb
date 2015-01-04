@@ -28,6 +28,8 @@ NATURES = {
     'Landeau',
     'Lit parapluie',
     'Long board',
+    'Manteau de ski',
+    'Combinaison de ski',
     'Micro',
     'Microscope',
     'Minerve',

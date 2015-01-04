@@ -459,6 +459,7 @@ input,
   padding: 10px;
   background-color: $bg-color;
   border-bottom: 1px solid rgb(220, 220, 220);
+  float: bottom;
 }
 
 .block {
@@ -709,7 +710,7 @@ a.disabled {
   border-bottom-left-radius: 0;
 }
 
-.panel-body-conversation > div {
+.conversation > .panel-default > .panel-body-conversation > .col-xs-12 {
   float: bottom;
 }
 

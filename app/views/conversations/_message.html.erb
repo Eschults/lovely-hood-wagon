@@ -1,4 +1,4 @@
-<div class="message white-bg col-xs-12">
+<div class="pull-down message white-bg col-xs-12">
   <div class="message-date">
     <%= message.created_at.strftime("%A, %e %B - %H:%M") %>
   </div>
@@ -11,8 +11,7 @@
       <% end %>
     </div>
     <div class="col-xs-11 padding-left-10">
-      <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "message-profile-link" %></h5>
-            <p class=""><%= simple_format message.content %></p>
+      <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "message-profile-link" %></h5><p class=""><%= simple_format message.content %></p>
     </div>
   </div>
 </div>

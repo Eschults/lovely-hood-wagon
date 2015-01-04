@@ -31,12 +31,12 @@
           </h3>
         </div>
         <div class="panel-body panel-body-conversation padding-none">
-          <div id="messages">
+          <div² id="messages">
             <% @conversation.messages.sort_by(&:updated_at).each do |message| %>
               <%= render "message", message: message %>
             <% end %>
           </div>
-          <div class="col-xs-12 reply padding-none">
+          <div class="col-xs-12 pull-down reply padding-none">
             <%= form_for([@conversation, @message], method: :put, remote: true, url: reply_conversation_path(@conversation)) do |f| %>
               <div class="form-group">
                 <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
@@ -51,3 +51,19 @@
     </div>
   </div>
 </div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      var array = $('.pull-down');
+      array.each(function(index) {
+        var height = 0;
+        for(j = 0; j <= index; j++) {
+          height += array[j].height();
+        }
+        var margin = $(this).parent().height() - height;
+        $(this).css('margin-top', margin);
+      });
+    });
+  <% end %>
+<% end %>

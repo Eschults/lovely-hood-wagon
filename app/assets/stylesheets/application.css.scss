@@ -20,6 +20,7 @@ $gray-lighter: lighten($gray-base, 85%);
 @import "navbar";
 @import "footer";
 @import "algolia";
+@import "fa-placeholder";
 // @import "home";
 
 $bg-color: rgba(240, 240, 240, 1);
@@ -35,7 +36,8 @@ body {
   height: 100%;
 }
 
-#wrapper {
+#wrapper,
+#wrapper-inbox {
   padding-top: 60px;
   min-height: 100%;
   position:relative;
@@ -61,7 +63,7 @@ a:focus {
 }
 
 .white-bg {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 input:focus {
@@ -113,6 +115,10 @@ input,
 
 .margin-btm-5 {
   margin-bottom: 5px;
+}
+
+.margin-btm-3 {
+  margin-bottom: 3px;
 }
 
 .margin-top-10 {
@@ -326,7 +332,7 @@ input,
 
 .search-bar {
   padding: 15px;
-  border-bottom: 1px solid rgb(220, 220, 220);
+  // border-bottoms: 1px solid rgb(220, 220, 220);
 }
 
 .small {
@@ -350,6 +356,14 @@ input,
 
 .margin-top-15 {
   margin-top: 15px;
+}
+
+.margin-top-13 {
+  margin-top: 13px;
+}
+
+.margin-btm-13 {
+  margin-bottom: 13px;
 }
 
 .margin-top-6 {
@@ -435,20 +449,28 @@ input,
 }
 
 .message {
-  border-bottom: 1px solid rgb(220, 220, 220);
+  border-top: 1px solid rgb(240, 240, 240);
   padding: 5px;
 }
 
 .message-date {
+  margin-top: -15px;
   font-size: 13px;
   text-align: center;
   color: $gray-lighter;
 }
 
+.message-content {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
 .reply {
   padding: 10px;
   background-color: $bg-color;
-  border-bottom: 1px solid rgb(220, 220, 220);
+  border-top: 1px solid rgb(220, 220, 220);
+  border-left: 1px solid rgb(220, 220, 220);
+  border-right: 1px solid rgb(220, 220, 220);
 }
 
 .block {
@@ -490,7 +512,8 @@ input,
 
 .conversation-preview {
   padding: 10px;
-  border-bottom: 1px solid rgb(220, 220, 220);
+  width: 100%;
+  border-bottom: 1px solid rgb(240, 240, 240);
 }
 
 .unread-messages {
@@ -509,7 +532,12 @@ a.disabled {
 
 .offer-stream-box {
   padding: 15px;
-  border-bottom: 1px solid rgb(220, 220, 220);
+  border-top: 1px solid rgb(220, 220, 220);
+}
+
+.side-borders {
+  border-left: 1px solid rgb(220, 220, 220);
+  border-right: 1px solid rgb(220, 220, 220);
 }
 
 .offer-stream-box ul > li > a {
@@ -558,6 +586,11 @@ a.disabled {
 
 .padding-left-none {
   padding-left: 0;
+}
+
+.padding-sides-5 {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .margin-sides-15 {
@@ -652,6 +685,13 @@ a.disabled {
 }
 
 
+.panel {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .panel-default > .panel-heading {
   background-color: white;
   color: rgb(119, 119, 119);
@@ -663,9 +703,17 @@ a.disabled {
   font-weight: bold;
 }
 
+.panel-default > .panel-heading h4.margin-top-10 {
+  margin-top: 12px;
+}
+
 .panel-default {
   font-family: Helvetica;
-  border-bottom: none;
+  // border-bottom: none;
+}
+
+#panel-inbox {
+  border-right: 1px solid rgb(240, 240, 240);
 }
 
 .panel-body {
@@ -674,4 +722,62 @@ a.disabled {
 
 .border-none {
   border: none;
+}
+
+.border-btm-none {
+  border-bottom: none;
+}
+
+.panel-default > .border-btm-light {
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.total-width {
+  width: 100%;
+}
+
+.panel-body-inbox {
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.panel-body-conversation {
+  height: 600px;
+  overflow-y: scroll;
+  border-left: none;
+  border-bottom-left-radius: 0;
+}
+
+.inbox > .panel-default > .panel-heading {
+  border-top-right-radius: 0;
+  border-right: none;
+}
+
+.conversation > .panel-default > .panel-heading {
+  border-top-left-radius: 0;
+}
+
+.container > .row > .inbox {
+  padding-right: 0;
+  border-right: none;
+}
+
+.container > .row > .conversation {
+  padding-left: 0;
+}
+
+#no-highlight:hover {
+  background-color: white;
+  cursor: mouse;
+}
+
+#panel-conversation {
+  border-left: none;
+  border-bottom-left-radius: 0;
+}
+
+.img-inbox {
+  padding: 0;
+  border-radius: 0;
 }

@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none">
-        <div class="panel-heading">
-          <h3>Mes annonces</h3>
+        <div class="panel-heading border-btm-none">
+          <h4>Mes annonces</h4>
         </div>
         <div class="panel-body padding-none">
           <% current_user.offers.sort_by(&:updated_at).reverse.each do |offer| %>

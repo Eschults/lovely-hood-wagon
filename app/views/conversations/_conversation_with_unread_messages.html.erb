@@ -1,5 +1,5 @@
 <a href="<%= conversation_path(conversation, anchor: "message-input") %>", class="conversation-preview-link">
-  <div class="conversation-preview unread-messages">
+  <div class="conversation-preview unread-messages"  id="<%= "conversation_#{conversation.id}" %>">
     <div class="row">
       <div class="col-xs-3">
         <% if conversation.other_user(current_user).picture_file_name %>
@@ -10,7 +10,11 @@
       </div>
       <div class="col-xs-6">
         <p class="margin-btm-5"><strong><%= conversation.other_user(current_user).first_name %></strong></p>
-        <%= simple_format(conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content) %>
+        <% if conversation.user1.first_name == "Lovely hood" %>
+          <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..50] + "..." %>
+        <% else %>
+          <%= simple_format(conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content) %>
+        <% end %>
       </div>
       <div class="col-xs-1">
         <span class="badge margin-top-15">

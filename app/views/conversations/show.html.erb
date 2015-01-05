@@ -1,31 +1,63 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <div class="panel panel-default margin-top-15 padding-none">
-        <div class="panel-heading">
-          <h3>
-            Conversation avec
+    <div class="col-xs-4 inbox">
+      <div class="panel panel-default margin-top-15 padding-none white-bg" id="panel-inbox">
+        <div class="panel-heading border-btm-light">
+          <h4>Boîte de réception</h4>
+        </div>
+        <div class="panel-body padding-none panel-body-inbox ">
+          <% current_user.conversations.sort_by { |c| c.messages.last.updated_at }.reverse.each do |conversation| %>
+            <% if conversation.messages.select{ |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
+              <%= render "conversation_with_unread_messages", conversation: conversation %>
+            <% else %>
+              <%= render "conversation", conversation: conversation %>
+            <% end %>
+          <% end %>
+          <div class="conversation-preview" id="no-highlight">
+            <p class="small margin-btm-3 gray-lighter text-center">
+              Fin des messages
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-xs-8 conversation">
+      <div class="panel panel-default margin-top-15 padding-none" id="panel-conversation">
+        <div class="panel-heading border-btm-light">
+          <h4>
             <% if @conversation.user1 == current_user %>
               <%= @conversation.user2.first_name %>
             <% else %>
               <%= @conversation.user1.first_name %>
             <% end %>
-          </h3>
+          </h4>
         </div>
-        <div class="panel-body padding-none">
+        <div class="panel-body panel-body-conversation padding-none">
           <div id="messages">
+            <div class="stick-down-target">
+              <p class="small gray-lighter text-center padding-15">
+                Conversation avec
+                <% if @conversation.user1 == current_user %>
+                  <%= @conversation.user2.first_name %>
+                <% else %>
+                  <%= @conversation.user1.first_name %>
+                <% end %> débutée le <%= @conversation.created_at.strftime("%A, %e %B à %H:%M") %>
+              </p>
+            </div>
             <% @conversation.messages.sort_by(&:updated_at).each do |message| %>
               <%= render "message", message: message %>
             <% end %>
           </div>
-          <div class="col-xs-12 reply padding-none">
+          <div class="col-xs-12 stick-down-target reply padding-none">
             <%= form_for([@conversation, @message], method: :put, remote: true, url: reply_conversation_path(@conversation)) do |f| %>
               <div class="form-group">
                 <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
               </div>
               <div class="form-group margin-btm-none">
                 <%= f.submit "Envoyer", class: "btn btn-primary" %>
-                <%= link_to "Retour aux messages", conversations_path, class: "btn btn-success margin-left-10" %>
               </div>
             <% end %>
           </div>
@@ -34,3 +66,12 @@
     </div>
   </div>
 </div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      stickDown();
+      stylizeConversationPreview();
+    });
+  <% end %>
+<% end %>

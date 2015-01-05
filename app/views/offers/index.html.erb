@@ -1,7 +1,7 @@
 <div class="map-box bg-color" id="map-box">
   <div class="panel panel-default white-bg">
     <div class="panel-heading">
-      <h3>Mon quartier</h3>
+      <h4>Mon quartier</h4>
     </div>
     <div class="panel-body padding-none">
       <div id="map"></div>
@@ -12,7 +12,7 @@
 <div class="bg-color" id="sidebar">
   <div class="panel panel-default white-bg">
     <div class="panel-heading">
-      <h3>Annonces</h3>
+      <h4>Annonces</h4>
       <div class="btn-group float-right margin-top-neg-26">
         <ul class="list-unstyled list-inline">
           <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
@@ -78,12 +78,12 @@
             </a>
           </div>
         </div>
-        <div class="col-xs-10 padding-left-30">
+        <div class="col-xs-9 padding-left-30">
           <h4 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
           <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}">Voir l'annonce complète<a></p>
         </div>
-        <div class="col-xs-1 text-right padding-top-15 padding-left-none padding-right-20">
-          <h3 class="margin-none price">
+        <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
+          <h3 class="margin-none text-right price">
             {{#daily_price}}
               {{ daily_price }}€
             {{/daily_price}}

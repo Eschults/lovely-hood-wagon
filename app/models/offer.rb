@@ -26,6 +26,10 @@ class Offer < ActiveRecord::Base
       one_price_int
     end
 
+    add_attribute :one_price do
+      one_price_int
+    end
+
     add_attribute :picture_url do
       picture.url(:medium)
     end
@@ -35,6 +39,15 @@ class Offer < ActiveRecord::Base
         nil
       else
         true
+      end
+    end
+
+    add_attribute :icon_img do
+      if type_of_offer == "sell"
+        '<img src="../assets/sell.png" width="32" />'
+      else
+        '<img src="../assets/' + nature + '.png" width="32" />'
+
       end
     end
   end

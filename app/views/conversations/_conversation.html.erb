@@ -1,5 +1,5 @@
 <a href="<%= conversation_path(conversation, anchor: "message-input") %>", class="conversation-preview-link">
-  <div class="conversation-preview">
+  <div class="conversation-preview" id="<%= "conversation_#{conversation.id}" %>">
     <div class="row">
       <div class="col-xs-3">
         <% if conversation.other_user(current_user).picture_file_name %>
@@ -10,10 +10,14 @@
       </div>
       <div class="col-xs-6">
         <p class="margin-btm-5"><strong><%= conversation.other_user(current_user).first_name %></strong></p>
-        <%= simple_format(conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content) %>
+        <% if conversation.user1.first_name == "Lovely hood" %>
+          <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..50] + "..." %>
+        <% else %>
+          <%= simple_format(conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content) %>
+        <% end %>
       </div>
       <div class="col-xs-3">
-        <p class="small gray-lighter"><%= conversation.messages.sort_by(&:updated_at).last.created_at.strftime("%e %B") %></p>
+        <p class="small gray-lighter text-right"><%= conversation.messages.sort_by(&:updated_at).last.created_at.strftime("%e %b") %></p>
       </div>
     </div>
   </div>

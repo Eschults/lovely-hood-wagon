@@ -1,0 +1,82 @@
+<div class="booking">
+  <div class="row">
+    <div class="col-xs-2 text-center">
+      <div class="img-nature-box">
+        <%= link_to offer_path(booking.offer), class: "link-unstyled" do %>
+          <% if booking.offer.type_of_offer == "sell" %>
+            <%= image_tag "sell.png", width: "60" %>
+          <% else %>
+            <%= image_tag "#{booking.offer.nature}.png", width: "60" %>
+          <% end %>
+      </div>
+      <div class="user-name">
+          <%= booking.offer.nature %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-10">
+      <div class="booking-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- si c'est un objet à louer, on display les dates -->
+            <% if booking.offer.type_of_offer == "rent" %>
+              <p>
+                Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
+                (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
+              </p>
+            <!-- si c'est un service, on display les dates + heures -->
+            <% elsif booking.offer.type_of_offer == "service" %>
+              <p>
+                  Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
+                  (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
+              </p>
+            <!-- si c'est une vente, on display la date de rdv -->
+            <% else %>
+              <p><strong>Rendez-vous :</strong> le <%= booking.start_date.strftime("%d %b") %>.</p>
+            <% end %>
+
+            <% if current_user == booking.user %>
+              <p>
+                <% if booking.accepted && booking.offer.type_of_offer == "service" %>
+                  Réservation acceptée par <%= booking.offer.user.first_name %>.
+                <% elsif booking.accepted %>
+                  Réservation acceptée. Voir <%= link_to "l'itinéraire", offer_booking_path(booking.offer, booking) %> pour vous rendre chez <%= booking.offer.user.first_name %>.
+                <% else %>
+                 En attente de la réponse de <%= booking.offer.user.first_name %>
+                <% end %>
+               </p>
+            <% else %>
+              <p>
+                <% if booking.accepted && booking.offer.type_of_offer == "service" %>
+                  Réservation acceptée. Voir <%= link_to "l'itinéraire", offer_booking_path(booking.offer, booking) %> pour vous rendre chez <%= booking.user.first_name %>.
+                <% elsif booking.accepted %>
+                  Réservation acceptée, vous allez gagner <%= booking.booking_price %>€.
+                <% else %>
+                  Vous n'avez pas répondu à la demande de <%= booking.user.first_name %>. <%= link_to "Répondre à la demande", edit_offer_booking_path(booking.offer, booking) %>
+                <% end %>
+              </p>
+            <% end %>
+
+          </div>
+        </div>
+        <div class="booking-footer">
+          <div class="booking-date">
+            <%= booking.created_at.strftime("%b %Y") %>
+          </div>
+          <div class="user-link">
+            <% if booking.offer.user == current_user %>
+              <%= link_to user_path(booking.user) do %>
+                <%= booking.user.first_name %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(booking.offer.user) do %>
+                <%= booking.offer.user.first_name %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,7 +24,7 @@
     <div class="col-sm-9">
       <div class="booking">
         <h1>Réservation de <%= @booking.offer.nature %></h1>
-        <p><strong>Envoyée le : </strong><%= @booking.created_at.strftime("%d %B %Y") %></p>
+        <p><strong>Envoyée le : </strong><%= @booking.created_at.strftime("%d %b %Y") %></p>
         <p><strong>Statut : </strong>
           <% if @booking.accepted %>
             Félicitations, votre réservation a été acceptée !
@@ -36,11 +36,11 @@
         </p>
         <% if @booking.accepted %>
           <% if @booking.offer.type_of_offer == "rent" %>
-            <p><strong>Réservation : </strong> du <%= @booking.start_date.strftime("%d %B") %> au <%= @booking.end_date.strftime("%d %B") %>.</p>
+            <p><strong>Réservation : </strong> du <%= @booking.start_date.strftime("%d %b") %> au <%= @booking.end_date.strftime("%d %b") %>.</p>
           <% elsif @booking.offer.type_of_offer == "service" %>
-            <p><strong>Réservation : </strong> du <%= @booking.start_date.strftime("%d %B") %> à <%= @booking.start_hour.strftime("%H:%M") %> au <%= @booking.end_date.strftime("%d %B") %> à <%= @booking.end_hour.strftime("%H:%M") %>.</p>
+            <p><strong>Réservation : </strong> du <%= @booking.start_date.strftime("%d %b") %> à <%= @booking.start_hour.strftime("%H:%M") %> au <%= @booking.end_date.strftime("%d %B") %> à <%= @booking.end_hour.strftime("%H:%M") %>.</p>
           <% else %>
-            <p><strong>Rendez-vous : </strong> le <%= @booking.start_date.strftime("%d %B") %>.</p>
+            <p><strong>Rendez-vous : </strong> le <%= @booking.start_date.strftime("%d %b") %>.</p>
           <% end %>
         <% end %>
         <p>Revoir l'<%= link_to "annonce", offer_path(@booking.offer) %></p>

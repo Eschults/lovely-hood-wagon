@@ -88,7 +88,7 @@
         </div>
         <div class="booking-footer">
           <div class="booking-date">
-            <%= booking.created_at.strftime("%B %Y") %>
+            <%= booking.created_at.strftime("%b %Y") %>
           </div>
           <div class="user-link">
             <% if booking.offer.user == current_user %>

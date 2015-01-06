@@ -86,17 +86,39 @@ class User < ActiveRecord::Base
     return output
   end
 
-  def passed_bookings_to_validate
+  def ongoing_bookings
     client_bookings = []
     bookings.each do |booking|
-      if booking.start_date <= Date.today && booking.accepted && (booking.client_validation.nil? || booking.owner_validation.nil?)
+      if booking.end_date > Date.today && booking.start_date <= Date.today && booking.accepted
         client_bookings << booking
       end
     end
     owner_bookings = []
     offers.each do |offer|
       offer.bookings.each do |booking|
-        if booking.start_date <= Date.today && booking.accepted && booking.owner_validation.nil?
+        if booking.end_date > Date.today && booking.start_date <= Date.today && booking.accepted && booking.owner_validation.nil?
+          owner_bookings << booking
+        end
+      end
+    end
+    {
+      owner: owner_bookings,
+      client: client_bookings
+    }
+
+  end
+
+  def passed_bookings_to_validate
+    client_bookings = []
+    bookings.each do |booking|
+      if booking.end_date <= Date.today && booking.accepted && (booking.client_validation.nil? || booking.owner_validation.nil?)
+        client_bookings << booking
+      end
+    end
+    owner_bookings = []
+    offers.each do |offer|
+      offer.bookings.each do |booking|
+        if booking.end_date <= Date.today && booking.accepted && booking.owner_validation.nil?
           owner_bookings << booking
         end
       end
@@ -110,7 +132,7 @@ class User < ActiveRecord::Base
   def upcoming_cto_bookings
     output = []
     bookings.each do |booking|
-      if booking.start_date > Date.today && booking.accepted
+      if booking.start_date > Date.today && (booking.accepted.nil? || booking.accepted)
         output << booking
       end
     end
@@ -121,7 +143,7 @@ class User < ActiveRecord::Base
     output = []
     offers.each do |offer|
       offer.bookings.each do |booking|
-        if booking.start_date > Date.today && booking.accepted
+        if booking.start_date > Date.today && (booking.accepted.nil? || booking.accepted)
           output << booking
         end
       end

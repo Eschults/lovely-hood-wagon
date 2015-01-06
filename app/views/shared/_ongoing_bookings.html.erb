@@ -1,0 +1,63 @@
+<div class="booking">
+  <div class="row">
+    <div class="col-xs-2 text-center">
+      <div class="img-nature-box">
+        <%= link_to offer_path(booking.offer), class: "link-unstyled" do %>
+          <% if booking.offer.type_of_offer == "sell" %>
+            <%= image_tag "sell.png", width: "60" %>
+          <% else %>
+            <%= image_tag "#{booking.offer.nature}.png", width: "60" %>
+          <% end %>
+      </div>
+      <div class="user-name">
+          <%= booking.offer.nature %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-10">
+      <div class="booking-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <% if booking.offer.type_of_offer == "rent" %>
+              <p>
+                <% if booking.start_date == Date.today %>
+                  Depuis aujourd'hui et jusqu'au <%= booking.end_date.strftime("%d %b") %>.
+                <% else %>
+                  Depuis <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %>.
+                <% end %>
+              </p>
+            <% elsif booking.offer.type_of_offer == "service" %>
+              <p>
+                <% if booking.start_date == Date.today %>
+                  Depuis aujourd'hui et jusqu'au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
+                <% else %>
+                  Depuis <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
+                <% end %>
+              </p>
+            <% end %>
+            <% if current_user == booking.offer.user %>
+              <p>Vous allez gagner <%= booking.booking_price %>€.</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="booking-footer">
+          <div class="booking-date">
+            <%= booking.created_at.strftime("%b %Y") %>
+          </div>
+          <div class="user-link">
+            <% if booking.offer.user == current_user %>
+              <%= link_to user_path(booking.user) do %>
+                <%= booking.user.first_name %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(booking.offer.user) do %>
+                <%= booking.offer.user.first_name %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

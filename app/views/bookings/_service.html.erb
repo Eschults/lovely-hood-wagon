@@ -4,4 +4,4 @@
 
 <p><%= link_to @booking.user.first_name, user_path(@booking.user) %> te sollicite pour un service : <%= @booking.offer.nature %>, du <strong><%= @booking.start_date.strftime("%-d %b %Y") %></strong> à <strong><%= @booking.start_hour.strftime("%H:%M") %></strong> au <strong><%= @booking.end_date.strftime("%-d %b %Y") %></strong> à <strong><%= @booking.end_hour.strftime("%H:%M") %></strong></p>
 
-<p>Vous pourriez gagner : <strong><%= (@booking.end_hour.to_i - @booking.start_hour.to_i) / 3_600 * @booking.offer.hourly_price %>€</strong></p>
+<p>Vous pourriez gagner : <strong><%= @booking.booking_price %>€</strong></p>

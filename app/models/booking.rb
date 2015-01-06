@@ -8,6 +8,22 @@ class Booking < ActiveRecord::Base
 
   validates_presence_of :offer, :user, :start_date
 
+  def booking_price
+    if offer.type_of_offer == "rent"
+      if offer.weekly_price && (end_date - start_date) >= 7
+        (end_date - start_date).to_i * offer.weekly_price.fdiv(7)
+      else
+        (end_date - start_date).to_i * offer.daily_price
+      end
+    elsif offer.type_of_offer == "service"
+      if end_date == start_date
+        (end_hour.to_i - start_hour.to_i) / 3_600 * offer.hourly_price
+      else
+        (((end_hour - Time.new(2000, 01, 01, 0, 0, 0, "+00:00")).to_i + (Time.new(2000, 01, 02, 0, 0, 0, "+00:00") - start_hour).to_i) + (((end_date - start_date).to_i - 1) * 24)) / 3_600 * offer.hourly_price
+      end
+    end
+  end
+
   private
 
   def send_book_email

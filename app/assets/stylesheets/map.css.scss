@@ -154,7 +154,9 @@ a:hover {
 }
 
 .panel-default > .panel-heading {
-  background-color: white;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: lighten(rgb(220, 220, 220), 11%);
   color: rgb(119, 119, 119);
 }
 

@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-xs-7 padding-left-30">
-      <h4 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h4>
+      <h5 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h5>
       <p class="margin-top-10"><%= link_to "Modifier l'annonce", edit_offer_path(offer) %></p>
     </div>
     <% if current_user.verif == 0 %>

@@ -37,8 +37,8 @@
         </div>
         <div class="panel-body panel-body-conversation padding-none">
           <div id="messages">
-            <div class="stick-down-target">
-              <p class="small gray-lighter text-center padding-15">
+            <div class="stick-down-target padding-5">
+              <p class="small gray-lighter text-center">
                 Conversation avec
                 <% if @conversation.user1 == current_user %>
                   <%= @conversation.user2.first_name %>
@@ -75,7 +75,7 @@
         cursorcolor: "#ddd",
         cursoropacitymin: 1,
         background: "#f8f8f8",
-        cursorborder: "1px solid #fff"
+        cursorborder: "1px solid #fff",
       });
       $(".panel-body-inbox").niceScroll({
         cursorwidth: "10px",

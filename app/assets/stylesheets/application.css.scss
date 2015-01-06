@@ -101,6 +101,10 @@ input,
   padding: 15px;
 }
 
+.padding-5 {
+  padding: 5px;
+}
+
 .margin-15 {
   margin: 15px;
 }
@@ -534,7 +538,14 @@ a.disabled {
 
 .offer-stream-box {
   padding: 15px;
+}
+
+.border-top {
   border-top: 1px solid rgb(220, 220, 220);
+}
+
+.border-btm {
+  border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .side-borders {
@@ -744,8 +755,6 @@ a.disabled {
 
 .panel-body-inbox {
   max-height: 600px;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .panel-body-conversation {

@@ -750,7 +750,6 @@ a.disabled {
 
 .panel-body-conversation {
   height: 600px;
-  overflow-y: scroll;
   border-left: none;
   border-bottom-left-radius: 0;
 }
@@ -788,16 +787,3 @@ a.disabled {
   border-radius: 0;
 }
 
-#panel-body-conversation::-webkit-scrollbar {
-  width: 20px;
-}
-#panel-body-conversation::-webkit-scrollbar-track {
-  background-color: #eaeaea;
-  border-left: 1px solid #ccc;
-}
-#panel-body-conversation::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-}
-#panel-body-conversation::-webkit-scrollbar-thumb:hover {
-  background-color: #EEEEEE;
-}

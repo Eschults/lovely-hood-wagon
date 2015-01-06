@@ -22,5 +22,16 @@
   </div>
   <%= javascript_include_tag 'application' %>
   <%= yield :js %>
+  <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      $("body").niceScroll({
+        cursorwidth: "10px",
+        cursorcolor: "#ddd",
+        cursoropacitymin: 1,
+        background: "#f8f8f8",
+        cursorborder: "1px solid #fff"
+      });
+    });
+  <% end %>
 </body>
 </html>

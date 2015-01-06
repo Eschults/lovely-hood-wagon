@@ -13,8 +13,8 @@ class BookingsController < ApplicationController
     lh = User.find_by_first_name("Lovely hood")
     authorize @booking
     if @booking.save
-      if current_user.conversation_with(lh)
-        @conversation = current_user.conversation_with(lh)
+      if @offer.user.conversation_with(lh)
+        @conversation = @offer.user.conversation_with(lh)
         @message = Message.new(
           content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
         )

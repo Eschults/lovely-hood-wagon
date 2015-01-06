@@ -514,6 +514,8 @@ input,
   padding: 10px;
   width: 100%;
   border-bottom: 1px solid rgb(240, 240, 240);
+  max-height: 75px;
+  overflow: hidden;
 }
 
 .unread-messages {
@@ -690,10 +692,14 @@ a.disabled {
   box-shadow: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .panel-default > .panel-heading {
-  background-color: white;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: lighten(rgb(220, 220, 220), 11%);
   color: rgb(119, 119, 119);
 }
 
@@ -780,4 +786,18 @@ a.disabled {
 .img-inbox {
   padding: 0;
   border-radius: 0;
+}
+
+#panel-body-conversation::-webkit-scrollbar {
+  width: 20px;
+}
+#panel-body-conversation::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-left: 1px solid #ccc;
+}
+#panel-body-conversation::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+#panel-body-conversation::-webkit-scrollbar-thumb:hover {
+  background-color: #EEEEEE;
 }

@@ -1,13 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none">
         <div class="panel-heading border-btm-none">
           <h4>Mes annonces</h4>
         </div>
         <div class="panel-body padding-none">
-          <% current_user.offers.sort_by(&:updated_at).reverse.each do |offer| %>
-            <%= render "offer", offer: offer %>
+          <% if current_user.offers.size > 0 %>
+            <% current_user.offers.sort_by(&:updated_at).reverse.each do |offer| %>
+              <%= render "offer", offer: offer %>
+            <% end %>
+          <% else %>
+            <div class="offer-stream-box">
+              <p>Vous n'avez pas encore publié d'annonce.</p>
+              <p><%= link_to "Publier une annonce", new_offer_path %></p>
+            </div>
           <% end %>
         </div>
       </div>

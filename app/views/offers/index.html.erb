@@ -79,11 +79,11 @@
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
-          <h4 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h4>
+          <h5 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h5>
           <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}">Voir l'annonce complète<a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
-          <h3 class="margin-none text-right price">
+          <h4 class="margin-none text-right price">
             {{#daily_price}}
               {{ daily_price }}€
             {{/daily_price}}
@@ -100,7 +100,7 @@
                 {{/hourly_price}}
               {{/weekly_price}}
             {{/daily_price}}
-          </h3>
+          </h4>
           <p class="small">
             {{#daily_price}}
               / jour
@@ -122,7 +122,7 @@
       {{#picture?}}
       <div class="row">
         <div class="col-xs-12 text-center padding-vertical-10 hidden" id="picture_{{ id }}">
-          <img src="{{ picture_url }}" max-width="300px" class="img-thumbnail"/>
+          <img src="{{ picture_url }}" max-width="300px" max-height="300px" class="img-thumbnail"/>
         </div>
       </div>
       {{/picture?}}

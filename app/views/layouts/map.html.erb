@@ -25,5 +25,16 @@
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
   <%= javascript_include_tag 'application' %>
   <%= yield :js %>
+  <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      $("#sidebar").niceScroll({
+        cursorwidth: "10px",
+        cursorcolor: "#ddd",
+        cursoropacitymin: 1,
+        background: "#f8f8f8",
+        cursorborder: "1px solid #fff"
+      });
+    });
+  <% end %>
 </body>
 </html>

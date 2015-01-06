@@ -70,7 +70,20 @@
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
-      $("html").niceScroll();
+      $(".panel-body-conversation").niceScroll({
+        cursorwidth: "10px",
+        cursorcolor: "#ddd",
+        cursoropacitymin: 1,
+        background: "#f8f8f8",
+        cursorborder: "1px solid #fff"
+      });
+      $(".panel-body-inbox").niceScroll({
+        cursorwidth: "10px",
+        cursorcolor: "#ddd",
+        cursoropacitymin: 1,
+        background: "#f8f8f8",
+        cursorborder: "1px solid #fff"
+      });
       stickDown();
       stylizeConversationPreview();
     });

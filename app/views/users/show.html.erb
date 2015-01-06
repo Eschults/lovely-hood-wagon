@@ -105,7 +105,7 @@
     <div class="col-sm-9">
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>
-        <p><strong><%= @user.city %></strong> - Membre depuis <%= @user.created_at.strftime("%B %Y") %></p>
+        <p><strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%B %Y") %></p>
         <% if policy(@user).update? %>
         <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
         <% end %>
@@ -120,16 +120,32 @@
             <% if @user.passed_bookings_to_validate[:owner].size >= 1 %>
               <h5><strong>On vous a sollicité pour :</strong></h5>
               <% @user.passed_bookings_to_validate[:owner].each do |booking| %>
-                <%= render "shared/booking", { user: @user, booking: booking } %>
+                <%= render "shared/passed_bookings", { user: @user, booking: booking } %>
               <% end %>
-            <% else %>
             <% end %>
             <% if @user.passed_bookings_to_validate[:client].size >= 1 %>
               <h5><strong>Vous avez bénéficié de :</strong></h5>
               <% @user.passed_bookings_to_validate[:client].each do |booking| %>
-                <%= render "shared/booking", { user: @user, booking: booking } %>
+                <%= render "shared/passed_bookings", { user: @user, booking: booking } %>
               <% end %>
-            <% else %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @user.ongoing_bookings[:owner].size >= 1 || @user.ongoing_bookings[:client].size >= 1 %>
+          <div class="ongoing-bookings">
+            <h2>Prestations en cours</h2>
+            <% if @user.ongoing_bookings[:owner].size >= 1 %>
+              <h5><strong>On vous sollicite pour :</strong></h5>
+              <% @user.ongoing_bookings[:owner].each do |booking| %>
+                <%= render "shared/ongoing_bookings", { user: @user, booking: booking } %>
+              <% end %>
+            <% end %>
+            <% if @user.ongoing_bookings[:client].size >= 1 %>
+              <h5><strong>Vous bénéficiez de :</strong></h5>
+              <% @user.ongoing_bookings[:client].each do |booking| %>
+                <%= render "shared/ongoing_bookings", { user: @user, booking: booking } %>
+              <% end %>
             <% end %>
           </div>
         <% end %>
@@ -139,7 +155,7 @@
           <h5><strong>Vous avez réservé</strong></h5>
           <% if @user.upcoming_cto_bookings.size >= 1 %>
             <% @user.upcoming_cto_bookings.each do |booking| %>
-              <%= render "shared/booking", { user: @user, booking: booking } %>
+              <%= render "shared/upcoming_bookings", { user: @user, booking: booking } %>
             <% end %>
           <% else %>
             <p>Pas de réservation à venir.</p>
@@ -148,7 +164,7 @@
           <h5><strong>On vous a réservé</strong></h5>
           <% if @user.upcoming_otc_bookings.size >= 1 %>
             <% @user.upcoming_otc_bookings.each do |booking| %>
-              <%= render "shared/booking", { user: @user, booking: booking } %>
+              <%= render "shared/upcoming_bookings", { user: @user, booking: booking } %>
             <% end %>
           <% else %>
             <p>Pas de réservation à venir.</p>

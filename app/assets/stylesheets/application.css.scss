@@ -44,13 +44,14 @@ body {
 }
 
 a {
-  color: red;
+  color: rgb(1, 181, 237);
+  font-weight: 400;
 }
 
 a:hover,
 a:active,
 a:focus {
-  color: red;
+  color: rgb(1, 181, 237);
   text-decoration: underline;
 }
 
@@ -99,6 +100,10 @@ input,
 
 .padding-15 {
   padding: 15px;
+}
+
+.padding-5 {
+  padding: 5px;
 }
 
 .margin-15 {
@@ -206,7 +211,7 @@ input,
 }
 
 .sidenav > ul > li > a {
-  color: rgba(100, 100, 100, 1)
+  color: rgba(100, 100, 100, 1);
 }
 
 .sidenav > ul > li > a:hover {
@@ -376,7 +381,7 @@ input,
 }
 
 .strong {
-  font-weight: bold;
+  font-weight: 900 !important;
 }
 
 .img-small {
@@ -534,7 +539,14 @@ a.disabled {
 
 .offer-stream-box {
   padding: 15px;
+}
+
+.border-top {
   border-top: 1px solid rgb(220, 220, 220);
+}
+
+.border-btm {
+  border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .side-borders {
@@ -744,13 +756,10 @@ a.disabled {
 
 .panel-body-inbox {
   max-height: 600px;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .panel-body-conversation {
   height: 600px;
-  overflow-y: scroll;
   border-left: none;
   border-bottom-left-radius: 0;
 }
@@ -788,16 +797,6 @@ a.disabled {
   border-radius: 0;
 }
 
-#panel-body-conversation::-webkit-scrollbar {
-  width: 20px;
-}
-#panel-body-conversation::-webkit-scrollbar-track {
-  background-color: #eaeaea;
-  border-left: 1px solid #ccc;
-}
-#panel-body-conversation::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-}
-#panel-body-conversation::-webkit-scrollbar-thumb:hover {
-  background-color: #EEEEEE;
+.edit-link {
+  font-weight: 300;
 }

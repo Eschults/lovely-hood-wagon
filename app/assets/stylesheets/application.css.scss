@@ -44,13 +44,14 @@ body {
 }
 
 a {
-  color: red;
+  color: rgb(1, 181, 237);
+  font-weight: 400;
 }
 
 a:hover,
 a:active,
 a:focus {
-  color: red;
+  color: rgb(1, 181, 237);
   text-decoration: underline;
 }
 
@@ -210,7 +211,7 @@ input,
 }
 
 .sidenav > ul > li > a {
-  color: rgba(100, 100, 100, 1)
+  color: rgba(100, 100, 100, 1);
 }
 
 .sidenav > ul > li > a:hover {
@@ -380,7 +381,7 @@ input,
 }
 
 .strong {
-  font-weight: bold;
+  font-weight: 900 !important;
 }
 
 .img-small {
@@ -796,3 +797,6 @@ a.disabled {
   border-radius: 0;
 }
 
+.edit-link {
+  font-weight: 300;
+}

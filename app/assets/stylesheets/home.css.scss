@@ -49,6 +49,15 @@ footer {
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
 }
 
+footer a {
+  color: red;
+}
+
+footer a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
 .form-control {
   border: 1px solid rgb(102, 175, 233);
 }

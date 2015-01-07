@@ -24,7 +24,7 @@
                 <% if booking.start_date == Date.today %>
                   Depuis aujourd'hui et jusqu'au <%= booking.end_date.strftime("%d %b") %>.
                 <% else %>
-                  Depuis <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %>.
+                  Depuis <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %>.
                 <% end %>
               </p>
             <% elsif booking.offer.type_of_offer == "service" %>
@@ -32,7 +32,7 @@
                 <% if booking.start_date == Date.today %>
                   Depuis aujourd'hui et jusqu'au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
                 <% else %>
-                  Depuis <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
+                  Depuis <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
                 <% end %>
               </p>
             <% end %>

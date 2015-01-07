@@ -3,7 +3,7 @@ function stickDown() {
   var $preview = $('.conversation-preview').last();
   var previewHeight = 0;
   $('.conversation-preview').each(function() {
-    previewHeight += $(this).height() + 21;
+    previewHeight += $(this).height() + 11;
   });
 
   // setVariables for div conversation (right)
@@ -29,10 +29,20 @@ function stickDown() {
 function stylizeConversationPreview() {
   var id = window.location.href.slice(36, -14);
   $('#conversation_' + id).css('background-color', 'rgb(180, 180, 180)');
-  $('#conversation_' + id).children().children().children().each(function() {
+  $('#conversation_' + id).children().each(function() {
     $(this).css('color', '#ffffff');
   });
   $('#conversation_' + id).children().children().each(function() {
     $(this).css('color', '#ffffff');
+  });
+  $('#conversation_' + id).children().children().children().each(function() {
+    $(this).css('color', '#ffffff');
+  });
+}
+
+function setMarginTop() {
+  $('.img-medium-square > .img').each(function() {
+    var imgHeight = $(this).height();
+    $(this).css('margin-top', ($(this).parent().height()-imgHeight)/2);
   });
 }

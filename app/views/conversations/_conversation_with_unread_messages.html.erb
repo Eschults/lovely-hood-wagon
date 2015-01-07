@@ -1,22 +1,22 @@
 <a href="<%= conversation_path(conversation, anchor: "message-input") %>", class="conversation-preview-link">
   <div class="conversation-preview unread-messages"  id="<%= "conversation_#{conversation.id}" %>">
-    <div class="col-xs-3 img-medium padding-none">
+    <div class="col-xs-3 img-medium-square padding-none">
       <% if conversation.other_user(current_user).picture_file_name %>
         <%= image_tag(conversation.other_user(current_user).picture.url(:medium), { class: "img" }) %>
       <% else %>
-        <%= image_tag "logo.png" %>
+        <%= image_tag "logo.png", class: "img" %>
       <% end %>
     </div>
-    <div class="col-xs-7">
+    <div class="col-xs-7 margin-top-10">
       <p class="margin-btm-5"><strong><%= conversation.other_user(current_user).first_name %></strong></p>
       <% if conversation.user1.first_name == "Lovely hood" %>
-        <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..50] + "..." %>
+        <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..40] + "..." %>
       <% else %>
         <%= simple_format(conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content) %>
       <% end %>
     </div>
-    <div class="col-xs-2 text-right">
-      <span class="badge margin-top-15">
+    <div class="col-xs-2 margin-top-10 text-right">
+      <span class="badge margin-top-15 padding-none">
         <%= conversation.unread_messages(current_user) %>
       </span>
     </div>

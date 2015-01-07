@@ -425,8 +425,32 @@ input,
   padding: auto;
 }
 
+.img-small-square {
+  height: 42px;
+  width: 42px;
+  overflow: hidden;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.img-medium-square {
+  height: 64px;
+  width: 64px;
+  overflow: hidden;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  padding: auto;
+}
+
 .img-medium > img,
+.img-medium-square > img,
 .img-small > img,
+.img-small-square > img,
 .img-navbar > img {
   margin: auto;
   width: 100%;
@@ -467,8 +491,6 @@ input,
 }
 
 .message-content {
-  padding-top: 15px;
-  padding-bottom: 10px;
 }
 
 .reply {
@@ -494,6 +516,10 @@ input,
   font-weight: bold;
 }
 
+.margin-left-2 {
+  margin-left: 2px;
+}
+
 .notices {
   position: absolute;
   left: 50%;
@@ -517,7 +543,7 @@ input,
 }
 
 .conversation-preview {
-  padding: 10px;
+  padding: 5px;
   width: 100%;
   border-bottom: 1px solid rgb(240, 240, 240);
   max-height: 84px;

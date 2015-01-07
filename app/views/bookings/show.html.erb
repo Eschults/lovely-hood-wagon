@@ -24,21 +24,37 @@
     <div class="col-sm-9">
       <div class="booking">
         <h1>Réservation de <%= @booking.offer.nature %></h1>
-        <p><strong>Envoyée le : </strong><%= @booking.created_at.strftime("%d %b %Y") %></p>
-        <p><strong>Statut : </strong>
+        <p>
+          <%= @booking.offer.user.street_name.capitalize %>, <%= @booking.offer.user.zip_code %>
+          &nbsp;&nbsp;&nbsp;
+          <% if @booking.offer.cto_reviews.size.to_i >= 1 %>
+            <%= link_to(offer_path(@booking.offer, anchor: "comments"), {class: "link-unstyled"}) do %>
+              <% @booking.offer.average_score.round.times do %>
+                <i class="fa fa-star small-star-gold"></i>
+              <% end %>
+              <% (5 - @booking.offer.average_score.round).times do %>
+                <i class="fa fa-star small-star"></i>
+              <% end %>
+              (<%= @booking.offer.cto_reviews.size.to_i %>)
+            <% end %>
+          <% else %>
+            (Pas encore de commentaires)
+          <% end %>
+        </p>
+        <p>
           <% if @booking.accepted %>
             Félicitations, votre réservation a été acceptée !
           <% elsif @booking.accepted.nil? %>
-            En attente de réponse du destinataire.
+            Envoyée le <%= @booking.created_at.strftime("%d %b %Y") %>, en attente de réponse du destinataire.
           <% else %>
             Votre réservation a été déclinée. Consulter d'autres <%= link_to "annonces", offers_path %>.
           <% end %>
         </p>
         <% if @booking.accepted %>
           <% if @booking.offer.type_of_offer == "rent" %>
-            <p><strong>Réservation : </strong> du <%= @booking.start_date.strftime("%d %b") %> au <%= @booking.end_date.strftime("%d %b") %>.</p>
+            <p>Du <%= @booking.start_date.strftime("%d %b") %> au <%= @booking.end_date.strftime("%d %b") %>.</p>
           <% elsif @booking.offer.type_of_offer == "service" %>
-            <p><strong>Réservation : </strong> du <%= @booking.start_date.strftime("%d %b") %> à <%= @booking.start_hour.strftime("%H:%M") %> au <%= @booking.end_date.strftime("%d %B") %> à <%= @booking.end_hour.strftime("%H:%M") %>.</p>
+            <p>Du <%= @booking.start_date.strftime("%d %b") %> à <%= @booking.start_hour.strftime("%H:%M") %> au <%= @booking.end_date.strftime("%d %B") %> à <%= @booking.end_hour.strftime("%H:%M") %>.</p>
           <% else %>
             <p><strong>Rendez-vous : </strong> le <%= @booking.start_date.strftime("%d %b") %>.</p>
           <% end %>

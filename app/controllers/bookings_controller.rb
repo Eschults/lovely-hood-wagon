@@ -43,13 +43,25 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      @conversation = current_user.conversation_with(@booking.user)
-      @message = Message.new(
-        content: "Vous avez une réponse à votre <a href='/offers/#{@booking.offer.id}/bookings/#{@booking.id}'>réservation</a> !"
-      )
-      @message.writer = current_user
-      @message.conversation = @conversation
-      @message.save
+      if @booking.user.conversation_with(lh)
+        @conversation = @booking.user.conversation_with(lh)
+        @message = Message.new(
+          content: "Vous avez une réponse à votre <a href='/offers/#{@booking.offer.id}/bookings/#{@booking.id}'>réservation</a> !"
+        )
+        @message.writer = lh
+        @message.conversation = @conversation
+        @message.save
+      else
+        @conversation = Conversation.new
+        @conversation.user1 = lh
+        @conversation.user2 = @booking.user
+        @message = Message.new(
+          content: "Vous avez une réponse à votre <a href='/offers/#{@booking.offer.id}/bookings/#{@booking.id}'>réservation</a> !"
+        )
+        @message.writer = lh
+        @message.conversation = @conversation
+        @message.save
+      end
       redirect_to offer_path(@booking.offer)
     else
       render :edit

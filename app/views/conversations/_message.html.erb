@@ -2,15 +2,15 @@
   <div class="message-date">
     <span class="white-bg padding-sides-5"><%= message.created_at.strftime("%A, %e %B - %H:%M") %></span>
   </div>
-  <div class="message-content">
-    <div class="col-xs-1">
+  <div class="message-content margin-top-10">
+    <div class="col-xs-3 img-small-square padding-none">
       <% if message.writer.picture_file_name %>
-        <%= image_tag(message.writer.picture.url(:medium), { class: "img-small" }) %>
+        <%= image_tag(message.writer.picture.url(:medium), { class: "img" }) %>
       <% else %>
-        <%= image_tag "logo.png", class: "img-small bg-color" %>
+        <%= image_tag "logo.png", class: "img logo-small bg-color" %>
       <% end %>
     </div>
-    <div class="col-xs-11 padding-left-10">
+    <div class="col-xs-9 padding-left-10">
       <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "message-profile-link" %></h5><p class=""><%= simple_format message.content %></p>
     </div>
   </div>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-3">
       <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
-        <div class="panel-body padding-none border-none transparent-bg">
+        <div class="panel-body padding-none border-none transparent-bg  ">
 
           <% if current_user == @user %>
             <%= link_to edit_user_path(current_user, anchor: "my-pic") do %>
@@ -35,17 +35,17 @@
           </h4>
         </div>
         <div class="panel-body">
-          <% if current_user.identity_verified %>
+          <% if @user.identity_verified %>
             <p><i class="fa fa-check"></i> Identité vérifiée</p>
           <% else %>
             <p><i class="fa fa-close"></i> Identité non vérifiée</p>
           <% end %>
-          <% if current_user.address_verified %>
+          <% if @user.address_verified %>
             <p><i class="fa fa-check"></i> Adresse vérifiée</p>
           <% else %>
             <p><i class="fa fa-close"></i> Adresse non vérifiée</p>
           <% end %>
-          <% if current_user.provider == "facebook" %>
+          <% if @user.provider == "facebook" %>
             <p><i class="fa fa-check"></i> Facebook</p>
           <% end %>
         </div>

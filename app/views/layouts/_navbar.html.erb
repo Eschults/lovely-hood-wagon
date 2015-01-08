@@ -54,7 +54,7 @@
                 <% if current_user.picture_file_name %>
                   <%= image_tag(current_user.picture.url(:medium), { class: "img" }) %>
                 <% else %>
-                  <%= image_tag "logo.png", class: "img logo-small" %>
+                  <%= image_tag "logo.png", class: "img-logo-small" %>
                 <% end %>
               </div>
               <strong><%= current_user.first_name %><span class="caret"></span></strong></a>

@@ -11,16 +11,16 @@ $box-shadow: 0 0 5px rgba(0, 0, 0, .4);
 // Set your navbar button
 $btn-height: 40px;
 $btn-bg: white;
-$btn-color: $gray;
+$btn-color: $lovely-blue;
 $btn-horizontal-padding: 10px;
-$btn-top-border-width: 0;
-$btn-top-border-color: transparent;
-$btn-right-border-width: 0;
-$btn-right-border-color: transparent;
-$btn-bottom-border-width: 3px;
-$btn-bottom-border-color: grey;
-$btn-left-border-width: 0;
-$btn-left-border-color: transparent;
+$btn-top-border-width: 1;
+$btn-top-border-color: $lovely-blue;
+$btn-right-border-width: 1;
+$btn-right-border-color: $lovely-blue;
+$btn-bottom-border-width: 1;
+$btn-bottom-border-color: $lovely-blue;
+$btn-left-border-width: 1;
+$btn-left-border-color: $lovely-blue;
 
 // Set your profile picture
 $profile-radius: 50%;
@@ -123,7 +123,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   color: $btn-color;
   border-radius: 4px;
   margin-top: $btn-margin-top;
-  border-radius: 2px;
+  border-radius: 1px;
   font-weight: bold;
   background-color: $btn-bg;
   border-top: $btn-top-border-width solid $btn-top-border-color;
@@ -135,9 +135,15 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 
 #nav-btn:hover{
-  background-color: $btn-bg;
-  border-bottom: ($btn-bottom-border-width * 2/3) solid $btn-bottom-border-color;
-  margin-top: $btn-margin-top + ($btn-bottom-border-width  * 1/3);
+  background-color: $lovely-blue;
+  color: white;
+  border-bottom: ($btn-bottom-border-width) solid $btn-bottom-border-color;
+  -moz-transition: all .1s ease-in;
+  -webkit-transition: all .1s ease-in;
+  -o-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+  border: 1px solid white;
+  // margin-top: $btn-margin-top + ($btn-bottom-border-width  * 1/3);
 }
 
 #nav-btn:active{

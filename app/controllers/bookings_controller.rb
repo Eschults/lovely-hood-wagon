@@ -42,6 +42,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    lh = User.find_by_first_name("Lovely hood")
     if @booking.update(booking_params)
       if @booking.user.conversation_with(lh)
         @conversation = @booking.user.conversation_with(lh)

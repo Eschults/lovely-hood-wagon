@@ -8,6 +8,7 @@ $gray-darker: lighten($gray-base, 13.5%);
 $gray-light: lighten($gray-base, 46.7%);
 $gray-dark: lighten($gray-base, 20%);
 $gray-lighter: lighten($gray-base, 85%);
+$lovely-blue: #25AAE1;
 
 
 
@@ -453,6 +454,11 @@ input,
 .img-small-square > img,
 .img-navbar > img {
   margin: auto;
+  width: 100%;
+}
+
+.img-navbar > .img-logo-small {
+  margin-top: -4.5px;
   width: 100%;
 }
 

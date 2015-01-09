@@ -32,14 +32,14 @@
               <div class="form-group">
                 <%= f.label :first_name, "Prénom", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :first_name, class: "form-control" %>
+                  <%= f.text_field :first_name, class: "form-control", id: "first_name" %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :last_name, "Nom", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :last_name, class: "form-control" %>
+                  <%= f.text_field :last_name, class: "form-control", id: "last_name" %>
                   <%= render "data_sharing_message" %>
                   <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> systématique de l'identité de nos membres.</p>
                 </div>
@@ -48,28 +48,28 @@
               <div class="form-group">
                 <%= f.label :street_number, "N°", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :street_number, placeholder: "25", class: "form-control" %>
+                  <%= f.text_field :street_number, placeholder: "25", class: "form-control", id: "street_number" %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :street_name, "Rue", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :street_name, placeholder: "rue du petit musc", class: "form-control" %>
+                  <%= f.text_field :street_name, placeholder: "rue du petit musc", class: "form-control", id: "street_name" %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :zip_code, "Code postal", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :zip_code, placeholder: "75004", class: "form-control" %>
+                  <%= f.text_field :zip_code, placeholder: "75004", class: "form-control", id: "zip_code" %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :city, "Ville", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :city, placeholder: "Paris", class: "form-control" %>
+                  <%= f.text_field :city, placeholder: "Paris", class: "form-control", id: "city" %>
                   <p class="small">Afin de prévenir tout risque de détournement du service, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> de l'adresse de chaque membre de la communauté. Aussi, tout changement d'adresse fera l'objet d'une nouvelle vérification.</p>
                 </div>
               </div>
@@ -92,7 +92,7 @@
               <div class="form-group">
                 <%= f.label :phone, "Téléphone", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.text_field :phone, class: "form-control" %>
+                  <%= f.text_field :phone, class: "form-control", id: "phone" %>
                   <%= render "data_sharing_message" %>
                 </div>
               </div>
@@ -237,6 +237,12 @@
   <%= javascript_tag do %>
     var id;
     var name;
+    var first_name;
+    var last_name;
+    var street_number;
+    var street_name;
+    var zip_code;
+    var city;
     $(document).ready(function() {
       if(window.location.hash == "#my-trust") {
       showTrust();
@@ -267,7 +273,71 @@
         if(id == "my-recos") {
           showRecos();
         }
-      })
+      });
+
+      firstName = $("#first_name");
+      test_field_at_focusout(firstName);
+
+      lastName = $("#last_name");
+      test_field_at_focusout(lastName);
+
+      street_number = $("#street_number");
+      test_field_at_focusout(street_number);
+
+      street_name = $("#street_name");
+      test_field_at_focusout(street_name);
+
+      city = $("#city");
+      test_field_at_focusout(city);
+
+      mobile = $("#mobile_phone");
+      test_field_at_focusout(mobile);
+
+      address = $("#address");
+      test_field_at_focusout(address);
+
+      $("#zip_code").on("focusout", function(event) {
+        var zipCode = $("#zip_code").val();
+        var invalid_zip_code = function() {
+          if (zipCode.match(/^\d{5}$/) == null) {
+            return true;
+          }
+          else {
+            return false;
+          };
+        }
+        var result = invalid_zip_code();
+        if (result) {
+          $(this).parent().addClass("has-error").removeClass("has-success");
+        }
+        else {
+          $(this).parent().addClass("has-success").removeClass("has-error");
+        };
+      });
+
+      $("#phone").on("focusout", function(event) {
+        var mobile = $("#phone").val();
+        var invalid_mobile = function() {
+          if (mobile == "") {
+            return "empty";
+          } else if (mobile.match(/(0|\+33)6( ?\d{2}){4}/) == null) {
+            return true;
+          } else {
+            return false;
+          };
+        }
+        var result = invalid_mobile();
+        if (result == "empty") {
+          $(this).parent().removeClass("has-error").removeClass("has-success");
+        } else if (result) {
+          $(this).parent().addClass("has-error").removeClass("has-success");
+        }
+        else {
+          $(this).parent().addClass("has-success").removeClass("has-error");
+        };
+      });
+
+
     });
   <% end %>
 <% end %>

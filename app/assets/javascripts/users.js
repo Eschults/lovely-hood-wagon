@@ -62,3 +62,20 @@ function showRecos() {
   $('#my-comments').removeClass("strong");
   $('#my-recos').addClass("strong");
 }
+
+function filled(field) {
+  var value = field.val();
+  if (value == "") {
+    $(field).parent().addClass("has-error").removeClass("has-success");
+  }
+  else {
+    $(field).parent().addClass("has-success").removeClass("has-error");
+  }
+}
+
+function test_field_at_focusout(field) {
+  field.on("focusout", function(event) {
+    field = field;
+    filled(field);
+  });
+}

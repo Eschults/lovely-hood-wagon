@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :confirm]
   after_action :verify_policy_scoped, :only => :index
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
   def new
     @booking = set_offer.bookings.new

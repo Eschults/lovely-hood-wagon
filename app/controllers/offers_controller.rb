@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update]
   after_action :verify_policy_scoped, :only => :index
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
   layout 'map', only: [:index]
 
   def index

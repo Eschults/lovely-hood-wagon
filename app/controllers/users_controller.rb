@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
   def show
     authorize @user
@@ -12,6 +13,9 @@ class UsersController < ApplicationController
   def update
     authorize @user
     @user.update(user_params)
+    if @user.address_changed?
+      @user.address_verified = false
+    end
     if @user.save
       name_and_address_validations(user_path(current_user))
     else

@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_booking, only: [:new, :create, :edit, :update]
   before_action :set_review, only: [:edit, :update, :show]
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
   respond_to :js, only: :update
 
   def new

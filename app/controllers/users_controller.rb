@@ -31,27 +31,27 @@ class UsersController < ApplicationController
               if @user.city != ""
                 redirect_to path
               else
-                flash[:alert] = "Merci de renseigner votre ville"
+                # flash[:alert] = "Merci de renseigner votre ville"
                 render :edit
               end
             else
-              flash[:alert] = "Merci de renseigner votre code postal"
+              # flash[:alert] = "Merci de renseigner votre code postal"
               render :edit
             end
           else
-            flash[:alert] = "Merci de renseigner votre rue"
+            # flash[:alert] = "Merci de renseigner votre rue"
             render :edit
           end
         else
-          flash[:alert] = "Merci de renseigner votre n° de rue"
+          # flash[:alert] = "Merci de renseigner votre n° de rue"
           render :edit
         end
       else
-        flash[:alert] = "Merci de renseigner votre nom de famille"
+        # flash[:alert] = "Merci de renseigner votre nom de famille"
         render :edit
       end
     else
-      flash[:alert] = "Merci de renseigner votre prénom"
+      # flash[:alert] = "Merci de renseigner votre prénom"
       render :edit
     end
   end

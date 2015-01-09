@@ -79,3 +79,11 @@ function test_field_at_focusout(field) {
     filled(field);
   });
 }
+
+function test_all_fields() {
+  if ($(".has-error").length >= 1) {
+    return false;
+  } else {
+    return true;
+  }
+}

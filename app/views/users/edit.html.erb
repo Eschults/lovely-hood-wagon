@@ -30,14 +30,14 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :first_name, "Prénom", class: "col-sm-3 control-label" %>
+                <%= f.label :first_name, "Prénom *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :first_name, class: "form-control", id: "first_name" %>
                 </div>
               </div>
 
               <div class="form-group">
-                <%= f.label :last_name, "Nom", class: "col-sm-3 control-label" %>
+                <%= f.label :last_name, "Nom *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :last_name, class: "form-control", id: "last_name" %>
                   <%= render "data_sharing_message" %>
@@ -46,28 +46,28 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :street_number, "N°", class: "col-sm-3 control-label" %>
+                <%= f.label :street_number, "N° *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :street_number, placeholder: "25", class: "form-control", id: "street_number" %>
                 </div>
               </div>
 
               <div class="form-group">
-                <%= f.label :street_name, "Rue", class: "col-sm-3 control-label" %>
+                <%= f.label :street_name, "Rue *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :street_name, placeholder: "rue du petit musc", class: "form-control", id: "street_name" %>
                 </div>
               </div>
 
               <div class="form-group">
-                <%= f.label :zip_code, "Code postal", class: "col-sm-3 control-label" %>
+                <%= f.label :zip_code, "Code postal *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :zip_code, placeholder: "75004", class: "form-control", id: "zip_code" %>
                 </div>
               </div>
 
               <div class="form-group">
-                <%= f.label :city, "Ville", class: "col-sm-3 control-label" %>
+                <%= f.label :city, "Ville *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :city, placeholder: "Paris", class: "form-control", id: "city" %>
                   <p class="small">Afin de prévenir tout risque de détournement du service, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> de l'adresse de chaque membre de la communauté. Aussi, tout changement d'adresse fera l'objet d'une nouvelle vérification.</p>
@@ -115,7 +115,7 @@
                   <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
                   <br>
                   <br>
-                  <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                  <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
                 </div>
               </div>
             <% end %>
@@ -276,18 +276,26 @@
       });
 
       firstName = $("#first_name");
+      filled(firstName);
       test_field_at_focusout(firstName);
 
       lastName = $("#last_name");
+      filled(lastName);
       test_field_at_focusout(lastName);
 
-      street_number = $("#street_number");
-      test_field_at_focusout(street_number);
+      streetNumber = $("#street_number");
+      filled(streetNumber);
+      test_field_at_focusout(streetNumber);
 
-      street_name = $("#street_name");
-      test_field_at_focusout(street_name);
+      streetName = $("#street_name");
+      filled(streetName);
+      test_field_at_focusout(streetName);
+
+      zipCode = $("#zip_code");
+      filled(zipCode);
 
       city = $("#city");
+      filled(city);
       test_field_at_focusout(city);
 
       mobile = $("#mobile_phone");
@@ -337,6 +345,15 @@
         };
       });
 
+      $("input").on("focusout", function(event) {
+        var test = test_all_fields_filled();
+        if (test) {
+          $("#submit").prop("disabled", false);
+        }
+        else {
+          $("button").prop("disabled", true);
+        }
+      });
 
     });
   <% end %>

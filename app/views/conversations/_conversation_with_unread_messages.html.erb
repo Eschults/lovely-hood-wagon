@@ -4,7 +4,7 @@
       <% if conversation.other_user(current_user).picture_file_name %>
         <%= image_tag(conversation.other_user(current_user).picture.url(:medium), { class: "img" }) %>
       <% else %>
-        <%= image_tag "logo.png", class: "img" %>
+        <%= image_tag "user_pic-225x225.png", class: "img" %>
       <% end %>
     </div>
     <div class="col-xs-7 margin-top-10">

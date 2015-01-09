@@ -9,14 +9,14 @@
               <% if @user.picture_file_name %>
                 <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
               <% else %>
-                <%= image_tag "logo.png", class: "img-thumbnail transparent-bg" %>
+                <%= image_tag "user_pic-225x225.png", class: "img-thumbnail transparent-bg" %>
               <% end %>
             <% end %>
           <% else %>
             <% if @user.picture_file_name %>
               <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
             <% else %>
-              <%= image_tag "logo.png", class: "img-thumbnail transparent-bg" %>
+              <%= image_tag "user_pic-225x225.png", class: "img-thumbnail transparent-bg" %>
             <% end %>
           <% end %>
         </div>
@@ -103,7 +103,7 @@
     <div class="col-sm-9">
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>
-        <p><strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%B %Y") %></p>
+        <p><strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %></p>
         <% if policy(@user).update? %>
         <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
         <% end %>

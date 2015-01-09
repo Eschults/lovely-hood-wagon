@@ -81,7 +81,7 @@
               <% (5 - @offer.average_score.round).times do %>
                 <i class="fa fa-star small-star"></i>
               <% end %>
-              (<%= @offer.cto_reviews.size.to_i %>)
+              (<%= @offer.cto_reviews.size.to_i %> commentaires)
             <% end %>
           <% else %>
             (Pas encore de commentaires)

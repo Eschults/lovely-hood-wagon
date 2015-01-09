@@ -41,6 +41,7 @@
                 <div class="col-sm-9">
                   <%= f.text_field :last_name, class: "form-control" %>
                   <%= render "data_sharing_message" %>
+                  <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> systématique de l'identité de nos membres.</p>
                 </div>
               </div>
 
@@ -69,7 +70,7 @@
                 <%= f.label :city, "Ville", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :city, placeholder: "Paris", class: "form-control" %>
-                  <%= render "data_sharing_message" %>
+                  <p class="small">Afin de prévenir tout risque de détournement du service, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> de l'adresse de chaque membre de la communauté. Aussi, tout changement d'adresse fera l'objet d'une nouvelle vérification.</p>
                 </div>
               </div>
 

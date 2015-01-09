@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :confirm]
   after_action :verify_policy_scoped, :only => :index
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
   def new
     @booking = set_offer.bookings.new
@@ -42,6 +43,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    lh = User.find_by_first_name("Lovely hood")
     if @booking.update(booking_params)
       if @booking.user.conversation_with(lh)
         @conversation = @booking.user.conversation_with(lh)

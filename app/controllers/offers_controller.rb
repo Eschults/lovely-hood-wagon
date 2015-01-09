@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update]
   after_action :verify_policy_scoped, :only => :index
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
   layout 'map', only: [:index]
 
   def index
@@ -32,11 +33,11 @@ class OffersController < ApplicationController
         elsif (@offer.type_of_offer == "service")
           redirect_to offer_path(@offer)
         else
-          flash[:alert] = "Ajoutez une photo"
+          # flash[:alert] = "Ajoutez une photo"
           render :new
         end
       else
-        flash[:alert] = "Merci de renseigner un prix"
+        # flash[:alert] = "Merci de renseigner un prix"
         render :new
       end
     else
@@ -74,27 +75,27 @@ class OffersController < ApplicationController
               if current_user.city != ""
 
               else
-                flash[:alert] = "Merci de renseigner votre ville"
+                # flash[:alert] = "Merci de renseigner votre ville"
                 redirect_to edit_user_path(current_user)
               end
             else
-              flash[:alert] = "Merci de renseigner votre code postal"
+              # flash[:alert] = "Merci de renseigner votre code postal"
               redirect_to edit_user_path(current_user)
             end
           else
-            flash[:alert] = "Merci de renseigner votre rue"
+            # flash[:alert] = "Merci de renseigner votre rue"
             redirect_to edit_user_path(current_user)
           end
         else
-          flash[:alert] = "Merci de renseigner votre n° de rue"
+          # flash[:alert] = "Merci de renseigner votre n° de rue"
           redirect_to edit_user_path(current_user)
         end
       else
-        flash[:alert] = "Merci de renseigner votre nom de famille"
+        # flash[:alert] = "Merci de renseigner votre nom de famille"
         redirect_to edit_user_path(current_user)
       end
     else
-      flash[:alert] = "Merci de renseigner votre prénom"
+      # flash[:alert] = "Merci de renseigner votre prénom"
       redirect_to edit_user_path(current_user)
     end
   end

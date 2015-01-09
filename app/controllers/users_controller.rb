@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
   def show
     authorize @user
@@ -12,6 +13,9 @@ class UsersController < ApplicationController
   def update
     authorize @user
     @user.update(user_params)
+    if @user.address_changed?
+      @user.address_verified = false
+    end
     if @user.save
       name_and_address_validations(user_path(current_user))
     else
@@ -31,27 +35,27 @@ class UsersController < ApplicationController
               if @user.city != ""
                 redirect_to path
               else
-                flash[:alert] = "Merci de renseigner votre ville"
+                # flash[:alert] = "Merci de renseigner votre ville"
                 render :edit
               end
             else
-              flash[:alert] = "Merci de renseigner votre code postal"
+              # flash[:alert] = "Merci de renseigner votre code postal"
               render :edit
             end
           else
-            flash[:alert] = "Merci de renseigner votre rue"
+            # flash[:alert] = "Merci de renseigner votre rue"
             render :edit
           end
         else
-          flash[:alert] = "Merci de renseigner votre n° de rue"
+          # flash[:alert] = "Merci de renseigner votre n° de rue"
           render :edit
         end
       else
-        flash[:alert] = "Merci de renseigner votre nom de famille"
+        # flash[:alert] = "Merci de renseigner votre nom de famille"
         render :edit
       end
     else
-      flash[:alert] = "Merci de renseigner votre prénom"
+      # flash[:alert] = "Merci de renseigner votre prénom"
       render :edit
     end
   end

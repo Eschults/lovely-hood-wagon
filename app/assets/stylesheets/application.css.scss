@@ -56,6 +56,10 @@ a:focus {
   text-decoration: underline;
 }
 
+.user-link a:hover {
+  text-decoration: none;
+}
+
 .bg-color {
   background-color: $bg-color;
 }
@@ -129,6 +133,14 @@ input,
 
 .margin-top-10 {
   margin-top: 10px;
+}
+
+.margin-top-neg-10 {
+  margin-top: -10px;
+}
+
+.padding-btm-5 {
+  padding-bottom: 5px;
 }
 
 .padding-top-10 {
@@ -332,6 +344,10 @@ input,
   padding-left: 30px;
 }
 
+.padding-left-43 {
+  padding-left: 43px;
+}
+
 .padding-left-10 {
   padding-left: 10px;
 }
@@ -389,7 +405,7 @@ input,
   height: 42px;
   width: 42px;
   border: 2px solid white;
-  box-shadow: 0 0 2px #c8c8c8;
+  // box-shadow: 0 0 2px #c8c8c8;
   overflow: hidden;
   margin-right: 10px;
   margin-left: 10px;
@@ -408,15 +424,29 @@ input,
   margin-right: 10px;
   border-radius: 50%;
   text-align: center;
-  vertical-align: middle;
-  display: table-cell;
+  // vertical-align: middle;
+  // display: table-cell;
 }
 
 .img-medium {
   height: 64px;
   width: 64px;
   border: 2px solid white;
-  box-shadow: 0 0 2px #c8c8c8;
+  // box-shadow: 0 0 2px #c8c8c8;
+  overflow: hidden;
+  margin-right: 10px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  padding: auto;
+}
+
+.img-mini {
+  height: 20px;
+  width: 20px;
+  border: 1px solid white;
+  // box-shadow: 0 0 2px #c8c8c8;
   overflow: hidden;
   margin-right: 10px;
   border-radius: 50%;
@@ -452,19 +482,21 @@ input,
 .img-medium-square > img,
 .img-small > img,
 .img-small-square > img,
+.img-navbar > img,
+.img-mini  > img {
+  overflow: hidden;
+}
+
 .img-navbar > img {
-  margin: auto;
-  width: 100%;
+  margin-top: -5px;
 }
 
 .img-navbar > .img-logo-small {
-  margin-top: -4.5px;
   width: 100%;
 }
 
 .img {
   width: 100%;
-  padding: 1%;
 }
 
 .img-review-box {
@@ -530,9 +562,14 @@ input,
   position: absolute;
   left: 50%;
   width: 300px;
+  text-align: center;
   margin-top: 15px;
   margin-left: -150px;
   z-index: 2;
+}
+
+.alert {
+  border-radius: 2px;
 }
 
 #messages-box {
@@ -787,6 +824,10 @@ a.disabled {
   width: 100%;
 }
 
+.total-height {
+  height: 100%;
+}
+
 .panel-body-inbox {
   max-height: 600px;
 }
@@ -832,4 +873,8 @@ a.disabled {
 
 .edit-link {
   font-weight: 300;
+}
+
+.user-assets {
+  display: table-cell;
 }

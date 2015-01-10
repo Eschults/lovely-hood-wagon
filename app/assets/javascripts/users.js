@@ -87,3 +87,107 @@ function test_all_fields() {
     return true;
   }
 }
+
+function adjustImgMedium() {
+  $('.img-medium > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).css('margin-left', (60 - 60 * ratio) / 2);
+      $(this).css('margin-right', (60 - 60 * ratio) / 2);
+      $(this).addClass("total-height").removeClass('img');
+    } else {
+      $(this).css('margin-top', (60 - 60 / ratio) / 2);
+      $(this).css('margin-bottom', (60 - 60 / ratio) / 2);
+      $(this).addClass("total-width");
+    }
+  });
+}
+
+function adjustImgSmall() {
+  $('.img-small > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).addClass("total-height").removeClass('img');
+      $(this).css("margin-left", (38 - 38*ratio)/2);
+      $(this).css("margin-right", (38 - 38*ratio)/2);
+    } else if(height > width) {
+      $(this).css('margin-top', (38 - 38 / ratio) / 2);
+      $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
+      $(this).addClass("total-width");
+    }
+  });
+}
+
+function adjustImgSmallSquare() {
+  $('.img-small-square > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).addClass("total-height").removeClass('img');
+      $(this).css("margin-left", (38 - 38*ratio)/2);
+      $(this).css("margin-right", (38 - 38*ratio)/2);
+    } else if(height > width) {
+      $(this).css('margin-top', (38 - 38 / ratio) / 2);
+      $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
+      $(this).addClass("total-width");
+    }
+  });
+}
+
+function adjustImgNavbar() {
+  $('.img-navbar > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).addClass("total-height").removeClass('img');
+      $(this).css("margin-left", (38 - 38*ratio)/2);
+      $(this).css("margin-right", (38 - 38*ratio)/2);
+    } else if(height > width) {
+      $(this).css('margin-top', (38 - 38 / ratio) / 2);
+      $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
+      $(this).addClass("total-width");
+    }
+  });
+}
+
+function adjustImgMediumSquare() {
+  $('.img-medium-square > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).addClass("total-height").removeClass('img');
+      $(this).css("margin-left", (64 - 64*ratio)/2);
+      $(this).css("margin-right", (64 - 64*ratio)/2);
+    } else if(height > width) {
+      $(this).css('margin-top', (64 - 64 / ratio) / 2);
+      $(this).css('margin-bottom', (64 - 64 / ratio) / 2);
+      $(this).addClass("total-width");
+    }
+  });
+}
+
+function adjustImgMini() {
+  $('.img-mini > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).addClass("total-height").removeClass('img');
+      $(this).css("margin-left", (19 - 19*ratio)/2);
+      $(this).css("margin-right", (19 - 19*ratio)/2);
+    } else if(height > width) {
+      $(this).css('margin-top', (19 - 19 / ratio) / 2);
+      $(this).css('margin-bottom', (19 - 19 / ratio) / 2);
+      $(this).addClass("total-width");
+    } else {
+      $(this).css("margin-top", -3);
+    }
+  });
+}

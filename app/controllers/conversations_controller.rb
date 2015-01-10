@@ -10,18 +10,18 @@ class ConversationsController < ApplicationController
     @conversations = policy_scope(Conversation)
   end
 
-  def new
+  def new(*recipient)
     @conversation = Conversation.new
     @conversation.user1 = current_user
-    @conversation.user2 = @offer.user
+    @conversation.user2 = recipient[0] || @offer.user
     @message = Message.new
     authorize @conversation
   end
 
-  def create
+  def create(*recipient)
     @conversation = Conversation.new
     @conversation.user1 = current_user
-    @conversation.user2 = @offer.user
+    @conversation.user2 = recipient[0] || @offer.user
     @message = Message.new(message_params)
     @message.writer = current_user
     @message.conversation = @conversation

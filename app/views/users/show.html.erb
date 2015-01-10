@@ -9,14 +9,14 @@
               <% if @user.picture_file_name %>
                 <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
               <% else %>
-                <%= image_tag "user_pic-225x225.png", class: "img-thumbnail transparent-bg" %>
+                <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
               <% end %>
             <% end %>
           <% else %>
             <% if @user.picture_file_name %>
               <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
             <% else %>
-              <%= image_tag "user_pic-225x225.png", class: "img-thumbnail transparent-bg" %>
+              <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
             <% end %>
           <% end %>
         </div>

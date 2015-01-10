@@ -21,7 +21,7 @@ class ConversationsController < ApplicationController
   def create(*recipient)
     @conversation = Conversation.new
     @conversation.user1 = current_user
-    @conversation.user2 = recipient || @offer.user
+    @conversation.user2 = recipient[0] || @offer.user
     @message = Message.new(message_params)
     @message.writer = current_user
     @message.conversation = @conversation

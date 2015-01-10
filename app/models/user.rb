@@ -129,26 +129,28 @@ class User < ActiveRecord::Base
     }
   end
 
-  def upcoming_cto_bookings
-    output = []
+  def upcoming_bookings
+    client_bookings = []
     bookings.each do |booking|
       if booking.start_date > Date.today && (booking.accepted.nil? || booking.accepted)
-        output << booking
+        client_bookings << booking
       end
     end
-    output
-  end
-
-  def upcoming_otc_bookings
-    output = []
+    owner_bookings = []
     offers.each do |offer|
       offer.bookings.each do |booking|
         if booking.start_date > Date.today && (booking.accepted.nil? || booking.accepted)
-          output << booking
+          owner_bookings << booking
         end
       end
     end
-    output
+    {
+      client: client_bookings,
+      owner: owner_bookings
+    }
+  end
+
+  def upcoming_otc_bookings
   end
 
   def upcoming_pending_cto_bookings

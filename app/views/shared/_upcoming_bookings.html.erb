@@ -60,6 +60,7 @@
 
           </div>
         </div>
+        <br>
         <div class="booking-footer">
           <div class="booking-date">
             <%= booking.created_at.strftime("%b %Y") %>
@@ -67,11 +68,39 @@
           <div class="user-link">
             <% if booking.offer.user == current_user %>
               <%= link_to user_path(booking.user) do %>
-                <%= booking.user.first_name %>
+                <table class="user-assets list-inline list-unstyled margin-none">
+                  <td>
+                    <%= booking.user.first_name %>
+                  </td>
+                  <td>&nbsp;&nbsp;</td>
+                  <td>
+                    <div class="img-mini">
+                      <% if booking.user.picture_file_name %>
+                        <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
+                      <% else %>
+                        <%= image_tag "user_pic-38.png", class: "img-logo-small" %>
+                      <% end %>
+                    </div>
+                  </td>
+                </table>
               <% end %>
             <% else %>
               <%= link_to user_path(booking.offer.user) do %>
-                <%= booking.offer.user.first_name %>
+                <table class="user-assets list-inline list-unstyled margin-none">
+                  <td>
+                    <%= booking.offer.user.first_name %>
+                  </td>
+                  <td>&nbsp;&nbsp;</td>
+                  <td>
+                    <div class="img-mini">
+                      <% if booking.offer.user.picture_file_name %>
+                        <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
+                      <% else %>
+                        <%= image_tag "user_pic-38.png", class: "img-logo-small" %>
+                      <% end %>
+                    </div>
+                  </td>
+                </table>
               <% end %>
             <% end %>
           </div>

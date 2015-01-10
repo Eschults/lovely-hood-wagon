@@ -114,7 +114,7 @@ function adjustImgSmall() {
       $(this).addClass("total-height").removeClass('img');
       $(this).css("margin-left", (38 - 38*ratio)/2);
       $(this).css("margin-right", (38 - 38*ratio)/2);
-    } else {
+    } else if(height > width) {
       $(this).css('margin-top', (38 - 38 / ratio) / 2);
       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
       $(this).addClass("total-width");
@@ -131,7 +131,7 @@ function adjustImgSmallSquare() {
       $(this).addClass("total-height").removeClass('img');
       $(this).css("margin-left", (38 - 38*ratio)/2);
       $(this).css("margin-right", (38 - 38*ratio)/2);
-    } else {
+    } else if(height > width) {
       $(this).css('margin-top', (38 - 38 / ratio) / 2);
       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
       $(this).addClass("total-width");
@@ -148,7 +148,7 @@ function adjustImgNavbar() {
       $(this).addClass("total-height").removeClass('img');
       $(this).css("margin-left", (38 - 38*ratio)/2);
       $(this).css("margin-right", (38 - 38*ratio)/2);
-    } else {
+    } else if(height > width) {
       $(this).css('margin-top', (38 - 38 / ratio) / 2);
       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
       $(this).addClass("total-width");
@@ -165,10 +165,29 @@ function adjustImgMediumSquare() {
       $(this).addClass("total-height").removeClass('img');
       $(this).css("margin-left", (64 - 64*ratio)/2);
       $(this).css("margin-right", (64 - 64*ratio)/2);
-    } else {
+    } else if(height > width) {
       $(this).css('margin-top', (64 - 64 / ratio) / 2);
       $(this).css('margin-bottom', (64 - 64 / ratio) / 2);
       $(this).addClass("total-width");
+    }
+  });
+}
+
+function adjustImgMini() {
+  $('.img-mini > img').each(function(i) {
+    height = $(this).height();
+    width = $(this).width();
+    ratio = width / height;
+    if(height < width) {
+      $(this).addClass("total-height").removeClass('img');
+      $(this).css("margin-left", (19 - 19*ratio)/2);
+      $(this).css("margin-right", (19 - 19*ratio)/2);
+    } else if(height > width) {
+      $(this).css('margin-top', (19 - 19 / ratio) / 2);
+      $(this).css('margin-bottom', (19 - 19 / ratio) / 2);
+      $(this).addClass("total-width");
+    } else {
+      $(this).css("margin-top", -3);
     }
   });
 }

@@ -21,12 +21,20 @@
           <div class="col-xs-12">
             <% if booking.offer.type_of_offer == "rent" %>
               <p>
-                Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                <% if booking.end_date == Date.today %>
+                  Aujourd'hui
+                <% else %>
+                  Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                <% end %>
                 (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
               </p>
             <% elsif booking.offer.type_of_offer == "service" %>
               <p>
-                Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                <% if booking.end_date == Date.today %>
+                  Aujourd'hui
+                <% else %>
+                  Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                <% end %>
                 (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
               </p>
             <% else %>
@@ -85,10 +93,30 @@
           <div class="user-link">
             <% if booking.offer.user == current_user %>
               <%= link_to user_path(booking.user) do %>
-                <%= booking.user.first_name %>
+                <ul class="list-inline list-unstyled margin-none">
+                  <li>
+                    <div class="img-small">
+                      <% if booking.user.picture_file_name %>
+                        <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
+                      <% else %>
+                        <%= image_tag "user_pic-225x225.png", class: "img-logo-small" %>
+                      <% end %>
+                    </div>
+                  </li>
+                  <li>
+                    <%= booking.user.first_name %>
+                  </li>
+                </ul>
               <% end %>
             <% else %>
               <%= link_to user_path(booking.offer.user) do %>
+                <div class="img-small">
+                  <% if booking.offer.user.picture_file_name %>
+                    <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
+                  <% else %>
+                    <%= image_tag "user_pic-225x225.png", class: "img-logo-small" %>
+                  <% end %>
+                </div>
                 <%= booking.offer.user.first_name %>
               <% end %>
             <% end %>

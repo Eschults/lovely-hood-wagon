@@ -8,7 +8,7 @@
               <% if booking.user.picture_file_name %>
                 <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
               <% else %>
-                <%= image_tag "user_pic-225x225.png" %>
+                <%= image_tag "user_pic-60.png" %>
               <% end %>
             </div>
           </div>
@@ -23,7 +23,7 @@
               <% if booking.offer.user.picture_file_name %>
                 <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
               <% else %>
-                <%= image_tag "user_pic-225x225.png"%>
+                <%= image_tag "user_pic-60.png"%>
               <% end %>
             </div>
           </div>
@@ -37,12 +37,12 @@
       <div class="review-content">
         <div class="row">
           <div class="col-xs-12 comment">
-            <%= review.comment %>
+            <%= simple_format review.comment %>
           </div>
         </div>
         <div class="review-footer">
           <div class="review-date">
-            <%= review.created_at.strftime("%B %Y") %>
+            <%= review.created_at.strftime("%b %Y") %>
           </div>
           <div class="offer-link">
             <%= link_to offer_path(booking.offer) do %>
@@ -54,3 +54,14 @@
     </div>
   </div>
 </div>
+
+<% content_for(:js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function() {
+      var height;
+      var width;
+      adjustImgMedium();
+      adjustImgSmall();
+    });
+  <% end %>
+<% end %>

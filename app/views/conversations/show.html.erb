@@ -70,7 +70,7 @@
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
-      $(".panel-body-conversation").niceScroll({
+      $("#messages").niceScroll({
         cursorwidth: "10px",
         cursorcolor: "#ddd",
         cursoropacitymin: 1,
@@ -85,6 +85,7 @@
         cursorborder: "1px solid #fff"
       });
       stickDown();
+      $('#messages').scrollTop($('#messages')[0].scrollHeight);
       stylizeConversationPreview();
       adjustImgMediumSquare();
       adjustImgSmallSquare();

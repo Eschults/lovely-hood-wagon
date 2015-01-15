@@ -112,12 +112,12 @@ function adjustImgSmall() {
     ratio = width / height;
     if(height < width) {
       $(this).addClass("total-height").removeClass('img');
-      $(this).css("margin-left", (38 - 38*ratio)/2);
-      $(this).css("margin-right", (38 - 38*ratio)/2);
+      $(this).css("margin-left", (38 - 38 * ratio) / 2);
+      $(this).css("margin-right", (38 - 38 * ratio) / 2);
     } else if(height > width) {
+      $(this).addClass("total-width");
       $(this).css('margin-top', (38 - 38 / ratio) / 2);
       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
-      $(this).addClass("total-width");
     }
   });
 }
@@ -129,12 +129,12 @@ function adjustImgSmallSquare() {
     ratio = width / height;
     if(height < width) {
       $(this).addClass("total-height").removeClass('img');
-      $(this).css("margin-left", (38 - 38*ratio)/2);
-      $(this).css("margin-right", (38 - 38*ratio)/2);
+      $(this).css("margin-left", (38 - 38 * ratio) / 2);
+      $(this).css("margin-right", (38 - 38 * ratio) / 2);
     } else if(height > width) {
+      $(this).addClass("total-width");
       $(this).css('margin-top', (38 - 38 / ratio) / 2);
       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
-      $(this).addClass("total-width");
     }
   });
 }
@@ -146,8 +146,8 @@ function adjustImgNavbar() {
     ratio = width / height;
     if(height < width) {
       $(this).addClass("total-height").removeClass('img');
-      $(this).css("margin-left", (38 - 38*ratio)/2);
-      $(this).css("margin-right", (38 - 38*ratio)/2);
+      $(this).css("margin-left", (38 - 38 * ratio) / 2);
+      $(this).css("margin-right", (38 - 38 * ratio) / 2);
     } else if(height > width) {
       $(this).css('margin-top', (38 - 38 / ratio) / 2);
       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
@@ -163,8 +163,8 @@ function adjustImgMediumSquare() {
     ratio = width / height;
     if(height < width) {
       $(this).addClass("total-height").removeClass('img');
-      $(this).css("margin-left", (64 - 64*ratio)/2);
-      $(this).css("margin-right", (64 - 64*ratio)/2);
+      $(this).css("margin-left", (64 - 64 * ratio) / 2);
+      $(this).css("margin-right", (64 - 64 * ratio) / 2);
     } else if(height > width) {
       $(this).css('margin-top', (64 - 64 / ratio) / 2);
       $(this).css('margin-bottom', (64 - 64 / ratio) / 2);
@@ -180,12 +180,13 @@ function adjustImgMini() {
     ratio = width / height;
     if(height < width) {
       $(this).addClass("total-height").removeClass('img');
-      $(this).css("margin-left", (19 - 19*ratio)/2);
-      $(this).css("margin-right", (19 - 19*ratio)/2);
+      $(this).css("margin-left", (20 - 20 * ratio) / 2);
+      $(this).css("margin-right", (20 - 20 * ratio) / 2);
+      $(this).css("margin-top", -3);
     } else if(height > width) {
-      $(this).css('margin-top', (19 - 19 / ratio) / 2);
-      $(this).css('margin-bottom', (19 - 19 / ratio) / 2);
-      $(this).addClass("total-width");
+      $(this).addClass("total-width").removeClass('img');
+      $(this).css('margin-top', (20 - 20 / ratio) / 2);
+      $(this).css('margin-bottom', (20 - 20 / ratio) / 2);
     } else {
       $(this).css("margin-top", -3);
     }

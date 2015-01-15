@@ -46,7 +46,21 @@
           </div>
           <div class="offer-link">
             <%= link_to offer_path(booking.offer) do %>
-              <%= booking.offer.nature %>
+            <table>
+              <td>
+                <%= booking.offer.nature %>
+              </td>
+              <td>&nbsp;&nbsp;</td>
+              <td>
+                <div class="img-mini">
+                  <% if booking.offer.picture_file_name %>
+                    <%= image_tag(booking.offer.picture.url(:medium), { class: "img" }) %>
+                  <% else %>
+                    <%= image_tag "no-image-38.png", class: "img" %>
+                  <% end %>
+                </div>
+              </td>
+            </table>
             <% end %>
           </div>
         </div>

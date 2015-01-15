@@ -68,7 +68,7 @@
           <div class="user-link">
             <% if booking.offer.user == current_user %>
               <%= link_to user_path(booking.user) do %>
-                <table class="user-assets list-inline list-unstyled margin-none">
+                <table class="user-assets margin-none">
                   <td>
                     <%= booking.user.first_name %>
                   </td>
@@ -86,7 +86,7 @@
               <% end %>
             <% else %>
               <%= link_to user_path(booking.offer.user) do %>
-                <table class="user-assets list-inline list-unstyled margin-none">
+                <table class="user-assets margin-none">
                   <td>
                     <%= booking.offer.user.first_name %>
                   </td>

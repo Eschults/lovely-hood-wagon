@@ -94,7 +94,7 @@
           <div class="user-link">
             <% if booking.offer.user == current_user %>
               <%= link_to user_path(booking.user) do %>
-                <table class="user-assets list-inline list-unstyled margin-none">
+                <table class="user-assets margin-none">
                   <td>
                     <%= booking.user.first_name %>
                   </td>
@@ -104,7 +104,7 @@
                       <% if booking.user.picture_file_name %>
                         <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
                       <% else %>
-                        <%= image_tag "user_pic-38.png", class: "img img-logo-small" %>
+                        <%= image_tag "user_pic-38.png", class: "img" %>
                       <% end %>
                     </div>
                   </td>
@@ -112,7 +112,7 @@
               <% end %>
             <% else %>
               <%= link_to user_path(booking.offer.user) do %>
-                <table class="user-assets list-inline list-unstyled margin-none">
+                <table class="user-assets margin-none">
                   <td>
                     <%= booking.offer.user.first_name %>
                   </td>
@@ -122,7 +122,7 @@
                       <% if booking.offer.user.picture_file_name %>
                         <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
                       <% else %>
-                        <%= image_tag "user_pic-38.png", class: "img img-logo-small" %>
+                        <%= image_tag "user_pic-38.png", class: "img" %>
                       <% end %>
                     </div>
                   </td>

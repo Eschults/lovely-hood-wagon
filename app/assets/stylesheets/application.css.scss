@@ -577,6 +577,11 @@ input,
   scroll: auto;
 }
 
+#messages {
+  max-height: 476px;
+  scroll: auto;
+}
+
 .link-unstyled,
 .link-unstyled:hover,
 .link-unstyled:focus {

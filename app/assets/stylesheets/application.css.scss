@@ -892,3 +892,22 @@ a.disabled {
 .user-assets {
   display: table-cell;
 }
+
+.update-profile-pic {
+  padding: 10px 15px;
+  margin-top: -50px;
+  margin-left: 5px;
+  height: 45px;
+}
+
+.profile-pic-hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 100%;
+  font-size: 16px;
+}
+
+.update-pic-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+}

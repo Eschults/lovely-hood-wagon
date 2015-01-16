@@ -7,14 +7,19 @@
           <% if current_user == @user %>
             <%= link_to edit_user_path(current_user, anchor: "my-pic") do %>
               <% if @user.picture_file_name %>
-                <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
+                <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail", id: "profile-picture" }) %>
+                <div class="update-profile-pic">
+                  <div class="update-pic-text">
+                    <i class="fa fa-camera pic-icon"></i>
+                  </div>
+                </div>
               <% else %>
                 <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
               <% end %>
             <% end %>
           <% else %>
             <% if @user.picture_file_name %>
-              <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail", id: "profile-picture" }) %>
             <% else %>
               <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
             <% end %>
@@ -224,6 +229,16 @@
     $(document).ready(function(e) {
       adjustImgSmall();
       adjustImgMini();
+      $('#profile-picture').on('mouseenter', function() {
+        $('.update-profile-pic').addClass('profile-pic-hover');
+        var width = $(this).width();
+        $('.update-profile-pic').css('width', width);
+        $('.update-pic-text').html('<i class="fa fa-camera"></i>&nbsp;&nbsp;Modifier photo').css('font-size', 18);
+      })
+      $('#profile-picture').on('mouseleave', function() {
+        $('.update-profile-pic').removeClass('profile-pic-hover');
+        $('.update-pic-text').html('<i class="fa fa-camera"></i>').css('font-size', 20);
+      })
     });
   <% end %>
 <% end %>

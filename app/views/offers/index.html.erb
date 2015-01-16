@@ -122,7 +122,7 @@
       {{#picture?}}
       <div class="row">
         <div class="col-xs-12 text-center padding-vertical-10 hidden" id="picture_{{ id }}">
-          <img src="{{ picture_url }}" max-width="300px" max-height="300px" class="img-thumbnail"/>
+          <img src="{{ picture_url }}" max-width="150px" max-height="150px" class=""/>
         </div>
       </div>
       {{/picture?}}
@@ -214,14 +214,6 @@
         markers,
         '<%= current_user.id %>'
       );
-
-      $('.see-img').on('click', function(e) {
-        showOrHidePicture(13, $(this));
-      });
-
-      $('.offer-stream-box').on('click', function(e) {
-        showOrHidePicture(6, $(this));
-      });
 
       $('#default_sort').on('click', function(e) {
         $(this).addClass("disabled");

@@ -73,14 +73,14 @@
       <div class="row">
         <div class="col-xs-1">
           <div class="img-nature-box">
-            <a href="{{offer_url}}">
+            <a href="{{offer_url}}" id="offer_{{id}}">
               <img src="/assets/{{#sell}}sell{{/sell}}{{^sell}}{{nature}}{{/sell}}.png" width="60" />
             </a>
           </div>
         </div>
         <div class="col-xs-9 padding-left-30">
-          <h5 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link">{{{ _highlightResult.nature.value }}}</a></h5>
-          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}">Voir l'annonce complète<a></p>
+          <h5 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link neutralize" id="offer_{{id}}">{{{ _highlightResult.nature.value }}}</a></h5>
+          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}" class="neutralize" id="offer_{{id}}">Voir l'annonce complète<a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
           <h4 class="margin-none text-right price">
@@ -122,7 +122,7 @@
       {{#picture?}}
       <div class="row">
         <div class="col-xs-12 text-center padding-vertical-10 hidden" id="picture_{{ id }}">
-          <img src="{{ picture_url }}" max-width="150px" max-height="150px" class=""/>
+          <img src="{{ picture_url }}" class="img-offer-pop"/>
         </div>
       </div>
       {{/picture?}}
@@ -148,17 +148,17 @@
             </li>
             {{/picture?}}
             <li class="float-right">
-              <a href="{{ new_booking_url }}">
+              <a href="{{ new_booking_url }}" class="neutralize" id="offer_{{id}}">
                 <i class="fa fa-check"></i> Réserver
               </a>
             </li>
             <li class="float-right">
-              <a href="{{ message_url }}">
+              <a href="{{ message_url }}" class="neutralize" id="offer_{{id}}">
                 <i class="fa fa-envelope"></i> Demande d'info
               </a>
             </li>
             <li class="float-right">
-              <a href="#">
+              <a href="#" class="neutralize" id="offer_{{id}}">
                 <i class="fa fa-star"></i> Enregistrer
               </a>
             </li>

@@ -77,6 +77,13 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
     }
     $hits.html(html);
 
+    $('.see-img').on('click', function(e) {
+      showOrHidePicture(13, $(this));
+    });
+
+    $('.offer-stream-box').on('click', function(e) {
+      showOrHidePicture(6, $(this));
+    });
 
     // facets: display the conjunctive+disjunctive facets
     html = '';

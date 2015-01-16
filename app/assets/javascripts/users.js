@@ -146,11 +146,11 @@ function adjustImgNavbar() {
     ratio = width / height;
     if(height < width) {
       $(this).addClass("total-height").removeClass('img');
-      $(this).css("margin-left", (38 - 38 * ratio) / 2);
-      $(this).css("margin-right", (38 - 38 * ratio) / 2);
+      $(this).css("margin-left", (42 - 42 * ratio) / 2);
+      $(this).css("margin-right", (42 - 42 * ratio) / 2);
     } else if(height > width) {
-      $(this).css('margin-top', (38 - 38 / ratio) / 2);
-      $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
+      $(this).css('margin-top', (42 - 42 / ratio) / 2);
+      $(this).css('margin-bottom', (42 - 42 / ratio) / 2);
       $(this).addClass("total-width");
     }
   });

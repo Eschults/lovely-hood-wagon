@@ -204,5 +204,4 @@ function updatePic() {
     $('.update-profile-pic').removeClass('profile-pic-hover');
     $('.update-pic-text').html('<i class="fa fa-camera"></i>');
   })
-  });
 }

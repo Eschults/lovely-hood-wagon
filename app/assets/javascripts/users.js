@@ -192,3 +192,17 @@ function adjustImgMini() {
     }
   });
 }
+
+function updatePic() {
+  $('#profile-picture').hover(function() {
+    $('.update-profile-pic').addClass('profile-pic-hover');
+    var width = $(this).width();
+    $('.update-profile-pic').css('width', width);
+    $('.update-pic-text').html('<i class="fa fa-camera"></i>&nbsp;&nbsp;Modifier photo').css('font-size', 18);
+  })
+  $('#profile-picture').on('mouseout', function() {
+    $('.update-profile-pic').removeClass('profile-pic-hover');
+    $('.update-pic-text').html('<i class="fa fa-camera"></i>');
+  })
+  });
+}

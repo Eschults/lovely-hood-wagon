@@ -229,16 +229,5 @@
     $(document).ready(function(e) {
       adjustImgSmall();
       adjustImgMini();
-      $('#profile-picture').on('mouseenter', function() {
-        $('.update-profile-pic').addClass('profile-pic-hover');
-        var width = $(this).width();
-        $('.update-profile-pic').css('width', width);
-        $('.update-pic-text').html('<i class="fa fa-camera"></i>&nbsp;&nbsp;Modifier photo').css('font-size', 18);
-      })
-      $('#profile-picture').on('mouseleave', function() {
-        $('.update-profile-pic').removeClass('profile-pic-hover');
-        $('.update-pic-text').html('<i class="fa fa-camera"></i>').css('font-size', 20);
-      })
-    });
   <% end %>
 <% end %>

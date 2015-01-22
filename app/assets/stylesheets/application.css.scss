@@ -910,3 +910,13 @@ a.disabled {
   color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
 }
+
+.btn-circle {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.btn-pb {
+  padding-top: 9px;
+}

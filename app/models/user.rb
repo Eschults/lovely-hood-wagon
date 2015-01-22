@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [ :facebook ]
 
+  acts_as_voter
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

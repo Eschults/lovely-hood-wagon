@@ -42,6 +42,8 @@ function showComments() {
   $('#user-picture').addClass("hidden");
   $('#user-trust').addClass("hidden");
   $('#user-comments').removeClass("hidden");
+  adjustImgMedium();
+  adjustImgMini();
   $('#user-recommendations').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
@@ -89,6 +91,8 @@ function test_all_fields() {
 }
 
 function adjustImgMedium() {
+  var height;
+  var width;
   $('.img-medium > img').each(function(i) {
     height = $(this).height();
     width = $(this).width();
@@ -97,7 +101,7 @@ function adjustImgMedium() {
       $(this).css('margin-left', (60 - 60 * ratio) / 2);
       $(this).css('margin-right', (60 - 60 * ratio) / 2);
       $(this).addClass("total-height").removeClass('img');
-    } else {
+    } else if(height > width) {
       $(this).css('margin-top', (60 - 60 / ratio) / 2);
       $(this).css('margin-bottom', (60 - 60 / ratio) / 2);
       $(this).addClass("total-width");
@@ -106,6 +110,8 @@ function adjustImgMedium() {
 }
 
 function adjustImgSmall() {
+  var height;
+  var width;
   $('.img-small > img').each(function(i) {
     height = $(this).height();
     width = $(this).width();
@@ -123,6 +129,8 @@ function adjustImgSmall() {
 }
 
 function adjustImgSmallSquare() {
+  var height;
+  var width;
   $('.img-small-square > img').each(function(i) {
     height = $(this).height();
     width = $(this).width();
@@ -140,6 +148,8 @@ function adjustImgSmallSquare() {
 }
 
 function adjustImgNavbar() {
+  var height;
+  var width;
   $('.img-navbar > img').each(function(i) {
     height = $(this).height();
     width = $(this).width();
@@ -157,6 +167,8 @@ function adjustImgNavbar() {
 }
 
 function adjustImgMediumSquare() {
+  var height;
+  var width;
   $('.img-medium-square > img').each(function(i) {
     height = $(this).height();
     width = $(this).width();
@@ -174,6 +186,8 @@ function adjustImgMediumSquare() {
 }
 
 function adjustImgMini() {
+  var height;
+  var width;
   $('.img-mini > img').each(function(i) {
     height = $(this).height();
     width = $(this).width();
@@ -204,4 +218,126 @@ function updatePic() {
     $('.update-profile-pic').removeClass('profile-pic-hover');
     $('.update-pic-text').html('<i class="fa fa-camera"></i>');
   })
+}
+
+function showTheRightDiv() {
+  if(window.location.hash == "#my-trust") {
+  showTrust();
+  }
+
+  if(window.location.hash == "#my-pic") {
+  showPic();
+  }
+
+  $('.edit-link').on('focus', function(e) {
+    window.scrollTo(0, 0);
+  })
+  $('.edit-link').on('click', function(e) {
+    id = $(this).attr('id');
+    if(id == "my-info") {
+      showInfo();
+    }
+    if(id == "my-pic") {
+      showPic();
+    }
+    if(id == "my-trust") {
+      showTrust();
+    }
+    if(id == "my-comments") {
+      showComments();
+    }
+    if(id == "my-recos") {
+      showRecos();
+    }
+  });
+}
+
+function formValidation() {
+  var id;
+  var name;
+  var first_name;
+  var last_name;
+  var street_number;
+  var street_name;
+  var zip_code;
+  var city;
+
+  firstName = $("#first_name");
+  filled(firstName);
+  test_field_at_focusout(firstName);
+
+  lastName = $("#last_name");
+  filled(lastName);
+  test_field_at_focusout(lastName);
+
+  streetNumber = $("#street_number");
+  filled(streetNumber);
+  test_field_at_focusout(streetNumber);
+
+  streetName = $("#street_name");
+  filled(streetName);
+  test_field_at_focusout(streetName);
+
+  zipCode = $("#zip_code");
+  filled(zipCode);
+
+  city = $("#city");
+  filled(city);
+  test_field_at_focusout(city);
+
+  mobile = $("#mobile_phone");
+  test_field_at_focusout(mobile);
+
+  address = $("#address");
+  test_field_at_focusout(address);
+
+  $("#zip_code").on("focusout", function(event) {
+    var zipCode = $("#zip_code").val();
+    var invalid_zip_code = function() {
+      if (zipCode.match(/^\d{5}$/) == null) {
+        return true;
+      }
+      else {
+        return false;
+      };
+    }
+    var result = invalid_zip_code();
+    if (result) {
+      $(this).parent().addClass("has-error").removeClass("has-success");
+    }
+    else {
+      $(this).parent().addClass("has-success").removeClass("has-error");
+    };
+  });
+
+  $("#phone").on("focusout", function(event) {
+    var mobile = $("#phone").val();
+    var invalid_mobile = function() {
+      if (mobile == "") {
+        return "empty";
+      } else if (mobile.match(/(0|\+33)6( ?\d{2}){4}/) == null) {
+        return true;
+      } else {
+        return false;
+      };
+    }
+    var result = invalid_mobile();
+    if (result == "empty") {
+      $(this).parent().removeClass("has-error").removeClass("has-success");
+    } else if (result) {
+      $(this).parent().addClass("has-error").removeClass("has-success");
+    } else {
+      $(this).parent().addClass("has-success").removeClass("has-error");
+    };
+  });
+
+  $("input").on("focusout", function(event) {
+    var test = test_all_fields();
+    if (test) {
+      $("#submit").prop("disabled", false);
+    }
+    else {
+      $("#submit").prop("disabled", true);
+    }
+  });
 }

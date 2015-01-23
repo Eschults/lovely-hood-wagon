@@ -68,14 +68,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:js) do %>
-  <% javascript_tag do %>
-    $(document).ready(function() {
-      var height;
-      var width;
-      adjustImgMedium();
-      adjustImgSmall();
-    });
-  <% end %>
-<% end %>

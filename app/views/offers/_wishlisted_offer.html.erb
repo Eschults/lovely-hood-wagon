@@ -1,4 +1,4 @@
-<div class="offer-stream-box border-top">
+<div class="offer-stream-box border-top" id="<%="offer_#{offer.id}"%>">
   <div class="row">
     <div class="col-xs-1">
       <div class="img-nature-box">
@@ -17,11 +17,13 @@
         <%= offer.one_price.match(/\/.*$/)[0] %>
       </p>
     </div>
-    <div class="row">
-      <div class="col-xs-12 text-center padding-vertical-10 hidden" id="<%="picture_#{offer.id}"%>">
-        <%= image_tag(offer.picture.url(:medium), { class: "img-offer-pop" }) %>
+    <% if offer.picture_file_name %>
+      <div class="row">
+        <div class="col-xs-12 text-center padding-vertical-10 hidden" id="<%="picture_#{offer.id}"%>">
+          <%= image_tag(offer.picture.url(:medium), { class: "img-offer-pop" }) %>
+        </div>
       </div>
-    </div>
+    <% end %>
     <div class="row">
       <div class="col-xs-12">
         <div class="col-xs-1"></div>
@@ -70,3 +72,16 @@
     </div>
   </div>
 </div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      $('.offer-stream-box .neutralize').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
+
+      $('.offer-stream-box').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
+    });
+  <% end %>
+<% end %>

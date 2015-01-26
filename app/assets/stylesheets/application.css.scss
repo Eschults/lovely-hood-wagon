@@ -711,6 +711,19 @@ a.disabled {
   color: #FFB400;
 }
 
+.offer-stream-box ul > li > a.wished {
+  color: #FFB400;
+}
+
+.offer-stream-box ul > li > a.wished:hover {
+  color: rgb(119, 119, 119);
+  text-decoration: none;
+}
+
+.wished {
+  color: #FFB400;
+}
+
 .small-star {
   font-size: 14px;
   color: $gray-lighter;

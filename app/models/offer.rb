@@ -44,14 +44,6 @@ class Offer < ActiveRecord::Base
       end
     end
 
-    # add_attribute :wished? do
-    #   if current_user.find_voted_items.include? self
-    #     true
-    #   else
-    #     nil
-    #   end
-    # end
-
     add_attribute :icon_img do
       if type_of_offer == "sell"
         '<img src="../assets/sell.png" width="32" />'

@@ -48,17 +48,6 @@
               <% end %>
             <% end %>
           <% else %>
-            <% if current_user.conversation_with(@offer.user) %>
-              <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
-                <i class="fa fa-envelope"></i> Demande d'info
-              <% end %>
-            <% else %>
-              <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
-                <i class="fa fa-envelope"></i> Demande d'info
-              <% end %>
-            <% end %>
-            <br>
-            <br>
             <% if current_user.find_voted_items.include? @offer %>
               <%= link_to unwish_offer_path(@offer), class: "btn btn-success btn-wide", method: :put do %>
                 <i class="fa fa-star"></i> Retirer de ma liste
@@ -66,6 +55,17 @@
             <% else %>
               <%= link_to wish_offer_path(@offer), class: "btn btn-success btn-wide", method: :put do %>
                 <i class="fa fa-star"></i> Enregistrer
+              <% end %>
+            <% end %>
+            <br>
+            <br>
+            <% if current_user.conversation_with(@offer.user) %>
+              <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
+                <i class="fa fa-envelope"></i> Demande d'info
+              <% end %>
+            <% else %>
+              <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+                <i class="fa fa-envelope"></i> Demande d'info
               <% end %>
             <% end %>
             <br>

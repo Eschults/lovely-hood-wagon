@@ -22,14 +22,22 @@
             <!-- si c'est un objet à louer, on display les dates -->
             <% if booking.offer.type_of_offer == "rent" %>
               <p>
-                Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
+                <% if booking.start_date == Date.today %>
+                  <strong>Aujourd'hui</strong>
+                <% else %>
+                  Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
+                <% end %>
                 (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
               </p>
             <!-- si c'est un service, on display les dates + heures -->
             <% elsif booking.offer.type_of_offer == "service" %>
               <p>
+                <% if booking.start_date == Date.today %>
+                  <strong>Aujourd'hui</strong>
+                <% else %>
                   Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
-                  (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
+                <% end %>
+                (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
               </p>
             <!-- si c'est une vente, on display la date de rdv -->
             <% else %>

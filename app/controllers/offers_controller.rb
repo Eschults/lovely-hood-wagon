@@ -68,6 +68,18 @@ class OffersController < ApplicationController
     @offers = current_user.find_voted_items
   end
 
+  def wish
+   set_offer
+   @offer.liked_by current_user
+   redirect_to offer_path(@offer)
+  end
+
+  def unwish
+   set_offer
+   @offer.unliked_by current_user
+   redirect_to offer_path(@offer)
+  end
+
   private
 
   def name_and_address_validations

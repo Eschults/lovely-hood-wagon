@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update]
-  after_action :verify_policy_scoped, :only => :index
-  after_action :verify_authorized, :except => :index, unless: :devise_controller?
+  after_action :verify_policy_scoped, :only => [:index]
+  after_action :verify_authorized, :except => [:index, :wishlist], unless: :devise_controller?
   layout 'map', only: [:index]
 
   def index
@@ -62,6 +62,22 @@ class OffersController < ApplicationController
   end
 
   def show
+  end
+
+  def wishlist
+    @offers = current_user.find_voted_items
+  end
+
+  def wish
+   set_offer
+   @offer.liked_by current_user
+   redirect_to offer_path(@offer)
+  end
+
+  def unwish
+   set_offer
+   @offer.unliked_by current_user
+   redirect_to offer_path(@offer)
   end
 
   private

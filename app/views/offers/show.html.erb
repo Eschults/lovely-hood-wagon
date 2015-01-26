@@ -48,21 +48,31 @@
               <% end %>
             <% end %>
           <% else %>
-            <% if current_user.conversation_with(@offer.user) %>
-              <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
-                Demande d'info
+            <% if current_user.find_voted_items.include? @offer %>
+              <%= link_to unwish_offer_path(@offer), class: "btn btn-success btn-wide", method: :put do %>
+                <i class="fa fa-star"></i> Retirer de ma liste
               <% end %>
             <% else %>
-              <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
-                Demande d'info
+              <%= link_to wish_offer_path(@offer), class: "btn btn-success btn-wide", method: :put do %>
+                <i class="fa fa-star"></i> Enregistrer
               <% end %>
             <% end %>
             <br>
             <br>
-            <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
+            <% if current_user.conversation_with(@offer.user) %>
+              <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
+                <i class="fa fa-envelope"></i> Demande d'info
+              <% end %>
+            <% else %>
+              <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+                <i class="fa fa-envelope"></i> Demande d'info
+              <% end %>
+            <% end %>
             <br>
             <br>
-            <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>
+            <%= link_to new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" do %>
+              <i class="fa fa-check"></i> Réserver
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -81,7 +91,7 @@
               <% (5 - @offer.average_score.round).times do %>
                 <i class="fa fa-star small-star"></i>
               <% end %>
-              (<%= @offer.cto_reviews.size.to_i %> commentaires)
+              (<%= pluralize(@offer.cto_reviews.size.to_i, "commentaire") %>)
             <% end %>
           <% else %>
             (Pas encore de commentaires)

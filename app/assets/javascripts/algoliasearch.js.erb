@@ -1,4 +1,18 @@
-function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, messagePath, lat, lng, map, markers, currentUserId) {
+function initAlgolia(
+  applicationId,
+  searchOnlyApiKey,
+  indexName,
+  offerPath,
+  newOfferBookingPath,
+  messagePath,
+  wishPath,
+  unwishPath,
+  lat,
+  lng,
+  map,
+  markers,
+  currentUserWishedItemsIds
+) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
     applicationId,
@@ -72,6 +86,19 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
         content.hits[i].new_booking_url = new_booking_url;
         var message_url = messagePath.replace(":offer_id", content.hits[i].id);
         content.hits[i].message_url = message_url;
+        var unwish_url = unwishPath.replace(":id", content.hits[i].id);
+        content.hits[i].unwish_url = unwish_url;
+        var wish_url = wishPath.replace(":id", content.hits[i].id);
+        content.hits[i].wish_url = wish_url;
+        var wished;
+        var array = JSON.parse(currentUserWishedItemsIds);
+        if(array.indexOf(content.hits[i].id) > -1) {
+          wished = true;
+          content.hits[i].wished = wished;
+        } else {
+          wished = false;
+          content.hits[i].wished = wished;
+        }
         html += $hitTemplate.render(content.hits[i]);
       // }
     }

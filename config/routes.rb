@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :users, only: [:show, :edit, :update]
   resources :offers, except: [:destroy] do
+    member do
+      put :wish, to: "offers#wish"
+      put :unwish, to: "offers#unwish"
+    end
     resources :bookings, only: [:new, :create, :edit, :update, :show] do
       member do
         put :confirm
@@ -24,6 +28,9 @@ Rails.application.routes.draw do
   get 'reviews/:id', to: "reviews#show", as: "review"
 
   get "/mine", to: "offers#mine"
+  get "/wishlist", to: "offers#wishlist"
+
+
 
   resources :conversations, only: [:index, :show] do
     member do

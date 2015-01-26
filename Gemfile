@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'algoliasearch-rails'
 gem 'pundit'
 gem 'chosen-rails'

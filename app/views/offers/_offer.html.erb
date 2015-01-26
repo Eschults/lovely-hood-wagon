@@ -20,13 +20,13 @@
             <i class="fa fa-save"></i>
           <% end %>
         </div>
-        <% end %>
-      <% else %>
-      <div class="col-xs-4">
-        <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
-          <%= pluralize(current_user.verif, 'étape') %> pour publier
-        <% end %>
-      </div>
       <% end %>
+    <% else %>
+    <div class="col-xs-4">
+      <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
+        <%= pluralize(current_user.verif, 'étape') %> pour publier
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>

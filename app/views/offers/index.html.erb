@@ -158,9 +158,16 @@
               </a>
             </li>
             <li class="float-right">
-              <a href="{{ wish_url }}" data-method="put" class="neutralize" id="offer_{{id}}">
-                <i class="fa fa-star"></i> Enregistrer
-              </a>
+              {{#wished}}
+                <a href="{{ unwish_url }}" data-method="put" class="neutralize wished" id="offer_{{id}}">
+                  <i class="fa fa-star"></i> Retirer de ma wish list
+                </a>
+              {{/wished}}
+              {{^wished}}
+                <a href="{{ wish_url }}" data-method="put" class="neutralize" id="offer_{{id}}">
+                  <i class="fa fa-star"></i> Enregistrer
+                </a>
+              {{/wished}}
             </li>
           </ul>
         </div>
@@ -209,11 +216,12 @@
         "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
         "<%= new_offer_conversation_path(offer_id: ":offer_id") %>",
         "<%= wish_offer_path(id: ":id") %>",
+        "<%= unwish_offer_path(id: ":id") %>",
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,
         markers,
-        '<%= current_user.id %>'
+        '<%= current_user.find_voted_items.map { |offer| offer.id } %>'
       );
 
       $('#default_sort').on('click', function(e) {

@@ -3,7 +3,6 @@
     <div class="col-sm-3">
       <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg  ">
-
           <% if current_user == @user %>
             <%= link_to edit_user_path(current_user, anchor: "my-pic") do %>
               <% if @user.picture_file_name %>
@@ -26,7 +25,6 @@
           <% end %>
         </div>
       </div>
-
       <div class="panel panel-default margin-20-30 padding-none">
         <div class="panel-heading">
           <h4>
@@ -55,7 +53,6 @@
           <% end %>
         </div>
       </div>
-
       <div class="panel panel-default margin-20-30 padding-none">
         <div class="panel-heading">
           <h4>
@@ -104,7 +101,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-sm-9">
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>
@@ -114,9 +110,7 @@
         <% end %>
         <p><%= @user.description %></p>
       </div>
-
       <% if @user == current_user %>
-
         <% if @user.passed_bookings_to_validate[:owner].size >= 1 || @user.passed_bookings_to_validate[:client].size >= 1 %>
           <div class="passed-bookings">
             <div class="panel panel-default padding-none">
@@ -140,7 +134,6 @@
             </div>
           </div>
         <% end %>
-
         <% if @user.ongoing_bookings[:owner].size >= 1 || @user.ongoing_bookings[:client].size >= 1 %>
           <div class="ongoing-bookings">
             <div class="panel panel-default padding-none">
@@ -164,7 +157,6 @@
             </div>
           </div>
         <% end %>
-
         <% if @user.upcoming_bookings[:owner].size >= 1 || @user.upcoming_bookings[:client].size >= 1 %>
           <div class="upcoming-bookings">
             <div class="panel panel-default padding-none">
@@ -180,7 +172,6 @@
                 <% else %>
                   <p>Pas de réservation à venir.</p>
                 <% end %>
-
                 <h5><strong>On vous a réservé</strong></h5>
                 <% if @user.upcoming_bookings[:owner].size >= 1 %>
                   <% @user.upcoming_bookings[:owner].each do |booking| %>
@@ -194,7 +185,6 @@
           </div>
         <% end %>
       <% end %>
-
       <div id="reviews">
         <div class="panel panel-default padding-none">
           <div class="panel-heading">
@@ -223,7 +213,6 @@
     </div>
   </div>
 </div>
-
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {

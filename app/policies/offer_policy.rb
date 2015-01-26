@@ -21,6 +21,14 @@ class OfferPolicy < ApplicationPolicy
     record.user == user  # Only offer creator can update it
   end
 
+  def wish?
+    true
+  end
+
+  def unwish?
+    true
+  end
+
 
   # def destroy?
   #   record.user == user  # Only offer creator can destroy it

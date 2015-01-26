@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'reviews/:id', to: "reviews#show", as: "review"
 
   get "/mine", to: "offers#mine"
+  get "/wishlist", to: "offers#wishlist"
 
   resources :conversations, only: [:index, :show] do
     member do

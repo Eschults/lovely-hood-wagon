@@ -1,4 +1,17 @@
-function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newOfferBookingPath, messagePath, lat, lng, map, markers, currentUserId) {
+function initAlgolia(
+  applicationId,
+  searchOnlyApiKey,
+  indexName,
+  offerPath,
+  newOfferBookingPath,
+  messagePath,
+  wishPath,
+  lat,
+  lng,
+  map,
+  markers,
+  currentUserId
+) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
     applicationId,
@@ -72,6 +85,8 @@ function initAlgolia(applicationId, searchOnlyApiKey, indexName, offerPath, newO
         content.hits[i].new_booking_url = new_booking_url;
         var message_url = messagePath.replace(":offer_id", content.hits[i].id);
         content.hits[i].message_url = message_url;
+        var wish_url = wishPath.replace(":id", content.hits[i].id);
+        content.hits[i].wish_url = wish_url;
         html += $hitTemplate.render(content.hits[i]);
       // }
     }

@@ -158,7 +158,7 @@
               </a>
             </li>
             <li class="float-right">
-              <a href="#" class="neutralize" id="offer_{{id}}">
+              <a href="{{ wish_url }}" data-method="put" class="neutralize" id="offer_{{id}}">
                 <i class="fa fa-star"></i> Enregistrer
               </a>
             </li>
@@ -208,6 +208,7 @@
         "<%= offer_path(id: ":id") %>",
         "<%= new_offer_booking_path(offer_id: ":offer_id") %>",
         "<%= new_offer_conversation_path(offer_id: ":offer_id") %>",
+        "<%= wish_offer_path(id: ":id") %>",
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,

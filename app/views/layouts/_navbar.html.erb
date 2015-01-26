@@ -73,6 +73,7 @@
               <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
               <li><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
+              <li><%= link_to "Ma wishlist", wishlist_path %></li>
               <li class="appear">
                 <% if current_user.conversations.size > 0 %>
                   <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>

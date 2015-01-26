@@ -1,0 +1,87 @@
+<div class="offer-stream-box border-top" id="<%="offer_#{offer.id}"%>">
+  <div class="row">
+    <div class="col-xs-1">
+      <div class="img-nature-box">
+        <%= image_tag "#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png", class: "img-nature" %>
+      </div>
+    </div>
+    <div class="col-xs-9 padding-left-30">
+      <h5 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h5>
+      <p class="margin-top-10"><%= offer.description %> <%=link_to "Voir l'annonce complète", offer_path(offer) %></p>
+    </div>
+    <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
+      <h4 class="margin-none text-right price">
+        <%= offer.one_price.match(/^.*€/)[0] %>
+      </h4>
+      <p class="small">
+        <%= offer.one_price.match(/\/.*$/)[0] %>
+      </p>
+    </div>
+    <% if offer.picture_file_name %>
+      <div class="row">
+        <div class="col-xs-12 text-center padding-vertical-10 hidden" id="<%="picture_#{offer.id}"%>">
+          <%= image_tag(offer.picture.url(:medium), { class: "img-offer-pop" }) %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11 padding-left-30">
+          <ul class="list-unstyled list-inline small">
+            <% if offer.picture_file_name %>
+              <li class="float-left">
+                <a href="#" class="see-img" id="<%="show_picture_#{offer.id}"%>">
+                  Voir photo
+                </a>
+                <a href="#" class="see-img hidden" id="<%="hide_picture_#{offer.id}"%>">
+                  Cacher photo
+                </a>
+              </li>
+            <% else %>
+              <li class="float-left">
+                <a href="#" class="disabled">
+                  Voir photo
+                </a>
+              </li>
+            <% end %>
+            <li class="float-right">
+              <%= link_to new_offer_booking_path(offer), class: "neutralize", id: "offer_#{offer.id}" do %>
+                <i class="fa fa-check"></i> Réserver
+              <% end %>
+            </li>
+            <li class="float-right">
+              <%= link_to new_offer_conversation_path(offer), class: "neutralize", id: "offer_#{offer.id}" do %>
+                <i class="fa fa-envelope"></i> Demande d'info
+              <% end %>
+            </li>
+            <li class="float-right">
+              <% if current_user.find_voted_items.include? offer %>
+                <%= link_to unwish_offer_path(offer), class: "neutralize wished", id: "offer_#{offer.id}", method: :put do %>
+                  <i class="fa fa-star"></i> Retirer de ma liste
+                <% end %>
+              <% else %>
+                <%= link_to wish_offer_path(offer), class: "neutralize", id: "offer_#{offer.id}", method: :put do %>
+                  <i class="fa fa-star"></i> Enregistrer
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      $('.offer-stream-box .neutralize').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
+
+      $('.offer-stream-box').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
+    });
+  <% end %>
+<% end %>

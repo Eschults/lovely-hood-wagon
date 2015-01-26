@@ -52,14 +52,19 @@
             <% if booking.user == current_user && booking.client_validation.nil? && booking.owner_validation %>
               <ul class="confirmation list-unstyle list-inline">
                 <li>
-                  Confirmer que la prestation est terminée :
+                  Confirmer que la prestation est terminée (ou signaler un problème) :
                 </li>
                 <li class="confirmation-thumbs">
                   <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
                     <%= f.hidden_field :client_validation, value: true %>
-                    <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+                    <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide btn-circle") do %>
                       <i class="fa fa-check"></i>
                     <% end %>
+                  <% end %>
+                </li>
+                <li class="confirmation-thumbs">
+                  <%= link_to root_path, class: "btn btn-danger btn-wide btn-circle btn-pb" do %>
+                    <i class="fa fa-close"></i>
                   <% end %>
                 </li>
               </p>
@@ -67,14 +72,19 @@
               <p>
                 <ul class="confirmation list-unstyle list-inline">
                   <li>
-                    Confirmer que la prestation est terminée, et déclencher le paiement :
+                    Confirmer que la réalisation de la prestation (ou signaler un problème) :
                   </li>
                   <li class="confirmation-thumbs">
                     <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
                       <%= f.hidden_field :owner_validation, value: true %>
-                      <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+                      <%= button_tag(type: 'submit', class: "btn btn-success btn-wide btn-circle") do %>
                         <i class="fa fa-check"></i>
                       <% end %>
+                    <% end %>
+                  </li>
+                  <li class="confirmation-thumbs">
+                    <%= link_to root_path, class: "btn btn-danger btn-wide btn-circle btn-pb" do %>
+                      <i class="fa fa-close"></i>
                     <% end %>
                   </li>
                 </ul>

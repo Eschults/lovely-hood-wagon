@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [ :facebook ]
 
+  acts_as_voter
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -132,14 +134,14 @@ class User < ActiveRecord::Base
   def upcoming_bookings
     client_bookings = []
     bookings.each do |booking|
-      if booking.start_date > Date.today && (booking.accepted.nil? || booking.accepted)
+      if ((booking.start_date > Date.today) && (booking.accepted.nil? || booking.accepted)) || (booking.start_date == Date.today && booking.accepted.nil?)
         client_bookings << booking
       end
     end
     owner_bookings = []
     offers.each do |offer|
       offer.bookings.each do |booking|
-        if booking.start_date > Date.today && (booking.accepted.nil? || booking.accepted)
+        if ((booking.start_date > Date.today) && (booking.accepted.nil? || booking.accepted)) || (booking.start_date == Date.today && booking.accepted.nil?)
           owner_bookings << booking
         end
       end

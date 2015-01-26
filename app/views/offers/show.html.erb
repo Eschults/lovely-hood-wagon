@@ -59,7 +59,10 @@
             <% end %>
             <br>
             <br>
-            <%= link_to "Sauvegarder", "#", class: "btn btn-success btn-wide" %>
+            <%= link_to wishlist_path, class: "btn btn-success btn-wide" do %>
+              Sauvegarder
+              <% @offer.liked_by current_user %>
+            <% end %>
             <br>
             <br>
             <%= link_to "Réservation", new_offer_booking_path(@offer), class: "btn btn-primary btn-wide" %>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default white-bg margin-top-15 padding-none">
+        <div class="panel-heading border-btm-none">
+          <h4>Ma wishlist</h4>
+        </div>
+        <div class="panel-body padding-none">
+          <% if @offers.size > 0 %>
+            <% @offers.sort_by(&:updated_at).reverse.each do |offer| %>
+              <%= render "offer", offer: offer %>
+            <% end %>
+          <% else %>
+            <div class="offer-stream-box border-top">
+              <p>Vous n'avez pas encore enregistré d'annonce dans votre wishlist.</p>
+              <p><%= link_to "Voir les annonce", offers_path %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -34,6 +34,58 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def new_b
+    set_booking
+    @conversation = Conversation.new
+    @conversation.user1 = current_user
+    @conversation.user2 = @booking.user
+    @message = Message.new
+    authorize @conversation
+  end
+
+  def create_b
+    set_booking
+    @conversation = Conversation.new
+    @conversation.user1 = current_user
+    @conversation.user2 = @booking.user
+    @message = Message.new(message_params)
+    @message.writer = current_user
+    @message.conversation = @conversation
+    @message.save
+    authorize @conversation
+    if @conversation.save
+      redirect_to conversation_path(@conversation, anchor: "message-input")
+    else
+      render :new_b
+    end
+  end
+
+  def new_u
+    set_user
+    @conversation = Conversation.new
+    @conversation.user1 = current_user
+    @conversation.user2 = @user
+    @message = Message.new
+    authorize @conversation
+  end
+
+  def create_u
+    set_user
+    @conversation = Conversation.new
+    @conversation.user1 = current_user
+    @conversation.user2 = @user
+    @message = Message.new(message_params)
+    @message.writer = current_user
+    @message.conversation = @conversation
+    @message.save
+    authorize @conversation
+    if @conversation.save
+      redirect_to conversation_path(@conversation, anchor: "message-input")
+    else
+      render :new_b
+    end
+  end
+
   def show
     @conversation.messages.each do |message|
       unless message.writer == current_user
@@ -65,6 +117,10 @@ class ConversationsController < ApplicationController
 
   private
 
+  def set_booking
+    @offer = Booking.find(params[:booking_id])
+  end
+
   def set_conversation
     @conversation = Conversation.find(params[:id])
     authorize @conversation
@@ -72,6 +128,10 @@ class ConversationsController < ApplicationController
 
   def set_offer
     @offer = Offer.find(params[:offer_id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   def message_params

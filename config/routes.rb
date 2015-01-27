@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   end
 
   get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"
+  get 'bookings/:booking_id/conversations/new', to: "conversations#new_b"
+  post 'bookings/:booking_id/conversations', to: "conversations#create_b"
+
+  get 'users/:user_id/conversations/new', to: "conversations#new_u"
+  post 'users/:user_id/conversations', to: "conversations#create_u"
 
   post 'bookings/:booking_id/reviews', to: "reviews#create", as: "booking_review"
 

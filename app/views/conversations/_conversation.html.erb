@@ -12,6 +12,11 @@
       <% if conversation.user1.first_name == "Lovely hood" %>
         <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..4] + "..." %>
       <% else %>
+        <% if conversation.messages.sort_by(&:updated_at).last.writer == current_user && conversation.messages.sort_by(&:updated_at).last.read_at %>
+          <i class="fa fa-check gray-lighter"></i>&nbsp;
+        <% elsif conversation.messages.sort_by(&:updated_at).last.writer == current_user %>
+          <i class="fa fa-reply gray-lighter"></i>&nbsp;
+        <% end %>
         <%= conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content %>
       <% end %>
     </div>

@@ -10,14 +10,13 @@
     <div class="col-xs-7 margin-top-10">
       <p class="margin-btm-5"><strong><%= conversation.other_user(current_user).first_name %></strong></p>
       <% if conversation.user1.first_name == "Lovely hood" %>
-        <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..40] + "..." %>
+        <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..4] + "..." %>
       <% else %>
         <%= simple_format(conversation.messages.sort_by(&:updated_at).last.content.size >= 20 ? conversation.messages.sort_by(&:updated_at).last.content[0..19] + "..." : conversation.messages.sort_by(&:updated_at).last.content) %>
       <% end %>
     </div>
     <div class="col-xs-2 margin-top-10 text-right">
-      <span class="badge margin-top-15 padding-none">
-        <%= conversation.unread_messages(current_user) %>
+      <span class="badge small-badge margin-top-18">
       </span>
     </div>
   </div>

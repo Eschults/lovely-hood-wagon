@@ -58,7 +58,7 @@
             <li class="float-right">
               <% if current_user.find_voted_items.include? offer %>
                 <%= link_to unwish_offer_path(offer), class: "neutralize wished", id: "offer_#{offer.id}", method: :put do %>
-                  <i class="fa fa-star"></i> Retirer de ma liste
+                  <i class="fa fa-star"></i> Retirer de ma wish list
                 <% end %>
               <% else %>
                 <%= link_to wish_offer_path(offer), class: "neutralize", id: "offer_#{offer.id}", method: :put do %>

@@ -56,9 +56,9 @@
       <div class="panel panel-default margin-20-30 padding-none">
         <div class="panel-heading">
           <h4>
-            <% if current_user == @user %>
+            <% if current_user == @user && @user.offers.size > 0 %>
               <%= link_to mine_path, class: "nice-link" do %>
-                Annonces (<%= @user.offers.count %>)
+                <%= "Annonce".pluralize(@user.offers.size) %> (<%= @user.offers.size %>)
               <% end %>
             <% else %>
               Annonces
@@ -108,13 +108,15 @@
           <strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
-          <% if current_user.conversation_with(@user) %>
-            <%= link_to conversation_path(current_user.conversation_with(@user), anchor: "message-input"), class: "contac-user-link" do %>
-              <i class="fa fa-send"></i> Envoyer un message
-            <% end %>
-          <% else %>
-            <%= link_to new_booking_conversation_path, class: "contac-user-link" do %>
-              <i class="fa fa-send"></i> Envoyer un message
+          <% unless current_user == @user %>
+            <% if current_user.conversation_with(@user) %>
+              <%= link_to conversation_path(current_user.conversation_with(@user), anchor: "message-input"), class: "contact-user-link" do %>
+                <i class="fa fa-send"></i> Envoyer un message
+              <% end %>
+            <% else %>
+              <%= link_to new_user_conversation_path(@user), class: "contact-user-link" do %>
+                <i class="fa fa-send"></i> Envoyer un message
+              <% end %>
             <% end %>
           <% end %>
         </p>

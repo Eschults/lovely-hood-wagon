@@ -368,8 +368,9 @@ input,
 
 .small-badge {
   font-size: 8px;
-  margin-top: 2 px;
-  vertical-align: top;
+  background-color: $lovely-blue;
+  padding: 3px;
+  height: 10px;
 }
 
 .gray-lighter {

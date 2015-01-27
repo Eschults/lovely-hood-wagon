@@ -59,17 +59,22 @@
               </div>
               <strong><%= current_user.first_name %><span class="caret"></span></strong></a>
             <ul class="dropdown-menu" role="menu">
-              <li>
-                <%= link_to user_path(current_user) do %>
-                  Voir mon profil
-                  <% if current_user.passed_bookings_to_validate[:owner].size >= 1 %>
-                    &nbsp;
+              <% if current_user.passed_bookings_to_validate[:owner].size >= 1 || current_user.passed_bookings_to_validate[:client].select { |booking| booking.owner_validation }.size >= 1 || current_user.upcoming_bookings[:owner].select { |booking| booking.accepted.nil? }.size >= 1 %>
+                <li style="background-color: rgb(250,250,250);">
+                  <%= link_to user_path(current_user) do %>
+                    <strong>Voir mon profil</strong>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="badge small-badge">
-                      <%= current_user.passed_bookings_to_validate[:owner].size %>
                     </span>
                   <% end %>
-                <% end %>
-              </li>
+                  </li>
+              <% else %>
+                <li>
+                  <%= link_to user_path(current_user) do %>
+                    Voir mon profil
+                  <% end %>
+                </li>
+              <% end %>
               <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
               <li><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>

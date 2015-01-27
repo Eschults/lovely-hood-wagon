@@ -104,7 +104,20 @@
     <div class="col-sm-9">
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>
-        <p><strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %></p>
+        <p>
+          <strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %>
+        </p>
+        <p>
+          <% if current_user.conversation_with(@user) %>
+            <%= link_to conversation_path(current_user.conversation_with(@user), anchor: "message-input"), class: "contac-user-link" do %>
+              <i class="fa fa-send"></i> Envoyer un message
+            <% end %>
+          <% else %>
+            <%= link_to new_booking_conversation_path, class: "contac-user-link" do %>
+              <i class="fa fa-send"></i> Envoyer un message
+            <% end %>
+          <% end %>
+        </p>
         <% if policy(@user).update? %>
         <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
         <% end %>

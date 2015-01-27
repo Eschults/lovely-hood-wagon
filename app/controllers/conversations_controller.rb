@@ -118,7 +118,7 @@ class ConversationsController < ApplicationController
   private
 
   def set_booking
-    @offer = Booking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
   end
 
   def set_conversation

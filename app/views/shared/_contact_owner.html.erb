@@ -1,0 +1,63 @@
+<div class="panel panel-default padding-none">
+  <div class="panel-heading">
+    <h4>Fiche contact</h4>
+  </div>
+  <div class="panel-body">
+    <div class="contact">
+      <div class="row">
+        <div class="col-xs-2 text-center">
+          <%= link_to user_path(booking.offer.user) do %>
+            <div class="img-review-box">
+              <div class="img-medium">
+                <% if booking.offer.user.picture_file_name %>
+                  <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
+                <% else %>
+                  <%= image_tag "user_pic-60.png" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <div class="user-name">
+            <%= link_to booking.offer.user.first_name, user_path(booking.offer.user), class: "link-unstyled" %>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="contact-content">
+            <div class="row">
+              <div class="col-xs-12">
+                <p>
+                  <div class="col-xs-1 text-center padding-none">
+                    <i class="fa fa-map-marker"></i>
+                  </div>
+                  <div class="col-xs-11 padding-none">
+                    <%= booking.offer.user.address %>
+                  </div>
+                </p>
+                <p>
+                  <div class="col-xs-1 text-center padding-none">
+                    <i class="fa fa-send"></i>
+                  </div>
+                  <div class="col-xs-11 padding-none">
+                    Envoyer un <%= link_to "message", new_offer_conversation_path(booking.offer) %>
+                  </div>
+                </p>
+                <% unless booking.offer.user.phone == "" %>
+                  <p>
+                    <div class="col-xs-1 text-center padding-none">
+                      <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="col-xs-11 padding-none">
+                      Téléphone : <%= booking.offer.user.phone %>
+                    </div>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+            <div class="review-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

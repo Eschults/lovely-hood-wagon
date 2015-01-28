@@ -101,10 +101,11 @@ function initAlgolia(
           content.hits[i].wished = wished;
         }
         var asset_path = assetPath.replace(":path", content.hits[i].nature);
+        content.hits[i].asset_path = asset_path;
         if(indexName === "Offer") {
           asset_path = assetPath.replace(":host", "lovely-hood.herokuapp.com");
+          content.hits[i].asset_path = asset_path;
         }
-        content.hits[i].asset_path = asset_path;
         html += $hitTemplate.render(content.hits[i]);
       // }
     }

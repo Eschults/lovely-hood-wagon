@@ -3,7 +3,7 @@
     <div class="col-sm-3">
       <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg">
-          <!-- si l'offer est un service, la photo est celle du user -->
+          <!-- if offer type is a service, the picture is user's pic - or the icon if user does not have one - -->
           <% if @booking.offer.type_of_offer =="service" %>
             <% if @booking.offer.user.picture_file_name %>
               <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
@@ -15,7 +15,7 @@
             <% if @booking.offer.picture_file_name %>
               <%= image_tag(@booking.offer.picture.url(:medium), { class: "img-thumbnail" }) %>
             <% else %>
-              <%= image_tag("no-image.png", { class: "img-thumbnail transparent-bg" }) %>
+              <%= image_tag("no-image.png", { class: "img-thumbnail" }) %>
             <% end %>
           <% end %>
         </div>
@@ -23,7 +23,8 @@
     </div>
     <div class="col-sm-9">
       <div class="booking">
-        <h1>Réservation de <%= @booking.offer.nature %></h1>
+        <h1><%= @booking.offer.type_of_offer == "sell" ? "Demande d'achat" : "Réservation" %></h1>
+        <h4><strong><%= link_to @booking.offer.nature, offer_path(@booking.offer), class: "nice-link" %></strong></h4>
         <p>
           <%= @booking.offer.user.street_name.capitalize %>, <%= @booking.offer.user.zip_code %>
           &nbsp;&nbsp;&nbsp;
@@ -38,12 +39,14 @@
               (<%= @booking.offer.cto_reviews.size.to_i %> commentaires)
             <% end %>
           <% else %>
-            (Pas encore de commentaires)
+            <% unless @booking.offer.type_of_offer == "sell" %>
+              (Pas encore de commentaires)
+            <% end %>
           <% end %>
         </p>
         <p>
           <% if @booking.accepted %>
-            Félicitations, votre réservation a été acceptée !
+            Félicitations, votre <%= @booking.offer.type_of_offer == "sell" ? "demande" : "réservation" %> a été acceptée !
           <% elsif @booking.accepted.nil? %>
             Envoyée le <%= @booking.created_at.strftime("%d %b %Y") %>, en attente de réponse du destinataire.
           <% else %>
@@ -56,10 +59,13 @@
           <% elsif @booking.offer.type_of_offer == "service" %>
             <p>Du <%= @booking.start_date.strftime("%d %b") %> à <%= @booking.start_hour.strftime("%H:%M") %> au <%= @booking.end_date.strftime("%d %B") %> à <%= @booking.end_hour.strftime("%H:%M") %>.</p>
           <% else %>
-            <p><strong>Rendez-vous : </strong> le <%= @booking.start_date.strftime("%d %b") %>.</p>
+            <p>Rendez-vous : le <%= @booking.start_date.strftime("%d %b") %>, au <%= @booking.offer.user.address %>, voir itinéraire ci-dessous.</p>
           <% end %>
+          <p>Pour toute information complémentaire, n'hésitez pas à contacter <%= link_to @booking.offer.user.first_name, user_path(@booking.offer.user) %> :</p>
+          <%= render "shared/contact_owner", booking: @booking %>
         <% end %>
         <p>Revoir l'<%= link_to "annonce", offer_path(@booking.offer) %></p>
+        <p>COMING SOON : gros itinéraire bien pimpé</p>
       </div>
     </div>
   </div>

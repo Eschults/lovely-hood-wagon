@@ -217,7 +217,7 @@
         "<%= new_offer_conversation_path(offer_id: ":offer_id") %>",
         "<%= wish_offer_path(id: ":id") %>",
         "<%= unwish_offer_path(id: ":id") %>",
-        "<%= asset_path(":path") %>",
+        "<%= asset_path(":path", host: ":host") %>",
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,

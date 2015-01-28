@@ -38,9 +38,8 @@
                         <% (5 - booking.user.avge_cto_rating.round).times do %>
                           <i class="fa fa-star small-star"></i>
                         <% end %>
-                        (<%= booking.user.avge_cto_rating.round(1) %>/5)
+                        (<%= booking.user.avge_cto_rating.round(1) %>/5 - <%= pluralize(booking.user.cto_reviews.size, "commentaire") + ' en tant que "client"' %> - <%= booking.user.avge_cto_reco_percent.round %>% de recommandations)
                       <% end %>
-                      (<%= pluralize(booking.user.cto_reviews.size, "commentaire") + ' en tant que "client"' %>)
                     <% else %>
                       (Pas encore de commentaire en tant que "client")
                     <% end %>
@@ -59,9 +58,8 @@
                         <% (5 - booking.user.avge_otc_rating.round).times do %>
                           <i class="fa fa-star small-star"></i>
                         <% end %>
-                        (<%= booking.user.avge_otc_rating.round(1) %>/5)
+                        (<%= booking.user.avge_otc_rating.round(1) %>/5 - <%= pluralize(booking.user.otc_reviews.size, "commentaire") + ' en tant que "propriétaire"' %> - <%= booking.user.avge_otc_reco_percent.round %>% de recommandations)
                       <% end %>
-                      (<%= pluralize(booking.user.otc_reviews.size, "commentaire") + ' en tant que "propriétaire"' %>)
                     <% else %>
                       (Pas encore de commentaire en tant que "propriétaire")
                     <% end %>

@@ -165,6 +165,26 @@ class User < ActiveRecord::Base
     output
   end
 
+  def avge_cto_reco_percent
+    sum = 0
+    count = 0
+    cto_reviews.each do |cto_review|
+      sum += 1 if cto_review.recommendation
+      count += 1
+    end
+    sum.fdiv(count) * 100
+  end
+
+  def avge_otc_reco_percent
+    sum = 0
+    count = 0
+    otc_reviews.each do |otc_review|
+      sum += 1 if otc_review.recommendation
+      count += 1
+    end
+    sum.fdiv(count) * 100
+  end
+
   def avge_cto_rating
     sum = 0
     count = 0

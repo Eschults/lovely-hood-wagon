@@ -7,6 +7,7 @@ function initAlgolia(
   messagePath,
   wishPath,
   unwishPath,
+  assetPath,
   lat,
   lng,
   map,
@@ -99,6 +100,8 @@ function initAlgolia(
           wished = false;
           content.hits[i].wished = wished;
         }
+        var asset_path = assetPath.replace(":path", content.hits[i].nature);
+        content.hits[i].asset_path = asset_path;
         html += $hitTemplate.render(content.hits[i]);
       // }
     }

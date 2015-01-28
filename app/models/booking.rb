@@ -21,6 +21,8 @@ class Booking < ActiveRecord::Base
       else
         (((end_hour - Time.new(2000, 01, 01, 0, 0, 0, "+00:00")).to_i + (Time.new(2000, 01, 02, 0, 0, 0, "+00:00") - start_hour).to_i) + (((end_date - start_date).to_i - 1) * 24)) / 3_600 * offer.hourly_price
       end
+    elsif offer.type_of_offer == "sell"
+      offer.price
     end
   end
 

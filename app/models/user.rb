@@ -165,6 +165,26 @@ class User < ActiveRecord::Base
     output
   end
 
+  def avge_cto_rating
+    sum = 0
+    count = 0
+    cto_reviews.each do |cto_review|
+      sum += cto_review.cto_score
+      count += 1
+    end
+    sum.fdiv(count)
+  end
+
+  def avge_otc_rating
+    sum = 0
+    count = 0
+    otc_reviews.each do |otc_review|
+      sum += otc_review.otc_score
+      count += 1
+    end
+    sum.fdiv(count)
+  end
+
   def cto_reviews
     output = []
     offers.each do |offer|

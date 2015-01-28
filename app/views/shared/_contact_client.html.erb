@@ -1,0 +1,95 @@
+<div class="panel panel-default padding-none">
+  <div class="panel-heading">
+    <h4>Fiche contact</h4>
+  </div>
+  <div class="panel-body">
+    <div class="contact">
+      <div class="row">
+        <div class="col-xs-2 text-center">
+          <%= link_to user_path(booking.user) do %>
+            <div class="img-review-box">
+              <div class="img-medium">
+                <% if booking.user.picture_file_name %>
+                  <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
+                <% else %>
+                  <%= image_tag "user_pic-60.png" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <div class="user-name">
+            <%= link_to booking.user.first_name, user_path(booking.user), class: "link-unstyled" %>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="contact-content">
+            <div class="row">
+              <div class="col-xs-12">
+                <p>
+                  <div class="col-xs-1 text-center padding-none">
+                    <i class="fa fa-star-o"></i>
+                  </div>
+                  <div class="col-xs-11 padding-none">
+                    <% if booking.user.cto_reviews.size.to_i >= 1 %>
+                      <%= link_to(user_path(booking.user, anchor: "#comments"), {class: "link-unstyled"}) do %>
+                        <% booking.user.avge_cto_rating.round.times do %>
+                          <i class="fa fa-star small-star-gold"></i>
+                        <% end %>
+                        <% (5 - booking.user.avge_cto_rating.round).times do %>
+                          <i class="fa fa-star small-star"></i>
+                        <% end %>
+                        (<%= booking.user.avge_cto_rating.round(1) %>/5)
+                      <% end %>
+                      (<%= pluralize(booking.user.cto_reviews.size, "commentaire") + ' en tant que "client"' %>)
+                    <% else %>
+                      (Pas encore de commentaire en tant que "client")
+                    <% end %>
+                  </div>
+                </p>
+                <p>
+                  <div class="col-xs-1 text-center padding-none">
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <div class="col-xs-11 padding-none">
+                    <% if booking.user.otc_reviews.size.to_i >= 1 %>
+                      <%= link_to(user_path(booking.user, anchor: "#comments"), {class: "link-unstyled"}) do %>
+                        <% booking.user.avge_otc_rating.round.times do %>
+                          <i class="fa fa-star small-star-gold"></i>
+                        <% end %>
+                        <% (5 - booking.user.avge_otc_rating.round).times do %>
+                          <i class="fa fa-star small-star"></i>
+                        <% end %>
+                        (<%= booking.user.avge_otc_rating.round(1) %>/5)
+                      <% end %>
+                      (<%= pluralize(booking.user.otc_reviews.size, "commentaire") + ' en tant que "propriétaire"' %>)
+                    <% else %>
+                      (Pas encore de commentaire en tant que "propriétaire")
+                    <% end %>
+                  </div>
+                </p>
+                <p>
+                  <div class="col-xs-1 text-center padding-none">
+                    <i class="fa fa-map-marker"></i>
+                  </div>
+                  <div class="col-xs-11 padding-none">
+                    <%= booking.user.address %>
+                  </div>
+                </p>
+                <p>
+                  <div class="col-xs-1 text-center padding-none">
+                    <i class="fa fa-send"></i>
+                  </div>
+                  <div class="col-xs-11 padding-none">
+                    Envoyer un <%= link_to "message", new_booking_conversation_path(booking.offer) %>
+                  </div>
+                </p>
+              </div>
+            </div>
+            <div class="review-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

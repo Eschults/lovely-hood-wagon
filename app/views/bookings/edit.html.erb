@@ -15,7 +15,7 @@
             <% if @booking.offer.picture_file_name %>
               <%= image_tag(@booking.offer.picture.url(:medium), { class: "img-thumbnail" }) %>
             <% else %>
-              <%= image_tag("no-image.png", { class: "img-thumbnail transparent-bg" }) %>
+              <%= image_tag("no-image.png", { class: "img-thumbnail" }) %>
             <% end %>
           <% end %>
         </div>
@@ -23,27 +23,29 @@
     </div>
     <div class="col-sm-9">
       <div class="booking">
-
         <% if @booking.offer.type_of_offer == "rent" %>
           <%= render "rent" %>
         <% elsif @booking.offer.type_of_offer == "service" %>
           <%= render "service" %>
+        <% elsif @booking.offer.type_of_offer == "sell" %>
+          <%= render "sell" %>
         <% end %>
+        <%= render "shared/contact_client", booking: @booking %>
       </div>
       <div class="booking-answer">
-        <div class="col-sm-1 padding-left-10">
+        <div class="col-sm-1 padding-left-10 margin-btm-15">
           <%= form_for([@booking.offer, @booking]) do |f| %>
             <%= f.text_field :accepted, class: "hidden", value: true %>
             <%= f.submit 'Accepter', class: "btn btn-success" %>
           <% end %>
           </div>
-        <div class="col-sm-1 padding-left-30">
+        <div class="col-sm-1 padding-left-30 margin-btm-15">
           <%= form_for([@booking.offer, @booking]) do |f| %>
             <%= f.text_field :accepted, class: "hidden", value: false %>
             <%= f.submit 'Refuser', class: "btn btn-danger" %>
           <% end %>
         </div>
-        <div class="col-sm-1 padding-left-43">
+        <div class="col-sm-1 padding-left-43 margin-btm-15">
           <% if current_user.conversation_with(@booking.user) %>
             <%= link_to conversation_path(current_user.conversation_with(@booking.user), anchor: "message-input"), class: "btn btn-default" do %>
               Discuter

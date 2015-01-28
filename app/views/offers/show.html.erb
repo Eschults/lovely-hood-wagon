@@ -59,14 +59,8 @@
             <% end %>
             <br>
             <br>
-            <% if current_user.conversation_with(@offer.user) %>
-              <%= link_to conversation_path(current_user.conversation_with(@offer.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
-                <i class="fa fa-envelope"></i> Demande d'info
-              <% end %>
-            <% else %>
-              <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
-                <i class="fa fa-envelope"></i> Demande d'info
-              <% end %>
+            <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide" do %>
+              <i class="fa fa-envelope"></i> Demande d'info
             <% end %>
             <br>
             <br>

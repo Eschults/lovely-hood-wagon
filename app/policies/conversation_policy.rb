@@ -9,6 +9,22 @@ class ConversationPolicy < ApplicationPolicy
     record.user1 != record.user2
   end
 
+  def new_b?
+    record.user1 != record.user2
+  end
+
+  def create_b?
+    record.user1 != record.user2
+  end
+
+  def new_u?
+    record.user1 != record.user2
+  end
+
+  def create_u?
+    record.user1 != record.user2
+  end
+
   def reply?
     record.user1 == user || record.user2 == user
   end

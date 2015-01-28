@@ -44,8 +44,14 @@
           <% end %>
         </div>
         <div class="col-sm-1 padding-left-43">
-          <%= link_to new_offer_conversation_path(@booking.offer), class: "btn btn-default" do %>
-            Discuter
+          <% if current_user.conversation_with(@booking.user) %>
+            <%= link_to conversation_path(current_user.conversation_with(@booking.user), anchor: "message-input"), class: "btn btn-default" do %>
+              Discuter
+            <% end %>
+          <% else %>
+            <%= link_to new_booking_conversation_path(@booking), class: "btn btn-default" do %>
+              Discuter
+            <% end %>
           <% end %>
         </div>
       </div>

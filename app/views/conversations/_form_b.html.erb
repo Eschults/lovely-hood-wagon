@@ -16,7 +16,7 @@
   <%= form_for([@booking, @conversation, @message], method: :post, url:   booking_conversations_path(@booking)) do |f| %>
     <div class="form-group">
       <div class="col-xs-12">
-        <%= f.text_area :content, class: "form-control" %>
+        <%= f.text_area :content, rows: 4, class: "form-control" %>
       </div>
     </div>
 

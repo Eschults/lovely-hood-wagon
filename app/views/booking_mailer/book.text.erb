@@ -1,3 +1,3 @@
-Félicitations ! Vous avez une demande de <%= link_to @booking.offer.nature, offer_booking_url(@booking.offer, @booking) %>
+Félicitations ! Vous avez une demande pour : <%= link_to @booking.offer.nature, offer_booking_url(@booking.offer, @booking) %>
 
-<%= @booking.offer.user.first_name %>, tu as une demande de la part de <%= @booking.user.first_name %>. Consulte les détails de la réservation <%= link_to "ici", edit_offer_booking_url(@booking.offer, @booking) %>.
+<%= @booking.offer.user.first_name %>, tu as une demande de la part de <%= @booking.user.first_name %>. Consulte les détails de la demande <%= link_to "ici", edit_offer_booking_url(@booking.offer, @booking) %>.

@@ -109,14 +109,8 @@
         </p>
         <p>
           <% unless current_user == @user %>
-            <% if current_user.conversation_with(@user) %>
-              <%= link_to conversation_path(current_user.conversation_with(@user), anchor: "message-input"), class: "contact-user-link" do %>
-                <i class="fa fa-send"></i> Envoyer un message
-              <% end %>
-            <% else %>
-              <%= link_to new_user_conversation_path(@user), class: "contact-user-link" do %>
-                <i class="fa fa-send"></i> Envoyer un message
-              <% end %>
+            <%= link_to new_user_conversation_path(@user), class: "contact-user-link" do %>
+              <i class="fa fa-send"></i> Envoyer un message
             <% end %>
           <% end %>
         </p>

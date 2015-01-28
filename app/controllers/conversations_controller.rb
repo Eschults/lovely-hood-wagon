@@ -28,7 +28,7 @@ class ConversationsController < ApplicationController
     @message.save
     authorize @conversation
     if @conversation.save
-      redirect_to conversation_path(@conversation, anchor: "message-input")
+      redirect_to offer_path(@offer)
     else
       render :new
     end

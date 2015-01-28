@@ -23,7 +23,8 @@
     </div>
     <div class="col-sm-9">
       <div class="booking">
-        <h1><%= @booking.offer.type_of_offer == "sell" ? "Demande :" : "Réservation de :" %> <%= @booking.offer.nature %></h1>
+        <h1><%= @booking.offer.type_of_offer == "sell" ? "Demande d'achat" : "Réservation" %></h1>
+        <h4><strong><%= link_to @booking.offer.nature, offer_path(@booking.offer), class: "nice-link" %></strong></h4>
         <p>
           <%= @booking.offer.user.street_name.capitalize %>, <%= @booking.offer.user.zip_code %>
           &nbsp;&nbsp;&nbsp;

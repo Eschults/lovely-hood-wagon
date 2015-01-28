@@ -7,7 +7,7 @@ function initAlgolia(
   messagePath,
   wishPath,
   unwishPath,
-  assetPath,
+  assetPaths,
   lat,
   lng,
   map,
@@ -100,8 +100,16 @@ function initAlgolia(
           wished = false;
           content.hits[i].wished = wished;
         }
+        assetPaths = assetPaths.replace(/&quot;/g, '"');
+        var assetPathsArray = JSON.parse(assetPaths);
+        console.log(assetPathsArray);
+        var asset_path = assetPaths[0];
         if(content.hits[i].type_of_offer !== "sell") {
-          var asset_path = assetPath.replace("sell", content.hits[i].nature);
+          for(j in assetPathsArray) {
+            if(assetPathsArray[j].indexOf(content.hits[i].nature) > -1) {
+              asset_path = assetPathsArray[j];
+            }
+          }
           content.hits[i].asset_path = asset_path;
           // if(indexName === "Offer") {
           //   asset_path = assetPath.replace(":host", "lovely-hood.herokuapp.com");

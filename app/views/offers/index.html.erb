@@ -217,7 +217,14 @@
         "<%= new_offer_conversation_path(offer_id: ":offer_id") %>",
         "<%= wish_offer_path(id: ":id") %>",
         "<%= unwish_offer_path(id: ":id") %>",
-        "<%= asset_path("sell.png") %>",
+        "<% asset_paths = [asset_path('sell.png')]
+          NATURES[:rent].each do |nature|
+            asset_paths << asset_path("#{nature}.png")
+          end
+          NATURES[:service].each do |nature|
+            asset_paths << asset_path("#{nature}.png")
+          end
+        %><%= asset_paths %>",
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>',
         map,

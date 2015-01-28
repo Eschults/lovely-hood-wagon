@@ -103,7 +103,7 @@ function initAlgolia(
         assetPaths = assetPaths.replace(/&quot;/g, '"');
         var assetPathsArray = JSON.parse(assetPaths);
         console.log(assetPathsArray);
-        var asset_path = assetPaths[0];
+        var asset_path = assetPathsArray[0];
         if(content.hits[i].type_of_offer !== "sell") {
           for(j in assetPathsArray) {
             if(assetPathsArray[j].indexOf(content.hits[i].nature) > -1) {

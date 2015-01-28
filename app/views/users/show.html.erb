@@ -56,9 +56,9 @@
       <div class="panel panel-default margin-20-30 padding-none">
         <div class="panel-heading">
           <h4>
-            <% if current_user == @user %>
+            <% if current_user == @user && @user.offers.size > 0 %>
               <%= link_to mine_path, class: "nice-link" do %>
-                Annonces (<%= @user.offers.count %>)
+                <%= "Annonce".pluralize(@user.offers.size) %> (<%= @user.offers.size %>)
               <% end %>
             <% else %>
               Annonces
@@ -104,7 +104,16 @@
     <div class="col-sm-9">
       <div class="user-info">
         <h1>Profil de <%= @user.first_name %></h1>
-        <p><strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %></p>
+        <p>
+          <strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %>
+        </p>
+        <p>
+          <% unless current_user == @user %>
+            <%= link_to new_user_conversation_path(@user), class: "contact-user-link" do %>
+              <i class="fa fa-send"></i> Envoyer un message
+            <% end %>
+          <% end %>
+        </p>
         <% if policy(@user).update? %>
         <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
         <% end %>

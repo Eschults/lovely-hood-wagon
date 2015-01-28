@@ -1,0 +1,29 @@
+<% if current_user.conversation_with(@booking.offer.user) %>
+  <%= form_for([current_user.conversation_with(@booking.offer.user), @message], method: :put, url: reply_server_conversation_path(current_user.conversation_with(@booking.offer.user))) do |f| %>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <%= f.text_area :content, rows: 4, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group margin-btm-none">
+      <div class="col-xs-12">
+        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_for([@booking, @conversation, @message], method: :post, url:   booking_conversations_path(@booking)) do |f| %>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group margin-btm-none">
+      <div class="col-xs-12">
+        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

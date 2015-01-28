@@ -1,0 +1,29 @@
+<% if current_user.conversation_with(@user) %>
+  <%= form_for([current_user.conversation_with(@user), @message], method: :put, url: reply_server_conversation_path(current_user.conversation_with(@user))) do |f| %>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <%= f.text_area :content, rows: 4, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group margin-btm-none">
+      <div class="col-xs-12">
+        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_for([@user, @conversation, @message], method: :post, url:   user_conversations_path(@user)) do |f| %>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group margin-btm-none">
+      <div class="col-xs-12">
+        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

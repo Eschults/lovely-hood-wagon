@@ -8,6 +8,10 @@ class Review < ActiveRecord::Base
     (communication_rating + punctuality_rating + quality_price_rating).fdiv(3)
   end
 
+  def otc_score
+    (communication_rating + punctuality_rating + respect_rating).fdiv(3)
+  end
+
   private
 
   def send_view_comment_email

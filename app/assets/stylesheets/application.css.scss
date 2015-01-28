@@ -123,6 +123,10 @@ input,
   margin-bottom: 10px;
 }
 
+.margin-btm-15 {
+  margin-bottom: 15px;
+}
+
 .margin-btm-5 {
   margin-bottom: 5px;
 }
@@ -816,6 +820,11 @@ a.disabled {
 .user-link {
   display: block;
   float: right;
+}
+
+.offer-link > a:hover,
+.user-link > a:hover {
+  text-decoration: none;
 }
 
 

@@ -53,7 +53,18 @@
     </div>
 
   <% elsif @offer.type_of_offer == "sell" %>
-    <p>TO DO : système de paiement direct</p>
+    <div class="form-group">
+      <%= f.label :start_date, "Date", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.date_field :start_date, class: "form-control", id: "start-date" %>
+      </div>
+    </div>
+    <div class="form-group hidden">
+      <%= f.label :end_date, "Fin", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.date_field :end_date, class: "form-control", id: "end-date" %>
+      </div>
+    </div>
   <% end %>
 
   <br>
@@ -75,10 +86,25 @@
         </div>
       </div>
     </div>
+  <% elsif @offer.type_of_offer == "sell"  %>
+    <div class="form-group margin-btm-none">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-10">
+        <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
 <% end %>
 
 <% content_for(:js) do %>
   <%= javascript_tag do %>
+    $(document).ready(function(e) {
+      var startDate;
+      $("#start-date").on('change', function() {
+        startDate = $(this).val();
+        $("#end-date").val(startDate);
+      })
+    });
   <% end %>
 <% end %>

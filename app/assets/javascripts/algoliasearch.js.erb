@@ -102,7 +102,6 @@ function initAlgolia(
         }
         assetPaths = assetPaths.replace(/&quot;/g, '"');
         var assetPathsArray = JSON.parse(assetPaths);
-        console.log(assetPathsArray);
         var asset_path = assetPathsArray[0];
         if(content.hits[i].sell === null) {
           for(j in assetPathsArray) {

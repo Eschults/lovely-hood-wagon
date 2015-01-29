@@ -310,12 +310,14 @@ function formValidation() {
     };
   });
 
-  $("#phone").on("focusout", function(event) {
+  $("#phone").on("change", function(event) {
     var mobile = $("#phone").val();
     var invalid_mobile = function() {
       if (mobile == "") {
         return "empty";
-      } else if (mobile.match(/(0|\+33)6( ?\d{2}){4}/) == null) {
+      } else if (mobile.match(/^(0|\+33)6( ?\d{2}){4}$/) == null) {
+        return true;
+      } else if (mobile == "") {
         return true;
       } else {
         return false;

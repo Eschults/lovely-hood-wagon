@@ -8,7 +8,7 @@
             <% if @offer.user.picture_file_name %>
               <%= image_tag(@offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
             <% else %>
-              <%= image_tag "user_pic-225x225.png", class: "img-thumbnail transparent-bg" %>
+              <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
             <% end %>
           <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>

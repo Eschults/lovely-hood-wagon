@@ -72,7 +72,7 @@ class BookingsController < ApplicationController
 
   def confirm
     if @booking.update(booking_params)
-      redirect_to offers_path
+      redirect_to new_booking_review_path(@booking)
     else
       redirect_to root
     end

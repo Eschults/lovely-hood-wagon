@@ -41,7 +41,7 @@
                         (<%= booking.user.avge_cto_rating.round(1) %>/5 - <%= pluralize(booking.user.cto_reviews.size, "commentaire") + ' en tant que "client"' %> - <%= booking.user.avge_cto_reco_percent.round %>% de recommandations)
                       <% end %>
                     <% else %>
-                      (Pas encore de commentaire en tant que "client")
+                      Pas encore de commentaire en tant que "client"
                     <% end %>
                   </div>
                 </p>
@@ -61,7 +61,7 @@
                         (<%= booking.user.avge_otc_rating.round(1) %>/5 - <%= pluralize(booking.user.otc_reviews.size, "commentaire") + ' en tant que "propriétaire"' %> - <%= booking.user.avge_otc_reco_percent.round %>% de recommandations)
                       <% end %>
                     <% else %>
-                      (Pas encore de commentaire en tant que "propriétaire")
+                      Pas encore de commentaire en tant que "propriétaire"
                     <% end %>
                   </div>
                 </p>

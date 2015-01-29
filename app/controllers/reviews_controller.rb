@@ -10,15 +10,43 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = @booking.reviews.new(review_params)
+    @review = Review.new(review_params)
+    @review.booking = @booking
     authorize @review
     if @booking.user == current_user
       @review.review_type = "cto"
     else
       @review.review_type = "otc"
     end
+    # validations spécifiques
+    if @review.review_type == "cto"
+      if @review.quality_price_rating
+      else
+        flash[:alert] = "Merci de noter entre 1 et 5 le rapport qualité/prix"
+      end
+    elsif @review.booking.offer.type_of_offer == "rent"
+      if @review.respect_rating
+      else
+        flash[:alert] = "Merci de noter entre 1 et 5 le respect du matériel"
+      end
+    end
+
     if @review.save
-      redirect_to edit_booking_review_path(@booking, @review)
+      # validations générales
+      if @review.communication_rating
+        if @review.punctuality_rating
+          if @review.recommendation != nil
+            redirect_to offers_path
+          else
+            flash[:alert] = "Merci de nous donner votre recommandation"
+          end
+        else
+          flash[:alert] = "Merci de noter entre 1 et 5 la ponctualité"
+        end
+      else
+        flash[:alert] = "Merci de noter entre 1 et 5 la communication"
+      end
+      redirect_to user_path(current_user, anchor: "comments")
     else
       render :new
     end
@@ -48,7 +76,7 @@ class ReviewsController < ApplicationController
     # validations générales
     if @review.communication_rating
       if @review.punctuality_rating
-        if @review.recommendation
+        if @review.recommendation != nil
           redirect_to offers_path
         else
           flash[:alert] = "Merci de nous donner votre recommandation"

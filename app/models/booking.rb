@@ -26,6 +26,34 @@ class Booking < ActiveRecord::Base
     end
   end
 
+  def other_user(current_user)
+    current_user == user ? offer.user : user
+  end
+
+  def cto_reviews
+    reviews.select { |r| r.review_type == "cto" }
+  end
+
+  def has_to_be_reviewed_by_client?
+    if cto_reviews.size == 0 && cancelled != true
+      true
+    else
+      false
+    end
+  end
+
+  def otc_reviews
+    reviews.select { |r| r.review_type == "otc" }
+  end
+
+  def has_to_be_reviewed_by_owner?
+    if otc_reviews.size == 0 && cancelled != true
+      true
+    else
+      false
+    end
+  end
+
   private
 
   def send_book_email

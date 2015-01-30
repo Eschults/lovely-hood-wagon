@@ -9,7 +9,11 @@ class Review < ActiveRecord::Base
   end
 
   def otc_score
-    (communication_rating + punctuality_rating + respect_rating).fdiv(3)
+    if booking.offer.type_of_offer == "sell" || "service"
+      (communication_rating + punctuality_rating).fdiv(2)
+    else
+      (communication_rating + punctuality_rating + respect_rating).fdiv(3)
+    end
   end
 
   private

@@ -17,6 +17,14 @@ class BookingPolicy < ApplicationPolicy
     record.offer.user == user || record.user == user
   end
 
+  def buy?
+    record.user == user
+  end
+
+  def cancel?
+    record.offer.user == user || record.user == user
+  end
+
   def update?
     record.offer.user == user  # Only offer creator can update (accept/ decline) the booking
   end

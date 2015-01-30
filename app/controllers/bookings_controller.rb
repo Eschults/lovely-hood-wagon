@@ -74,11 +74,39 @@ class BookingsController < ApplicationController
     if @booking.update(booking_params)
       redirect_to new_booking_review_path(@booking)
     else
-      redirect_to root
+      redirect_to root_path
     end
   end
 
   def show
+  end
+
+  def buy
+    set_booking
+    @booking.offer.sold = true
+    @booking.offer.save
+    if @booking.update(booking_params)
+      @conversation = @booking.offer.user.conversation_with(lh)
+      @message = Message.new(
+        content: "Félicitations ! #{@booking.user.first_name} a acheté votre article #{@booking.offer.nature} !
+        Nous déclenchons le paiement de #{@booking.offer.price}€ sur votre compte."
+      )
+      @message.writer = lh
+      @message.conversation = @conversation
+      @message.save
+      redirect_to new_booking_review_path(@booking)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def cancel
+    set_booking
+    if @booking.update(booking_params)
+      redirect_to new_booking_review_path(@booking)
+    else
+      redirect_to root_path
+    end
   end
 
   private
@@ -93,7 +121,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted, :owner_validation, :client_validation)
+    params.require(:booking).permit(:start_date, :end_date, :start_hour, :end_hour, :accepted, :cashed_in, :cashed_out, :cancelled)
   end
 
 end

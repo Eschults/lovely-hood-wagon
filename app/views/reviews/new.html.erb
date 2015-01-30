@@ -3,19 +3,27 @@
     <div class="col-xs-8 col-xs-offset-2">
       <div class="panel panel-default margin-top-15 padding-none">
         <div class="panel-heading">
-          <h4>
-            Commentaire : <%= @booking.offer.nature %>
-            <% if current_user == @booking.user %>
-               (<%= @booking.offer.user.first_name %>)
-            <% else %>
-               (<%= @booking.user.first_name %>)
-            <% end %>
-          </h4>
+          <div class="row">
+            <div class="col-sm-3 text-right">
+              <h4>Commentaire : </h4>
+            </div>
+            <div class="col-sm-9 text-left">
+              <h4>
+                <%= @booking.offer.nature %>
+                <% if current_user == @booking.user %>
+                   (<%= @booking.offer.user.first_name %>)
+                <% else %>
+                   (<%= @booking.user.first_name %>)
+                <% end %>
+              </h4>
+            </div>
+          </div>
         </div>
         <div class="panel-body form-horizontal">
           <%= form_for([@booking, @review], url: booking_review_path(@booking, @review)) do |f| %>
             <div class="form-group">
-              <div class="col-sm-12">
+              <%= f.label :comment, "Remarques :", class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
                 <%= f.text_area :comment, placeholder: "Décrivez votre expérience, les points positifs, les points négatifs...", rows: 5, class: "form-control" %>
               </div>
             </div>
@@ -43,7 +51,7 @@
               </div>
             </div>
 
-            <% if @review.review_type == "cto" %>
+            <% if @booking.user == current_user %>
               <%= render "quality", f: f %>
             <% else %>
               <% if @booking.offer.type_of_offer == "rent" %>

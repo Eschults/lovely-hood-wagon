@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
     else
       @review.review_type = "otc"
     end
+
     # validations spécifiques
     if @review.review_type == "cto"
       if @review.quality_price_rating
@@ -36,7 +37,7 @@ class ReviewsController < ApplicationController
       if @review.communication_rating
         if @review.punctuality_rating
           if @review.recommendation != nil
-            redirect_to offers_path
+            redirect_to user_path(@booking.other_user(current_user), anchor: "reviews")
           else
             flash[:alert] = "Merci de nous donner votre recommandation"
           end
@@ -46,7 +47,6 @@ class ReviewsController < ApplicationController
       else
         flash[:alert] = "Merci de noter entre 1 et 5 la communication"
       end
-      redirect_to user_path(current_user, anchor: "comments")
     else
       render :new
     end

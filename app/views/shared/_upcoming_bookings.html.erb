@@ -57,8 +57,10 @@
               <p>
                 <% if booking.accepted && booking.offer.type_of_offer == "service" %>
                   Réservation acceptée. Voir <%= link_to "l'itinéraire", offer_booking_path(booking.offer, booking) %> pour vous rendre chez <%= booking.user.first_name %>.
+                <% elsif booking.accepted && booking.offer.type_of_offer == "sell" %>
+                  Vous allez peut-être gagner <%= booking.booking_price %>€.
                 <% elsif booking.accepted %>
-                  Réservation acceptée, vous allez gagner <%= booking.booking_price %>€.
+                  Vous allez gagner <%= booking.booking_price %>€.
                 <% else %>
                   Vous n'avez pas répondu à la demande de <%= booking.user.first_name %>. <%= link_to "Répondre à la demande", edit_offer_booking_path(booking.offer, booking) %>
                 <% end %>

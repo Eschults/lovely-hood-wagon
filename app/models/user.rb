@@ -110,17 +110,17 @@ class User < ActiveRecord::Base
 
   end
 
-  def passed_bookings_to_validate
+  def passed_bookings_to_review
     client_bookings = []
     bookings.each do |booking|
-      if booking.end_date <= Date.today && booking.accepted && (booking.client_validation.nil? || booking.owner_validation.nil?)
+      if booking.end_date <= Date.today && booking.accepted && booking.has_to_be_reviewed_by_client?
         client_bookings << booking
       end
     end
     owner_bookings = []
     offers.each do |offer|
       offer.bookings.each do |booking|
-        if booking.end_date <= Date.today && booking.accepted && booking.owner_validation.nil?
+        if booking.end_date <= Date.today && booking.accepted && booking.has_to_be_reviewed_by_owner?
           owner_bookings << booking
         end
       end

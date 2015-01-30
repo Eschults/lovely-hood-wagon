@@ -120,22 +120,22 @@
         <p><%= @user.description %></p>
       </div>
       <% if @user == current_user %>
-        <% if @user.passed_bookings_to_validate[:owner].size >= 1 || @user.passed_bookings_to_validate[:client].size >= 1 %>
+        <% if @user.passed_bookings_to_review[:owner].size >= 1 || @user.passed_bookings_to_review[:client].size >= 1 %>
           <div class="passed-bookings">
             <div class="panel panel-default padding-none">
               <div class="panel-heading">
                 <h4>Prestations passées - à confirmer</h4>
               </div>
               <div class="panel-body">
-                <% if @user.passed_bookings_to_validate[:owner].size >= 1 %>
+                <% if @user.passed_bookings_to_review[:owner].size >= 1 %>
                   <h5><strong>On vous a sollicité pour :</strong></h5>
-                  <% @user.passed_bookings_to_validate[:owner].each do |booking| %>
+                  <% @user.passed_bookings_to_review[:owner].each do |booking| %>
                     <%= render "shared/passed_bookings", { user: @user, booking: booking } %>
                   <% end %>
                 <% end %>
-                <% if @user.passed_bookings_to_validate[:client].size >= 1 %>
+                <% if @user.passed_bookings_to_review[:client].size >= 1 %>
                   <h5><strong>Vous avez bénéficié de :</strong></h5>
-                  <% @user.passed_bookings_to_validate[:client].each do |booking| %>
+                  <% @user.passed_bookings_to_review[:client].each do |booking| %>
                     <%= render "shared/passed_bookings", { user: @user, booking: booking } %>
                   <% end %>
                 <% end %>

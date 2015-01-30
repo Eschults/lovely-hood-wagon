@@ -1,4 +1,4 @@
-<div class="booking">
+<div class="booking", id="<%= "booking_#{booking.id}" %>">
   <div class="row">
     <div class="col-xs-2 text-center">
       <div class="img-nature-box">
@@ -20,89 +20,88 @@
         <div class="row">
           <div class="col-xs-12">
             <% if booking.offer.type_of_offer == "sell" %>
-              <% if current_user == booking.user %>
-                <p>
-                  Vous avez vu <%= booking.offer.user.first_name %> pour son annonce <%= booking.offer.nature %>.
-                </p>
-                <p>
-                  Souhaitez-vous acheter <%= link_to booking.offer.nature, offer_path(booking.offer) %> ?
-                </p>
-              <% else %>
-                <p>
-                  En attente de la décision de <%= booking.user.first_name %>.
-                </p>
-              <% end %>
-
-
-
-            <% else %>
-              <% if booking.offer.type_of_offer == "rent" %>
-                <p>
-                  <% if booking.end_date == Date.today %>
-                    Aujourd'hui
-                  <% else %>
-                    Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
-                  <% end %>
-                  (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
-                </p>
-              <% elsif booking.offer.type_of_offer == "service" %>
-                <p>
-                  <% if booking.end_date == Date.today %>
-                    Aujourd'hui
-                  <% else %>
-                    Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
-                  <% end %>
-                  (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
-                </p>
-              <% end %>
-
-              <!-- après la prestation, pour mettre à true l'attribut client_validation ou owner_validation du booking -->
-
-              <% if booking.user == current_user && booking.client_validation.nil? && booking.owner_validation %>
-                <ul class="confirmation list-unstyle list-inline">
-                  <li>
-                    Confirmer que la prestation est terminée (ou signaler un problème) :
-                  </li>
-                  <li class="confirmation-thumbs">
-                    <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
-                      <%= f.hidden_field :client_validation, value: true %>
-                      <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide btn-circle") do %>
-                        <i class="fa fa-check"></i>
-                      <% end %>
+              <% if booking.offer.sold.nil? && booking.cancelled.nil? %>
+                <% if current_user == booking.user %>
+                  <p>
+                    <% if booking.end_date == Date.today %>
+                      <strong>Aujourd'hui</strong>
+                    <% else %>
+                      Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
                     <% end %>
-                  </li>
-                  <li class="confirmation-thumbs">
-                    <%= link_to root_path, class: "btn btn-danger btn-wide btn-circle btn-pb" do %>
-                      <i class="fa fa-close"></i>
-                    <% end %>
-                  </li>
-                </p>
-              <% elsif booking.offer.user == current_user && booking.owner_validation.nil? %>
-                <p>
-                  <ul class="confirmation list-unstyle list-inline">
-                    <li>
-                      Confirmer que la prestation a bien eu lieu (ou signaler un problème) :
-                    </li>
-                    <li class="confirmation-thumbs">
-                      <%= form_for([booking.offer, booking], method: :put, url: confirm_offer_booking_path(booking.offer, booking)) do |f| %>
-                        <%= f.hidden_field :owner_validation, value: true %>
-                        <%= button_tag(type: 'submit', class: "btn btn-success btn-wide btn-circle") do %>
-                          <i class="fa fa-check"></i>
+                    (le <%= booking.end_date.strftime("%d %b") %>).
+                  </p>
+                  <p>
+                    <ul class="confirmation list-unstyle list-inline">
+                      <li>
+                        Achetez-vous <%= link_to booking.offer.nature,  offer_path(booking.offer) %> ?
+                      </li>
+                      <li class="confirmation-thumbs">
+                        <%= form_for booking, method: :put, url: buy_offer_booking_path(booking.offer, booking) do |f| %>
+                          <%= f.hidden_field :cashed_in, value: true %>
+                          <%= f.hidden_field :cashed_out, value: true %>
+                          <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide btn-circle") do %>
+                            <i class="fa fa-check"></i>
+                          <% end %>
                         <% end %>
-                      <% end %>
-                    </li>
-                    <li class="confirmation-thumbs">
-                      <%= link_to root_path, class: "btn btn-danger btn-wide btn-circle btn-pb" do %>
-                        <i class="fa fa-close"></i>
-                      <% end %>
-                    </li>
-                  </ul>
-                </p>
-              <% else %>
-                <p>
-                  En attente de confirmation du propriétaire.
-                </p>
+                      </li>
+                      <li class="confirmation-thumbs">
+                        <%= form_for booking, method: :put, url: cancel_offer_booking_path(booking.offer, booking) do |f| %>
+                          <%= f.hidden_field :cancelled, value: true %>
+                          <%= button_tag(type: 'submit', class: "btn btn-danger btn-margin btn-wide btn-circle") do %>
+                            <i class="fa fa-close"></i>
+                          <% end %>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </p>
+                <% else %>
+                  <p>
+                    En attente de la décision de <%= booking.user.first_name %>.
+                  </p>
+                <% end %>
+              <% elsif booking.offer.sold %>
+                <% if current_user == booking.offer.user %>
+                  <p>
+                    <% if booking.end_date == Date.today %>
+                      <strong>Aujourd'hui</strong>
+                    <% else %>
+                      Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                    <% end %>
+                    (le <%= booking.end_date.strftime("%d %b") %>).
+                  </p>
+                  <p>
+                    Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= booking.user.first_name %>.
+                  </p>
+                <% end %>
               <% end %>
+            <% elsif booking.offer.type_of_offer == "rent" %>
+              <p>
+                <% if booking.end_date == Date.today %>
+                  <strong>Aujourd'hui</strong>
+                <% else %>
+                  Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                <% end %>
+                (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
+              </p>
+              <p>
+                <% if current_user == booking.user %>
+                  Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= booking.offer.user.first_name %>.
+                <% elsif current_user == booking.offer.user %>
+                  Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= booking.user.first_name %>.
+                <% end %>
+              </p>
+            <% elsif booking.offer.type_of_offer == "service" %>
+              <p>
+                <% if booking.end_date == Date.today %>
+                  <strong>Aujourd'hui</strong>
+                <% else %>
+                  Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                <% end %>
+                (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
+              </p>
+              <p>
+                Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= current_user == booking.user ? booking.offer.user.first_name : booking.user.first_name %>.
+              </p>
             <% end %>
           </div>
         </div>

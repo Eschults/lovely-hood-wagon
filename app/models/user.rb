@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :messages, foreign_key: :writer_id
 
   def address_changed?
-    :street_number_changed? || :zipcode_changed?
+    :street_changed? || :zipcode_changed?
   end
 
   def conversations
@@ -35,10 +35,6 @@ class User < ActiveRecord::Base
       nil
     end
   end
-
-  # def conversations=
-
-  # end
 
   validates_presence_of :email
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
@@ -60,11 +56,11 @@ class User < ActiveRecord::Base
   end
 
   def address
-    "#{self.street_number} #{self.street_name}, #{self.zip_code} #{self.city}"
+    "#{street}, #{zip_code} #{city}"
   end
 
   def name
-    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   def unread_conversations

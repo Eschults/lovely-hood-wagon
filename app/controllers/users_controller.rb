@@ -32,25 +32,20 @@ class UsersController < ApplicationController
   def name_and_address_validations(path)
     if @user.first_name != ""
       if @user.last_name != ""
-        if @user.street_number != ""
-          if @user.street_name != ""
-            if @user.zip_code != ""
-              if @user.city != ""
-                redirect_to path
-              else
-                # flash[:alert] = "Merci de renseigner votre ville"
-                render :edit
-              end
+        if @user.street != ""
+          if @user.zip_code != ""
+            if @user.city != ""
+              redirect_to path
             else
-              # flash[:alert] = "Merci de renseigner votre code postal"
+              # flash[:alert] = "Merci de renseigner votre ville"
               render :edit
             end
           else
-            # flash[:alert] = "Merci de renseigner votre rue"
+            # flash[:alert] = "Merci de renseigner votre code postal"
             render :edit
           end
         else
-          # flash[:alert] = "Merci de renseigner votre n° de rue"
+          # flash[:alert] = "Merci de renseigner votre rue"
           render :edit
         end
       else
@@ -75,8 +70,7 @@ class UsersController < ApplicationController
       :birthday,
       :phone,
       :description,
-      :street_number,
-      :street_name,
+      :street,
       :zip_code,
       :city,
       :latitude,

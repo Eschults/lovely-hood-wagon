@@ -26,7 +26,7 @@
         <h1><%= @booking.offer.type_of_offer == "sell" ? "Demande d'achat" : "Réservation" %></h1>
         <h4><strong><%= link_to @booking.offer.nature, offer_path(@booking.offer), class: "nice-link" %></strong></h4>
         <p>
-          <%= @booking.offer.user.street_name.capitalize %>, <%= @booking.offer.user.zip_code %>
+          <%= @booking.offer.user.zip_code %>
           &nbsp;&nbsp;&nbsp;
           <% if @booking.offer.cto_reviews.size.to_i >= 1 %>
             <%= link_to(offer_path(@booking.offer, anchor: "comments"), {class: "link-unstyled"}) do %>

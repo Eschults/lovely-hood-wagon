@@ -13,7 +13,7 @@ class Offer < ActiveRecord::Base
 
   include AlgoliaSearch
 
-  algoliasearch index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
+  algoliasearch if: :published, index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
     # associated index settings can be configured from here
 
     attributesToIndex ['nature', 'description']
@@ -144,4 +144,5 @@ class Offer < ActiveRecord::Base
   def otc_reviews
     bookings.map { |booking| booking.reviews.select { |review| review.review_type == "otc" } }.flatten
   end
+
 end

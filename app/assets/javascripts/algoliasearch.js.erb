@@ -72,51 +72,46 @@ function initAlgolia(
 
     markers = [];
 
+
     for (var i = 0; i < content.hits.length; ++i) {
       latLng = new google.maps.LatLng(content.hits[i]._geoloc["lat"],content.hits[i]._geoloc["lng"]);
-      // if(content.hits[i].user_id != currentUserId) {
-        var marker = new google.maps.Marker({
-          position: latLng,
-          title: content.hits[i].nature
-        });
-        marker.setMap(map);
-        markers[i] = marker;
-        var offer_url = offerPath.replace(":id", content.hits[i].id);
-        content.hits[i].offer_url = offer_url;
-        var new_booking_url = newOfferBookingPath.replace(":offer_id", content.hits[i].id);
-        content.hits[i].new_booking_url = new_booking_url;
-        var message_url = messagePath.replace(":offer_id", content.hits[i].id);
-        content.hits[i].message_url = message_url;
-        var unwish_url = unwishPath.replace(":id", content.hits[i].id);
-        content.hits[i].unwish_url = unwish_url;
-        var wish_url = wishPath.replace(":id", content.hits[i].id);
-        content.hits[i].wish_url = wish_url;
-        var wished;
-        var array = JSON.parse(currentUserWishedItemsIds);
-        if(array.indexOf(content.hits[i].id) > -1) {
-          wished = true;
-          content.hits[i].wished = wished;
-        } else {
-          wished = false;
-          content.hits[i].wished = wished;
-        }
-        assetPaths = assetPaths.replace(/&quot;/g, '"');
-        var assetPathsArray = JSON.parse(assetPaths);
-        var asset_path = assetPathsArray[0];
-        if(content.hits[i].sell === null) {
-          for(j in assetPathsArray) {
-            if(assetPathsArray[j].indexOf(content.hits[i].nature) > -1) {
-              asset_path = assetPathsArray[j];
-            }
+      var marker = new google.maps.Marker({
+        position: latLng,
+        title: content.hits[i].nature
+      });
+      marker.setMap(map);
+      markers[i] = marker;
+      var offer_url = offerPath.replace(":id", content.hits[i].id);
+      content.hits[i].offer_url = offer_url;
+      var new_booking_url = newOfferBookingPath.replace(":offer_id", content.hits[i].id);
+      content.hits[i].new_booking_url = new_booking_url;
+      var message_url = messagePath.replace(":offer_id", content.hits[i].id);
+      content.hits[i].message_url = message_url;
+      var unwish_url = unwishPath.replace(":id", content.hits[i].id);
+      content.hits[i].unwish_url = unwish_url;
+      var wish_url = wishPath.replace(":id", content.hits[i].id);
+      content.hits[i].wish_url = wish_url;
+      var wished;
+      var array = JSON.parse(currentUserWishedItemsIds);
+      if(array.indexOf(content.hits[i].id) > -1) {
+        wished = true;
+        content.hits[i].wished = wished;
+      } else {
+        wished = false;
+        content.hits[i].wished = wished;
+      }
+      assetPaths = assetPaths.replace(/&quot;/g, '"');
+      var assetPathsArray = JSON.parse(assetPaths);
+      var asset_path = assetPathsArray[0];
+      if(content.hits[i].sell === null) {
+        for(j in assetPathsArray) {
+          if(assetPathsArray[j].indexOf(content.hits[i].nature) > -1) {
+            asset_path = assetPathsArray[j];
           }
         }
-          content.hits[i].asset_path = asset_path;
-          // if(indexName === "Offer") {
-          //   asset_path = assetPath.replace(":host", "lovely-hood.herokuapp.com");
-          //   content.hits[i].asset_path = asset_path;
-          // }
-        html += $hitTemplate.render(content.hits[i]);
-      // }
+      }
+      content.hits[i].asset_path = asset_path;
+      html += $hitTemplate.render(content.hits[i]);
     }
     $hits.html(html);
 

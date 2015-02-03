@@ -75,7 +75,7 @@
       <div class="offer">
         <h1><%= @offer.nature %></h1>
         <p>
-          <%= @offer.user.street_name.capitalize %>, <%= @offer.user.zip_code %>
+          <%= @offer.user.zip_code %>
           &nbsp;&nbsp;&nbsp;
           <% if @offer.cto_reviews.size.to_i >= 1 %>
             <%= link_to("#comments", {class: "link-unstyled"}) do %>

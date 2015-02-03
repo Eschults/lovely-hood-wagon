@@ -257,8 +257,7 @@ function formValidation() {
   var name;
   var first_name;
   var last_name;
-  var street_number;
-  var street_name;
+  var street;
   var zip_code;
   var city;
 
@@ -270,13 +269,9 @@ function formValidation() {
   filled(lastName);
   test_field_at_focusout(lastName);
 
-  streetNumber = $("#street_number");
-  filled(streetNumber);
-  test_field_at_focusout(streetNumber);
-
-  streetName = $("#street_name");
-  filled(streetName);
-  test_field_at_focusout(streetName);
+  street = $("#street");
+  filled(street);
+  test_field_at_focusout(street);
 
   zipCode = $("#zip_code");
   filled(zipCode);

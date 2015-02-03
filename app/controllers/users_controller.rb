@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if @user.address_changed?
       @user.address_verified = false
+      @user.offers.each do |offer|
+        offer.published = false
+      end
     end
     if @user.save
       name_and_address_validations(user_path(current_user))

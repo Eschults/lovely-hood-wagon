@@ -50,8 +50,10 @@ $lovely-blue: #25AAE1;
   text-decoration: none;
 }
 
-.navbar-wagon{
-  background: #25AEE1;
+.navbar-wagon {
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-bottom: none;
+  background-color: #25AEE1;
 }
 
 footer {
@@ -82,4 +84,8 @@ footer a:hover {
   .lead h1 {
     font-size: 50px;
   }
+}
+
+.badge {
+  color: #25AAE1;
 }

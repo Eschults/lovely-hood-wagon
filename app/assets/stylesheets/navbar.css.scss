@@ -1,6 +1,6 @@
 // Set your navbar general settings
 $color: white;
-$bg: #ddd;
+$bg: #446CB3;
 $height: 40px;
 $vertical-padding: 10px;
 $horizontal-padding: 15px;
@@ -36,9 +36,8 @@ $profile-border-width: 2px;
   font-weight: 400;
   padding-left: $horizontal-padding;
   padding-right: $horizontal-padding;
-  border-bottom: $border-bottom-width solid $border-bottom-color;
+  border-bottom: 1px solid #2C3E50;
   min-height: 0;
-  box-shadow: $box-shadow;
 }
 
 .navbar-wagon .navbar-nav > li > a {
@@ -81,14 +80,13 @@ $profile-border-width: 2px;
 
 #brand:hover {
   text-decoration: none;
-  color: $color;
+  color: #25AAE1;
   // font-weight: bold;
-  color: rgba(200, 200, 200, 1);
 }
 
 #brand:focus {
   text-decoration: none;
-  color: $color;
+  color: #25AAE1;
   // font-weight: bold;
   color: rgba(200, 200, 200, 1);
 }
@@ -164,7 +162,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 #profile-pic{
   border: $profile-border-width solid $profile-border-color;
-  box-shadow: 0 0 2px rgb(200, 200, 200);
+  // box-shadow: 0 0 2px rgb(200, 200, 200);
   height: $height - (2 * $profile-border-width);
   width: $height - (2 * $profile-border-width);
   margin-right: 10px;
@@ -269,4 +267,8 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #ffffff;
+}
+
+.badge {
+  color: #446CB3;
 }

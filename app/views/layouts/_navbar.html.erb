@@ -40,7 +40,7 @@
               <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
                 <i class="fa fa-envelope"></i> Messages
                 <% if current_user.unread_conversations > 0 %>
-                  <span class="badge">
+                  <span class="badge white-bg">
                     <%= current_user.unread_conversations %>
                   </span>
                 <% end %>

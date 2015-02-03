@@ -7,14 +7,14 @@
             <%= link_to edit_user_path(current_user, anchor: "my-pic") do %>
               <% if @user.picture_file_name %>
                 <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail", id: "profile-picture" }) %>
-                <div class="update-profile-pic">
-                  <div class="update-pic-text">
-                    <i class="fa fa-camera pic-icon"></i>
-                  </div>
-                </div>
               <% else %>
                 <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
               <% end %>
+              <div class="update-profile-pic">
+                <div class="update-pic-text">
+                  <i class="fa fa-camera pic-icon"></i>
+                </div>
+              </div>
             <% end %>
           <% else %>
             <% if @user.picture_file_name %>

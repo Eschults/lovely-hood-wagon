@@ -1,10 +1,11 @@
-$bg: #ddd;
+$bg: #446CB3;
 $border: 2px solid white;
 $vertical-padding: 40px;
 
 
 footer {
   background-color: $bg;
+  border-bottom: 1px solid #2C3E50;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
   font-size: 15px;

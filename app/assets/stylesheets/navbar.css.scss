@@ -40,6 +40,12 @@ $profile-border-width: 2px;
   min-height: 0;
 }
 
+.navbar-wagon svg {
+  width: 170px;
+  position: absolute;
+  top: -4px;
+}
+
 .navbar-wagon .navbar-nav > li > a {
   color: $color;
   line-height: $height;
@@ -54,15 +60,23 @@ $profile-border-width: 2px;
 
 .navbar-wagon .navbar-form {
   font-family: Helvetica;
-  width: 34%;
+  width: 40%;
 }
 
 .navbar-wagon .navbar-form .form-control {
   width: 100%;
 }
 
+.navbar-wagon .navbar-form .form-control {
+  border: 1px solid #446CB3;
+}
+
+.navbar-wagon .navbar-form .form-control:focus {
+  border: 1px solid rgb(31, 17, 102);
+}
+
 .horizontal-spacer {
-  min-width: 230px;
+  min-width: 160px;
 }
 
 .navbar-wagon .navbar-form .input-group {
@@ -190,11 +204,15 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   left: 85%;
   margin-left: -5px;
   position: absolute;
-  bottom: 162px; // 28 * nb of lines in dropdown
+  bottom: 136px; // 26 * nb of lines + 6 + 19
   transform: rotate(45deg);
   border-top: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
   z-index: -1;
+}
+
+.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse {
+  margin-left: 0;
 }
 
 @media screen and (min-width: 1200px) {
@@ -213,7 +231,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   }
 
   .navbar-wagon .navbar-nav > li > .dropdown-menu:before {
-    bottom: 162px; // 28 * nb of lines in dropdown
+    bottom: 188px;  // 26 * nb of lines + 6 + 19
   }
 
   .nav > li.disappear {

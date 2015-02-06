@@ -9,7 +9,9 @@
         <br>
         <br>
         <div class="lead">
-          <h1><%= link_to "lovely hood", root_path %></h1>
+          <%= link_to root_path do %>
+            <%= image_tag "lovely_hood.png", width: "400px", class: "padding-top-15" %>
+          <% end %>
           <div class="vertical-spacer disappear"></div>
           <h2>Rentabilisez vos objets dormants</h2>
           <br>

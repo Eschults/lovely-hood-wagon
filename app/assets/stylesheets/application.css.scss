@@ -38,6 +38,10 @@ body {
   height: 100%;
 }
 
+h1, h2, h3, h4, h5 {
+  color: rgb(79, 79, 79);
+}
+
 #wrapper,
 #wrapper-inbox {
   padding-top: 60px;
@@ -437,7 +441,7 @@ input,
   height: 42px;
   width: 42px;
   border: 2px solid white;
-  box-shadow: 0 0 2px #c8c8c8;
+  // box-shadow: 0 0 2px #c8c8c8;
   overflow: hidden;
   margin-right: 10px;
   border-radius: 50%;
@@ -841,7 +845,7 @@ a.disabled {
 .panel-default > .panel-heading {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  background-color: lighten(rgb(220, 220, 220), 11%);
+  background-color: rgb(237, 239, 237);
   color: rgb(119, 119, 119);
 }
 

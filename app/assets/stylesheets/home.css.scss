@@ -28,7 +28,7 @@ $lovely-blue: #25AAE1;
   font-size: 24px;
   font-weight: 100;
   font-family: 'Ubuntu';
-  /*color: yellow;*/
+  color: white;
   font-weight: 300;
   /*text-shadow: 0 0 4px yellow;*/
 }
@@ -54,6 +54,10 @@ $lovely-blue: #25AAE1;
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
   border-bottom: none;
   background-color: #25AEE1;
+}
+
+.navbar-wagon .navbar-nav > li > a {
+  color: white;
 }
 
 footer {

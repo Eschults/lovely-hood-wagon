@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
         <%= link_to offers_path do %>
-          <%= image_tag "lovely_hood_160.png", width: "150px" %>
+          <%= image_tag "lovely_hood_#{ request.path == "/" ? "" : "blue_"}160.png", width: "150px" %>
         <% end %>
     </div>
 
@@ -72,18 +72,24 @@
               <li class="appear"><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
               <li><%= link_to "Ma wish list", wishlist_path %></li>
-              <li class="appear">
-                <% if current_user.conversations.size > 0 %>
-                  <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
-                    Messages
-                    <% if current_user.unread_conversations > 0 %>
-                      <span class="small-badge">
+              <% if current_user.conversations.size > 0 %>
+                <% if current_user.unread_conversations > 0 %>
+                  <li class="appear" style="background-color: rgb(250,250,250);">
+                    <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+                      <strong>Messages</strong>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span class="badge small-badge">
                       </span>
                     <% end %>
-                  <% end %>
+                  </li>
                 <% else %>
+                  <li class="appear">
+                    <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+                      Messages
+                    <% end %>
+                  </li>
                 <% end %>
-              </li>
+              <% end %>
               <li><%= link_to 'Deconnexion', destroy_user_session_path, method: 'delete' %></li>
             </ul>
           </li>

@@ -1,6 +1,6 @@
 // Set your navbar general settings
-$color: white;
-$bg: #446CB3;
+$color: #446CB3;
+$bg: white;
 $height: 40px;
 $vertical-padding: 10px;
 $horizontal-padding: 15px;
@@ -36,7 +36,7 @@ $profile-border-width: 2px;
   font-weight: 400;
   padding-left: $horizontal-padding;
   padding-right: $horizontal-padding;
-  border-bottom: 1px solid #2C3E50;
+  border-bottom: 1px solid rgb(237, 239, 237);
   min-height: 0;
 }
 

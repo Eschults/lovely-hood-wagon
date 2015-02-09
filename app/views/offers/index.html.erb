@@ -32,7 +32,7 @@
       <div class="offers" id="hits">
       </div>
     </div>
-    <div class="panel-footer padding-btm-none">
+    <div class="panel-footer padding-btm-5">
       <div id="pagination"></div>
     </div>
   </div>
@@ -207,12 +207,29 @@
       var mapOptions = {
         zoom: 15,
         center: myLatlng,
-        draggable: false,
+        draggable: true,
         scrollwheel: false,
         minZoom: 15,
         maxZoom: 18
       }
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+      var allowedBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(<%= current_user.latitude - 0.003 %> , <%= current_user.longitude - 0.003 %>),
+        new google.maps.LatLng(<%= current_user.latitude + 0.003 %>, <%= current_user.longitude + 0.003 %>)
+      );
+      var lastValidCenter = map.getCenter();
+
+      google.maps.event.addListener(map, 'center_changed', function() {
+        if (allowedBounds.contains(map.getCenter())) {
+            // still within valid bounds, so save the last valid position
+            lastValidCenter = map.getCenter();
+            return;
+        }
+
+        // not valid anymore => return to last valid position
+        map.panTo(lastValidCenter);
+      });
       var markers = [];
       initAlgolia(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',

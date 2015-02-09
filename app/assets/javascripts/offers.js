@@ -43,5 +43,5 @@ function adjustDivsHeights() {
   var windowHeight = $(window).height();
   $('#map').css('height', windowHeight - 130 - 10);
   $('#panel-body-map').css('height', windowHeight - 130 - 10);
-  $('#hits').css('height', windowHeight - 130 - 60 - 125);
+  $('#hits').css('height', windowHeight - 130 - 60 - 125 - 4);
 }

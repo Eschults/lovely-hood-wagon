@@ -41,7 +41,16 @@ function showOrHidePicture(lettersBeforeId, item) {
 
 function adjustDivsHeights() {
   var windowHeight = $(window).height();
-  $('#map').css('height', windowHeight - 130 - 10);
-  $('#panel-body-map').css('height', windowHeight - 130 - 10);
-  $('#hits').css('height', windowHeight - 130 - 60 - 125 - 4);
+  var navHeight = $('nav').height();
+  var panelHeadHeight = $('.panel-heading').height();
+  var panelFootHeight = $('.panel-footer').height();
+  var facetHeight = $('.facet').height();
+  var searchHeight = $('.search-bar').height();
+
+  var map = $('#map');
+  var hits = $('#hits');
+  map.css('height', windowHeight - navHeight - panelHeadHeight - 50);
+  var mapHeight = map.height();
+  $('#panel-body-map').css('height', windowHeight - navHeight - panelHeadHeight - 50);
+  hits.css('height', mapHeight - facetHeight - searchHeight - panelFootHeight - 67);
 }

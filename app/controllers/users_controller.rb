@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       @user.address_verified = false
       @user.offers.each do |offer|
         offer.published = false
+        offer.save
       end
     end
     if @user.save

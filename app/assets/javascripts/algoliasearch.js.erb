@@ -186,9 +186,6 @@ function initAlgolia(
     }
     $facets.html(html);
 
-
-
-
     // render pagination
     var pages = [];
     if (content.page > 5) {
@@ -206,6 +203,8 @@ function initAlgolia(
       pages.push({ current: false, number: content.nbPages });
     }
     $pagination.html($paginationTemplate.render({ pages: pages, prev_page: (content.page > 0 ? content.page : false), next_page: (content.page + 1 < content.nbPages ? content.page + 2 : false) }));
+
+    adjustDivsHeights();
 
 
 

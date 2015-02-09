@@ -65,6 +65,7 @@ NATURES = {
     'Trousse de secours',
     'Cocotte',
     'Caméra',
+    'GoPro',
     'Tondeuse',
     'Souffleuse à feuilles',
     'Machine à café',
@@ -154,7 +155,8 @@ NATURES = {
     'Tuba',
     'Palmes',
     'Chauffe-eau',
-    'Ustensiles de cuisine'
+    'Ustensiles de cuisine',
+    'Magnétoscope (VHS)'
   ],
 
   service: [

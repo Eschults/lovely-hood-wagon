@@ -52,5 +52,6 @@ function adjustDivsHeights() {
   map.css('height', windowHeight - navHeight - panelHeadHeight - 50);
   var mapHeight = map.height();
   $('#panel-body-map').css('height', windowHeight - navHeight - panelHeadHeight - 50);
-  hits.css('height', mapHeight - facetHeight - searchHeight - panelFootHeight - 67);
+  hits.css('max-height', mapHeight - facetHeight - searchHeight - panelFootHeight - 67);
+  $('.offer-stream-box').last().css('border-bottom', 'none');
 }

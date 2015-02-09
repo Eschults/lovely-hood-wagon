@@ -156,6 +156,10 @@ input,
   padding-bottom: 5px;
 }
 
+.padding-btm-none {
+  padding-bottom: 0;
+}
+
 .padding-top-10 {
   padding-top: 10px;
 }
@@ -288,6 +292,10 @@ input,
 
 .margin-none {
   margin: 0;
+}
+
+.panel-map {
+  height: 691px;
 }
 
 .padding-none {
@@ -653,8 +661,21 @@ a.disabled {
   padding-bottom: 192px;
 }
 
+.offers {
+  max-height: 450px;
+  overflow-y: scroll;
+}
+
 .offer-stream-box {
   padding: 15px;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.panel-footer {
+  background-color: white;
 }
 
 .border-top {

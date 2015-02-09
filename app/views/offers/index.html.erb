@@ -1,5 +1,5 @@
 <div class="map-box bg-color" id="map-box">
-  <div class="panel panel-default white-bg">
+  <div class="panel panel-default white-bg panel-map">
     <div class="panel-heading">
       <h4>Mon quartier</h4>
     </div>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="bg-color" id="sidebar">
-  <div class="panel panel-default white-bg">
+  <div class="panel panel-default margin-btm-none white-bg">
     <div class="panel-heading">
       <h4>Annonces</h4>
       <div class="btn-group float-right margin-top-neg-26">
@@ -29,11 +29,13 @@
           <span class="input-group-addon"><i class="fa fa-search"></i></span>
         </div>
       </div>
-      <div id="hits">
+      <div class="offers" id="hits">
       </div>
     </div>
+    <div class="panel-footer">
+      <div id="pagination"></div>
+    </div>
   </div>
-  <div id="pagination"></div>
 </div>
 
 <% content_for(:js) do %>

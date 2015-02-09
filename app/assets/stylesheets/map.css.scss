@@ -3,7 +3,6 @@ html, body {
 }
 
 #map {
-  min-height: 675px;
 }
 
 #map-box {
@@ -26,7 +25,7 @@ html, body {
   bottom: 0;
   overflow: auto;
   font-family: 'Helvetica';
-  padding: 15px 14px 14px 7px;
+  padding: 15px 14px 0 7px;
 }
 
 .frame-body-map {

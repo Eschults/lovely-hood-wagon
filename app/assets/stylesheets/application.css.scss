@@ -294,10 +294,6 @@ input,
   margin: 0;
 }
 
-.panel-map {
-  height: 691px;
-}
-
 .padding-none {
   padding: 0;
 }
@@ -662,7 +658,7 @@ a.disabled {
 }
 
 .offers {
-  max-height: 450px;
+  // max-height: 450px;
   overflow-y: scroll;
 }
 

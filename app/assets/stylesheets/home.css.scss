@@ -60,6 +60,14 @@ $lovely-blue: #25AAE1;
   color: white;
 }
 
+.navbar-wagon .navbar-form .form-control {
+  border: 1px solid #446CB3;
+}
+
+.navbar-wagon .navbar-form .form-control:focus {
+  border: 1px solid rgb(31, 17, 102);
+}
+
 footer {
   background-color: #25AEE1;
   position: fixed;

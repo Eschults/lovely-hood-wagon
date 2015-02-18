@@ -25,6 +25,10 @@
   // padding: 15px 14px 0 7px;
 }
 
+#wrapper > .container {
+  padding-bottom: 0;
+}
+
 .frame-body-map {
   margin: -10px 7px 15px 15px;
   border-radius-bottom-left: 2px;

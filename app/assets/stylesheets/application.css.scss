@@ -61,6 +61,14 @@ a:focus {
   text-decoration: underline;
 }
 
+.navbar-wagon .navbar-toggle {
+  border: 1px solid rgb(68, 108, 179);
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: rgb(68, 108, 179);
+}
+
 .user-link a:hover {
   text-decoration: none;
 }

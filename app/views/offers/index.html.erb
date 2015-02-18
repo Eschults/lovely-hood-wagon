@@ -1,42 +1,51 @@
-<div class="map-box bg-color" id="map-box">
-  <div class="panel panel-default white-bg panel-map">
-    <div class="panel-heading">
-      <h4>Mon quartier</h4>
+<div class="container margin-none margin-top-15 total-width">
+  <div class="row total-width margin-none">
+    <div class="col-md-6 padding-left-none">
+      <div class="map-box bg-color" id="map-box">
+        <div class="panel panel-default white-bg panel-map">
+          <div class="panel-heading">
+            <h4>Mon quartier</h4>
+          </div>
+          <div class="panel-body padding-none" id="panel-body-map">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="panel-body padding-none" id="panel-body-map">
-      <div id="map"></div>
+    <div class="col-md-6 padding-none">
+      <div class="bg-color" id="sidebar">
+        <div class="panel panel-default margin-btm-none white-bg">
+          <div class="panel-heading">
+            <h4>Annonces</h4>
+            <div class="btn-group float-right margin-top-neg-26">
+              <ul class="list-unstyled list-inline">
+                <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
+                <li><a href="#" id="price_sort" onclick="sortBy('_price_asc', this); return false;">Trier par prix</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel-body padding-none">
+            <div id="facets">
+            </div>
+            <div class="search-bar">
+              <div class="input-group input-group m-t">
+                <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+            <div class="offers" id="hits">
+            </div>
+          </div>
+          <div class="panel-footer padding-btm-5">
+            <div id="pagination"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="bg-color" id="sidebar">
-  <div class="panel panel-default margin-btm-none white-bg">
-    <div class="panel-heading">
-      <h4>Annonces</h4>
-      <div class="btn-group float-right margin-top-neg-26">
-        <ul class="list-unstyled list-inline">
-          <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
-          <li><a href="#" id="price_sort" onclick="sortBy('_price_asc', this); return false;">Trier par prix</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel-body padding-none">
-      <div id="facets">
-      </div>
-      <div class="search-bar">
-        <div class="input-group input-group m-t">
-          <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
-          <span class="input-group-addon"><i class="fa fa-search"></i></span>
-        </div>
-      </div>
-      <div class="offers" id="hits">
-      </div>
-    </div>
-    <div class="panel-footer padding-btm-5">
-      <div id="pagination"></div>
-    </div>
-  </div>
-</div>
+
 
 <% content_for(:js) do %>
   <script type="text/template" id="facet-template">

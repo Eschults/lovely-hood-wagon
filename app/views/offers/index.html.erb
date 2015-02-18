@@ -205,7 +205,13 @@
 
   <%= javascript_tag do %>
     $(document).ready(function() {
+      togglePaddingRight();
+      adjustNatureIconsSize();
+      toggleFacets();
       $(window).on('resize', function() {
+        togglePaddingRight();
+        adjustNatureIconsSize();
+        toggleFacets();
         adjustDivsHeights();
       });
       var myLatlng = new google.maps.LatLng(

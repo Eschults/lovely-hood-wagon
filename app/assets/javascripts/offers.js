@@ -55,3 +55,29 @@ function adjustDivsHeights() {
   hits.css('max-height', mapHeight - facetHeight - searchHeight - panelFootHeight - 67);
   $('.offer-stream-box').last().css('border-bottom', 'none');
 }
+
+function toggleFacets() {
+  if($(window).width() < 1291) {
+    $('.facet').addClass('hidden');
+  } else {
+    $('.facet').removeClass('hidden');
+  }
+}
+
+function adjustNatureIconsSize() {
+  if($(window).width() < 720) {
+    $('.img-nature-box img').css('width', 40)
+  } else if($(window).width() > 976 && $(window).width() < 1300) {
+    $('.img-nature-box img').css('width', 40)
+  } else {
+    $('.img-nature-box img').css('width', 60)
+  }
+}
+
+function togglePaddingRight() {
+  if($(window).width() > 991 - 15) {
+    $('.col-md-6').first().removeClass('padding-right-none');
+  } else {
+    $('.col-md-6').first().addClass('padding-right-none');
+  }
+}

@@ -9,6 +9,7 @@ $gray-light: lighten($gray-base, 46.7%);
 $gray-dark: lighten($gray-base, 20%);
 $gray-lighter: lighten($gray-base, 85%);
 $lovely-blue: #25AAE1;
+$lovely-dark-blue: rgb(68, 108, 179);
 
 
 
@@ -235,11 +236,12 @@ input,
 }
 
 .sidenav {
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
+  // margin-left: 30px;
+  // margin-right: 30px;
   font-size: 16px;
 }
 

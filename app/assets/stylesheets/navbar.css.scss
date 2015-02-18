@@ -11,16 +11,16 @@ $box-shadow: 0 0 5px rgba(0, 0, 0, .4);
 // Set your navbar button
 $btn-height: 40px;
 $btn-bg: white;
-$btn-color: $lovely-blue;
+$btn-color: $lovely-dark-blue;
 $btn-horizontal-padding: 10px;
 $btn-top-border-width: 1;
-$btn-top-border-color: $lovely-blue;
+$btn-top-border-color: $lovely-dark-blue;
 $btn-right-border-width: 1;
-$btn-right-border-color: $lovely-blue;
+$btn-right-border-color: $lovely-dark-blue;
 $btn-bottom-border-width: 1;
-$btn-bottom-border-color: $lovely-blue;
+$btn-bottom-border-color: $lovely-dark-blue;
 $btn-left-border-width: 1;
-$btn-left-border-color: $lovely-blue;
+$btn-left-border-color: $lovely-dark-blue;
 
 // Set your profile picture
 $profile-radius: 50%;
@@ -139,7 +139,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 
 #nav-btn:hover{
-  background-color: $lovely-blue;
+  background-color: $lovely-dark-blue;
   color: white;
   border-bottom: ($btn-bottom-border-width) solid $btn-bottom-border-color;
   -moz-transition: all .1s ease-in;

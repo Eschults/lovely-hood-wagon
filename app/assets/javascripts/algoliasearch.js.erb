@@ -123,6 +123,9 @@ function initAlgolia(
       showOrHidePicture(6, $(this));
     });
 
+    togglePaddingRight();
+    adjustNatureIconsSize();
+
     // facets: display the conjunctive+disjunctive facets
     html = '';
     var facetResult = null;
@@ -185,6 +188,7 @@ function initAlgolia(
       }
     }
     $facets.html(html);
+    toggleFacets();
 
     // render pagination
     var pages = [];

@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5 {
 #wrapper-inbox {
   padding-top: 60px;
   min-height: 100%;
-  position:relative;
+  position: relative;
 }
 
 a {
@@ -59,6 +59,14 @@ a:active,
 a:focus {
   color: rgb(1, 181, 237);
   text-decoration: underline;
+}
+
+.navbar-wagon .navbar-toggle {
+  border: 1px solid rgb(68, 108, 179);
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: rgb(68, 108, 179);
 }
 
 .user-link a:hover {

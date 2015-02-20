@@ -1,9 +1,11 @@
-$bg: #446CB3;
-$border: 2px solid white;
+$bg: white;
+$color: #446CB3;
+$border: 2px solid $color;
 $vertical-padding: 40px;
 
 
 footer {
+  color: $color;
   background-color: $bg;
   border-bottom: 1px solid #2C3E50;
   padding-top: $vertical-padding;
@@ -13,6 +15,7 @@ footer {
   bottom:0;
   left:0;
   width: 100%;
+  border-top: 1px solid rgb(237, 239, 237);
 }
 
 footer li {
@@ -24,7 +27,7 @@ footer > .container > .row > .col-xs-12 > #social > li > a {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  color: white;
+  color: $color;
   font-size: 25px;
   border: $border;
   line-height: 140%;
@@ -36,5 +39,5 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 }
 
 .copy {
-  color: white;
+  color: $color;
 }

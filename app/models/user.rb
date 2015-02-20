@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :picture,
+    styles: { medium: "", thumb: "" },
+    convert_options: { medium: "-gravity center -crop 300x300+0+0", thumb: "-gravity center -crop 100x100+0+0" }
   has_attached_file :identity_proof, styles: { large: "600x600>", medium: "300x300>" }
   has_attached_file :address_proof, styles: { large: "600x600>", medium: "300x300>" }
 

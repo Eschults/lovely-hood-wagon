@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
+      <div class="panel panel-default margin-top-20 max-width-200 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg">
           <!-- si l'offer est un service, la photo est celle du user -->
           <% if @offer.type_of_offer =="service" %>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default margin-20-30 padding-none">
+      <div class="panel panel-default max-width-200 padding-none">
         <div class="panel-body border-none">
           <% if policy(@offer).update? %>
             <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide" %>

@@ -56,9 +56,9 @@
                   <td>
                     <div class="img-mini">
                       <% if booking.user.picture_file_name %>
-                        <%= image_tag(booking.user.picture.url(:medium), { class: "img" }) %>
+                        <%= image_tag(booking.user.picture.url(:medium), { class: "img-20" }) %>
                       <% else %>
-                        <%= image_tag "user_pic-38.png", class: "img" %>
+                        <%= image_tag "user_pic-38.png", class: "img-20" %>
                       <% end %>
                     </div>
                   </td>
@@ -74,9 +74,9 @@
                   <td>
                     <div class="img-mini">
                       <% if booking.offer.user.picture_file_name %>
-                        <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img" }) %>
+                        <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img-20" }) %>
                       <% else %>
-                        <%= image_tag "user_pic-38.png", class: "img" %>
+                        <%= image_tag "user_pic-38.png", class: "img-20" %>
                       <% end %>
                     </div>
                   </td>

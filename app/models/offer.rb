@@ -3,8 +3,7 @@ class Offer < ActiveRecord::Base
 
   has_many :bookings
   has_attached_file :picture,
-    styles: { medium: "", thumb: "" },
-    convert_options: { medium: "-gravity center -crop 300x300+0+0", thumb: "-gravity center -crop 100x100+0+0" }
+    styles: { medium: "300x300#", thumb: "100x100#" }
 
   acts_as_votable
 

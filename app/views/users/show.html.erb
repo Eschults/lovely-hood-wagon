@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
+      <div class="panel panel-default margin-top-20 max-width-200 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg  ">
           <% if current_user == @user %>
             <%= link_to edit_user_path(current_user, anchor: "my-pic") do %>
@@ -25,7 +25,7 @@
           <% end %>
         </div>
       </div>
-      <div class="panel panel-default margin-20-30 padding-none">
+      <div class="panel panel-default max-width-200 padding-none">
         <div class="panel-heading">
           <h4>
             <% if current_user == @user %>
@@ -53,7 +53,7 @@
           <% end %>
         </div>
       </div>
-      <div class="panel panel-default margin-20-30 padding-none">
+      <div class="panel panel-default max-width-200 padding-none">
         <div class="panel-heading">
           <h4>
             <% if current_user == @user && @user.offers.size > 0 %>
@@ -74,9 +74,9 @@
                 <div class="col-xs-4 padding-none">
                   <div class="img-small">
                     <% if offer.picture_file_name %>
-                      <%= image_tag(offer.picture.url(:medium), { class: "img" }) %>
+                      <%= image_tag(offer.picture.url(:medium), { class: "img-38" }) %>
                     <% elsif offer.type_of_offer == "service" && offer.user.picture_file_name %>
-                      <%= image_tag(offer.user.picture.url(:medium), { class: "img" }) %>
+                      <%= image_tag(offer.user.picture.url(:medium), { class: "img-38" }) %>
                     <% else %>
                       <%= image_tag "no-image-38.png", class: "bg-color" %>
                     <% end %>
@@ -225,9 +225,7 @@
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
-      adjustImgSmall();
-      adjustImgMini();
-      adjustImgMedium();
+
     });
   <% end %>
 <% end %>

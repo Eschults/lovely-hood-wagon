@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+ruby '2.2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'algoliasearch-rails'
 gem 'pundit'
@@ -21,7 +22,6 @@ gem 'aws-sdk'
 gem 'paperclip'
 gem 'rails_12factor', group: :production
 
-ruby '2.1.2'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"

@@ -13,7 +13,7 @@
     <% if current_user.verif == 0 %>
       <%= form_for offer, method: :patch, url: offer_path(offer)  do |f| %>
         <div class="col-xs-3">
-          <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin" } %>
+          <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>
         </div>
         <div class="col-xs-1 padding-left-none">
           <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>

@@ -69,15 +69,15 @@ class OffersController < ApplicationController
   end
 
   def wish
-   set_offer
-   @offer.liked_by current_user
-   redirect_to offer_path(@offer)
+    set_offer
+    @offer.liked_by current_user
+    redirect_to offer_path(@offer)
   end
 
   def unwish
-   set_offer
-   @offer.unliked_by current_user
-   redirect_to offer_path(@offer)
+    set_offer
+    @offer.unliked_by current_user
+    redirect_to offer_path(@offer)
   end
 
   private

@@ -68,10 +68,10 @@ function showRecos() {
 function filled(field) {
   var value = field.val();
   if (value == "") {
-    $(field).parent().addClass("has-error").removeClass("has-success");
+    $(field).parent().addClass("has-error").removeClass("success");
   }
   else {
-    $(field).parent().addClass("has-success").removeClass("has-error");
+    $(field).parent().addClass("success").removeClass("has-error");
   }
 }
 
@@ -298,10 +298,10 @@ function formValidation() {
     }
     var result = invalid_zip_code();
     if (result) {
-      $(this).parent().addClass("has-error").removeClass("has-success");
+      $(this).parent().addClass("has-error").removeClass("success");
     }
     else {
-      $(this).parent().addClass("has-success").removeClass("has-error");
+      $(this).parent().addClass("success").removeClass("has-error");
     };
   });
 
@@ -320,11 +320,11 @@ function formValidation() {
     }
     var result = invalid_mobile();
     if (result == "empty") {
-      $(this).parent().removeClass("has-error").removeClass("has-success");
+      $(this).parent().removeClass("has-error").removeClass("success");
     } else if (result) {
-      $(this).parent().addClass("has-error").removeClass("has-success");
+      $(this).parent().addClass("has-error").removeClass("success");
     } else {
-      $(this).parent().addClass("has-success").removeClass("has-error");
+      $(this).parent().addClass("success").removeClass("has-error");
     };
   });
 

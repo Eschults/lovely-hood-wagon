@@ -124,29 +124,21 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 #nav-btn {
   line-height: $btn-height;
   padding: 0 $btn-horizontal-padding;
-  color: $btn-color;
-  border-radius: 4px;
+  color: white;
   margin-top: $btn-margin-top;
   border-radius: 1px;
   font-weight: bold;
-  background-color: $btn-bg;
-  border-top: $btn-top-border-width solid $btn-top-border-color;
-  border-right: $btn-right-border-width solid $btn-right-border-color;
-  border-bottom: $btn-bottom-border-width solid $btn-bottom-border-color;
-  border-left: $btn-left-border-width solid $btn-left-border-color;
-  font-size: 12px;
+  background-color: #22A7F0;
 }
 
 
 #nav-btn:hover{
-  background-color: $lovely-dark-blue;
+  background-color: #1F3A93;
   color: white;
-  border-bottom: ($btn-bottom-border-width) solid $btn-bottom-border-color;
   -moz-transition: all .1s ease-in;
   -webkit-transition: all .1s ease-in;
   -o-transition: all .1s ease-in;
   transition: all .1s ease-in;
-  border: 1px solid white;
   // margin-top: $btn-margin-top + ($btn-bottom-border-width  * 1/3);
 }
 

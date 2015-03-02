@@ -89,11 +89,11 @@
             </a>
           </div>
         </div>
-        <div class="col-xs-9 padding-left-30">
+        <div class="col-xs-9 padding-left-30 padding-right-none">
           <h5 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link neutralize" id="offer_{{id}}">{{{ _highlightResult.nature.value }}}</a></h5>
-          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}" class="neutralize" id="offer_{{id}}">Voir l'annonce complète<a></p>
+          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}" class="neutralize" id="offer_{{id}}">Voir l'annonce complète</a></p>
         </div>
-        <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
+        <div class="col-xs-2 text-right padding-top-15 padding-left-none">
           <h4 class="margin-none text-right price">
             {{#daily_price}}
               {{ daily_price }}€
@@ -143,7 +143,7 @@
           <ul class="list-unstyled list-inline small">
             {{#picture?}}
             <li class="float-left">
-              <a href="#" class="see-img" id="show_picture_{{id}}">
+              <a href="#" class="see-img hidden-xs" id="show_picture_{{id}}">
                 Voir photo
               </a>
               <a href="#" class="see-img hidden" id="hide_picture_{{id}}">
@@ -153,30 +153,30 @@
             {{/picture?}}
             {{^picture?}}
             <li class="float-left">
-              <a href="#" class="disabled">
+              <a href="#" class="disabled hidden-xs">
                 Voir photo
               </a>
             </li>
             {{/picture?}}
             <li class="float-right">
               <a href="{{ new_booking_url }}" class="neutralize" id="offer_{{id}}">
-                <i class="fa fa-check"></i> Réserver
+                <i class="hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa fa-check"></i> <i class="hidden-xs">Réserver</i>
               </a>
             </li>
             <li class="float-right">
               <a href="{{ message_url }}" class="neutralize" id="offer_{{id}}">
-                <i class="fa fa-envelope"></i> Demande d'info
+                <i class="hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa fa-envelope"></i> <i class="hidden-xs">Demande d'info</i>
               </a>
             </li>
             <li class="float-right">
               {{#wished}}
                 <a href="{{ unwish_url }}" data-method="put" class="neutralize wished" id="offer_{{id}}">
-                  <i class="fa fa-star"></i> Retirer de ma wish list
+                  <i class="fa fa-star"></i><i class="hidden-xs"> Délister</i>
                 </a>
               {{/wished}}
               {{^wished}}
                 <a href="{{ wish_url }}" data-method="put" class="neutralize" id="offer_{{id}}">
-                  <i class="fa fa-star"></i> Enregistrer
+                  <i class="fa fa-star"></i><i class="hidden-xs"> Enregistrer</i>
                 </a>
               {{/wished}}
             </li>

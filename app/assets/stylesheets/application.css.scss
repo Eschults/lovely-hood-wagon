@@ -177,15 +177,6 @@ input,
   padding-top: 15px;
 }
 
-.btn-facebook {
-  background-color: #3A5795;
-  color: white;
-}
-
-.btn-facebook:hover {
-  color: white;
-  font-weight: bold;
-}
 
 .frame {
   padding: 20px;
@@ -1032,7 +1023,8 @@ a.disabled {
 .btn-default,
 .btn-primary,
 .btn-success,
-.btn-danger {
+.btn-danger,
+.btn-facebook {
   padding: 0 15px;
   line-height: $btn-height;
   color: rgb(79, 79, 79);
@@ -1044,8 +1036,16 @@ a.disabled {
 
 .btn-default:hover,
 .btn-primary:hover,
-.btn-danger:hover {
-  // color: white;
+.btn-danger:hover,
+.btn-facebook:hover,
+.btn-default:focus,
+.btn-primary:focus,
+.btn-danger:focus,
+.btn-facebook:focus,
+.btn-default:active,
+.btn-primary:active,
+.btn-danger:active,
+.btn-facebook:active {
   background-color: #ABB7B7;
   -moz-transition: all .1s ease-in;
   -webkit-transition: all .1s ease-in;
@@ -1068,18 +1068,35 @@ a.disabled {
   background-color: #F22613;
 }
 
-.btn-primary:hover{
+.btn-facebook {
+  background-color: #3A5795;
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
   background-color: #1F3A93;
 }
 
-.btn-success:hover{
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
   background-color: #049372;
 }
 
-.btn-danger:hover{
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
   background-color: #96281B;
 }
 
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active {
+  color: white;
+  background-color: #1B316C;
+}
 
 .offer-stream-box ul > li > .see-img {
   color: rgb(0, 132, 180);
@@ -1096,4 +1113,12 @@ a.disabled {
 
 .height-40 {
   height: 40px;
+}
+
+.btn-left {
+  text-align: left;
+}
+
+i {
+  font-style: normal;
 }

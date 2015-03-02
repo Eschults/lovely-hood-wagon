@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="panel panel-default margin-20-30 padding-none border-none transparent-bg">
+      <div class="panel panel-default margin-top-20 max-width-200 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg">
           <!-- si l'offer est un service, la photo est celle du user -->
           <% if @booking.offer.type_of_offer =="service" %>
@@ -20,6 +20,30 @@
           <% end %>
         </div>
       </div>
+      <div class="panel panel-default max-width-200 padding-none">
+        <div class="panel-body border-none">
+          <%= form_for([@booking.offer, @booking]) do |f| %>
+            <%= f.text_field :accepted, class: "hidden", value: true %>
+            <%= f.submit 'Accepter', class: "btn btn-success btn-wide" %>
+          <% end %>
+          <br>
+          <% if current_user.conversation_with(@booking.user) %>
+            <%= link_to conversation_path(current_user.conversation_with(@booking.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
+              Discuter
+            <% end %>
+          <% else %>
+            <%= link_to new_booking_conversation_path(@booking), class: "btn btn-default btn-wide" do %>
+              Discuter
+            <% end %>
+          <% end %>
+          <br>
+          <br>
+          <%= form_for([@booking.offer, @booking]) do |f| %>
+            <%= f.text_field :accepted, class: "hidden", value: false %>
+            <%= f.submit 'Décliner', class: "btn btn-danger btn-wide" %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="col-sm-9">
       <div class="booking">
@@ -31,31 +55,6 @@
           <%= render "sell" %>
         <% end %>
         <%= render "shared/contact_client", booking: @booking %>
-      </div>
-      <div class="booking-answer">
-        <div class="col-sm-1 padding-left-10 margin-btm-15">
-          <%= form_for([@booking.offer, @booking]) do |f| %>
-            <%= f.text_field :accepted, class: "hidden", value: true %>
-            <%= f.submit 'Accepter', class: "btn btn-success" %>
-          <% end %>
-          </div>
-        <div class="col-sm-1 padding-left-30 margin-btm-15">
-          <%= form_for([@booking.offer, @booking]) do |f| %>
-            <%= f.text_field :accepted, class: "hidden", value: false %>
-            <%= f.submit 'Refuser', class: "btn btn-danger" %>
-          <% end %>
-        </div>
-        <div class="col-sm-1 padding-left-43 margin-btm-15">
-          <% if current_user.conversation_with(@booking.user) %>
-            <%= link_to conversation_path(current_user.conversation_with(@booking.user), anchor: "message-input"), class: "btn btn-default" do %>
-              Discuter
-            <% end %>
-          <% else %>
-            <%= link_to new_booking_conversation_path(@booking), class: "btn btn-default" do %>
-              Discuter
-            <% end %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>

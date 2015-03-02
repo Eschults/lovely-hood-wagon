@@ -873,6 +873,10 @@ a.disabled {
   width: 100%;
 }
 
+.review-content p {
+  padding-bottom: 28px;
+}
+
 .offer-link,
 .user-link {
   display: block;
@@ -1027,7 +1031,8 @@ a.disabled {
 
 .btn-default,
 .btn-primary,
-.btn-success {
+.btn-success,
+.btn-danger {
   padding: 0 15px;
   line-height: $btn-height;
   color: rgb(79, 79, 79);
@@ -1038,9 +1043,10 @@ a.disabled {
 }
 
 .btn-default:hover,
-.btn-primary:hover {
-  color: white;
-  background-color: black;
+.btn-primary:hover,
+.btn-danger:hover {
+  // color: white;
+  background-color: #ABB7B7;
   -moz-transition: all .1s ease-in;
   -webkit-transition: all .1s ease-in;
   -o-transition: all .1s ease-in;
@@ -1057,6 +1063,11 @@ a.disabled {
   background-color: #03C9A9;
 }
 
+.btn-danger {
+  color: white;
+  background-color: #F22613;
+}
+
 .btn-primary:hover{
   background-color: #1F3A93;
 }
@@ -1064,6 +1075,11 @@ a.disabled {
 .btn-success:hover{
   background-color: #049372;
 }
+
+.btn-danger:hover{
+  background-color: #96281B;
+}
+
 
 .offer-stream-box ul > li > .see-img {
   color: rgb(0, 132, 180);

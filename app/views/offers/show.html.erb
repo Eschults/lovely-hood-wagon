@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-md-3">
       <div class="panel panel-default margin-top-20 max-width-200 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg">
           <!-- si l'offer est un service, la photo est celle du user -->
@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-md-9">
       <div class="offer">
         <h1><%= @offer.nature %></h1>
         <p>
@@ -118,10 +118,10 @@
       <div class="reviews" id="comments">
         <% if @offer.cto_reviews.size >= 1 %>
           <div class="row">
-            <div class="col-xs-3">
+            <div class="col-lg-3 col-xs-6">
               <h4><strong><%= pluralize(@offer.cto_reviews.size.to_i, "commentaire")%></strong></h4>
             </div>
-            <div class="col-xs-3 text-right">
+            <div class="col-lg-3 col-xs-6 text-right">
               <h4 class="gray-light ">
                 <% @offer.average_score.round.times do %>
                   <i class="fa fa-star rating-star-highlight"></i>
@@ -132,18 +132,18 @@
                 (<%= @offer.average_score.round(1) %>)
               </h4>
             </div>
-            <div class="col-xs-6">
+            <div class="col-lg-6 hidden-xs">
             </div>
           </div>
 
           <div class="ratings">
             <div class="row">
-              <div class="col-xs-3">
+              <div class="col-lg-3 col-xs-6">
                 <p>Communication : </p>
                 <p>Ponctualité : </p>
                 <p>Qualité/ prix : </p>
               </div>
-              <div class="col-xs-3 text-right">
+              <div class="col-lg-3 col-xs-6 text-right">
                 <p class="gray-light">
                   <% @offer.communication_score.round.times do %>
                     <i class="fa fa-star small-star-gold"></i>
@@ -172,7 +172,7 @@
                   (<%= @offer.quality_price_score.round(1) %>)
                 </p>
               </div>
-              <div class="col-xs-6">
+              <div class="col-lg-6 hidden-xs">
               </div>
             </div>
           </div>

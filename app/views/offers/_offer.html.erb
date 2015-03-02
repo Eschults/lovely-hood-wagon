@@ -6,27 +6,29 @@
         <%= image_tag "#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png", class: "img-nature" %>
       </div>
     </div>
-    <div class="col-xs-7 padding-left-30">
+    <div class="col-sm-7 col-xs-5 padding-left-30">
       <h5 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h5>
       <p class="margin-top-10"><%= link_to "Modifier l'annonce", edit_offer_path(offer) %></p>
     </div>
-    <% if current_user.verif == 0 %>
-      <%= form_for offer, method: :patch, url: offer_path(offer)  do |f| %>
-        <div class="col-xs-3">
-          <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>
-        </div>
-        <div class="col-xs-1 padding-left-none">
-          <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
-            <i class="fa fa-save"></i>
-          <% end %>
-        </div>
-      <% end %>
-    <% else %>
-    <div class="col-xs-4">
-      <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
-        <%= pluralize(current_user.verif, 'étape') %> pour publier
+    <div class="col-sm-4 col-xs-6 padding-none">
+      <% if current_user.verif == 0 %>
+        <%= form_for offer, method: :patch, url: offer_path(offer)  do |f| %>
+          <div class="col-xs-9 padding-left-none">
+            <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>
+          </div>
+          <div class="col-xs-3 padding-left-none">
+            <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+              <i class="fa fa-save"></i>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+      <div class="col-xs-12">
+        <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
+          <%= pluralize(current_user.verif, 'étape') %> pour publier
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <% end %>
   </div>
 </div>

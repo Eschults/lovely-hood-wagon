@@ -74,6 +74,14 @@ function adjustNatureIconsSize() {
   }
 }
 
+function adjustIconsSizeSimple() {
+  if($(window).width() < 720) {
+    $('.img-nature-box img').css('width', 40)
+  } else {
+    $('.img-nature-box img').css('width', 60)
+  }
+}
+
 function togglePaddingRight() {
   if($(window).width() > 991 - 15) {
     $('.col-md-6').first().removeClass('padding-right-none');

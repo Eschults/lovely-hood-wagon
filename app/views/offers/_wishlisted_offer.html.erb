@@ -13,9 +13,11 @@
       <h4 class="margin-none text-right price">
         <%= offer.one_price.match(/^.*€/)[0] %>
       </h4>
-      <p class="small">
-        <%= offer.one_price.match(/\/.*$/)[0] %>
-      </p>
+      <% unless offer.type_of_offer == "sell" %>
+        <p class="small">
+          <%= offer.one_price.match(/\/.*$/)[0] %>
+        </p>
+      <% end %>
     </div>
     <% if offer.picture_file_name %>
       <div class="row">
@@ -58,7 +60,7 @@
             <li class="float-right">
               <% if current_user.find_voted_items.include? offer %>
                 <%= link_to unwish_offer_path(offer), class: "neutralize wished", id: "offer_#{offer.id}", method: :put do %>
-                  <i class="fa fa-star"></i> Retirer de ma wish list
+                  <i class="fa fa-star"></i> Délister
                 <% end %>
               <% else %>
                 <%= link_to wish_offer_path(offer), class: "neutralize", id: "offer_#{offer.id}", method: :put do %>

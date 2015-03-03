@@ -24,13 +24,13 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li class="disappear middle-weight">
-            <%= link_to offers_path do %>
+            <%= link_to offers_path, class: "btn", id: "nav-btn-default" do %>
               <i class="fa fa-home"></i> Annonces
             <% end %>
           </li>
           <li class="disappear middle-weight">
             <% if current_user.conversations.size > 0 %>
-              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), class: "btn margin-left-10", id: "nav-btn-default" do %>
                 <i class="fa fa-envelope"></i> Messages
                 <% if current_user.unread_conversations > 0 %>
                   <span class="badge">
@@ -98,7 +98,7 @@
             <li><%= link_to 'Inscription', new_user_registration_path %></li>
             <li><%= link_to 'Connexion', new_user_session_path %></li>
         <% end %>
-        <li><%= link_to 'Publier une annonce', new_offer_path, class: "btn btn-primary", id: "nav-btn" %></li>
+        <li><%= link_to 'Publier une annonce', new_offer_path, class: "btn", id: "nav-btn" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -126,30 +126,40 @@
         templates: {
           suggestion: function(hit) {
             // render the hit
-            return '<div class="offer-stream-box border-btm side-borders white-bg" id="offer_'+ hit.id + '">' +
-              '<div class="row">' +
-                '<div class="col-xs-1">' +
-                  '<div width="img-nature-box">' +
+            return '<a href="/offers/' + hit.id + '">' +
+              '<div class="offer-stream-box border-btm side-borders white-bg" id="offer_'+ hit.id + '">' +
+                '<a href="/offers/' + hit.id + '">' +
+                  '<div class="row">' +
                     '<a href="/offers/' + hit.id + '">' +
-                      hit.icon_img +
+                      '<div class="col-xs-12 padding-none">' +
+                        '<div class="col-xs-1">' +
+                          '<div width="img-nature-box">' +
+                            '<a href="/offers/' + hit.id + '">' +
+                              hit.icon_img +
+                            '</a>' +
+                          '</div>' +
+                        '</div>' +
+                        '<div class="col-xs-9 padding-left-30">' +
+                          '<h5 class="margin-none"><a href="/offers/' + hit.id + '" class="offer-nature-link">' + hit._highlightResult.nature.value + '</a></h5>' +
+                          '<p class="small margin-top-10">' +
+                            '<a href="/offers/' + hit.id + '" class="link-unstyled">' +
+                              hit._highlightResult.description.value +
+                            '</a>' +
+                          '</p>' +
+                        '</div>' +
+                        '<a href="/offers/' + hit.id + '">' +
+                          '<div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">' +
+                            '<h5 class="margin-none text-right price">' +
+                              hit.one_price_int + '€' +
+                            '</h5>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>' +
                     '</a>' +
                   '</div>' +
-                '</div>' +
-                '<div class="col-xs-9 padding-left-30">' +
-                  '<h5 class="margin-none"><a href="/offers/' + hit.id + '" class="offer-nature-link">' + hit._highlightResult.nature.value + '</a></h5>' +
-                  '<p class="small margin-top-10">' +
-                    '<a href="/offers/' + hit.id + '" class="link-unstyled">' +
-                      hit._highlightResult.description.value +
-                    '</a>' +
-                  '</p>' +
-                '</div>' +
-                '<div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">' +
-                  '<h5 class="margin-none text-right price">' +
-                    hit.one_price_int + '€' +
-                  '</h5>' +
-                '</div>' +
+                '</a>' +
               '</div>' +
-            '</div>'
+            '</a>'
           }
         }
       });

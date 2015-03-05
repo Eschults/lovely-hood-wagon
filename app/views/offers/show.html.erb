@@ -1,27 +1,34 @@
+<%= content_for :stylesheets do %>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <div class="panel panel-default margin-top-20 max-width-200 padding-none border-none transparent-bg">
+      <div class="panel panel-default margin-top-20 max-width-300 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg">
           <!-- si l'offer est un service, la photo est celle du user -->
           <% if @offer.type_of_offer =="service" %>
             <% if @offer.user.picture_file_name %>
-              <%= image_tag(@offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= image_tag(@offer.user.picture.url(:medium), { class: "img-lovely" }) %>
             <% else %>
-              <%= image_tag "user_pic-225x225.png", class: "img-thumbnail" %>
+              <%= image_tag "user_pic-225x225.png", class: "img img-lovely" %>
             <% end %>
           <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>
             <% if @offer.picture_file_name %>
-              <%= image_tag(@offer.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= link_to @offer.picture.url(:large), class: "fancybox", id: "single-image", "rel" => "group" do %>
+                <%= image_tag(@offer.picture.url(:medium), { class: "img img-lovely" }) %>
+              <% end %>
             <% else %>
-              <%= image_tag("no-image.png", { class: "img-thumbnail white-bg" }) %>
+              <%= image_ta
+
+              g("no-image.png", { class: "img img-lovely white-bg" }) %>
             <% end %>
           <% end %>
         </div>
       </div>
 
-      <div class="panel panel-default max-width-200 padding-none">
+      <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-body border-none">
           <% if policy(@offer).update? %>
             <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide" %>
@@ -33,7 +40,7 @@
                 <div class="col-xs-8 padding-right-10">
                   <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control height-40" } %>
                 </div>
-                <div class="col-xs-3 padding-none">
+                <div class="col-xs-4 padding-left-none">
                   <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
                     <i class="fa fa-save"></i>
                   <% end %>
@@ -187,10 +194,12 @@
     </div>
   </div>
 </div>
-<% content_for(:js) do %>
-  <% javascript_tag do %>
+<%= content_for(:js) do %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <%= javascript_tag do %>
     $(document).ready(function() {
-      $('.offer-link').addClass('hidden');
+      $(".fancybox").fancybox();
     });
   <% end %>
 <% end %>

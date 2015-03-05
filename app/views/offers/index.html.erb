@@ -1,3 +1,6 @@
+<%= content_for :stylesheets do %>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+<% end %>
 <div class="container margin-none margin-top-15 total-width">
   <div class="row total-width margin-none">
     <div class="col-md-6 padding-left-none">
@@ -47,7 +50,7 @@
 
 
 
-<% content_for(:js) do %>
+<%= content_for(:js) do %>
   <script type="text/template" id="facet-template">
     <div class="facet">
       <!-- facet title -->
@@ -133,7 +136,9 @@
       {{#picture?}}
       <div class="row">
         <div class="col-xs-12 text-center padding-vertical-10 hidden" id="picture_{{ id }}">
-          <img src="{{ picture_url }}" class="img-offer-pop"/>
+          <a href="{{ picture_url }}" class="fancybox" id="single-image" rel="group">
+            <img src="{{ picture_url }}" class="img-offer-pop"/>
+          </a>
         </div>
       </div>
       {{/picture?}}
@@ -200,7 +205,9 @@
   <script src="//cdn.jsdelivr.net/hogan.js/3.0.0/hogan.common.js"></script>
   <!-- Algolia -->
   <script src="//cdn.jsdelivr.net/algoliasearch/latest/algoliasearch.js"></script>
-
+  <!-- Fancybox -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
 
   <%= javascript_tag do %>

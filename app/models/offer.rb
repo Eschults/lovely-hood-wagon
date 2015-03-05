@@ -3,7 +3,7 @@ class Offer < ActiveRecord::Base
 
   has_many :bookings
   has_attached_file :picture,
-    styles: { medium: "300x300#", thumb: "100x100#" }
+    styles: { large: "600x600#", medium: "300x300#", thumb: "100x100#" }
 
   acts_as_votable
 

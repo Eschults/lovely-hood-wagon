@@ -12,6 +12,19 @@ $border: 2px solid $color;
   color: $gray-dark;
 }
 
+#brand {
+  color: white;
+}
+
+#brand:hover {
+  color: white;
+}
+
+#nav-btn-default {
+  background-color: transparent;
+  color: white;
+}
+
 .lead {
   background: rgba(0, 0, 0, .4);
   border-radius: 5px;

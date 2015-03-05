@@ -1,6 +1,6 @@
 // Set your navbar general settings
 // #446CB3
-$color: #1F3A93;
+$color: rgb(34, 167, 240);
 $bg: white;
 $height: 40px;
 $vertical-padding: 10px;
@@ -87,15 +87,13 @@ $profile-border-width: 2px;
 
 #brand:hover {
   text-decoration: none;
-  color: #25AAE1;
-  // font-weight: bold;
 }
 
 #brand:focus {
   text-decoration: none;
-  color: #25AAE1;
+  // color: #25AAE1;
   // font-weight: bold;
-  color: rgba(200, 200, 200, 1);
+  // color: rgba(200, 200, 200, 1);
 }
 
 .navbar-wagon .navbar-nav>.open>a,
@@ -180,7 +178,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 #brand {
   font-family: 'Pacifico';
-  color: white;
+  color: $color;
   font-size: 30px;
   margin-left: 15px;
 }

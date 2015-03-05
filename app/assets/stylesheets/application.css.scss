@@ -753,6 +753,10 @@ a.disabled {
   max-width: 200px;
 }
 
+.max-width-300 {
+  max-width: 300px;
+}
+
 .margin-vertical-5 {
   margin: 5px 0;
 }
@@ -1117,6 +1121,12 @@ a.disabled {
 
 .btn-left {
   text-align: left;
+}
+
+.img-lovely {
+  max-width: 298px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 1px;
 }
 
 i {

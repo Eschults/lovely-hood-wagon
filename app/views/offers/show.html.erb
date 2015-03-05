@@ -95,25 +95,25 @@
       </div>
       <div class="prices">
         <h2>Tarifs</h2>
-          <% if @offer.type_of_offer == "service" %>
-            <% if @offer.hourly_price %>
-              <p><%= @offer.hourly_price %>€/ heure</p>
-            <% end %>
-          <% elsif @offer.type_of_offer == "rent" %>
-            <% if @offer.daily_price %>
-              <p><%= @offer.daily_price %>€/ jour</p>
-            <% end %>
-            <% if @offer.weekly_price %>
-              <p><%= @offer.weekly_price %>€/ semaine</p>
-            <% end %>
-            <% if @offer.guarantee %>
-              <p>Caution : <%= @offer.guarantee %>€</p>
-            <% end %>
-          <% else %>
-            <% if @offer.price %>
-              <p><%= @offer.price %>€</p>
-            <% end %>
+        <% if @offer.type_of_offer == "service" %>
+          <% if @offer.hourly_price %>
+            <p><%= @offer.hourly_price %>€/ heure</p>
           <% end %>
+        <% elsif @offer.type_of_offer == "rent" %>
+          <% if @offer.daily_price %>
+            <p><%= @offer.daily_price %>€/ jour</p>
+          <% end %>
+          <% if @offer.weekly_price %>
+            <p><%= @offer.weekly_price %>€/ semaine</p>
+          <% end %>
+          <% if @offer.guarantee %>
+            <p>Caution : <%= @offer.guarantee %>€</p>
+          <% end %>
+        <% else %>
+          <% if @offer.price %>
+            <p><%= @offer.price %>€</p>
+          <% end %>
+        <% end %>
       </div>
       <div class="reviews" id="comments">
         <% if @offer.cto_reviews.size >= 1 %>

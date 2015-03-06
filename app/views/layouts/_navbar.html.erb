@@ -17,21 +17,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if user_signed_in? %>
-        <form class="navbar-form navbar-left margin-top-13" action="">
+        <!-- <form class="navbar-form navbar-left margin-top-13" action="">
           <input class="typeahead form-control fa-placeholder search-placeholder" type="text" id="query"
               autocomplete="off" spellcheck="false" autocapitalize="off"
               placeholder="Rechercher un objet, un service..."></input>
-        </form>
+        </form> -->
 
         <ul class="nav navbar-nav navbar-right">
           <li class="disappear middle-weight">
-            <%= link_to offers_path, class: "btn", id: "nav-btn-default" do %>
+            <%= link_to offers_path, class: "nav-btn-default", id: "offers-nav-link" do %>
               <i class="fa fa-home"></i> Annonces
             <% end %>
           </li>
           <li class="disappear middle-weight">
             <% if current_user.conversations.size > 0 %>
-              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), class: "btn margin-left-10", id: "nav-btn-default" do %>
+              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), class: "nav-btn-default", id: "messages-nav-link" do %>
                 <i class="fa fa-envelope"></i> Messages
                 <% if current_user.unread_conversations > 0 %>
                   <span class="badge">
@@ -51,7 +51,7 @@
                   <%= image_tag "user_pic-225x225.png", class: "img-logo-small" %>
                 <% end %>
               </div>
-              <strong><%= current_user.first_name %><span class="caret"></span></strong></a>
+              <%= current_user.first_name %><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <% if current_user.passed_bookings_to_review[:owner].size >= 1 || current_user.passed_bookings_to_review[:client].select { |booking| booking.owner_validation }.size >= 1 || current_user.upcoming_bookings[:owner].select { |booking| booking.accepted.nil? }.size >= 1 %>
                 <li style="background-color: rgb(250,250,250);">
@@ -113,6 +113,11 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
+      if(window.location.href.indexOf("/offers") > -1) {
+        $('#offers-nav-link').addClass("hover");
+      } else if(window.location.href.indexOf("#message-input") > -1) {
+        $('#messages-nav-link').addClass("hover");
+      }
       // Replace the following values by your ApplicationID and ApiKey.
       var algolia = new AlgoliaSearch(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',

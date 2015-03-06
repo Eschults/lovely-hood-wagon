@@ -16,7 +16,7 @@ $lovely-dark-blue: rgb(68, 108, 179);
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico|Ubuntu");
 @import "chosen";
 
 @import "navbar";
@@ -896,7 +896,7 @@ a.disabled {
 .panel-default > .panel-heading {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  background-color: rgb(237, 239, 237);
+  background-color: #FCFCFC;
   color: rgb(119, 119, 119);
 }
 

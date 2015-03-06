@@ -36,6 +36,10 @@ class Offer < ActiveRecord::Base
       picture.url(:medium)
     end
 
+    add_attribute :large_picture_url do
+      picture.url(:large)
+    end
+
     add_attribute :picture? do
       if picture.url(:medium) == "/pictures/medium/missing.png"
         nil

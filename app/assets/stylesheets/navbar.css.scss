@@ -1,6 +1,6 @@
 // Set your navbar general settings
 // #446CB3
-$color: rgb(34, 167, 240);
+$color: rgb(102, 117, 127);
 $bg: white;
 $height: 40px;
 $vertical-padding: 10px;
@@ -47,12 +47,15 @@ $profile-border-width: 2px;
   top: -4px;
 }
 
+.navbar-wagon .navbar-nav > li {
+  height: 60px;
+}
+
 .navbar-wagon .navbar-nav > li > a {
   color: $color;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
-  font-weight: 600;
 }
 
 .navbar-wagon .input-group-addon {
@@ -79,7 +82,6 @@ $profile-border-width: 2px;
 .navbar-wagon .navbar-nav > li > a:hover,
 .navbar-wagon .navbar-nav > li > a:focus {
   color: $color;
-  font-weight: 700;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
@@ -146,29 +148,34 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   border-bottom: none;
 }
 
-#nav-btn-default {
+.nav-btn-default {
   line-height: $btn-height;
-  padding: 0 $btn-horizontal-padding;
+  padding: 9px $btn-horizontal-padding 0 $btn-horizontal-padding;
   color: $color;
-  margin-top: $btn-margin-top;
+  // margin-top: $btn-margin-top;
   border-radius: 1px;
-  font-weight: bold;
   background-color: white;
+  height: 100%;
+  -moz-transition: all .1s ease;
+  -webkit-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
 }
 
-
-#nav-btn-default:hover{
-  background-color: #ECECEC;
-  color: $color;
-  -moz-transition: all .1s ease-in;
-  -webkit-transition: all .1s ease-in;
-  -o-transition: all .1s ease-in;
-  transition: all .1s ease-in;
+.navbar-wagon .navbar-nav > li > .nav-btn-default.hover,
+.navbar-wagon .navbar-nav > li > .nav-btn-default:hover{
+  background-color: white;
+  color: rgb(34, 167, 240);
+  border-bottom: 4px solid rgb(34, 167, 240);
+  -moz-transition: all .1s ease;
+  -webkit-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
   // margin-top: $btn-margin-top + ($btn-bottom-border-width  * 1/3);
 }
 
-#nav-btn-default:active{
-  margin-top: $btn-margin-top + $btn-bottom-border-width;
+.nav-btn-default:active{
+  // margin-top: $btn-margin-top + $btn-bottom-border-width;
   border-bottom: none;
 }
 
@@ -178,7 +185,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 
 #brand {
   font-family: 'Pacifico';
-  color: $color;
+  color: rgb(34, 167, 240);
   font-size: 30px;
   margin-left: 15px;
 }

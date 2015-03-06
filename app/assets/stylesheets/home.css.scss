@@ -20,9 +20,24 @@ $border: 2px solid $color;
   color: white;
 }
 
-#nav-btn-default {
+.nav-btn-default {
+  color: $color;
+  // margin-top: $btn-margin-top;
+  border-radius: 1px;
+  background-color: transparent;
+  height: 100%;
+}
+
+.navbar-wagon .navbar-nav > li > .nav-btn-default.hover,
+.navbar-wagon .navbar-nav > li > .nav-btn-default:hover{
   background-color: transparent;
   color: white;
+  border-bottom: 4px solid white;
+  -moz-transition: all .1s ease-in;
+  -webkit-transition: all .1s ease-in;
+  -o-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+  // margin-top: $btn-margin-top + ($btn-bottom-border-width  * 1/3);
 }
 
 .lead {
@@ -71,7 +86,9 @@ $border: 2px solid $color;
   background-color: #25AEE1;
 }
 
-.navbar-wagon .navbar-nav > li > a {
+.navbar-wagon .navbar-nav > li > a,
+.navbar-wagon .navbar-nav > li > a:hover,
+.navbar-wagon .navbar-nav > li > a:focus {
   color: white;
 }
 

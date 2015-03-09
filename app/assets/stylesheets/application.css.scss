@@ -1132,3 +1132,7 @@ a.disabled {
 i {
   font-style: normal;
 }
+
+.offer-stream-box li > a:active {
+  text-decoration: none;
+}

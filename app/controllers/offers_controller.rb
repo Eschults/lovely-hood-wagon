@@ -71,13 +71,19 @@ class OffersController < ApplicationController
   def wish
     set_offer
     @offer.liked_by current_user
-    redirect_to offer_path(@offer)
+    respond_to do |format|
+      format.html { redirect_to offer_path(@offer) }
+      format.js
+    end
   end
 
   def unwish
     set_offer
     @offer.unliked_by current_user
-    redirect_to offer_path(@offer)
+    respond_to do |format|
+      format.html { redirect_to offer_path(@offer) }
+      format.js
+    end
   end
 
   private

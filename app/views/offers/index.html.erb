@@ -175,12 +175,12 @@
             </li>
             <li class="float-right">
               {{#wished}}
-                <a href="{{ unwish_url }}" data-method="put" class="neutralize wished" id="offer_{{id}}">
+                <a href="{{ unwish_url }}" class="neutralize wished" data-method="put" data-remote="true" id="wishOffer_{{id}}">
                   <i class="fa fa-star"></i><i class="hidden-xs"> Délister</i>
                 </a>
               {{/wished}}
               {{^wished}}
-                <a href="{{ wish_url }}" data-method="put" class="neutralize" id="offer_{{id}}">
+                <a href="{{ wish_url }}" class="neutralize" data-method="put" data-remote="true" id="wishOffer_{{id}}">
                   <i class="fa fa-star"></i><i class="hidden-xs"> Enregistrer</i>
                 </a>
               {{/wished}}

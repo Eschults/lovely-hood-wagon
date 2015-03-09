@@ -113,11 +113,6 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      if(window.location.href.indexOf("/offers") > -1) {
-        $('#offers-nav-link').addClass("hover");
-      } else if(window.location.href.indexOf("#message-input") > -1) {
-        $('#messages-nav-link').addClass("hover");
-      }
       // Replace the following values by your ApplicationID and ApiKey.
       var algolia = new AlgoliaSearch(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',

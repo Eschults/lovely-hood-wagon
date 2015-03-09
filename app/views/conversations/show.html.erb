@@ -70,6 +70,7 @@
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
+      $('#messages-nav-link').addClass("hover");
       $("#messages").niceScroll({
         cursorwidth: "10px",
         cursorcolor: "#ddd",

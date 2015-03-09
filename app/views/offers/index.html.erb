@@ -212,6 +212,7 @@
 
   <%= javascript_tag do %>
     $(document).ready(function() {
+      $('#offers-nav-link').addClass("hover");
       $(window).on('resize', function() {
         togglePaddingRight();
         adjustNatureIconsSize();

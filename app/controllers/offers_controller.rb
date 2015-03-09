@@ -51,7 +51,10 @@ class OffersController < ApplicationController
   def update
     if @offer.update(offer_params)
       if @offer.one_price
-        redirect_to offer_path(@offer)
+        respond_to do |format|
+          format.html { redirect_to offer_path(@offer) }
+          format.js
+        end
       else
         flash[:alert] = "Merci de renseigner un prix"
         render :edit

@@ -10,14 +10,14 @@
         <h5 class="margin-none offer-nature-link"><%= offer.nature %></h5>
         <p class="margin-top-10"><%= offer.description + "..." %></p>
       </div>
-      <div class="col-sm-4 col-xs-6 padding-none">
+      <div class="col-sm-4 col-xs-6 padding-none" id="<%= "append-target_#{offer.id}" %>">
         <% if current_user.verif == 0 %>
-          <%= form_for offer, method: :patch, url: offer_path(offer)  do |f| %>
+          <%= form_for offer, method: :patch, remote: true, url: offer_path(offer), id: "publish-form"  do |f| %>
             <div class="col-xs-9 padding-left-none">
               <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>
             </div>
             <div class="col-xs-3 padding-left-none">
-              <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide") do %>
+              <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide", id: "publish-submit") do %>
                 <i class="fa fa-save"></i>
               <% end %>
             </div>

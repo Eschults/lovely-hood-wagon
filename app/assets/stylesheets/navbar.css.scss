@@ -156,10 +156,11 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   border-radius: 1px;
   background-color: white;
   height: 100%;
-  -moz-transition: all .1s ease-out;
-  -webkit-transition: all .1s ease-out;
-  -o-transition: all .1s ease-out;
-  transition: all 1s ease-out;
+  border-bottom: 0.5px solid transparent;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .navbar-wagon .navbar-nav > li > .nav-btn-default.hover,
@@ -167,15 +168,9 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   background-color: white;
   color: rgb(34, 167, 240);
   border-bottom: 4px solid rgb(34, 167, 240);
-  -moz-transition: all .1s ease-in;
-  -webkit-transition: all .1s ease-in;
-  -o-transition: all .1s ease-in;
-  transition: all .1s ease-in;
-  // margin-top: $btn-margin-top + ($btn-bottom-border-width  * 1/3);
 }
 
 .nav-btn-default:active{
-  // margin-top: $btn-margin-top + $btn-bottom-border-width;
   border-bottom: none;
 }
 

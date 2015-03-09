@@ -1,0 +1,8 @@
+if($('#append-target_' + '<%= @offer.id %>' + ' .saved').size() == 1) {
+  $('.saved').html('<i class="fa fa-check"></i> Enregistré ' + '<%= @offer.published ? "(publiée)" : "(masquée)" %>')
+} else {
+  $('#append-target_' + '<%= @offer.id %>').append('<p class="saved"><i class="fa fa-check"></i> Enregistré</p>')
+  if($('#append-target_' + '<%= @offer.id %>').attr('class').indexOf('hidden') > -1) {
+    $('#append-target_' + '<%= @offer.id %>').removeClass('hidden')
+  }
+}

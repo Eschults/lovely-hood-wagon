@@ -31,6 +31,13 @@
       $(window).on('resize', function() {
         adjustIconsSizeSimple();
       })
+      $('select').on('click', function(e) {
+        e.preventDefault();
+      })
+      $('button').on('click', function(e) {
+        e.preventDefault();
+        $(this).parent().parent().submit();
+      })
     })
   <% end %>
 <% end %>

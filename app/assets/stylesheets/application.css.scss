@@ -1136,3 +1136,12 @@ i {
 .offer-stream-box li > a:active {
   text-decoration: none;
 }
+
+#publish-form {
+  z-index: 3;
+}
+
+.saved {
+  color: rgb(3, 201, 169);
+  margin-bottom: 0;
+}

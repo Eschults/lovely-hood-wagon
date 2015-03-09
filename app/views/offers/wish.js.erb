@@ -1,0 +1,4 @@
+$('#wishOffer_' + '<%= @offer.id %>').html('<i class="fa fa-star"></i><i class="hidden-xs"> Délister</i>');
+$('#wishOffer_' + '<%= @offer.id %>').addClass('wished');
+$('#wishOffer_' + '<%= @offer.id %>').css('text-decoration', 'none');
+$('#wishOffer_' + '<%= @offer.id %>').attr('href', '<%= unwish_offer_path(@offer) %>');

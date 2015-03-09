@@ -31,11 +31,11 @@
     $(document).ready(function() {
       $(".fancybox").fancybox();
       $('.offer-stream-box .neutralize').on('click', function(e) {
-        showOrHidePicture(6, $(this));
+        showOrHidePicture($(this));
       });
 
       $('.offer-stream-box').on('click', function(e) {
-        showOrHidePicture(6, $(this));
+        showOrHidePicture($(this));
       });
       adjustIconsSizeSimple();
       $(window).on('resize', function() {

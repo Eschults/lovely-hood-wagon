@@ -25,8 +25,9 @@ function showRent() {
   $('#rent').attr('name', 'offer[nature]');
 }
 
-function showOrHidePicture(lettersBeforeId, item) {
+function showOrHidePicture(item) {
   var id = item.attr('id');
+  var lettersBeforeId = id.indexOf("_") + 1;
   id = id.slice(lettersBeforeId, id.size);
   if($('#picture_' + id).attr('class').indexOf('hidden') > -1) {
     $('#picture_' + id).removeClass("hidden");

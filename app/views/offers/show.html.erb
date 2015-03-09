@@ -9,7 +9,7 @@
           <!-- si l'offer est un service, la photo est celle du user -->
           <% if @offer.type_of_offer =="service" %>
             <% if @offer.user.picture_file_name %>
-              <%= image_tag(@offer.user.picture.url(:medium), { class: "img-lovely" }) %>
+              <%= image_tag(@offer.user.picture.url(:medium), { class: "img img-lovely" }) %>
             <% else %>
               <%= image_tag "user_pic-225x225.png", class: "img img-lovely" %>
             <% end %>
@@ -20,9 +20,7 @@
                 <%= image_tag(@offer.picture.url(:medium), { class: "img img-lovely" }) %>
               <% end %>
             <% else %>
-              <%= image_ta
-
-              g("no-image.png", { class: "img img-lovely white-bg" }) %>
+              <%= image_tag("no-image.png", { class: "img img-lovely white-bg" }) %>
             <% end %>
           <% end %>
         </div>

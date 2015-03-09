@@ -1,3 +1,6 @@
+<%= content_for :stylesheets do %>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -22,8 +25,18 @@
   </div>
 </div>
 <%= content_for :js do %>
-  <% javascript_tag do %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <%= javascript_tag do %>
     $(document).ready(function() {
+      $(".fancybox").fancybox();
+      $('.offer-stream-box .neutralize').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
+
+      $('.offer-stream-box').on('click', function(e) {
+        showOrHidePicture(6, $(this));
+      });
       adjustIconsSizeSimple();
       $(window).on('resize', function() {
         adjustIconsSizeSimple();

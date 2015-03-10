@@ -1,5 +1,9 @@
 class StripePaymentsController < ApplicationController
   def new
+    unless current_user.admin
+      redirect_to root_path
+      flash[:notice] = "T'as trop pris la confiance"
+    end
   end
 
   def create
@@ -9,7 +13,6 @@ class StripePaymentsController < ApplicationController
     customer = @user.stripe_customer
 
     if @booking.accepted
-
       charge = Stripe::Charge.create(
         :amount => @booking.cashin_price.to_i, # amount in cents, again
         :currency => "eur",

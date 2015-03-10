@@ -9,16 +9,16 @@
           <!-- if offer type is a service, the picture is user's pic - or the icon if user does not have one - -->
           <% if @booking.offer.type_of_offer =="service" %>
             <% if @booking.offer.user.picture_file_name %>
-              <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img img-lovely" }) %>
             <% else %>
-              <%= image_tag "#{@booking.offer.nature}.png", class: "img-thumbnail white-bg" %>
+              <%= image_tag "#{@booking.offer.nature}.png", class: "img img-lovely" %>
             <% end %>
           <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>
             <% if @booking.offer.picture_file_name %>
-              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-lovely" }) %>
             <% else %>
-              <%= image_tag("no-image.png", { class: "img-thumbnail" }) %>
+              <%= image_tag("no-image.png", { class: "img img-lovely" }) %>
             <% end %>
           <% end %>
         </div>

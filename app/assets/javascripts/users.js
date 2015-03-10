@@ -2,11 +2,13 @@ function showInfo() {
   $('#user-info').removeClass("hidden");
   $('#user-picture').addClass("hidden");
   $('#user-trust').addClass("hidden");
+  $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
   $('#user-recommendations').addClass("hidden");
   $('#my-info').addClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
+  $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
   $('#my-recos').removeClass("strong");
 }
@@ -15,11 +17,13 @@ function showPic() {
   $('#user-info').addClass("hidden");
   $('#user-picture').removeClass("hidden");
   $('#user-trust').addClass("hidden");
+  $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
   $('#user-recommendations').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').addClass("strong");
   $('#my-trust').removeClass("strong");
+  $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
   $('#my-recos').removeClass("strong");
 }
@@ -28,11 +32,13 @@ function showTrust() {
   $('#user-info').addClass("hidden");
   $('#user-picture').addClass("hidden");
   $('#user-trust').removeClass("hidden");
+  $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
   $('#user-recommendations').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').addClass("strong");
+  $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
   $('#my-recos').removeClass("strong");
 }
@@ -41,6 +47,7 @@ function showComments() {
   $('#user-info').addClass("hidden");
   $('#user-picture').addClass("hidden");
   $('#user-trust').addClass("hidden");
+  $('#user-bank').addClass("hidden");
   $('#user-comments').removeClass("hidden");
   adjustImgMedium();
   adjustImgMini();
@@ -48,6 +55,7 @@ function showComments() {
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
+  $('#my-bank').removeClass("strong");
   $('#my-comments').addClass("strong");
   $('#my-recos').removeClass("strong");
 }
@@ -56,13 +64,30 @@ function showRecos() {
   $('#user-info').addClass("hidden");
   $('#user-picture').addClass("hidden");
   $('#user-trust').addClass("hidden");
+  $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
   $('#user-recommendations').removeClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
+  $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
   $('#my-recos').addClass("strong");
+}
+
+function showBank() {
+  $('#user-info').addClass("hidden");
+  $('#user-picture').addClass("hidden");
+  $('#user-trust').addClass("hidden");
+  $('#user-bank').removeClass("hidden");
+  $('#user-comments').addClass("hidden");
+  $('#user-recommendations').addClass("hidden");
+  $('#my-info').removeClass("strong");
+  $('#my-pic').removeClass("strong");
+  $('#my-trust').removeClass("strong");
+  $('#my-bank').addClass("strong");
+  $('#my-comments').removeClass("strong");
+  $('#my-recos').removeClass("strong");
 }
 
 function filled(field) {
@@ -229,6 +254,10 @@ function showTheRightDiv() {
   showPic();
   }
 
+  if(window.location.hash == "#my-bank") {
+    showBank();
+  }
+
   $('.edit-link').on('focus', function(e) {
     window.scrollTo(0, 0);
   })
@@ -242,6 +271,9 @@ function showTheRightDiv() {
     }
     if(id == "my-trust") {
       showTrust();
+    }
+    if(id == "my-bank") {
+      showBank();
     }
     if(id == "my-comments") {
       showComments();

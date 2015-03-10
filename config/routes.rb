@@ -38,8 +38,6 @@ Rails.application.routes.draw do
   get "/mine", to: "offers#mine"
   get "/wishlist", to: "offers#wishlist"
 
-
-
   resources :conversations, only: [:index, :show] do
     member do
       put :reply

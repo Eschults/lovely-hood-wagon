@@ -168,14 +168,9 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   background-color: white;
   color: rgb(34, 167, 240);
   border-bottom: 4px solid rgb(34, 167, 240);
-}
-
-.navbar-wagon .navbar-nav > li > .nav-btn-default .badge.hover {
-  background-color: rgb(34, 167, 240);
-  -moz-transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  span {
+    background-color: rgb(34, 167, 240);
+  }
 }
 
 .nav-btn-default:active{
@@ -208,6 +203,9 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   background: transparent;
 }
 
+.navbar-toggle {
+  margin: 3px 0 0 0;
+}
 
 .navbar-wagon .navbar-nav > li > .dropdown-menu{
   border-radius: 0;

@@ -252,7 +252,7 @@ class User < ActiveRecord::Base
     card.name = name
     card.address_line1 = street if !street.blank?
     card.address_city = city if !city.blank?
-    card.address_zip = zipcode if !zipcode.blank?
+    card.address_zip = zip_code if !zip_code.blank?
     card.address_country = "France"
     card.save
     card

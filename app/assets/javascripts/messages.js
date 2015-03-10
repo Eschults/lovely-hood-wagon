@@ -46,3 +46,12 @@ function setMarginTop() {
     $(this).css('margin-top', ($(this).parent().height()-imgHeight)/2);
   });
 }
+
+function colorMessagesBadgeOnHover() {
+  $('#messages-nav-link').on('mouseenter', function() {
+    $('#messages-nav-link .badge').addClass('hover')
+  })
+  $('#messages-nav-link').on('mouseleave', function() {
+    $('#messages-nav-link .badge').removeClass('hover')
+  })
+}

@@ -1,10 +1,10 @@
 class StripeCustomersController < ApplicationController
   def new
-    @offer = Offer.find(params[:id])
+    @offer = Offer.find(params[:offer_id])
   end
 
   def create
-    @offer = Offer.find(params[:id])
+    @offer = Offer.find(params[:offer_id])
     customer = current_user.stripe_customer
     card = current_user.create_card(params[:stripeToken])
     if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != nil

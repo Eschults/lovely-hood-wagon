@@ -47,5 +47,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :stripe_payments, only: [:new, :create]
 
 end

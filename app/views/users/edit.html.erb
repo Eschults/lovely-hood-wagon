@@ -9,6 +9,7 @@
           <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
           <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
           <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a></li>
+          <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a></li>
           <li><a href="#" class="edit-link" id="my-comments">Commentaires</a></li>
           <li><a href="#" class="edit-link" id="my-recos">Recommandations</a></li>
           <li><%= link_to "Voir mon profil", user_path(current_user), class: "btn btn-default" %></a></li>
@@ -179,6 +180,45 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-9">
                   <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="box hidden" id="user-bank">
+        <div class="panel panel-default margin-top-15 padding-none">
+          <div class="panel-heading">
+            <h4>Recevoir de l'argent</h4>
+          </div>
+          <div class="panel-body form-horizontal white-bg">
+            <div class="col-xs-12">
+              <p>Avant de pouvoir créer une annonce sur Lovely hood, vous devez renseigner les coordonnées bancaires d'un compte valide domicilié en France.</p>
+              <p>Vous recevrez alors automatiquement tous les paiements relatifs à vos annonces sur ce compte dans un délai de 48h après la prestation.</p>
+            </div>
+            <%= form_for(current_user) do |f| %>
+
+              <div class="form-group">
+                <%= f.label :iban, "IBAN", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.email_field :iban, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :bic, "BIC", class: "col-sm-3 control-label" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :bic, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group margin-btm-none">
+                <div class="col-sm-3">
+                </div>
+
+                <div class="col-sm-9">
+                  <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
                 </div>
               </div>
             <% end %>

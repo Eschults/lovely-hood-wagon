@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
 
   def name_and_address_validations(path)
@@ -78,7 +77,9 @@ class UsersController < ApplicationController
       :longitude,
       :picture,
       :identity_proof,
-      :address_proof
+      :address_proof,
+      :iban,
+      :bic
     )
   end
 end

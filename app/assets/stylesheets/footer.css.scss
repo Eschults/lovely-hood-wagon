@@ -21,6 +21,11 @@ footer li {
   margin: 0 2px;
 }
 
+footer a,
+footer a:hover {
+  color: white;
+}
+
 footer > .container > .row > .col-xs-12 > #social > li > a {
   display: inline-block;
   width: 40px;

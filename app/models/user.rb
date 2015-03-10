@@ -64,6 +64,14 @@ class User < ActiveRecord::Base
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  def ready_to_receive_money?
+    if bic.nil? || iban.nil?
+      false
+    else
+      true
+    end
+  end
+
   def unread_conversations
     output = 0
     conversations.each do |conversation|

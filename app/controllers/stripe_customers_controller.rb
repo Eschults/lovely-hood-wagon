@@ -1,12 +1,14 @@
 class StripeCustomersController < ApplicationController
   def new
+    @offer = Offer.find(params[:id])
   end
 
   def create
+    @offer = Offer.find(params[:id])
     customer = current_user.stripe_customer
     card = current_user.create_card(params[:stripeToken])
     if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != nil
-      redirect_to new_order_path
+      redirect_to new_offer_booking_path(@offer)
     else
       render :new
     end

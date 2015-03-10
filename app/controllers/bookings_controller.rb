@@ -40,10 +40,10 @@ class BookingsController < ApplicationController
           render :new
         end
       else
-        redirect_to new_stripe_customer_path
+        redirect_to new_offer_stripe_customer_path(@offer)
       end
     else
-      redirect_to new_stripe_customer_path
+      redirect_to new_offer_stripe_customer_path(@offer)
     end
   end
 

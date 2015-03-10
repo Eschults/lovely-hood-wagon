@@ -3,7 +3,7 @@
 <% end %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 inbox">
+    <div class="col-md-4 inbox">
       <div class="panel panel-default margin-top-15 padding-none white-bg" id="panel-inbox">
         <div class="panel-heading border-btm-light">
           <h4>Boîte de réception</h4>
@@ -27,7 +27,7 @@
 
 
 
-    <div class="col-sm-8 conversation">
+    <div class="col-md-8 conversation">
       <div class="panel panel-default margin-top-15 padding-none" id="panel-conversation">
         <div class="panel-heading border-btm-light">
           <h4>
@@ -70,9 +70,15 @@
   </div>
 </div>
 
-<% content_for(:js) do %>
+<%= content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
+      togglePaddingAndBorder();
+      stickDown();
+      $(window).on('resize', function() {
+        togglePaddingAndBorder();
+        stickDown();
+      })
       $('#messages-nav-link').addClass("hover");
       $("#messages").niceScroll({
         cursorwidth: "10px",
@@ -88,11 +94,8 @@
         background: "#f8f8f8",
         cursorborder: "1px solid #fff"
       });
-      stickDown();
       $('#messages').scrollTop($('#messages')[0].scrollHeight);
       stylizeConversationPreview();
-      adjustImgMediumSquare();
-      adjustImgSmallSquare();
     });
   <% end %>
 <% end %>

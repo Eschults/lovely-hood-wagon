@@ -84,7 +84,7 @@ function adjustIconsSizeSimple() {
 }
 
 function togglePaddingRight() {
-  if($(window).width() > 991 - 15) {
+  if($(window).width() > 991) {
     $('.col-md-6').first().removeClass('padding-right-none');
   } else {
     $('.col-md-6').first().addClass('padding-right-none');

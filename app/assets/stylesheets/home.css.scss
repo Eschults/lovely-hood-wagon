@@ -4,12 +4,16 @@ $gray-darker: lighten($gray-base, 13.5%);
 $gray-light: lighten($gray-base, 46.7%);
 $gray-dark: lighten($gray-base, 20%);
 $gray-lighter: lighten($gray-base, 85%);
-$lovely-blue: #25AAE1;
+$lovely-blue: rgb(34, 167, 240);
 $color: #446CB3;
 $border: 2px solid $color;
 
 .btn-home {
   color: $gray-dark;
+}
+
+#wrapper {
+  padding-top: 24px;
 }
 
 #brand {
@@ -38,33 +42,65 @@ $border: 2px solid $color;
 }
 
 .lead {
-  background: rgba(0, 0, 0, .4);
-  border-radius: 5px;
+  // background: rgba(0, 0, 0, .4);
+  // border-radius: 5px;
   padding: 15px;
   color: white;
+  margin-top: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: 'Helvetica Neue';
 }
+
+// .lead h1 {
+//   font-family: Pacifico;
+//   font-size: 92px;
+//   color: white;
+// }
 
 .lead h1 {
-  font-family: Pacifico;
-  font-size: 92px;
-  text-shadow: 0 0 20px rgba(0, 0, 0, .8);
+  // font-family: 'Ubuntu';
+  color: white;
+  font-weight: 400;
 }
 
-.lead h2 {
-  display: inline-block;
-  font-size: 24px;
-  font-weight: 100;
-  font-family: 'Ubuntu';
+.lead h3 {
   color: white;
-  font-weight: 300;
-  /*text-shadow: 0 0 4px yellow;*/
+  line-height: 2em;
 }
 
 #mosaic {
-  background-image: image-url('background.png');
-  height: 800px;
+  margin-left: -40px;
+  background-image: image-url('background.jpg');
+  height: 600px;
   background-size: cover;
-  text-align: center;
+  // text-align: center;
+}
+
+#example {
+  background-image: image-url('background.png');
+  height: 530px;
+  background-size: cover;
+  margin-top: -35px;
+  position: absolute;
+  left: 40%;
+  width: 60%;
+}
+
+#left-pane {
+  margin-top: -35px;
+  padding-left: 2%;
+  min-height: 720px;
+  position: absolute;
+  right: 60%;
+}
+
+.explain {
+  margin-top: 150px;
+  font-family: 'Helvetica Neue';
+}
+
+.explain h3 {
+  line-height: 1.5em;
 }
 
 .lead a {
@@ -73,14 +109,14 @@ $border: 2px solid $color;
 }
 
 .lead a:hover {
-  color: yellow;
+  color: white;
   text-decoration: none;
 }
 
 .navbar-wagon {
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
   border-bottom: none;
-  background-color: #25AEE1;
+  background-color: rgb(34, 167, 240);
 }
 
 .navbar-wagon .navbar-nav > li > a,
@@ -98,7 +134,7 @@ $border: 2px solid $color;
 }
 
 footer {
-  background-color: #25AEE1;
+  background-color: rgb(34, 167, 240);
   position: fixed;
   bottom: 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
@@ -137,12 +173,16 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 
 @media screen and (max-width: 768px) {
   .lead h1 {
-    font-size: 50px;
+    // font-size: 50px;
+  }
+
+  .lead {
+    margin-left: 40px;
   }
 }
 
 #messages-nav-link .badge {
-  color: #25AAE1;
+  color: rgb(34, 167, 240);
   background-color: white;
 }
 

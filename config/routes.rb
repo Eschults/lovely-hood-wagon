@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :conversations, only: [:new, :create]
-    resources :stripe_customers
+    resources :stripe_customers, only: [:new, :create]
   end
 
   get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"

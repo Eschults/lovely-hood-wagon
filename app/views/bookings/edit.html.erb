@@ -4,26 +4,26 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="panel panel-default margin-top-20 max-width-200 padding-none border-none transparent-bg">
+      <div class="panel panel-default margin-top-20 max-width-300 padding-none border-none transparent-bg">
         <div class="panel-body padding-none border-none transparent-bg">
           <!-- si l'offer est un service, la photo est celle du user -->
           <% if @booking.offer.type_of_offer =="service" %>
             <% if @booking.offer.user.picture_file_name %>
-              <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img img-lovely" }) %>
             <% else %>
-              <%= image_tag "#{@booking.offer.nature}.png", class: "img-thumbnail white-bg" %>
+              <%= image_tag "#{@booking.offer.nature}.png", class: "img img-lovely" %>
             <% end %>
           <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>
             <% if @booking.offer.picture_file_name %>
-              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img-thumbnail" }) %>
+              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-lovely" }) %>
             <% else %>
-              <%= image_tag("no-image.png", { class: "img-thumbnail" }) %>
+              <%= image_tag("no-image.png", { class: "img img-lovely" }) %>
             <% end %>
           <% end %>
         </div>
       </div>
-      <div class="panel panel-default max-width-200 padding-none">
+      <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-body border-none">
           <%= form_for([@booking.offer, @booking]) do |f| %>
             <%= f.text_field :accepted, class: "hidden", value: true %>

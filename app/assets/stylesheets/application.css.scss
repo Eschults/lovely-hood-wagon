@@ -169,6 +169,10 @@ input,
   padding-bottom: 0;
 }
 
+.padding-top-7 {
+  padding-top: 7px;
+}
+
 .padding-top-10 {
   padding-top: 10px;
 }
@@ -1143,4 +1147,8 @@ i {
 .saved {
   color: rgb(3, 201, 169);
   margin-bottom: 0;
+}
+
+.vertical-spacer {
+  min-height: 100px;
 }

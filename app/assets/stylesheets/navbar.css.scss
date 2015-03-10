@@ -170,6 +170,14 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   border-bottom: 4px solid rgb(34, 167, 240);
 }
 
+.navbar-wagon .navbar-nav > li > .nav-btn-default .badge.hover {
+  background-color: rgb(34, 167, 240);
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
 .nav-btn-default:active{
   border-bottom: none;
 }
@@ -301,4 +309,8 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 .badge {
   background-color: $color;
   color: white;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }

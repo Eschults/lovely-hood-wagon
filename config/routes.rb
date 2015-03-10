@@ -46,4 +46,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :stripe_customers
+
 end

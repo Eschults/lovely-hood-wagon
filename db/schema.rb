@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310110704) do
+ActiveRecord::Schema.define(version: 20150310112515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150310110704) do
     t.boolean  "cashed_out"
     t.boolean  "freezed"
     t.boolean  "cancelled"
+    t.float    "cashin_price"
   end
 
   add_index "bookings", ["offer_id"], name: "index_bookings_on_offer_id", using: :btree

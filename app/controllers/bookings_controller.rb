@@ -13,29 +13,37 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     lh = User.find_by_first_name("Lovely hood")
     authorize @booking
-    if @booking.save
-      if @offer.user.conversation_with(lh)
-        @conversation = @offer.user.conversation_with(lh)
-        @message = Message.new(
-          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
-        )
-        @message.writer = lh
-        @message.conversation = @conversation
-        @message.save
+    if current_user.stripe_customer_token
+      if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != ""
+        if @booking.save
+          if @offer.user.conversation_with(lh)
+            @conversation = @offer.user.conversation_with(lh)
+            @message = Message.new(
+              content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
+            )
+            @message.writer = lh
+            @message.conversation = @conversation
+            @message.save
+          else
+            @conversation = Conversation.new
+            @conversation.user1 = lh
+            @conversation.user2 = @offer.user
+            @message = Message.new(
+              content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
+            )
+            @message.writer = lh
+            @message.conversation = @conversation
+            @message.save
+          end
+          redirect_to offer_booking_path(@booking.offer, @booking)
+        else
+          render :new
+        end
       else
-        @conversation = Conversation.new
-        @conversation.user1 = lh
-        @conversation.user2 = @offer.user
-        @message = Message.new(
-          content: "Bravo, <a href='/users/#{@booking.user.id}'>#{@booking.user.first_name}</a> vous a envoyé une nouvelle <a href='/offers/#{@offer.id}/bookings/#{@booking.id}/edit'>demande</a> !"
-        )
-        @message.writer = lh
-        @message.conversation = @conversation
-        @message.save
+        redirect_to new_stripe_customer_path
       end
-      redirect_to offer_booking_path(@booking.offer, @booking)
     else
-      render :new
+      redirect_to new_stripe_customer_path
     end
   end
 

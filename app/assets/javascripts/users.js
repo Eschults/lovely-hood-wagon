@@ -113,123 +113,6 @@ function test_all_fields() {
   }
 }
 
-// function adjustImgMedium() {
-//   var height;
-//   var width;
-//   $('.img-medium > img').each(function(i) {
-//     height = $(this).height();
-//     width = $(this).width();
-//     ratio = width / height;
-//     if(height < width) {
-//       $(this).css('margin-left', (60 - 60 * ratio) / 2);
-//       $(this).css('margin-right', (60 - 60 * ratio) / 2);
-//       $(this).addClass("total-height").removeClass('img');
-//     } else if(height > width) {
-//       $(this).css('margin-top', (60 - 60 / ratio) / 2);
-//       $(this).css('margin-bottom', (60 - 60 / ratio) / 2);
-//       $(this).addClass("total-width");
-//     }
-//   });
-// }
-
-// function adjustImgSmall() {
-//   var height;
-//   var width;
-//   $('.img-small > img').each(function(i) {
-//     height = $(this).height();
-//     width = $(this).width();
-//     ratio = width / height;
-//     if(height < width) {
-//       $(this).addClass("total-height").removeClass('img');
-//       $(this).css("margin-left", (38 - 38 * ratio) / 2);
-//       $(this).css("margin-right", (38 - 38 * ratio) / 2);
-//     } else if(height > width) {
-//       $(this).addClass("total-width");
-//       $(this).css('margin-top', (38 - 38 / ratio) / 2);
-//       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
-//     }
-//   });
-// }
-
-// function adjustImgSmallSquare() {
-//   var height;
-//   var width;
-//   $('.img-small-square > img').each(function(i) {
-//     height = $(this).height();
-//     width = $(this).width();
-//     ratio = width / height;
-//     if(height < width) {
-//       $(this).addClass("total-height").removeClass('img');
-//       $(this).css("margin-left", (38 - 38 * ratio) / 2);
-//       $(this).css("margin-right", (38 - 38 * ratio) / 2);
-//     } else if(height > width) {
-//       $(this).addClass("total-width");
-//       $(this).css('margin-top', (38 - 38 / ratio) / 2);
-//       $(this).css('margin-bottom', (38 - 38 / ratio) / 2);
-//     }
-//   });
-// }
-
-// function adjustImgNavbar() {
-//   var height;
-//   var width;
-//   $('.img-navbar > img').each(function(i) {
-//     height = $(this).height();
-//     width = $(this).width();
-//     ratio = width / height;
-//     if(height < width) {
-//       $(this).addClass("total-height").removeClass('img');
-//       $(this).css("margin-left", (42 - 42 * ratio) / 2);
-//       $(this).css("margin-right", (42 - 42 * ratio) / 2);
-//     } else if(height > width) {
-//       $(this).css('margin-top', (42 - 42 / ratio) / 2);
-//       $(this).css('margin-bottom', (42 - 42 / ratio) / 2);
-//       $(this).addClass("total-width");
-//     }
-//   });
-// }
-
-// function adjustImgMediumSquare() {
-//   var height;
-//   var width;
-//   $('.img-medium-square > img').each(function(i) {
-//     height = $(this).height();
-//     width = $(this).width();
-//     ratio = width / height;
-//     if(height < width) {
-//       $(this).addClass("total-height").removeClass('img');
-//       $(this).css("margin-left", (64 - 64 * ratio) / 2);
-//       $(this).css("margin-right", (64 - 64 * ratio) / 2);
-//     } else if(height > width) {
-//       $(this).css('margin-top', (64 - 64 / ratio) / 2);
-//       $(this).css('margin-bottom', (64 - 64 / ratio) / 2);
-//       $(this).addClass("total-width");
-//     }
-//   });
-// }
-
-// function adjustImgMini() {
-//   var height;
-//   var width;
-//   $('.img-mini > img').each(function(i) {
-//     height = $(this).height();
-//     width = $(this).width();
-//     ratio = width / height;
-//     if(height < width) {
-//       $(this).addClass("total-height").removeClass('img');
-//       $(this).css("margin-left", (20 - 20 * ratio) / 2);
-//       $(this).css("margin-right", (20 - 20 * ratio) / 2);
-//       $(this).css("margin-top", -3);
-//     } else if(height > width) {
-//       $(this).addClass("total-width").removeClass('img');
-//       $(this).css('margin-top', (20 - 20 / ratio) / 2);
-//       $(this).css('margin-bottom', (20 - 20 / ratio) / 2);
-//     } else {
-//       $(this).css("margin-top", -3);
-//     }
-//   });
-// }
-
 function updatePic() {
   $('#profile-picture').hover(function() {
     $('.update-profile-pic').addClass('profile-pic-hover');
@@ -327,7 +210,7 @@ function formValidation() {
       };
     }
     var result = invalid_zip_code();
-    if (result) {
+    if(result) {
       $(this).parent().addClass("has-error").removeClass("success");
     }
     else {
@@ -340,7 +223,7 @@ function formValidation() {
     var invalid_mobile = function() {
       if (mobile == "") {
         return "empty";
-      } else if (mobile.match(/^(0|\+33)6( ?\d{2}){4}$/) == null) {
+      } else if (mobile.match(/^(0|\+33)[67]( ?\d{2}){4}$/) == null) {
         return true;
       } else if (mobile == "") {
         return true;
@@ -360,7 +243,7 @@ function formValidation() {
 
   $("input").on("focusout", function(event) {
     var test = test_all_fields();
-    if (test) {
+    if(test) {
       $("#submit").prop("disabled", false);
     }
     else {

@@ -13,7 +13,7 @@ $border: 2px solid $color;
 }
 
 #wrapper {
-  padding-top: 24px;
+  padding-top: 0;
 }
 
 #brand {
@@ -46,9 +46,15 @@ $border: 2px solid $color;
   // border-radius: 5px;
   padding: 15px;
   color: white;
-  margin-top: 100px;
-  background-color: rgba(0, 0, 0, 0.2);
+  padding-top: 200px;
+  padding-bottom: 200px;
   font-family: 'Helvetica Neue';
+  position: relative;
+  z-index: 1;
+}
+
+.letter-squeezed {
+  letter-spacing: -4px;
 }
 
 // .lead h1 {
@@ -61,6 +67,7 @@ $border: 2px solid $color;
   // font-family: 'Ubuntu';
   color: white;
   font-weight: 400;
+  font-size: 60px;
 }
 
 .lead h3 {
@@ -70,10 +77,22 @@ $border: 2px solid $color;
 
 #mosaic {
   margin-left: -40px;
-  background-image: image-url('background.jpg');
-  height: 600px;
+  background-image: image-url('https://c1.staticflickr.com/9/8370/8490573836_3a83437e79_b.jpg');
   background-size: cover;
+  background-position: center top;
   // text-align: center;
+  position: relative;
+
+  &:after {
+    background: rgba(31, 35, 40, 0.5);
+
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 #example {
@@ -114,9 +133,9 @@ $border: 2px solid $color;
 }
 
 .navbar-wagon {
-  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  box-shadow: none;
   border-bottom: none;
-  background-color: rgb(34, 167, 240);
+  background-color: transparent;
 }
 
 .navbar-wagon .navbar-nav > li > a,
@@ -135,8 +154,8 @@ $border: 2px solid $color;
 
 footer {
   background-color: rgb(34, 167, 240);
-  position: fixed;
-  bottom: 0;
+  position: relative;
+  // bottom: 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, .4);
   border-top: none;
 }

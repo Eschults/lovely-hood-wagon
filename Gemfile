@@ -8,7 +8,10 @@ gem 'pundit'
 gem 'chosen-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem "gmaps4rails"
+
 gem "rails-assets-underscore"
+gem 'rails-assets-scrollReveal.js'
+
 gem "geocoder"
 gem "letter_opener", group: :development
 gem 'simple_form'

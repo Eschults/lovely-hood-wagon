@@ -17,5 +17,6 @@
 //= require underscore
 //= require gmaps/google
 //= require chosen
+//= require scrollReveal
 //= require_tree .
 

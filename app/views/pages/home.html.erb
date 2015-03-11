@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  Lovely hood - Rentabilisez vos objets dormants
+  Lovely hood - Bienvenue
 <% end %>
 
 
@@ -27,15 +27,8 @@
         <div id="box">
           <div class="lead">
             <h1><strong class="letter-squeezed">Parcourez</strong>...</h1>
-            <h3>les biens et services accessibles à moins de 10 min à pied de chez vous.</h3>
-          </div>
-          <div class="lead" data-sr="wait 3s then enter right move 100%">
-            <h1><strong class="letter-squeezed">Réservez</strong>...</h1>
-            <h3>le produit qui vous intéresse.</h3>
-          </div>
-          <div class="lead" data-sr="wait 6s then enter right move 100%">
-            <h1><strong class="letter-squeezed">Suivez</strong>...</h1>
-            <h3>sur votre tableau de bord les reservations passées, en cours et à venir.</h3>
+            <p>les biens et services accessibles à moins de 10 min à pied de chez vous.</p>
+            <p class="small">Notre algorithme calcule les temps de trajet depuis votre domicile et sélectionne avec précision les offres à vous proposer, pour vous assurer une expérience de qualité.</p>
           </div>
         </div>
       </div>
@@ -44,8 +37,9 @@
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
             <%= image_tag "offers.png", class: "img" %>
-            <%= image_tag "offer.png", :'data-sr' => "wait 3s then enter right move 100%", class: "img"  %>
-            <%= image_tag "profile.png", :'data-sr' => "wait 6s then enter right move 100%", class: "img" %>
+            <%= image_tag "offers_2.png", :'data-sr' => "wait 3s then enter right move 100%", class: "img" %>
+            <%= image_tag "offers_3.png", :'data-sr' => "wait 6s then enter right move 100%", class: "img" %>
+            <%= image_tag "offers.png", :'data-sr' => "wait 9s then enter right move 100%", class: "img" %>
           </div>
         </div>
       </div>
@@ -53,17 +47,117 @@
   </div>
 </div>
 
-<div class="bg-color" id="triple">
-  <div class="container">
+<div id="community">
+  <div class='container'>
     <div class="row">
-      <div class="col-sm-4">
-        <h1>Sécurité</h1>
+      <div class="col-sm-5">
+        <div id="box">
+          <div class="lead">
+            <h1><strong class="letter-squeezed">Réservez</strong>...</h1>
+            <p>le produit qui vous intéresse, pour une période donnée.</p>
+            <p class="small">Sous réserve de la disponibilité du produit sur la période, et de l'accord de l'auteur de l'annonce.</p>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <h1>Confidentialité</h1>
+      <div class="col-sm-7">
+        <div id="webApp">
+          <div id="webFinderBar">•••</div>
+          <div id="webAppContainer">
+            <%= image_tag "offer.png", class: "img" %>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <h1></h1>
+    </div>
+  </div>
+</div>
+
+<div id="product">
+  <div class='container'>
+    <div class="row">
+      <div class="col-sm-5">
+        <div id="box">
+          <div class="lead">
+            <h1><strong class="letter-squeezed">Suivez</strong>...</h1>
+            <p>sur votre profil les reservations passées, en cours et à venir.</p>
+            <p class="small">Pensez à laisser un commentaire après chaque expérience, pour enrichir le capital confiance entre membres de la communauté.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div id="webApp">
+          <div id="webFinderBar">•••</div>
+          <div id="webAppContainer">
+            <%= image_tag "profile.png", class: "img" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="community">
+  <div class='container'>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="lead">
+          <h1><strong class="letter-squeezed">Rejoignez</strong>...</h1>
+          <p>une communauté privée, constituée uniquement des résidents de votre quartier.</p>
+          <p class="small">Pour votre tranquilité, nous vérifions l'identité et l'adresse de chacun de nos membres.</p>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div id="webApp">
+          <div id="webFinderBar">•••</div>
+          <div id="webAppContainer">
+            <%= image_tag "trust.png", class: "img" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="product">
+  <div class='container'>
+    <div class="row">
+      <div class="col-sm-5">
+        <div id="box">
+          <div class="lead">
+            <h1><strong class="letter-squeezed">Payez</strong>...</h1>
+            <p>en ligne, pour un meilleur contact avec vos voisins.</p>
+            <p class="small">Votre carte bleue est transmise à notre prestataire de paiement Stripe sans transiter par nos serveurs. Ces renseignements ne sont saisis qu'une fois, avant de réserver votre premier article, pour une expérience ultérieure plus fluide et plus agréable.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div id="webApp">
+          <div id="webFinderBar">•••</div>
+          <div id="webAppContainer">
+            <%= image_tag "cb.png", class: "img" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="community">
+  <div class='container'>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="lead">
+          <h1><strong class="letter-squeezed">Lovely hood</strong>...</h1>
+          <p>est actuellement en béta privée dans le 15ème arrondissement.</p>
+          <p class="small">Afin de vous assurer un service de qualité, nous prévoyons des lancements par arrondissement. Ainsi nous attendons d'atteindre une concentration d'offres suffisante pour ouvrir l'accès aux inscriptions. Si vous habitez Paris et que vous souhaitez publier vos annonces sur lovely hood, écrivez-nous à contact@lovely-hood.fr.</p>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div id="webApp">
+          <div id="webFinderBar">•••</div>
+          <div id="webAppContainer">
+            <%= image_tag "home.png", class: "img" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

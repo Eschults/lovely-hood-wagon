@@ -2,7 +2,9 @@
   Lovely hood - Bienvenue
 <% end %>
 
-
+<%= content_for :stylesheets do %>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+<% end %>
 
 <div id="mosaic">
   <div class="container">
@@ -36,10 +38,18 @@
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= image_tag "offers.png", class: "img" %>
-            <%= image_tag "offers_2.png", :'data-sr' => "wait 3s then enter right move 100%", class: "img" %>
-            <%= image_tag "offers_3.png", :'data-sr' => "wait 6s then enter right move 100%", class: "img" %>
-            <%= image_tag "offers.png", :'data-sr' => "wait 9s then enter right move 100%", class: "img" %>
+            <%= link_to image_url("offers.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "offers.png", class: "img" %>
+            <% end %>
+            <%= link_to image_url("offers_2.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "offers_2.png", :'data-sr' => "wait 3s then enter right move 100%", class: "img" %>
+            <% end %>
+            <%= link_to image_url("offers_3.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "offers_3.png", :'data-sr' => "wait 6s then enter right move 100%", class: "img" %>
+            <% end %>
+            <%= link_to image_url("offers.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "offers.png", :'data-sr' => "wait 9s then enter right move 100%", class: "img" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -63,7 +73,9 @@
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= image_tag "offer.png", class: "img" %>
+            <%= link_to image_url("offer.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "offer.png", class: "img" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -87,7 +99,9 @@
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= image_tag "profile.png", class: "img" %>
+            <%= link_to image_url("profile.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "profile.png", class: "img" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -109,7 +123,9 @@
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= image_tag "trust.png", class: "img" %>
+            <%= link_to image_url("trust.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "trust.png", class: "img" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -133,7 +149,9 @@
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= image_tag "cb.png", class: "img" %>
+            <%= link_to image_url("cb.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "cb.png", class: "img" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -155,10 +173,21 @@
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= image_tag "home.png", class: "img" %>
+            <%= link_to image_url("home.png"), class: "fancybox", "rel" => "group" do %>
+              <%= image_tag "home.png", class: "img" %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<%= content_for :js do %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.fancybox').fancybox();
+    })
+  <% end %>
+<% end %>

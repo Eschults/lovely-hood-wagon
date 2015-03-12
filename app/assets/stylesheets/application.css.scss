@@ -625,13 +625,19 @@ input,
   left: 50%;
   width: 300px;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 70px;
   margin-left: -150px;
   z-index: 2;
 }
 
 .alert {
-  border-radius: 2px;
+  border-radius: 1px;
+}
+
+.alert-warning {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 #messages-box {

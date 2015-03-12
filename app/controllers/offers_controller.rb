@@ -7,6 +7,10 @@ class OffersController < ApplicationController
   def index
     name_and_address_validations
     @offers = policy_scope(Offer)
+    unless current_user.authorized
+      redirect_to "/"
+      flash[:alert] = "Il semblerait que vous ne soyez pas autorisé à effectuer cette action"
+    end
   end
 
   def mine

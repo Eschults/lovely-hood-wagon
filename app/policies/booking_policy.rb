@@ -6,15 +6,15 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user  # Only booking creator can view a booking
+    user.authorized && record.user == user  # Only booking creator can view a booking
   end
 
   def create?
-    true  # Anyone can create a booking
+    user.authorized && true  # Anyone can create a booking
   end
 
   def confirm?
-    record.offer.user == user || record.user == user
+    user.authorized && record.offer.user == user || record.user == user
   end
 
   def buy?
@@ -26,7 +26,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    record.offer.user == user  # Only offer creator can update (accept/ decline) the booking
+    user.authorized && record.offer.user == user  # Only offer creator can update (accept/ decline) the booking
   end
 
   # def destroy?

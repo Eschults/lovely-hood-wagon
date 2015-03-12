@@ -45,7 +45,7 @@ $border: 2px solid $color;
   // background: rgba(0, 0, 0, .4);
   // border-radius: 5px;
   padding: 15px;
-  font-family: 'Helvetica Neue';
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   z-index: 1;
 }
@@ -262,7 +262,7 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 }
 
 #messages-nav-link .badge {
-  color: rgb(34, 167, 240);
+  color: #224E74;
   background-color: white;
 }
 

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :confirm]
+  before_action :set_booking, only: [:show, :edit, :update]
   after_action :verify_policy_scoped, :only => :index
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
@@ -78,34 +78,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  def confirm
-    if @booking.update(booking_params)
-      redirect_to new_booking_review_path(@booking)
-    else
-      redirect_to root_path
-    end
-  end
-
   def show
-  end
-
-  def buy
-    set_booking
-    @booking.offer.sold = true
-    @booking.offer.save
-    if @booking.update(booking_params)
-      @conversation = @booking.offer.user.conversation_with(lh)
-      @message = Message.new(
-        content: "Félicitations ! #{@booking.user.first_name} a acheté votre article #{@booking.offer.nature} !
-        Nous déclenchons le paiement de #{@booking.offer.price}€ sur votre compte."
-      )
-      @message.writer = lh
-      @message.conversation = @conversation
-      @message.save
-      redirect_to new_booking_review_path(@booking)
-    else
-      redirect_to root_path
-    end
   end
 
   def cancel

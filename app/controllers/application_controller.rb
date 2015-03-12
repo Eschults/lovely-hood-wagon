@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    if request.env['omniauth.origin'] && resource.latitude.nil?
+    if (request.env['omniauth.origin'] && resource.latitude.nil?) || resource.authorized.nil?
       edit_user_path(resource)
     else
       offers_path

@@ -6,7 +6,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def show?
-    true  # Anyone can view an offer
+    user.authorized || user == record.user # Anyone can view an offer
   end
 
   def mine?
@@ -22,11 +22,11 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def wish?
-    true
+    user.authorized
   end
 
   def unwish?
-    true
+    user.authorized
   end
 
 

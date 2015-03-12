@@ -53,31 +53,32 @@ $border: 2px solid $color;
 #mosaic .lead {
   color: white;
   padding-top: 200px;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
 }
 
 #product,
 #community {
-  padding: 100px 0;
+  background: rgba(35, 167, 240, 1);
+  padding: 20px 0 0 0;
   // border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 #community {
+  border-top: 1px solid rgb(220, 220, 220);
   background-color: #FCFCFC;
 }
 
 #product .lead {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  // padding-top: 100px;
+  // padding-bottom: 100px;
 }
 
 #community .lead {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  // padding-top: 100px;
+  // padding-bottom: 100px;
 }
 
 .letter-squeezed {
-  letter-spacing: -4px;
 }
 
 // .lead h1 {
@@ -88,7 +89,23 @@ $border: 2px solid $color;
 
 .lead h1 {
   font-weight: 400;
-  font-size: 60px;
+  font-size: 30px;
+  color: rgb(75, 93, 103);
+}
+
+#mosaic .lead h1 {
+  font-weight: normal !important;
+  font-size: 103px;
+  max-width: 751px;
+  text-shadow: 0px 2px 1px rgb(23, 136, 199);
+}
+
+
+
+#mosaic .lead h3 {
+  font-size: 27px;
+  text-shadow: 0px 2px 1px #1788c7;
+  opacity: 0.4;
 }
 
 #mosaic .lead h1,
@@ -106,22 +123,23 @@ $border: 2px solid $color;
 
 #mosaic {
   margin-left: -40px;
-  background-image: url('https://c1.staticflickr.com/9/8370/8490573836_3a83437e79_b.jpg');
+  background: rgba(35, 167, 240, 1);
+  // background-image: url('https://c1.staticflickr.com/9/8370/8490573836_3a83437e79_b.jpg');
   background-size: cover;
   background-position: center top;
   // text-align: center;
   position: relative;
 
-  &:after {
-    background: rgba(31, 35, 40, 0.5);
+  // &:after {
+  //   background: rgba(31, 35, 40, 0.5);
 
-    content: " ";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
+  //   content: " ";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   bottom: 0;
+  // }
 }
 
 #example {
@@ -152,12 +170,10 @@ $border: 2px solid $color;
 }
 
 .lead a {
-  color: white;
   text-decoration: none;
 }
 
 .lead a:hover {
-  color: white;
   text-decoration: none;
 }
 
@@ -222,10 +238,17 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 }
 
 @media screen and (max-width: 768px) {
-  .lead h1 {
-    // font-size: 50px;
+  #mosaic .lead h1 {
+    font-size: 50px;
   }
 
+  #mosaic .lead h3 {
+    line-height: 1.5em;
+  }
+
+  #webApp {
+    height: 220px !important;
+  }
   .lead {
     margin-left: 40px;
   }
@@ -242,13 +265,13 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 }
 
 #webApp {
-  height: 434px;
+  height: 600px;
   width: 100%;
   top: 0;
   position: relative;
   /* left: 15px; */
   overflow: hidden;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 
   img  {
     position: absolute;
@@ -286,4 +309,81 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 
 #wrapper > .container {
   padding-bottom: 0;
+}
+
+#community {
+  h1 {
+    text-align: left;
+  }
+
+  .lead-2 {
+    padding-left: 0;
+  }
+
+  p {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: left;
+  }
+}
+
+.wrapper-end {
+  background: url('https://unsplash.com/photos/9SyOKYrq-rE/download');
+  background-size: cover;
+  background-position: center center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(29, 100, 139, 0.69);
+  }
+
+  p {
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 28px;
+    opacity: 0.7;
+    text-shadow: 0px 2px 1px #486571;
+  }
+
+  .lead {
+    padding-left: 0;
+
+    h1 {
+      color: white;
+      font-size: 60px;
+      text-shadow: 0px 2px 1px #486571;
+      text-align: left;
+    }
+    color: white;
+  }
+
+  a { // tes nouveaux buttons
+   float: left;
+   padding: 10px 40px;
+   background: rgb(35, 167, 240);
+   font-size: 20px;
+   color: white;
+   font-weight: normal;
+   /* text-transform: uppercase; */
+   text-shadow: 0px 1px 1px rgb(22, 136, 200);
+   letter-spacing: 2px;
+   border: 3px solid rgb(35, 167, 240);
+   border-radius: 20em;
+   transition: border 0.3s ease;
+
+   &:hover {
+    border: 3px solid darken(rgb(35, 167, 240), 10%);
+    color: white;
+    background: rgb(35, 167, 240);
+   }
+  }
 }

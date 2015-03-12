@@ -240,14 +240,4 @@ function formValidation() {
       $(this).parent().addClass("success").removeClass("has-error");
     };
   });
-
-  $("input").on("focusout", function(event) {
-    var test = test_all_fields();
-    if(test) {
-      $("#submit").prop("disabled", false);
-    }
-    else {
-      $("#submit").prop("disabled", true);
-    }
-  });
 }

@@ -1,26 +1,30 @@
 <%= content_for(:title) do %>
   Lovely hood - Bienvenue
 <% end %>
-
-<%= content_for :stylesheets do %>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
-<% end %>
-
 <div id="mosaic">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div class="lead">
-          <h1>Bienvenue sur <strong class="letter-squeezed">lovely hood</strong>.</h1>
+          <h1>Bienvenue sur <br><strong class="letter-squeezed">lovely hood</strong>.</h1>
           <h3>N'achetez plus ce que vous n'utiliserez que ponctuellement. <br>Votre voisinage est plein de ressources.</h3>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div id="product">
   <div class='container'>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="lead lead-2">
+          <h1>Tous les biens et services, à <strong>moins de 10 min à pied</strong></h1>
+          <p>
+            Notre algorithme calcule les temps de trajet depuis votre domicile et sélectionne avec précision les offres à vous proposer, pour vous assurer une expérience de qualité.
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-12">
         <div id="webApp">
@@ -43,20 +47,37 @@
 <div id="community">
   <div class='container'>
     <div class="row">
-      <div class="col-sm-10">
-        <div class="lead text-center lead-2">
-          <h1>Tous les biens et services, à <strong class="letter-squeezed">moins de 10 min à pied</strong></h1>
+      <div class="col-sm-6">
+        <div class="lead lead-2">
+          <h1>Proximité</h1>
           <p>
-            Notre algorithme calcule les temps de trajet depuis votre domicile et sélectionne avec précision les offres à vous proposer, pour vous assurer une expérience de qualité.
-            <br><br>
-            Votre communauté est ainsi constituée uniquement des personnes résidant à moins de 10 min à pied de chez vous.
-            <br><br>
+            Votre communauté est ainsi constituée exclusivement des utilisateurs résidant à moins de 10 min à pied de chez vous.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="lead lead-2">
+          <h1>Confiance</h1>
+          <p>
             Pour votre tranquilité, nous vérifions l'identité et l'adresse de chacun de nos membres.
-            <br><br>
-            Contactez l'auteur de l'annonce pour plus d'information, ou réservez directement le produit souhaité.
-            <br><br>
-            Le paiement s'effectue en ligne, pour un meilleur contact avec vos voisins. Votre carte bleue est transmise à notre prestataire de paiement Stripe sans transiter par nos serveurs.
-            <br>Ces renseignements ne sont saisis qu'une fois - avant de réserver votre premier article - pour une expérience ultérieure plus fluide et plus agréable.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="lead lead-2">
+          <h1>Ergonomie</h1>
+          <p>
+            Contactez l'auteur de l'annonce pour plus d'information, ou réservez directement le produit souhaité en un clic.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="lead lead-2">
+          <h1>Sécurité</h1>
+          <p>
+            Le paiement s'effectue en ligne via Stripe, vos données de carte bancaire ne transitent pas par nos serveurs.
           </p>
         </div>
       </div>
@@ -74,26 +95,7 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-sm-7">
-          <div id="webApp">
-            <div id="webFinderBar">•••</div>
-            <div id="webAppContainer">
-              <%= link_to image_url("home.png"), class: "fancybox", "rel" => "group" do %>
-                <%= image_tag "home.png", class: "img" %>
-              <% end %>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
 </div>
-<%= content_for :js do %>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      $('.fancybox').fancybox();
-    })
-  <% end %>
-<% end %>

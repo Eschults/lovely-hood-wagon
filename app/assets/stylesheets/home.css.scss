@@ -79,6 +79,7 @@ $border: 2px solid $color;
 }
 
 .letter-squeezed {
+  letter-spacing: -3px;
 }
 
 // .lead h1 {
@@ -95,17 +96,18 @@ $border: 2px solid $color;
 
 #mosaic .lead h1 {
   font-weight: normal !important;
-  font-size: 103px;
+  font-size: 72px;
   max-width: 751px;
-  text-shadow: 0px 2px 1px rgb(23, 136, 199);
+  // text-shadow: 0px 2px 1px rgb(23, 136, 199);
 }
 
 
 
 #mosaic .lead h3 {
   font-size: 27px;
-  text-shadow: 0px 2px 1px #1788c7;
-  opacity: 0.4;
+  padding-bottom: 200px;
+  // text-shadow: 0px 2px 1px #1788c7;
+  // opacity: 0.4;
 }
 
 #mosaic .lead h1,
@@ -121,25 +123,30 @@ $border: 2px solid $color;
   line-height: 2em;
 }
 
+#product .lead,
+#product .lead h1 {
+  color: white;
+}
+
 #mosaic {
   margin-left: -40px;
-  background: rgba(35, 167, 240, 1);
-  // background-image: url('https://c1.staticflickr.com/9/8370/8490573836_3a83437e79_b.jpg');
+  // background: rgba(35, 167, 240, 1);
+  background-image: url('https://c1.staticflickr.com/9/8370/8490573836_3a83437e79_b.jpg');
   background-size: cover;
   background-position: center top;
   // text-align: center;
   position: relative;
 
-  // &:after {
-  //   background: rgba(31, 35, 40, 0.5);
+  &:after {
+    background: rgba(31, 35, 40, 0.5);
 
-  //   content: " ";
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   top: 0;
-  //   bottom: 0;
-  // }
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 #example {
@@ -321,8 +328,8 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
   }
 
   p {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     text-align: left;
   }
 }

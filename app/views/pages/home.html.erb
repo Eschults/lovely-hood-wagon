@@ -9,14 +9,11 @@
 <div id="mosaic">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="lead">
           <h1>Bienvenue sur <strong class="letter-squeezed">lovely hood</strong>.</h1>
           <h3>N'achetez plus ce que vous n'utiliserez que ponctuellement. <br>Votre voisinage est plein de ressources.</h3>
         </div>
-        <br>
-      </div>
-      <div class="col-sm-6">
       </div>
     </div>
   </div>
@@ -25,31 +22,18 @@
 <div id="product">
   <div class='container'>
     <div class="row">
-      <div class="col-sm-5">
-        <div id="box">
-          <div class="lead">
-            <h1><strong class="letter-squeezed">Parcourez</strong>...</h1>
-            <p>les biens et services accessibles à moins de 10 min à pied de chez vous.</p>
-            <p class="small">Notre algorithme calcule les temps de trajet depuis votre domicile et sélectionne avec précision les offres à vous proposer, pour vous assurer une expérience de qualité.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-7">
+      <div class="col-sm-12">
         <div id="webApp">
           <div id="webFinderBar">•••</div>
           <div id="webAppContainer">
-            <%= link_to image_url("offers.png"), class: "fancybox", "rel" => "group" do %>
-              <%= image_tag "offers.png", class: "img" %>
-            <% end %>
-            <%= link_to image_url("offers_2.png"), class: "fancybox", "rel" => "group" do %>
-              <%= image_tag "offers_2.png", :'data-sr' => "wait 3s then enter right move 100%", class: "img" %>
-            <% end %>
-            <%= link_to image_url("offers_3.png"), class: "fancybox", "rel" => "group" do %>
-              <%= image_tag "offers_3.png", :'data-sr' => "wait 6s then enter right move 100%", class: "img" %>
-            <% end %>
-            <%= link_to image_url("offers.png"), class: "fancybox", "rel" => "group" do %>
-              <%= image_tag "offers.png", :'data-sr' => "wait 9s then enter right move 100%", class: "img" %>
-            <% end %>
+            <%= image_tag "offers.png", class: "img" %>
+            <%= image_tag "offers_2.png", 'data-sr' => 'wait 3s then enter right move 100%', class: "img" %>
+            <%= image_tag "offers_3.png", 'data-sr' => 'wait 6s then enter right move 100%', class: "img" %>
+            <%= image_tag "offer_camera.png", 'data-sr' => 'wait 9s then enter right move 100%', class: "img" %>
+            <%= image_tag "booking.png", 'data-sr' => 'wait 12s then enter right move 100%', class: "img" %>
+            <%= image_tag "profile.png", 'data-sr' => 'wait 15s then enter right move 100%', class: "img" %>
+            <%= image_tag "comment.png", 'data-sr' => 'wait 18s then enter right move 100%', class: "img" %>
+            <%= image_tag "offers.png", 'data-sr' => 'wait 21s then enter right move 100%', class: "img" %>
           </div>
         </div>
       </div>
@@ -57,7 +41,7 @@
   </div>
 </div>
 
-<div id="community">
+<!-- <div id="community">
   <div class='container'>
     <div class="row">
       <div class="col-sm-5">
@@ -158,26 +142,51 @@
     </div>
   </div>
 </div>
-
+ -->
 <div id="community">
   <div class='container'>
     <div class="row">
-      <div class="col-sm-5">
-        <div class="lead">
-          <h1><strong class="letter-squeezed">Lovely hood</strong>...</h1>
-          <p>est actuellement en béta privée dans le 15ème arrondissement.</p>
-          <p class="small">Afin de vous assurer un service de qualité, nous prévoyons des lancements par arrondissement. Ainsi nous attendons d'atteindre une concentration d'offres suffisante pour ouvrir l'accès aux inscriptions. Si vous habitez Paris et que vous souhaitez publier vos annonces sur lovely hood, écrivez-nous à contact@lovely-hood.fr.</p>
+      <div class="col-sm-10">
+        <div class="lead text-center lead-2">
+          <h1>Tous les biens et services, à <strong class="letter-squeezed">moins de 10 min à pied</strong></h1>
+          <p>
+            Notre algorithme calcule les temps de trajet depuis votre domicile et sélectionne avec précision les offres à vous proposer, pour vous assurer une expérience de qualité.
+            <br><br>
+            Votre communauté est ainsi constituée uniquement des personnes résidant à moins de 10 min à pied de chez vous.
+            <br><br>
+            Pour votre tranquilité, nous vérifions l'identité et l'adresse de chacun de nos membres.
+            <br><br>
+            Contactez l'auteur de l'annonce pour plus d'information, ou réservez directement le produit souhaité.
+            <br><br>
+            Le paiement s'effectue en ligne, pour un meilleur contact avec vos voisins. Votre carte bleue est transmise à notre prestataire de paiement Stripe sans transiter par nos serveurs.
+            <br>Ces renseignements ne sont saisis qu'une fois - avant de réserver votre premier article - pour une expérience ultérieure plus fluide et plus agréable.
+          </p>
         </div>
       </div>
-      <div class="col-sm-7">
-        <div id="webApp">
-          <div id="webFinderBar">•••</div>
-          <div id="webAppContainer">
-            <%= link_to image_url("home.png"), class: "fancybox", "rel" => "group" do %>
-              <%= image_tag "home.png", class: "img" %>
-            <% end %>
+    </div>
+  </div>
+  <div class='wrapper-end'>
+    <div class='container'>
+      <div class='row'>
+        <div class="col-sm-10">
+          <div class="lead">
+            <h1>Lovely hood est à <strong>Paris</strong>.</h1>
+            <p>L'inscription est aujourd'hui ouverte à la création d'annonces uniquement. <br>Nous lancerons le produit quartier par quartier, une fois la concentration d'offres souhaitée atteinte, pour vous offrir le meilleur service.</p>
+            <div class="text-center">
+              <%= link_to 'Inscription', new_user_registration_path, class: "btn", class: "btn btn-default" %>
+            </div>
           </div>
         </div>
+        <!-- <div class="col-sm-7">
+          <div id="webApp">
+            <div id="webFinderBar">•••</div>
+            <div id="webAppContainer">
+              <%= link_to image_url("home.png"), class: "fancybox", "rel" => "group" do %>
+                <%= image_tag "home.png", class: "img" %>
+              <% end %>
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>

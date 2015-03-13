@@ -9,7 +9,7 @@ class OffersController < ApplicationController
     @offers = policy_scope(Offer)
     unless current_user.authorized
       redirect_to "/"
-      flash[:alert] = "Il semblerait que vous ne soyez pas autorisé à effectuer cette action"
+      flash[:alert] = "Lovely hood est actuellement en version beta, et n'est ouverte qu'à la création d'annonces. Pour plus d'information, écrivez-nous à contact@lovel-hood.fr."
     end
   end
 

@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash[:alert] = "Il semblerait que vous ne soyez pas autorisé à effectuer cette action"
+    if current_user.authorized
+      flash[:alert] = "Il semblerait que vous ne soyez pas autorisé à effectuer cette action"
+    else
+      flash[:alert] = "Lovely hood est actuellement en version beta, et n'est ouverte qu'à la création d'annonces. Pour plus d'information, écrivez-nous à contact@lovel-hood.fr."
+    end
     redirect_to(root_path)
   end
 end

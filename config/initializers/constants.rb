@@ -173,6 +173,7 @@ NATURES = {
     'Aide au déménagement',
     'Laver la voiture',
     'Bricolage léger',
+    'Plomberie légère',
     'Tenir compagnie aux personnes âgées'
   ]
 }

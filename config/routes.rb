@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
   root to: "pages#home"
+  get "/legal", to: "pages#legal"
+  get "/terms", to: "pages#terms"
   resources :users, only: [:show, :edit, :update]
   resources :offers, except: [:destroy] do
     member do

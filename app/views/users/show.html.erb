@@ -120,7 +120,7 @@
         <% if policy(@user).update? %>
         <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
         <% end %>
-        <p><%= @user.description %></p>
+        <p><%= simple_format @user.description %></p>
       </div>
       <% if @user == current_user %>
         <% if @user.passed_bookings_to_review[:owner].size >= 1 || @user.passed_bookings_to_review[:client].size >= 1 %>

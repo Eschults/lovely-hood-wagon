@@ -8,8 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <%= link_to offers_path, id: "brand" do %>
-          <%#= image_tag "lovely_hood_#{ request.path == "/" ? "" : "blue_"}160.png", width: "150px" %>
+        <%= link_to root_path, id: "brand" do %>
           lovely hood
         <% end %>
     </div>
@@ -17,12 +16,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if user_signed_in? %>
-        <!-- <form class="navbar-form navbar-left margin-top-13" action="">
-          <input class="typeahead form-control fa-placeholder search-placeholder" type="text" id="query"
-              autocomplete="off" spellcheck="false" autocapitalize="off"
-              placeholder="Rechercher un objet, un service..."></input>
-        </form> -->
-
         <ul class="nav navbar-nav navbar-right">
           <li class="disappear middle-weight">
             <%= link_to offers_path, class: "nav-btn-default", id: "offers-nav-link" do %>

@@ -27,6 +27,9 @@
             <%= f.submit "Créer un compte", class: "btn btn-primary btn-wide"%>
           </div>
         <% end %>
+        <p class="mini border-btm-light text-left">
+          En créant un compte, vous acceptez les <%= link_to "Conditions générales", terms_path %> de lovely hood.
+        </p>
         <%= render "devise/shared/links" %>
       </div>
     </div>

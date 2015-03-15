@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    "#{first_name.capitalize} #{last_name.capitalize}"
+    "#{first_name.nil? ? "" : first_name.capitalize + " "}#{last_name.nil? ? "" : last_name.capitalize}"
   end
 
   def ready_to_receive_money?

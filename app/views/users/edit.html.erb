@@ -180,7 +180,7 @@
                   <% if current_user.address_verified %>
                     <p class="padding-top-7"><i class="fa fa-check"></i> Addresse vérifiée</p>
                   <% elsif current_user.address_proof_file_name %>
-                    <p>En cours de vérification par les équipes de Lovely hood</p>
+                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
                   <% else %>
                     <%= f.file_field :address_proof, class: "margin-top-6" %>
                     <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>

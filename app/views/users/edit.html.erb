@@ -166,7 +166,7 @@
                   <% if current_user.identity_verified %>
                     <p class="padding-top-7"><i class="fa fa-check"></i> Identité vérifiée</p>
                   <% elsif current_user.identity_proof_file_name %>
-                    <p>En cours de vérification par les équipes de Lovely hood</p>
+                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
                   <% else %>
                     <%= f.file_field :identity_proof, class: "margin-top-6"%>
                     <p class="small">Carte d'identité, passeport ou permis de conduire uniquement</p>

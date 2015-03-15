@@ -8,8 +8,8 @@
         <ul class="list-unstyled">
           <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
           <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
-          <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a></li>
-          <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a></li>
+          <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a><% unless current_user.trust_steps == 0 %><span class="badge pull-right margin-top-2"><%= current_user.trust_steps %><% end %></span></li>
+          <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a><% unless current_user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= current_user.money_step %><% end %></span></li>
           <li><a href="#" class="edit-link" id="my-comments">Commentaires</a></li>
           <li><a href="#" class="edit-link" id="my-recos">Recommandations</a></li>
           <li><%= link_to "Voir mon profil", user_path(current_user), class: "btn btn-default" %></a></li>
@@ -163,16 +163,28 @@
               <div class="form-group">
                 <%= f.label :identity_proof, "Identité", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.file_field :identity_proof, class: "margin-top-6"%>
-                  <p class="small">Carte d'identité, passeport ou permis de conduire uniquement</p>
+                  <% if current_user.identity_verified %>
+                    <p class="padding-top-7"><i class="fa fa-check"></i> Identité vérifiée</p>
+                  <% elsif current_user.identity_proof_file_name %>
+                    <p>En cours de vérification par les équipes de Lovely hood</p>
+                  <% else %>
+                    <%= f.file_field :identity_proof, class: "margin-top-6"%>
+                    <p class="small">Carte d'identité, passeport ou permis de conduire uniquement</p>
+                  <% end %>
                 </div>
               </div>
 
               <div class="form-group">
                 <%= f.label :address_proof, "Adresse", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <%= f.file_field :address_proof, class: "margin-top-6" %>
-                  <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>
+                  <% if current_user.address_verified %>
+                    <p class="padding-top-7"><i class="fa fa-check"></i> Addresse vérifiée</p>
+                  <% elsif current_user.address_proof_file_name %>
+                    <p>En cours de vérification par les équipes de Lovely hood</p>
+                  <% else %>
+                    <%= f.file_field :address_proof, class: "margin-top-6" %>
+                    <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>
+                  <% end %>
                 </div>
               </div>
 

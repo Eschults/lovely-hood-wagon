@@ -90,7 +90,32 @@ class User < ActiveRecord::Base
     unless address_verified
       output += 1
     end
+    unless ready_to_receive_money?
+      output += 1
+    end
     return output
+  end
+
+  def trust_steps
+    output = 0
+    unless identity_verified
+      output += 1
+    end
+    unless address_verified
+      output += 1
+    end
+    output
+  end
+
+  def money_step
+    output = 0
+    if iban.nil?
+      output += 1
+    end
+    if bic.nil?
+      output += 1
+    end
+    output
   end
 
   def ongoing_bookings

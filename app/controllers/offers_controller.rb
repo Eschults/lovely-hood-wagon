@@ -21,11 +21,7 @@ class OffersController < ApplicationController
   def new
     @offer = current_user.offers.new
     authorize @offer
-    if current_user.ready_to_receive_money?
-      name_and_address_validations
-    else
-      redirect_to edit_user_path(current_user, anchor: "my-bank")
-    end
+    name_and_address_validations
   end
 
   def create

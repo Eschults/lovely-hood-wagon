@@ -11,7 +11,9 @@
         <p class="margin-top-10"><%= offer.description + "..." %></p>
       </div>
       <div class="col-sm-4 col-xs-6 padding-none" id="<%= "append-target_#{offer.id}" %>">
-        <% if current_user.verif == 0 %>
+        <% if current_user.authorized.nil? %>
+
+        <% elsif current_user.verif == 0 %>
           <%= form_for offer, method: :patch, remote: true, url: offer_path(offer), id: "publish-form"  do |f| %>
             <div class="col-xs-9 padding-left-none">
               <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>
@@ -22,12 +24,13 @@
               <% end %>
             </div>
           <% end %>
+
         <% else %>
-        <div class="col-xs-12">
-          <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
-            <%= pluralize(current_user.verif, 'étape') %> pour publier
-          <% end %>
-        </div>
+          <div class="col-xs-12">
+            <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
+              <%= pluralize(current_user.verif, 'étape') %> pour publier
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>

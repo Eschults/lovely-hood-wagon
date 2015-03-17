@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= yield(:title) %></title>
+
+  <!-- NO FOLLOW FOR TERMS -->
+  <meta name="robots" content="<%= yield(:unfollow) %>">
+
+  <!-- GOOGLE -->
+  <meta name="description" content="<%= yield(:description) %>">
+
+  <!-- FACEBOOK -->
+  <meta property="og:title" content="Lovely Hood - Location de biens et services de proximité">
+  <meta property="og:image" content="lh.png">
+  <meta property="og:description" content="Lovely Hood vous permet d'accéder à tous les biens et services proposés par des particuliers, à moins de 10 min à pied !">
+  <meta property="og:site_name" content="Lovely Hood"/>
+
+  <!-- TWITTER -->
+  <!--   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Lewagonparis">
+  <meta name="twitter:title" content="Le Wagon - The French innovative coding school">
+  <meta name="twitter:description" content="Le Wagon is the best French coding school for entrepreneurs. Checkout by yourself the projects of our students. You will be impressed.">
+  <meta name="twitter:creator" content="@Lewagonparis">
+  <meta name="twitter:image:src" content="http://twitter-card.jpg"> -->
+
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "home" %>
   <%= yield :stylesheets %>

@@ -56,7 +56,7 @@
               <% if current_user.passed_bookings_to_review[:owner].size >= 1 || current_user.passed_bookings_to_review[:client].select { |booking| booking.owner_validation }.size >= 1 || current_user.upcoming_bookings[:owner].select { |booking| booking.accepted.nil? }.size >= 1 %>
                 <li style="background-color: rgb(250,250,250);">
                   <%= link_to user_path(current_user) do %>
-                    <strong>Voir mon profil</strong>
+                    <strong>Mon profil</strong>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="badge small-badge">
                     </span>
@@ -65,11 +65,11 @@
               <% else %>
                 <li>
                   <%= link_to user_path(current_user) do %>
-                    Voir mon profil
+                    Mon profil
                   <% end %>
                 </li>
               <% end %>
-              <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
+              <li><%= link_to "Mon compte", edit_user_path(current_user) %></li>
               <li class="appear"><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
               <li><%= link_to "Ma wish list", wishlist_path %></li>

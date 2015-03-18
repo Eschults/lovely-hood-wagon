@@ -47,6 +47,20 @@ h1, h2, h3, h4, h5 {
   margin-right: 0;
 }
 
+.max-width-300 {
+  max-width: 300px;
+}
+
+.margin-0-auto {
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .max-width-300 {
+    max-width: none;
+  }
+}
+
 #wrapper,
 #wrapper-inbox {
   padding-top: 60px;
@@ -135,6 +149,10 @@ input,
 
 .margin-20-30 {
   margin: 20px 30px;
+}
+
+.margin-20 {
+  margin: 20px;
 }
 
 .margin-btm-10 {
@@ -476,7 +494,7 @@ input,
 .img-navbar {
   height: 42px;
   width: 42px;
-  border: 2px solid white;
+  border: 2px solid transparent;
   // box-shadow: 0 0 2px #c8c8c8;
   overflow: hidden;
   margin-right: 10px;
@@ -580,7 +598,7 @@ input,
 }
 
 .padding-right-none {
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 
 .message {

@@ -60,6 +60,19 @@ $border: 2px solid $color;
   padding-bottom: 50px;
 }
 
+.mini {
+  font-size: 12px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: rgb(119, 119, 119);
+}
+
+.panel {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
 #product,
 #community {
   background: rgba(35, 167, 240, 1);
@@ -93,14 +106,15 @@ $border: 2px solid $color;
 // }
 
 .lead h1 {
-  font-weight: 400;
+  // font-weight: 400;
   font-size: 30px;
   color: rgb(75, 93, 103);
 }
 
 #mosaic .lead h1 {
-  font-weight: normal !important;
-  font-size: 72px;
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 38px;
   max-width: 751px;
   // text-shadow: 0px 2px 1px rgb(23, 136, 199);
 }
@@ -108,8 +122,10 @@ $border: 2px solid $color;
 
 
 #mosaic .lead h3 {
-  font-size: 27px;
-  padding-bottom: 200px;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.5em;
+  // padding-bottom: 400px;
   // text-shadow: 0px 2px 1px #1788c7;
   // opacity: 0.4;
 }
@@ -124,7 +140,7 @@ $border: 2px solid $color;
 }
 
 .lead h3 {
-  line-height: 2em;
+  line-height: 1em;
 }
 
 #product .lead,
@@ -140,6 +156,7 @@ $border: 2px solid $color;
   background-position: center top;
   // text-align: center;
   position: relative;
+  min-height: 800px;
 
   &:after {
     background: rgba(31, 35, 40, 0.5);
@@ -241,16 +258,16 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 }
 
 .form-control {
-  border: 1px solid rgb(102, 175, 233);
+  border: 1px solid #22A7F0;
 }
 
 .form-control:focus {
-  border: 1px solid rgb(31, 17, 102);
+  border: 1px solid #1F3A93;
 }
 
 @media screen and (max-width: 768px) {
   #mosaic .lead h1 {
-    font-size: 50px;
+    // font-size: 50px;
   }
 
   #mosaic .lead h3 {
@@ -262,6 +279,13 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
   }
   .lead {
     margin-left: 40px;
+    margin-right: 15px;
+  }
+}
+
+.col-md-4 {
+  .lead {
+    margin-top: 0;
   }
 }
 
@@ -360,9 +384,10 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 
     padding-top: 50px;
     padding-bottom: 50px;
-    font-size: 28px;
-    opacity: 0.7;
-    text-shadow: 0px 2px 1px #486571;
+    font-size: 21px;
+    font-weight: 300;
+    // opacity: 0.7;
+    // text-shadow: 0px 2px 1px #486571;
   }
 
   .lead {
@@ -370,8 +395,8 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
 
     h1 {
       color: white;
-      font-size: 60px;
-      text-shadow: 0px 2px 1px #486571;
+      font-size: 38px;
+      // text-shadow: 0px 2px 1px #486571;
       text-align: left;
     }
     color: white;
@@ -397,4 +422,31 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
     background: rgb(35, 167, 240);
    }
   }
+}
+
+
+#mosaic .visible-xs a { // tes nouveaux buttons
+  float: left;
+  padding: 10px 40px;
+  background: rgb(35, 167, 240);
+  font-size: 20px;
+  color: white;
+  font-weight: normal;
+  /* text-transform: uppercase; */
+  text-shadow: 0px 1px 1px rgb(22, 136, 200);
+  letter-spacing: 2px;
+  border: 3px solid rgb(35, 167, 240);
+  border-radius: 20em;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 3px solid darken(rgb(35, 167, 240), 10%);
+    color: white;
+    background: rgb(35, 167, 240);
+  }
+}
+
+
+.padding-top-none {
+  padding-top: 0 !important;
 }

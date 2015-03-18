@@ -1,6 +1,6 @@
 <!-- Remove Lovely Hood in title -->
 <%= content_for(:title) do %>
-  Bienvenue
+  Bienvenue sur Lovely Hood
 <% end %>
 <%= content_for(:description) do %>
   Lovely Hood vous permet d'accéder à tous les biens et services proposés par des particuliers, à moins de 10 min à pied !
@@ -8,11 +8,51 @@
 <div id="mosaic">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <div class="lead">
-          <h1>Bienvenue sur <br><strong class="letter-squeezed">lovely hood</strong>.</h1>
-          <h3>N'achetez plus ce que vous n'utiliserez que ponctuellement. <br>Votre voisinage est plein de ressources.</h3>
+      <div class="col-sm-7">
+        <div class="lead" id="">
+          <h1>Votre voisinage est plein de ressources.</h1>
+          <h3>
+            Vous cherchez un bien ou un service ?
+            <br>
+            Trouvez-le près de chez vous.
+          </h3>
         </div>
+      </div>
+      <div class="col-sm-5 padding-right-none">
+        <% unless user_signed_in? %>
+          <div class="text-center lead visible-xs padding-top-none">
+            <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
+          </div>
+          <div class="lead hidden-xs">
+            <div class="panel panel-default pull-right max-width-300">
+              <div class="panel-body">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%- if devise_mapping.omniauthable? %>
+                    <%- resource_class.omniauth_providers.each do |provider| %>
+                      <%= link_to "Inscription avec #{provider.to_s}", omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide margin-btm-15" %>
+                    <% end -%>
+                  <% end -%>
+                  <br>
+                  <div class="">
+                    <div class="form-group">
+                      <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.password_field :password, required: true, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.password_field :password_confirmation, required: true, autocomplete: "off",placeholder: "Confirmation mot de passe", class: "form-control" %>
+                    </div>
+                    <%= f.submit "Créer un compte", class: "btn btn-primary btn-wide"%>
+                  </div>
+                <% end %>
+                <p class="mini text-left">
+                  En créant un compte, vous acceptez les <%= link_to "Conditions générales", terms_path %> de Lovely Hood.
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -95,7 +135,7 @@
             <h1>Lovely hood est à <strong>Paris</strong>.</h1>
             <p>L'inscription est aujourd'hui ouverte à la création d'annonces uniquement. <br>Nous lancerons le produit quartier par quartier, une fois la concentration d'offres souhaitée atteinte, pour vous offrir le meilleur service.</p>
             <div class="text-center">
-              <%= link_to 'Inscription', new_user_registration_path, class: "btn", class: "btn btn-default" %>
+              <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
             </div>
           </div>
         </div>

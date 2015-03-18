@@ -58,11 +58,11 @@
               <% else %>
                 <li>
                   <%= link_to user_path(current_user) do %>
-                    Voir mon profil
+                    Mon profil
                   <% end %>
                 </li>
               <% end %>
-              <li><%= link_to "Modifier mon profil", edit_user_path(current_user) %></li>
+              <li><%= link_to "Mon compte", edit_user_path(current_user) %></li>
               <li class="appear"><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
               <li><%= link_to "Ma wish list", wishlist_path %></li>
@@ -90,7 +90,7 @@
           <li><%= link_to 'Publier une annonce', new_offer_path, class: "btn margin-left-10", id: "nav-btn" %></li>
         <% else %>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Inscription', new_user_registration_path, class: "btn", id: "nav-btn-default" %></li>
+            <!-- <li><%= link_to 'Inscription', new_user_registration_path, class: "btn", id: "nav-btn-default" %></li> -->
             <li><%= link_to 'Connexion', new_user_session_path, class: "btn margin-left-10", id: "nav-btn-default" %></li>
         <% end %>
       </ul>

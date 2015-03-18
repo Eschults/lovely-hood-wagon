@@ -5,8 +5,11 @@ ActiveAdmin.register User do
     column :email
     column :first_name
     column :last_name
-    column :created_at
-    column :admin
+    column :street
+    column :identity_proof_filename
+    column :address_proof_filename
+    column :iban
+    column :authorized
     actions
   end
 

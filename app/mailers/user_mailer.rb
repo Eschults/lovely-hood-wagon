@@ -9,6 +9,6 @@ class UserMailer < ActionMailer::Base
   def welcome(user)
     @user = user
 
-    mail(to: @user.email, subject: 'Bienvenue sur lovely hood!')
+    mail(to: @user.email, subject: 'Bienvenue sur Lovely Hood !')
   end
 end

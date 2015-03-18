@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  Lovely hood - <%= @user.first_name %>
+  <%= @user.first_name.capitalize %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -112,13 +112,13 @@
         </p>
         <p>
           <% unless current_user == @user %>
-            <%= link_to new_user_conversation_path(@user), class: "contact-user-link" do %>
+            <%= link_to new_user_conversation_path(@user), class: "contact-user-link", class: "btn btn-success" do %>
               <i class="fa fa-send"></i> Envoyer un message
             <% end %>
           <% end %>
         </p>
         <% if policy(@user).update? %>
-        <p><%= link_to "Modifier le profil", edit_user_path(@user) %></p>
+        <p><%= link_to "Modifier mes informations", edit_user_path(@user), class: "btn btn-default" %></p>
         <% end %>
         <p><%= simple_format @user.description %></p>
       </div>
@@ -127,7 +127,7 @@
           <div class="passed-bookings">
             <div class="panel panel-default padding-none">
               <div class="panel-heading">
-                <h4>Prestations passées - à confirmer</h4>
+                <h4>Prestations passées</h4>
               </div>
               <div class="panel-body">
                 <% if @user.passed_bookings_to_review[:owner].size >= 1 %>

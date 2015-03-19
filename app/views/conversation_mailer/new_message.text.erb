@@ -1,3 +1,11 @@
-ConversationMailer#new_message
+Lovely Hood
 
-<%= @greeting %>, find me in app/views/conversation_mailer/new_message.text.erb
+Vous avez un message de <%= @conversation.messages.last.writer.first_name %>
+
+
+<%= @conversation.messages.last.content %>
+
+
+Répondez à <%= @conversation.messages.last.writer.first_name %> <%= link_to "ici", conversation_url(@conversation) %>
+
+A bientôt sur Lovely Hood !

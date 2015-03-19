@@ -1,5 +1,19 @@
-<h1>ConversationMailer#new_message</h1>
+<head>
+  <style type="text/css">
+    body { font-family: 'Open Sans'}
+    h1 { font-family: 'Pacifico'; }
+  </style>
+</head>
+<body>
+  <h1>lovely hood</h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/conversation_mailer/new_message.html.erb
-</p>
+  <h4>Vous avez un message de <%= @conversation.messages.last.writer.first_name %></h4>
+
+  <p>
+    <%= @conversation.messages.last.content %>
+  </p>
+
+  <p>Répondez à <%= @conversation.messages.last.writer.first_name %> <%= link_to "ici", conversation_url(@conversation) %></p>
+
+  <p>A bientôt sur Lovely Hood !</p>
+</body>

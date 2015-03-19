@@ -28,6 +28,7 @@ class ConversationsController < ApplicationController
     @message.save
     authorize @conversation
     if @conversation.save
+      @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
       redirect_to offer_path(@offer)
     else
       render :new
@@ -54,6 +55,7 @@ class ConversationsController < ApplicationController
     @message.save
     authorize @conversation
     if @conversation.save
+      @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
       redirect_to conversation_path(@conversation, anchor: "message-input")
     else
       render :new_b
@@ -83,6 +85,7 @@ class ConversationsController < ApplicationController
     @message.save
     authorize @conversation
     if @conversation.save
+      @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
       redirect_to conversation_path(@conversation, anchor: "message-input")
     else
       render :new_b
@@ -104,6 +107,7 @@ class ConversationsController < ApplicationController
     @message.writer = current_user
     @message.conversation = @conversation
     @message.save
+    @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
     respond_with(@message)
   end
 
@@ -112,6 +116,7 @@ class ConversationsController < ApplicationController
     @message.writer = current_user
     @message.conversation = @conversation
     if @message.save
+      @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
       redirect_to conversation_path(@conversation, anchor: "message-input")
     else
       render :new

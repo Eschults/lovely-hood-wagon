@@ -18,19 +18,19 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def new_u?
-    user.authorized && record.user1 != record.user2
+    record.user1 != record.user2
   end
 
   def create_u?
-    user.authorized && record.user1 != record.user2
+    record.user1 != record.user2
   end
 
   def reply?
-    user.authorized && (record.user1 == user || record.user2 == user)
+    (record.user1 == user || record.user2 == user)
   end
 
   def reply_server?
-    user.authorized && (record.user1 == user || record.user2 == user)
+    (record.user1 == user || record.user2 == user)
   end
 
   def index?
@@ -38,6 +38,6 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def show?
-    user.authorized && (record.user1 == user || record.user2 == user)
+    (record.user1 == user || record.user2 == user)
   end
 end

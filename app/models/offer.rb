@@ -61,14 +61,14 @@ class Offer < ActiveRecord::Base
     output = nil
     if type_of_offer == "service"
       if hourly_price
-        output = "#{hourly_price}€/ heure"
+        output = "#{hourly_price}€/heure"
       end
     elsif type_of_offer == "rent"
       if weekly_price
-        output = "#{weekly_price}€/ semaine"
+        output = "#{weekly_price}€/semaine"
       end
       if daily_price
-        output = "#{daily_price}€/ jour"
+        output = "#{daily_price}€/jour"
       end
     else
       if price

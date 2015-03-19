@@ -61,10 +61,13 @@ class ConversationsController < ApplicationController
   end
 
   def new_u
-    set_user
     @conversation = Conversation.new
     @conversation.user1 = current_user
-    @conversation.user2 = @user
+    if set_user
+      @conversation.user2 = @user
+    else
+      @conversation.user2 = User.find(1)
+    end
     @message = Message.new
     authorize @conversation
   end

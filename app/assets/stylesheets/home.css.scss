@@ -28,6 +28,11 @@ $border: 2px solid $color;
   margin-top: 70px;
 }
 
+#nav-btn:hover{
+  background-color: inherit;
+  border: 1px solid white;
+}
+
 .navbar-wagon .navbar-nav > .open > a,
 .navbar-wagon .navbar-nav > .open > a:hover,
 .navbar-wagon .navbar-nav > .open > a:focus {

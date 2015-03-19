@@ -79,7 +79,7 @@ class Offer < ActiveRecord::Base
   end
 
   def one_price_int
-    output
+    output = nil
     if type_of_offer == "service"
       if hourly_price
         output = hourly_price

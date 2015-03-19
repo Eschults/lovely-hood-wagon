@@ -8,8 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <%= link_to offers_path, id: "brand" do %>
-          <%#= image_tag "lovely_hood_#{ request.path == "/" ? "" : "blue_"}160.png", width: "150px" %>
+        <%= link_to root_path, id: "brand" do %>
           lovely hood
         <% end %>
     </div>
@@ -17,12 +16,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if user_signed_in? %>
-        <!-- <form class="navbar-form navbar-left margin-top-13" action="">
-          <input class="typeahead form-control fa-placeholder search-placeholder" type="text" id="query"
-              autocomplete="off" spellcheck="false" autocapitalize="off"
-              placeholder="Rechercher un objet, un service..."></input>
-        </form> -->
-
         <ul class="nav navbar-nav navbar-right" style="margin-right: -15px;">
           <li class="disappear middle-weight">
             <%= link_to offers_path, class: "nav-btn-default", id: "offers-nav-link" do %>
@@ -57,8 +50,7 @@
                 <li style="background-color: rgb(250,250,250);">
                   <%= link_to user_path(current_user) do %>
                     <strong>Mon profil</strong>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="badge small-badge">
+                    <span class="badge small-badge pull-right margin-top-5">
                     </span>
                   <% end %>
                   </li>
@@ -69,7 +61,17 @@
                   <% end %>
                 </li>
               <% end %>
-              <li><%= link_to "Mon compte", edit_user_path(current_user) %></li>
+              <% if current_user.verif > 0 %>
+                <li style="background-color: rgb(250,250,250);">
+                  <%= link_to user_path(current_user) do %>
+                    <strong>Mon compte</strong>
+                    <span class="badge small-badge pull-right margin-top-5">
+                    </span>
+                  <% end %>
+                </li>
+              <% else %>
+                <li><%= link_to "Mon compte", edit_user_path(current_user) %></li>
+              <% end %>
               <li class="appear"><%= link_to "Toutes les annonces", offers_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
               <li><%= link_to "Ma wish list", wishlist_path %></li>
@@ -78,8 +80,7 @@
                   <li class="appear" style="background-color: rgb(250,250,250);">
                     <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
                       <strong>Messages</strong>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span class="badge small-badge">
+                      <span class="badge small-badge pull-right margin-top-5">
                       </span>
                     <% end %>
                   </li>

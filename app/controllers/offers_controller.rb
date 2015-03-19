@@ -30,22 +30,36 @@ class OffersController < ApplicationController
     if @offer.type_of_offer == "sell"
       @offer.sell = true
     end
-    if @offer.save
+    if @offer.type_of_offer == "rent" || @offer.type_of_offer == "sell"
       if @offer.one_price
-        if (@offer.type_of_offer == "rent" || @offer.type_of_offer == "sell") && @offer.picture_file_name
-          redirect_to offer_path(@offer)
-        elsif (@offer.type_of_offer == "service")
-          redirect_to offer_path(@offer)
+        if @offer.picture_file_name
+          if @offer.save
+            redirect_to offer_path(@offer)
+          else
+            flash.now[:alert] = "Merci d'ajouter une description"
+            render :new
+          end
         else
-          # flash[:alert] = "Ajoutez une photo"
+          flash.now[:alert] = "Merci d'ajouter une photo"
           render :new
         end
       else
-        # flash[:alert] = "Merci de renseigner un prix"
+        flash.now[:alert] = "Merci de renseigner un prix"
         render :new
       end
-    else
-      render :new
+    end
+    if @offer.type_of_offer == "service"
+      if @offer.one_price
+        if @offer.save
+          redirect_to offer_path(@offer)
+        else
+          flash.now[:alert] = "Merci d'ajouter une description"
+          render :new
+        end
+      else
+        flash.now[:alert] = "Merci de renseigner un prix"
+        render :new
+      end
     end
   end
 
@@ -60,7 +74,7 @@ class OffersController < ApplicationController
           format.js
         end
       else
-        flash[:alert] = "Merci de renseigner un prix"
+        flash.now[:alert] = "Merci de renseigner un prix"
         render :edit
       end
     else
@@ -103,23 +117,23 @@ class OffersController < ApplicationController
             if current_user.city != ""
 
             else
-              # flash[:alert] = "Merci de renseigner votre ville"
+              flash.now[:alert] = "Merci de renseigner votre ville"
               redirect_to edit_user_path(current_user)
             end
           else
-            # flash[:alert] = "Merci de renseigner votre code postal"
+            flash.now[:alert] = "Merci de renseigner votre code postal"
             redirect_to edit_user_path(current_user)
           end
         else
-          # flash[:alert] = "Merci de renseigner votre rue"
+          flash.now[:alert] = "Merci de renseigner votre rue"
           redirect_to edit_user_path(current_user)
         end
       else
-        # flash[:alert] = "Merci de renseigner votre nom de famille"
+        flash.now[:alert] = "Merci de renseigner votre nom de famille"
         redirect_to edit_user_path(current_user)
       end
     else
-      # flash[:alert] = "Merci de renseigner votre prénom"
+      flash.now[:alert] = "Merci de renseigner votre prénom"
       redirect_to edit_user_path(current_user)
     end
   end

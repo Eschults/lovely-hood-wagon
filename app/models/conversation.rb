@@ -19,4 +19,8 @@ class Conversation < ActiveRecord::Base
   def unread_messages(current_user)
     messages.select{ |message| message.writer != current_user }.select { |message| message.read_at == nil }.size
   end
+
+  def send_new_message_email
+    ConversationMailer.new_message(self).deliver
+  end
 end

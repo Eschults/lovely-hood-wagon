@@ -13,6 +13,9 @@
       <%= f.select :nature, NATURES[:service],
                    { include_blank: true },
                    { class: "chosen-select", id: 'service' } %>
+      <p class="small">
+        Vous souhaitez ajouter un service ? Suggérez-nous vos idées <%= link_to "ici", new_user_conversation_path(User.find(1)) %>
+      </p>
     </div>
   </div>
 
@@ -29,6 +32,9 @@
       <%= f.select :nature, NATURES[:rent],
                    { include_blank: true },
                    { class: "chosen-select", id: 'rent' } %>
+      <p class="small">
+        Vous souhaitez ajouter une nature de location ? Suggérez-nous vos idées <%= link_to "ici", new_user_conversation_path(User.find(1)) %>
+      </p>
     </div>
   </div>
 
@@ -45,7 +51,7 @@
       <%= f.text_field :hourly_price, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
-      €/ heure
+      €/heure
     </div>
   </div>
 
@@ -55,7 +61,7 @@
       <%= f.text_field :daily_price, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
-      €/ jour
+      €/jour
     </div>
   </div>
 
@@ -65,7 +71,7 @@
       <%= f.text_field :weekly_price, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
-      €/ semaine
+      €/semaine
     </div>
     <div class="col-sm-10 col-sm-offset-2">
       <p class="small">Divisez le prix d'achat par cinq pour  approcher un prix raisonnable pour une utilisation.</p>

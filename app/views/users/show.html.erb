@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  <%= @user.first_name.capitalize %>
+  <%= @user.first_name ? @user.first_name.capitalize : "Mon profil" %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -44,12 +44,19 @@
           <% if @user.identity_verified %>
             <p><i class="fa fa-check"></i> Identité vérifiée</p>
           <% else %>
-            <p><i class="fa fa-close"></i> Identité non vérifiée</p>
+            <p>
+              <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "text-decoration-none" do %>
+                <i class="fa fa-close"></i> Identité non vérifiée
+              <% end %>
+            </p>
           <% end %>
           <% if @user.address_verified %>
             <p><i class="fa fa-check"></i> Adresse vérifiée</p>
           <% else %>
-            <p><i class="fa fa-close"></i> Adresse non vérifiée</p>
+            <p>
+              <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "text-decoration-none" do %>
+                <i class="fa fa-close"></i> Adresse non vérifiée</p>
+              <% end %>
           <% end %>
           <% if @user.provider == "facebook" %>
             <p><i class="fa fa-check"></i> Facebook</p>
@@ -106,9 +113,9 @@
     </div>
     <div class="col-sm-9">
       <div class="user-info">
-        <h1>Profil de <%= @user.first_name %></h1>
+        <h1><%= @user.first_name ? "Profil de #{@user.first_name.capitalize}" : "Mon profil" %></h1>
         <p>
-          <strong><%= @user.city.capitalize %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %>
+          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
           <% unless current_user == @user %>

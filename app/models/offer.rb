@@ -53,47 +53,50 @@ class Offer < ActiveRecord::Base
         '<img src="../assets/sell.png" width="32" />'
       else
         '<img src="../assets/' + nature + '.png" width="32" />'
-
       end
     end
   end
 
   def one_price
+    output = nil
     if type_of_offer == "service"
       if hourly_price
-        "#{hourly_price}€/ heure"
+        output = "#{hourly_price}€/ heure"
       end
     elsif type_of_offer == "rent"
       if weekly_price
-        "#{weekly_price}€/ semaine"
+        output = "#{weekly_price}€/ semaine"
       end
       if daily_price
-        "#{daily_price}€/ jour"
+        output = "#{daily_price}€/ jour"
       end
     else
       if price
-        "#{price}€"
+        output = "#{price}€"
       end
     end
+    output
   end
 
   def one_price_int
+    output
     if type_of_offer == "service"
       if hourly_price
-        hourly_price
+        output = hourly_price
       end
     elsif type_of_offer == "rent"
       if weekly_price
-        weekly_price
+        output = weekly_price
       end
       if daily_price
-        daily_price
+        output = daily_price
       end
     else
       if price
-        price
+        output = price
       end
     end
+    output
   end
 
   def available?(first_day, last_day)

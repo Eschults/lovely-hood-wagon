@@ -45,7 +45,7 @@
                 <div class="col-sm-9">
                   <%= f.text_field :last_name, class: "form-control", id: "last_name" %>
                   <%= render "data_sharing_message" %>
-                  <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> systématique de l'identité de nos membres.</p>
+                  <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust"), class: "show-div" %> systématique de l'identité de nos membres.</p>
                 </div>
               </div>
 
@@ -183,7 +183,7 @@
                     <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
                   <% else %>
                     <%= f.file_field :address_proof, class: "margin-top-6" %>
-                    <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="http://www.linternaute.com/pratique/vos-droits/administratif/16023/justificatif-de-domicile-la-liste-des-documents-acceptes.html">cette liste</a></p>
+                    <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="" class="" data-toggle="modal" data-target="#myModal">cette liste</a></p>
                   <% end %>
                 </div>
               </div>
@@ -281,11 +281,40 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Justificatifs de domicile</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <li class="small"><i class="fa fa-check"></i> Une facture d'électricité</li>
+          <li class="small"><i class="fa fa-check"></i> Une facture de gaz</li>
+          <li class="small"><i class="fa fa-check"></i> Une facture d'eau</li>
+          <li class="small"><i class="fa fa-check"></i> Une facture de téléphone fixe</li>
+          <li class="small"><i class="fa fa-check"></i> Une facture de téléphone mobile</li>
+          <li class="small"><i class="fa fa-check"></i> Un avis d'imposition</li>
+          <li class="small"><i class="fa fa-check"></i> Une attestation d'assurance logement</li>
+          <li class="small"><i class="fa fa-check"></i> Un titre de propriété ou une quittance de loyer</li>
+        </ul>
+        <p class="small">Pour être pris en compte, ce justificatif doit être <strong>à votre nom</strong>, et <strong>dater de moins de 6 mois</strong></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
       showTheRightDiv();
       formValidation();
+      $(window).on('hashchange', function() {
+        showTheRightDiv();
+      })
     });
   <% end %>
 <% end %>

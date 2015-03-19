@@ -51,6 +51,25 @@ h1, h2, h3, h4, h5 {
   max-width: 300px;
 }
 
+.modal {
+  font-family: Helvetica;
+}
+
+.modal-header {
+  padding: 10px 15px;
+  background-color: rgb(252, 252, 252);
+}
+
+.modal-header > h4 {
+  font-weight: bold;
+}
+
+.modal-content {
+  border-radius: 2px;
+  border: 1px solid rgb(220, 220, 220);
+  // box-shadow: none;
+}
+
 .margin-0-auto {
   margin: 0 auto;
 }

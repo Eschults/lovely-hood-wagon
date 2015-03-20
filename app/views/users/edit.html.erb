@@ -1,5 +1,8 @@
 <%= content_for(:title) do %>
-  Mon compte
+  Mon compte - <%= @user.name %> - LH
+<% end %>
+<%= content_for(:description) do %>
+  Gérez votre compte
 <% end %>
 <div class="container">
   <div class="row">
@@ -17,7 +20,6 @@
       </div>
     </div>
     <div class="col-md-9 margin-top-15">
-
       <div class="box" id="user-info">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
@@ -25,7 +27,6 @@
           </div>
           <div class="panel-body form-horizontal white-bg">
             <%= form_for(current_user) do |f| %>
-
               <div class="form-group">
                 <%= f.label :email, "E-mail", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">

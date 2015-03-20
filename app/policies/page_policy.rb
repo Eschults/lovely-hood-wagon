@@ -10,4 +10,8 @@ class PagePolicy < Struct.new(:user, :page)
   def terms?
     true
   end
+
+  def sitemap?
+    true
+  end
 end

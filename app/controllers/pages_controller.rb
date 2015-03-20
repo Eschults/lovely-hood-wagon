@@ -19,5 +19,6 @@ class PagesController < ApplicationController
   end
 
   def sitemap
+    authorize :page, :sitemap?
   end
 end

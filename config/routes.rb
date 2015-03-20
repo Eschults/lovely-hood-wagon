@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/legal", to: "pages#legal"
   get "/terms", to: "pages#terms"
+  get "/sitemap", to:"pages#sitemap"
   resources :users, only: [:show, :edit, :update]
   resources :offers, except: [:destroy] do
     member do

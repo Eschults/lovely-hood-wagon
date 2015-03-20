@@ -1,5 +1,8 @@
 <%= content_for(:title) do %>
-  Lovely hood - <%= @booking.offer.nature %>
+  Reservation de <%= @booking.offer.nature %> - LH
+<% end %>
+<%= content_for(:description) do %>
+  Vous avez une demande de réservation sur Lovely Hood. Vous pouvez accepter la réservation, la décliner, ou contacter le demandeur pour avoir plus d'info !
 <% end %>
 <div class="container">
   <div class="row">

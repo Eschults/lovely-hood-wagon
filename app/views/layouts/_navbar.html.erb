@@ -48,7 +48,7 @@
             <ul class="dropdown-menu" role="menu">
               <% if current_user.passed_bookings_to_review[:owner].size >= 1 || current_user.passed_bookings_to_review[:client].select { |booking| booking.owner_validation }.size >= 1 || current_user.upcoming_bookings[:owner].select { |booking| booking.accepted.nil? }.size >= 1 %>
                 <li style="background-color: rgb(250,250,250);">
-                  <%= link_to user_path(current_user) do %>
+                  <%= link_to user_path(current_user), style: "white-space: inherit ! important;" do %>
                     <strong>Mon profil</strong>
                     <span class="badge small-badge pull-right margin-top-5">
                     </span>
@@ -78,7 +78,7 @@
               <% if current_user.conversations.size > 0 %>
                 <% if current_user.unread_conversations > 0 %>
                   <li class="appear" style="background-color: rgb(250,250,250);">
-                    <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")) do %>
+                    <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), style: "white-space: inherit ! important;" do %>
                       <strong>Messages</strong>
                       <span class="badge small-badge pull-right margin-top-5">
                       </span>

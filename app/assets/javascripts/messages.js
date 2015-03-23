@@ -30,9 +30,8 @@ function stickDown() {
   }
 }
 
-
 function stylizeConversationPreview() {
-  var id = window.location.href.slice(36, -14);
+  var id = window.location.href.slice(42, -14);
   $('#conversation_' + id).css('background-color', 'rgb(180, 180, 180)');
   $('#conversation_' + id).children().each(function() {
     $(this).css('color', '#ffffff');

@@ -6,8 +6,8 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :street
-    column :identity_proof_filename
-    column :address_proof_filename
+    column :identity_proof
+    column :address_proof
     column :iban
     column :authorized
     actions

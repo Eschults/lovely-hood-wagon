@@ -118,7 +118,7 @@
       <div class="user-info">
         <h1><%= @user.first_name ? "Profil de #{@user.first_name.capitalize}" : "Mon profil" %></h1>
         <p>
-          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - Membre depuis <%= @user.created_at.strftime("%b %Y") %>
+          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} ans - " : "" %>Membre depuis <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
           <% unless current_user == @user %>

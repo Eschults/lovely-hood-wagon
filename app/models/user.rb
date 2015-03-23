@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
   has_many :bookings
   has_many :messages, foreign_key: :writer_id
 
+  def age
+    d = Date.today
+    (d.year - birthday.year) - (d.day > birthday.day ? 0 : 1)
+  end
+
   def address_changed?
     :street_changed? || :zipcode_changed?
   end

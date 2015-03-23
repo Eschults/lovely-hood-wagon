@@ -52,9 +52,7 @@
                         </td>
                         <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;vertical-align:top;">
                           <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                            <%= link_to conversation_url(@conversation), style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#565a5c;text-decoration:none", target: "_blank" do %>
-                              <%= simple_format @conversation.messages.last.content, style: "margin-top:-4px;" %>
-                            <% end %>
+                            <%= simple_format @conversation.messages.last.content, style: "margin-top:-4px;" %>
                           </div>
                         </td>
                       </tr>

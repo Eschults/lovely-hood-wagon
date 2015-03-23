@@ -44,8 +44,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
-  validates_attachment_content_type :identity_proof, content_type: /\Aimage\/.*\z/
-  validates_attachment_content_type :address_proof, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :identity_proof, content_type: [/\Aimage\/.*\z/, 'application/pdf'], message: "Seuls les formats .jpg, .png et .pdf sont acceptés"
+  validates_attachment_content_type :address_proof, content_type: [/\Aimage\/.*\z/, 'application/pdf'], message: "Seuls les formats .jpg, .png et .pdf sont acceptés"
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

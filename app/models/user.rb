@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.picture = URI.parse(auth.info.image.gsub("­http","htt­ps"))
+      user.picture = URI.parse(auth.info.image.gsub("­http","htt­ps").gsub('small', 'square'))
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end

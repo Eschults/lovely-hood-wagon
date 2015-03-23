@@ -6,8 +6,12 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :street
-    column :identity_proof
-    column :address_proof
+    column "identity" do |product|
+      image_tag product..image_url, width: '50'
+    end
+    column "address" do |product|
+      image_tag product.address_proof.image_url, width: '50'
+    end
     column :iban
     column :authorized
     actions

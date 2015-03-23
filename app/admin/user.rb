@@ -7,7 +7,7 @@ ActiveAdmin.register User do
     column :last_name
     column :street
     column "identity" do |product|
-      image_tag product..image_url, width: '50'
+      image_tag product.identity_proof.image_url, width: '50'
     end
     column "address" do |product|
       image_tag product.address_proof.image_url, width: '50'

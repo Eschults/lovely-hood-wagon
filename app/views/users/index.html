@@ -12,8 +12,8 @@
           <h4>Mes voisins</h4>
         </div>
         <div class="panel-body padding-none">
-          <% if current_user.neighbors.size > 0 %>
-            <% current_user.neighbors.sort_by(&:updated_at).reverse.each do |neighbor| %>
+          <% if @users.size > 0 %>
+            <% @users.sort_by(&:updated_at).reverse.each do |neighbor| %>
               <%= render "neighbor", neighbor: neighbor %>
             <% end %>
           <% else %>

@@ -51,7 +51,8 @@ h1, h2, h3, h4, h5 {
   max-width: 300px;
 }
 
-.text-decoration-none:hover {
+.text-decoration-none:hover,
+.text-decoration-none:hover a {
   text-decoration: none;
 }
 
@@ -848,6 +849,10 @@ a.disabled {
   padding-left: 0;
 }
 
+.list-inline > .padding-left-none {
+  padding-left: 0;
+}
+
 .padding-sides-5 {
   padding-left: 5px;
   padding-right: 5px;
@@ -1220,7 +1225,8 @@ i {
   font-style: normal;
 }
 
-.font-normal {
+.font-normal,
+.font-normal .link-normal {
   color: rgb(119, 119, 119) !important;
 }
 

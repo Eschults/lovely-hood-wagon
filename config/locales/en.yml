@@ -20,4 +20,60 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      user: "Users"
+      offer: "Offers"
+      booking: "Bookings"
+      conversation: "Conversations"
+      message: "Messages"
+      review: "Reviews"
+    attributes:
+      user:
+        name: "Name"
+        email: "Email"
+        picture: "Picture"
+        first_name: "First name"
+        last_name: "Last name"
+        gender: "Gender"
+        birthday: "Birthday"
+        phone: "Phone"
+        description: "Description"
+        street: "Street"
+        zip_code: "Zip code"
+        city: "City"
+        latitude: "Latitude"
+        longitude: "Longitude"
+        authorized: "Authorized"
+      offer:
+        nature: "Nature"
+        description: "Description"
+        hourly_price: "Hourly price"
+        daily_price: "Daily price"
+        weekly_price: "Weekly price"
+        price: "Price"
+        type_of_offer: "Type"
+        published: "Published"
+        guarantee: "Guarantee"
+        sell: "Sale"
+        sold: "Sold"
+      booking:
+        start_date: "Start date"
+        end_date: "End date"
+        accepted: "Accepted"
+        start_hour: "Start hour"
+        end_date: "End hour"
+        freezer: "Freezed"
+        cancelled: "Cancelled"
+        cashin_price: "Cash in amount"
+      review:
+        comment: "Comment"
+        communication_rating: "Communication"
+        punctuality_rating: "Punctuality"
+        respect_rating: "Respect of the equipment"
+        recommendation: "Recommendation"
+        quality_price_rating: "Quality/price"
+        review_type: "Type"
+      message:
+        read_at: "Read at"
+        content: "Message"

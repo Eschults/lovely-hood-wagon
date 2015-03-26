@@ -31,6 +31,10 @@ group :development do
   gem "binding_of_caller"
 end
 
+gem "rails-i18n", "~> 4.0.0"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use postgresql as the database for Active Record

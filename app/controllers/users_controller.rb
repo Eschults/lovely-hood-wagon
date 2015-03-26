@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: :index
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
+
+  def index
+    @users = policy_scope(User)
+  end
 
   def show
     authorize @user

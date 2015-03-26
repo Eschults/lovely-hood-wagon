@@ -1,0 +1,46 @@
+<%= content_for(:title) do %>
+  Mes voisins - LH
+<% end %>
+<%= content_for(:description) do %>
+  Visualisez vos voisins et engagez la conversation pour faire connaissance !
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default white-bg margin-top-15 padding-none">
+        <div class="panel-heading border-btm-none">
+          <h4>Mes voisins</h4>
+        </div>
+        <div class="panel-body padding-none">
+          <% if current_user.neighbors.size > 0 %>
+            <% current_user.neighbors.sort_by(&:updated_at).reverse.each do |neighbor| %>
+              <%= render "neighbor", neighbor: neighbor %>
+            <% end %>
+          <% else %>
+            <div class="offer-stream-box border-top">
+              <p>Vous n'avez pas encore de voisin sur Lovely Hood.</p>
+              <p><%= link_to "Invitez vos voisins sur Lovely Hood", "#" %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= content_for :js do %>
+  <% javascript_tag do %>
+    $(document).ready(function() {
+      adjustIconsSizeSimple();
+      $(window).on('resize', function() {
+        adjustIconsSizeSimple();
+      })
+      $('select').on('click', function(e) {
+        e.preventDefault();
+      })
+      $('button').on('click', function(e) {
+        e.preventDefault();
+        $(this).parent().parent().submit();
+      })
+    })
+  <% end %>
+<% end %>

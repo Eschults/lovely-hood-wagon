@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
   root to: "pages#home"
   get "/legal", to: "pages#legal"
   get "/terms", to: "pages#terms"
   get "/sitemap", to:"pages#sitemap"
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :offers, except: [:destroy] do
     member do
       put :wish, to: "offers#wish"
@@ -47,5 +46,4 @@ Rails.application.routes.draw do
   end
 
   resources :stripe_payments, only: [:new, :create]
-
 end

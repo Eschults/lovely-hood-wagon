@@ -18,6 +18,9 @@
         <div class="margin-top-10 margin-top-10 font-normal font-normal text-decoration-none">
           <%= simple_format neighbor.description[0..60] + "... "unless(neighbor.description == "" || neighbor.description.nil?) %>
           <%= link_to new_user_conversation_path(neighbor), class: "" do %><i class="fa fa-send"></i> Envoyer un message <% end %>
+          <% if current_user.admin %>
+            <p><%= neighbor.address %></p>
+          <% end %>
         </div>
       </div>
       <div class="col-sm-4 col-xs-6 padding-none">

@@ -6,7 +6,7 @@
           <% if neighbor.picture_file_name.nil? %>
             <%= image_tag "user_pic-225x225.png", class: "img img-60" %>
           <% else %>
-            <%= image_tag neighbor.picture.url(:thumb), class: "img img-lovely img-60" %>
+            <%= image_tag neighbor.picture.url(:thumb), class: "img img-60" %>
           <% end %>
         </div>
       </div>

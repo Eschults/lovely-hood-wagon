@@ -42,10 +42,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def neighbors
+    User.where("(latitude - :my_lat) * (latitude - :my_lat) + (longitude - :my_lng) * (longitude - :my_lng) < 0.004 * 0.004 AND id != :my_id", my_lat: self.latitude, my_lng: self.longitude, my_id: self.id)
+  end
+
   validates_presence_of :email
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
-  validates_attachment_content_type :identity_proof, content_type: [/\Aimage\/.*\z/, 'application/pdf'], message: "Seuls les formats .jpg, .png et .pdf sont acceptés"
-  validates_attachment_content_type :address_proof, content_type: [/\Aimage\/.*\z/, 'application/pdf'], message: "Seuls les formats .jpg, .png et .pdf sont acceptés"
+  validates_attachment_content_type :identity_proof, content_type: [/\Aimage\/.*\z/, "application/pdf"]
+  validates_attachment_content_type :address_proof, content_type: ["application/pdf", /\Aimage\/.*\z/]
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

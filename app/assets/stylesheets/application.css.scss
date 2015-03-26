@@ -1220,6 +1220,10 @@ i {
   font-style: normal;
 }
 
+.font-normal {
+  color: rgb(119, 119, 119) !important;
+}
+
 .offer-stream-box li > a:active {
   text-decoration: none;
 }
@@ -1235,4 +1239,8 @@ i {
 
 .vertical-spacer {
   min-height: 100px;
+}
+
+.light {
+  font-weight: 300;
 }

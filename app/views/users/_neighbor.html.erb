@@ -1,0 +1,35 @@
+<%= link_to user_path(neighbor) do %>
+  <div class="offer-stream-box border-top">
+    <div class="row">
+      <div class="col-xs-1">
+        <div class="img-medium">
+          <% if neighbor.picture_file_name.nil? %>
+            <%= image_tag "user_pic-225x225.png", class: "img img-60" %>
+          <% else %>
+            <%= image_tag neighbor.picture.url(:thumb), class: "img img-lovely img-60" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-7 col-xs-5 padding-left-30">
+        <ul class="margin-none list-unstyled list-inline">
+          <li class="offer-nature-link"><%= neighbor.first_name %></li>
+          <li class="font-normal"><%= neighbor.age.to_s + " ans" unless neighbor.birthday.nil? %></li>
+        </ul>
+        <p class="margin-top-10 font-normal">
+          <%= neighbor.description + " " unless neighbor.description == "" %>
+          <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none" do %><i class="fa fa-send"></i> Envoyer un message <% end %>
+        </p>
+      </div>
+      <div class="col-sm-4 col-xs-6 padding-none">
+        <div class="col-xs-12">
+          <%= link_to user_path(neighbor), class: "btn btn-default btn-wide btn-margin" do %>
+            <% if neighbor.offers.select { |offer| offer.published }.size > 0 %>
+              <%= neighbor.offers.select { |offer| offer.published }.size %> <%= "annonce".pluralize(neighbor.offers.size) + " publiée".pluralize(neighbor.offers.size) %>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

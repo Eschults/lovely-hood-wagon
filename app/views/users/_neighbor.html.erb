@@ -1,5 +1,5 @@
-<%= link_to user_path(neighbor), class: "link-normal" do %>
-  <div class="offer-stream-box border-top">
+<%= link_to user_path(neighbor), class: "link-normal text-decoration-none" do %>
+  <div class="offer-stream-box border-top" id="<%= "user_#{neighbor.id}" %>">
     <div class="row">
       <div class="col-xs-1">
         <div class="img-medium">
@@ -13,7 +13,7 @@
       <div class="col-sm-7 col-xs-5 padding-left-30">
         <ul class="margin-none list-unstyled list-inline">
           <li class="padding-left-none offer-nature-link"><%= neighbor.first_name %></li>
-          <li class="font-normal"><%= neighbor.age.to_s + " ans" unless neighbor.birthday.nil? %></li>
+          <li class="padding-left-none font-normal"><%= neighbor.age.to_s + " ans" unless neighbor.birthday.nil? %></li>
         </ul>
         <div class="margin-top-10 margin-top-10 font-normal font-normal text-decoration-none">
           <%= simple_format neighbor.description[0..60] + "... "unless(neighbor.description == "" || neighbor.description.nil?) %>

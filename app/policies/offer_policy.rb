@@ -6,7 +6,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def show?
-    user.authorized || user == record.user # Anyone can view an offer
+    record.user.neighbors.include?(user) || user.admin # Only neighbors and admins can view an offer
   end
 
   def mine?
@@ -18,7 +18,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user  # Only offer creator can update it
+    user.admin || record.user == user  # Only offer creator can update it
   end
 
   def wish?

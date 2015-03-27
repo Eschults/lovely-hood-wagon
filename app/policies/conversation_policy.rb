@@ -6,23 +6,23 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.authorized && record.user1 != record.user2
+    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
   end
 
   def new_b?
-    user.authorized && record.user1 != record.user2
+    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
   end
 
   def create_b?
-    user.authorized && record.user1 != record.user2
+    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
   end
 
   def new_u?
-    record.user1 != record.user2
+    user.admin || (record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
   end
 
   def create_u?
-    record.user1 != record.user2
+    user.admin || (record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
   end
 
   def reply?
@@ -34,7 +34,7 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def index?
-    user.authorized && true
+    user.admin
   end
 
   def show?

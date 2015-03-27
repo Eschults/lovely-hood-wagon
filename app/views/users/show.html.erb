@@ -69,6 +69,55 @@
       <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-heading">
           <h4>
+            <% if current_user == @user && @user.neighbors.size > 0 %>
+              <%= link_to users_path, class: "nice-link" do %>
+                <%= "Voisin".pluralize(@user.neighbors.size) %> (<%= @user.neighbors.size %>)
+              <% end %>
+            <% else %>
+              Voisins
+            <% end %>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <% if @user.neighbors.size > 0 %>
+            <% @user.neighbors.each do |neighbor| %>
+              <div class="row margin-vertical-5 padding-vertical-6">
+                <div class="col-xs-4 padding-none">
+                  <div class="img-small">
+                    <% if neighbor.picture_file_name %>
+                      <%= image_tag(neighbor.picture.url(:medium), { class: "img-38" }) %>
+                    <% else %>
+                      <%= image_tag("user_pic-38.png", { class: "img-38" }) %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-xs-8 padding-none">
+                  <div class="small gray-lighter">
+                    <%= link_to neighbor.first_name, user_path(neighbor) %>
+                    <br>
+                    <% if neighbor.birthday.nil? %>
+                      <% if neighbor.description.nil? || neighbor.description == "" %>
+                        <%= link_to new_user_conversation_path(neighbor), class: "green-link text-decoration-none" do %>
+                          <i class="fa fa-send"></i> Message
+                        <% end %>
+                      <% else %>
+                        <%= neighbor.description.size > 15 ? neighbor.description[0..15] + "..." : neighbor.description %>
+                      <% end %>
+                    <% else %>
+                      <%= neighbor.age.to_s + " ans" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            Pas encore de voisin
+          <% end %>
+        </div>
+      </div>
+      <div class="panel panel-default max-width-300 padding-none">
+        <div class="panel-heading">
+          <h4>
             <% if current_user == @user && @user.offers.size > 0 %>
               <%= link_to mine_path, class: "nice-link" do %>
                 <%= "Annonce".pluralize(@user.offers.size) %> (<%= @user.offers.size %>)
@@ -80,7 +129,11 @@
         </div>
         <div class="panel-body">
           <% if @user.offers.count == 0 %>
-            <%= link_to "Publier une annonce", new_offer_path %>
+            <% if @user == current_user %>
+              <%= link_to "Publier une annonce", new_offer_path %>
+            <% else %>
+              Pas encore d'annonce
+            <% end %>
           <% else %>
             <% @user.offers.each do |offer| %>
               <div class="row margin-vertical-5 padding-vertical-6">

@@ -84,6 +84,11 @@ a.red-link:hover {
   color: #ff5a5f;
 }
 
+.green-link,
+.green-link:hover {
+  color: #03C9A9;
+}
+
 @media screen and (max-width: 768px) {
   .max-width-300 {
     max-width: none;

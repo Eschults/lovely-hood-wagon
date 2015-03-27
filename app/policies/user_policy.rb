@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.authorized || user == record
+    user.admin || user.neighbors.include?(record) || user == record
   end
 
   def create?
@@ -18,6 +18,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    record == user
+    user.admin || record == user
   end
 end

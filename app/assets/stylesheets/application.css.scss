@@ -466,8 +466,9 @@ input,
   height: 10px;
 }
 
-.gray-lighter {
-  color: $gray-lighter;
+.gray-lighter,
+a.gray-lighter {
+  color: $gray-lighter !important;
 }
 
 .gray-light {

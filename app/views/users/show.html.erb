@@ -93,18 +93,12 @@
                 </div>
                 <div class="col-xs-8 padding-none">
                   <div class="small gray-lighter">
-                    <%= link_to neighbor.first_name, user_path(neighbor) %>
+                    <%= link_to user_path(neighbor), class: "text-decoration-none" do %>
+                      <%= ("<strong>" + neighbor.first_name + "</strong>").html_safe + (neighbor.birthday ? ", #{neighbor.age.to_s}" : "") %>
+                    <% end %>
                     <br>
-                    <% if neighbor.birthday.nil? %>
-                      <% if neighbor.description.nil? || neighbor.description == "" %>
-                        <%= link_to new_user_conversation_path(neighbor), class: "green-link text-decoration-none" do %>
-                          <i class="fa fa-send"></i> Message
-                        <% end %>
-                      <% else %>
-                        <%= neighbor.description.size > 15 ? neighbor.description[0..15] + "..." : neighbor.description %>
-                      <% end %>
-                    <% else %>
-                      <%= neighbor.age.to_s + " ans" %>
+                    <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none gray-lighter" do %>
+                      <i class="fa fa-send"></i> Contacter
                     <% end %>
                   </div>
                 </div>

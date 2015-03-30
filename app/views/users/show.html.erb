@@ -97,12 +97,12 @@
                       <%= ("<strong>" + neighbor.first_name + "</strong>").html_safe + (neighbor.birthday ? ", #{neighbor.age.to_s}" : "") %>
                     <% end %>
                     <br>
-                    <% if policy(neighbor).new_u? %>
+                    <% if policy(Conversation.new(user1: neighbor, user2: current_user)).new_u? %>
                       <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none gray-lighter" do %>
                         <i class="fa fa-send"></i> Contacter
                       <% end %>
                     <% else %>
-                      <%= neighbor.description ? (neighbor.description.size > 30 ? (neighbor.description[0..30] + "...") : neighbor.description) : "Pas de description" %>
+                      <%= (neighbor.description != "") ? (neighbor.description.size > 20 ? (neighbor.description[0..20] + "...") : neighbor.description) : "Pas de description" %>
                     <% end %>
                   </div>
                 </div>

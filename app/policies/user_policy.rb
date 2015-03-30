@@ -18,6 +18,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin || record == user
+    user.admin || user == record
   end
 end

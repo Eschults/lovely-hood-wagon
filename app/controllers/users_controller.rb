@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       end
     end
     if @user.save
-      name_and_address_validations(user_path(current_user))
+      name_and_address_validations(user_path(@user))
     else
       render :edit
     end

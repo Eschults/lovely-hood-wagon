@@ -11,11 +11,11 @@
         <ul class="list-unstyled">
           <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
           <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
-          <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a><% unless current_user.trust_steps == 0 %><span class="badge pull-right margin-top-2"><%= current_user.trust_steps %><% end %></span></li>
-          <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a><% unless current_user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= current_user.money_step %><% end %></span></li>
+          <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a><% unless @user.trust_steps == 0 %><span class="badge pull-right margin-top-2"><%= @user.trust_steps %><% end %></span></li>
+          <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a><% unless @user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= @user.money_step %><% end %></span></li>
           <li><a href="#" class="edit-link" id="my-comments">Commentaires</a></li>
           <li><a href="#" class="edit-link" id="my-recos">Recommandations</a></li>
-          <li><%= link_to "Voir mon profil", user_path(current_user), class: "btn btn-default" %></a></li>
+          <li><%= link_to "Voir mon profil", user_path(@user), class: "btn btn-default" %></a></li>
         </ul>
       </div>
     </div>
@@ -26,7 +26,7 @@
             <h4>Mes informations</h4>
           </div>
           <div class="panel-body form-horizontal white-bg">
-            <%= form_for(current_user) do |f| %>
+            <%= form_for(@user) do |f| %>
               <div class="form-group">
                 <%= f.label :email, "E-mail", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
@@ -46,7 +46,7 @@
                 <div class="col-sm-9">
                   <%= f.text_field :last_name, class: "form-control", id: "last_name" %>
                   <%= render "data_sharing_message" %>
-                  <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust"), class: "show-div" %> systématique de l'identité de nos membres.</p>
+                  <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(@user, anchor: "my-trust"), class: "show-div" %> systématique de l'identité de nos membres.</p>
                 </div>
               </div>
 
@@ -68,7 +68,7 @@
                 <%= f.label :city, "Ville *", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :city, placeholder: "Paris", class: "form-control", id: "city" %>
-                  <p class="small">Afin de prévenir tout risque de détournement du service, nous procédons à une <%= link_to "vérification", edit_user_path(current_user, anchor: "my-trust") %> de l'adresse de chaque membre de la communauté. Aussi, tout changement d'adresse fera l'objet d'une nouvelle vérification.</p>
+                  <p class="small">Afin de prévenir tout risque de détournement du service, nous procédons à une <%= link_to "vérification", edit_user_path(@user, anchor: "my-trust") %> de l'adresse de chaque membre de la communauté. Aussi, tout changement d'adresse fera l'objet d'une nouvelle vérification.</p>
                 </div>
               </div>
 
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                  <%= link_to "Modifier mon mot de passe", edit_user_registration_path(current_user), class: "btn btn-default" %>
+                  <%= link_to "Modifier mon mot de passe", edit_user_registration_path(@user), class: "btn btn-default" %>
                   <br>
                   <br>
                   <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
@@ -155,7 +155,7 @@
             <h4>Confiance et vérifications</h4>
           </div>
           <div class="panel-body form-horizontal white-bg">
-            <%= form_for(current_user) do |f| %>
+            <%= form_for(@user) do |f| %>
               <div class="col-sm-12">
                 <p><b>Vérifiez votre identité et votre adresse postale</b></p>
                 <p class="small">La vérification de votre identité et de votre adresse est à la fois un prérequis pour le bon fonctionnement du service et une façon simple de contribuer à la confiance au sein de la communauté Lovely hood.</p>
@@ -164,9 +164,9 @@
               <div class="form-group">
                 <%= f.label :identity_proof, "Identité", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <% if current_user.identity_verified %>
+                  <% if @user.identity_verified %>
                     <p class="padding-top-7"><i class="fa fa-check"></i> Identité vérifiée</p>
-                  <% elsif current_user.identity_proof_file_name %>
+                  <% elsif @user.identity_proof_file_name %>
                     <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
                   <% else %>
                     <%= f.file_field :identity_proof, class: "margin-top-6"%>
@@ -178,9 +178,9 @@
               <div class="form-group">
                 <%= f.label :address_proof, "Adresse", class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
-                  <% if current_user.address_verified %>
+                  <% if @user.address_verified %>
                     <p class="padding-top-7"><i class="fa fa-check"></i> Addresse vérifiée</p>
-                  <% elsif current_user.address_proof_file_name %>
+                  <% elsif @user.address_proof_file_name %>
                     <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
                   <% else %>
                     <%= f.file_field :address_proof, class: "margin-top-6" %>
@@ -210,7 +210,7 @@
               <p>Avant de pouvoir créer une annonce sur Lovely hood, vous devez renseigner les coordonnées bancaires d'un compte valide domicilié en France.</p>
               <p>Vous recevrez alors automatiquement tous les paiements relatifs à vos annonces sur ce compte dans un délai de 48h après la prestation.</p>
             </div>
-            <%= form_for(current_user) do |f| %>
+            <%= form_for(@user) do |f| %>
 
               <div class="form-group">
                 <%= f.label :iban, "IBAN", class: "col-sm-3 control-label" %>

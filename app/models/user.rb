@@ -46,6 +46,16 @@ class User < ActiveRecord::Base
     User.where("(latitude - :my_lat) * (latitude - :my_lat) + (longitude - :my_lng) * (longitude - :my_lng) < 0.004 * 0.004 AND id != :my_id", my_lat: self.latitude, my_lng: self.longitude, my_id: self.id)
   end
 
+  def common_neighbors(neighbor)
+    output = []
+    neighbors.each { |user| output << user if neighbors.include?(user) && neighbors.include?(neighbor) && user != neighbor }
+    output
+  end
+
+  def exclusive_neighbors(neighbor)
+    neighbors - common_neighbors(neighbor) - [neighbor]
+  end
+
   validates_presence_of :email
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   validates_attachment_content_type :identity_proof, content_type: [/\Aimage\/.*\z/, "application/pdf"]

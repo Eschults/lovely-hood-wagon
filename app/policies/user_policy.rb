@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.neighbors.include?(record) || user == record
+    user.neighbors.include?(record) || user == record || user.admin?
   end
 
   def create?

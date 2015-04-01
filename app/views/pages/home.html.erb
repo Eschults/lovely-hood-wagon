@@ -133,9 +133,11 @@
           <div class="lead">
             <h1>Lovely Hood est à <strong>Paris</strong>.</h1>
             <p>L'inscription est aujourd'hui ouverte à la création d'annonces uniquement. <br>Nous lancerons le produit quartier par quartier, une fois la concentration d'offres souhaitée atteinte, pour vous offrir le meilleur service.</p>
-            <div class="text-center">
-              <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
-            </div>
+            <% unless user_signed_in? %>
+              <div class="text-center">
+                <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

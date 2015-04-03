@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
   end
 
   def address_changed?
-    :street_changed? || :zipcode_changed?
+    attrs = %w(street zip_code)
+    attrs.any?{|a| send "#{a}_changed?"}
   end
 
   def conversations

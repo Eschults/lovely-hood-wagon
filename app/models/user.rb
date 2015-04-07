@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  # after_update :unvalidate_address, if: :address_changed?
 
   has_attached_file :picture,
     styles: { medium: "300x300#", thumb: "100x100#" }
@@ -23,12 +24,19 @@ class User < ActiveRecord::Base
 
   def age
     d = Date.today
-    (d.year - birthday.year) - (d.day > birthday.day ? 0 : 1)
+    (d.year - birthday.year) - (d.month > birthday.month ? 0 : - (d.day > birthday.day ? 0 : 1))
   end
 
   def address_changed?
-    attrs = %w(street zip_code)
-    attrs.any?{|a| send "#{a}_changed?"}
+    self.street_changed?
+  end
+
+  def unvalidate_address
+    address_verified = false
+    offers.each do |offer|
+      offer.published = false
+      offer.save
+    end
   end
 
   def conversations

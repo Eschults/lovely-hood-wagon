@@ -7,8 +7,8 @@
         </div>
       </div>
       <div class="col-sm-7 col-xs-5 padding-left-30">
-        <h5 class="margin-none offer-nature-link"><%= offer.nature %></h5>
-        <p class="margin-top-10"><%= offer.description + "..." %></p>
+        <div class="margin-none"><%= ("<strong>" + offer.nature + "</strong>").html_safe + (offer.one_price ? ", #{offer.one_price}" : "") %></div>
+        <p class="margin-top-10 font-normal"><%= offer.description.size > 50 ? offer.description[0..49] + "..." : offer.description %></p>
       </div>
       <div class="col-sm-4 col-xs-6 padding-none" id="<%= "append-target_#{offer.id}" %>">
         <% if current_user.authorized.nil? %>

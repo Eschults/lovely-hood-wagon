@@ -16,15 +16,15 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
-    @user.update(user_params)
-    if @user.address_changed?
+    if @user.street != user_params[:street]
       @user.address_verified = false
       @user.offers.each do |offer|
         offer.published = false
         offer.save
       end
+      @user.save
     end
-    if @user.save
+    if @user.update(user_params)
       name_and_address_validations(user_path(@user))
     else
       render :edit
@@ -70,6 +70,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :first_name,
       :last_name,
+      :email,
       :gender,
       :birthday,
       :phone,

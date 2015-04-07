@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   def age
     d = Date.today
-    (d.year - birthday.year) - (d.month > birthday.month ? 0 : - (d.day > birthday.day ? 0 : 1))
+    (d.year - birthday.year) - (d.month > birthday.month ? 0 : (d.day > birthday.day ? 0 : 1))
   end
 
   def address_changed?

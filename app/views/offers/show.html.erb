@@ -22,7 +22,7 @@
           <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>
             <% if @offer.picture_file_name %>
-              <%= link_to @offer.picture.url(:large), class: "fancybox", id: "single-image", "rel" => "group" do %>
+              <%= link_to @offer.picture.url(:original), class: "fancybox", id: "single-image", "rel" => "group" do %>
                 <%= image_tag(@offer.picture.url(:medium), { class: "img img-lovely" }) %>
               <% end %>
             <% else %>

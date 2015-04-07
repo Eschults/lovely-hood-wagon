@@ -3,7 +3,7 @@ class Offer < ActiveRecord::Base
 
   has_many :bookings
   has_attached_file :picture,
-    styles: { large: "600x600#", medium: "300x300#", thumb: "100x100#" }
+    styles: { large: "600x600#", medium: "300x300#", thumb: "100x100#", original: "600x600>" }
 
   acts_as_votable
 
@@ -38,6 +38,10 @@ class Offer < ActiveRecord::Base
 
     add_attribute :large_picture_url do
       picture.url(:large)
+    end
+
+    add_attribute :original_picture_url do
+      picture.url(:original)
     end
 
     add_attribute :picture? do

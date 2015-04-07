@@ -695,10 +695,10 @@ a.gray-lighter {
 .notices {
   position: absolute;
   left: 50%;
-  width: 300px;
+  width: 320px;
   text-align: center;
-  margin-top: 15px;
-  margin-left: -150px;
+  margin-top: 20px;
+  margin-left: -160px;
   z-index: 2;
 }
 
@@ -707,7 +707,7 @@ a.gray-lighter {
 }
 
 .alert-warning {
-  background-color: rgba(34, 167, 240, 0.8);
+  background-color: rgba(34, 167, 240, 1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }

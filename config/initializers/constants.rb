@@ -53,6 +53,7 @@ NATURES = {
     'Rouleau à peinture',
     'Sac à dos',
     'Sac à main',
+    'Sac de voyage',
     'Scanner',
     'Selle (équitation)',
     'Siège bébé',

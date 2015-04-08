@@ -50,7 +50,6 @@ function initAlgolia(
   var minReviewsCount = 0;
 
 
-
   function searchCallback(success, content) {
     if (!success || content.query !== $q.val()) {
       // do not consider the result if there is an error
@@ -77,7 +76,8 @@ function initAlgolia(
       latLng = new google.maps.LatLng(content.hits[i]._geoloc["lat"],content.hits[i]._geoloc["lng"]);
       var marker = new google.maps.Marker({
         position: latLng,
-        title: content.hits[i].nature
+        infoWindow: content.hits[i].nature,
+        id: content.hits[i].id
       });
       marker.setMap(map);
       markers[i] = marker;
@@ -121,6 +121,18 @@ function initAlgolia(
 
     $('.offer-stream-box').on('click', function(e) {
       showOrHidePicture($(this));
+    });
+
+    $('.offer-stream-box').on('mouseenter', function(e) {
+      var id = $(this).attr('id').slice(6, $(this).attr('id').length)
+      var markerToAnimate = $.grep(markers, function(e) { return e.id == id })
+      markerToAnimate[0].setAnimation(google.maps.Animation.BOUNCE);
+    });
+
+    $('.offer-stream-box').on('mouseleave', function(e) {
+      var id = $(this).attr('id').slice(6, $(this).attr('id').length)
+      var markerToAnimate = $.grep(markers, function(e) { return e.id == id })
+      markerToAnimate[0].setAnimation(null);
     });
 
     togglePaddingRight();

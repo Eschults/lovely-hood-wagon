@@ -16,7 +16,9 @@
           <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
           <% else %>
             <% if @booking.offer.picture_file_name %>
-              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-lovely" }) %>
+              <%= link_to @booking.offer.picture.url(:original), class: "fancybox", id: "single-image", "rel" => "group" do %>
+                <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-lovely" }) %>
+              <% end %>
             <% else %>
               <%= image_tag("no-image.png", { class: "img img-lovely" }) %>
             <% end %>
@@ -68,8 +70,34 @@
           <%= render "shared/contact_owner", booking: @booking %>
         <% end %>
         <p>Revoir l'<%= link_to "annonce", offer_path(@booking.offer) %></p>
-        <p>COMING SOON : gros itinéraire bien pimpé</p>
+        <% if @booking.accepted %>
+          <% if (@booking.offer.type_of_offer == "service" && current_user == @booking.offer.user) || (@booking.offer.type_of_offer != "service" && current_user == @booking.user) %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Itinéraire</h4>
+              </div>
+              <div class="panel-body padding-none">
+                <div id="map" class="col-sm-9" style="height:300px"></div>
+                <div id="directionsPanel" class="col-sm-3" style="height:300px;overflow:scroll"></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<%= content_for(:js) do %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+      var lat = <%= current_user.latitude %>
+      var lng = <%= current_user.longitude %>
+      var userLocation = new google.maps.LatLng(lat, lng);
+      initializeDirections(userLocation);
+      calcRoute(userLocation, '<%= current_user == @booking.user ? @booking.offer.user.address : @booking.user.address %>')
+    });
+  <% end %>
+<% end %>

@@ -66,48 +66,14 @@
 
       <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-body border-none">
-          <% if policy(@offer).update? %>
-            <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide margin-btm-15" %>
-            <% if current_user.authorized.nil? %>
-            <% elsif current_user.verif == 0 %>
-              <%= form_for @offer, remote: true, method: :patch, url: offer_path(@offer)  do |f| %>
-              <div class="row">
-                <div class="col-xs-9 padding-right-10">
-                  <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control height-40" } %>
-                </div>
-                <div class="col-xs-3 padding-left-none">
-                  <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
-                    <i class="fa fa-save"></i>
-                  <% end %>
-                </div>
-                <div class="col-xs-12 hidden margin-top-10" id="<%= "append-target_#{@offer.id}" %>"></div>
-              </div>
-              <% end %>
-            <% else %>
-              <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
-                <%= pluralize(current_user.verif, 'étape') %> pour publier
-              <% end %>
-            <% end %>
+          <% if current_user.admin? %>
+            <%= render "owner_actions" %>
+            <br>
+            <%= render "client_actions" %>
+          <% elsif policy(@offer).update? %>
+            <%= render "owner_actions" %>
           <% else %>
-            <% if current_user.find_voted_items.include? @offer %>
-              <%= link_to unwish_offer_path(@offer), class: "btn btn-success btn-wide btn-left", method: :put do %>
-                <i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;&nbsp;Délister
-              <% end %>
-            <% else %>
-              <%= link_to wish_offer_path(@offer), class: "btn btn-success btn-wide btn-left", method: :put do %>
-                <i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;&nbsp;Enregistrer
-              <% end %>
-            <% end %>
-            <br>
-            <br>
-            <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide btn-left" do %>
-              <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;Demande d'info
-            <% end %>
-            <br>
-            <br>
-            <%= link_to new_offer_booking_path(@offer), class: "btn btn-primary btn-wide btn-left" do %>
-              <i class="fa fa-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;Réserver
-            <% end %>
+            <%= render "client_actions" %>
           <% end %>
         </div>
       </div>
@@ -203,6 +169,17 @@
           <p>Pas encore de commentaire rédigé à propos de cette annonce</p>
         <% end %>
       </div>
+      <% unless current_user == @offer.user || @offer.type_of_offer == "service" %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Itinéraire</h4>
+          </div>
+          <div class="panel-body padding-none">
+            <div id="map" style="float:left;width:70%; height:300px"></div>
+            <div id="directionsPanel" style="float:right;width:30%;height:300px;padding:0 10px 10px 10px;overflow:scroll"></div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -212,6 +189,11 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       $(".fancybox").fancybox();
+      var lat = <%= current_user.latitude %>
+      var lng = <%= current_user.longitude %>
+      var userLocation = new google.maps.LatLng(lat, lng);
+      initializeDirections(userLocation);
+      calcRoute(userLocation, '<%= @offer.user.address %>')
     });
   <% end %>
 <% end %>

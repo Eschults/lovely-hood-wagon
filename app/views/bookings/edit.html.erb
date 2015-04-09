@@ -62,6 +62,31 @@
         <% end %>
         <%= render "shared/contact_client", booking: @booking %>
       </div>
+      <% if (@booking.offer.type_of_offer == "service" && current_user == @booking.offer.user) || (@booking.offer.type_of_offer != "service" && current_user == @booking.user) %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Itinéraire</h4>
+          </div>
+          <div class="panel-body padding-none">
+            <div id="map" class="col-sm-9" style="height:300px"></div>
+            <div id="directionsPanel" class="col-sm-3" style="height:300px;overflow:scroll"></div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+<%= content_for(:js) do %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+      var lat = <%= current_user.latitude %>
+      var lng = <%= current_user.longitude %>
+      var userLocation = new google.maps.LatLng(lat, lng);
+      initializeDirections(userLocation);
+      calcRoute(userLocation, '<%= current_user == @booking.user ? @booking.offer.user.address : @booking.user.address %>')
+    });
+  <% end %>
+<% end %>

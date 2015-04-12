@@ -33,10 +33,22 @@ $border: 2px solid $color;
   border: 1px solid white;
 }
 
-.navbar-wagon .navbar-nav > .open > a,
-.navbar-wagon .navbar-nav > .open > a:hover,
-.navbar-wagon .navbar-nav > .open > a:focus {
+.navbar-wagon .navbar-nav > .open a,
+.navbar-wagon .navbar-nav > .open a:hover,
+.navbar-wagon .navbar-nav > .open a:focus {
   color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+  color: #777777;
+}
+
+.navbar-default .navbar-nav .open ul {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .nav-btn-default {

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: [:new, :create, :edit, :update, :show] do
       member do
+        put :buy, to: "bookings#buy"
         put :cancel, to: "bookings#cancel"
       end
     end

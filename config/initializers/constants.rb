@@ -174,6 +174,8 @@ NATURES = {
     'Pet-feeding',
     'Conciergerie',
     'Faire les courses',
+    'Faire le marché',
+    'Massage à domicile',
     'Accompagner les enfants',
     'Faire la cuisine',
     'Aide au déménagement',

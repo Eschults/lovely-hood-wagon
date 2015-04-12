@@ -47,10 +47,6 @@ $profile-border-width: 2px;
   top: -4px;
 }
 
-.navbar-wagon .navbar-nav > li {
-  height: 60px;
-}
-
 .navbar-wagon .navbar-nav > li > a {
   color: $color;
   line-height: $height;
@@ -262,6 +258,13 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   }
 }
 
+
+@media screen and (min-width: 768px) {
+  .navbar-wagon .navbar-nav > li {
+    height: 60px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #logo {
     height: 50px;
@@ -288,7 +291,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   }
 
   .navbar-wagon ul li {
-    text-align: center;
+    // text-align: center;
   }
 
   .navbar-wagon .navbar-nav > li > .dropdown-menu:before {

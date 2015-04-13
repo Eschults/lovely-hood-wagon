@@ -61,10 +61,8 @@ class Booking < ActiveRecord::Base
   end
 
   def send_answer_email
-    if client_validation
-      BookingMailer.review(self).deliver
-    elsif owner_validation
-      BookingMailer.confirm(self).deliver
+    if offer.sold?
+      BookingMailer.buy(self).deliver
     elsif self.accepted
       BookingMailer.accept(self).deliver
     else

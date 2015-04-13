@@ -1,0 +1,7 @@
+Bonjour <%= @booking.offer.user.first_name %>,
+
+Bonne nouvelle ! <%= @booking.user.first_name %> a acheté votre article <%= @booking.offer.nature %> !
+Nous déclenchons le paiement de <%= (@booking.booking_price * 0.96).floor %>€ sur votre compte.
+
+Pensez à laisser un <%= link_to "commentaire", new_booking_review_url(@booking) %> à <%= @booking.user.first_name %> !
+

@@ -270,23 +270,36 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
   color: white;
 }
 
+.navbar-default .navbar-nav .open ul {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid white;
+}
+
+
+.navbar-wagon .navbar-nav > li > .dropdown-menu:before {
+  background-color: rgba(0, 0, 0, 0);
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  z-index: 1;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #333333;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: white;
+}
 
 @media screen and (max-width: 768px) {
   #mosaic .lead h1 {
     // font-size: 50px;
   }
 
-  .navbar-default .navbar-nav .open ul {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: white;
-  }
-
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-    color: white;
-  }
+  // .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+  //   color: white;
+  // }
 
   .navbar-wagon .navbar-nav > .open a,
   .navbar-wagon .navbar-nav > .open a:hover,

@@ -3,4 +3,4 @@
 
 <p><%= link_to @booking.user.first_name, user_path(@booking.user) %> souhaiterait réserver <%= @booking.offer.nature %>, du <strong><%= @booking.start_date.strftime("%-d %b %Y") %></strong> au <strong><%= @booking.end_date.strftime("%-d %b %Y") %></strong></p>
 
-<p>Vous pourriez gagner : <strong><%= @booking.booking_price %>€</strong></p>
+<p>Sur la base de votre prix de <%= @booking.offer.one_price %> et des frais associés, vous pourriez gagner <strong><%= (@booking.booking_price * 0.96).floor %>€</strong></p>

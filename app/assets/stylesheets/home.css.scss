@@ -33,10 +33,6 @@ $border: 2px solid $color;
   border: 1px solid white;
 }
 
-.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-  color: #777777;
-}
-
 .nav-btn-default {
   background-color: transparent;
 }
@@ -268,6 +264,13 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
   border: 1px solid #1F3A93;
 }
 
+.navbar-wagon .navbar-nav > .open > a,
+.navbar-wagon .navbar-nav > .open > a:hover,
+.navbar-wagon .navbar-nav > .open > a:focus {
+  color: white;
+}
+
+
 @media screen and (max-width: 768px) {
   #mosaic .lead h1 {
     // font-size: 50px;
@@ -278,6 +281,10 @@ footer > .container > .row > .col-xs-12 > #social > li > a:hover {
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: white;
+  }
+
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
     color: white;
   }
 

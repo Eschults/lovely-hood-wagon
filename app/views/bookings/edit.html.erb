@@ -61,18 +61,18 @@
           <%= render "sell" %>
         <% end %>
         <%= render "shared/contact_client", booking: @booking %>
+        <% if (@booking.offer.type_of_offer == "service" && current_user == @booking.offer.user) || (@booking.offer.type_of_offer != "service" && current_user == @booking.user) %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Itinéraire</h4>
+            </div>
+            <div class="panel-body padding-none">
+              <div id="map" class="col-sm-9" style="height:300px"></div>
+              <div id="directionsPanel" class="col-sm-3" style="height:300px;overflow:scroll"></div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <% if (@booking.offer.type_of_offer == "service" && current_user == @booking.offer.user) || (@booking.offer.type_of_offer != "service" && current_user == @booking.user) %>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4>Itinéraire</h4>
-          </div>
-          <div class="panel-body padding-none">
-            <div id="map" class="col-sm-9" style="height:300px"></div>
-            <div id="directionsPanel" class="col-sm-3" style="height:300px;overflow:scroll"></div>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

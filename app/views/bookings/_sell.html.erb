@@ -3,4 +3,4 @@
 
 <p><%= link_to @booking.user.first_name, user_path(@booking.user) %> est intéressé par votre annonce <%= link_to @booking.offer.nature, offer_path(@booking.offer) %>, et souhaite vous rencontrer le <strong><%= @booking.start_date.strftime("%-d %b %Y") %></strong>, en vue d'un achat.</p>
 
-<p>Vous pourriez gagner : <strong><%= @booking.booking_price %>€</strong></p>
+<p>Sur la base de votre prix de <%= @booking.offer.one_price %> et des frais associés, vous pourriez gagner <strong><%= (@booking.booking_price * 0.96).floor %>€</strong></p>

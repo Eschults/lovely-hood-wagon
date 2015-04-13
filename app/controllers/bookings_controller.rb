@@ -82,22 +82,19 @@ class BookingsController < ApplicationController
   end
 
   def buy
+    lh = User.find_by_first_name("Lovely hood")
     set_booking
     @booking.offer.sold = true
     @booking.offer.save
-    if @booking.update(booking_params)
-      @conversation = @booking.offer.user.conversation_with(lh)
-      @message = Message.new(
-        content: "Félicitations ! #{@booking.user.first_name} a acheté votre article #{@booking.offer.nature} !
-        Nous déclenchons le paiement de #{@booking.offer.price}€ sur votre compte."
-      )
-      @message.writer = lh
-      @message.conversation = @conversation
-      @message.save
-      redirect_to new_booking_review_path(@booking)
-    else
-      redirect_to root_path
-    end
+    @conversation = @booking.offer.user.conversation_with(lh)
+    @message = Message.new(
+      content: "Félicitations ! #{@booking.user.first_name} a acheté votre article #{@booking.offer.nature} !
+      Nous déclenchons le paiement de #{(@booking.booking_price * 0.96).floor}€ sur votre compte."
+    )
+    @message.writer = lh
+    @message.conversation = @conversation
+    @message.save
+    redirect_to new_booking_review_path(@booking)
   end
 
   def cancel

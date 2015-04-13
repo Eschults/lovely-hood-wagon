@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
   belongs_to :booking
-  after_update :send_view_comment_email
+  after_create :send_view_comment_email
 
   validates_presence_of :booking, :comment, :review_type
 

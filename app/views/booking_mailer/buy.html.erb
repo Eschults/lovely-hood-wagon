@@ -31,18 +31,20 @@
             </table>
             <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                Bonjour <%= @booking.user.first_name %>,
+                Bonjour <%= @booking.offer.user.first_name %>,
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                Bonne nouvelle ! Votre demande de <%= @booking.offer.sell ? "rendez-vous pour" : "réservation de" %> <%= @booking.offer.nature %> a été acceptée par <%= @booking.offer.user.first_name %>.
+                Bonne nouvelle ! <%= @booking.user.first_name %> a acheté votre article <%= @booking.offer.nature %> !
+                <br>
+                Nous déclenchons le paiement de <%= (@booking.booking_price * 0.96).floor %>€ sur votre compte.
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                Sur la base du prix de <%= @booking.offer.one_price %> et des frais associés, vous allez être débité de <strong><%= (@booking.booking_price * 1.08).round %>€</strong>.
+                Pensez à laisser un commentaire à <%= @booking.user.first_name %> !
               </div>
               <br>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                <%= link_to offer_booking_url(@booking.offer, @booking), style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
-                  Voir le détail
+                <%= link_to new_booking_review_url(@booking), style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
+                  Laisser un commentaire à <%= @booking.user.first_name %>
                 <% end %>
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">

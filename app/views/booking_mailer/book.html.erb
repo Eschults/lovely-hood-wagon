@@ -37,7 +37,7 @@
                 Bonne nouvelle ! Vous avez une demande de <%= @booking.offer.sell ? "rendez-vous" : "réservation" %> de <%= @booking.user.name %> pour votre annonce <%= @booking.offer.nature %>.
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                Sur la base de votre prix de <%= @booking.offer.one_price %> et des frais associés, vous pourriez gagner <strong><%= (@booking.booking_price * 0.96).round %>€</strong>.
+                Sur la base de votre prix de <%= @booking.offer.one_price %> et des frais associés, vous pourriez gagner <strong><%= (@booking.booking_price * 0.96).floor %>€</strong>.
               </div>
               <br>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">

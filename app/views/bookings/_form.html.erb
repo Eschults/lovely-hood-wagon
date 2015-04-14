@@ -3,14 +3,14 @@
     <div class="form-group">
       <%= f.label :start_date, "Début", class: "col-xs-2 text-right control-label" %>
       <div class="col-xs-10">
-        <%= f.date_field :start_date, min: Date.today, class: "form-control", id: "start-date" %>
+        <%= f.text_field :start_date, value: Date.today.strftime('%d/%m/%Y'), class: "form-control datepicker", id: "start-date" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :end_date, "Fin", class: "col-xs-2 text-right control-label" %>
       <div class="col-xs-10">
-        <%= f.date_field :end_date, min: Date.today + 1, class: "form-control", id: "end-date" %>
+        <%= f.text_field :end_date, value: (Date.today + 1).strftime('%d/%m/%Y'), class: "form-control datepicker", id: "end-date" %>
       </div>
     </div>
 
@@ -20,7 +20,7 @@
       <div class="form-group">
         <%= f.label :start_date, "Du", class: "col-xs-2 text-right control-label" %>
         <div class="col-xs-10">
-          <%= f.date_field :start_date, class: "form-control", id: "start-date" %>
+          <%= f.text_field :start_date, value: Date.today.strftime('%d/%m/%Y'), class: "form-control datepicker", id: "start-date" %>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <div class="form-group">
         <%= f.label :end_date, "au", class: "col-xs-2 text-right control-label" %>
         <div class="col-xs-10">
-          <%= f.date_field :end_date, class: "form-control", id: "end-date" %>
+          <%= f.text_field :end_date, value: (Date.today).strftime('%d/%m/%Y'), class: "form-control datepicker", id: "end-date" %>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
     <div class="form-group">
       <%= f.label :start_date, "Date", class: "col-xs-2 text-right control-label" %>
       <div class="col-xs-10">
-        <%= f.date_field :start_date, class: "form-control", id: "start-date" %>
+        <%= f.text_field :start_date, value: Date.today.strftime('%d/%m/%Y'), class: "form-control datepicker", id: "start-date" %>
       </div>
     </div>
     <div class="form-group hidden">
@@ -94,18 +94,5 @@
         <%= f.submit "Envoyer", class: "btn btn-primary" %>
       </div>
     </div>
-  <% end %>
-<% end %>
-
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function(e) {
-      var startDate;
-      $("#start-date").on('change', function() {
-        startDate = $(this).val();
-        $("#end-date").val(startDate);
-        $("#end-date").attr('min', startDate);
-      })
-    });
   <% end %>
 <% end %>

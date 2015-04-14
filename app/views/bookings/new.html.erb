@@ -15,3 +15,12 @@
     </div>
   </div>
 </div>
+<%= content_for :js do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      setStartDates('<%= @offer.type_of_offer %>');
+      setEndDate('<%= @offer.type_of_offer %>');
+      checkDeliveryDate('<%= @offer.type_of_offer %>');
+    })
+  <% end %>
+<% end %>

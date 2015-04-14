@@ -25,6 +25,7 @@ gem 'aws-sdk'
 gem 'paperclip'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'rails_12factor', group: :production
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem "better_errors"

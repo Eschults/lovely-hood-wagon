@@ -14,7 +14,9 @@
         <div class="panel-body padding-none border-none transparent-bg">
           <!-- si l'offer est un service, la photo est celle du user -->
           <% if @offer.type_of_offer =="service" %>
-            <% if @offer.user.picture_file_name %>
+            <% if @offer.picture_file_name %>
+              <%= image_tag(@offer.picture.url(:medium), { class: "img img-lovely" }) %>
+            <% elsif @offer.user.picture_file_name %>
               <%= image_tag(@offer.user.picture.url(:medium), { class: "img img-lovely" }) %>
             <% else %>
               <%= image_tag "user_pic-225x225.png", class: "img img-lovely" %>

@@ -28,7 +28,9 @@
                 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                   <%- if devise_mapping.omniauthable? %>
                     <%- resource_class.omniauth_providers.each do |provider| %>
-                      <%= link_to "Inscription avec #{provider.to_s}", omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide margin-btm-15" %>
+                      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide margin-btm-15" do %>
+                        Inscription / connexion avec <i class="fa fa-facebook-square" style="font-size: 18 !important;"></i>
+                      <% end %>
                     <% end -%>
                   <% end -%>
                   <br>

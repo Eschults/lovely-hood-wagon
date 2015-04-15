@@ -29,7 +29,7 @@
                   <%- if devise_mapping.omniauthable? %>
                     <%- resource_class.omniauth_providers.each do |provider| %>
                       <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide margin-btm-15" do %>
-                        Inscription / connexion avec <i class="fa fa-facebook-square" style="font-size: 18 !important;"></i>
+                        Connexion avec facebook
                       <% end %>
                     <% end -%>
                   <% end -%>

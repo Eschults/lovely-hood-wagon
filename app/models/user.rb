@@ -56,9 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def common_neighbors(neighbor)
-    output = []
-    neighbors.each { |user| output << user if neighbors.include?(user) && neighbors.include?(neighbor) && user != neighbor }
-    output
+    neighbors.select { |user| user if neighbor.neighbors.include?(user) && user != neighbor }
   end
 
   def exclusive_neighbors(neighbor)

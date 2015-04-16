@@ -10,12 +10,12 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    user.authorized && true  # Anyone can create a booking
+    user.authorized && user.neighbors.include?(record.offer.user)  # You can create a booking if the offer is one of your neighbors'
   end
 
-  def confirm?
-    user.authorized && record.offer.user == user || record.user == user
-  end
+  # def confirm?
+  #   user.authorized && record.offer.user == user || record.user == user
+  # end
 
   def buy?
     record.user == user

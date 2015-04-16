@@ -3,7 +3,64 @@
 <% end %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+    <div class="col-sm-3">
+      <div class="panel panel-default margin-top-20 max-width-300 padding-none border-none transparent-bg">
+        <div class="panel-body padding-none border-none transparent-bg">
+          <!-- si l'offer est un service, la photo est celle du user -->
+          <% if @booking.offer.type_of_offer =="service" %>
+            <% if @offer.picture_file_name %>
+              <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-lovely" }) %>
+            <% elsif @booking.offer.user.picture_file_name %>
+              <%= image_tag(@booking.offer.user.picture.url(:medium), { class: "img img-lovely" }) %>
+            <% else %>
+              <%= image_tag "user_pic-225x225.png", class: "img img-lovely" %>
+            <% end %>
+          <!-- sinon c'est la photo de l'annonce, obligatoire à la création -->
+          <% else %>
+            <% if @booking.offer.picture_file_name %>
+              <%= link_to @booking.offer.picture.url(:original), class: "fancybox", id: "single-image", "rel" => "group" do %>
+                <%= image_tag(@booking.offer.picture.url(:medium), { class: "img img-lovely" }) %>
+              <% end %>
+            <% else %>
+              <%= image_tag("no-image.png", { class: "img img-lovely white-bg" }) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel panel-default max-width-300 padding-none">
+        <div class="panel-body border-none">
+          <% if @booking.offer.type_of_offer == "service" %>
+            <% if @booking.offer.hourly_price %>
+              <ul class="list-unstyled list-inline margin-btm-none">
+                <li class="pull-right"><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="padding-top-5">Par heure</li>
+              </ul>
+            <% end %>
+          <% elsif @booking.offer.type_of_offer == "rent" %>
+            <% if @booking.offer.daily_price %>
+              <ul class="list-unstyled list-inline">
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.daily_price %>€</h3></li><li class="padding-top-5">Par jour</li>
+              </ul>
+            <% end %>
+            <% if @booking.offer.weekly_price %>
+              <ul class="list-unstyled list-inline">
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.weekly_price %>€</h3></li><li class="padding-top-5">Par semaine</li>
+              </ul>
+            <% end %>
+            <ul class="list-unstyled list-inline padding-top-10 border-top margin-btm-none">
+              <li class="pull-right"><%= @booking.offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class="">Caution</li>
+            </ul>
+          <% else %>
+            <% if @booking.offer.price %>
+              <ul class="list-unstyled list-inline margin-btm-none">
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.price %>€</h3></li><li class="padding-top-5">(achat seul)</li>
+              </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
       <div class="panel panel-default margin-top-15 padding-none">
         <div class="panel-heading">
           <h3><%= @booking.offer.type_of_offer == "sell" ? "Demande de rendez-vous pour :" : "Réserver" %> <%= @booking.offer.nature %></h3>
@@ -21,6 +78,8 @@
       setStartDates('<%= @offer.type_of_offer %>');
       setEndDate('<%= @offer.type_of_offer %>');
       checkDeliveryDate('<%= @offer.type_of_offer %>');
+      setDays();
+      setHours();
     })
   <% end %>
 <% end %>

@@ -39,27 +39,27 @@
           <% if @offer.type_of_offer == "service" %>
             <% if @offer.hourly_price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="pull-right padding-top-5">Par heure</li>
+                <li class="pull-right"><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="padding-top-5">Par heure</li>
               </ul>
             <% end %>
           <% elsif @offer.type_of_offer == "rent" %>
             <% if @offer.daily_price %>
               <ul class="list-unstyled list-inline">
-                <li><h3 class="margin-none"><%= @offer.daily_price %>€</h3></li><li class="pull-right padding-top-5">Par jour</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.daily_price %>€</h3></li><li class="padding-top-5">Par jour</li>
               </ul>
             <% end %>
             <% if @offer.weekly_price %>
               <ul class="list-unstyled list-inline">
-                <li><h3 class="margin-none"><%= @offer.weekly_price %>€</h3></li><li class="pull-right padding-top-5">Par semaine</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.weekly_price %>€</h3></li><li class="padding-top-5">Par semaine</li>
               </ul>
             <% end %>
             <ul class="list-unstyled list-inline padding-top-10 border-top margin-btm-none">
-              <li><%= @offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class="pull-right">Caution</li>
+              <li class="pull-right"><%= @offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class="">Caution</li>
             </ul>
           <% else %>
             <% if @offer.price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li><h3 class="margin-none"><%= @offer.price %>€</h3></li><li class="pull-right padding-top-5">(achat seul)</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.price %>€</h3></li><li class="padding-top-5">(achat seul)</li>
               </ul>
             <% end %>
           <% end %>

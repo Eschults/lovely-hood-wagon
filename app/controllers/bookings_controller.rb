@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
   def create
     @booking = set_offer.bookings.new(booking_params)
     @booking.user = current_user
-    lh = User.find_by_first_name("Lovely hood")
+    lh = User.find_by_first_name("Lovely Hood")
     authorize @booking
     if current_user.stripe_customer_token
       if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != ""
@@ -51,7 +51,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    lh = User.find_by_first_name("Lovely hood")
+    lh = User.find_by_first_name("Lovely Hood")
     if @booking.update(booking_params)
       if @booking.user.conversation_with(lh)
         @conversation = @booking.user.conversation_with(lh)
@@ -82,7 +82,7 @@ class BookingsController < ApplicationController
   end
 
   def buy
-    lh = User.find_by_first_name("Lovely hood")
+    lh = User.find_by_first_name("Lovely Hood")
     set_booking
     @booking.offer.sold = true
     @booking.offer.save

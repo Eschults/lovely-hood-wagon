@@ -81,7 +81,7 @@
 
               <div class="form-group">
                 <%= f.label :birthday, "Date de naissance", class: "col-sm-3 control-label" %>
-                <div class="col-sm-9">
+                <div class="col-sm-9 padding-top-7">
                   <%= f.date_select :birthday, start_year: 1940, end_year: Date.today.year, class: "form-control" %>
                   <p class="small">Nous utilisons cette donnée à des fins d'analyse et ne la partageons jamais avec d'autres  utilisateurs.</p>
                 </div>
@@ -158,7 +158,7 @@
             <%= form_for(@user) do |f| %>
               <div class="col-sm-12">
                 <p><b>Vérifiez votre identité et votre adresse postale</b></p>
-                <p class="small">La vérification de votre identité et de votre adresse est à la fois un prérequis pour le bon fonctionnement du service et une façon simple de contribuer à la confiance au sein de la communauté Lovely hood.</p>
+                <p class="small">La vérification de votre identité et de votre adresse est à la fois un prérequis pour le bon fonctionnement du service et une façon simple de contribuer à la confiance au sein de la communauté Lovely Hood.</p>
               </div>
 
               <div class="form-group">
@@ -167,7 +167,7 @@
                   <% if @user.identity_verified %>
                     <p class="padding-top-7"><i class="fa fa-check"></i> Identité vérifiée</p>
                   <% elsif @user.identity_proof_file_name %>
-                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
+                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely Hood</p>
                   <% else %>
                     <%= f.file_field :identity_proof, class: "margin-top-6"%>
                     <p class="small">Carte d'identité, passeport ou permis de conduire uniquement</p>
@@ -181,7 +181,7 @@
                   <% if @user.address_verified %>
                     <p class="padding-top-7"><i class="fa fa-check"></i> Addresse vérifiée</p>
                   <% elsif @user.address_proof_file_name %>
-                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely hood</p>
+                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely Hood</p>
                   <% else %>
                     <%= f.file_field :address_proof, class: "margin-top-6" %>
                     <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="" class="" data-toggle="modal" data-target="#myModal">cette liste</a></p>
@@ -207,7 +207,7 @@
           </div>
           <div class="panel-body form-horizontal white-bg">
             <div class="col-xs-12">
-              <p>Avant de pouvoir créer une annonce sur Lovely hood, vous devez renseigner les coordonnées bancaires d'un compte valide domicilié en France.</p>
+              <p>Avant de pouvoir créer une annonce sur Lovely Hood, vous devez renseigner les coordonnées bancaires d'un compte valide domicilié en France.</p>
               <p>Vous recevrez alors automatiquement tous les paiements relatifs à vos annonces sur ce compte dans un délai de 48h après la prestation.</p>
             </div>
             <%= form_for(@user) do |f| %>
@@ -273,7 +273,7 @@
             <h4>Recommandations</h4>
           </div>
           <div class="white-bg panel-body">
-            <p><b>Lovely hood est basée sur la confiance et la réputation.</b> Nous vous conseillons vivement de demander des recommandations auprès de votre réseau personnel. Elles apparaitront sur votre profil, et aideront votre communauté à mieux vous connaitre.</p>
+            <p><b>Lovely Hood est basée sur la confiance et la réputation.</b> Nous vous conseillons vivement de demander des recommandations auprès de votre réseau personnel. Elles apparaitront sur votre profil, et aideront votre communauté à mieux vous connaitre.</p>
             <p>Pas encore de recommandations</p>
           </div>
         </div>

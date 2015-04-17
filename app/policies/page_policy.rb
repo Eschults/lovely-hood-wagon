@@ -11,6 +11,14 @@ class PagePolicy < Struct.new(:user, :page)
     true
   end
 
+  def poster?
+    user.admin?
+  end
+
+  def early_birds_poster?
+    true
+  end
+
   def sitemap?
     true
   end

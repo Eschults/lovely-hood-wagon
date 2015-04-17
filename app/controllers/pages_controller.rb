@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
-  layout 'map', only: :poster
   layout 'home', only: :home
 
   def home
@@ -14,6 +13,7 @@ class PagesController < ApplicationController
 
   def poster
     authorize :page, :poster?
+    render layout: 'map'
   end
 
   def early_birds_poster

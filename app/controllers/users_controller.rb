@@ -25,6 +25,10 @@ class UsersController < ApplicationController
       @user.save
     end
     if @user.update(user_params)
+      if @user.birthday == Date.today
+        @user.birthday = nil
+        @user.save
+      end
       name_and_address_validations(user_path(@user))
     else
       render :edit

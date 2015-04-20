@@ -224,11 +224,9 @@ function checkDeliveryDate() {
     var startDate = Date.parse(startValue.slice(6, 10) + '-' + startValue.slice(3, 5) + '-' + startValue.slice(0, 2));
     var endDate = Date.parse($(this).val().slice(6, 10) + '-' + $(this).val().slice(3, 5) + '-' + $(this).val().slice(0, 2));
     if(endDate - startDate < 0) {
-      $('span').removeClass("hidden");
       $(this).parent().addClass('has-error');
       $('.btn').addClass('disabled');
     } else {
-      $('span').addClass("hidden");
       $(this).parent().removeClass('has-error');
       $('.btn').removeClass('disabled');
     }

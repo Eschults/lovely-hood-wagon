@@ -1,7 +1,7 @@
 <%= link_to user_path(neighbor), class: "link-normal text-decoration-none" do %>
   <div class="offer-stream-box border-top" id="<%= "user_#{neighbor.id}" %>">
     <div class="row">
-      <div class="col-xs-1">
+      <div class="col-sm-1 col-xs-3">
         <div class="img-medium">
           <% if neighbor.picture_file_name.nil? %>
             <%= image_tag "user_pic-225x225.png", class: "img img-60" %>
@@ -10,7 +10,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-sm-7 col-xs-5 padding-left-30">
+      <div class="col-sm-7 col-xs-8 padding-left-30">
         <ul class="margin-none list-unstyled list-inline">
           <li class="padding-left-none offer-nature-link"><%= neighbor.first_name %></li>
           <li class="padding-left-none font-normal"><%= neighbor.age.to_s + " ans" unless neighbor.birthday.nil? %></li>
@@ -23,7 +23,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-sm-4 col-xs-6 padding-none">
+      <div class="col-sm-4 hidden-xs padding-none">
         <div class="col-xs-12">
           <%= link_to user_path(neighbor, anchor: "offers"), class: "btn btn-default btn-wide btn-margin" do %>
             <% if neighbor.offers.select { |offer| offer.published }.size > 0 %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/terms", to: "pages#terms"
   get "/sitemap", to:"pages#sitemap"
   get "/poster", to:"pages#poster"
-  get "/early_birds_poster", to:"pages#poster"
+  get "/early_birds_poster", to:"pages#early_birds_poster"
   resources :users, only: [:index, :show, :edit, :update]
   resources :offers, except: [:destroy] do
     member do

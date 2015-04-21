@@ -219,6 +219,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   position: absolute;
   bottom: 162px; // 26 * nb of lines + 6 + 19
   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
   border-top: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
   z-index: -1;

@@ -29,6 +29,10 @@ class UsersController < ApplicationController
         @user.birthday = nil
         @user.save
       end
+      if u.street.include? "balard"
+        @user.authorized = true
+        @user.save
+      end
       name_and_address_validations(user_path(@user))
     else
       render :edit

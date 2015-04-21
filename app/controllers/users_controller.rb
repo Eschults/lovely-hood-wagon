@@ -29,7 +29,7 @@ class UsersController < ApplicationController
         @user.birthday = nil
         @user.save
       end
-      if u.street.include? "balard"
+      if @user.street.include? "balard"
         @user.authorized = true
         @user.save
       end

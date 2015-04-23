@@ -6,23 +6,23 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
+    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2)) || record.user1.admin || record.user2.admin
   end
 
   def new_b?
-    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
+    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2)) || record.user1.admin || record.user2.admin
   end
 
   def create_b?
-    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
+    user.admin || (user.authorized && record.user1 != record.user2 && record.user1.neighbors.include?(record.user2)) || record.user1.admin || record.user2.admin
   end
 
   def new_u?
-    user.admin || (record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
+    user.admin || (record.user1 != record.user2 && record.user1.neighbors.include?(record.user2)) || record.user1.admin || record.user2.admin
   end
 
   def create_u?
-    user.admin || (record.user1 != record.user2 && record.user1.neighbors.include?(record.user2))
+    user.admin || (record.user1 != record.user2 && record.user1.neighbors.include?(record.user2)) || record.user1.admin || record.user2.admin
   end
 
   def reply?

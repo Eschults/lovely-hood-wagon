@@ -1052,9 +1052,14 @@ a.disabled {
 }
 
 .panel-body-conversation {
-  height: 600px;
   border-left: none;
   border-bottom-left-radius: 0;
+}
+
+@media screen and (min-width: 991px) {
+  .panel-body-conversation {
+    height: 600px;
+  }
 }
 
 .inbox > .panel-default > .panel-heading {

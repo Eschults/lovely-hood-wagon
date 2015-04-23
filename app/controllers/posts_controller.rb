@@ -1,12 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_offer, only: [:update]
   def index
-    @posts = policy_scope(Post)
+    @posts = []
+    current_user.neighbors.each do |neighbor|
+      neighbor.posts.each do |post|
+        @posts << post
+      end
+    end
+    @posts << current_user.posts.flatten
+    @posts.flatten!.sort_by!(&:created_at)
   end
 
   def create
     @post = current_user.posts.new(post_params)
-    authorize @post
     if @post.save
       respond_to do |format|
         format.html { render :index }

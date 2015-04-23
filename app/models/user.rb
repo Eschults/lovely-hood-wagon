@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :bookings
   has_many :messages, foreign_key: :writer_id
+  has_many :posts
 
   def age
     d = Date.today

@@ -1,0 +1,20 @@
+<div class="stick-down-target white-bg col-xs-12" id="post_<%= post.id %>">
+  <div class="message-content margin-top-15">
+    <div class="col-xs-3 img-small-square padding-none margin-left-none">
+      <% if post.user.picture_file_name %>
+        <%= image_tag(post.user.picture.url(:medium), { class: "img" }) %>
+      <% else %>
+        <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
+      <% end %>
+    </div>
+    <div class="col-xs-9 padding-left-10">
+      <ul class="margin-none list-unstyled list-inline">
+        <li class="padding-left-none">
+          <%= link_to post.user.first_name, user_path(post.user), class: "offer-nature-link" %></li>
+        <li class="padding-left-none gray-lighter font-size-12">
+          <%= post.created_at.strftime("%l:%M %p") %></li>
+        </ul>
+      <p class=""><%= simple_format post.content %></p>
+    </div>
+  </div>
+</div>

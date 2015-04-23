@@ -52,8 +52,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_distant_in_km_from(user2)
+    r = 6371
+    d_lat = (user2.latitude - latitude) * (Math::PI / 180)
+    d_lon = (user2.longitude - longitude) * (Math::PI / 180)
+    a = Math::sin(d_lat/2) * Math::sin(d_lat/2) + Math::cos(latitude * (Math::PI / 180)) * Math::cos(user2.latitude * (Math::PI / 180)) * Math::sin(d_lon/2) * Math::sin(d_lon/2)
+    distance = r * 2 * Math::atan2(Math::sqrt(a), Math.sqrt(1-a))
+  end
+
   def neighbors
-    User.where("(latitude - :my_lat) * (latitude - :my_lat) + (longitude - :my_lng) * (longitude - :my_lng) < 0.004 * 0.004 AND id != :my_id", my_lat: self.latitude, my_lng: self.longitude, my_id: self.id)
+    User.all.reject { |u1| u1.latitude.nil? }.select { |u| is_distant_in_km_from(u) <= 1 }.reject { |moi| moi == self }
   end
 
   def common_neighbors(neighbor)

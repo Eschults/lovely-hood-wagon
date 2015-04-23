@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
       if user.admin?
         scope.all.reject { |u| u.id == user.id }
       else
-        scope.where("(latitude - :my_lat) * (latitude - :my_lat) + (longitude - :my_lng) * (longitude - :my_lng) < 0.004 * 0.004 AND id != :my_id", my_lat: user.latitude, my_lng: user.longitude, my_id: user.id)
+        scope.all.reject { |u1| u1.latitude.nil? }.select { |u| user.is_distant_in_km_from(u) <= 1 }
       end
     end
   end

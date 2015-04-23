@@ -403,6 +403,10 @@ input,
   margin-left: -10px;
 }
 
+.margin-left-none {
+  margin-left: 0 !important;
+}
+
 .margin-right-15 {
   margin-right: 15px;
 }
@@ -1256,4 +1260,8 @@ i {
 
 .light {
   font-weight: 300;
+}
+
+.font-size-12 {
+  font-size: 12px
 }

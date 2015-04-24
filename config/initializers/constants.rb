@@ -173,6 +173,7 @@ NATURES = {
     'Pet-sitting',
     'Pet-feeding',
     'Conciergerie',
+    'Covoiturage',
     'Faire les courses',
     'Faire le marché',
     'Massage à domicile',

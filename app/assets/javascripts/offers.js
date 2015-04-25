@@ -65,11 +65,11 @@ function toggleFacets() {
   }
 }
 
-function togglePaddingRight() {
+function togglePaddingRightOnSm4() {
   if($(window).width() < 768) {
-    $('.col-sm-4').removeClass('padding-left-none').addClass('padding-none')
+    $('.col-sm-4').removeClass('padding-left-none').addClass('padding-none').css('margin-left', 15);
   } else {
-    $('.col-sm-4').addClass('padding-left-none').removeClass('padding-none')
+    $('.col-sm-4').addClass('padding-left-none').removeClass('padding-none').css('margin-left', 0);
   }
 }
 

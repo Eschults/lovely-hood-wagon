@@ -171,7 +171,7 @@
           <p>Pas encore de commentaire rédigé à propos de cette annonce</p>
         <% end %>
       </div>
-      <% unless current_user == @offer.user || @offer.type_of_offer == "service" %>
+      <% unless current_user == @offer.user || @offer.type_of_offer == "service" || current_user.address_verified != true %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>Itinéraire</h4>

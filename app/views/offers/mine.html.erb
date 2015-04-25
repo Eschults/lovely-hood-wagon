@@ -31,8 +31,10 @@
   <% javascript_tag do %>
     $(document).ready(function() {
       adjustIconsSizeSimple();
+      togglePaddingRight();
       $(window).on('resize', function() {
         adjustIconsSizeSimple();
+        togglePaddingRight();
       })
       $('select').on('click', function(e) {
         e.preventDefault();

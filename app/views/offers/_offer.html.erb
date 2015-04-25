@@ -12,9 +12,9 @@
           <li class="padding-left-none font-normal"><%= offer.one_price ? offer.one_price : "" %></li>
         </ul>
 
-        <p class="margin-top-10 font-normal"><%= offer.description.size > 50 ? offer.description[0..49] + "..." : offer.description %></p>
+        <p class="margin-top-10 font-normal hidden-xs"><%= offer.description.size > 50 ? offer.description[0..49] + "..." : offer.description %></p>
       </div>
-      <div class="col-sm-4 col-xs-6 padding-none" id="<%= "append-target_#{offer.id}" %>">
+      <div class="col-sm-4 col-xs-5 padding-left-none" id="<%= "append-target_#{offer.id}" %>">
         <% if current_user.authorized.nil? %>
 
         <% elsif current_user.verif == 0 %>
@@ -22,7 +22,7 @@
             <div class="col-xs-9 padding-left-none">
               <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>
             </div>
-            <div class="col-xs-3 padding-left-none">
+            <div class="col-xs-3 padding-none">
               <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide", id: "publish-submit") do %>
                 <i class="fa fa-save"></i>
               <% end %>
@@ -32,7 +32,7 @@
         <% else %>
           <div class="col-xs-12">
             <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "btn btn-default btn-wide btn-margin" do %>
-              <%= pluralize(current_user.verif, 'étape') %> pour publier
+              <%= pluralize(current_user.verif, 'étape') %> <span class="hidden-xs">pour publier</span>
             <% end %>
           </div>
         <% end %>

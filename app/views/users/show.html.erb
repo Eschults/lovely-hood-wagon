@@ -207,32 +207,34 @@
             <% end %>
           <% else %>
             <% @user.offers.each do |offer| %>
-              <div class="row margin-vertical-5 padding-vertical-6">
-                <div class="col-xs-4 padding-none">
-                  <div class="img-small">
-                    <% if offer.picture_file_name %>
-                      <%= image_tag(offer.picture.url(:medium), { class: "img-38" }) %>
-                    <% elsif offer.type_of_offer == "service" && offer.user.picture_file_name %>
-                      <%= image_tag(offer.user.picture.url(:medium), { class: "img-38" }) %>
-                    <% else %>
-                      <%= image_tag "no-image-38.png", class: "bg-color" %>
-                    <% end %>
+              <% if offer.published %>
+                <div class="row margin-vertical-5 padding-vertical-6">
+                  <div class="col-xs-4 padding-none">
+                    <div class="img-small">
+                      <% if offer.picture_file_name %>
+                        <%= image_tag(offer.picture.url(:medium), { class: "img-38" }) %>
+                      <% elsif offer.type_of_offer == "service" && offer.user.picture_file_name %>
+                        <%= image_tag(offer.user.picture.url(:medium), { class: "img-38" }) %>
+                      <% else %>
+                        <%= image_tag "no-image-38.png", class: "bg-color" %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-xs-8 padding-none">
+                    <div class="small gray-lighter">
+                      <% if offer.nature.length >= 20 %>
+                        <%= link_to offer.nature[0..19] + "...", offer_path(offer) %>
+                        <br>
+                        <%= offer.one_price %>
+                      <% else %>
+                        <%= link_to offer.nature, offer_path(offer) %>
+                        <br>
+                        <%= offer.one_price %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
-                <div class="col-xs-8 padding-none">
-                  <div class="small gray-lighter">
-                    <% if offer.nature.length >= 20 %>
-                      <%= link_to offer.nature[0..19] + "...", offer_path(offer) %>
-                      <br>
-                      <%= offer.one_price %>
-                    <% else %>
-                      <%= link_to offer.nature, offer_path(offer) %>
-                      <br>
-                      <%= offer.one_price %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>

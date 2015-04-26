@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
-    if @user.street != user_params[:street]
+    if @user.street != user_params[:street] && user_params[:street]
       @user.address_verified = false
       @user.offers.each do |offer|
         offer.published = false

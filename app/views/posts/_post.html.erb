@@ -1,5 +1,5 @@
 <div class="panel panel-default white-bg margin-top-15 padding-none">
-  <div class="panel-body padding-none">
+  <div class="panel-body padding-none border-btm">
     <div class="stick-down-target white-bg col-xs-12" id="post_<%= post.id %>">
       <div class="message-content margin-top-15">
         <div class="col-xs-3 img-small-square padding-none margin-left-none">
@@ -15,10 +15,35 @@
               <%= link_to post.user.first_name, user_path(post.user), class: "offer-nature-link" %></li>
             <li class="padding-left-none gray-lighter font-size-12">
               <%= post.created_at.strftime("%l:%M %p") %></li>
-            </ul>
-          <p class=""><%= simple_format post.content %></p>
+          </ul>
+          <%= simple_format post.content %>
         </div>
       </div>
     </div>
+  </div>
+  <div id="comments-stream-post-<%= post.id %>">
+    <% post.comments.each do |comment| %>
+      <%= render 'comment', comment: comment %>
+    <% end %>
+  </div>
+  <div class="panel-footer border-top-none" id="panel-footer-posts">
+    <%= form_for [post, Comment.new], method: :put, url: post_path(post), remote: true do |f| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="col-xs-2 img-mini-square padding-none margin-left-none">
+            <% if current_user.picture_file_name %>
+              <%= image_tag(current_user.picture.url(:medium), { class: "img" }) %>
+            <% else %>
+              <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
+            <% end %>
+          </div>
+          <div class="col-xs-10 padding-left-10">
+            <div class="form-group margin-btm-none">
+              <%= f.text_field :content, style: "resize: none", class: "form-control height-32" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

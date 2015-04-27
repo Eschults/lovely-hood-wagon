@@ -239,28 +239,22 @@
           <% end %>
         </div>
       </div>
-      <div class="panel panel-default max-width-300 padding-none" id="unpublished_offers">
-        <div class="panel-heading">
-          <h4>
-            <% if current_user == @user && @user.offers.size > 0 %>
-              <%= link_to mine_path, class: "nice-link" do %>
-                <%= "Masquée".pluralize(@user.offers.size) %> (<%= @user.offers.size %>)
-              <% end %>
-            <% else %>
-              Masquées
-            <% end %>
-          </h4>
-        </div>
-        <div class="panel-body">
-          <% if current_user.admin? %>
-            <% if @user.offers.select { |offer| offer.published != true }.count == 0 %>
-              <% if @user == current_user %>
-                <%= link_to "Publier une annonce", new_offer_path %>
+      <% if current_user.admin? %>
+        <div class="panel panel-default max-width-300 padding-none" id="unpublished_offers">
+          <div class="panel-heading">
+            <h4>
+              <% if current_user == @user && @user.offers.size > 0 %>
+                <%= link_to mine_path, class: "nice-link" do %>
+                  <%= "Masquée".pluralize(@user.offers.size) %> (<%= @user.offers.size %>)
+                <% end %>
               <% else %>
-                Pas d'annonce masquée
+                Masquées
               <% end %>
-            <% else %>
-              <% @user.offers.select { |o| o.published != true }.each do |offer| %>
+            </h4>
+          </div>
+          <div class="panel-body">
+            <% @user.offers.each do |offer| %>
+              <% unless offer.published %>
                 <div class="row margin-vertical-5 padding-vertical-6">
                   <div class="col-xs-4 padding-none">
                     <div class="img-small">
@@ -289,9 +283,9 @@
                 </div>
               <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <div class="col-sm-9">
       <div class="user-info">

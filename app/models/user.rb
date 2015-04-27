@@ -40,6 +40,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def published_offers
+    offers.select { |offer| offer.published }
+  end
+
+  def unpublished_offers
+    offers - published_offers
+  end
+
   def conversations
     Conversation.where("user1_id = :id OR user2_id = :id", id: self.id)
   end

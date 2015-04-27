@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :set_offer, only: [:update]
   def index
     @posts = current_user.posts_in_scope
     @post = Post.new
@@ -22,6 +21,21 @@ class PostsController < ApplicationController
   end
 
   def update
+    set_post
+    @comment = Comment.new(comment_params)
+    @comment.user = current_user
+    @comment.post = @post
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to :index }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :index }
+        format.js
+      end
+    end
   end
 
   private
@@ -32,6 +46,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end
 

@@ -1,0 +1,24 @@
+<div class="panel-footer border-top-none padding-btm-none" id="panel-footer-posts">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="col-xs-2 img-mini-square padding-none margin-left-none">
+        <% if comment.user.picture_file_name %>
+          <%= image_tag(comment.user.picture.url(:medium), { class: "img" }) %>
+        <% else %>
+          <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
+        <% end %>
+      </div>
+      <div class="col-xs-10 padding-left-10">
+        <div class="font-size-13">
+          <ul class="margin-none list-unstyled list-inline">
+            <li class="padding-left-none">
+              <%= link_to comment.user.first_name, user_path(comment.user), class: "offer-nature-link" %></li>
+            <li class="padding-left-none gray-lighter font-size-12">
+              <%= comment.created_at.strftime("%l:%M %p") %></li>
+          </ul>
+          <%= simple_format comment.content, class: "margin-btm-none" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,8 +28,8 @@
             <h4>Annonces</h4>
             <div class="btn-group float-right margin-top-neg-26">
               <ul class="list-unstyled list-inline">
-                <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;">Trier par proximité</a></li>
-                <li><a href="#" id="price_sort" onclick="sortBy('_price_asc', this); return false;">Trier par prix</a></li>
+                <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;"><span class="hidden-xs">Trier par </span>proximité</a></li>
+                <li><a href="#" id="price_sort" onclick="sortBy('_price_asc', this); return false;"><span class="hidden-xs">Trier par </span>prix</a></li>
               </ul>
             </div>
           </div>
@@ -224,6 +224,7 @@
         adjustNatureIconsSize();
         toggleFacets();
         adjustDivsHeights();
+        $('#sidebar').click();
       });
       var myLatlng = new google.maps.LatLng(
         '<%= current_user.latitude %>',

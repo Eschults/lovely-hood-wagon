@@ -242,6 +242,10 @@ input,
   padding-top: 70px;
 }
 
+.padding-top-none {
+  padding-top: 0;
+}
+
 
 .frame {
   padding: 20px;
@@ -1007,6 +1011,10 @@ a.disabled {
   color: rgb(119, 119, 119);
 }
 
+#panel-footer-posts {
+  background-color: #FCFCFC;
+}
+
 .panel-default > .panel-heading h3,
 .panel-default > .panel-heading h4 {
   margin: 5px 0;
@@ -1140,7 +1148,8 @@ a.disabled {
 .btn-primary,
 .btn-success,
 .btn-danger,
-.btn-facebook {
+.btn-facebook,
+.btn-post {
   padding: 0 15px;
   line-height: $btn-height;
   color: rgb(79, 79, 79);
@@ -1154,6 +1163,7 @@ a.disabled {
 .btn-primary:hover,
 .btn-danger:hover,
 .btn-facebook:hover,
+.btn-post:hover,
 .btn-default:focus,
 .btn-primary:focus,
 .btn-danger:focus,
@@ -1161,7 +1171,8 @@ a.disabled {
 .btn-default:active,
 .btn-primary:active,
 .btn-danger:active,
-.btn-facebook:active {
+.btn-facebook:active,
+.btn-post:active {
   background-color: #ABB7B7;
   -moz-transition: all .1s ease-in;
   -webkit-transition: all .1s ease-in;
@@ -1189,6 +1200,14 @@ a.disabled {
   color: white;
 }
 
+.btn-post {
+  line-height: 30px;
+  font-size: 13px;
+  font-weight: normal;
+  background-color: #3A5795;
+  color: white;
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
@@ -1210,6 +1229,13 @@ a.disabled {
 .btn-facebook:hover,
 .btn-facebook:focus,
 .btn-facebook:active {
+  color: white;
+  background-color: #1B316C;
+}
+
+.btn-post:hover,
+.btn-post:focus,
+.btn-post:active {
   color: white;
   background-color: #1B316C;
 }
@@ -1273,4 +1299,8 @@ i {
 
 .font-size-12 {
   font-size: 12px
+}
+
+.height-42 {
+  height: 42px;
 }

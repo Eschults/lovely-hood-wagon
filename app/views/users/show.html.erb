@@ -207,7 +207,7 @@
             <% end %>
           <% else %>
             <% @user.offers.each do |offer| %>
-              <% if offer.published %>
+              <% if offer.published || current_user.admin? %>
                 <div class="row margin-vertical-5 padding-vertical-6">
                   <div class="col-xs-4 padding-none">
                     <div class="img-small">

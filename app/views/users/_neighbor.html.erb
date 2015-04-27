@@ -26,8 +26,8 @@
       <div class="col-sm-4 hidden-xs padding-none">
         <div class="col-xs-12">
           <%= link_to user_path(neighbor, anchor: "offers"), class: "btn btn-default btn-wide btn-margin" do %>
-            <% if neighbor.offers.select { |offer| offer.published }.size > 0 %>
-              <%= neighbor.offers.select { |offer| offer.published }.size %> <%= "annonce".pluralize(neighbor.offers.size) + " publiée".pluralize(neighbor.offers.size) %>
+            <% if neighbor.published_offers.size > 0 %>
+              <%= neighbor.published_offers.size %> <%= "annonce".pluralize(neighbor.published_offers.size) + " publiée".pluralize(neighbor.published_offers.size) %>
             <% else %>
               Pas encore d'annonce
             <% end %>

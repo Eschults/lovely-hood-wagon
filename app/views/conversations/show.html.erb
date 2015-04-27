@@ -12,8 +12,8 @@
           <h4>Boîte de réception</h4>
         </div>
         <div class="panel-body padding-none panel-body-inbox ">
-          <% current_user.conversations.sort_by { |c| c.messages.last.updated_at }.reverse.each do |conversation| %>
-            <% if conversation.messages.select{ |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
+          <% current_user.conversations.sort_by { |c| c.messages.last.created_at }.reverse.each do |conversation| %>
+            <% if conversation.messages.select { |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
               <%= render "conversation_with_unread_messages", conversation: conversation %>
             <% else %>
               <%= render "conversation", conversation: conversation %>

@@ -60,6 +60,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def neighbors_posts
+    @posts = []
+    neighbors.each do |neighbor|
+      neighbor.posts.each do |post|
+        @posts << post
+      end
+    end
+    @posts
+  end
+
+  def posts_in_scope
+    neighbors_posts + posts
+  end
+
   def is_distant_in_km_from(user2)
     r = 6371
     d_lat = (user2.latitude - latitude) * (Math::PI / 180)

@@ -222,7 +222,7 @@ function initAlgolia(
     $pagination.html($paginationTemplate.render({ pages: pages, prev_page: (content.page > 0 ? content.page : false), next_page: (content.page + 1 < content.nbPages ? content.page + 2 : false) }));
 
     adjustDivsHeights();
-
+    $('#sidebar').click();
 
 
     // update URL anchor

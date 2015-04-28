@@ -163,7 +163,8 @@ NATURES = {
     'Palmes',
     'Chauffe-eau',
     'Ustensiles de cuisine',
-    'Magnétoscope (VHS)'
+    'Magnétoscope (VHS)',
+    'Hachoir'
   ],
 
   service: [

@@ -1,6 +1,7 @@
 NATURES = {
   rent: [
     'Ampli',
+    'Adaptateur international',
     'Appareil à fondue',
     'Appareil à raclette',
     'Aspirateur',

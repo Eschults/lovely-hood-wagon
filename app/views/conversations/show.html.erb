@@ -27,9 +27,6 @@
         </div>
       </div>
     </div>
-
-
-
     <div class="col-md-8 conversation">
       <div class="panel panel-default margin-top-15 padding-none" id="panel-conversation">
         <div class="panel-heading border-btm-light">
@@ -62,7 +59,7 @@
               <div class="form-group margin-btm-10">
                 <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
               </div>
-              <div class="form-group margin-btm-none">
+              <div class="form-group margin-btm-none text-right">
                 <%= f.submit "Envoyer", class: "btn btn-primary" %>
               </div>
             <% end %>

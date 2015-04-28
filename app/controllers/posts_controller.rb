@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @posts = current_user.posts_in_scope
-    @post = Post.new
+    if current_user.latitude.nil?
+      redirect_to edit_user_path(current_user)
+      flash[:alert] = "Merci de renseigner votre adresse !"
+    else
+      @posts = current_user.posts_in_scope
+      @post = Post.new
+    end
   end
 
   def create

@@ -23,6 +23,11 @@
             <% end %>
           </li>
           <li class="disappear middle-weight">
+            <%= link_to posts_path, class: "nav-btn-default", id: "offers-nav-link" do %>
+              <i class="fa fa-users"></i> Wall
+            <% end %>
+          </li>
+          <li class="disappear middle-weight">
             <% if current_user.conversations.size > 0 %>
               <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), class: "nav-btn-default", id: "messages-nav-link" do %>
                 <i class="fa fa-envelope"></i> Messages
@@ -72,7 +77,8 @@
               <% else %>
                 <li><%= link_to "Mon compte", edit_user_path(current_user) %></li>
               <% end %>
-              <li class="appear"><%= link_to "Toutes les annonces", offers_path %></li>
+              <li class="appear"><%= link_to "Annonces of ze Hood", offers_path %></li>
+              <li class="appear"><%= link_to "Wall of ze Hood", posts_path %></li>
               <li><%= link_to "Mes voisins", users_path %></li>
               <li><%= link_to "Mes annonces", mine_path %></li>
               <li><%= link_to "Ma wish list", wishlist_path %></li>

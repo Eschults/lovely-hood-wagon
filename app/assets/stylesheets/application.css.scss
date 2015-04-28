@@ -222,6 +222,10 @@ input,
   padding-bottom: 5px;
 }
 
+.padding-btm-15 {
+  padding-bottom: 15px;
+}
+
 .padding-btm-none {
   padding-bottom: 0;
 }
@@ -374,6 +378,10 @@ input,
 
 .half-width {
   width: 50%;
+}
+
+.width-92 {
+  width: 92%;
 }
 
 .padding-vertical-6 {
@@ -730,7 +738,8 @@ a.gray-lighter {
   border-radius: 1px;
 }
 
-.alert-warning {
+.alert-warning,
+.alert-info {
   background-color: rgba(34, 167, 240, 1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);

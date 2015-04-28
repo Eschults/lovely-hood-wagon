@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  after_create :send_welcome_email
+  after_create :send_welcome_email, :send_welcome_message
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -72,7 +72,11 @@ class User < ActiveRecord::Base
   end
 
   def posts_in_scope
-    neighbors_posts + posts
+    if admin?
+      Post.all
+    else
+      neighbors_posts + posts
+    end
   end
 
   def is_distant_in_km_from(user2)
@@ -353,5 +357,22 @@ class User < ActiveRecord::Base
 
   def send_welcome_email
     UserMailer.welcome(self).deliver
+  end
+
+  def send_welcome_message
+    lh = User.find_by_first_name("Lovely Hood")
+    @conversation = Conversation.new
+    @conversation.user1 = lh
+    @conversation.user2 = self
+    @message = Message.new(
+      content: "Bienvenue sur Lovely Hood !
+      Si vous avez une question, écrivez-moi en répondant à ce message :)
+      Avant tout, complétez votre <a href='/users/#{self.id}/edit'>profil</a>.
+      A bientôt ;)
+      "
+    )
+    @message.writer = lh
+    @message.conversation = @conversation
+    @message.save
   end
 end

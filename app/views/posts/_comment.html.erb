@@ -1,4 +1,4 @@
-<div class="panel-footer border-top-none padding-btm-none" id="panel-footer-posts">
+<div class="panel-footer padding-top-15 border-top-none padding-btm-none" id="panel-footer-posts">
   <div class="row">
     <div class="col-xs-12">
       <div class="col-xs-2 img-mini-square padding-none margin-left-none">
@@ -11,10 +11,17 @@
       <div class="col-xs-10 padding-left-10">
         <div class="font-size-13">
           <ul class="margin-none list-unstyled list-inline">
-            <li class="padding-left-none">
-              <%= link_to comment.user.first_name, user_path(comment.user), class: "offer-nature-link" %></li>
+            <% if current_user.neighbors.include?(comment.user) || current_user == comment.user %>
+              <li class="padding-left-none">
+                <%= link_to comment.user.first_name, user_path(comment.user), class: "offer-nature-link" %>
+              </li>
+            <% else %>
+              <li class="padding-left-none">
+                <%= ('<strong>' + comment.user.first_name + '</strong>').html_safe %>
+              </li>
+            <% end %>
             <li class="padding-left-none gray-lighter font-size-12">
-              <%= comment.created_at.strftime("%l:%M %p") %></li>
+              <%= (((Time.now - comment.created_at < 86400000) && Date.today.day == comment.created_at.day) ? "" : (Time.now - comment.created_at < 86400000 ? "Yesterday," : comment.created_at.strftime("%A, %e %B "))) + comment.created_at.strftime("%l:%M %p") %></li>
           </ul>
           <%= simple_format comment.content, class: "margin-btm-none" %>
         </div>

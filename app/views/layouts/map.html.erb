@@ -61,6 +61,7 @@
   <%= javascript_tag do %>
     $(document).ready(function(e) {
       colorMessagesBadgeOnHover();
+      $('.alert').delay(1000).fadeOut(2000);
     });
   <% end %>
 </body>

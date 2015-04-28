@@ -32,11 +32,3 @@
     </div>
   </div>
 </div>
-<%= content_for :js do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      $('.alert').delay(1000).fadeOut(2000)
-    })
-  <% end %>
-<% end %>
-

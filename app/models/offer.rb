@@ -100,6 +100,9 @@ class Offer < ActiveRecord::Base
         output = price
       end
     end
+    if output == 0
+      output = "0"
+    end
     output
   end
 

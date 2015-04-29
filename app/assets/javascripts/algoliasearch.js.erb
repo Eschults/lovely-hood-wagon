@@ -12,7 +12,8 @@ function initAlgolia(
   lng,
   map,
   markers,
-  currentUserWishedItemsIds
+  currentUserWishedItemsIds,
+  admin
 ) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
@@ -268,10 +269,18 @@ function initAlgolia(
       params.typoTolerance = false;
     }
 
+    var radius
+
+    if(admin) {
+      radius = 10000
+    } else {
+      radius = 1000
+    }
+
     // perform the query
     helper.search($q.val(), searchCallback, {
       aroundLatLng: lat + ',' + lng,
-      aroundRadius: 1000 // 1km around
+      aroundRadius: radius // 1km around unless admin
     });
   }
 

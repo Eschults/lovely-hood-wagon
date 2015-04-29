@@ -240,10 +240,12 @@
       }
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-      var allowedBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(<%= current_user.latitude - 0.003 %> , <%= current_user.longitude - 0.003 %>),
-        new google.maps.LatLng(<%= current_user.latitude + 0.003 %>, <%= current_user.longitude + 0.003 %>)
-      );
+      <% unless current_user.admin? %>
+        var allowedBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(<%= current_user.latitude - 0.003 %> , <%= current_user.longitude - 0.003 %>),
+          new google.maps.LatLng(<%= current_user.latitude + 0.003 %>, <%= current_user.longitude + 0.003 %>)
+        );
+      <% end %>
       var lastValidCenter = map.getCenter();
 
       google.maps.event.addListener(map, 'center_changed', function() {
@@ -278,7 +280,8 @@
         '<%= current_user.longitude %>',
         map,
         markers,
-        '<%= current_user.find_voted_items.map { |offer| offer.id } %>'
+        '<%= current_user.find_voted_items.map { |offer| offer.id } %>',
+        '<%= current_user.admin? %>'
       );
 
       $('#default_sort').on('click', function(e) {

@@ -104,38 +104,47 @@
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-left-none">
           <h4 class="margin-none text-right price">
-            {{#daily_price}}
-              {{ daily_price }}€
-            {{/daily_price}}
-            {{^daily_price}}
-              {{#weekly_price}}
-                {{ weekly_price }}€
-              {{/weekly_price}}
-              {{^weekly_price}}
-                {{#hourly_price}}
-                  {{ hourly_price }}€
-                {{/hourly_price}}
-                {{^hourly_price}}
-                  {{ price }}€
-                {{/hourly_price}}
-              {{/weekly_price}}
-            {{/daily_price}}
+            {{#free?}}
+              Prêt
+            {{/free?}}
+            {{^free?}}
+              {{#daily_price}}
+                {{ one_price_int }}€
+              {{/daily_price}}
+              {{^daily_price}}
+                {{#weekly_price}}
+                  {{ weekly_price }}€
+                {{/weekly_price}}
+                {{^weekly_price}}
+                  {{#hourly_price}}
+                    {{ hourly_price }}€
+                  {{/hourly_price}}
+                  {{^hourly_price}}
+                    {{ price }}€
+                  {{/hourly_price}}
+                {{/weekly_price}}
+              {{/daily_price}}
+            {{/free?}}
           </h4>
           <p class="small">
-            {{#daily_price}}
-              / jour
-            {{/daily_price}}
-            {{^daily_price}}
-              {{#weekly_price}}
-                / semaine
-              {{/weekly_price}}
-              {{^weekly_price}}
-                {{#hourly_price}}
-                  / heure
-                {{/hourly_price}}
+            {{#free?}}
+            {{/free?}}
+            {{^free?}}
+              {{#daily_price}}
+                / jour
+              {{/daily_price}}
+              {{^daily_price}}
+                {{#weekly_price}}
+                  / semaine
+                {{/weekly_price}}
+                {{^weekly_price}}
+                  {{#hourly_price}}
+                    / heure
+                  {{/hourly_price}}
 
-              {{/weekly_price}}
-            {{/daily_price}}
+                {{/weekly_price}}
+              {{/daily_price}}
+            {{/free?}}
           </p>
         </div>
       </div>

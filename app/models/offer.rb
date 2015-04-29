@@ -44,6 +44,10 @@ class Offer < ActiveRecord::Base
       picture.url(:original)
     end
 
+    add_attribute :free? do
+      free?
+    end
+
     add_attribute :picture? do
       if picture.url(:medium) == "/pictures/medium/missing.png"
         nil
@@ -100,10 +104,11 @@ class Offer < ActiveRecord::Base
         output = price
       end
     end
-    if output == 0
-      output = "0"
-    end
     output
+  end
+
+  def free?
+    one_price_int == 0 ? true : false
   end
 
   def available?(first_day, last_day)

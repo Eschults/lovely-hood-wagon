@@ -287,7 +287,7 @@
     </div>
     <div class="col-sm-9">
       <div class="user-info">
-        <h1><%= @user.first_name ? "Profil de #{@user.first_name.capitalize}" : "Mon profil" %></h1>
+        <h1><%= @user.first_name ? "Profil de #{@user.first_name}" : "Mon profil" %></h1>
         <p>
           <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} ans - " : "" %>Membre depuis <%= @user.created_at.strftime("%b %Y") %>
         </p>

@@ -244,10 +244,12 @@
         center: myLatlng,
         draggable: true,
         scrollwheel: false,
-        minZoom: 15,
         maxZoom: 18
       }
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      <% unless current_user.admin? %>
+        map.setMinZoom(15)
+      <% end %>
 
       <% unless current_user.admin? %>
         var allowedBounds = new google.maps.LatLngBounds(

@@ -256,7 +256,6 @@
           new google.maps.LatLng(<%= current_user.latitude - 0.003 %> , <%= current_user.longitude - 0.003 %>),
           new google.maps.LatLng(<%= current_user.latitude + 0.003 %>, <%= current_user.longitude + 0.003 %>)
         );
-      <% end %>
       var lastValidCenter = map.getCenter();
 
       google.maps.event.addListener(map, 'center_changed', function() {
@@ -269,6 +268,7 @@
         // not valid anymore => return to last valid position
         map.panTo(lastValidCenter);
       });
+      <% end %>
       var markers = [];
       initAlgolia(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',

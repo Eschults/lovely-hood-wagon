@@ -3,6 +3,8 @@ class UserPolicy < ApplicationPolicy
     def resolve
       if user.admin?
         scope.all.reject { |u| u.id == user.id }
+      elsif user.latitude.nil?
+        scope.all.reject { |u| u.id }
       else
         scope.all.reject { |u1| u1.latitude.nil? || u1.id == user.id }.select { |u| user.is_distant_in_km_from(u) <= 1 }
       end
@@ -10,7 +12,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.neighbors.include?(record) || user == record || user.admin?
+    user.latitude.nil? || user.neighbors.include?(record) || user == record || user.admin?
   end
 
   def create?

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: :index
+  before_action :set_user
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
   def index
-    if current_user.latitude.nil?
-      redirect_to edit_user_path(current_user)
+    if @user.latitude.nil?
+      redirect_to edit_user_path(@user)
       flash[:alert] = "Merci de renseigner votre adresse !"
     else
       @users = policy_scope(User)
@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user.latitude.nil?
-      redirect_to edit_user_path(current_user)
+    if @user.latitude.nil?
+      redirect_to edit_user_path(@user)
       flash[:alert] = "Merci de renseigner votre adresse !"
     else
       authorize @user

@@ -59,6 +59,7 @@ NATURES = {
     'Selle (équitation)',
     'Siège bébé',
     'Siège enfant',
+    'Shaker',
     'Skateboard',
     'Skis alpins',
     'Snowboard',

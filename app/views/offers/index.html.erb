@@ -239,17 +239,25 @@
         '<%= current_user.latitude %>',
         '<%= current_user.longitude %>'
       );
-      var mapOptions = {
-        zoom: 15,
-        center: myLatlng,
-        draggable: true,
-        scrollwheel: false,
-        maxZoom: 18
-      }
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      <% unless current_user.admin? %>
-        map.setMinZoom(15)
+      <% if current_user.admin? %>
+        var mapOptions = {
+          zoom: 15,
+          center: myLatlng,
+          draggable: true,
+          scrollwheel: false,
+          maxZoom: 18
+        }
+      <% else %>
+        var mapOptions = {
+          zoom: 15,
+          center: myLatlng,
+          draggable: true,
+          scrollwheel: false,
+          maxZoom: 18,
+          minZoom: 15
+        }
       <% end %>
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
       <% unless current_user.admin? %>
         var allowedBounds = new google.maps.LatLngBounds(

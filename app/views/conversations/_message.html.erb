@@ -11,7 +11,7 @@
       <% end %>
     </div>
     <div class="col-xs-9 padding-left-10">
-      <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "message-profile-link" %></h5><p class=""><%= simple_format message.content %></p>
+      <h5 class="margin-none"><%= link_to message.writer.first_name, user_path(message.writer), class: "nice-link" %></h5><p class=""><%= simple_format message.content %></p>
     </div>
   </div>
 </div>

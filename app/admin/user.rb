@@ -2,6 +2,7 @@ ActiveAdmin.register User do
   index do
     selectable_column
     column :id
+    column :sign_in_count
     column :email
     column :first_name
     column :last_name

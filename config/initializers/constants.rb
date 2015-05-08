@@ -165,7 +165,9 @@ NATURES = {
     'Chauffe-eau',
     'Ustensiles de cuisine',
     'Magnétoscope (VHS)',
-    'Hachoir'
+    'Hachoir',
+    'Seau à champagne',
+    'Cuiseur vapeur'
   ],
 
   service: [

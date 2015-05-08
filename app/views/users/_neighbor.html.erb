@@ -19,7 +19,7 @@
           <% if current_user.admin %>
             <ul class="list-unstyled list-inline">
               <li>Signins: <%= neighbor.sign_in_count %></li>
-              <li>Last signin: <%= time_age_in_words(neighbor.last_sign_in_at) + " ago" %></li>
+              <li>Last signin: <%= time_ago_in_words(neighbor.last_sign_in_at) + " ago" %></li>
             </ul>
           <% end %>
           <%= simple_format neighbor.description[0..60] + "... "unless(neighbor.description == "" || neighbor.description.nil?) %>

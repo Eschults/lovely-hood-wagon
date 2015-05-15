@@ -32,17 +32,17 @@ class OffersController < ApplicationController
     end
     if @offer.type_of_offer == "rent" || @offer.type_of_offer == "sell"
       if @offer.one_price
-        if @offer.picture_file_name
+        # if @offer.picture_file_name
           if @offer.save
             redirect_to offer_path(@offer)
           else
             flash.now[:alert] = "Merci d'ajouter une description"
             render :new
           end
-        else
-          flash.now[:alert] = "Merci d'ajouter une photo"
-          render :new
-        end
+        # else
+        #   flash.now[:alert] = "Merci d'ajouter une photo"
+        #   render :new
+        # end
       else
         flash.now[:alert] = "Merci de renseigner un prix"
         render :new

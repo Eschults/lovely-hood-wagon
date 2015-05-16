@@ -188,6 +188,11 @@ NATURES = {
     'Laver la voiture',
     'Bricolage léger',
     'Plomberie légère',
-    'Tenir compagnie aux personnes âgées'
+    'Tenir compagnie aux personnes âgées',
+    'Jardinage',
+    'Arroser les plantes',
+    'Coaching sportif',
+    'Soutien scolaire',
+    'Dépannage indormatique'
   ]
 }

@@ -1,6 +1,6 @@
 <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide margin-btm-15" %>
 <% if @offer.user.authorized.nil? %>
-<% elsif @offer.user.verif == 0 %>
+<% elsif @offer.user.trust_steps == 0 %>
   <%= form_for @offer, remote: true, method: :patch, url: offer_path(@offer)  do |f| %>
   <div class="row">
     <div class="col-xs-9 padding-right-10">

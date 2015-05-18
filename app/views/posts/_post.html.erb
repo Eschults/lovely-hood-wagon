@@ -14,7 +14,8 @@
             <li class="padding-left-none">
               <%= link_to post.user.first_name, user_path(post.user), class: "offer-nature-link" %></li>
             <li class="padding-left-none gray-lighter font-size-12">
-              <%= (((Time.now - post.created_at < 86400) && Date.today.day == post.created_at.day) ? "" : (Time.now - post.created_at < 86400 ? "Yesterday," : post.created_at.strftime("%A, %e %B "))) + post.created_at.strftime("%l:%M %p") %></li>
+              <%= (((Time.now - post.created_at < 86400) && Date.today.day == post.created_at.day) ? "" : (Time.now - post.created_at < 86400 ? "Yesterday," : post.created_at.strftime("%A, %e %B "))) + post.created_at.strftime("%l:%M %p") %>
+            </li>
           </ul>
           <%= simple_format post.content, class: "margin-btm-none" %>
         </div>
@@ -39,7 +40,7 @@
           </div>
           <div class="col-xs-10 padding-left-10 padding-right-none width-92 js-target">
             <div class="form-group margin-btm-none total-width">
-              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32" %>
+              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32 font-size-13" %>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <%= link_to user_path(neighbor), class: "link-normal text-decoration-none" do %>
   <div class="offer-stream-box border-top" id="<%= "user_#{neighbor.id}" %>">
     <div class="row">
-      <div class="col-sm-1 col-xs-3">
+      <div class="col-sm-1 col-xs-2">
         <div class="img-medium">
           <% if neighbor.picture_file_name.nil? %>
             <%= image_tag "user_pic-225x225.png", class: "img img-60" %>

@@ -33,6 +33,7 @@
       adjustIconsSizeSimple();
       $(window).on('resize', function() {
         adjustIconsSizeSimple();
+        togglePaddingLeft();
       })
       $('select').on('click', function(e) {
         e.preventDefault();

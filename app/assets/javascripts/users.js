@@ -241,3 +241,11 @@ function formValidation() {
     };
   });
 }
+
+function togglePaddingLeft() {
+  if($window.width() < 400) {
+    $('.padding-left-30').removeClass('padding-left-30').addClass('.padding-left-50')
+  } else {
+    $('.padding-left-50').removeClass('padding-left-50').addClass('.padding-left-30')
+  }
+}

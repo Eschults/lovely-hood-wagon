@@ -9,7 +9,7 @@ class BookingMailer < ActionMailer::Base
   def book(booking)
     @booking = booking
 
-    mail(from: "#{@booking.user.first_name} via Lovely Hood <contact@lovely-hood.com>", to: @booking.offer.user.email, subject: "Félicitations ! Vous avez une demande de réservation ! ")
+    mail(from: "#{@booking.user.first_name} via Lovely Hood <contact@lovely-hood.com>", to: @booking.offer.user.email, bcc: "edward.schults@gmail.com", subject: "Félicitations ! Vous avez une demande de réservation ! ")
   end
 
   def accept(booking)

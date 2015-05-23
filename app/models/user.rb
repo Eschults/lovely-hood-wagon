@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
   end
 
   def neighbors
-    User.all.reject { |u1| u1.latitude.nil? }.select { |u| is_distant_in_km_from(u) <= 1 }.reject { |moi| moi == self }
+    User.all.reject { |u1| u1.latitude.nil? }.select { |u| is_distant_in_km_from(u) <= 1.1 }.reject { |moi| moi == self }
   end
 
   def common_neighbors(neighbor)

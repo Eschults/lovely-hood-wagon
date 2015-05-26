@@ -6,6 +6,9 @@ class OffersController < ApplicationController
 
   def index
     name_and_address_validations
+    if current_user.latitude.nil?
+      redirect_to edit_user_path(current_user)
+    end
     @offers = policy_scope(Offer)
     unless current_user.authorized
       redirect_to "/"

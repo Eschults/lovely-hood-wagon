@@ -36,7 +36,7 @@
               </p>
             <% end %>
             <% if current_user == booking.offer.user %>
-              <p>Vous allez gagner <%= booking.booking_price %>€.</p>
+              <p>Vous allez gagner <%= booking.booking_price * 0.96 %>€.</p>
             <% end %>
           </div>
         </div>

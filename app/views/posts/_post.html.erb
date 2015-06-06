@@ -18,6 +18,13 @@
             </li>
           </ul>
           <%= simple_format post.content, class: "margin-btm-none" %>
+          <% if current_user.find_voted_items.include? post %>
+            <%= link_to "Unlike", unlike_post_path(post), method: :put, remote: true, class: "like-link" %>
+          <% else %>
+            <%= link_to "Like", like_post_path(post), method: :put, remote: true, class: "like-link" %>
+          <% end %>
+          <span class="like-link"> · </span>
+          <%= link_to "Comment", "#", class: "comment-link", id: "comment_post_#{post.id}" %>
         </div>
       </div>
     </div>
@@ -40,7 +47,7 @@
           </div>
           <div class="col-xs-10 padding-left-10 padding-right-none width-92 js-target">
             <div class="form-group margin-btm-none total-width">
-              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32 font-size-12" %>
+              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32 font-size-12", id: "comment_content_post_#{post.id}" %>
             </div>
           </div>
         </div>

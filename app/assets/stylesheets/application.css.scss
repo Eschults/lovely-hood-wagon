@@ -1345,3 +1345,15 @@ i {
 .font-size-13 {
   font-size: 13px !important;
 }
+
+.like-link,
+.comment-link {
+  color: rgb(109, 132, 180);
+  font-size: 12px;
+  &:hover,
+  &:active,
+  &:focus
+   {
+    color: rgb(109, 132, 180);
+  }
+}

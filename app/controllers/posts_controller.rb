@@ -43,6 +43,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    set_post
+    @post.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_to :index }
+      format.js
+    end
+  end
+
+  def unlike
+    set_post
+    @post.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_to :index }
+      format.js
+    end
+  end
+
   private
 
   def set_post

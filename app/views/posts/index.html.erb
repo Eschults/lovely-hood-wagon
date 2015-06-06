@@ -43,6 +43,7 @@
 <%= content_for :js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
+      comment();
       if($(window).width() < 530) {
         $('.js-target').removeClass('width-92')
       } else {

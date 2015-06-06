@@ -3,4 +3,5 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :content, :post, :user
+  acts_as_votable
 end

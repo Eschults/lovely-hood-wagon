@@ -22,7 +22,12 @@ Rails.application.routes.draw do
     resources :conversations, only: [:new, :create]
     resources :stripe_customers, only: [:new, :create]
   end
-  resources :posts, only: [:index, :create, :update]
+  resources :posts, only: [:index, :create, :update] do
+    member do
+      put :like, to: "posts#like"
+      put :unlike, to: "posts#unlike"
+    end
+  end
 
   get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"
   get 'bookings/:booking_id/conversations/new', to: "conversations#new_b", as: "new_booking_conversation"

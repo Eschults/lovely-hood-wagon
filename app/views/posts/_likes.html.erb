@@ -1,0 +1,13 @@
+<div class="panel-footer padding-top-10 border-top-none padding-btm-none comments-bg-color" id="likes_<%= post.id %>">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="font-size-12 padding-btm-10 border-btm-grey" id="like_infos_post_<%= post.id %>">
+        <% if post.get_likes.size == 1 %>
+          <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: "like-link" %> aime ça.
+        <% else %>
+          <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: "like-link" %> et <%= link_to "#{pluralize(post.get_likes.size - 1, "personne")}", "#", class: "like-link" %> aiment ça.
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

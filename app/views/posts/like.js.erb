@@ -1,0 +1,17 @@
+<% if @post.get_likes.size > 1 %>
+  $('#like_link_' + <%= @post.id %>).html("Je n'aime plus")
+  $('#like_link_' + <%= @post.id %>).attr("href", "<%= unlike_post_path(@post) %>")
+  $('#like_link_' + <%= @post.id %>).attr("id", "unlike_link_" + <%= @post.id %>)
+  $('#likes_' + <%= @post.id %>).slideUp(function() {
+    var like_infos = $("<%= j render 'likes', post: @post %>").hide();
+    $('#comments-stream-post-' + <%= @post.id %>).prepend(like_infos);
+    like_infos.slideDown();
+  })
+<% else %>
+  $('#like_link_' + <%= @post.id %>).html("Je n'aime plus")
+  $('#like_link_' + <%= @post.id %>).attr("href", "<%= unlike_post_path(@post) %>")
+  $('#like_link_' + <%= @post.id %>).attr("id", "unlike_link_" + <%= @post.id %>)
+  var like_infos = $("<%= j render 'likes', post: @post %>").hide();
+  $('#comments-stream-post-' + <%= @post.id %>).prepend(like_infos);
+  like_infos.slideDown();
+<% end %>

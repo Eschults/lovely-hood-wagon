@@ -222,6 +222,10 @@ input,
   padding-bottom: 5px;
 }
 
+.padding-btm-10 {
+  padding-bottom: 10px;
+}
+
 .padding-btm-15 {
   padding-bottom: 15px;
 }
@@ -817,6 +821,9 @@ a.disabled {
 .border-btm-light {
   border-bottom: 1px solid lighten(rgb(220, 220, 220), 10%);
 }
+.border-btm-grey {
+  border-bottom: 1px solid lighten(rgb(220, 220, 220), 5%);
+}
 
 .side-borders {
   border-left: 1px solid rgb(220, 220, 220);
@@ -1041,6 +1048,10 @@ a.disabled {
 }
 
 #panel-footer-posts {
+  background-color: #FCFCFC;
+}
+
+.comments-bg-color {
   background-color: #FCFCFC;
 }
 
@@ -1352,8 +1363,7 @@ i {
   font-size: 12px;
   &:hover,
   &:active,
-  &:focus
-   {
+  &:focus {
     color: rgb(109, 132, 180);
   }
 }

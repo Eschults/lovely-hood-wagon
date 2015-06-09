@@ -44,6 +44,11 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       comment();
+      $('.link-popover').popover({
+        html: true,
+        trigger: "hover",
+        placement: "top"
+      })
       if($(window).width() < 530) {
         $('.js-target').removeClass('width-92')
       } else {

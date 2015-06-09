@@ -5,9 +5,18 @@
         <% if post.get_likes.size == 1 %>
           <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: ((current_user.neighbors + [current_user]).include?(post.get_likes.first.voter) ? "like-link" : "disabled") %> aime ça.
         <% else %>
-          <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: "like-link" %> et <%= link_to "#{pluralize(post.get_likes.size - 1, "personne")}", "#", class: "like-link" %> aiment ça.
+          <%= liker_list_string = "" %>
+          <% liker_list = post.get_likes[1..-1].each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
+
+          <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: "like-link" %> et <%= link_to "#{pluralize(post.get_likes.size - 1, "personne")}",
+            "",
+            class: "like-link link-popover",
+            data: {
+              content: "<ul class='list-unstyled'>#{liker_list_string}</ul>"
+            } %> aiment ça.
         <% end %>
       </div>
+
     </div>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<ul class="likes-popup">
+  <% post.get_likes.each do |liker| %>
+    <li><%= liker.voter.first_name %></li>
+  <% end %>
+</ul>

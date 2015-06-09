@@ -1367,3 +1367,30 @@ i {
     color: rgb(109, 132, 180);
   }
 }
+
+.popover {
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial';
+  border-radius: 1px;
+  border: none;
+  box-shadow: none;
+}
+.popover.top > .arrow {
+  border-top-color: transparent;
+  margin-left: -35%;
+  &:after {
+    border-top-color: black;
+    border-width: 6px;
+  }
+}
+.popover-content {
+  padding: 5px 8px 4px 8px;
+  & ul {
+    margin-bottom: 0;
+    & li {
+      margin-bottom: 0;
+    }
+  }
+}

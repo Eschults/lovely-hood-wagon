@@ -1,13 +1,4 @@
-<% if @post.get_likes.size == 1 %>
-  $('#unlike_link_' + <%= @post.id %>).html("J'aime")
-  $('#unlike_link_' + <%= @post.id %>).attr("href", "<%= like_post_path(@post) %>")
-  $('#unlike_link_' + <%= @post.id %>).attr("id", "like_link_" + <%= @post.id %>)
-  $('#likes_' + <%= @post.id %>).slideUp(function() {
-    var like_infos = $("<%= j render 'likes', post: @post %>").hide();
-    $('#comments-stream-post-' + <%= @post.id %>).prepend(like_infos);
-    like_infos.slideDown();
-  })
-<% elsif @post.get_likes.size == 0 %>
+<% if @post.get_likes.size == 0 %>
   $('#unlike_link_' + <%= @post.id %>).html("J'aime")
   $('#unlike_link_' + <%= @post.id %>).attr("href", "<%= like_post_path(@post) %>")
   $('#unlike_link_' + <%= @post.id %>).attr("id", "like_link_" + <%= @post.id %>)
@@ -16,7 +7,9 @@
   $('#unlike_link_' + <%= @post.id %>).html("J'aime")
   $('#unlike_link_' + <%= @post.id %>).attr("href", "<%= like_post_path(@post) %>")
   $('#unlike_link_' + <%= @post.id %>).attr("id", "like_link_" + <%= @post.id %>)
-  var like_infos = $("<%= j render 'likes', post: @post %>").hide();
-  $('#comments-stream-post-' + <%= @post.id %>).prepend(like_infos);
-  like_infos.slideDown();
+  $('#likes_' + <%= @post.id %>).slideUp(function() {
+    var like_infos = $("<%= j render 'likes', post: @post %>").hide();
+    $('#comments-stream-post-' + <%= @post.id %>).prepend(like_infos);
+    like_infos.slideDown();
+  })
 <% end %>

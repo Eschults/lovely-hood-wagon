@@ -48,7 +48,7 @@
             <p><i class="fa fa-check"></i> Identité vérifiée</p>
           <% else %>
             <p>
-              <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "text-decoration-none red-link" do %>
+              <%= link_to edit_user_path(@user, anchor: "my-trust"), class: "text-decoration-none red-link" do %>
                 <i class="fa fa-close"></i> Identité non vérifiée
               <% end %>
             </p>

@@ -90,37 +90,27 @@
 <div id="community">
   <div class='container'>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="lead lead-2">
           <h1>Proximité</h1>
           <p>
-            Votre communauté est ainsi constituée exclusivement des utilisateurs résidant à moins de 10 min à pied de chez vous.
+            Votre communauté est constituée des utilisateurs résidant à moins de 10 min à pied de chez vous.
           </p>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="lead lead-2">
-          <h1>Confiance</h1>
+          <h1>Love & Care</h1>
           <p>
-            Pour votre tranquilité, nous vérifions l'identité et l'adresse de chacun de nos membres.
+            Communiquez avec vos voisins sur le wall ou en message privé, pour mieux vous connaitre et vous entraider.
           </p>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="lead lead-2">
-          <h1>Ergonomie</h1>
+          <h1>Partage</h1>
           <p>
-            Contactez l'auteur de l'annonce pour plus d'information, ou réservez directement le produit souhaité en un clic.
-          </p>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="lead lead-2">
-          <h1>Sécurité</h1>
-          <p>
-            Payez directement en ligne, notre prestataire <%= link_to "Stripe", "https://stripe.com", "target" => "_blank" %> sécurise vos paiements.
+            Créez une annonce par article ou service que vous proposez, au prix que vous seul(e) fixez.
           </p>
         </div>
       </div>
@@ -132,7 +122,7 @@
         <div class="col-sm-10">
           <div class="lead">
             <h1>Lovely Hood est à <strong>Paris</strong>.</h1>
-            <p>L'inscription est aujourd'hui ouverte à la création d'annonces uniquement. <br>Nous lancerons le produit quartier par quartier, une fois la concentration d'offres souhaitée atteinte, pour vous offrir le meilleur service.</p>
+            <p>Suivez nous sur <%= link_to "facebook", "https://facebook.com/lvly.hood", target: "_blank" %> et sur <%= link_to "twitter", "https://twitter.com/LvlyHood", target: "_blank" %> pour être au courant des nouveautés.</p>
             <% unless user_signed_in? %>
               <div class="text-center">
                 <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>

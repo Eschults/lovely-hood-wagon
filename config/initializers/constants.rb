@@ -167,7 +167,8 @@ NATURES = {
     'Magnétoscope (VHS)',
     'Hachoir',
     'Seau à champagne',
-    'Cuiseur vapeur'
+    'Cuiseur vapeur',
+    'Centrifugeuse'
   ],
 
   service: [

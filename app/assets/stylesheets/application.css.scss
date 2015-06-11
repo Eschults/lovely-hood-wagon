@@ -1394,3 +1394,20 @@ i {
     }
   }
 }
+
+.chosen-container-single .chosen-single {
+  background: white;
+  box-shadow: none;
+  border: 1px solid rgb(204, 204, 204);
+  height: 34px;
+  line-height: 34px;
+  b {
+      margin-top: 6px;
+  }
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+  background: white;
+  box-shadow: none;
+  border: 1px solid rgb(204, 204, 204);
+}

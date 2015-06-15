@@ -194,6 +194,6 @@ NATURES = {
     'Arroser les plantes',
     'Coaching sportif',
     'Soutien scolaire',
-    'Dépannage indormatique'
+    'Dépannage informatique'
   ]
 }

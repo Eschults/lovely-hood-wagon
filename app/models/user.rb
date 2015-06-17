@@ -68,6 +68,9 @@ class User < ActiveRecord::Base
         @posts << post
       end
     end
+    User.find_by_first_name("Lovely Hood").posts.each do |post|
+      @posts << post
+    end
     @posts
   end
 
@@ -93,6 +96,10 @@ class User < ActiveRecord::Base
 
   def neighbors
     User.all.reject { |u1| u1.latitude.nil? }.select { |u| is_distant_in_km_from(u) <= 1.1 }.reject { |moi| moi == self }
+  end
+
+  def neighbors_and_lh
+    neighbors << User.find_by_first_name("Lovely Hood")
   end
 
   def common_neighbors(neighbor)

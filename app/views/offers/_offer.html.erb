@@ -17,7 +17,7 @@
       <div class="col-sm-4 col-xs-5 padding-left-none" id="<%= "append-target_#{offer.id}" %>">
         <% if current_user.authorized.nil? %>
 
-        <% elsif current_user.verif == 0 %>
+        <% elsif current_user.trust_steps == 0 %>
           <%= form_for offer, method: :patch, remote: true, url: offer_path(offer), id: "publish-form"  do |f| %>
             <div class="col-xs-9 padding-left-none">
               <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control btn-margin height-40" } %>

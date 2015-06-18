@@ -11,7 +11,7 @@
         <div class="lead" id="">
           <h1>Time to spread love in your hood.</h1>
           <h3>
-            L'heure des échanges de bons procédés entre voisins a sonné.
+            Pour faciliter les échanges de bons procédés entre voisins.
           </h3>
         </div>
       </div>
@@ -121,13 +121,26 @@
       <div class='row'>
         <div class="col-sm-10">
           <div class="lead">
-            <h1>Lovely Hood est à <strong>Paris</strong>.</h1>
-            <p>Suivez nous sur <%= link_to "facebook", "https://facebook.com/lvly.hood", target: "_blank" %> et sur <%= link_to "twitter", "https://twitter.com/LvlyHood", target: "_blank" %> pour être au courant des nouveautés.</p>
-            <% unless user_signed_in? %>
-              <div class="text-center">
-                <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
-              </div>
-            <% end %>
+            <h1>Lovely Hood est à <strong>Paris</strong>...</h1>
+            <p>
+              ...parce que la majorité de ses users est à Paris.
+              <br>
+              Mais bon en vrai Lovely Hood est sur le web.
+              <br>
+              Où que vous soyez, initiez le mouvement.
+            </p>
+            <p>
+              <% unless user_signed_in? %>
+                <div class="text-center">
+                  <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
+                </div>
+              <% end %>
+              <br>
+              <br>
+            </p>
+            <p>
+              Suivez nous sur <%= link_to "facebook", "https://facebook.com/lvly.hood", target: "_blank" %> et sur <%= link_to "twitter", "https://twitter.com/LvlyHood", target: "_blank" %> pour être au courant des nouveautés.
+            </p>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
   layout 'home', only: :home
 
+
   def home
     authorize :page, :home?
   end

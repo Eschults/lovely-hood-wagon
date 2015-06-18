@@ -380,7 +380,7 @@ class User < ActiveRecord::Base
 
       Avant tout, complétez votre <a href='/users/#{self.id}/edit'>profil</a>.
 
-      Ensuiste, pour améliorer l'activité de votre quartier sur le site, nous vous invitons à ouvrir <a href='https://www.lovely-hood.com/early_birds_poster' target='_blank'>cette page</a> et à l'imprimer en quelques exemplaires.
+      Ensuite, pour améliorer l'activité de votre quartier sur le site, nous vous invitons à ouvrir <a href='https://www.lovely-hood.com/early_birds_poster' target='_blank'>cette page</a> et à l'imprimer en quelques exemplaires.
 
       Affichez ce petit mot dans les zones de passage de votre voisinage (le hall de votre immeuble, votre boulangerie, votre pharmacie, votre supermarché, votre bar ou restaurant préféré, etc...).
 

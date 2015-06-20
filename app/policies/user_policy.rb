@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
       elsif user.latitude.nil?
         scope.all.reject { |u| u.id }
       else
-        scope.all.reject { |u1| u1.latitude.nil? || u1.id == user.id }.select { |u| user.is_distant_in_km_from(u) <= 1 }
+        scope.all.reject { |u1| u1.latitude.nil? || u1.id == user.id }.select { |u| user.is_distant_in_km_from(u) <= 1.1 }
       end
     end
   end

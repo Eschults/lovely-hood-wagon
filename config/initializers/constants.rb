@@ -168,7 +168,8 @@ NATURES = {
     'Hachoir',
     'Seau à champagne',
     'Cuiseur vapeur',
-    'Centrifugeuse'
+    'Centrifugeuse',
+    'Boules de pétanque'
   ],
 
   service: [

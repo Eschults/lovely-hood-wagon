@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    words_array = @post.content.split(" ")
     if @post.save
       respond_to do |format|
         format.html { redirect_to :index }

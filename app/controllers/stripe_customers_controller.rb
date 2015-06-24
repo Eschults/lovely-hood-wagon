@@ -1,4 +1,5 @@
 class StripeCustomersController < ApplicationController
+  # layout "map", only: :new
   def new
     @offer = Offer.find(params[:offer_id])
   end

@@ -5,66 +5,71 @@
   <%= stylesheet_link_tag "stripe_customers" %>
 <% end %>
 
-<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-  <div class="panel panel-default panel-stripe">
-    <div class="panel-heading">
-      <h4>Carte de paiement</h4>
-    </div>
-    <div class="panel-body">
-      <p>
-        Avant de pouvoir réserver un article, vous devez saisir une carte bleue valide, qui sera débitée une fois la réservation acceptée par le propriétaire de l'annonce.
-      </p>
-      <p>
-        Vos coordonnées bancaires sont transmises à notre prestataire de paiement Stripe sans transiter par nos serveurs.
-      </p>
-      <div class="col-xs-12 text-center margin-btm-10">
-        <%= image_tag "visa.png" %>
-        <%= image_tag "visaelectron.png" %>
-        <%= image_tag "mastercard.png" %>
-        <%= image_tag "maestro.png" %>
-        <%= image_tag "amex.png" %>
-      </div>
-      <%= form_tag offer_stripe_customers_path(@offer), id: "stripe_customer_form" do %>
-        <span class="payment-errors"></span>
-        <div class="form-group">
-          <%= label_tag :number, "Numéro de carte" %>
-          <%= text_field_tag :number, nil, name: nil, maxlength: 19, class: "form-control", 'data-stripe' => 'number', id: "card-number", placeholder: "4242 4242 4242 4242" %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+      <div class="panel panel-default panel-stripe">
+        <div class="panel-heading">
+          <h4>Carte de paiement</h4>
         </div>
-        <div class="row">
-          <div class="col-xs-7">
-            <%= label_tag :card_month, "Expiration (MM / AAAA)" %>
+        <div class="panel-body">
+          <p>
+            Avant de pouvoir réserver un article, vous devez saisir une carte bleue valide, qui sera débitée une fois la réservation acceptée par le propriétaire de l'annonce.
+          </p>
+          <p>
+            Vos coordonnées bancaires sont transmises à notre prestataire de paiement Stripe sans transiter par nos serveurs.
+          </p>
+          <div class="col-xs-12 text-center margin-btm-10">
+            <%= image_tag "visa.png" %>
+            <%= image_tag "visaelectron.png" %>
+            <%= image_tag "mastercard.png" %>
+            <%= image_tag "maestro.png" %>
+            <%= image_tag "amex.png" %>
           </div>
-          <div class="col-xs-4 col-xs-offset-1">
-            <%= label_tag :card_code, "CVV" %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <div class="col-xs-3">
-              <%= text_field_tag :card_month, nil, name: nil, maxlength: 2, class: "form-control", 'data-stripe' => 'exp-month', id: "card-expiry-month", placeholder: "MM" %>
+          <%= form_tag offer_stripe_customers_path(@offer), id: "stripe_customer_form" do %>
+            <span class="payment-errors"></span>
+            <div class="form-group">
+              <%= label_tag :number, "Numéro de carte" %>
+              <%= text_field_tag :number, nil, name: nil, maxlength: 19, class: "form-control", 'data-stripe' => 'number', id: "card-number", placeholder: "4242 4242 4242 4242" %>
             </div>
-            <div class="col-xs-4">
-              <%= text_field_tag :card_year, nil, name: nil, maxlength: 4, class: "form-control", 'data-stripe' => 'exp-year', id: "card-expiry-year", placeholder: "AAAA" %>
-            </div>
-            <div class="col-xs-4 col-xs-offset-1">
-              <div class="form-group">
-                <%= text_field_tag :card_code, nil, name: nil, size: 4, class: "form-control", 'data-stripe' => 'cvc', id: 'card-cvc', placeholder: '123' %>
+            <div class="row">
+              <div class="col-xs-7">
+                <%= label_tag :card_month, "Expiration (MM / AAAA)" %>
+              </div>
+              <div class="col-xs-4 col-xs-offset-1">
+                <%= label_tag :card_code, "CVV" %>
               </div>
             </div>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-xs-3">
+                  <%= text_field_tag :card_month, nil, name: nil, maxlength: 2, class: "form-control", 'data-stripe' => 'exp-month', id: "card-expiry-month", placeholder: "MM" %>
+                </div>
+                <div class="col-xs-4">
+                  <%= text_field_tag :card_year, nil, name: nil, maxlength: 4, class: "form-control", 'data-stripe' => 'exp-year', id: "card-expiry-year", placeholder: "AAAA" %>
+                </div>
+                <div class="col-xs-4 col-xs-offset-1">
+                  <div class="form-group">
+                    <%= text_field_tag :card_code, nil, name: nil, size: 4, class: "form-control", 'data-stripe' => 'cvc', id: 'card-cvc', placeholder: '123' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-xs-3 text-left">
+              <button id="valider", class="btn btn-primary">Valider</button>
+            </div>
+            <div class="col-xs-9 text-right">
+              <%= image_tag "stripe.png", class: "stripe-badge" %>
+            </div>
           </div>
-        </div>
-      <% end %>
-      <div class="row">
-        <div class="col-xs-3 text-left">
-          <button id="valider", class="btn btn-primary">Valider</button>
-        </div>
-        <div class="col-xs-9 text-right">
-          <%= image_tag "stripe.png", class: "stripe-badge" %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <% content_for :js do %>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

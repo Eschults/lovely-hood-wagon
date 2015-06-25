@@ -1,4 +1,4 @@
-<div class="panel-footer padding-top-10 border-top-none padding-btm-none comments-bg-color" id="likes_<%= post.id %>">
+<div class="panel-footer padding-top-10 border-top-none padding-btm-none comments-bg-color" id="likes_<%= post.class == Post ? post.id : 'activity_' + post.id.to_s %>">
   <div class="row">
     <div class="col-xs-12">
       <div class="font-size-12 padding-btm-10 border-btm-grey" id="like_infos_post_<%= post.id %>">
@@ -16,7 +16,6 @@
             } %> aiment ça.
         <% end %>
       </div>
-
     </div>
   </div>
 </div>

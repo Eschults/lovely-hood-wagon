@@ -1,0 +1,12 @@
+<% if @comment.errors.any? %>
+  // Render new review form with errors
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_comment = $("<%= j render 'comment', comment: @comment %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#comments-stream-activity-' + <%= @activity.id %>).append(new_comment);
+  // Show the new review with an animation!
+  new_comment.slideDown();
+  // Remove the text from the content textarea.
+  $('.form-group input').val('');
+<% end %>

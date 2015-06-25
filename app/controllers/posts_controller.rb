@@ -6,6 +6,9 @@ class PostsController < ApplicationController
     else
       @posts = current_user.posts_in_scope
       @post = Post.new
+      @activities = PublicActivity::Activity.order("created_at desc")
+      @items = @posts + @activities
+      @items = @items.sort_by(&:created_at).reverse
     end
   end
 
@@ -15,12 +18,12 @@ class PostsController < ApplicationController
     words_array = @post.content.split(" ")
     if @post.save
       respond_to do |format|
-        format.html { redirect_to :index }
+        format.html { redirect_to :back }
         format.js
       end
     else
       respond_to do |format|
-        format.html { redirect_to :index }
+        format.html { redirect_to :back }
         format.js
       end
     end
@@ -32,13 +35,32 @@ class PostsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
+      @post.create_activity :update, owner: current_user, parameters: { comment: @comment, index: @post.comments.size }
       respond_to do |format|
-        format.html { redirect_to :index }
+        format.html { redirect_to :back }
         format.js
       end
     else
       respond_to do |format|
-        format.html { redirect_to :index }
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
+
+  def update_activity
+    set_activity
+    @comment = ActivityComment.new(activity_comment_params)
+    @comment.user = current_user
+    @comment.activity_id = @activity.id
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back }
         format.js
       end
     end
@@ -47,8 +69,9 @@ class PostsController < ApplicationController
   def like
     set_post
     @post.liked_by current_user
+    @post.create_activity :like, owner: current_user
     respond_to do |format|
-      format.html { redirect_to :index }
+      format.html { redirect_to :back }
       format.js
     end
   end
@@ -56,8 +79,27 @@ class PostsController < ApplicationController
   def unlike
     set_post
     @post.unliked_by current_user
+    PublicActivity::Activity.find_by(owner: current_user, trackable: @post).destroy
     respond_to do |format|
-      format.html { redirect_to :index }
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+
+  def like_activity
+    set_activity
+    @activity.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+
+  def unlike_activity
+    set_activity
+    @activity.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_to :back }
       format.js
     end
   end
@@ -68,6 +110,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def set_activity
+    @activity = PublicActivity::Activity.find(params[:id])
+  end
+
   def post_params
     params.require(:post).permit(:content)
   end
@@ -75,5 +121,10 @@ class PostsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content)
   end
+
+  def activity_comment_params
+    params.require(:activity_comment).permit(:content)
+  end
+
 end
 

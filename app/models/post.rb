@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   validates_presence_of :user, :content
   acts_as_votable
+
+  def send_lh_post_email
+    PostMailer.post(self).deliver
+  end
 end

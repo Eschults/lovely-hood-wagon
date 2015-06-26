@@ -1,3 +1,6 @@
+class PublicActivity::Activity
+  acts_as_votable
+end
 class Offer < ActiveRecord::Base
   include PublicActivity::Common
   # tracked only: :create, owner: ->(controller, model) { controller && controller.current_user }

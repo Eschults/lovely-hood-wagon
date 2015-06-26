@@ -1,3 +1,6 @@
+class PublicActivity::Activity
+  acts_as_votable
+end
 class Comment < ActiveRecord::Base
   include PublicActivity::Common
   belongs_to :post

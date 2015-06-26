@@ -1,3 +1,6 @@
+class PublicActivity::Activity
+  acts_as_votable
+end
 class Post < ActiveRecord::Base
   include PublicActivity::Common
   # tracked only: [:like, :like_activity, :update], owner: ->(controller, model) { controller && controller.current_user }

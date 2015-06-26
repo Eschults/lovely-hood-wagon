@@ -1,8 +1,13 @@
 module PublicActivity
-  class Activity < ActiveRecord::Base
-    acts_as_votable
-    has_many :activity_comments
+  module ORM
+    module ActiveRecord
+      class Activity < ActiveRecord::Base
+        acts_as_votable
+        has_many :activity_comments
+      end
+    end
   end
+end
 class Comment < ActiveRecord::Base
   include PublicActivity::Common
   belongs_to :post

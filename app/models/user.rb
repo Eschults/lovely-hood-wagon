@@ -1,7 +1,8 @@
-class PublicActivity::Activity
-  acts_as_votable
+module PublicActivity
+  class Activity < inherit_orm("Activity")
+    acts_as_votable
+  end
 end
-
 class User < ActiveRecord::Base
   include PublicActivity::Common
   after_create :send_welcome_email, :send_welcome_message

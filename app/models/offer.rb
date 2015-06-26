@@ -1,5 +1,7 @@
-class PublicActivity::Activity
-  acts_as_votable
+module PublicActivity
+  class Activity < inherit_orm("Activity")
+    acts_as_votable
+  end
 end
 class Offer < ActiveRecord::Base
   include PublicActivity::Common

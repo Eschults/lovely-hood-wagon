@@ -20,6 +20,9 @@
             </li>
           </ul>
           <%= simple_format activity.trackable.post.content, class: "margin-btm-none" %>
+          <% if activity.trackable.link_url %>
+            <%= render "meta", post: activity.trackable %>
+          <% end %>
         </div>
       </div>
     </div>

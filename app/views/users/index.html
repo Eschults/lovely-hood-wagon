@@ -30,10 +30,10 @@
 <%= content_for :js do %>
   <% javascript_tag do %>
     $(document).ready(function() {
-      adjustIconsSizeSimple();
+      adjustIconsSizeSimple(720);
       togglePaddingLeft();
       $(window).on('resize', function() {
-        adjustIconsSizeSimple();
+        adjustIconsSizeSimple(720);
         togglePaddingLeft();
       })
       $('select').on('click', function(e) {

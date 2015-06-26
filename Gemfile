@@ -36,6 +36,7 @@ gem "rails-i18n", "~> 4.0.0"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'public_activity'
+gem 'metainspector'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

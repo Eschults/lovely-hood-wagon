@@ -48,7 +48,7 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       comment();
-      adjustIconsSizeSimple();
+      adjustIconsSizeSimple(420);
       $('#wall-nav-link').addClass('hover');
       $('.link-popover').popover({
         html: true,
@@ -73,7 +73,7 @@
         $('.js-other-target').addClass('col-xs-10').removeClass('col-xs-9')
       }
       $(window).on('resize', function() {
-        adjustIconsSizeSimple();
+        adjustIconsSizeSimple(420);
         if($(window).width() < 376) {
           $('.js-other-target').removeClass('col-xs-10').addClass('col-xs-9')
         } else {

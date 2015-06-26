@@ -1,6 +1,6 @@
 <%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> a commenté une publication
 <br>
-<div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
+<div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none box-in-post">
   <div class="panel-body padding-none border-btm">
     <div class="stick-down-target white-bg col-xs-12">
       <div class="message-content margin-top-15">
@@ -15,7 +15,7 @@
           <ul class="margin-none list-unstyled list-inline">
             <li class="padding-left-none">
               <%= link_to activity.owner.first_name, user_path(activity.owner), class: "offer-nature-link" %></li>
-            <li class="padding-left-none gray-lighter font-size-12">
+            <li class="hidden-xs padding-left-none gray-lighter font-size-12">
               <%= (((Time.now - activity.trackable.post.created_at < 86400) && Date.today.day == activity.trackable.post.created_at.day) ? "" : (Time.now - activity.trackable.post.created_at < 86400 ? "Yesterday," : activity.trackable.post.created_at.strftime("%A, %e %B "))) + activity.trackable.post.created_at.strftime("%l:%M %p") %>
             </li>
           </ul>
@@ -30,14 +30,17 @@
         <div class="font-size-12 padding-btm-10 border-btm-grey">
           <%= liker_list_string = "" %>
           <% liker_list = activity.trackable.post.get_likes.each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
-          <%= link_to "#{activity.trackable.post.get_likes.size} j'aime",
-            "",
-            class: "like-link link-popover",
-            data: {
-              content: "<ul class='list-unstyled'>#{liker_list_string}</ul>"
-            } %>
+          <% unless activity.trackable.post.get_likes.size == 0 %>
+            <%= link_to "#{activity.trackable.post.get_likes.size} j'aime",
+              "",
+              class: "like-link link-popover",
+              data: {
+                content: "<ul class='list-unstyled'>#{liker_list_string}</ul>"
+              } %>
+          <% end %>
+          <%= " et " unless activity.trackable.post.get_likes.size == 0 || activity.trackable.post.comments.size == 0 %>
           <% unless activity.trackable.post.comments.size == 0 %>
-            et <%= link_to "#{pluralize(activity.trackable.post.comments.size, 'commentaire')}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.post.id}" %>
+            <%= link_to "#{pluralize(activity.trackable.post.comments.size, 'commentaire')}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.post.id}" %>
           <% end %>
         </div>
       </div>
@@ -45,14 +48,14 @@
     <% if activity.trackable %>
       <div class="row">
         <div class="col-xs-12 margin-top-10 margin-btm-10">
-          <div class="col-xs-2 img-mini-square padding-none margin-left-none">
+          <div class="col-xs-3 img-mini-square padding-none margin-left-none">
             <% if activity.trackable.user.picture_file_name %>
               <%= image_tag(activity.trackable.user.picture.url(:medium), { class: "img" }) %>
             <% else %>
               <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
             <% end %>
           </div>
-          <div class="col-xs-10 padding-left-10">
+          <div class="col-xs-9 padding-left-10">
             <div class="font-size-12">
               <ul class="margin-none list-unstyled list-inline">
                 <% if current_user.neighbors.include?(activity.trackable.user) || current_user == activity.trackable.user %>
@@ -64,7 +67,7 @@
                     <%= ('<strong>' + activity.trackable.user.first_name + '</strong>').html_safe %>
                   </li>
                 <% end %>
-                <li class="padding-left-none gray-lighter font-size-12">
+                <li class="hidden-xs padding-left-none gray-lighter font-size-12">
                   <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? "" : (Time.now - activity.trackable.created_at < 86400 ? "Yesterday," : activity.trackable.created_at.strftime("%A, %e %B "))) + activity.trackable.created_at.strftime("%l:%M %p") %>
                 </li>
               </ul>

@@ -1,5 +1,5 @@
 module PublicActivity
-  class Activity < ActiveRecord::Base
+  class Activity < inherit_orm("Activity")
     acts_as_votable
     has_many :activity_comments
   end

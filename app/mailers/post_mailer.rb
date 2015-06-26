@@ -9,7 +9,7 @@ class PostMailer < ActionMailer::Base
   def post(post)
     @post = post
 
-    mail to: "#{User.all_emails_in_string}", subject: "LH a publié un post sur le Wall"
+    mail bcc: "#{User.all_emails_in_string}", subject: "LH a publié un post sur le Wall"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

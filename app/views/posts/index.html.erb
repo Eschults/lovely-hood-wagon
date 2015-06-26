@@ -33,8 +33,12 @@
         <% end %>
       </div>
       <div id="posts-stream">
-        <% @posts.sort_by(&:created_at).reverse.each do |post| %>
-          <%= render "post", post: post %>
+        <% @items.each do |item| %>
+          <% if item.class == Post %>
+            <%= render "post", post: item %>
+          <% else %>
+            <%= render "activity", activity: item if (item.owner && item.trackable) %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -44,6 +48,7 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       comment();
+      adjustIconsSizeSimple();
       $('#wall-nav-link').addClass('hover');
       $('.link-popover').popover({
         html: true,
@@ -68,6 +73,7 @@
         $('.js-other-target').addClass('col-xs-10').removeClass('col-xs-9')
       }
       $(window).on('resize', function() {
+        adjustIconsSizeSimple();
         if($(window).width() < 376) {
           $('.js-other-target').removeClass('col-xs-10').addClass('col-xs-9')
         } else {

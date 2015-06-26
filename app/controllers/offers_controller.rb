@@ -40,6 +40,7 @@ class OffersController < ApplicationController
       if @offer.one_price
         # if @offer.picture_file_name
           if @offer.save
+            @offer.create_activity :create, owner: current_user
             redirect_to offer_path(@offer)
           else
             flash.now[:alert] = "Merci d'ajouter une description"
@@ -57,6 +58,7 @@ class OffersController < ApplicationController
     if @offer.type_of_offer == "service"
       if @offer.one_price
         if @offer.save
+          @offer.create_activity :create, owner: current_user
           redirect_to offer_path(@offer)
         else
           flash.now[:alert] = "Merci d'ajouter une description"

@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       put :unlike, to: "posts#unlike"
     end
   end
+  put "/activity/:id/like_activity", to: "posts#like_activity", as: "like_activity_post"
+  put "/activity/:id/unlike_activity", to: "posts#unlike_activity", as: "unlike_activity_post"
+  put "/activity/:id/comment_activity", to: "posts#update_activity", as: "activity"
 
   get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"
   get 'bookings/:booking_id/conversations/new', to: "conversations#new_b", as: "new_booking_conversation"

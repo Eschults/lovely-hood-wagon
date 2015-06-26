@@ -1,0 +1,26 @@
+<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> a rejoint votre voisinage
+<br>
+<%= link_to user_path(activity.trackable) do %>
+  <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-2">
+          <div class="img-nature-box">
+            <% if activity.owner.picture_file_name %>
+              <%= image_tag activity.owner.picture.url(:thumb), class: "img img-60" %>
+            <% else %>
+              <%= image_tag "user_pic-225x225.png", class: "img img-60" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <ul class="margin-none list-unstyled list-inline">
+            <li class="padding-left-none offer-nature-link"><%= activity.owner.first_name %></li>
+            <li class="padding-left-none font-normal"><%= activity.owner.age.to_s + " ans" unless activity.owner.birthday.nil? %></li>
+          </ul>
+          <p class="margin-top-10 font-normal hidden-xs"><%= activity.owner.description ? activity.owner.description : "Pas encore de description" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

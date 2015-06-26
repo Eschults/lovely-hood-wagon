@@ -1,0 +1,51 @@
+<div class="panel panel-default white-bg margin-top-15 padding-none">
+  <div class="panel-body border-btm">
+    <div class="stick-down-target white-bg" id="activity_<%= activity.id %>">
+      <div class="col-xs-3 img-small-square padding-none margin-left-none">
+        <% if activity.owner.picture_file_name %>
+          <%= image_tag(activity.owner.picture.url(:medium), { class: "img" }) %>
+        <% else %>
+          <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
+        <% end %>
+      </div>
+      <div class="col-xs-10 padding-left-10">
+        <%= render_activity activity %>
+        <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
+          <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
+        <% else %>
+          <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
+        <% end %>
+        <span class="like-link"> · </span>
+        <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
+      </div>
+    </div>
+  </div>
+  <div id="comments-stream-activity-<%= activity.id %>">
+    <% unless activity.get_likes.size == 0 %>
+      <%= render 'likes', post: activity %>
+    <% end %>
+    <% activity.activity_comments.each do |comment| %>
+      <%= render 'comment', comment: comment %>
+    <% end %>
+  </div>
+  <div class="panel-footer padding-top-15 padding-btm-15 border-top-none" id="panel-footer-activities">
+    <%= form_for [activity, ActivityComment.new], method: :put, url: activity_path(activity), remote: true, autocomplete: "off" do |f| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="col-xs-2 img-mini-square padding-none margin-left-none">
+            <% if current_user.picture_file_name %>
+              <%= image_tag(current_user.picture.url(:medium), { class: "img" }) %>
+            <% else %>
+              <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
+            <% end %>
+          </div>
+          <div class="col-xs-10 padding-left-10 padding-right-none width-92 js-target">
+            <div class="form-group margin-btm-none total-width">
+              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32 font-size-12", id: "comment_content_post_activity_#{activity.id}" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

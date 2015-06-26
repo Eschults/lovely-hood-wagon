@@ -1047,7 +1047,8 @@ a.disabled {
   color: rgb(119, 119, 119);
 }
 
-#panel-footer-posts {
+#panel-footer-posts,
+#panel-footer-activities {
   background-color: #FCFCFC;
 }
 
@@ -1358,7 +1359,9 @@ i {
 }
 
 .like-link,
-.comment-link {
+.like-activity-link,
+.comment-link,
+.comment-activity-link {
   color: rgb(109, 132, 180);
   font-size: 12px;
   &:hover,
@@ -1410,4 +1413,9 @@ i {
   background: white;
   box-shadow: none;
   border: 1px solid rgb(204, 204, 204);
+}
+
+.index {
+  margin-right: -15%;
+  color: #9197a3;
 }

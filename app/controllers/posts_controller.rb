@@ -24,12 +24,14 @@ class PostsController < ApplicationController
       @post.link_image = page.images.best
       @post.link_description = page.description
       @post.content = @post.content.split(url.first).join
+      @post.content = "***" if @post.content == ""
     end
     if @post.save
       respond_to do |format|
         format.html { redirect_to :back }
         format.js
       end
+      @post.send_lh_post_email if @post.user == User.find_by(first_name: "Lovely Hood")
     else
       respond_to do |format|
         format.html { redirect_to :back }

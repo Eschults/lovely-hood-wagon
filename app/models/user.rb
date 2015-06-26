@@ -369,6 +369,18 @@ class User < ActiveRecord::Base
     card
   end
 
+  def self.all_emails_in_array
+    output = []
+    all.each do |user|
+      output << user.email
+    end
+    output
+  end
+
+  def self.all_emails_in_string
+    all_emails_in_array.join(", ")
+  end
+
   private
 
   def send_welcome_email

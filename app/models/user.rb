@@ -1,7 +1,7 @@
 module PublicActivity
   module ORM
     module ActiveRecord
-      class Activity < ActiveRecord::Base
+      class Activity < ::ActiveRecord::Base
         acts_as_votable
         has_many :activity_comments
       end

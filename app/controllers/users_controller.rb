@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         @user.birthday = nil
         @user.save
       end
-      if  @user.activities.size == 0 && @user.latitude && @user.first_name
+      if @user.activities.size == 0 && @user.latitude && @user.first_name
         @user.create_activity :update, owner: current_user
       end
       name_and_address_validations(user_path(@user))

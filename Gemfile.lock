@@ -121,10 +121,19 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (0.11.4)
     devise-i18n-views (0.3.4)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.2.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    faraday-cookie_jar (0.0.6)
+      faraday (>= 0.7.4)
+      http-cookie (~> 1.0.0)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
+    fastimage (1.6.8)
+      addressable (~> 2.3, >= 2.3.5)
     figaro (1.0.0)
       thor (~> 0.14)
     font-awesome-sass (4.2.2)
@@ -140,6 +149,8 @@ GEM
       activesupport (>= 3.2, < 5)
     hashie (3.3.2)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     httpclient (2.5.3.3)
     i18n (0.6.11)
     inherited_resources (1.5.1)
@@ -166,6 +177,13 @@ GEM
       launchy (~> 2.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    metainspector (4.4.2)
+      addressable (~> 2.3.5)
+      faraday (~> 0.9.0)
+      faraday-cookie_jar (~> 0.0.6)
+      faraday_middleware (~> 0.9.1)
+      fastimage
+      nokogiri (~> 1.6)
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.4.3)
@@ -281,6 +299,9 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -309,6 +330,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener
+  metainspector
   omniauth-facebook
   paperclip
   pg

@@ -1,14 +1,14 @@
 <% if offer.published %>
-  <%= link_to offer_path(offer) do %>
-    <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
+  <%= link_to offer_path(offer), target: "_blank" do %>
+    <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none box-in-post">
       <div class="panel-body">
         <div class="row">
-          <div class="col-xs-2">
+          <div class="col-xs-3 col-sm-2">
             <div class="img-nature-box">
               <%= image_tag "#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png", class: "img-nature" %>
             </div>
           </div>
-          <div class="col-xs-10">
+          <div class="col-xs-9 col-sm-10">
             <ul class="margin-none list-unstyled list-inline">
               <li class="padding-left-none offer-nature-link"><%= offer.nature %></li>
               <li class="padding-left-none font-normal"><%= offer.one_price ? offer.one_price : "" %></li>
@@ -20,15 +20,15 @@
     </div>
   <% end %>
 <% else %>
-  <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
+  <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none box-in-post">
     <div class="panel-body">
       <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-3 col-sm-2">
           <div class="img-nature-box">
             <%= image_tag "#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png", class: "img-nature" %>
           </div>
         </div>
-        <div class="col-xs-10">
+        <div class="col-xs-9 col-sm-10">
           <ul class="margin-none list-unstyled list-inline">
             <li class="padding-left-none"><b><%= offer.nature %></b></li>
             <li class="padding-left-none font-normal"><%= offer.one_price ? offer.one_price : "" %></li>

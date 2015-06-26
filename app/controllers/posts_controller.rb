@@ -1,3 +1,4 @@
+require 'uri'
 class PostsController < ApplicationController
   def index
     if current_user.latitude.nil?
@@ -15,7 +16,15 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    words_array = @post.content.split(" ")
+    url = URI.extract(@post.content, /https?.*/)
+    if url.size > 0
+      page = MetaInspector.new(url.first)
+      @post.link_url = url.first
+      @post.link_title = page.title
+      @post.link_image = page.images.best
+      @post.link_description = page.description
+      @post.content = @post.content.split(url.first).join
+    end
     if @post.save
       respond_to do |format|
         format.html { redirect_to :back }

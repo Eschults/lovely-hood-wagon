@@ -83,8 +83,8 @@ function adjustNatureIconsSize() {
   }
 }
 
-function adjustIconsSizeSimple() {
-  if($(window).width() < 720) {
+function adjustIconsSizeSimple(width) {
+  if($(window).width() < width) {
     $('.img-nature-box img').css('width', 40)
   } else {
     $('.img-nature-box img').css('width', 60)

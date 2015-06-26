@@ -411,9 +411,9 @@
 <%= content_for :js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      adjustIconsSizeSimple();
+      adjustIconsSizeSimple(720);
       $(window).on('resize', function() {
-        adjustIconsSizeSimple();
+        adjustIconsSizeSimple(720);
       })
     })
   <% end %>

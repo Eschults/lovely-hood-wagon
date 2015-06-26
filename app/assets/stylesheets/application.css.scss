@@ -416,7 +416,7 @@ input,
 }
 
 .margin-left-15 {
-  margin-left: 15px;
+  margin-left: 15px !important;
 }
 
 .margin-left-neg-10 {
@@ -1418,4 +1418,10 @@ i {
 .index {
   margin-right: -15%;
   color: #9197a3;
+}
+
+.box-in-post {
+  @media screen and (min-width: 530px) {
+    margin-right: -15%;
+  }
 }

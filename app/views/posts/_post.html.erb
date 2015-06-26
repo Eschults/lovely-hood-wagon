@@ -1,15 +1,15 @@
 <div class="panel panel-default white-bg margin-top-15 padding-none">
-  <div class="panel-body padding-none border-btm">
-    <div class="stick-down-target white-bg col-xs-12" id="post_<%= post.id %>">
+  <div class="panel-body border-btm">
+    <div class="stick-down-target white-bg row" id="post_<%= post.id %>">
       <div class="message-content margin-top-15">
-        <div class="col-xs-3 img-small-square padding-none margin-left-none margin-btm-5">
+        <div class="col-xs-3 img-small-square margin-left-15 padding-none">
           <% if post.user.picture_file_name %>
             <%= image_tag(post.user.picture.url(:medium), { class: "img" }) %>
           <% else %>
             <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
           <% end %>
         </div>
-        <div class="col-xs-9 padding-left-10 margin-btm-5">
+        <div class="col-xs-9 padding-left-10">
           <ul class="margin-none list-unstyled list-inline">
             <li class="padding-left-none">
               <%= link_to post.user.first_name, user_path(post.user), class: "offer-nature-link" %></li>
@@ -18,6 +18,9 @@
             </li>
           </ul>
           <%= simple_format post.content, class: "margin-btm-none" %>
+          <% if post.link_url %>
+            <%= render "meta", post: post %>
+          <% end %>
           <% if current_user.find_voted_items.include? post %>
             <%= link_to "Je n'aime plus", unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>
           <% else %>

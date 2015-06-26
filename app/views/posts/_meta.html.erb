@@ -1,0 +1,15 @@
+<%= link_to post.link_url, target: "_blank" do %>
+  <div class="panel panel-default margin-top-15 margin-btm-15 padding-none box-in-post">
+    <div class="panel-body padding-top-none">
+      <div class="row">
+        <%= image_tag post.link_image, class: "img" %>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4><%= post.link_title %></h4>
+          <%= simple_format post.link_description, class: "font-normal" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -5,8 +5,8 @@
     <div class="stick-down-target white-bg col-xs-12">
       <div class="message-content margin-top-15">
         <div class="col-xs-3 img-mini-square padding-none margin-left-none margin-btm-5">
-          <% if activity.owner.picture_file_name %>
-            <%= image_tag(activity.owner.picture.url(:thumb), { class: "img" }) %>
+          <% if activity.trackable.post.user.picture_file_name %>
+            <%= image_tag(activity.trackable.post.user.picture.url(:thumb), { class: "img" }) %>
           <% else %>
             <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
           <% end %>
@@ -14,7 +14,7 @@
         <div class="col-xs-9 padding-left-10 margin-btm-5">
           <ul class="margin-none list-unstyled list-inline">
             <li class="padding-left-none">
-              <%= link_to activity.owner.first_name, user_path(activity.owner), class: "offer-nature-link" %></li>
+              <%= link_to activity.trackable.post.user.first_name, user_path(activity.owner), class: "offer-nature-link" %></li>
             <li class="hidden-xs padding-left-none gray-lighter font-size-12">
               <%= (((Time.now - activity.trackable.post.created_at < 86400) && Date.today.day == activity.trackable.post.created_at.day) ? "" : (Time.now - activity.trackable.post.created_at < 86400 ? "Yesterday," : activity.trackable.post.created_at.strftime("%A, %e %B "))) + activity.trackable.post.created_at.strftime("%l:%M %p") %>
             </li>

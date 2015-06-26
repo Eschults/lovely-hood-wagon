@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     else
       @posts = current_user.posts_in_scope
       @post = Post.new
-      @activities = PublicActivity::Activity.order("created_at desc")
+      @activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self)
       @items = @posts + @activities
       @items = @items.sort_by(&:created_at).reverse
     end
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
-      @post.create_activity :update, owner: current_user, parameters: { comment: @comment, index: @post.comments.size }
+      @comment.create_activity :update, owner: current_user
       respond_to do |format|
         format.html { redirect_to :back }
         format.js

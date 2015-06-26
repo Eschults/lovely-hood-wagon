@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include PublicActivity::Common
   after_create :send_welcome_email, :send_welcome_message
 
   # Include default devise modules. Others available are:
@@ -100,6 +101,10 @@ class User < ActiveRecord::Base
 
   def neighbors_and_lh
     neighbors << User.find_by_first_name("Lovely Hood")
+  end
+
+  def neighbors_lh_and_self
+    neighbors_and_lh << self
   end
 
   def common_neighbors(neighbor)

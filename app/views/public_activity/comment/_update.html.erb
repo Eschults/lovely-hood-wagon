@@ -16,10 +16,10 @@
             <li class="padding-left-none">
               <%= link_to activity.owner.first_name, user_path(activity.owner), class: "offer-nature-link" %></li>
             <li class="padding-left-none gray-lighter font-size-12">
-              <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? "" : (Time.now - activity.trackable.created_at < 86400 ? "Yesterday," : activity.trackable.created_at.strftime("%A, %e %B "))) + activity.trackable.created_at.strftime("%l:%M %p") %>
+              <%= (((Time.now - activity.trackable.post.created_at < 86400) && Date.today.day == activity.trackable.post.created_at.day) ? "" : (Time.now - activity.trackable.post.created_at < 86400 ? "Yesterday," : activity.trackable.post.created_at.strftime("%A, %e %B "))) + activity.trackable.post.created_at.strftime("%l:%M %p") %>
             </li>
           </ul>
-          <%= simple_format activity.trackable.content, class: "margin-btm-none" %>
+          <%= simple_format activity.trackable.post.content, class: "margin-btm-none" %>
         </div>
       </div>
     </div>
@@ -29,25 +29,25 @@
       <div class="col-xs-12">
         <div class="font-size-12 padding-btm-10 border-btm-grey">
           <%= liker_list_string = "" %>
-          <% liker_list = activity.trackable.get_likes.each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
-          <%= link_to "#{activity.trackable.get_likes.size} j'aime",
+          <% liker_list = activity.trackable.post.get_likes.each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
+          <%= link_to "#{activity.trackable.post.get_likes.size} j'aime",
             "",
             class: "like-link link-popover",
             data: {
               content: "<ul class='list-unstyled'>#{liker_list_string}</ul>"
             } %>
-          <% unless activity.trackable.comments.size == 0 %>
-            et <%= link_to "#{pluralize(activity.trackable.comments.size, 'commentaire')}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.id}" %>
+          <% unless activity.trackable.post.comments.size == 0 %>
+            et <%= link_to "#{pluralize(activity.trackable.post.comments.size, 'commentaire')}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.post.id}" %>
           <% end %>
         </div>
       </div>
     </div>
-    <% if activity.parameters[:comment] %>
+    <% if activity.trackable %>
       <div class="row">
         <div class="col-xs-12 margin-top-10 margin-btm-10">
           <div class="col-xs-2 img-mini-square padding-none margin-left-none">
-            <% if activity.parameters[:comment].user.picture_file_name %>
-              <%= image_tag(activity.parameters[:comment].user.picture.url(:medium), { class: "img" }) %>
+            <% if activity.trackable.user.picture_file_name %>
+              <%= image_tag(activity.trackable.user.picture.url(:medium), { class: "img" }) %>
             <% else %>
               <%= image_tag "user_pic-60.png", class: "img logo-small bg-color" %>
             <% end %>
@@ -55,22 +55,22 @@
           <div class="col-xs-10 padding-left-10">
             <div class="font-size-12">
               <ul class="margin-none list-unstyled list-inline">
-                <% if current_user.neighbors.include?(activity.parameters[:comment].user) || current_user == activity.parameters[:comment].user %>
+                <% if current_user.neighbors.include?(activity.trackable.user) || current_user == activity.trackable.user %>
                   <li class="padding-left-none">
-                    <%= link_to activity.parameters[:comment].user.first_name, user_path(activity.parameters[:comment].user), class: "offer-nature-link" %>
+                    <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link" %>
                   </li>
                 <% else %>
                   <li class="padding-left-none">
-                    <%= ('<strong>' + activity.parameters[:comment].user.first_name + '</strong>').html_safe %>
+                    <%= ('<strong>' + activity.trackable.user.first_name + '</strong>').html_safe %>
                   </li>
                 <% end %>
                 <li class="padding-left-none gray-lighter font-size-12">
-                  <%= (((Time.now - activity.parameters[:comment].created_at < 86400) && Date.today.day == activity.parameters[:comment].created_at.day) ? "" : (Time.now - activity.parameters[:comment].created_at < 86400 ? "Yesterday," : activity.parameters[:comment].created_at.strftime("%A, %e %B "))) + activity.parameters[:comment].created_at.strftime("%l:%M %p") %>
+                  <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? "" : (Time.now - activity.trackable.created_at < 86400 ? "Yesterday," : activity.trackable.created_at.strftime("%A, %e %B "))) + activity.trackable.created_at.strftime("%l:%M %p") %>
                 </li>
               </ul>
               <ul class="list-inline margin-btm-none list-unstyled">
-                <li class="margin-btm-none"><%= activity.parameters[:comment].content %></li>
-                <li class="index pull-right"><%= activity.parameters[:index] ? activity.parameters[:index] : "1" %>/<%= activity.trackable.comments.size %></li>
+                <li class="margin-btm-none"><%= activity.trackable.content %></li>
+                <li class="index pull-right"><%= activity.trackable.post.comments.index(activity.trackable) + 1 %>/<%= activity.trackable.post.comments.size %></li>
               </ul>
 
             </div>

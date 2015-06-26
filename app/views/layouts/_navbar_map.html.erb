@@ -18,13 +18,13 @@
       <% if user_signed_in? %>
         <ul class="nav navbar-nav navbar-right" style="margin-right: -15px;">
           <li class="disappear middle-weight">
-            <%= link_to offers_path, class: "nav-btn-default", id: "offers-nav-link" do %>
-              <i class="fa fa-home"></i> Annonces
+            <%= link_to posts_path, class: "nav-btn-default", id: "wall-nav-link" do %>
+              <i class="fa fa-users"></i> Wall
             <% end %>
           </li>
           <li class="disappear middle-weight">
-            <%= link_to posts_path, class: "nav-btn-default", id: "wall-nav-link" do %>
-              <i class="fa fa-users"></i> Wall
+            <%= link_to offers_path, class: "nav-btn-default", id: "offers-nav-link" do %>
+              <i class="fa fa-home"></i> Annonces
             <% end %>
           </li>
           <li class="disappear middle-weight">

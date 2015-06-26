@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     if (request.env['omniauth.origin'] && resource.latitude.nil?) || resource.authorized.nil?
       edit_user_path(resource)
     else
-      offers_path
+      posts_path
     end
   end
 

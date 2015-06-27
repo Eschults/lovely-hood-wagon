@@ -2,7 +2,7 @@ Chers voisins,
 
 Lovely Hood a publié un post sur le Wall :
 
-<%= simple_format(@post.content, style: "margin-top:0!important;") unless post.content == "***" %>
+<%= simple_format(@post.content, style: "margin-top:0!important;") unless @post.content == "***" %>
 <% if @post.link_url %>
   <%= @post.link_title %>
   <%= simple_format @post.link_description, style: "text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color:#777777;font-size:14px;margin-top:0;margin-bottom:0;line-height:19.8px;" %>

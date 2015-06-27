@@ -9,7 +9,7 @@ class PostMailer < ActionMailer::Base
   def post(post)
     @post = post
 
-    mail to: "contact@lovely-hood.com", bcc: "edward.schults@gmail.com, edschults@hotmail.com, laurannefavre@msn.com", subject: "LH a publié un post sur le Wall"
+    mail to: "contact@lovely-hood.com", bcc: "edward.schults@gmail.com, edschults@hotmail.com, favre.lauranne@gmail.com", subject: "LH a publié un post sur le Wall"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

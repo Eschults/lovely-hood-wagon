@@ -6,7 +6,7 @@
           <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: ((current_user.neighbors + [current_user]).include?(post.get_likes.first.voter) ? "like-link" : "disabled") %> aime ça.
         <% else %>
           <%= liker_list_string = "" %>
-          <% liker_list = post.get_likes[1..-1].each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
+          <% liker_list = post.get_likes[0..-2].each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
 
           <%= link_to post.get_likes.first.voter.first_name, user_path(post.get_likes.first.voter), class: "like-link" %> et <%= link_to "#{pluralize(post.get_likes.size - 1, "personne")}",
             "",

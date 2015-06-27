@@ -7,7 +7,11 @@ class PostsController < ApplicationController
     else
       @posts = current_user.posts_in_scope
       @post = Post.new
-      @activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self)
+      if current_user.admin
+        @activities = PublicActivity::Activity.order("created_at desc")
+      else
+        @activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self)
+      end
       @items = @posts + @activities
       @items = @items.sort_by(&:created_at).reverse
     end

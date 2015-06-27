@@ -21,7 +21,9 @@
           </ul>
           <%= simple_format activity.trackable.content, class: "margin-btm-none" unless activity.trackable.content == "***" %>
           <% if activity.trackable.link_url %>
-            <%= render "meta", post: activity.trackable %>
+            <div class="hidden-xs">
+              <%= render "meta", post: activity.trackable %>
+            </div>
           <% end %>
         </div>
       </div>

@@ -17,7 +17,7 @@
               <%= (((Time.now - post.created_at < 86400) && Date.today.day == post.created_at.day) ? "" : (Time.now - post.created_at < 86400 ? "Yesterday," : post.created_at.strftime("%A, %e %B "))) + post.created_at.strftime("%l:%M %p") %>
             </li>
           </ul>
-          <%= simple_format post.content, class: "margin-btm-none box-in-post" %>
+          <%= simple_format post.content, class: "margin-btm-none box-in-post" unless post.content == "***" %>
           <% if post.link_url %>
             <%= render "meta", post: post %>
           <% end %>

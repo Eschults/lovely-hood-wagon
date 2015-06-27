@@ -19,7 +19,7 @@
               <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? "" : (Time.now - activity.trackable.created_at < 86400 ? "Yesterday," : activity.trackable.created_at.strftime("%A, %e %B "))) + activity.trackable.created_at.strftime("%l:%M %p") %>
             </li>
           </ul>
-          <%= simple_format activity.trackable.content, class: "margin-btm-none" %>
+          <%= simple_format activity.trackable.content, class: "margin-btm-none" unless activity.trackable.content == "***" %>
           <% if activity.trackable.link_url %>
             <%= render "meta", post: activity.trackable %>
           <% end %>

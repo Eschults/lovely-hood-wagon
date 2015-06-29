@@ -94,7 +94,7 @@ class OffersController < ApplicationController
   end
 
   def wishlist
-    @offers = current_user.find_voted_items
+    @offers = current_user.find_voted_items.reject { |voted_item| voted_item.class != Offer }
   end
 
   def wish

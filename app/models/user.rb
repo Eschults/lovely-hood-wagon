@@ -394,7 +394,7 @@ class User < ActiveRecord::Base
   def self.all_emails_in_array
     output = []
     all.each do |user|
-      output << user.email unless user.id == 244
+      output << user.email unless (user.id == 244 || user.id == 237 || user.id == 18)
     end
     output
   end

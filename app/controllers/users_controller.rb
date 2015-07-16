@@ -38,6 +38,7 @@ class UsersController < ApplicationController
         @user.save
       end
       if @user.activities.size == 0 && @user.sign_in_count < 3 && @user.latitude && @user.first_name
+        @user.send_new_neighbor_email
         @user.create_activity :update, owner: current_user
       end
       name_and_address_validations(user_path(@user))
@@ -99,7 +100,13 @@ class UsersController < ApplicationController
       :identity_proof,
       :address_proof,
       :iban,
-      :bic
+      :bic,
+      :lh_post_notif,
+      :post_notif,
+      :user_notif,
+      :offer_notif,
+      :comment_notif,
+      :like_notif
     )
   end
 end

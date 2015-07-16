@@ -1,6 +1,6 @@
 Chers voisins,
 
-Lovely Hood a publié un post sur le Wall :
+<%= @post.user.first_name %> a publié un post sur le Wall :
 
 <%= simple_format(@post.content, style: "margin-top:0!important;") unless @post.content == "***" %>
 <% if @post.link_url %>

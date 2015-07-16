@@ -14,7 +14,7 @@
           <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a><% unless @user.trust_steps == 0 %><span class="badge pull-right margin-top-2"><%= @user.trust_steps %><% end %></span></li>
           <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a><% unless @user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= @user.money_step %><% end %></span></li>
           <li><a href="#" class="edit-link" id="my-comments">Commentaires</a></li>
-          <li><a href="#" class="edit-link" id="my-recos">Recommandations</a></li>
+          <li><a href="#" class="edit-link" id="my-notifs">Notifications</a></li>
           <li><%= link_to "Voir mon profil", user_path(@user), class: "btn btn-default" %></a></li>
         </ul>
       </div>
@@ -267,14 +267,46 @@
         </div>
       </div>
 
-      <div class="box hidden" id="user-recommendations">
+      <div class="box hidden" id="user-notifs">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Recommandations</h4>
+            <h4>Notifications</h4>
           </div>
           <div class="white-bg panel-body">
-            <p><b>Lovely Hood est basée sur la confiance et la réputation.</b> Nous vous conseillons vivement de demander des recommandations auprès de votre réseau personnel. Elles apparaitront sur votre profil, et aideront votre communauté à mieux vous connaitre.</p>
-            <p>Pas encore de recommandations</p>
+            <div class="col-xs-12 padding-sides-none">
+              <p>Vous pouvez régler ici les événements pour lesquels vous souhaitez recevoir une notification par mail :</p>
+            </div>
+            <br>
+            <br>
+            <%= form_for(@user) do |f| %>
+              <div class="col-xs-12 margin-vertical-10 padding-sides-none">
+                <%= f.label :lh_post_notif, "LH a publié sur le Wall", class: "margin-top-5 control-label" %>
+                <%= f.check_box :lh_post_notif, class: "form-control" %>
+              </div>
+              <div class="col-xs-12 margin-vertical-10 padding-sides-none">
+                <%= f.label :user_notif, "Nouveau voisin", class: "margin-top-5 control-label" %>
+                <%= f.check_box :user_notif, class: "form-control" %>
+              </div>
+              <div class="col-xs-12 margin-vertical-10 padding-sides-none">
+                <%= f.label :offer_notif, "Nouvelle annonce", class: "margin-top-5 control-label" %>
+                <%= f.check_box :offer_notif, class: "form-control" %>
+              </div>
+              <div class="col-xs-12 margin-vertical-10 padding-sides-none">
+                <%= f.label :post_notif, "Nouveau post", class: "margin-top-5 control-label" %>
+                <%= f.check_box :post_notif, class: "form-control" %>
+              </div>
+              <div class="col-xs-12 margin-vertical-10 padding-sides-none">
+                <%= f.label :comment_notif, "Votre post a été commenté", class: "margin-top-5 control-label" %>
+                <%= f.check_box :comment_notif, class: "form-control" %>
+              </div>
+              <div class="col-xs-12 margin-vertical-10 padding-sides-none">
+                <%= f.label :like_notif, "Votre post a été aimé", class: "margin-top-5 control-label" %>
+                <%= f.check_box :like_notif, class: "form-control" %>
+              </div>
+              <div class="col-xs padding-sides-none">
+                <%= f.submit "Sauvegarder", class: "btn btn-primary pull-right", id: "submit" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -313,6 +345,11 @@
     $(document).ready(function() {
       showTheRightDiv();
       formValidation();
+      $("[type='checkbox']").bootstrapSwitch({
+        size: 'small',
+        onText: 'I',
+        offText: 'O'
+      });
       $(window).on('hashchange', function() {
         showTheRightDiv();
       })

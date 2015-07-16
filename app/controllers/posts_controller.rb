@@ -35,7 +35,11 @@ class PostsController < ApplicationController
         format.html { redirect_to :back }
         format.js
       end
-      @post.send_lh_post_email if @post.user == User.find_by(first_name: "Lovely Hood")
+      if @post.user == User.find_by(first_name: "Lovely Hood")
+        @post.send_lh_post_email
+      else
+        @post.send_post_email
+      end
     else
       respond_to do |format|
         format.html { redirect_to :back }
@@ -50,6 +54,7 @@ class PostsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
+      @post.send_comment_email(current_user) if @post.user.comment_notif
       @comment.create_activity :update, owner: current_user
       respond_to do |format|
         format.html { redirect_to :back }
@@ -84,6 +89,7 @@ class PostsController < ApplicationController
   def like
     set_post
     @post.liked_by current_user
+    @post.send_like_email(current_user) if @post.user.like_notif
     @post.create_activity :like, owner: current_user
     respond_to do |format|
       format.html { redirect_to :back }

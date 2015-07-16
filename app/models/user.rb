@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   # after_update :unvalidate_address, if: :address_changed?
 
   has_attached_file :picture,
-    styles: { medium: "300x300#", thumb: "100x100#" }
+    styles: { medium: "300x300#", thumb: "100x100#" },
+    default_url: "user_pic-60.png"
   has_attached_file :identity_proof, styles: { large: "600x600>", medium: "300x300>" }
   has_attached_file :address_proof, styles: { large: "600x600>", medium: "300x300>" }
 
@@ -394,13 +395,65 @@ class User < ActiveRecord::Base
   def self.all_emails_in_array
     output = []
     all.each do |user|
-      output << user.email unless (user.id == 244 || user.id == 237 || user.id == 18)
+      output << user.email
     end
     output
   end
 
   def self.all_emails_in_string
     all_emails_in_array.join(", ")
+  end
+
+  def self.lh_post_emails_in_array
+    output = []
+    all.each do |user|
+      output << user.email if user.lh_post_notif
+    end
+    output
+  end
+
+  def self.lh_post_emails_in_string
+    lh_post_emails_in_array.join(", ")
+  end
+
+  def post_emails_in_array
+    output = []
+    neighbors.each do |neighbor|
+      output << neighbor.email if neighbor.post_notif
+    end
+    output
+  end
+
+  def post_emails_in_string
+    post_emails_in_array.join(", ")
+  end
+
+  def neighbor_notif_emails_in_array
+    output = []
+    neighbors.each do |neighbor|
+      output << neighbor.email if neighbor.user_notif
+    end
+    output
+  end
+
+  def neighbor_notif_emails_in_string
+    neighbor_notif_emails_in_array.join(", ")
+  end
+
+  def offer_emails_in_array
+    output = []
+    neighbors.each do |neighbor|
+      output << neighbor.email if neighbor.offer_notif
+    end
+    output
+  end
+
+  def offer_emails_in_string
+    offer_emails_in_array.join(", ")
+  end
+
+  def send_new_neighbor_email
+    UserMailer.new_neighbor(self).deliver
   end
 
   private

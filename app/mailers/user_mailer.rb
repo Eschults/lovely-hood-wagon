@@ -11,4 +11,10 @@ class UserMailer < ActionMailer::Base
 
     mail(to: @user.email, subject: '[LH] Comment ça marche ?')
   end
+
+  def new_neighbor(user)
+    @user = user
+
+    mail(to: @user.neighbor_notif_emails_in_string, subject: "#{@user.first_name} a rejoint votre voisinage")
+  end
 end

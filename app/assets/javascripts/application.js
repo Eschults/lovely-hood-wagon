@@ -20,4 +20,5 @@
 //= require scrollReveal
 //= require_tree .
 //= require bootstrap-datepicker
+//= require bootstrap-switch
 

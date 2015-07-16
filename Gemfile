@@ -37,6 +37,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'public_activity'
 gem 'metainspector'
+gem "bootstrap-switch-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

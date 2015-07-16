@@ -18,6 +18,18 @@ class Post < ActiveRecord::Base
   acts_as_votable
 
   def send_lh_post_email
+    PostMailer.lh_post(self).deliver
+  end
+
+  def send_post_email
     PostMailer.post(self).deliver
+  end
+
+  def send_comment_email(user)
+    PostMailer.comment(self, user).deliver
+  end
+
+  def send_like_email(user)
+    PostMailer.like(self, user).deliver
   end
 end

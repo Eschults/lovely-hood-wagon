@@ -4,13 +4,13 @@ function showInfo() {
   $('#user-trust').addClass("hidden");
   $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
-  $('#user-recommendations').addClass("hidden");
+  $('#user-notifs').addClass("hidden");
   $('#my-info').addClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
   $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
-  $('#my-recos').removeClass("strong");
+  $('#my-notifs').removeClass("strong");
 }
 
 function showPic() {
@@ -19,13 +19,13 @@ function showPic() {
   $('#user-trust').addClass("hidden");
   $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
-  $('#user-recommendations').addClass("hidden");
+  $('#user-notifs').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').addClass("strong");
   $('#my-trust').removeClass("strong");
   $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
-  $('#my-recos').removeClass("strong");
+  $('#my-notifs').removeClass("strong");
 }
 
 function showTrust() {
@@ -34,13 +34,13 @@ function showTrust() {
   $('#user-trust').removeClass("hidden");
   $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
-  $('#user-recommendations').addClass("hidden");
+  $('#user-notifs').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').addClass("strong");
   $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
-  $('#my-recos').removeClass("strong");
+  $('#my-notifs').removeClass("strong");
 }
 
 function showComments() {
@@ -49,28 +49,28 @@ function showComments() {
   $('#user-trust').addClass("hidden");
   $('#user-bank').addClass("hidden");
   $('#user-comments').removeClass("hidden");
-  $('#user-recommendations').addClass("hidden");
+  $('#user-notifs').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
   $('#my-bank').removeClass("strong");
   $('#my-comments').addClass("strong");
-  $('#my-recos').removeClass("strong");
+  $('#my-notifs').removeClass("strong");
 }
 
-function showRecos() {
+function showNotifs() {
   $('#user-info').addClass("hidden");
   $('#user-picture').addClass("hidden");
   $('#user-trust').addClass("hidden");
   $('#user-bank').addClass("hidden");
   $('#user-comments').addClass("hidden");
-  $('#user-recommendations').removeClass("hidden");
+  $('#user-notifs').removeClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
   $('#my-bank').removeClass("strong");
   $('#my-comments').removeClass("strong");
-  $('#my-recos').addClass("strong");
+  $('#my-notifs').addClass("strong");
 }
 
 function showBank() {
@@ -79,13 +79,13 @@ function showBank() {
   $('#user-trust').addClass("hidden");
   $('#user-bank').removeClass("hidden");
   $('#user-comments').addClass("hidden");
-  $('#user-recommendations').addClass("hidden");
+  $('#user-notifs').addClass("hidden");
   $('#my-info').removeClass("strong");
   $('#my-pic').removeClass("strong");
   $('#my-trust').removeClass("strong");
   $('#my-bank').addClass("strong");
   $('#my-comments').removeClass("strong");
-  $('#my-recos').removeClass("strong");
+  $('#my-notifs').removeClass("strong");
 }
 
 function filled(field) {
@@ -159,8 +159,8 @@ function showTheRightDiv() {
     if(id == "my-comments") {
       showComments();
     }
-    if(id == "my-recos") {
-      showRecos();
+    if(id == "my-notifs") {
+      showNotifs();
     }
   });
 }

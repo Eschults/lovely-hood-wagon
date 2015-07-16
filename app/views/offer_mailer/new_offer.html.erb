@@ -31,10 +31,10 @@
             </table>
             <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                <%= @post.user.first_name %>,
+                Chers voisins,
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                <%= @liker.first_name %> aime votre post :
+                <%= @offer.user.first_name %> a créé une annonce :
               </div>
               <br>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;border-bottom-width:1px;background-color:#ffffff;border-top-left-radius:3px;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-top-right-radius:3px;border-style:solid;min-height:32px;border-top:1px solid #dbdbdb">
@@ -44,19 +44,13 @@
                       <tr style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
                         <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;width:78px;line-height:0;vertical-align:top;">
                           <%= link_to posts_url, style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#565a5c;text-decoration:none", target: "_blank" do %>
-                            <%= image_tag @post.user.picture_file_name ? @post.user.picture.url(:medium) : "http://s14.postimg.org/sw6wk3cml/user_pic_60.png", width: "68", height: "68", style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0;border-radius:2px" %>
+                            <%= image_tag "#{@offer.type_of_offer == "sell" ? "sell" : @offer.nature}.png", width: "68", style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0;border-radius:2px" %>
                           <% end %>
                         </td>
                         <td style="margin:0;padding:15;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;vertical-align:top;">
                           <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                            <%= simple_format(@post.content, style: "margin-top:0!important;") unless @post.content == "***" %>
-                            <% if @post.link_url %>
-                              <div style="margin:0;padding:15px;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;border-bottom-width:1px;background-color:#ffffff;border-top-left-radius:3px;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-top-right-radius:3px;border-style:solid;min-height:32px;border-top:1px solid #dbdbdb">
-                                <%= image_tag @post.link_image, style: "width:100%;margin:0;padding:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;" %>
-                                        <h4 style="text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color: #4f4f4f;margin-top:10px;margin-bottom:10px;line-height:19.8px;font-weight:500;"><%= @post.link_title %></h4>
-                                <%= simple_format @post.link_description, style: "text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color:#777777;font-size:14px;margin-top:0;margin-bottom:0;line-height:19.8px;" %>
-                              </div>
-                            <% end %>
+                            <strong><%= @offer.nature %></strong> <%= @offer.one_price ? @offer.one_price : "" %>
+                            <%= simple_format @offer.description.size > 50 ? (@offer.description[0..49] + "...") : @offer.description, style: "margin-top:0!important;" %>
                           </div>
                         </td>
                       </tr>
@@ -66,7 +60,7 @@
               </div>
 
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                <%= link_to posts_url, anchor: "post_#{@post.id}", style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
+                <%= link_to posts_url, style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
                   Voir / réagir sur Lovely Hood
                 <% end %>
               </div>

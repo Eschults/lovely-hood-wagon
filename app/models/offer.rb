@@ -177,4 +177,8 @@ class Offer < ActiveRecord::Base
     bookings.map { |booking| booking.reviews.select { |review| review.review_type == "otc" } }.flatten
   end
 
+  def send_new_offer_email
+    OfferMailer.new_offer(self).deliver
+  end
+
 end

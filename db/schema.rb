@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626161603) do
+ActiveRecord::Schema.define(version: 20150630075708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,6 +214,12 @@ ActiveRecord::Schema.define(version: 20150626161603) do
     t.string   "iban"
     t.string   "bic"
     t.boolean  "authorized",                  default: true
+    t.boolean  "lh_post_notif",               default: true
+    t.boolean  "post_notif"
+    t.boolean  "user_notif"
+    t.boolean  "offer_notif"
+    t.boolean  "comment_notif"
+    t.boolean  "like_notif"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

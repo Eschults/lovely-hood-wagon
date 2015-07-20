@@ -1,5 +1,5 @@
 class OfferMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: '"Lovely Hood" <contact@lovely-hood.com>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,6 +9,6 @@ class OfferMailer < ActionMailer::Base
   def new_offer(offer)
     @offer = offer
 
-    mail to: @offer.user.offer_emails_in_string, subject: "#{@offer.user.first_name} a créé une annonce"
+    mail to: "contact@lovely-hood.com", bcc: @offer.user.offer_emails_in_string, subject: "#{@offer.user.first_name} a créé une annonce"
   end
 end

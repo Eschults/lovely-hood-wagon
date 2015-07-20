@@ -1,12 +1,13 @@
-<%= @post.user.first_name %>,
+<%= @comment.post.user.first_name %>,
 
-<%= @commenter.first_name %> a commenté votre post :
+<%= @comment.user.first_name %> a commenté votre post :
 
-<%= @post.content unless @post.content == "***" %>
-<% if @post.link_url %>
-  <%= @post.link_title %>
-  <%= @post.link_description %>
+<%= @comment.post.content unless @comment.post.content == "***" %>
+<% if @comment.post.link_url %>
+  <%= @comment.post.link_title %>
+  <%= @comment.post.link_description %>
 <% end %>
+<%= @comment.content %>
 
 <%= "Voir / réagir sur Lovely Hood : https://www.lovely-hood.com" %>
 

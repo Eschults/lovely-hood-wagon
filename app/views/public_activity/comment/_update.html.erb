@@ -55,6 +55,7 @@
     <% if activity.trackable %>
       <div class="row">
         <div class="col-xs-12 margin-top-10 margin-btm-10">
+          <span class="index"><%= activity.trackable.post.comments.index(activity.trackable) + 1 %>/<%= activity.trackable.post.comments.size %></span>
           <div class="col-xs-3 img-mini-square padding-none margin-left-none">
             <% if activity.trackable.user.picture_file_name %>
               <%= image_tag(activity.trackable.user.picture.url(:medium), { class: "img" }) %>
@@ -80,7 +81,7 @@
               </ul>
               <ul class="list-inline margin-btm-none list-unstyled">
                 <li class="margin-btm-none"><%= activity.trackable.content %></li>
-                <li class="index pull-right"><%= activity.trackable.post.comments.index(activity.trackable) + 1 %>/<%= activity.trackable.post.comments.size %></li>
+                <li class="index pull-right"></li>
               </ul>
 
             </div>

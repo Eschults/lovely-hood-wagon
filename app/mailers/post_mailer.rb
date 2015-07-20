@@ -22,13 +22,6 @@ class PostMailer < ActionMailer::Base
     @post = post
     @liker = liker
 
-    mail to: post.user.email, subject: "#{@liker.first_name} aime votre post"
-  end
-
-  def comment(post, commenter)
-    @post = post
-    @commenter = commenter
-
-    mail to: post.user.email, subject: "#{@commenter.first_name} a commenté votre post"
+    mail to: @post.user.email, subject: "#{@liker.first_name} aime votre post"
   end
 end

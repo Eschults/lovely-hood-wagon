@@ -1427,8 +1427,11 @@ i {
 }
 
 .index {
-  margin-right: -15%;
+  position: absolute;
+  right: 15px;
+  top: 0;
   color: #9197a3;
+  font-size: 12px;
 }
 
 .box-in-post {

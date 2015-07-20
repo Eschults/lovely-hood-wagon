@@ -25,10 +25,6 @@ class Post < ActiveRecord::Base
     PostMailer.post(self).deliver
   end
 
-  def send_comment_email(user)
-    PostMailer.comment(self, user).deliver
-  end
-
   def send_like_email(user)
     PostMailer.like(self, user).deliver
   end

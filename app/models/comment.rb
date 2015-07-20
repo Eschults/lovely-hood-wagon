@@ -15,4 +15,8 @@ class Comment < ActiveRecord::Base
 
   validates_presence_of :content, :user
   acts_as_votable
+
+  def send_comment_email
+    CommentMailer.new_comment(self).deliver
+  end
 end

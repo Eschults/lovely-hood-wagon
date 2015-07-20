@@ -1434,6 +1434,12 @@ i {
   font-size: 12px;
 }
 
+.panel.panel-meta {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top: none !important;
+}
+
 .box-in-post {
   @media screen and (min-width: 530px) {
     margin-right: -15%;

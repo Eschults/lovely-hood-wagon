@@ -1,6 +1,12 @@
 <%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> aime une publication
 <br>
+<% if activity.trackable.link_url %>
+</div>
+<div class="col-xs-12">
+<div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
+<% else %>
 <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none box-in-post">
+<% end %>
   <div class="panel-body padding-none border-btm">
     <div class="stick-down-target white-bg col-xs-12">
       <div class="message-content margin-top-15">
@@ -21,11 +27,20 @@
           </ul>
           <%= simple_format activity.trackable.content, class: "margin-btm-none" unless activity.trackable.content == "***" %>
           <% if activity.trackable.link_url %>
-            <div class="hidden-xs">
-              <%= render "meta", post: activity.trackable %>
-            </div>
-          <% end %>
         </div>
+        <div class="col-xs-12 padding-sides-none">
+            <%= render "meta", post: activity.trackable %>
+        </div>
+          <% else %>
+            <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
+              <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
+            <% else %>
+              <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
+            <% end %>
+            <span class="like-link"> · </span>
+            <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
+        </div>
+          <% end %>
       </div>
     </div>
   </div>
@@ -53,3 +68,12 @@
     </div>
   </div>
 </div>
+<% if activity.trackable.link_url %>
+  <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
+    <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
+  <% else %>
+    <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
+  <% end %>
+  <span class="like-link"> · </span>
+  <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
+<% end %>

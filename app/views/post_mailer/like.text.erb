@@ -1,15 +1,15 @@
 <%= @post.user.first_name %>,
 
-<%= @liker.first_name %> aime votre post :
+<%= @liker.first_name %> a commenté votre post :
 
-<%= simple_format(@post.content, style: "margin-top:0!important;") unless @post.content == "***" %>
+<%= @post.content unless @post.content == "***" %>
 <% if @post.link_url %>
   <%= @post.link_title %>
-  <%= simple_format @post.link_description, style: "text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color:#777777;font-size:14px;margin-top:0;margin-bottom:0;line-height:19.8px;" %>
+  <%= @post.link_description %>
 <% end %>
 
-<%= link_to posts_url, anchor: "post_#{@post.id}", target: "_blank" do %>
-  Voir / réagir sur Lovely Hood
-<% end %>
+<%= "Voir / réagir sur Lovely Hood : https://www.lovely-hood.com %>
 
 L'équipe Lovely Hood
+
+<%= "Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir, connectez-vous à votre compte : https://www.lovely-hood.com et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications. " %>

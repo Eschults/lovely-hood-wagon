@@ -108,6 +108,9 @@ a.red-link:hover {
 a {
   color: rgb(1, 181, 237);
   font-weight: 400;
+  .font-normal {
+    font-weight: 300 !important;
+  }
 }
 
 a:hover,
@@ -1335,6 +1338,7 @@ i {
 .font-normal,
 .font-normal .link-normal {
   color: rgb(119, 119, 119) !important;
+  font-weight: 300px !important;
 }
 
 .offer-stream-box li > a:active {

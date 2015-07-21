@@ -44,24 +44,29 @@
                       <tr style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
                         <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;width:78px;line-height:0;vertical-align:top;">
                           <%= link_to posts_url, style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#565a5c;text-decoration:none", target: "_blank" do %>
-                            <%= image_tag @post.user.picture.url(:medium), width: "68", height: "68", style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0;border-radius:2px" %>
+                            <%= image_tag @post.user.picture.url(:medium), width: "68", height: "68", style: "margin:0;padding:0;max-width:100%;border:0;border-radius:2px" %>
                           <% end %>
                         </td>
-                        <td style="margin:0;padding:15;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;vertical-align:top;">
-                          <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
+                        <td style="margin:0;padding:15;font-family:&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;vertical-align:top;">
+                          <div style="margin:0;padding:0;font-family:&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
+                            <strong><%= @post.user.first_name %></strong>
                             <%= simple_format(@post.content, style: "margin-top:0!important;") unless @post.content == "***" %>
-                            <% if @post.link_url %>
-                              <div style="margin:0;padding:15px;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;border-bottom-width:1px;background-color:#ffffff;border-top-left-radius:3px;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-top-right-radius:3px;border-style:solid;min-height:32px;border-top:1px solid #dbdbdb">
-                                <%= image_tag @post.link_image, style: "width:100%;margin:0;padding:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;" %>
-                                        <h4 style="text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color: #4f4f4f;margin-top:10px;margin-bottom:10px;line-height:19.8px;font-weight:500;"><%= @post.link_title %></h4>
-                                <%= simple_format @post.link_description, style: "text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color:#777777;font-size:14px;margin-top:0;margin-bottom:0;line-height:19.8px;" %>
-                              </div>
-                            <% end %>
                           </div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+                <div style="margin-top:15px;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
+                  <% if @post.link_url %>
+                    <div style="margin-left:-15px;margin-right:-15px;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
+                      <%= image_tag @post.link_image, style: "width:100%;padding:0;border-top-width:1px;border-top-style:solid;border-top-color:rgb(240,240,240);border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(240,240,240);" %>
+                    </div>
+                    <div style="margin-top:-6px;padding-left:15px;padding-right:15px;padding-bottom:15px;padding-top:15px;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;border-bottom-width:1px;background-color:#ffffff;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-style:solid;min-height:32px;">
+                      <h4 style="text-decoration:none;font-family:'Helvetica',Helvetica,Arial,sans-serif;color: #4f4f4f;margin-top:0;margin-bottom:10px;line-height:19.8px;font-weight:500;font-size:18px"><%= @post.link_title %></h4>
+                      <%= simple_format @post.link_description, style: "text-decoration:none;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;color:#777777;font-size:14px;margin-top:0;margin-bottom:0;line-height:19.8px;" %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
 

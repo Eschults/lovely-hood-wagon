@@ -1516,5 +1516,22 @@ i {
 
 
 .bootstrap-switch {
+  float: left;
+  @media(max-width: 768px) {
+    float: right;
+  }
+}
+
+.pull-xs-left-sm-right {
+  float: left;
+  @media(max-width: 768px) {
+    float: right;
+  }
+}
+
+.notif-label {
   float: right;
+  @media(max-width: 768px) {
+    float: left;
+  }
 }

@@ -280,31 +280,55 @@
             <br>
             <%= form_for(@user) do |f| %>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
-                <%= f.label :lh_post_notif, "LH a publié sur le Wall", class: "margin-top-5 control-label" %>
-                <%= f.check_box :lh_post_notif, class: "form-control" %>
+                <div class="col-sm-6 padding-left-none">
+                  <%= f.label :lh_post_notif, "Lovely Hood a publié sur le Wall", class: "margin-top-5 notif-label control-label" %>
+                </div>
+                <div class="col-sm-6 padding-right-none">
+                  <%= f.check_box :lh_post_notif, class: "form-control" %>
+                </div>
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
-                <%= f.label :user_notif, "Nouveau voisin", class: "margin-top-5 control-label" %>
-                <%= f.check_box :user_notif, class: "form-control" %>
+                <div class="col-sm-6 padding-left-none">
+                  <%= f.label :user_notif, "Nouveau voisin", class: "margin-top-5 notif-label control-label" %>
+                </div>
+                <div class="col-sm-6 padding-right-none">
+                  <%= f.check_box :user_notif, class: "form-control" %>
+                </div>
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
-                <%= f.label :offer_notif, "Nouvelle annonce", class: "margin-top-5 control-label" %>
-                <%= f.check_box :offer_notif, class: "form-control" %>
+                <div class="col-sm-6 padding-left-none">
+                  <%= f.label :offer_notif, "Nouvelle annonce", class: "margin-top-5 notif-label control-label" %>
+                </div>
+                <div class="col-sm-6 padding-right-none">
+                  <%= f.check_box :offer_notif, class: "form-control" %>
+                </div>
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
-                <%= f.label :post_notif, "Nouveau post", class: "margin-top-5 control-label" %>
-                <%= f.check_box :post_notif, class: "form-control" %>
+                <div class="col-sm-6 padding-left-none">
+                  <%= f.label :post_notif, "Nouveau post", class: "margin-top-5 notif-label control-label" %>
+                </div>
+                <div class="col-sm-6 padding-right-none">
+                  <%= f.check_box :post_notif, class: "form-control" %>
+                </div>
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
-                <%= f.label :comment_notif, "Votre post a été commenté", class: "margin-top-5 control-label" %>
-                <%= f.check_box :comment_notif, class: "form-control" %>
+                <div class="col-sm-6 padding-left-none">
+                  <%= f.label :comment_notif, "Votre post a été commenté", class: "margin-top-5 notif-label control-label" %>
+                </div>
+                <div class="col-sm-6 padding-right-none">
+                  <%= f.check_box :comment_notif, class: "form-control" %>
+                </div>
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
-                <%= f.label :like_notif, "Votre post a été aimé", class: "margin-top-5 control-label" %>
-                <%= f.check_box :like_notif, class: "form-control" %>
+                <div class="col-sm-6 padding-left-none">
+                  <%= f.label :like_notif, "Votre post a été aimé", class: "margin-top-5 notif-label control-label" %>
+                </div>
+                <div class="col-sm-6 padding-right-none">
+                  <%= f.check_box :like_notif, class: "form-control" %>
+                </div>
               </div>
-              <div class="col-xs padding-sides-none">
-                <%= f.submit "Sauvegarder", class: "btn btn-primary pull-right", id: "submit" %>
+              <div class="col-xs-12 text-right padding-sides-none">
+                <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
               </div>
             <% end %>
           </div>

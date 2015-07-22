@@ -20,7 +20,7 @@
         <div class="col-xs-9 padding-left-10 margin-btm-5">
           <ul class="margin-none list-unstyled list-inline">
             <li class="padding-left-none">
-              <%= link_to activity.trackable.user.first_name, user_path(activity.owner), class: "offer-nature-link" %></li>
+              <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link" %></li>
             <li class="hidden-xs padding-left-none gray-lighter font-size-12">
               <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? "" : (Time.now - activity.trackable.created_at < 86400 ? "Yesterday," : activity.trackable.created_at.strftime("%A, %e %B "))) + activity.trackable.created_at.strftime("%l:%M %p") %>
             </li>

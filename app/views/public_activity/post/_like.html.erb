@@ -42,13 +42,6 @@
             <% end %>
         </div>
           <% else %>
-            <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
-              <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
-            <% else %>
-              <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
-            <% end %>
-            <span class="like-link"> · </span>
-            <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
         </div>
           <% end %>
       </div>

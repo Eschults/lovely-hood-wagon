@@ -2,14 +2,10 @@
   <div class="row margin-top-15">
     <%= image_tag post.link_image, class: "img img-meta" %>
   </div>
-  <div class="panel panel-default panel-meta margin-btm-15 padding-none">
-    <div class="panel-body padding-top-none">
-      <div class="row">
-        <div class="col-xs-12">
-          <h4><%= post.link_title %></h4>
-          <%= simple_format post.link_description, class: "font-normal margin-btm-none" %>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4><%= post.link_title %></h4>
+      <%= simple_format post.link_description, class: "font-normal margin-btm-15" %>
     </div>
   </div>
 <% end %>

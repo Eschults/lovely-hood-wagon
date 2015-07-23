@@ -1,6 +1,12 @@
 <%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> a commenté une publication
 <br>
+<% if activity.trackable.post.link_url %>
+</div>
+<div class="col-xs-12">
+<div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
+<% else %>
 <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none box-in-post">
+<% end %>
   <div class="panel-body padding-none border-btm">
     <div class="stick-down-target white-bg col-xs-12">
       <div class="message-content margin-top-15">
@@ -19,15 +25,27 @@
               <%= (((Time.now - activity.trackable.post.created_at < 86400) && Date.today.day == activity.trackable.post.created_at.day) ? "" : (Time.now - activity.trackable.post.created_at < 86400 ? "Yesterday," : activity.trackable.post.created_at.strftime("%A, %e %B "))) + activity.trackable.post.created_at.strftime("%l:%M %p") %>
             </li>
           </ul>
-          <%= simple_format activity.trackable.post.content, class: "margin-btm-none" unless activity.trackable.post.content === "***" %>
-          <% if activity.trackable.class == Post %>
-            <% if activity.trackable.link_url %>
-              <div class="hidden-xs">
-                <%= render "meta", post: activity.trackable %>
-              </div>
+          <%= simple_format activity.trackable.post.content, class: "margin-btm-none" unless activity.trackable.post.content == "***" %>
+          <% if activity.trackable.post.class == Post %>
+            <% if activity.trackable.post.link_url %>
+        </div>
+        <div class="col-xs-12 padding-sides-none">
+              <%= link_to activity.trackable.post.link_url, target: "_blank" do %>
+                <div class="row margin-top-15">
+                  <%= image_tag activity.trackable.post.link_image, class: "img img-meta" %>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4><%= activity.trackable.post.link_title %></h4>
+                    <%= simple_format activity.trackable.post.link_description, class: "font-normal" %>
+                  </div>
+                </div>
+              <% end %>
+        </div>
+            <% else %>
+        </div>
             <% end %>
           <% end %>
-        </div>
       </div>
     </div>
   </div>

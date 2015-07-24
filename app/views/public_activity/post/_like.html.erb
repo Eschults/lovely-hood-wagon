@@ -1,6 +1,6 @@
 <%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> aime une publication
 <br>
-<% if activity.trackable.link_url %>
+<% if activity.trackable.link_url || activity.trackable.picture_file_name %>
 </div>
 <div class="col-xs-12">
 <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
@@ -26,7 +26,14 @@
             </li>
           </ul>
           <%= simple_format activity.trackable.content, class: "margin-btm-none" unless activity.trackable.content == "***" %>
-          <% if activity.trackable.link_url %>
+          <% if activity.trackable.picture_file_name %>
+        </div>
+        <div class="col-xs-12 padding-sides-none">
+          <div class="row margin-top-15">
+            <%= image_tag activity.trackable.picture.url(:large), class: "img img-border-top" %>
+          </div>
+        </div>
+          <% elsif activity.trackable.link_url %>
         </div>
         <div class="col-xs-12 padding-sides-none">
             <%= link_to activity.trackable.link_url, target: "_blank" do %>

@@ -596,6 +596,10 @@ a.gray-lighter {
   border-bottom: 1px solid rgb(240, 240, 240);
 }
 
+.img-border-top {
+  border-top: 1px solid rgb(240, 240, 240);
+}
+
 .img-mini {
   // height: 20px;
   // width: 20px;
@@ -1537,5 +1541,14 @@ i {
   float: right;
   @media(max-width: 768px) {
     float: left;
+  }
+}
+
+#camera {
+  font-size: 21px;
+  cursor: pointer;
+  color: #dddddd;
+  &:hover {
+    color: #B3B7BD;
   }
 }

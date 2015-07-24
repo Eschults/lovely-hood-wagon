@@ -1,6 +1,6 @@
 <%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> a commenté une publication
 <br>
-<% if activity.trackable.post.link_url %>
+<% if activity.trackable.post.link_url || activity.trackable.post.picture_file_name %>
 </div>
 <div class="col-xs-12">
 <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none">
@@ -27,7 +27,14 @@
           </ul>
           <%= simple_format activity.trackable.post.content, class: "margin-btm-none" unless activity.trackable.post.content == "***" %>
           <% if activity.trackable.post.class == Post %>
-            <% if activity.trackable.post.link_url %>
+            <% if activity.trackable.post.picture_file_name %>
+        </div>
+        <div class="col-xs-12 padding-sides-none">
+          <div class="row margin-top-15">
+            <%= image_tag activity.trackable.post.picture.url(:large), class: "img img-border-top" %>
+          </div>
+        </div>
+            <% elsif activity.trackable.post.link_url %>
         </div>
         <div class="col-xs-12 padding-sides-none">
               <%= link_to activity.trackable.post.link_url, target: "_blank" do %>

@@ -18,7 +18,21 @@
             </li>
           </ul>
           <%= simple_format post.content, class: "margin-btm-none box-in-post" unless post.content == "***" %>
-          <% if post.link_url %>
+          <% if post.picture_file_name %>
+        </div>
+        <div class="col-xs-12">
+          <div class="row margin-top-15 margin-btm-13">
+            <%= image_tag post.picture.url(:large), class: "img img-meta" %>
+          </div>
+          <% if current_user.find_voted_items.include? post %>
+            <%= link_to "Je n'aime plus", unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>
+          <% else %>
+            <%= link_to "J'aime", like_post_path(post), method: :put, remote: true, class: "like-link", id: "like_link_#{post.id}" %>
+          <% end %>
+          <span class="like-link"> · </span>
+          <%= link_to "Commenter", "#", class: "comment-link", id: "comment_post_#{post.id}" %>
+        </div>
+          <% elsif post.link_url %>
         </div>
         <div class="col-xs-12">
               <%= render "meta", post: post %>

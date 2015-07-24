@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none">
-        <%= form_for @post, method: :post, url: posts_path, remote: true do |f| %>
+        <%= form_for @post, html: { multipart: true }, method: :post, url: posts_path, remote: true, authenticity_token: true do |f| %>
           <div class="panel-body">
             <div class="row">
               <div class="col-xs-12">
@@ -27,8 +27,12 @@
               </div>
             </div>
           </div>
-          <div class="panel-footer text-right" id="panel-footer-posts">
-            <%= f.submit "Poster", class: "btn btn-post" %>
+          <div class="panel-footer" id="panel-footer-posts">
+            <%= f.file_field :picture, class: "hidden" %>
+            <ul class="list-unstyled list-inline margin-btm-none">
+              <li id="camera"><i class="fa fa-camera"></i></li>
+              <li class="pull-right"><%= f.submit "Poster", class: "btn btn-post pull-right" %></li>
+            </ul>
           </div>
         <% end %>
       </div>
@@ -47,6 +51,9 @@
 <%= content_for :js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
+      $('#camera').on('click', function() {
+        $('#post_picture').click();
+      })
       comment();
       adjustIconsSizeSimple(420);
       $('#wall-nav-link').addClass('hover');

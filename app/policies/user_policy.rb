@@ -19,6 +19,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def map?
+    user.admin?
+  end
+
   def update?
     user.admin? || user == record
   end

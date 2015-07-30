@@ -10,10 +10,6 @@ class OffersController < ApplicationController
       redirect_to edit_user_path(current_user)
     end
     @offers = policy_scope(Offer)
-    unless current_user.authorized
-      redirect_to "/"
-      flash[:alert] = "Lovely Hood est actuellement en version beta, et n'est ouverte qu'à la création d'annonces. Pour plus d'information, écrivez-nous à contact@lovely-hood.com."
-    end
   end
 
   def mine

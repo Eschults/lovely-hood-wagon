@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: :index
+  before_action :set_user, except: [:index, :map]
   after_action :verify_authorized, except: :index, unless: :devise_controller?
+  layout 'map', only: :map
 
   def index
     @users = policy_scope(User)
@@ -44,6 +45,16 @@ class UsersController < ApplicationController
       name_and_address_validations(user_path(@user))
     else
       render :edit
+    end
+  end
+
+  def map
+    @users = User.where(latitude: [-90..90])
+    authorize @users
+
+    @markers = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
     end
   end
 

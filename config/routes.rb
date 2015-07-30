@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/sitemap", to:"pages#sitemap"
   get "/poster", to:"pages#poster"
   get "/early_birds_poster", to:"pages#early_birds_poster"
+  get "/users/map", to: "users#map"
   resources :users, only: [:index, :show, :edit, :update]
   resources :offers, except: [:destroy] do
     member do

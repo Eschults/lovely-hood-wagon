@@ -26,8 +26,6 @@
   <meta name="twitter:description" content="Lovely Hood est une plateforme pour faciliter les échanges de bons procédés entre voisins. Publiez des annonces pour louer vos objets dormants, vendre vos objets inutilisés, ou proposer vos services à vos voisins.">
   <meta name="twitter:creator" content="@LvlyHood">
   <meta name="twitter:image:src" content="http://lovely-hood.s3.amazonaws.com/production/users/pictures/000/000/002/medium/lh.png?1426271061">
-
-
   <%= stylesheet_link_tag "application" %>
   <%= yield :stylesheets %>
   <%= favicon_link_tag %>
@@ -37,34 +35,22 @@
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
     ga('create', 'UA-61018937-1', 'auto');
     ga('send', 'pageview');
-
   </script>
 </head>
 <body>
   <div class="bg-color" id="wrapper">
     <%= render "layouts/navbar" %>
-
-    <div class="notices">
-      <%= render "layouts/notices" %>
-    </div>
-
     <%= yield %>
-
     <%= render "layouts/footer" %>
   </div>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
-
   <%= javascript_include_tag 'application' %>
-
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      $('.alert').delay(2000).fadeOut(2000)
-    })
-  <% end %>
   <%= yield :js %>
+  <%= javascript_tag do %>
+    notices();
+  <% end %>
 </body>
 </html>

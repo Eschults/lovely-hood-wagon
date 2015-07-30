@@ -7,7 +7,9 @@ class OffersController < ApplicationController
   def index
     name_and_address_validations
     if current_user.latitude.nil?
+      raise
       redirect_to edit_user_path(current_user)
+      flash.now[:alert] = "Renseignez votre adresse nous permettre de déterminer votre voisinage"
     end
     @offers = policy_scope(Offer)
   end
@@ -125,24 +127,24 @@ class OffersController < ApplicationController
             if current_user.city != ""
 
             else
-              flash.now[:alert] = "Merci de renseigner votre ville"
               redirect_to edit_user_path(current_user)
+              flash.keep[:alert] = "Merci de renseigner votre ville"
             end
           else
-            flash.now[:alert] = "Merci de renseigner votre code postal"
             redirect_to edit_user_path(current_user)
+            flash.keep[:alert] = "Merci de renseigner votre code postal"
           end
         else
-          flash.now[:alert] = "Merci de renseigner votre rue"
           redirect_to edit_user_path(current_user)
+          flash.keep[:alert] = "Merci de renseigner votre rue"
         end
       else
-        flash.now[:alert] = "Merci de renseigner votre nom de famille"
         redirect_to edit_user_path(current_user)
+        flash.keep[:alert] = "Merci de renseigner votre nom de famille"
       end
     else
-      flash.now[:alert] = "Merci de renseigner votre prénom"
       redirect_to edit_user_path(current_user)
+      flash.keep[:alert] = "Merci de renseigner votre prénom"
     end
   end
 

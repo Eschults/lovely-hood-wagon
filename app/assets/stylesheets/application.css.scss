@@ -219,6 +219,10 @@ input,
   margin-top: 18px;
 }
 
+.margin-top-56 {
+  margin-top: 56px;
+}
+
 .margin-top-neg-10 {
   margin-top: -10px;
 }
@@ -746,25 +750,28 @@ a.gray-lighter {
   margin-left: 2px;
 }
 
-.notices {
-  position: absolute;
-  left: 50%;
-  width: 320px;
-  text-align: center;
-  margin-top: 20px;
-  margin-left: -160px;
-  z-index: 2;
-}
-
 .alert {
-  border-radius: 1px;
-}
+  padding-top: 17px;
+  padding-bottom: 17px;
+  background: none;
+  font-size: 16px;
+  text-align: center;
+  color: #FFFFFF;
+  border: none;
+  background-color: #22A7F0;
+  font-weight: 300;
+  margin-bottom: 0;
+  border: none;
+  transition: all 0.1s linear;
+  align-items: center;
+  justify-content: center;
+  margin-left: -15px;
+  margin-right: -15px;
+  border-radius: 0;
 
-.alert-warning,
-.alert-info {
-  background-color: rgba(34, 167, 240, 1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  &.is-hidden {
+    margin-top: -56px;
+  }
 }
 
 #messages-box {

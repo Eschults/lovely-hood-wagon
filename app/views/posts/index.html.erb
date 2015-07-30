@@ -31,6 +31,8 @@
             <%= f.file_field :picture, class: "hidden" %>
             <ul class="list-unstyled list-inline margin-btm-none">
               <li id="camera"><i class="fa fa-camera"></i></li>
+              <li class="pic-path" id="placeholder"></li>
+              <li class="pic-path hidden" id="check"><i class="fa fa-check"></i></li>
               <li class="pull-right"><%= f.submit "Poster", class: "btn btn-post pull-right" %></li>
             </ul>
           </div>
@@ -53,6 +55,14 @@
     $(document).ready(function() {
       $('#camera').on('click', function() {
         $('#post_picture').click();
+      })
+      $('#post_picture').on('change', function() {
+        var path = $('#post_picture').val().slice($('#post_picture').val().lastIndexOf("\\") + 1, $('#post_picture').val().length)
+        if(path.length > 12) {
+          path = path.slice(0, 11) + "..."
+        }
+        $('#placeholder').text(path)
+        $('#check').removeClass('hidden')
       })
       comment();
       adjustIconsSizeSimple(420);

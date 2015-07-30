@@ -26,9 +26,7 @@ class OffersController < ApplicationController
   def create
     @offer = current_user.offers.new(offer_params)
     authorize @offer
-    if @offer.user.verif == 0
-      @offer.published = true
-    end
+    @offer.published = true
     if @offer.type_of_offer == "sell"
       @offer.sell = true
     end

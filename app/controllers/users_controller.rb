@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         @user.send_new_neighbor_email
         @user.create_activity :update, owner: current_user
       end
-      name_and_address_validations(user_path(@user))
+      name_and_address_validations
     else
       render :edit
     end
@@ -60,35 +60,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def name_and_address_validations(path)
-    if @user.first_name != ""
-      if @user.last_name != ""
-        if @user.street != ""
-          if @user.zip_code != ""
-            if @user.city != ""
-              redirect_to path
-            else
-              # flash[:alert] = "Merci de renseigner votre ville"
-              render :edit
-            end
-          else
-            # flash[:alert] = "Merci de renseigner votre code postal"
-            render :edit
-          end
-        else
-          # flash[:alert] = "Merci de renseigner votre rue"
-          render :edit
-        end
-      else
-        # flash[:alert] = "Merci de renseigner votre nom de famille"
-        render :edit
-      end
-    else
-      # flash[:alert] = "Merci de renseigner votre prénom"
-      render :edit
-    end
-  end
 
   def set_user
     @user = User.find(params[:id])

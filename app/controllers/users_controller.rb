@@ -56,6 +56,13 @@ class UsersController < ApplicationController
     @markers = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
+      marker.title user.first_name
+      marker.infowindow "
+            <div class='text-center'>
+              <img src='#{user.picture.url(:thumb)}' class='img-nice' width='50'>
+              <a href='#{user_path(user)}' class='nice-link info-link'>#{user.first_name}</a>
+            </div>
+            <p>#{user.address}</p>"
     end
   end
 

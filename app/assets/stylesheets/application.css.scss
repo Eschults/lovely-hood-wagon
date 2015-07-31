@@ -275,6 +275,12 @@ input,
   z-index: -1;
 }
 
+.img-nice {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
 .frame-body {
   padding: 10px 20px 20px 20px;
   margin: -10px 30px 20px 30px;
@@ -863,6 +869,16 @@ a.disabled {
 .offer-stream-box:hover {
   background-color: #F2F2F2;
   cursor: pointer;
+}
+
+.info-link {
+  font-size: 16px !important;
+  padding-top: 10px;
+  display: block;
+}
+
+.flex {
+  display: flex
 }
 
 .first-name, .offer-nature-link, .nice-link {

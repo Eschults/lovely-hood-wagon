@@ -99,7 +99,7 @@ class UsersController < ApplicationController
         if current_user.street != ""
           if current_user.zip_code != ""
             if current_user.city != ""
-
+              redirect_to posts_path
             else
               redirect_to edit_user_path(current_user)
               flash.keep[:alert] = "Merci de renseigner votre ville"

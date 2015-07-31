@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         @user.send_new_neighbor_email
         @user.create_activity :update, owner: current_user
       end
-      name_and_address_validations
+      name_and_address_validations_with_redirection
     else
       render :edit
     end
@@ -100,13 +100,43 @@ class UsersController < ApplicationController
     )
   end
 
-  def name_and_address_validations
+  def name_and_address_validations_with_redirection
     if current_user.first_name != ""
       if current_user.last_name != ""
         if current_user.street != ""
           if current_user.zip_code != ""
             if current_user.city != ""
               redirect_to posts_path
+            else
+              redirect_to edit_user_path(current_user)
+              flash.keep[:alert] = "Merci de renseigner votre ville"
+            end
+          else
+            redirect_to edit_user_path(current_user)
+            flash.keep[:alert] = "Merci de renseigner votre code postal"
+          end
+        else
+          redirect_to edit_user_path(current_user)
+          flash.keep[:alert] = "Merci de renseigner votre rue"
+        end
+      else
+        redirect_to edit_user_path(current_user)
+        flash.keep[:alert] = "Merci de renseigner votre nom de famille"
+      end
+    else
+      redirect_to edit_user_path(current_user)
+      flash.keep[:alert] = "Merci de renseigner votre prénom"
+    end
+  end
+
+
+  def name_and_address_validations
+    if current_user.first_name != ""
+      if current_user.last_name != ""
+        if current_user.street != ""
+          if current_user.zip_code != ""
+            if current_user.city != ""
+
             else
               redirect_to edit_user_path(current_user)
               flash.keep[:alert] = "Merci de renseigner votre ville"

@@ -50,6 +50,13 @@ function initAlgolia(
   var refinements = {};
   var minReviewsCount = 0;
 
+  function bindInfoWindow(marker, map, infowindow, description) {
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(description);
+      infowindow.open(map, marker);
+    });
+  }
+
 
   function searchCallback(success, content) {
     if (!success || content.query !== $q.val()) {
@@ -71,17 +78,21 @@ function initAlgolia(
     }
 
     markers = [];
+    infowindows = [];
 
-
-    for (var i = 0; i < content.hits.length; ++i) {
+    for (var i = 0; i < content.hits.length; i++) {
       latLng = new google.maps.LatLng(content.hits[i]._geoloc["lat"],content.hits[i]._geoloc["lng"]);
+      var infowindow = new google.maps.InfoWindow({
+        content: content.hits[i].nature,
+        maxWidth: '150'
+      });
       var marker = new google.maps.Marker({
         position: latLng,
-        infoWindow: content.hits[i].nature,
         id: content.hits[i].id
       });
       marker.setMap(map);
       markers[i] = marker;
+      infowindows[i] = infowindow;
       var offer_url = offerPath.replace(":id", content.hits[i].id);
       content.hits[i].offer_url = offer_url;
       var new_booking_url = newOfferBookingPath.replace(":offer_id", content.hits[i].id);
@@ -112,9 +123,18 @@ function initAlgolia(
         }
       }
       content.hits[i].asset_path = asset_path;
+      var infowindowContent = "<div class='text-center'>"
+        + "<img src='" + content.hits[i].asset_path +"' class='img-icon' width='50'>"
+        + "<a href='" + content.hits[i].offer_url + "' class='nice-link info-link'>" + content.hits[i].nature + "</a>"
+        + "</div>"
+        + "<p>" + content.hits[i].description + "</p>"
+      bindInfoWindow(marker, map, infowindow, infowindowContent)
       html += $hitTemplate.render(content.hits[i]);
     }
     $hits.html(html);
+
+    for (var i = 0; i < content.hits.length; ++i) {
+    }
 
     $('.offer-stream-box .neutralize').on('click', function(e) {
       showOrHidePicture($(this));

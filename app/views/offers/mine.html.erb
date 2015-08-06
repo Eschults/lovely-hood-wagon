@@ -1,15 +1,15 @@
 <%= content_for(:title) do %>
-  Mes annonces - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Visualisez vos annonces et décidez de celles que vous souhaitez publier ou masquer !
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none">
         <div class="panel-heading border-btm-none">
-          <h4>Mes annonces</h4>
+          <h4><%= t('.my_offers') %></h4>
         </div>
         <div class="panel-body padding-none">
           <% if current_user.offers.size > 0 %>
@@ -18,7 +18,7 @@
             <% end %>
           <% else %>
             <div class="offer-stream-box border-top">
-              <p>Vous n'avez pas encore publié d'annonce.</p>
+              <p><%= t('.no_offer') %></p>
               <p><%= link_to "Publier une annonce", new_offer_path %></p>
             </div>
           <% end %>

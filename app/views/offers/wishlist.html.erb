@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Ma wish list - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Sauvegardez les annonces qui vous intéressent pour les retrouvez en un clic !
+  <%= t('.description') %>
 <% end %>
 <%= content_for :stylesheets do %>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
@@ -12,7 +12,7 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none">
         <div class="panel-heading border-btm-none">
-          <h4>Ma wish list</h4>
+          <h4><%= t('.my_wishlist') %></h4>
         </div>
         <div class="panel-body padding-none">
           <% if @offers.size > 0 %>
@@ -21,8 +21,8 @@
             <% end %>
           <% else %>
             <div class="offer-stream-box border-top">
-              <p>Vous n'avez pas d'annonce dans votre wish list.</p>
-              <p><%= link_to "Voir les annonces", offers_path %></p>
+              <p><%= t('.no_offer') %></p>
+              <p><%= link_to t('.browse_offers'), offers_path %></p>
             </div>
           <% end %>
         </div>

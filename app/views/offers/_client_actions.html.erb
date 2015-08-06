@@ -1,19 +1,19 @@
 <% if current_user.find_voted_items.include? @offer %>
   <%= link_to unwish_offer_path(@offer), class: "btn btn-success btn-wide btn-left", method: :put do %>
-    <i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;&nbsp;Délister
+    <i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= t('.unwish') %>
   <% end %>
 <% else %>
   <%= link_to wish_offer_path(@offer), class: "btn btn-success btn-wide btn-left", method: :put do %>
-    <i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;&nbsp;Enregistrer
+    <i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= t('.wish') %>
   <% end %>
 <% end %>
 <br>
 <br>
 <%= link_to new_offer_conversation_path(@offer), class: "btn btn-default btn-wide btn-left" do %>
-  <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;Demande d'info
+  <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= t('.contact_owner') %>
 <% end %>
 <br>
 <br>
 <%= link_to new_offer_booking_path(@offer), class: "btn btn-primary btn-wide btn-left" do %>
-  <i class="fa fa-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;Réserver
+  <i class="fa fa-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= t('.book') %>
 <% end %>

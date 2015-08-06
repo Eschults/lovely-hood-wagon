@@ -1,24 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   activerecord:
     models:
@@ -77,3 +56,176 @@ en:
       message:
         read_at: "Read at"
         content: "Message"
+  layouts:
+    footer:
+      terms: "Terms and conditions"
+      legal: "Legal"
+    navbar:
+      wall: "Wall"
+      offers: "Offers"
+      inbox: "Inbox"
+      profile: "Profile"
+      settings: "Settings"
+      neighbors: "My neighbors"
+      my_offers: "My offers"
+      wishlist: "Wishlist"
+      log_out: "Sign out"
+      new_offer: "Create an offer"
+    navbar_map:
+      wall: "Wall"
+      offers: "Offers"
+      inbox: "Inbox"
+      profile: "Profile"
+      settings: "Settings"
+      neighbors: "My neighbors"
+      my_offers: "My offers"
+      wishlist: "Wishlist"
+      log_out: "Sign out"
+      new_offer: "Create an offer"
+  offer_mailer:
+    new_offer:
+      dear_neighbors: "Dear neighbors,"
+      created_an_offer: "created an offer:"
+      go_to_lh: "Go to Lovely Hood"
+      lh_team: "Lovely Hood's team"
+      set_notifs_1: "To set the events for which you would like to receive an email,"
+      connect: "sign in on LH"
+      set_notifs_2: "and go to Settings, Notifications."
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+  offers:
+    client_actions:
+      unwish: "Remove from wishlist"
+      wish: "Save to wishlist"
+      contact_owner: "Contact owner"
+      book: "Book offer"
+    form:
+      suggest_service: "Suggest a service"
+      here: "here"
+      type: "Type"
+      rent: "Rent"
+      sell: "Sell"
+      service: "Service"
+      nature: "Nature"
+      suggest_rental: "Suggest a nature for rental"
+      description: "Description"
+      price: 'Price'
+      hourly_rate: "$/hour"
+      daily_rate: "$/day"
+      weekly_rate: "$/week"
+      price_helper: "You can divide purchase price by five to approach a reasonnable renting price."
+      guarantee: "Guarantee"
+      picture: "Image"
+      save: "Save"
+    offer:
+      hidden: "Hidden"
+      published: "Published"
+      step: "step"
+      to_publish: "to publish"
+    owner_actions:
+      edit: "Edit offer"
+    wishlisted_offer:
+      show_offer: "Show details"
+      show_pic: "Show image"
+      hide_pic: "Hide image"
+      wish: "Save to wishlist"
+      contact_owner: "Contact owner"
+      book: "Book offer"
+      unwish: "Remove from wishlist"
+    edit:
+      update: "Update"
+      update_description: "Update your offer in a few clicks."
+    index:
+      title: "Offers - LH"
+      description: "Browse all offers in your hood"
+      hood: "My Hood"
+      offers: "Offers"
+      sort_by: "Sort by"
+      distance: "distance"
+      price: "price"
+      filter_by: "Filter by"
+      on_rent: "Rentals"
+      services: "Services"
+      on_sale: "Sales"
+      placeholder: "Search an offer by nature..."
+      show_offer: "Show details"
+      show_pic: "Show image"
+      hide_pic: "Hide image"
+      unwish: "Remove from wishlist"
+      wish: "Save to wishlist"
+      contact_owner: "Contact owner"
+      book: "Book offer"
+      free: "Free"
+      currency: "$"
+      daily_rate: "/ day"
+      weekly_rate: "/ week"
+      hourly_rate: "/ hour"
+    mine:
+      title: "My offers - LH"
+      description: "Browse your own offers and manage which ones you want to publish!"
+      my_offers: "My offers"
+      no_offer: "You haven't created any offer yet."
+    new:
+      title: "New offer - LH"
+      description: "Earn money by publishing offers of what you're enclined to share with your neighbors!"
+      new_offer: "New offer"
+    show:
+      description: "Discover the goods and services offers available less than 10 minutes away from your place!"
+      hourly_rate: "Hourly rate"
+      daily_rate: "Daily rate"
+      weekly_rate: "Weekly rate"
+      guarantee: "Guarantee"
+      purchase: "(purchase only)"
+      review: "review"
+      no_review: "(No review yet)"
+      communication: "Communication:"
+      punctuality: "Punctuality:"
+      quality_price: "Quality-price:"
+      route: "Route"
+      reviews: "Reviews"
+    unwish:
+      wish: "Save to wishlist"
+      unwish: "Remove from wishlist"
+    update:
+      published: "(published)"
+      hidden: "(hidden)"
+      changes_saved: "Changes saved"
+    wish:
+      unwish: "Remove from wishlist"
+    wishlist:
+      title: "My wishlist - LH"
+      description: "Save the offers you're interested in to find them easier later!"
+      my_wishlist: "My wishlist"
+      no_offer: "Your wishlist is empty."
+      browse_offers: "Browse offers"
+  pages:
+    early_birds_poster:
+      title: "Print note - LH"
+      dear_neighbors: "Dear neighbors,"
+      first_sentence: "I am new to Lovely Hood, a peer-to-peer platform to share good deals between neighbors and consume smarter."
+      second_sentence: "The more users we are in the neighborhood, the more useful it gets, so come and join me!"
+      footnote: "For a neighborhood with more"
+    home:
+      title: "Welcome on Lovely Hood"
+      description: "Lovely Hood is a peer-to-peer platform to share good deals between neighbors and consume smarter!"
+      catchline: "Share good deals, stuff and services with your neighbors."
+      sign_up: "Sign up now"
+      fb_connect: "Sign in with facebook"
+      password: "Password"
+      confirm: "Confirm password"
+      create_account: "Create account"
+      warning: "By signing up, you're agreeing the"
+      terms: "Terms and conditions"
+      lead_header: "What happens on Lovely Hood is between you and your neighbors"
+      lead_content: "Lovely Hood makes you love your neighbors! Looking for a last-minute baby-sitter, two more chairs for a diner with friends, or some advice to find a good doctor in town? Publish a post on the Wall and wait for your neighbors inputs!"
+      feature_1_header: "Proximity"
+      feature_1_content: "Your community is composed of users living less than 10 minutes away from your home."
+      feature_2_header: "Love & Care"
+      feature_2_content: "Get to know your neighbors. Look after them, they'll look after you in return."
+      feature_3_header: "Share"
+      feature_3_content: "Publish offers of goods and services you want to share with your neighbors."
+      location: "Lovely Hood is in"
+      location_content: "...because most of its users are in Paris."
+      initiate: "Wherever you are, initiate the shift."
+      follow_us_1: "Follow us on"
+      follow_us_2: "to keep up-to-date with our latest develoments."

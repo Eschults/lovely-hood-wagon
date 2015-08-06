@@ -13,7 +13,8 @@ function initAlgolia(
   map,
   markers,
   currentUserWishedItemsIds,
-  admin
+  admin,
+  i18nArray
 ) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
@@ -41,10 +42,28 @@ function initAlgolia(
     hitsPerPage: 40
   });
 
+  var i18nCleanedArray = i18nArray.replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+  var filter_by = JSON.parse(i18nCleanedArray)[0]
+  var on_rent = JSON.parse(i18nCleanedArray)[1]
+  var services = JSON.parse(i18nCleanedArray)[2]
+  var on_sale = JSON.parse(i18nCleanedArray)[3]
+  var show_offer = JSON.parse(i18nCleanedArray)[4]
+  var show_pic = JSON.parse(i18nCleanedArray)[5]
+  var hide_pic = JSON.parse(i18nCleanedArray)[6]
+  var unwish = JSON.parse(i18nCleanedArray)[7]
+  var wish = JSON.parse(i18nCleanedArray)[8]
+  var contact_owner = JSON.parse(i18nCleanedArray)[9]
+  var book = JSON.parse(i18nCleanedArray)[10]
+  var free = JSON.parse(i18nCleanedArray)[11]
+  var currency = JSON.parse(i18nCleanedArray)[12]
+  var daily_rate = JSON.parse(i18nCleanedArray)[13]
+  var weekly_rate = JSON.parse(i18nCleanedArray)[14]
+  var hourly_rate = JSON.parse(i18nCleanedArray)[15]
+
   function sortByCountDesc(a, b) { return b.count - a.count; }
   function sortByNumAsc(a, b) { return parseInt(a.label) - parseInt(b.label); }
   var FACETS = [
-    { name: 'type_of_offer', title: 'Type', sortFunction: sortByCountDesc, topListIfRefined: true },
+    { name: 'type_of_offer', title: filter_by, sortFunction: sortByCountDesc, topListIfRefined: true },
   ];
 
   var refinements = {};
@@ -123,6 +142,20 @@ function initAlgolia(
         }
       }
       content.hits[i].asset_path = asset_path;
+      // I18n
+      content.hits[i].show_offer = show_offer;
+      content.hits[i].show_pic = show_pic;
+      content.hits[i].hide_pic = hide_pic;
+      content.hits[i].unwish = unwish;
+      content.hits[i].wish = wish;
+      content.hits[i].contact_owner = contact_owner;
+      content.hits[i].book = book;
+      content.hits[i].free = free;
+      content.hits[i].currency = currency;
+      content.hits[i].daily_rate = daily_rate;
+      content.hits[i].weekly_rate = weekly_rate;
+      content.hits[i].hourly_rate = hourly_rate;
+      // end of I18n
       var infowindowContent = "<div class='text-center'>"
         + "<img src='" + content.hits[i].asset_path +"' class='img-icon' width='50'>"
         + "<a href='" + content.hits[i].offer_url + "' class='nice-link info-link'>" + content.hits[i].nature + "</a>"
@@ -184,7 +217,7 @@ function initAlgolia(
           for (var v in facetResult) {
             if(v === "rent") {
               values.push({
-                label: 'Les objets à louer',
+                label: on_rent,
                 value: v,
                 count: facetResult[v],
                 refined: helper.isRefined(facetConfig.name, v)
@@ -192,7 +225,7 @@ function initAlgolia(
             }
             if(v === "service") {
               values.push({
-                label: 'Les services',
+                label: services,
                 value: v,
                 count: facetResult[v],
                 refined: helper.isRefined(facetConfig.name, v)
@@ -200,7 +233,7 @@ function initAlgolia(
             }
             if(v === "sell") {
               values.push({
-                label: 'Les objets à acheter',
+                label: on_sale,
                 value: v,
                 count: facetResult[v],
                 refined: helper.isRefined(facetConfig.name, v)

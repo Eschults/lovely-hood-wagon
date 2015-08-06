@@ -1,15 +1,15 @@
 <%= content_for(:title) do %>
-  Modifier <%= @offer.nature %> - LH
+  <%= t('.update') %> <%= @offer.nature %> - LH
 <% end %>
 <%= content_for(:description) do %>
-  Modifiez facilement vos annonces pour mettre à jour vos tarifs, photo ou encore description !
+  <%= t('.update_description') %>
 <% end %>
 <div class="container">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="panel panel-default margin-top-15 padding-none">
         <div class="panel-heading">
-          <h3>Modifier l'annonce</h3>
+          <h3><%= t('.owner_actions .edit') %></h3>
         </div>
         <div class="panel-body form-horizontal">
           <%= render "form" %>

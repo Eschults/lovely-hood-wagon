@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Bienvenue sur Lovely Hood
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Lovely Hood vous permet d'accéder à tous les biens et services proposés par des particuliers, à moins de 10 min à pied !
+  <%= t('.description') %>
 <% end %>
 <div id="mosaic">
   <div class="container">
@@ -11,14 +11,14 @@
         <div class="lead" id="">
           <h1>Spread #love in your #hood.</h1>
           <h3>
-            Les bons plans du quartier, entre particuliers.
+            <%= t('.catchline') %>
           </h3>
         </div>
       </div>
       <div class="col-sm-5 padding-right-none">
         <% unless user_signed_in? %>
           <div class="text-center lead visible-xs padding-top-none">
-            <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
+            <%= link_to t('.sign_up'), new_user_registration_path, class: "btn btn-default" %>
           </div>
           <div class="lead hidden-xs">
             <div class="panel panel-default pull-right max-width-300">
@@ -27,7 +27,7 @@
                   <%- if devise_mapping.omniauthable? %>
                     <%- resource_class.omniauth_providers.each do |provider| %>
                       <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide margin-btm-15" do %>
-                        Connexion avec facebook
+                        <%= t('.fb_connect') %>
                       <% end %>
                     <% end -%>
                   <% end -%>
@@ -37,16 +37,16 @@
                       <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email" %>
                     </div>
                     <div class="form-group">
-                      <%= f.password_field :password, required: true, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
+                      <%= f.password_field :password, required: true, autocomplete: "off", class: "form-control", placeholder: t('.password') %>
                     </div>
                     <div class="form-group">
-                      <%= f.password_field :password_confirmation, required: true, autocomplete: "off",placeholder: "Confirmation mot de passe", class: "form-control" %>
+                      <%= f.password_field :password_confirmation, required: true, autocomplete: "off",placeholder: t('.confirm'), class: "form-control" %>
                     </div>
-                    <%= f.submit "Créer un compte", class: "btn btn-primary btn-wide"%>
+                    <%= f.submit t('.create_account'), class: "btn btn-primary btn-wide"%>
                   </div>
                 <% end %>
                 <p class="mini text-left">
-                  En créant un compte, vous acceptez les <%= link_to "Conditions générales", terms_path %> de Lovely Hood.
+                  <%= t('.warning') %> <%= link_to t('.terms').downcase, terms_path %>.
                 </p>
               </div>
             </div>
@@ -61,9 +61,9 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="lead lead-2">
-          <h1>Tout se passe à moins de 10 min à pied de chez vous</h1>
+          <h1><%= t('.lead_header') %></h1>
           <p>
-            Lovely Hood vous fait aimer vos voisins ! Besoin d'un baby-sitter d'urgence, de 2 chaises supplémentaires pour un dîner entre amis ou d'une bonne adresse de médecin généraliste dans le quartier ? Publiez un message sur le Wall et attendez les retours de vos voisins !
+            <%= t('.lead_content') %>
           </p>
         </div>
       </div>
@@ -93,25 +93,25 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="lead lead-2">
-          <h1>Proximité</h1>
+          <h1><%= t('.feature_1_header') %></h1>
           <p>
-            Votre communauté est constituée des utilisateurs résidant à moins de 10 min à pied de chez vous.
+            <%= t('.feature_1_content') %>
           </p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="lead lead-2">
-          <h1>Love & Care</h1>
+          <h1><%= t('.feature_2_header') %></h1>
           <p>
-            Communiquez avec vos voisins sur le Wall ou en message privé, pour mieux vous connaitre et vous entraider.
+            <%= t('.feature_2_content') %>
           </p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="lead lead-2">
-          <h1>Partage</h1>
+          <h1><%= t('.feature_3_header') %></h1>
           <p>
-            Créez une annonce par article ou service que vous proposez, au prix que vous seul(e) fixez.
+            <%= t('.feature_3_content') %>
           </p>
         </div>
       </div>
@@ -122,23 +122,23 @@
       <div class='row'>
         <div class="col-sm-10">
           <div class="lead">
-            <h1>Lovely Hood est à <strong>Paris</strong>...</h1>
+            <h1><%= t('.location') %> <strong>Paris</strong>...</h1>
             <p>
-              ...parce que la majorité de ses utilisateurs est à Paris.
+              <%= t('.location_content') %>
               <br>
-              Où que vous soyez, initiez le mouvement.
+              <%= t('.initiate') %>
             </p>
             <p>
               <% unless user_signed_in? %>
                 <div class="text-center">
-                  <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-default" %>
+                  <%= link_to t('.sign_up'), new_user_registration_path, class: "btn btn-default" %>
                 </div>
               <% end %>
               <br>
               <br>
             </p>
             <p>
-              Suivez nous sur <%= link_to "facebook", "https://facebook.com/lvly.hood", target: "_blank" %> et sur <%= link_to "twitter", "https://twitter.com/LvlyHood", target: "_blank" %> pour être au courant des nouveautés.
+              <%= t('.follow_us_1') %> <%= link_to "facebook", "https://facebook.com/lvly.hood", target: "_blank" %> & <%= link_to "twitter", "https://twitter.com/LvlyHood", target: "_blank" %> <%= t('.follow_us_2') %>
             </p>
           </div>
         </div>

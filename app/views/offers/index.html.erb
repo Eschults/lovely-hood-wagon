@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Annonces - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Accèdez aux annonces de tous les biens et services disponibles à moins de 10 min à pied de chez vous
+  <%= t('.description') %>
 <% end %>
 <%= content_for :stylesheets do %>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
@@ -13,7 +13,7 @@
       <div class="map-box bg-color" id="map-box">
         <div class="panel panel-default white-bg panel-map">
           <div class="panel-heading">
-            <h4>Mon quartier</h4>
+            <h4><%= t('.hood') %></h4>
           </div>
           <div class="panel-body padding-none" id="panel-body-map">
             <div id="map"></div>
@@ -25,11 +25,11 @@
       <div class="bg-color" id="sidebar">
         <div class="panel panel-default margin-btm-none white-bg">
           <div class="panel-heading">
-            <h4>Annonces</h4>
+            <h4><%= t('.offers') %></h4>
             <div class="btn-group float-right margin-top-neg-26">
               <ul class="list-unstyled list-inline">
-                <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;"><span class="hidden-xs">Trier par </span>proximité</a></li>
-                <li><a href="#" id="price_sort" onclick="sortBy('_price_asc', this); return false;"><span class="hidden-xs">Trier par </span>prix</a></li>
+                <li><a href="#" id="default_sort" class="disabled" onclick="sortBy('', this); return false;"><span class="hidden-xs"><%= t('.sort_by') %> </span><%= t('.distance') %></a></li>
+                <li><a href="#" id="price_sort" onclick="sortBy('_price_asc', this); return false;"><span class="hidden-xs"><%= t('.sort_by') %> </span><%= t('.price') %></a></li>
               </ul>
             </div>
           </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="search-bar">
               <div class="input-group input-group m-t">
-                <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="Rechercher une annonce par nature, description..." />
+                <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control string" placeholder="<%= t('.placeholder') %>" />
                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
               </div>
             </div>
@@ -53,9 +53,6 @@
     </div>
   </div>
 </div>
-
-
-
 <%= content_for(:js) do %>
   <script type="text/template" id="facet-template">
     <div class="facet">
@@ -63,7 +60,7 @@
         <table>
           <td>
             <div class="facet-title">
-              Je veux voir :
+              {{ title }}
             </div>
           </td>
           <td>
@@ -100,24 +97,24 @@
         </div>
         <div class="col-xs-9 padding-left-30 padding-right-none">
           <h5 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link neutralize" id="offer_{{id}}">{{{ _highlightResult.nature.value }}}</a></h5>
-          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}" class="neutralize" id="offer_{{id}}">Voir l'annonce complète</a></p>
+          <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}" class="neutralize" id="offer_{{id}}">{{show_offer}}</a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-left-none">
           <h4 class="margin-none text-right price">
             {{#free?}}
-              Prêt
+              {{free}}
             {{/free?}}
             {{^free?}}
               {{#daily_price}}
-                {{ one_price_int }}€
+                {{ one_price_int }}{{currency}}
               {{/daily_price}}
               {{^daily_price}}
                 {{#weekly_price}}
-                  {{ weekly_price }}€
+                  {{ weekly_price }}{{currency}}
                 {{/weekly_price}}
                 {{^weekly_price}}
                   {{#hourly_price}}
-                    {{ hourly_price }}€
+                    {{ hourly_price }}{{currency}}
                   {{/hourly_price}}
                   {{^hourly_price}}
                     {{ price }}€
@@ -131,17 +128,16 @@
             {{/free?}}
             {{^free?}}
               {{#daily_price}}
-                / jour
+                {{daily_rate}}
               {{/daily_price}}
               {{^daily_price}}
                 {{#weekly_price}}
-                  / semaine
+                  {{weekly_rate}}
                 {{/weekly_price}}
                 {{^weekly_price}}
                   {{#hourly_price}}
-                    / heure
+                    {{hourly_rate}}
                   {{/hourly_price}}
-
                 {{/weekly_price}}
               {{/daily_price}}
             {{/free?}}
@@ -164,39 +160,39 @@
             {{#picture?}}
             <li class="float-left">
               <a href="#" class="see-img hidden-xs" id="show_picture_{{id}}">
-                Voir photo
+                {{show_pic}}
               </a>
               <a href="#" class="see-img hidden" id="hide_picture_{{id}}">
-                Cacher photo
+                {{hide_pic}}
               </a>
             </li>
             {{/picture?}}
             {{^picture?}}
             <li class="float-left">
               <a href="#" class="disabled hidden-xs">
-                Voir photo
+                {{show_pic}}
               </a>
             </li>
             {{/picture?}}
             <li class="float-right">
               <a href="{{ new_booking_url }}" class="neutralize" id="offer_{{id}}">
-                <i class="hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa fa-check"></i> <i class="hidden-xs">Réserver</i>
+                <i class="hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa fa-check"></i> <i class="hidden-xs">{{book}}</i>
               </a>
             </li>
             <li class="float-right">
               <a href="{{ message_url }}" class="neutralize" id="offer_{{id}}">
-                <i class="hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa fa-envelope"></i> <i class="hidden-xs">Demande d'info</i>
+                <i class="hidden-sm hidden-md hidden-lg">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa fa-envelope"></i> <i class="hidden-xs">{{contact_owner}}</i>
               </a>
             </li>
             <li class="float-right">
               {{#wished}}
                 <a href="{{ unwish_url }}" class="neutralize wished" data-method="put" data-remote="true" id="wishOffer_{{id}}">
-                  <i class="fa fa-star"></i><i class="hidden-xs"> Délister</i>
+                  <i class="fa fa-star"></i><i class="hidden-xs"> {{unwish}}</i>
                 </a>
               {{/wished}}
               {{^wished}}
                 <a href="{{ wish_url }}" class="neutralize" data-method="put" data-remote="true" id="wishOffer_{{id}}">
-                  <i class="fa fa-star"></i><i class="hidden-xs"> Enregistrer</i>
+                  <i class="fa fa-star"></i><i class="hidden-xs"> {{wish}}</i>
                 </a>
               {{/wished}}
             </li>
@@ -300,7 +296,8 @@
         map,
         markers,
         '<%= current_user.find_voted_items.map { |offer| offer.id } %>',
-        '<%= current_user.admin? %>'
+        '<%= current_user.admin? %>',
+        '<%= [t('.filter_by'), t('.on_rent'), t('.services'), t('.on_sale'), t('.show_offer'), t('.show_pic'), t('.hide_pic'), t('.unwish'), t('.wish'), t('.contact_owner'), t('.book'), t('.free'), t('.currency'), t('.daily_rate'), t('.weekly_rate'), t('.hourly_rate')] %>'
       );
 
       $('#default_sort').on('click', function(e) {

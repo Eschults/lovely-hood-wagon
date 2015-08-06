@@ -8,8 +8,16 @@
           <li><a href="https://www.youtube.com" target="_blank"><i class="fa fa-youtube"></i></a></li>
         </ul>
         <p class='text-center copy'>Lovely Hood</p>
-        <p class="text-center"><%= link_to "Conditions générales", terms_path %><p>
-        <p class="text-center"><%= link_to "Mentions légales", legal_path %><p>
+        <p class="text-center">
+          <%= link_to terms_path do %>
+            <%= t('.terms') %>
+          <% end %>
+          <p>
+        <p class="text-center">
+          <%= link_to legal_path do %>
+            <%= t('.legal') %>
+          <% end %>
+        <p>
       </div>
     </div>
   </div>

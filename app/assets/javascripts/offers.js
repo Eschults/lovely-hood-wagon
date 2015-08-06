@@ -1,3 +1,30 @@
+var type;
+var name;
+$(document).ready(function() {
+  type = $('#type-select').val();
+  if(type == "service") {
+    showService();
+  }
+  if(type == "sell") {
+    showSell();
+  }
+  if(type =="rent") {
+    showRent();
+  }
+  $('#type-select').on('change', function(e) {
+    type = $('#type-select').val();
+    if(type == "service") {
+      showService();
+    }
+    if(type == "sell") {
+      showSell();
+    }
+    if(type =="rent") {
+      showRent();
+    }
+  })
+});
+
 function showService() {
   $('.show-service').removeClass("hidden");
   $('.show-rent').addClass("hidden");

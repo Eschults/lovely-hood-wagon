@@ -2,7 +2,7 @@
   <%= @offer.nature %> - LH
 <% end %>
 <%= content_for(:description) do %>
-  Parcourez les annonces des biens et services disponibles à moins de 10 min à pied de chez vous !
+  <%= t('.description') %>
 <% end %>
 <%= content_for :stylesheets do %>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
@@ -39,27 +39,27 @@
           <% if @offer.type_of_offer == "service" %>
             <% if @offer.hourly_price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li class="pull-right"><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="padding-top-5">Par heure</li>
+                <li class="pull-right"><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="padding-top-5"><%= t('.hourly_rate') %></li>
               </ul>
             <% end %>
           <% elsif @offer.type_of_offer == "rent" %>
             <% if @offer.daily_price %>
               <ul class="list-unstyled list-inline">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.daily_price %>€</h3></li><li class="padding-top-5">Par jour</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.daily_price %>€</h3></li><li class="padding-top-5"><%= t('.daily_rate') %></li>
               </ul>
             <% end %>
             <% if @offer.weekly_price %>
               <ul class="list-unstyled list-inline">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.weekly_price %>€</h3></li><li class="padding-top-5">Par semaine</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.weekly_price %>€</h3></li><li class="padding-top-5"><%= t('.weekly_rate') %></li>
               </ul>
             <% end %>
             <ul class="list-unstyled list-inline padding-top-10 border-top margin-btm-none">
-              <li class="pull-right"><%= @offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class="">Caution</li>
+              <li class="pull-right"><%= @offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class=""><%= t('.guarantee') %></li>
             </ul>
           <% else %>
             <% if @offer.price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.price %>€</h3></li><li class="padding-top-5">(achat seul)</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @offer.price %>€</h3></li><li class="padding-top-5"><%= t('.purchase') %></li>
               </ul>
             <% end %>
           <% end %>
@@ -94,10 +94,10 @@
               <% (5 - @offer.average_score.round).times do %>
                 <i class="fa fa-star small-star"></i>
               <% end %>
-              (<%= pluralize(@offer.cto_reviews.size.to_i, "commentaire") %>)
+              (<%= pluralize(@offer.cto_reviews.size.to_i, t('.review')) %>)
             <% end %>
           <% else %>
-            (Pas encore de commentaire)
+            <%= t('.no_review') %>
           <% end %>
         </p>
         <p><%= simple_format(@offer.description, {}, sanitize: false) %></p>
@@ -106,7 +106,7 @@
         <% if @offer.cto_reviews.size >= 1 %>
           <div class="row">
             <div class="col-lg-3 col-xs-6">
-              <h4><strong><%= pluralize(@offer.cto_reviews.size.to_i, "commentaire")%></strong></h4>
+              <h4><strong><%= pluralize(@offer.cto_reviews.size.to_i, t('.review'))%></strong></h4>
             </div>
             <div class="col-lg-3 col-xs-6 text-right">
               <h4 class="gray-light ">
@@ -126,9 +126,9 @@
           <div class="ratings">
             <div class="row">
               <div class="col-lg-3 col-xs-6">
-                <p>Communication : </p>
-                <p>Ponctualité : </p>
-                <p>Qualité/ prix : </p>
+                <p><%= t('.communication') %></p>
+                <p><%= t('.punctuality') %></p>
+                <p><%= t('.quality_price') %></p>
               </div>
               <div class="col-lg-3 col-xs-6 text-right">
                 <p class="gray-light">
@@ -167,14 +167,14 @@
             <%= render "shared/review", { offer: @offer, booking: review.booking, review: review } %>
           <% end %>
         <% else %>
-          <h2>Commentaires</h2>
-          <p>Pas encore de commentaire rédigé à propos de cette annonce</p>
+          <h2><%= t('.reviews') %></h2>
+          <p><%= t('.no_review') %></p>
         <% end %>
       </div>
       <% unless current_user == @offer.user || @offer.type_of_offer == "service" || current_user.address_verified != true %>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4>Itinéraire</h4>
+            <h4><%= t('.route') %></h4>
           </div>
           <div class="panel-body padding-none">
             <div class="col-sm-8" id="map" style="height:300px"></div>

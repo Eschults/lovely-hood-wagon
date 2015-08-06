@@ -1,10 +1,10 @@
-<%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn btn-primary btn-wide margin-btm-15" %>
+<%= link_to t('.edit') , edit_offer_path(@offer), class: "btn btn-primary btn-wide margin-btm-15" %>
 <% if @offer.user.authorized.nil? %>
 <% elsif @offer.user.trust_steps == 0 %>
   <%= form_for @offer, remote: true, method: :patch, url: offer_path(@offer)  do |f| %>
   <div class="row">
     <div class="col-xs-9 padding-right-10">
-      <%= f.select :published, [["Masquée", false], ["Publiée", true]], {}, { class: "form-control height-40" } %>
+      <%= f.select :published, [[t('.offer .hidden'), false], [t('.offer .published'), true]], {}, { class: "form-control height-40" } %>
     </div>
     <div class="col-xs-3 padding-left-none">
       <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
@@ -16,6 +16,6 @@
   <% end %>
 <% else %>
   <%= link_to edit_user_path(@offer.user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
-    <%= pluralize(@offer.user.trust_steps, 'étape') %> pour publier
+    <%= pluralize(@offer.user.trust_steps, 'étape') %> <%= t('.offer .to_publish') %>
   <% end %>
 <% end %>

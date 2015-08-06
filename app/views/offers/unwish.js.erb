@@ -1,4 +1,5 @@
-$('#wishOffer_' + '<%= @offer.id %>').html('<i class="fa fa-star"></i><i class="hidden-xs"> Enregistrer</i>');
+var wish = '<i class="fa fa-star"></i><i class="hidden-xs"> ' + '<%= t(".wish") %>' + '</i>'
+$('#wishOffer_' + '<%= @offer.id %>').html(wish);
 $('#wishOffer_' + '<%= @offer.id %>').removeClass('wished');
 $('#wishOffer_' + '<%= @offer.id %>').css('text-decoration', 'none');
 $('#wishOffer_' + '<%= @offer.id %>').attr('href', '<%= wish_offer_path(@offer) %>');

@@ -164,7 +164,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   background-color: white;
   color: rgb(34, 167, 240);
   border-bottom: 4px solid rgb(34, 167, 240);
-  span {
+  .badge {
     background-color: rgb(34, 167, 240);
   }
 }

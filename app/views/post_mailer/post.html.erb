@@ -31,10 +31,10 @@
             </table>
             <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                Chers voisins,
+                <%= t('.dear_neighbors') %>
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                <%= @post.user.first_name %> a publié un post sur le Wall :
+                <%= @post.user.first_name %> <%= t('.posted') %>
               </div>
               <br>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding-bottom:15px;border-bottom-width:1px;background-color:#ffffff;border-top-left-radius:3px;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-top-right-radius:3px;border-style:solid;min-height:32px;border-top:1px solid #dbdbdb">
@@ -74,14 +74,14 @@
 
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
                 <%= link_to posts_url, anchor: "post_#{@post.id}", style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
-                  Voir / réagir sur Lovely Hood
+                  <%= t('.go_to_lh') %>
                 <% end %>
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                L'équipe Lovely Hood
+                <%= t('.lh_team') %>
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em;font-size:11px;color:#9ca299;line-height:14px">
-                Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir, <%= link_to "connectez-vous à votre compte", root_url, style: "color:#22A7F0;text-decoration:none", target: "_blank" %> et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications.
+                <%= t('.set_notifs_1')%> <%= link_to root_url, style: "color:#22A7F0;text-decoration:none", target: "_blank" do %><%= t('.connect') %><% end %> <%= t('.set_notifs_2') %>
               </div>
             </div>
             <br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
@@ -120,7 +120,7 @@
                     <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"></td>
                     <td style="padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;display:block;margin:0 auto;clear:both;max-width:610px">
                       <div style="font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:15px;max-width:600px;margin:0 auto;display:block;padding-left:5px;padding-right:5px;padding-bottom:5px;padding-top:0px;color:#9ca299;font-size:14px;text-align:center">
-                        Envoyé avec <img alt="&amp;#9829;" height="10" src="https://ci6.googleusercontent.com/proxy/rU4UoU_vqkBhbK2IMvTnXyDDVUMWfLUHM9VjqTkWnNJ9tXhlBI81LeYdHR0qtRXSZzh3xOO1-N-3JopJWF6YXn9I7qk_ZNPfDKmueqVgbFD-pDon0f8IgOfnAky4DEHteSMtXtr_rNxcgyQj_lG6q12P_A=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/heart-eeaa9b6467981f6b84031fc9570ed630.png" width="12" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%" class="CToWUd"> depuis le siège de Lovely Hood<br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
+                        <%= t('.sent_with') %> <img alt="&amp;#9829;" height="10" src="https://ci6.googleusercontent.com/proxy/rU4UoU_vqkBhbK2IMvTnXyDDVUMWfLUHM9VjqTkWnNJ9tXhlBI81LeYdHR0qtRXSZzh3xOO1-N-3JopJWF6YXn9I7qk_ZNPfDKmueqVgbFD-pDon0f8IgOfnAky4DEHteSMtXtr_rNxcgyQj_lG6q12P_A=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/heart-eeaa9b6467981f6b84031fc9570ed630.png" width="12" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%" class="CToWUd"> <%= t('.from_lh') %><br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
                       </div>
                     </td>
                     <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"></td>

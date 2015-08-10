@@ -1,6 +1,6 @@
-Chers voisins,
+<%= t('.dear_neighbors') %>
 
-Lovely Hood a publié un post sur le Wall :
+<%= t('lh_posted') %>
 
 <%= @post.content unless @post.content == "***" %>
 <% if @post.link_url %>
@@ -8,8 +8,8 @@ Lovely Hood a publié un post sur le Wall :
   <%= @post.link_description %>
 <% end %>
 
-<%= "Voir / réagir sur Lovely Hood : https://www.lovely-hood.com" %>
+<%= t('.go_to_lh') %> <%= "https://www.lovely-hood.com" %>
 
-L'équipe Lovely Hood
+<%= t('.lh_team') %>
 
-<%= "Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir, connectez-vous à votre compte : https://www.lovely-hood.com et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications. " %>
+<%= t('.set_notifs_1')%> https://www.lovely-hood.com <%= t('.set_notifs_2')%>

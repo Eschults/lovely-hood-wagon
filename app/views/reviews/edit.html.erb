@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Commentaire - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Pensez à laisser un commentaire après chaque expérience, pour renforcer la confiance entre membres de la communauté Lovely Hood !
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -11,7 +11,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-sm-3 text-right">
-              <h4>Commentaire : </h4>
+              <h4><%= t('.comment') %></h4>
             </div>
             <div class="col-sm-9 text-left">
               <h4>
@@ -29,7 +29,7 @@
           <%= form_for([@booking, @review], method: :put, url: update_booking_review_path(@booking, @review), html: { id: "edit-review" }) do |f| %>
 
             <div class="form-group">
-              <%= f.label :communication_rating, "Communication :", class: "col-sm-3 control-label" %>
+              <%= f.label :communication_rating, t('.communication'), class: "col-sm-3 control-label" %>
               <div class="col-sm-9">
                 <%= f.hidden_field :communication_rating, id: "communication" %>
                 <ul class="communication_rating list-unstyle list-inline">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :punctuality_rating, "Ponctualité :", class: "col-sm-3 control-label" %>
+              <%= f.label :punctuality_rating, t('.punctuality'), class: "col-sm-3 control-label" %>
               <div class="col-sm-9">
                 <%= f.hidden_field :punctuality_rating, id: "punctuality" %>
                 <ul class="punctuality_rating list-unstyle list-inline">
@@ -61,7 +61,7 @@
             <% end %>
 
             <div class="form-group">
-              <%= f.label :recommendation, "Recommandation :", class: "col-sm-3 control-label" %>
+              <%= f.label :recommendation, t('.recommendation'), class: "col-sm-3 control-label" %>
               <div class="col-sm-9">
                 <%= f.hidden_field :recommendation, id: "recommendation" %>
                 <ul class="recommendation list-unstyle list-inline">
@@ -75,7 +75,7 @@
               <div class="col-sm-3">
               </div>
               <div class="col-sm-9">
-                <%= f.submit "Terminer", class: "btn btn-primary" %>
+                <%= f.submit t('.send'), class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
@@ -88,15 +88,8 @@
   <% javascript_tag do %>
     $(document).ready(function() {
       highlightAll();
-      $('.rating-star').click(function(e) {
-        highlightStars($(this));
-      });
-      $('.rating-star-highlight').click(function(e) {
-        highlightStars($(this));
-      });
-      $('.recommendation-thumbs').click(function(e) {
-        highlightThumbs($(this));
-      });
+      highlightStars();
+      highlightThumbs();
     });
   <% end %>
 <% end %>

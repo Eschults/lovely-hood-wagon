@@ -1,3 +1,6 @@
-<%= @review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name %> vous a laissé un commentaire, vous pouvez le consulter <%= link_to "ici", user_url(@review.review_type == "cto" ? @review.booking.offer.user : @review.booking.user, anchor: "reviews") %>.
+<%= @review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name %> <%= t('.left_a_comment') %> <%= @review.booking.offer.nature %>.
+<%= link_to user_url(@review.review_type == "cto" ? @review.booking.offer.user : @review.booking.user, anchor: "reviews") do %>
+  <%= t('.read_comment') %>
+<% end %>
 
-A bientôt sur Lovely Hood !
+<%= t('.lh_team') %>

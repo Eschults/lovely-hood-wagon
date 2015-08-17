@@ -1,4 +1,4 @@
-<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> a commenté une publication
+<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> <%= t('.commented') %>
 <br>
 <% if activity.trackable.post.link_url || activity.trackable.post.picture_file_name %>
 </div>
@@ -63,7 +63,7 @@
           <%= liker_list_string = "" %>
           <% liker_list = activity.trackable.post.get_likes.each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
           <% unless activity.trackable.post.get_likes.size == 0 %>
-            <%= link_to "#{activity.trackable.post.get_likes.size} j'aime",
+            <%= link_to "#{activity.trackable.post.get_likes.size} #{t('.likes_number')}",
               "",
               class: "like-link link-popover",
               data: {
@@ -72,7 +72,7 @@
           <% end %>
           <%= " et " unless activity.trackable.post.get_likes.size == 0 || activity.trackable.post.comments.size == 0 %>
           <% unless activity.trackable.post.comments.size == 0 %>
-            <%= link_to "#{pluralize(activity.trackable.post.comments.size, 'commentaire')}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.post.id}" %>
+            <%= link_to "#{pluralize(activity.trackable.post.comments.size, t('.comment'))}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.post.id}" %>
           <% end %>
         </div>
       </div>
@@ -108,7 +108,6 @@
                 <li class="margin-btm-none"><%= activity.trackable.content %></li>
                 <li class="index pull-right"></li>
               </ul>
-
             </div>
           </div>
         </div>

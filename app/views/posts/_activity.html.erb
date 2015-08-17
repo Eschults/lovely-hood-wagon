@@ -13,21 +13,21 @@
         <% if activity.trackable_type == "Post" %>
           <% unless activity.trackable.link_url %>
             <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
-              <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
+              <%= link_to t('.unlike'), unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
             <% else %>
-              <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
+              <%= link_to t('.like'), like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
             <% end %>
             <span class="like-link"> · </span>
-            <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
+            <%= link_to t('.comment'), "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
           <% end %>
         <% else %>
           <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
-            <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
+            <%= link_to t('.unlike'), unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
           <% else %>
-            <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
+            <%= link_to t('.like'), like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
           <% end %>
           <span class="like-link"> · </span>
-          <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
+          <%= link_to t('.comment'), "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
         <% end %>
       </div>
     </div>
@@ -53,7 +53,7 @@
           </div>
           <div class="col-xs-10 padding-left-10 padding-right-none width-92 js-target">
             <div class="form-group margin-btm-none total-width">
-              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32 font-size-12", id: "comment_content_post_activity_#{activity.id}" %>
+              <%= f.text_field :content, autocomplete: "off", placeholder: t('.placeholder'), class: "form-control height-32 font-size-12", id: "comment_content_post_activity_#{activity.id}" %>
             </div>
           </div>
         </div>

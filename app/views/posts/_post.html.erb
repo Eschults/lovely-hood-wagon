@@ -37,21 +37,21 @@
         <div class="col-xs-12">
               <%= render "meta", post: post %>
               <% if current_user.find_voted_items.include? post %>
-                <%= link_to "Je n'aime plus", unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>
+                <%= link_to t('.unlike'), unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>
               <% else %>
-                <%= link_to "J'aime", like_post_path(post), method: :put, remote: true, class: "like-link", id: "like_link_#{post.id}" %>
+                <%= link_to t('.like'), like_post_path(post), method: :put, remote: true, class: "like-link", id: "like_link_#{post.id}" %>
               <% end %>
               <span class="like-link"> · </span>
-              <%= link_to "Commenter", "#", class: "comment-link", id: "comment_post_#{post.id}" %>
+              <%= link_to t('.comment'), "#", class: "comment-link", id: "comment_post_#{post.id}" %>
         </div>
           <% else %>
             <% if current_user.find_voted_items.include? post %>
-              <%= link_to "Je n'aime plus", unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>
+              <%= link_to t('.unlike'), unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>
             <% else %>
-              <%= link_to "J'aime", like_post_path(post), method: :put, remote: true, class: "like-link", id: "like_link_#{post.id}" %>
+              <%= link_to t('.like'), like_post_path(post), method: :put, remote: true, class: "like-link", id: "like_link_#{post.id}" %>
             <% end %>
             <span class="like-link"> · </span>
-            <%= link_to "Commenter", "#", class: "comment-link", id: "comment_post_#{post.id}" %>
+            <%= link_to t('.comment'), "#", class: "comment-link", id: "comment_post_#{post.id}" %>
         </div>
           <% end %>
       </div>
@@ -78,7 +78,7 @@
           </div>
           <div class="col-xs-10 padding-left-10 padding-right-none width-92 js-target">
             <div class="form-group margin-btm-none total-width">
-              <%= f.text_field :content, autocomplete: "off", placeholder: "Votre commentaire...", class: "form-control height-32 font-size-12", id: "comment_content_post_#{post.id}" %>
+              <%= f.text_field :content, autocomplete: "off", placeholder: t('.placeholder'), class: "form-control height-32 font-size-12", id: "comment_content_post_#{post.id}" %>
             </div>
           </div>
         </div>

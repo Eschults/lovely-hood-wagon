@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Wall of ze Hood - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Communiquez facilement avec vos voisins grâce à la chatroom de Lovely Hood
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-xs-10 padding-left-10 js-other-target">
                   <div class="form-group margin-btm-none">
-                    <%= f.text_area :content, placeholder: "Exprimez-vous ici", style: "resize: none", class: "form-control height-42 padding-top-none padding-left-none border-none box-in-post" %>
+                    <%= f.text_area :content, placeholder: t('.placeholder'), style: "resize: none", class: "form-control height-42 padding-top-none padding-left-none border-none box-in-post" %>
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
               <li id="camera"><i class="fa fa-camera"></i></li>
               <li class="pic-path" id="placeholder"></li>
               <li class="pic-path hidden" id="check"><i class="fa fa-check"></i></li>
-              <li class="pull-right"><%= f.submit "Poster", class: "btn btn-post pull-right" %></li>
+              <li class="pull-right"><%= f.submit t('.post'), class: "btn btn-post pull-right" %></li>
             </ul>
           </div>
         <% end %>
@@ -53,50 +53,12 @@
 <%= content_for :js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      $('#camera').on('click', function() {
-        $('#post_picture').click();
-      })
-      $('#post_picture').on('change', function() {
-        var path = $('#post_picture').val().slice($('#post_picture').val().lastIndexOf("\\") + 1, $('#post_picture').val().length)
-        if(path.length > 12) {
-          path = path.slice(0, 11) + "..."
-        }
-        $('#placeholder').text(path)
-        $('#check').removeClass('hidden')
-      })
+      imageUpload()
       comment();
       adjustIconsSizeSimple(420);
       $('#wall-nav-link').addClass('hover');
-      $('.link-popover').popover({
-        html: true,
-        trigger: "hover",
-        placement: "top"
-      })
-      if($(window).width() < 530) {
-        $('.js-target').removeClass('width-92')
-      } else {
-        $('.js-target').addClass('width-92')
-      }
-      $(window).on('resize', function() {
-        if($(window).width() < 530) {
-          $('.js-target').removeClass('width-92')
-        } else {
-          $('.js-target').addClass('width-92')
-        }
-      })
-      if($(window).width() < 376) {
-        $('.js-other-target').removeClass('col-xs-10').addClass('col-xs-9')
-      } else {
-        $('.js-other-target').addClass('col-xs-10').removeClass('col-xs-9')
-      }
-      $(window).on('resize', function() {
-        adjustIconsSizeSimple(420);
-        if($(window).width() < 376) {
-          $('.js-other-target').removeClass('col-xs-10').addClass('col-xs-9')
-        } else {
-          $('.js-other-target').addClass('col-xs-10').removeClass('col-xs-9')
-        }
-      })
+      likePopover()
+      resizeStuff()
     })
   <% end %>
 <% end %>

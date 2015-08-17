@@ -1,4 +1,4 @@
-<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> aime une publication
+<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> <%= t('.likes') %>
 <br>
 <% if activity.trackable.link_url || activity.trackable.picture_file_name %>
 </div>
@@ -63,7 +63,7 @@
           <% else %>
             <%= liker_list_string = "" %>
             <% liker_list = activity.trackable.get_likes.each { |liker| liker_list_string += ("<li>" + liker.voter.first_name + "</li>")} %>
-            <%= link_to "#{activity.trackable.get_likes.size} j'aime",
+            <%= link_to "#{activity.trackable.get_likes.size} #{t('.likes_number')}",
               "",
               class: "like-link link-popover",
               data: {
@@ -71,7 +71,7 @@
               } %>
           <% end %>
           <% unless activity.trackable.comments.size == 0 %>
-            et <%= link_to "#{pluralize(activity.trackable.comments.size, 'commentaire')}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.id}" %>
+            <%= t('.and') %> <%= link_to "#{pluralize(activity.trackable.comments.size, t('.comment'))}", "#", class: "comment-link", id: "go_to_post_#{activity.trackable.id}" %>
           <% end %>
         </div>
       </div>
@@ -80,10 +80,10 @@
 </div>
 <% if activity.trackable.link_url %>
   <% if current_user.find_voted_items.include? PublicActivity::ORM::ActiveRecord::Activity.find(activity.id) %>
-    <%= link_to "Je n'aime plus", unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
+    <%= link_to t('.unlike'), unlike_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "unlike_activity_link_#{activity.id}" %>
   <% else %>
-    <%= link_to "J'aime", like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
+    <%= link_to t('.like'), like_activity_post_path(activity), method: :put, remote: true, class: "like-link", id: "like_activity_link_#{activity.id}" %>
   <% end %>
   <span class="like-link"> · </span>
-  <%= link_to "Commenter", "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
+  <%= link_to t('.comment_'), "#", class: "comment-activity-link", id: "comment_post_activity_#{activity.id}" %>
 <% end %>

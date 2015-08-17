@@ -1,10 +1,10 @@
 <% if @post.get_likes.size == 0 %>
-  $('#unlike_link_' + <%= @post.id %>).html("J'aime")
+  $('#unlike_link_' + <%= @post.id %>).html("<%= t('.like') %>")
   $('#unlike_link_' + <%= @post.id %>).attr("href", "<%= like_post_path(@post) %>")
   $('#unlike_link_' + <%= @post.id %>).attr("id", "like_link_" + <%= @post.id %>)
   $('#likes_' + <%= @post.id %>).slideUp()
 <% else %>
-  $('#unlike_link_' + <%= @post.id %>).html("J'aime")
+  $('#unlike_link_' + <%= @post.id %>).html("<%= t('.like') %>")
   $('#unlike_link_' + <%= @post.id %>).attr("href", "<%= like_post_path(@post) %>")
   $('#unlike_link_' + <%= @post.id %>).attr("id", "like_link_" + <%= @post.id %>)
   $('#likes_' + <%= @post.id %>).slideUp(function() {

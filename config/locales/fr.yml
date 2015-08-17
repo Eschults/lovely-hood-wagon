@@ -261,3 +261,87 @@ fr:
       set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
+  posts:
+    activity:
+      unlike: "Je n'aime plus"
+      like: "J'aime"
+      comment: "Commenter"
+      placeholder: "Votre commentaire..."
+    likes:
+      likes_this: "aime ça"
+      like_this: "aiment ça"
+      people: "personne"
+      and: "et"
+    post:
+      unlike: "Je n'aime plus"
+      like: "J'aime"
+      comment: "Commenter"
+      placeholder: "Votre commentaire..."
+    create:
+      error: "Un problème est survenu"
+    index:
+      title: "Wall of ze Hood - LH"
+      description: "Communiquez facilement avec vos voisins grâce à la chatroom de Lovely Hood"
+      placeholder: "Exprimez-vous ici"
+      post: "Poster"
+    like:
+      unlike: "Je n'aime plus"
+    like_activity:
+      unlike: "Je n'aime plus"
+    unlike:
+      like: "J'aime"
+    unlike_activity:
+      like: "J'aime"
+  public_activity:
+    comment:
+      update:
+        commented: "a commenté une publication"
+        likes_number: "j'aime"
+        comment: "commentaire"
+    offer:
+      create:
+        created: "a créé une annonce"
+    post:
+      like:
+        likes: "aime une publication"
+        likes_number: "j'aime"
+        comment: "commentaire"
+        unlike: "Je n'aime plus"
+        like: "J'aime"
+        comment_: "Commenter"
+        and: "et"
+    user:
+      update:
+        joined: "a rejoint votre voisinage"
+        years_old: " ans"
+        no_desc: "Pas encore de description"
+  review_mailer:
+    view:
+      hello: "Bonjour"
+      left_a_comment: "vous a laissé un commentaire à propos de"
+      read_comment: "Voir le commentaire"
+      lh_team: "L'équipe Lovely Hood"
+      sent_with: "Envoyé avec"
+      from_lh: "depuis le siège de Lovely Hood"
+  reviews:
+    quality:
+      quality_price: "Rapport qualité / prix :"
+    respect:
+      respect: "Respect du matériel :"
+    edit:
+      title: "Commentaire - LH"
+      description: "Pensez à laisser un commentaire après chaque expérience, pour renforcer la confiance entre membres de la communauté Lovely Hood !"
+      comment: "Commentaire :"
+      communication: "Communication :"
+      punctuality: "Ponctualité :"
+      recommendation: "Recommandation :"
+      send: "Terminer"
+    new:
+      title: "Commentaire - LH"
+      description: "Pensez à laisser un commentaire après chaque expérience, pour renforcer la confiance entre membres de la communauté Lovely Hood !"
+      comments: "Comments:"
+      placeholder: "Décrivez votre expérience, les points positifs, les points négatifs..."
+      communication: "Communication :"
+      punctuality: "Ponctualité :"
+      recommendation: "Recommandation :"
+      send: "Terminer"

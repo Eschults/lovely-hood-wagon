@@ -1,5 +1,5 @@
 <% if @activity.get_likes.size > 1 %>
-  $('#like_activity_link_' + <%= @activity.id %>).html("Je n'aime plus")
+  $('#like_activity_link_' + <%= @activity.id %>).html("<%= t('.unlike') %>")
   $('#like_activity_link_' + <%= @activity.id %>).attr("href", "<%= unlike_activity_post_path(@activity) %>")
   $('#like_activity_link_' + <%= @activity.id %>).attr("id", "unlike_activity_link_" + <%= @activity.id %>)
   $('#likes_activity_' + <%= @activity.id %>).slideUp(function() {
@@ -8,7 +8,7 @@
     like_infos.slideDown();
   })
 <% else %>
-  $('#like_activity_link_' + <%= @activity.id %>).html("Je n'aime plus")
+  $('#like_activity_link_' + <%= @activity.id %>).html("<%= t('.unlike') %>")
   $('#like_activity_link_' + <%= @activity.id %>).attr("href", "<%= unlike_activity_post_path(@activity) %>")
   $('#like_activity_link_' + <%= @activity.id %>).attr("id", "unlike_activity_link_" + <%= @activity.id %>)
   var like_infos = $("<%= j render 'likes', post: @activity %>").hide();

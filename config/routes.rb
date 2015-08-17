@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations", sessions: "sessions" }
+  put "/activity/:id/like_activity", to: "posts#like_activity", as: "like_activity_post"
+  put "/activity/:id/unlike_activity", to: "posts#unlike_activity", as: "unlike_activity_post"
+  put "/activity/:id/comment_activity", to: "posts#update_activity", as: "activity"
+  post 'bookings/:booking_id/reviews', to: "reviews#create", as: "booking_review"
+  post 'bookings/:booking_id/conversations', to: "conversations#create_b", as: "booking_conversations"
+  post 'users/:user_id/conversations', to: "conversations#create_u", as: "user_conversations"
+  put 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review"
+  put 'users/:id', to: "users#update", as: "user"
+  post 'offers/:offer_id/bookings', to: "bookings#create", as: 'offer_bookings'
+  put 'offers/:offer_id/bookings/:id', to: "bookings#update", as: 'offer_booking'
+  post 'offers/:offer_id/conversations', to: "conversations#create", as: 'offer_conversations'
+  post 'offers/:offer_id/stripe_customers', to: "stripe_customers#create", as: "offer_stripe_customers"
+  put 'conversations/:id/reply', to: "conversations#reply", as: "reply_conversation"
+  put 'conversations/:id/reply_server', to: "conversations#reply_server", as: "reply_server_conversation"
   scope '(:locale)', locale: /en/ do
     root to: "pages#home"
     get "/legal", to: "pages#legal"
@@ -9,20 +23,15 @@ Rails.application.routes.draw do
     get "/poster", to:"pages#poster"
     get "/early_birds_poster", to:"pages#early_birds_poster"
     get "/users/map", to: "users#map"
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :offers, except: [:destroy] do
+    resources :users, only: [:index, :show, :edit]
+    resources :offers, except: :destroy do
       member do
         put :wish, to: "offers#wish"
         put :unwish, to: "offers#unwish"
       end
-      resources :bookings, only: [:new, :create, :edit, :update, :show] do
-        member do
-          put :buy, to: "bookings#buy"
-          put :cancel, to: "bookings#cancel"
-        end
-      end
-      resources :conversations, only: [:new, :create]
-      resources :stripe_customers, only: [:new, :create]
+      resources :bookings, only: [:new, :edit, :show]
+      resources :conversations, only: :new
+      resources :stripe_customers, only: :new
     end
     resources :posts, only: [:index, :create, :update] do
       member do
@@ -30,35 +39,14 @@ Rails.application.routes.draw do
         put :unlike, to: "posts#unlike"
       end
     end
-    put "/activity/:id/like_activity", to: "posts#like_activity", as: "like_activity_post"
-    put "/activity/:id/unlike_activity", to: "posts#unlike_activity", as: "unlike_activity_post"
-    put "/activity/:id/comment_activity", to: "posts#update_activity", as: "activity"
-
     get 'bookings/:booking_id/reviews/new', to: "reviews#new", as: "new_booking_review"
     get 'bookings/:booking_id/conversations/new', to: "conversations#new_b", as: "new_booking_conversation"
-    post 'bookings/:booking_id/conversations', to: "conversations#create_b", as: "booking_conversations"
-
     get 'users/:user_id/conversations/new', to: "conversations#new_u", as: "new_user_conversation"
-    post 'users/:user_id/conversations', to: "conversations#create_u", as: "user_conversations"
-
-    post 'bookings/:booking_id/reviews', to: "reviews#create", as: "booking_review"
-
     get 'bookings/:booking_id/reviews/:id/edit', to: "reviews#edit", as: "edit_booking_review"
-
-    put 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review"
-
     get 'reviews/:id', to: "reviews#show", as: "review"
-
     get "/mine", to: "offers#mine"
     get "/wishlist", to: "offers#wishlist"
-
-    resources :conversations, only: [:index, :show] do
-      member do
-        put :reply
-        put :reply_server
-      end
-    end
+    resources :conversations, only: [:index, :show]
   end
-
   resources :stripe_payments, only: [:new, :create]
 end

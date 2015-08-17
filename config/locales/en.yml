@@ -263,3 +263,87 @@ en:
       set_notifs_2: "and go to Settings, Notifications."
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
+  posts:
+    activity:
+      unlike: "Unlike"
+      like: "Like"
+      comment: "Comment"
+      placeholder: "Write a comment..."
+    likes:
+      likes_this: "likes this"
+      like_this: "like this"
+      people: "people"
+      and: "and"
+    post:
+      unlike: "Unlike"
+      like: "Like"
+      comment: "Comment"
+      placeholder: "Write a comment..."
+    create:
+      error: "Oops... Try again"
+    index:
+      title: "Wall - LH"
+      description: "Reach easily your neighbors by posting on the Wall"
+      placeholder: "Write something here..."
+      post: "Post"
+    like:
+      unlike: "Unlike"
+    like_activity:
+      unlike: "Unlike"
+    unlike:
+      like: "Like"
+    unlike_activity:
+      like: "Like"
+  public_activity:
+    comment:
+      update:
+        commented: "commented a post"
+        likes_number: "likes"
+        comment: "comment"
+    offer:
+      create:
+        created: "created an offer"
+    post:
+      like:
+        likes: "likes a post"
+        likes_number: "likes"
+        comment: "comment"
+        unlike: "Unlike"
+        like: "Like"
+        comment_: "Comment"
+        and: "and"
+    user:
+      update:
+        joined: "joined your neighborhood"
+        years_old: " y.o."
+        no_desc: "No description yet"
+  review_mailer:
+    view:
+      hello: "Hello"
+      left_a_comment: "left you a comment about"
+      read_comment: "See review"
+      lh_team: "Lovely Hood's team"
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+  reviews:
+    quality:
+      quality_price: "Quality-price:"
+    respect:
+      respect: "Care of the object:"
+    edit:
+      title: "Review - LH"
+      description: "Don't forget to leave a review to improve confidence among your community!"
+      comment: "Comment:"
+      communication: "Communication:"
+      punctuality: "Punctuality:"
+      recommendation: "Recommendation:"
+      send: "Send"
+    new:
+      title: "Review - LH"
+      description: "Don't forget to leave a review to improve confidence among your community!"
+      comments: "Comments:"
+      placeholder: "Describe your experiment, positive and negative points..."
+      communication: "Communication:"
+      punctuality: "Punctuality:"
+      recommendation: "Recommendation:"
+      send: "Send"

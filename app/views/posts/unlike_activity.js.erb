@@ -1,10 +1,10 @@
 <% if @activity.get_likes.size == 0 %>
-  $('#unlike_activity_link_' + <%= @activity.id %>).html("J'aime")
+  $('#unlike_activity_link_' + <%= @activity.id %>).html("<%= t('.like') %>")
   $('#unlike_activity_link_' + <%= @activity.id %>).attr("href", "<%= like_activity_post_path(@activity) %>")
   $('#unlike_activity_link_' + <%= @activity.id %>).attr("id", "like_activity_link_" + <%= @activity.id %>)
   $('#likes_activity_' + <%= @activity.id %>).slideUp()
 <% else %>
-  $('#unlike_activity_link_' + <%= @activity.id %>).html("J'aime")
+  $('#unlike_activity_link_' + <%= @activity.id %>).html("<%= t('.like') %>")
   $('#unlike_activity_link_' + <%= @activity.id %>).attr("href", "<%= like_activity_post_path(activity) %>")
   $('#unlike_activity_link_' + <%= @activity.id %>).attr("id", "like_activity_link_" + <%= @activity.id %>)
   $('#likes_activity_' + <%= @activity.id %>).slideUp(function() {

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   put 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review"
   patch 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review_2"
   put 'users/:id', to: "users#update", as: "user"
-  patch 'users/:id', to: "users#update", as: "user"
+  patch 'users/:id', to: "users#update", as: "user_2"
   post 'offers/:offer_id/bookings', to: "bookings#create", as: 'offer_bookings'
   put 'offers/:offer_id/bookings/:id', to: "bookings#update", as: 'offer_booking_2'
   post 'offers/:offer_id/conversations', to: "conversations#create", as: 'offer_conversations'

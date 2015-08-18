@@ -2,19 +2,26 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations", sessions: "sessions" }
   put "/activity/:id/like_activity", to: "posts#like_activity", as: "like_activity_post"
+  patch "/activity/:id/like_activity", to: "posts#like_activity", as: "like_activity_post"
   put "/activity/:id/unlike_activity", to: "posts#unlike_activity", as: "unlike_activity_post"
+  patch "/activity/:id/unlike_activity", to: "posts#unlike_activity", as: "unlike_activity_post"
   put "/activity/:id/comment_activity", to: "posts#update_activity", as: "activity"
+  patch "/activity/:id/comment_activity", to: "posts#update_activity", as: "activity"
   post 'bookings/:booking_id/reviews', to: "reviews#create", as: "booking_review"
   post 'bookings/:booking_id/conversations', to: "conversations#create_b", as: "booking_conversations"
   post 'users/:user_id/conversations', to: "conversations#create_u", as: "user_conversations"
   put 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review"
+  patch 'bookings/:booking_id/reviews/:id', to: "reviews#update", as: "update_booking_review"
   put 'users/:id', to: "users#update", as: "user"
+  patch 'users/:id', to: "users#update", as: "user"
   post 'offers/:offer_id/bookings', to: "bookings#create", as: 'offer_bookings'
   put 'offers/:offer_id/bookings/:id', to: "bookings#update", as: 'offer_booking'
   post 'offers/:offer_id/conversations', to: "conversations#create", as: 'offer_conversations'
   post 'offers/:offer_id/stripe_customers', to: "stripe_customers#create", as: "offer_stripe_customers"
   put 'conversations/:id/reply', to: "conversations#reply", as: "reply_conversation"
+  patch 'conversations/:id/reply', to: "conversations#reply", as: "reply_conversation"
   put 'conversations/:id/reply_server', to: "conversations#reply_server", as: "reply_server_conversation"
+  patch 'conversations/:id/reply_server', to: "conversations#reply_server", as: "reply_server_conversation"
   scope '(:locale)', locale: /en/ do
     root to: "pages#home"
     get "/legal", to: "pages#legal"

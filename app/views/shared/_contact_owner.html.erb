@@ -1,6 +1,6 @@
 <div class="panel panel-default padding-none">
   <div class="panel-heading">
-    <h4>Fiche contact</h4>
+    <h4><%= t('.contact_info') %></h4>
   </div>
   <div class="panel-body">
     <div class="contact">
@@ -38,7 +38,7 @@
                     <i class="fa fa-send"></i>
                   </div>
                   <div class="col-xs-11 padding-none">
-                    Envoyer un <%= link_to "message", new_offer_conversation_path(booking.offer) %>
+                    <%= t('.send_a') %> <%= link_to t(".message"), new_offer_conversation_path(booking.offer) %>
                   </div>
                 </p>
                 <% unless booking.offer.user.phone == "" %>
@@ -47,7 +47,7 @@
                       <i class="fa fa-phone"></i>
                     </div>
                     <div class="col-xs-11 padding-none">
-                      Téléphone : <%= booking.offer.user.phone %>
+                      <%= t('.phone') %> <%= booking.offer.user.phone %>
                     </div>
                   </p>
                 <% end %>

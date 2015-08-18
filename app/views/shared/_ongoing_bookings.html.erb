@@ -21,22 +21,22 @@
             <% if booking.offer.type_of_offer == "rent" %>
               <p>
                 <% if booking.start_date == Date.today %>
-                  Depuis aujourd'hui et jusqu'au <%= booking.end_date.strftime("%d %b") %>.
+                   <%= booking.end_date.strftime("%d %b") %>.
                 <% else %>
-                  Depuis <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %>.
+                  <%= t('.since') %> <strong><%= pluralize((Date.today - booking.start_date).to_i, t(".day")) %></strong> <%= t('.and_until') %> <%= booking.end_date.strftime("%d %b") %>.
                 <% end %>
               </p>
             <% elsif booking.offer.type_of_offer == "service" %>
               <p>
                 <% if booking.start_date == Date.today %>
-                  Depuis aujourd'hui et jusqu'au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
+                  <%= t('.since_today') %> <%= booking.end_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.end_hour.strftime("%H:%M") %>.
                 <% else %>
-                  Depuis <strong><%= pluralize((Date.today - booking.start_date).to_i, "jour") %></strong> et jusqu'au  <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>.
+                  <%= t('.since') %> <strong><%= pluralize((Date.today - booking.start_date).to_i, t(".day")) %></strong> <%= t('.and_until') %> <%= booking.end_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.end_hour.strftime("%H:%M") %>.
                 <% end %>
               </p>
             <% end %>
             <% if current_user == booking.offer.user %>
-              <p>Vous allez gagner <%= booking.booking_price * 0.96 %>€.</p>
+              <p><%= t('.you_will_earn') %> <%= booking.booking_price * 0.96 %><%= t('.currency') %>.</p>
             <% end %>
           </div>
         </div>

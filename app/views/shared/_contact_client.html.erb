@@ -1,6 +1,6 @@
 <div class="panel panel-default padding-none">
   <div class="panel-heading">
-    <h4>Fiche contact</h4>
+    <h4><%= t('.contact_info') %></h4>
   </div>
   <div class="panel-body">
     <div class="contact">
@@ -38,10 +38,10 @@
                         <% (5 - booking.user.avge_cto_rating.round).times do %>
                           <i class="fa fa-star small-star"></i>
                         <% end %>
-                        (<%= booking.user.avge_cto_rating.round(1) %>/5 - <%= pluralize(booking.user.cto_reviews.size, "commentaire") + ' en tant que "client"' %> - <%= booking.user.avge_cto_reco_percent.round %>% de recommandations)
+                        (<%= booking.user.avge_cto_rating.round(1) %>/5 - <%= pluralize(booking.user.cto_reviews.size, t('.comment')) + t('.as_a_client') %> - <%= booking.user.avge_cto_reco_percent.round %>% <%= t('.of_recos') %>)
                       <% end %>
                     <% else %>
-                      Pas encore de commentaire en tant que "client"
+                      <%= t('.no_comment_yet') + t('.as_a_client') %>
                     <% end %>
                   </div>
                 </p>
@@ -58,10 +58,10 @@
                         <% (5 - booking.user.avge_otc_rating.round).times do %>
                           <i class="fa fa-star small-star"></i>
                         <% end %>
-                        (<%= booking.user.avge_otc_rating.round(1) %>/5 - <%= pluralize(booking.user.otc_reviews.size, "commentaire") + ' en tant que "propriétaire"' %> - <%= booking.user.avge_otc_reco_percent.round %>% de recommandations)
+                        (<%= booking.user.avge_otc_rating.round(1) %>/5 - <%= pluralize(booking.user.otc_reviews.size, t('.comment')) + t('.as_owner') %> - <%= booking.user.avge_otc_reco_percent.round %>% <%= t('.of_recos') %>)
                       <% end %>
                     <% else %>
-                      Pas encore de commentaire en tant que "propriétaire"
+                      <%= t('.no_comment_yet') + t('.as_owner') %>
                     <% end %>
                   </div>
                 </p>
@@ -78,7 +78,7 @@
                     <i class="fa fa-send"></i>
                   </div>
                   <div class="col-xs-11 padding-none">
-                    Envoyer un <%= link_to "message", new_booking_conversation_path(booking) %>
+                    <%= t('.send_a') %> <%= link_to t('.message'), new_booking_conversation_path(booking) %>
                   </div>
                 </p>
               </div>

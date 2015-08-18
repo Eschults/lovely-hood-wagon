@@ -253,6 +253,7 @@ fr:
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
     post:
+      dear_neighbors: "Chers voisins,"
       posted: "a posté sur le Wall :"
       go_to_lh: "Voir / réagir sur Lovely Hood"
       lh_team: "L'équipe Lovely Hood"
@@ -345,3 +346,36 @@ fr:
       punctuality: "Ponctualité :"
       recommendation: "Recommandation :"
       send: "Terminer"
+  shared:
+    contact_client:
+      contact_info: "Fiche contact"
+      comment: "commentaire"
+      as_a_client: ' en tant que "client"'
+      of_recos: "de recommandations"
+      no_comment_yet: "Pas encore de commentaire"
+      as_owner: ' en tant que "propriétaire"'
+      send_a: "Envoyer un"
+      message: "message"
+    contact_owner:
+      contact_info: "Fiche contact"
+      send_a: "Envoyer un"
+      message: "message"
+      phone: "Téléphone :"
+    ongoing_bookings:
+      since: "Depuis"
+      and_until: "et jusqu'au"
+      since_today: "Depuis aujourd'hui et jusqu'au"
+      day: "jour"
+      at: "à"
+      you_will_earn: "Vous allez gagner"
+      currency: "€"
+    passed_bookings:
+      today: "Aujourd'hui"
+      time_ago: "Il y a %{days}"
+      day: "jour"
+      buy: "Confirmer l'achat de"
+      pending_decision: "En attente de la décision de %{name}"
+      leave_a_review: "Pensez à laisser un"
+      comment: "commentaire"
+      to: "à"
+      at: "à"

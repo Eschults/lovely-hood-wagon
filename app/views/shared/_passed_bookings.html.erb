@@ -14,7 +14,6 @@
         <% end %>
       </div>
     </div>
-
     <div class="col-xs-10">
       <div class="booking-content">
         <div class="row">
@@ -24,16 +23,16 @@
                 <% if current_user == booking.user %>
                   <p>
                     <% if booking.end_date == Date.today %>
-                      <strong>Aujourd'hui</strong>
+                      <strong><%= t('.today') %></strong>
                     <% else %>
-                      Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                      <%= t('.time_ago', days: pluralize((Date.today - booking.end_date).to_i, t('.day'))) %>
                     <% end %>
-                    (le <%= booking.end_date.strftime("%d %b") %>).
+                    (<%= booking.end_date.strftime("%d %b") %>).
                   </p>
                   <p>
                     <ul class="confirmation list-unstyle list-inline">
                       <li>
-                        Achetez-vous <%= link_to booking.offer.nature,  offer_path(booking.offer) %> ?
+                        <%= t('.buy') %> <%= link_to booking.offer.nature,  offer_path(booking.offer) %>
                       </li>
                       <li class="confirmation-thumbs">
                         <%= form_for booking, method: :put, url: buy_offer_booking_path(booking.offer, booking) do |f| %>
@@ -54,51 +53,51 @@
                   </p>
                 <% else %>
                   <p>
-                    En attente de la décision de <%= booking.user.first_name %>.
+                    <%= t('.pending_decision', name: booking.user.first_name) %>.
                   </p>
                 <% end %>
               <% elsif booking.offer.sold %>
                 <% if current_user == booking.offer.user %>
                   <p>
                     <% if booking.end_date == Date.today %>
-                      <strong>Aujourd'hui</strong>
+                      <strong><%= t('.today') %></strong>
                     <% else %>
-                      Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                      <%= t('.time_ago', pluralize((Date.today - booking.end_date).to_i, t(".day"))) %>
                     <% end %>
                     (le <%= booking.end_date.strftime("%d %b") %>).
                   </p>
                   <p>
-                    Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= booking.user.first_name %>.
+                    <%= t('.leave_a_review') %> <%= link_to t('.comment'), new_booking_review_path(booking) %> <%= t('.to') %> <%= booking.user.first_name %>.
                   </p>
                 <% end %>
               <% end %>
             <% elsif booking.offer.type_of_offer == "rent" %>
               <p>
                 <% if booking.end_date == Date.today %>
-                  <strong>Aujourd'hui</strong>
+                  <strong><%= t('.today') %></strong>
                 <% else %>
-                  Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                  <%= t('.time_ago', days: pluralize((Date.today - booking.end_date).to_i, t('.day'))) %>
                 <% end %>
-                (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
+                (<%= booking.start_date.strftime("%d %b") %> - <%= booking.end_date.strftime("%d %b") %>).
               </p>
               <p>
                 <% if current_user == booking.user %>
-                  Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= booking.offer.user.first_name %>.
+                  <%= t('.leave_a_review') %> <%= link_to t('.comment'), new_booking_review_path(booking) %> <%= t('.to') %> <%= booking.offer.user.first_name %>.
                 <% elsif current_user == booking.offer.user %>
-                  Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= booking.user.first_name %>.
+                  <%= t('.leave_a_review') %> <%= link_to t('.comment'), new_booking_review_path(booking) %> <%= t('.to') %> <%= booking.user.first_name %>.
                 <% end %>
               </p>
             <% elsif booking.offer.type_of_offer == "service" %>
               <p>
                 <% if booking.end_date == Date.today %>
-                  <strong>Aujourd'hui</strong>
+                  <strong><%= t('.today') %></strong>
                 <% else %>
-                  Il y a <strong><%= pluralize((Date.today - booking.end_date).to_i, "jour") %></strong>
+                  <%= t('.time_ago', days: pluralize((Date.today - booking.end_date).to_i, t('.day'))) %>
                 <% end %>
-                (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
+                (<%= booking.start_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.start_hour.strftime("%H:%M") %> - <%= booking.end_date.strftime("%d %b") %> <%= t('.at') %>à <%= booking.end_hour.strftime("%H:%M") %>).
               </p>
               <p>
-                Pensez à laisser un <%= link_to "commentaire", new_booking_review_path(booking) %> à <%= current_user == booking.user ? booking.offer.user.first_name : booking.user.first_name %>.
+                <%= t('.leave_a_review') %> <%= link_to t('.comment'), new_booking_review_path(booking) %> <%= t('.to') %> <%= current_user == booking.user ? booking.offer.user.first_name : booking.user.first_name %>.
               </p>
             <% end %>
           </div>

@@ -347,3 +347,36 @@ en:
       punctuality: "Punctuality:"
       recommendation: "Recommendation:"
       send: "Send"
+  shared:
+    contact_client:
+      contact_info: "Contact info"
+      comment: "comment"
+      as_a_client: ' as a "client"'
+      of_recos: "of recommendations"
+      no_comment_yet: "No comment yet"
+      as_owner: ' as an "owner"'
+      send_a: "Send a"
+      message: "message"
+    contact_owner:
+      contact_info: "Contact info"
+      send_a: "Send a"
+      message: "message"
+      phone: "Phone number:"
+    ongoing_bookings:
+      since: "Since"
+      and_until: "and until"
+      since_today: "Since today and until the"
+      currency: "$"
+      at: "at"
+      you_will_earn: "You will earn"
+      day: "day"
+    passed_bookings:
+      today: "Today"
+      time_ago: "%{days} ago"
+      day: "day"
+      buy: "Confirm purchase of"
+      pending_decision: "Waiting for %{name}'s decision"
+      leave_a_review: "Don't forget to leave a"
+      comment: "review"
+      to: "to"
+      at: "at"

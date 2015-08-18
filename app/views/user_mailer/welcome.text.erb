@@ -1,11 +1,15 @@
-Bienvenue sur Lovely Hood !
+<%= t('.welcome') %>
 
-Lovely Hood est actuellement en version beta, les fonctionnalités "client" (consulter les annonces, réserver, discuter...) ne sont pas activées et le seront quartier par quartier, en fonction de la densité d'annonces créées.
+<%= t('.intro') %>
 
-Vous pouvez en revanche d'ores et déjà créer des annonces pour les objets que vous souhaitez vendre, louer, ou encore les services que vous êtes prêt à rendre à vos voisins pour gagner de l'argent.
+<%= t('.offers').gsub('<strong>', '').gsub('</strong>', '') %>
 
-Nous vous contacterons quand votre quartier aura atteint la densité d'annonces créées souhaitée, et vous pourrez alors publier vos annonces et gagner de l'argent facilement !
+<%= t('.wall_1').gsub('<strong>', '').gsub('</strong>', '') %>
 
-Avant tout, complétez bien votre <%= link_to "profil", edit_user_url(@user) %> avec votre nom et votre adresse.
+<%= t('.wall_2').gsub('<strong>', '').gsub('</strong>', '') %>
 
-A bientôt sur Lovely Hood !
+<%= t('.edit_profile') %>
+
+https://www.lovely-hood.com
+
+<%= t('.lh_team') %>

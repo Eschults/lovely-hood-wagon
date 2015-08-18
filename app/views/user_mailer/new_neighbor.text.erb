@@ -1,12 +1,12 @@
-Chers voisins,
+<%= t('.dear_neighbors') %>
 
-<%= @user.first_name %> a rejoint votre Hood :
+<%= @user.first_name %> <%= t('.joined') %>
 
 <%= @user.first_name %> <%= @user.age if @user.birthday %>
-<%= @user.description ? @user.description : "Pas encore de description" %>
+<%= @user.description ? @user.description : t('.no_description_yet') %>
 
-<%= "Voir / réagir sur Lovely Hood : https://www.lovely-hood.com" %>
+<%= t('.go_to_lh') %> <%= "https://www.lovely-hood.com" %>
 
-L'équipe Lovely Hood
+<%= t('.lh_team') %>
 
-<%= "Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir, connectez-vous à votre compte : https://www.lovely-hood.com et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications. " %>
+<%= t('.set_notifs_1')%> https://www.lovely-hood.com <%= t('.set_notifs_2')%>

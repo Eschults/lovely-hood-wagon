@@ -22,47 +22,46 @@
             <% if booking.offer.type_of_offer == "rent" %>
               <p>
                 <% if booking.start_date == Date.today %>
-                  <strong>Aujourd'hui</strong>
+                  <strong><%= t('.today') %></strong>
                 <% else %>
-                  Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
+                  <%= t('.in') %> <strong><%= pluralize((booking.start_date - Date.today).to_i, t('.day')) %></strong>
                 <% end %>
-                (du <%= booking.start_date.strftime("%d %b") %> au <%= booking.end_date.strftime("%d %b") %>).
+                (<%= booking.start_date.strftime("%d %b") %> - <%= booking.end_date.strftime("%d %b") %>).
               </p>
             <!-- si c'est un service, on display les dates + heures -->
             <% elsif booking.offer.type_of_offer == "service" %>
               <p>
                 <% if booking.start_date == Date.today %>
-                  <strong>Aujourd'hui</strong>
+                  <strong><%= t('.today') %></strong>
                 <% else %>
-                  Dans <strong><%= pluralize((booking.start_date - Date.today).to_i, "jour") %></strong>
+                  <%= t('.in') %> <strong><%= pluralize((booking.start_date - Date.today).to_i, t('.day')) %></strong>
                 <% end %>
-                (<%= booking.start_date.strftime("%d %b") %> à <%= booking.start_hour.strftime("%H:%M") %> au <%= booking.end_date.strftime("%d %b") %> à <%= booking.end_hour.strftime("%H:%M") %>).
+                (<%= booking.start_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.start_hour.strftime("%H:%M") %> - <%= booking.end_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.end_hour.strftime("%H:%M") %>).
               </p>
             <!-- si c'est une vente, on display la date de rdv -->
             <% else %>
-              <p><strong>Rendez-vous :</strong> le <%= booking.start_date.strftime("%d %b") %>.</p>
+              <p><strong><%= t('.rdv') %></strong> <%= booking.start_date.strftime("%d %b") %>.</p>
             <% end %>
-
             <% if current_user == booking.user %>
               <p>
                 <% if booking.accepted && booking.offer.type_of_offer == "service" %>
-                  Réservation acceptée par <%= booking.offer.user.first_name %>.
+                  <%= t('.booking_accepted') %> <%= t('.by') %> <%= booking.offer.user.first_name %>.
                 <% elsif booking.accepted %>
-                  Réservation acceptée. Voir <%= link_to "l'itinéraire", offer_booking_path(booking.offer, booking, anchor: "map") %> pour vous rendre chez <%= booking.offer.user.first_name %>.
+                  <%= t('.booking_accepted') %>. <%= t('.check') %> <%= link_to t('.route'), offer_booking_path(booking.offer, booking, anchor: "map") %> <%= t('.to') %> <%= booking.offer.user.first_name %><%= t('.apostrophe_s') %>.
                 <% else %>
-                 En attente de la réponse de <%= booking.offer.user.first_name %>
+                 <%= t('.waiting_for') %> <%= booking.offer.user.first_name %>
                 <% end %>
                </p>
             <% else %>
               <p>
                 <% if booking.accepted && booking.offer.type_of_offer == "service" %>
-                  Réservation acceptée. Voir <%= link_to "l'itinéraire", offer_booking_path(booking.offer, booking, anchor: "map") %> pour vous rendre chez <%= booking.user.first_name %>.
+                  <%= t('.booking_accepted') %>. <%= t('.check') %> <%= link_to t('.route'), offer_booking_path(booking.offer, booking, anchor: "map") %> <%= t('.to') %> <%= booking.user.first_name %><%= t('.apostrophe_s') %>.
                 <% elsif booking.accepted && booking.offer.type_of_offer == "sell" %>
-                  Vous allez peut-être gagner <%= booking.booking_price * 0.96 %>€.
+                  <%= t('.you_may_earn') %> <%= booking.booking_price * 0.96 %><%= t('.currency') %>.
                 <% elsif booking.accepted %>
-                  Vous allez gagner <%= booking.booking_price * 0.96 %>€.
+                  <%= t('.you_will_earn') %> <%= booking.booking_price * 0.96 %><%= t('.currency') %>.
                 <% else %>
-                  Vous n'avez pas répondu à la demande de <%= booking.user.first_name %>. <%= link_to "Répondre à la demande", edit_offer_booking_path(booking.offer, booking) %>
+                  <%= t('.unanswered_request') %> <%= booking.user.first_name %><%= t('.request') %>. <%= link_to t('.reply'), edit_offer_booking_path(booking.offer, booking) %>
                 <% end %>
               </p>
             <% end %>

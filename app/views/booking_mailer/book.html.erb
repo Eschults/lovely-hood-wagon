@@ -41,7 +41,7 @@
               </div>
               <br>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                <%= link_to edit_offer_booking_url(@booking.offer, @booking), style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
+                <%= link_to edit_offer_booking_url(@booking.offer, @booking, locale: I18n.locale).gsub('/fr', ''), style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
                   Accepter/Refuser
                 <% end %>
               </div>
@@ -72,26 +72,6 @@
                                 <img src="https://openmerchantaccount.com/img/lovely_hood%20(1).png" border="0" alt="Lovely Hood" width="133" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
                               </a>
                             </div>
-                            <!-- <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://www.facebook.com" title="Facebook" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Facebook" height="42" src="https://ci4.googleusercontent.com/proxy/sDMYDPzBfqtgHoO3sXXhp-_CacPVGdz6HBRtYzIpaLNHuHUqNuvz4vGQCSmYcOHkExGPjFWTTLO_UruodubCpvwPgdZ8kbzD4xa1XBOcNQ-WPv8kH2funAlb-Omvy0Wlgd38jmUu8TOyq99K3IVP4fhYVxueiw=s0-d-e1-ft#http://a0.muscache.com/airbnb/rookery/email/footer/facebook-3c1b46bf609e7b12c2b8b9576911e11a.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td>
-                            <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://twitter.com/" title="Twitter" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Twitter" height="42" src="https://ci3.googleusercontent.com/proxy/ZVeNUdDWMyk2wH0L-I8ns9mtbfG1596_3kgJINLJUXeD6o72_omNx7lBi0M0aO8GjoE-K9bgaD4pdkEUsHbX07qJHLRtyv6RKMnK7BFXxnJKrTgLAPZq0XePges_JL8NgJPldOZhF9hMsc3Z2V2BP7-9p4o6=s0-d-e1-ft#http://a0.muscache.com/airbnb/rookery/email/footer/twitter-380e6f33075cc0e9c18231507ae93684.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td>
-                            <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://plus.google.com" title="Google+" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Google+" height="42" src="https://ci5.googleusercontent.com/proxy/qahUs94EjMdsHpWyORDfEVwe-GOmxvMuaUZ3sVr-J6147He-e0oarDuAQOlHlhFhds_B0yzZZ1onxuIl61jAJmdQM7Vd0nRKsuidQkblm5Hd4iDVRAbfQpgecWTPOuYS0CM5goSkBcOxRsvU4kTqJ-Aj0Q=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/gplus-ecd915cbce9c4696bd2cbfaf05631547.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td>
-                            <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://www.pinterest.com/" title="Pinterest" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Pinterest" height="42" src="https://ci3.googleusercontent.com/proxy/0dXVP5MqXTfAVa7bxDiZ5KSSFZIrgrPtCmLqpfN-jusfUjhnLbcBCdpCDZXHzO9l9-Yd79wY0e4jamQ4ih__vBNLMTMT2JDYRyxiscMU36eTANu10QCYZXMgEPk65iIvJAe_IiZun9ZesvroWuRjf41GZGaTguY=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/pinterest-3d350b44ba720d4d254d59b9014d3838.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td> -->
                           </tr>
                         </tbody>
                       </table>

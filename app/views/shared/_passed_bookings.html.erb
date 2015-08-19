@@ -94,7 +94,7 @@
                 <% else %>
                   <%= t('.time_ago', days: pluralize((Date.today - booking.end_date).to_i, t('.day'))) %>
                 <% end %>
-                (<%= booking.start_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.start_hour.strftime("%H:%M") %> - <%= booking.end_date.strftime("%d %b") %> <%= t('.at') %>à <%= booking.end_hour.strftime("%H:%M") %>).
+                (<%= booking.start_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.start_hour.strftime("%H:%M") %> - <%= booking.end_date.strftime("%d %b") %> <%= t('.at') %> <%= booking.end_hour.strftime("%H:%M") %>).
               </p>
               <p>
                 <%= t('.leave_a_review') %> <%= link_to t('.comment'), new_booking_review_path(booking) %> <%= t('.to') %> <%= current_user == booking.user ? booking.offer.user.first_name : booking.user.first_name %>.

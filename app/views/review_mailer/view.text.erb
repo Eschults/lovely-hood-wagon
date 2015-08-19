@@ -1,6 +1,5 @@
 <%= @review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name %> <%= t('.left_a_comment') %> <%= @review.booking.offer.nature %>.
-<%= link_to user_url(@review.review_type == "cto" ? @review.booking.offer.user : @review.booking.user, anchor: "reviews") do %>
-  <%= t('.read_comment') %>
-<% end %>
+
+<%= t('.read_comment') %> : https://www.lovely-hood.com
 
 <%= t('.lh_team') %>

@@ -13,7 +13,7 @@
       <div class="col-sm-7 col-xs-8 padding-left-30">
         <ul class="margin-none list-unstyled list-inline">
           <li class="padding-left-none offer-nature-link"><%= neighbor.first_name %></li>
-          <li class="padding-left-none font-normal"><%= neighbor.age.to_s + " ans" unless neighbor.birthday.nil? %></li>
+          <li class="padding-left-none font-normal"><%= neighbor.age.to_s + t('.years_old') unless neighbor.birthday.nil? %></li>
         </ul>
         <div class="margin-top-10 margin-top-10 font-normal font-normal text-decoration-none">
           <% if current_user.admin %>
@@ -23,7 +23,7 @@
             </ul>
           <% end %>
           <%= simple_format neighbor.description[0..60] + "... "unless(neighbor.description == "" || neighbor.description.nil?) %>
-          <%= link_to new_user_conversation_path(neighbor), class: "" do %><i class="fa fa-send"></i> Envoyer un message <% end %>
+          <%= link_to new_user_conversation_path(neighbor), class: "" do %><i class="fa fa-send"></i> <%= t('.send_message') %> <% end %>
           <% if current_user.admin %>
             <p><%= neighbor.address %></p>
           <% end %>
@@ -33,9 +33,9 @@
         <div class="col-xs-12">
           <%= link_to user_path(neighbor, anchor: "offers"), class: "btn btn-default btn-wide btn-margin" do %>
             <% if neighbor.published_offers.size > 0 %>
-              <%= neighbor.published_offers.size %> <%= "annonce".pluralize(neighbor.published_offers.size) + " publiée".pluralize(neighbor.published_offers.size) %>
+              <%= neighbor.published_offers.size %> <%= t(".offer").pluralize(neighbor.published_offers.size) + t('.published', default: "#{' publiée'.pluralize(neighbor.published_offers.size)}") %>
             <% else %>
-              Pas encore d'annonce
+              <%= t('.no_offer_yet') %>
             <% end %>
           <% end %>
         </div>

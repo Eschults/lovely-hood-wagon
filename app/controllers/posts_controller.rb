@@ -1,20 +1,20 @@
 require 'uri'
 class PostsController < ApplicationController
   def index
-    name_and_address_validations
     if current_user.latitude.nil?
       redirect_to edit_user_path(current_user)
-      flash.now[:alert] = "Renseignez votre adresse nous permettre de déterminer votre voisinage"
-    end
-    @posts = current_user.posts_in_scope
-    @post = Post.new
-    if current_user.admin
-      @activities = PublicActivity::Activity.order("created_at desc")
+      flash.keep[:alert] = t(".complete_profile")
     else
-      @activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self)
+      @posts = current_user.posts_in_scope
+      @post = Post.new
+      if current_user.admin
+        @activities = PublicActivity::Activity.order("created_at desc")
+      else
+        @activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self)
+      end
+      @items = @posts + @activities
+      @items = @items.sort_by(&:created_at).reverse
     end
-    @items = @posts + @activities
-    @items = @items.sort_by(&:created_at).reverse
   end
 
   def create
@@ -145,35 +145,6 @@ class PostsController < ApplicationController
 
   def activity_comment_params
     params.require(:activity_comment).permit(:content)
-  end
-
-  def name_and_address_validations
-    if current_user.first_name != ""
-      if current_user.last_name != ""
-        if current_user.street != ""
-          if current_user.zip_code != ""
-            if current_user.city != ""
-
-            else
-              redirect_to edit_user_path(current_user)
-              flash.keep[:alert] = "Merci de renseigner votre ville"
-            end
-          else
-            redirect_to edit_user_path(current_user)
-            flash.keep[:alert] = "Merci de renseigner votre code postal"
-          end
-        else
-          redirect_to edit_user_path(current_user)
-          flash.keep[:alert] = "Merci de renseigner votre rue"
-        end
-      else
-        redirect_to edit_user_path(current_user)
-        flash.keep[:alert] = "Merci de renseigner votre nom de famille"
-      end
-    else
-      redirect_to edit_user_path(current_user)
-      flash.keep[:alert] = "Merci de renseigner votre prénom"
-    end
   end
 end
 

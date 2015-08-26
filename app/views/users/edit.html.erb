@@ -1,21 +1,21 @@
 <%= content_for(:title) do %>
-  Mon compte - <%= @user.name %> - LH
+  <%= t('.title', name: @user.name) %>
 <% end %>
 <%= content_for(:description) do %>
-  Gérez votre compte
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
       <div class="sidenav">
         <ul class="list-unstyled">
-          <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
-          <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
-          <li><a href="#" class="edit-link" id="my-trust">Confiance et vérif.</a><% unless @user.trust_steps == 0 %><span class="badge pull-right margin-top-2"><%= @user.trust_steps %><% end %></span></li>
-          <li><a href="#" class="edit-link" id="my-bank">Recevoir de l'argent</a><% unless @user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= @user.money_step %><% end %></span></li>
-          <li><a href="#" class="edit-link" id="my-comments">Commentaires</a></li>
-          <li><a href="#" class="edit-link" id="my-notifs">Notifications</a></li>
-          <li><%= link_to "Voir mon profil", user_path(@user), class: "btn btn-default" %></a></li>
+          <li><a href="#" class="strong edit-link" id="my-info"><%= t('.my_info') %></a></li>
+          <li><a href="#" class="edit-link" id="my-pic"><%= t('.my_pic') %></a></li>
+          <li><a href="#" class="edit-link" id="my-trust"><%= t('.my_trust') %></a><% unless @user.trust_steps == 0 %><span class="badge pull-right margin-top-2"><%= @user.trust_steps %><% end %></span></li>
+          <li><a href="#" class="edit-link" id="my-bank"><%= t('.my_bank') %></a><% unless @user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= @user.money_step %><% end %></span></li>
+          <li><a href="#" class="edit-link" id="my-comments"><%= t('.my_comments') %></a></li>
+          <li><a href="#" class="edit-link" id="my-notifs"><%= t('.my_notifs') %></a></li>
+          <li><%= link_to t('.see_profile'), user_path(@user), class: "btn btn-default" %></a></li>
         </ul>
       </div>
     </div>
@@ -23,108 +23,94 @@
       <div class="box" id="user-info">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Mes informations</h4>
+            <h4><%= t('.my_info') %></h4>
           </div>
           <div class="panel-body form-horizontal white-bg">
             <%= form_for(@user) do |f| %>
               <div class="form-group">
-                <%= f.label :email, "E-mail", class: "col-sm-3 control-label" %>
+                <%= f.label :email, t('.email'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.email_field :email, class: "form-control" %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :first_name, "Prénom *", class: "col-sm-3 control-label" %>
+                <%= f.label :first_name, t('.first_name'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :first_name, class: "form-control", id: "first_name" %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :last_name, "Nom *", class: "col-sm-3 control-label" %>
+                <%= f.label :last_name, t('.last_name'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :last_name, class: "form-control", id: "last_name" %>
                   <%= render "data_sharing_message" %>
-                  <p class="small">Pour assurer un service de qualité et contribuer à la confiance au sein de la communauté, nous procédons à une <%= link_to "vérification", edit_user_path(@user, anchor: "my-trust"), class: "show-div" %> systématique de l'identité de nos membres.</p>
+                  <p class="small"><%= t('.info_1') %><%= link_to t('.verif'), edit_user_path(@user, anchor: "my-trust"), class: "show-div" %><%= t('.info_2') %></p>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :street, "Rue *", class: "col-sm-3 control-label" %>
+                <%= f.label :street, t('.street'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :street, class: "form-control", id: "street" %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :zip_code, "Code postal *", class: "col-sm-3 control-label" %>
+                <%= f.label :zip_code, t('.zipcode'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :zip_code, class: "form-control", id: "zip_code" %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :city, "Ville *", class: "col-sm-3 control-label" %>
+                <%= f.label :city, t('.city'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :city, class: "form-control", id: "city" %>
-                  <p class="small">Afin de prévenir tout risque de détournement du service, nous procédons à une <%= link_to "vérification", edit_user_path(@user, anchor: "my-trust") %> de l'adresse de chaque membre de la communauté. Aussi, tout changement d'adresse fera l'objet d'une nouvelle vérification.</p>
+                  <p class="small"><%= t('.warning_1') %> <%= link_to t('.verif'), edit_user_path(@user, anchor: "my-trust") %> <%= t('.warning_2') %></p>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :gender, "Sexe", class: "col-sm-3 control-label" %>
+                <%= f.label :gender, t('.sex'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.select :gender, [["Homme", "Male"], ["Femme", "Female"]], {}, { class: "form-control" } %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :birthday, "Date de naissance", class: "col-sm-3 control-label" %>
+                <%= f.label :birthday, t('.birthdate'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9 padding-top-7">
                   <%= f.date_select :birthday, start_year: 1940, end_year: Date.today.year, class: "form-control" %>
-                  <p class="small">Nous utilisons cette donnée à des fins d'analyse et ne la partageons jamais avec d'autres  utilisateurs.</p>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :phone, "Téléphone", class: "col-sm-3 control-label" %>
+                <%= f.label :phone, t('.phone'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :phone, class: "form-control", id: "phone" %>
                   <%= render "data_sharing_message" %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :description, "Description", class: "col-sm-3 control-label" %>
+                <%= f.label :description, t('.descr'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_area :description, class: "form-control" %>
-                  <p class="small">Aidez les utilisateurs de votre communauté à mieux vous connaitre.</p>
-
-                  <p class="small">Pour cela, présentez-vous brièvement en résumant votre parcours et en mentionnant vos activités personnelles, professionnelles ou encore votre situation amoureuse.</p>
+                  <p class="small"><%= t('.know_you') %></p>
+                  <p class="small"><%= t('.explain') %></p>
                 </div>
               </div>
-
               <div class="form-group margin-btm-none">
                 <div class="col-sm-3">
                 </div>
-
                 <div class="col-sm-9">
                   <%= link_to "Modifier mon mot de passe", edit_user_registration_path(@user), class: "btn btn-default" %>
                   <br>
                   <br>
-                  <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
+                  <%= f.submit t('.submit'), class: "btn btn-primary", id: "submit" %>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
       </div>
-
       <div class="box hidden" id="user-picture">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Photo de profil</h4>
+            <h4><%= t('.my_pic') %></h4>
           </div>
           <div class="panel-body form-horizontal white-bg">
             <div class="form-group">
@@ -136,55 +122,51 @@
                 <% end %>
               </div>
               <div class="col-sm-9">
-                <p>Téléchargez une photo qui montre clairement votre visage, afin que votre communauté vous reconnaisse !</p>
+                <p><%= t('.show_face') %></p>
                 <%= form_for(@user, html: { multipart: true }) do |f| %>
                   <%= f.file_field :picture, label: "Parcourir" %>
                   <br>
-                  <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                  <%= f.submit t('.submit'), class: "btn btn-primary" %>
                 <% end %>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
       <div class="box hidden" id="user-trust">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Confiance et vérifications</h4>
+            <h4><%= t('.trust_and_verif') %></h4>
           </div>
           <div class="panel-body form-horizontal white-bg">
             <%= form_for(@user) do |f| %>
               <div class="col-sm-12">
-                <p><b>Vérifiez votre identité et votre adresse postale</b></p>
-                <p class="small">La vérification de votre identité et de votre adresse est à la fois un prérequis pour le bon fonctionnement du service et une façon simple de contribuer à la confiance au sein de la communauté Lovely Hood.</p>
+                <p><b><%= t('.control') %></b></p>
+                <p class="small"><%= t('.identity_check') %></p>
               </div>
-
               <div class="form-group">
-                <%= f.label :identity_proof, "Identité", class: "col-sm-3 control-label" %>
+                <%= f.label :identity_proof, t('.identity'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <% if @user.identity_verified %>
-                    <p class="padding-top-7"><i class="fa fa-check"></i> Identité vérifiée</p>
+                    <p class="padding-top-7"><i class="fa fa-check"></i> <%= t('.identity_verified') %></p>
                   <% elsif @user.identity_proof_file_name %>
-                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely Hood</p>
+                    <p class="padding-top-7"><%= t('.in_review') %></p>
                   <% else %>
                     <%= f.file_field :identity_proof, class: "margin-top-6"%>
-                    <p class="small">Carte d'identité, passeport ou permis de conduire uniquement</p>
+                    <p class="small"><%= t('.accepted_ids') %></p>
                   <% end %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :address_proof, "Adresse", class: "col-sm-3 control-label" %>
+                <%= f.label :address_proof, t('.address'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <% if @user.address_verified %>
-                    <p class="padding-top-7"><i class="fa fa-check"></i> Addresse vérifiée</p>
+                    <p class="padding-top-7"><i class="fa fa-check"></i> <%= t('.address_checked') %></p>
                   <% elsif @user.address_proof_file_name %>
-                    <p class="padding-top-7">En cours de vérification par les équipes de Lovely Hood</p>
+                    <p class="padding-top-7"><%= t('.in_review') %></p>
                   <% else %>
                     <%= f.file_field :address_proof, class: "margin-top-6" %>
-                    <p class="small">Dans le cas où votre adresse est différente de celle indiquée sur votre pièce d'identité, merci de nous fournir un des documents spécifiés dans <a href="" class="" data-toggle="modal" data-target="#myModal">cette liste</a></p>
+                    <p class="small"><%= t('.in_case') %><a href="" class="" data-toggle="modal" data-target="#myModal"><%= t('.documents') %></a></p>
                   <% end %>
                 </div>
               </div>
@@ -192,75 +174,69 @@
               <div class="form-group">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-9">
-                  <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+                  <%= f.submit t('.submit'), class: "btn btn-primary" %>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
       </div>
-
       <div class="box hidden" id="user-bank">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Recevoir de l'argent</h4>
+            <h4><%= t('.my_bank') %></h4>
           </div>
           <div class="panel-body form-horizontal white-bg">
             <div class="col-xs-12">
-              <p>Avant de pouvoir créer une annonce sur Lovely Hood, vous devez renseigner les coordonnées bancaires d'un compte valide domicilié en France.</p>
-              <p>Vous recevrez alors automatiquement tous les paiements relatifs à vos annonces sur ce compte dans un délai de 48h après la prestation.</p>
+              <p><%= t('.before_1') %></p>
+              <p><%= t('.before_2') %></p>
             </div>
             <%= form_for(@user) do |f| %>
-
               <div class="form-group">
-                <%= f.label :iban, "IBAN", class: "col-sm-3 control-label" %>
+                <%= f.label :iban, t('.swift'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :iban, class: "form-control" %>
                 </div>
               </div>
-
               <div class="form-group">
-                <%= f.label :bic, "BIC", class: "col-sm-3 control-label" %>
+                <%= f.label :bic, t('.bic'), class: "col-sm-3 control-label" %>
                 <div class="col-sm-9">
                   <%= f.text_field :bic, class: "form-control" %>
                 </div>
               </div>
-
               <div class="form-group margin-btm-none">
                 <div class="col-sm-3">
                 </div>
-
                 <div class="col-sm-9">
-                  <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
+                  <%= f.submit t('.submit'), class: "btn btn-primary", id: "submit" %>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
       </div>
-
       <div class="box hidden" id="user-comments">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Commentaires</h4>
+            <h4><%= t('.reviews') %></h4>
           </div>
           <div class="panel-body white-bg">
             <div id="reviews">
-              <h5><strong>Commentaires des "clients"</strong></h5>
+              <h5><strong><%= t('.cto_reviews') %></strong></h5>
               <% if @user.cto_reviews.size >= 1 %>
                 <% @user.cto_reviews.sort_by(&:updated_at).reverse.each do |review| %>
                   <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
                 <% end %>
               <% else %>
-                <p>Pas encore de commentaire rédigé à propos d'une annonce publiée par <%= @user.first_name %></p>
+                <p><%= t('.no_offer_yet', name: @user.first_name) %></p>
               <% end %>
-              <h5><strong>Commentaires des "propriétaires"</strong></h5>
+              <h5><strong><%= t('.otc_reviews') %></strong></h5>
               <% if @user.otc_reviews.size >= 1 %>
                 <% @user.otc_reviews.sort_by(&:updated_at).reverse.each do |review| %>
                   <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
                 <% end %>
               <% else %>
-                <p>Pas encore de commentaire rédigé à propos d'une réservation réalisée par <%= @user.first_name %></p>
+                <p><%= t('.no_offer_yet', name: @user.first_name) %></p>
               <% end %>
             </div>
           </div>

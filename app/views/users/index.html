@@ -1,15 +1,15 @@
 <%= content_for(:title) do %>
-  Mes voisins - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Visualisez vos voisins et engagez la conversation pour faire connaissance !
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none">
         <div class="panel-heading border-btm-none">
-          <h4>Mes voisins</h4>
+          <h4><%= t('.my_neighbors') %></h4>
         </div>
         <div class="panel-body padding-none">
           <% if @users.size > 0 %>
@@ -18,8 +18,7 @@
             <% end %>
           <% else %>
             <div class="offer-stream-box border-top">
-              <p>Vous n'avez pas encore de voisin sur Lovely Hood.</p>
-              <p><%= link_to "Invitez vos voisins sur Lovely Hood", "#" %></p>
+              <p><%= t('.no_neighbor_yet') %></p>
             </div>
           <% end %>
         </div>

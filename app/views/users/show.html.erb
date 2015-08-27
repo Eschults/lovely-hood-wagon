@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  <%= @user.first_name ? @user.first_name : "Mon profil" %>
+  <%= t('.title', name: @user.first_name ? @user.first_name : t('.my_profile')) %>
 <% end %>
 <%= content_for(:description) do %>
-  Accéder à vos réservations passées, en cours et à venir directement sur votre profil Lovely Hood
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -36,29 +36,29 @@
           <h4>
             <% if current_user == @user %>
               <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "nice-link" do %>
-              Vérifications
+              <%= t('.verif') %>
               <% end %>
             <% else %>
-              Vérifications
+              <%= t('.verif') %>
             <% end %>
           </h4>
         </div>
         <div class="panel-body">
           <% if @user.identity_verified %>
-            <p><i class="fa fa-check"></i> Identité vérifiée</p>
+            <p><i class="fa fa-check"></i> <%= t('.identity_verified') %></p>
           <% else %>
             <p>
               <%= link_to edit_user_path(@user, anchor: "my-trust"), class: "text-decoration-none red-link" do %>
-                <i class="fa fa-close"></i> Identité non vérifiée
+                <i class="fa fa-close"></i> <%= t('.identity_not_checked') %>
               <% end %>
             </p>
           <% end %>
           <% if @user.address_verified %>
-            <p><i class="fa fa-check"></i> Adresse vérifiée</p>
+            <p><i class="fa fa-check"></i> <%= t('.address_verified') %></p>
           <% else %>
             <p>
               <%= link_to edit_user_path(current_user, anchor: "my-trust"), class: "text-decoration-none red-link" do %>
-                <i class="fa fa-close"></i> Adresse non vérifiée</p>
+                <i class="fa fa-close"></i> <%= t('.address_not_checked') %></p>
               <% end %>
           <% end %>
           <% if @user.provider == "facebook" %>
@@ -72,10 +72,10 @@
             <h4>
               <% if @user.exclusive_neighbors(current_user).size > 0 %>
                 <%= link_to users_path, class: "nice-link" do %>
-                  Mes voisins (<%= @user.neighbors.size %>)
+                  <%= t('.my_neighbors') %> (<%= @user.neighbors.size %>)
                 <% end %>
               <% else %>
-                Mes voisins (<%= @user.neighbors.size %>)
+                <%= t('.my_neighbors') %> (<%= @user.neighbors.size %>)
               <% end %>
             </h4>
           </div>
@@ -99,14 +99,14 @@
                       <% end %>
                       <br>
                       <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none gray-lighter" do %>
-                        <i class="fa fa-send"></i> Contacter
+                        <i class="fa fa-send"></i> <%= t('.send_message') %>
                       <% end %>
                     </div>
                   </div>
                 </div>
               <% end %>
             <% else %>
-              Pas encore de voisin
+              <%= t('.no_neighbor_yet') %>
             <% end %>
           </div>
         </div>
@@ -116,10 +116,10 @@
             <h4>
               <% if current_user == @user && @user.common_neighbors(current_user).size > 0 %>
                 <%= link_to users_path, class: "nice-link" do %>
-                  <%= "Voisin".pluralize(@user.common_neighbors(current_user).size) %> en commun (<%= @user.common_neighbors(current_user).size %>)
+                  <%= t('.neighbor').pluralize(@user.common_neighbors(current_user).size) %> en commun (<%= @user.common_neighbors(current_user).size %>)
                 <% end %>
               <% else %>
-                Voisins en commun (<%= @user.common_neighbors(current_user).size %>)
+                <%= t('.common_neighbors') %> (<%= @user.common_neighbors(current_user).size %>)
               <% end %>
             </h4>
           </div>
@@ -143,14 +143,14 @@
                       <% end %>
                       <br>
                       <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none gray-lighter" do %>
-                        <i class="fa fa-send"></i> Contacter
+                        <i class="fa fa-send"></i> <%= t('.send_message') %>
                       <% end %>
                     </div>
                   </div>
                 </div>
               <% end %>
             <% else %>
-              Pas de voisin en commun
+              <%= t('.no_common_neighbor') %>
             <% end %>
           </div>
         </div>
@@ -177,7 +177,7 @@
                     <div class="small">
                       <%= ("<strong>" + neighbor.first_name + "</strong>").html_safe + (neighbor.birthday ? ", #{neighbor.age.to_s}" : "") %>
                       <br>
-                      <%= (neighbor.description != "") ? (neighbor.description.size > 20 ? (neighbor.description[0..20] + "...") : neighbor.description) : "Pas de description" %>
+                      <%= (neighbor.description != "") ? (neighbor.description.size > 20 ? (neighbor.description[0..20] + "...") : neighbor.description) : t('.no_description') %>
                     </div>
                   </div>
                 </div>
@@ -195,7 +195,7 @@
                   <%= "Annonce".pluralize(@user.published_offers.size) %> (<%= @user.published_offers.size %>)
                 <% end %>
               <% else %>
-                Annonces
+                <%= t('.offers') %>
               <% end %>
             </h4>
           </div>
@@ -204,7 +204,7 @@
               <% if @user == current_user %>
                 <%= link_to "Publier une annonce", new_offer_path %>
               <% else %>
-                Pas encore d'annonce
+                <%= t('.no_offer_yet') %>
               <% end %>
             <% else %>
               <% @user.offers.each do |offer| %>
@@ -289,19 +289,19 @@
     </div>
     <div class="col-sm-9">
       <div class="user-info">
-        <h1><%= @user.first_name ? "Profil de #{@user.first_name}" : "Mon profil" %></h1>
+        <h1><%= t('.profile', name: @user.first_name) %></h1>
         <p>
-          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} ans - " : "" %>Membre depuis <%= @user.created_at.strftime("%b %Y") %>
+          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} - " : "" %>Membre depuis <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
           <% unless current_user == @user %>
             <%= link_to new_user_conversation_path(@user), class: "contact-user-link", class: "btn btn-success" do %>
-              <i class="fa fa-send"></i> Envoyer un message
+              <i class="fa fa-send"></i> <%= t('.send_message') %>
             <% end %>
           <% end %>
         </p>
         <% if policy(@user).update? %>
-        <p><%= link_to "Modifier mes informations", edit_user_path(@user), class: "btn btn-default" %></p>
+        <p><%= link_to t('.edit'), edit_user_path(@user), class: "btn btn-default" %></p>
         <% end %>
         <p><%= simple_format @user.description %></p>
       </div>
@@ -310,17 +310,17 @@
           <div class="passed-bookings">
             <div class="panel panel-default padding-none">
               <div class="panel-heading">
-                <h4>Prestations passées</h4>
+                <h4><%= t('.passed_bookings') %></h4>
               </div>
               <div class="panel-body">
                 <% if @user.passed_bookings_to_review[:owner].size >= 1 %>
-                  <h5><strong>On vous a sollicité pour :</strong></h5>
+                  <h5><strong><%= t('.you_were_asked') %></strong></h5>
                   <% @user.passed_bookings_to_review[:owner].each do |booking| %>
                     <%= render "shared/passed_bookings", { user: @user, booking: booking } %>
                   <% end %>
                 <% end %>
                 <% if @user.passed_bookings_to_review[:client].size >= 1 %>
-                  <h5><strong>Vous avez bénéficié de :</strong></h5>
+                  <h5><strong><%= t('.you_booked') %></strong></h5>
                   <% @user.passed_bookings_to_review[:client].each do |booking| %>
                     <%= render "shared/passed_bookings", { user: @user, booking: booking } %>
                   <% end %>
@@ -333,17 +333,17 @@
           <div class="ongoing-bookings">
             <div class="panel panel-default padding-none">
               <div class="panel-heading">
-                <h4>Prestations en cours</h4>
+                <h4><%= t('.ongoing_bookings') %></h4>
               </div>
               <div class="panel-body">
                 <% if @user.ongoing_bookings[:owner].size >= 1 %>
-                  <h5><strong>On vous sollicite pour :</strong></h5>
+                  <h5><strong><%= t('.you_are_providing') %></strong></h5>
                   <% @user.ongoing_bookings[:owner].each do |booking| %>
                     <%= render "shared/ongoing_bookings", { user: @user, booking: booking } %>
                   <% end %>
                 <% end %>
                 <% if @user.ongoing_bookings[:client].size >= 1 %>
-                  <h5><strong>Vous bénéficiez de :</strong></h5>
+                  <h5><strong><%= t('.you_enjoy') %></strong></h5>
                   <% @user.ongoing_bookings[:client].each do |booking| %>
                     <%= render "shared/ongoing_bookings", { user: @user, booking: booking } %>
                   <% end %>
@@ -356,16 +356,16 @@
           <div class="upcoming-bookings">
             <div class="panel panel-default padding-none">
               <div class="panel-heading">
-                <h4>A venir</h4>
+                <h4><%= t('.upcoming') %></h4>
               </div>
               <div class="panel-body">
-                <h5><strong>Vous avez réservé</strong></h5>
+                <h5><strong><%= t('.you_have_booked') %></strong></h5>
                 <% if @user.upcoming_bookings[:client].size >= 1 %>
                   <% @user.upcoming_bookings[:client].each do |booking| %>
                     <%= render "shared/upcoming_bookings", { user: @user, booking: booking } %>
                   <% end %>
                 <% else %>
-                  <p>Pas de réservation à venir.</p>
+                  <p><%= t('.no_upcoming_booking') %></p>
                 <% end %>
                 <h5><strong>On vous a réservé</strong></h5>
                 <% if @user.upcoming_bookings[:owner].size >= 1 %>
@@ -373,7 +373,7 @@
                     <%= render "shared/upcoming_bookings", { user: @user, booking: booking } %>
                   <% end %>
                 <% else %>
-                  <p>Pas de réservation à venir.</p>
+                  <p><%= t('.no_upcoming_booking') %></p>
                 <% end %>
               </div>
             </div>
@@ -383,24 +383,24 @@
       <div id="reviews">
         <div class="panel panel-default padding-none">
           <div class="panel-heading">
-            <h4>Commentaires</h4>
+            <h4><%= t('.reviews') %></h4>
           </div>
           <div class="panel-body">
-            <h5><strong>Commentaires des "clients"</strong></h5>
+            <h5><strong><%= t('.cto_reviews') %></strong></h5>
             <% if @user.cto_reviews.size >= 1 %>
               <% @user.cto_reviews.sort_by(&:updated_at).reverse.each do |review| %>
                 <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
               <% end %>
             <% else %>
-              <p>Pas encore de commentaire rédigé à propos d'une annonce publiée par <%= @user.first_name %></p>
+              <p><%= t('.no_cto_yet', name: @user.first_name) %></p>
             <% end %>
-            <h5><strong>Commentaires des "propriétaires"</strong></h5>
+            <h5><strong><%= t('.otc_reviews') %></strong></h5>
             <% if @user.otc_reviews.size >= 1 %>
               <% @user.otc_reviews.sort_by(&:updated_at).reverse.each do |review| %>
                 <%= render "shared/review", { user: @user, booking: review.booking, review: review } %>
               <% end %>
             <% else %>
-              <p>Pas encore de commentaire rédigé à propos d'une réservation réalisée par <%= @user.first_name %></p>
+              <p><%= t('.no_otc_yet', name: @user.first_name) %></p>
             <% end %>
           </div>
         </div>

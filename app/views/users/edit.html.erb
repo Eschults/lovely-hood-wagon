@@ -242,22 +242,21 @@
           </div>
         </div>
       </div>
-
       <div class="box hidden" id="user-notifs">
         <div class="panel panel-default margin-top-15 padding-none">
           <div class="panel-heading">
-            <h4>Notifications</h4>
+            <h4><%= t('.my_notifs') %></h4>
           </div>
           <div class="white-bg panel-body">
             <div class="col-xs-12 padding-sides-none">
-              <p>Vous pouvez régler ici les événements pour lesquels vous souhaitez recevoir une notification par mail :</p>
+              <p><%= t('.manage') %></p>
             </div>
             <br>
             <br>
             <%= form_for(@user) do |f| %>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
                 <div class="col-sm-6 padding-left-none">
-                  <%= f.label :lh_post_notif, "Lovely Hood a publié sur le Wall", class: "margin-top-5 notif-label control-label" %>
+                  <%= f.label :lh_post_notif, t('.lh_post_notif'), class: "margin-top-5 notif-label control-label" %>
                 </div>
                 <div class="col-sm-6 padding-right-none">
                   <%= f.check_box :lh_post_notif, class: "form-control" %>
@@ -265,7 +264,7 @@
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
                 <div class="col-sm-6 padding-left-none">
-                  <%= f.label :user_notif, "Nouveau voisin", class: "margin-top-5 notif-label control-label" %>
+                  <%= f.label :user_notif, t('.user_notif'), class: "margin-top-5 notif-label control-label" %>
                 </div>
                 <div class="col-sm-6 padding-right-none">
                   <%= f.check_box :user_notif, class: "form-control" %>
@@ -273,7 +272,7 @@
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
                 <div class="col-sm-6 padding-left-none">
-                  <%= f.label :offer_notif, "Nouvelle annonce", class: "margin-top-5 notif-label control-label" %>
+                  <%= f.label :offer_notif, t('.offer_notif'), class: "margin-top-5 notif-label control-label" %>
                 </div>
                 <div class="col-sm-6 padding-right-none">
                   <%= f.check_box :offer_notif, class: "form-control" %>
@@ -281,7 +280,7 @@
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
                 <div class="col-sm-6 padding-left-none">
-                  <%= f.label :post_notif, "Nouveau post", class: "margin-top-5 notif-label control-label" %>
+                  <%= f.label :post_notif, t('.post_notif'), class: "margin-top-5 notif-label control-label" %>
                 </div>
                 <div class="col-sm-6 padding-right-none">
                   <%= f.check_box :post_notif, class: "form-control" %>
@@ -289,7 +288,7 @@
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
                 <div class="col-sm-6 padding-left-none">
-                  <%= f.label :comment_notif, "Votre post a été commenté", class: "margin-top-5 notif-label control-label" %>
+                  <%= f.label :comment_notif, t('.comment_notif'), class: "margin-top-5 notif-label control-label" %>
                 </div>
                 <div class="col-sm-6 padding-right-none">
                   <%= f.check_box :comment_notif, class: "form-control" %>
@@ -297,14 +296,14 @@
               </div>
               <div class="col-xs-12 margin-vertical-10 padding-sides-none">
                 <div class="col-sm-6 padding-left-none">
-                  <%= f.label :like_notif, "Votre post a été aimé", class: "margin-top-5 notif-label control-label" %>
+                  <%= f.label :like_notif, t('.like_notif'), class: "margin-top-5 notif-label control-label" %>
                 </div>
                 <div class="col-sm-6 padding-right-none">
                   <%= f.check_box :like_notif, class: "form-control" %>
                 </div>
               </div>
               <div class="col-xs-12 text-right padding-sides-none">
-                <%= f.submit "Sauvegarder", class: "btn btn-primary", id: "submit" %>
+                <%= f.submit t('.submit'), class: "btn btn-primary", id: "submit" %>
               </div>
             <% end %>
           </div>
@@ -320,26 +319,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Justificatifs de domicile</h4>
+        <h4 class="modal-title" id="myModalLabel"><%= t('.address_proof') %></h4>
       </div>
       <div class="modal-body">
         <ul class="list-unstyled">
-          <li class="small"><i class="fa fa-check"></i> Une facture d'électricité</li>
-          <li class="small"><i class="fa fa-check"></i> Une facture de gaz</li>
-          <li class="small"><i class="fa fa-check"></i> Une facture d'eau</li>
-          <li class="small"><i class="fa fa-check"></i> Une facture de téléphone fixe</li>
-          <li class="small"><i class="fa fa-check"></i> Une facture de téléphone mobile</li>
-          <li class="small"><i class="fa fa-check"></i> Un avis d'imposition</li>
-          <li class="small"><i class="fa fa-check"></i> Une attestation d'assurance logement</li>
-          <li class="small"><i class="fa fa-check"></i> Un titre de propriété ou une quittance de loyer</li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.electricity') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.gas') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.wwater') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.phone_bill') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.mobile') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.tax') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.insurance') %></li>
+          <li class="small"><i class="fa fa-check"></i> <%= t('.rent') %></li>
         </ul>
-        <p class="small">Pour être pris en compte, ce justificatif doit être <strong>à votre nom</strong>, et <strong>dater de moins de 6 mois</strong></p>
+        <p class="small"><%= t('.to_be_valid').html_safe %></p>
       </div>
-
     </div>
   </div>
 </div>
-
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {

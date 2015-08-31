@@ -116,11 +116,12 @@ fr:
       at: "à"
       to: "au"
       hours: "Heure(s)"
-      end_date:
-      days:
-      pricing:
-      per_day:
-      per_week:
+      date: "Date"
+      days: "Jour(s)"
+      pricing: "Tarif(s)"
+      currency: "€"
+      per_day: "Par jour"
+      per_week: "Par semaine"
   layouts:
     footer:
       terms: "Conditions générales"
@@ -190,9 +191,9 @@ fr:
       published: "Publiée"
       step: "étape"
       to_publish: "pour publier"
-      hourly_price: "$/hour"
-      daily_price: "$/day"
-      weekly_price: "$/week"
+      hourly_rate: "€/heure"
+      daily_rate: "€/jour"
+      weekly_rate: "€/semaine"
     owner_actions:
       edit: "Modifier l'annonce"
     wishlisted_offer:
@@ -203,9 +204,9 @@ fr:
       contact_owner: "Demande d'info"
       book: "Réserver"
       unwish: "Délister"
-      hourly_price: "$/hour"
-      daily_price: "$/day"
-      weekly_price: "$/week"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     edit:
       update_description: "Modifiez facilement vos annonces pour mettre à jour vos tarifs, photo ou encore description !"
       update: "Modifier"

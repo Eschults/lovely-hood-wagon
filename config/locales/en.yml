@@ -110,17 +110,18 @@ en:
       from_lh: "from Lovely Hood's HQ"
   bookings:
     form:
-      start_date: "Start"
-      end_date: ""
-      from:
-      at:
-      to:
-      hours:
-      end_date:
-      days:
-      pricing:
-      per_day:
-      per_week:
+      start_date: "Starts on"
+      end_date: "Ends on"
+      from: "From"
+      at: "at"
+      to: "to"
+      hours: "Hour(s)"
+      date: "Date"
+      days: "Day(s)"
+      pricing: "Pricing"
+      currency: "$"
+      per_day: "Per day"
+      per_week: "Per week"
   layouts:
     footer:
       terms: "Terms and conditions"

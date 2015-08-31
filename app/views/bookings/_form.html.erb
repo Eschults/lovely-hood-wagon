@@ -69,7 +69,7 @@
     </div>
   <% elsif @offer.type_of_offer == "sell" %>
     <div class="form-group">
-      <%= f.label :start_date, "Date", class: "col-xs-2 text-right control-label" %>
+      <%= f.label :start_date, t('.date'), class: "col-xs-2 text-right control-label" %>
       <div class="col-xs-10">
         <%= f.text_field :start_date, value: Date.today.strftime('%d/%m/%Y'), class: "form-control datepicker", id: "start-date" %>
       </div>
@@ -84,7 +84,7 @@
   <% if @offer.type_of_offer == "rent" %>
     <div class="form-group margin-btm-none">
       <div class="col-xs-2">
-        <b style="float:right;">Jour(s)</b>
+        <b style="float:right;"><%= t('.days') %></b>
       </div>
       <div class="col-xs-10">
         <p id="renting-days">1</p>
@@ -93,17 +93,17 @@
     <div class="hidden">
       <div class="form-group margin-btm-none">
         <div class="col-xs-2">
-          <b style="float:right;">Tarif(s)</b>
+          <b style="float:right;"><%= t('.pricing') %></b>
         </div>
         <div class="col-xs-10">
           <% if @offer.daily_price %>
             <ul class="list-unstyled list-inline strong" id="daily-price">
-              <li><%= @offer.daily_price %>€</li><li class="pull-right">Par jour</li>
+              <li><%= @offer.daily_price + t('.currency') %></li><li class="pull-right"><%= t('.per_day') %></li>
             </ul>
           <% end %>
           <% if @offer.weekly_price %>
             <ul class="list-unstyled list-inline" id="weekly-price">
-              <li><%= @offer.weekly_price %>€</li><li class="pull-right">Par semaine</li>
+              <li><%= @offer.weekly_price + t('.currency') %></li><li class="pull-right"><%= t('.per_week') %></li>
             </ul>
           <% end %>
         </div>

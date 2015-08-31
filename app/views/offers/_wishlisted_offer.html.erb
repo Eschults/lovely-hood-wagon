@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
       <h4 class="margin-none text-right price">
-        <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')).match(/^.*€/)[0] %>
+        <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')).match(/^.*[€$]/)[0] %>
       </h4>
       <% unless offer.type_of_offer == "sell" %>
         <p class="small">

@@ -78,18 +78,18 @@ class Offer < ActiveRecord::Base
     end
   end
 
-  def one_price
+  def one_price(trad_h, trad_w, trad_d)
     output = nil
     if type_of_offer == "service"
       if hourly_price
-        output = "#{hourly_price}€/heure"
+        output = "#{hourly_price}#{trad_h}"
       end
     elsif type_of_offer == "rent"
       if weekly_price
-        output = "#{weekly_price}€/semaine"
+        output = "#{weekly_price}#{trad_w}"
       end
       if daily_price
-        output = "#{daily_price}€/jour"
+        output = "#{daily_price}#{trad_d}"
       end
     else
       if price

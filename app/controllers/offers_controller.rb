@@ -5,11 +5,9 @@ class OffersController < ApplicationController
   layout 'map', only: [:index]
 
   def index
-    name_and_address_validations
     if current_user.latitude.nil?
-      raise
       redirect_to edit_user_path(current_user)
-      flash.now[:alert] = "Renseignez votre adresse nous permettre de déterminer votre voisinage"
+      flash.keep[:alert] = t(".complete_profile")
     end
     @offers = policy_scope(Offer)
   end

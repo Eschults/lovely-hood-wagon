@@ -9,7 +9,7 @@
       <div class="col-sm-7 col-xs-5 padding-left-30">
         <ul class="margin-none list-unstyled list-inline">
           <li class="padding-left-none offer-nature-link"><%= offer.nature %></li>
-          <li class="padding-left-none font-normal"><%= offer.one_price ? offer.one_price : "" %></li>
+          <li class="padding-left-none font-normal"><%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) ? offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) : "" %></li>
         </ul>
         <p class="margin-top-10 font-normal hidden-xs"><%= offer.description.size > 50 ? offer.description[0..49] + "..." : offer.description %></p>
       </div>

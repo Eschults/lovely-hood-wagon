@@ -226,11 +226,11 @@
                         <% if offer.nature.length >= 20 %>
                           <%= link_to offer.nature[0..19] + "...", offer_path(offer) %>
                           <br>
-                          <%= offer.one_price %>
+                          <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) %>
                         <% else %>
                           <%= link_to offer.nature, offer_path(offer) %>
                           <br>
-                          <%= offer.one_price %>
+                          <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) %>
                         <% end %>
                       </div>
                     </div>
@@ -273,11 +273,11 @@
                     <% if offer.nature.length >= 20 %>
                       <%= link_to offer.nature[0..19] + "...", offer_path(offer) %>
                       <br>
-                      <%= offer.one_price %>
+                      <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) %>
                     <% else %>
                       <%= link_to offer.nature, offer_path(offer) %>
                       <br>
-                      <%= offer.one_price %>
+                      <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) %>
                     <% end %>
                   </div>
                 </div>

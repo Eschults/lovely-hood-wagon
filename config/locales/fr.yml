@@ -56,6 +56,71 @@ fr:
       message:
         read_at: "Lu à"
         content: "Message"
+  booking_mailer:
+    accept:
+      hello: "Bonjour"
+      rdv: "rendez-vous pour"
+      booking: "réservation de"
+      first_sentence: "Bonne nouvelle ! Votre demande de %{booking} a été acceptée par {owner_first_name}."
+      second_sentence: "Sur la base du prix de %{price} et des frais associés, vous allez être débité de %{booking_price}€."
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
+      go_to_lh: "Voir le détail"
+      lh_team: "L'équipe Lovely Hood"
+      sent_with: "Envoyé avec"
+      from_lh: "depuis le siège de Lovely Hood"
+    book:
+      hello: "Bonjour"
+      rdv: "rendez-vous"
+      booking: "réservation"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
+      first_sentence: "Bonne nouvelle ! Vous avez une demande de %{booking} de %{first_name} pour votre annonce %{offer}."
+      second_sentence: "Sur la base du prix de %{price} et des frais associés, vous pourriez gagner <strong>%{booking_price}€</strong>."
+      go_to_lh: "Accepter / Refuser"
+      lh_team: "L'équipe Lovely Hood"
+      sent_with: "Envoyé avec"
+      from_lh: "depuis le siège de Lovely Hood"
+    decline:
+      hello: "Bonjour"
+      rdv: "rendez-vous pour"
+      booking: "réservation de"
+      first_sentence: "Votre demande de %{booking} a été déclinée pour cette fois."
+      second_sentence: "Trouvez d'autres annonces pour répondre à votre besoin :"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
+      go_to_lh: "Voir les annonces"
+      lh_team: "L'équipe Lovely Hood"
+      sent_with: "Envoyé avec"
+      from_lh: "depuis le siège de Lovely Hood"
+    buy:
+      hello: "Bonjour"
+      first_sentence: "Bonne nouvelle ! %{first_name} a acheté votre article %{offer}."
+      second_sentence: "Nous déclenchons le paiement de %{price}€ sur votre compte."
+      comment: "Pensez à laisser un commentaire à %{first_name} !"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
+      go_to_lh: "Laisser un commentaire à %{first_name}"
+      lh_team: "L'équipe Lovely Hood"
+      sent_with: "Envoyé avec"
+      from_lh: "depuis le siège de Lovely Hood"
+  bookings:
+    form:
+      start_date: "Début"
+      end_date: "Fin"
+      from: "Du"
+      at: "à"
+      to: "au"
+      hours: "Heure(s)"
+      end_date:
+      days:
+      pricing:
+      per_day:
+      per_week:
   layouts:
     footer:
       terms: "Conditions générales"
@@ -93,6 +158,9 @@ fr:
       set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
   offers:
     client_actions:
       unwish: "Délister"
@@ -122,6 +190,9 @@ fr:
       published: "Publiée"
       step: "étape"
       to_publish: "pour publier"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     owner_actions:
       edit: "Modifier l'annonce"
     wishlisted_offer:
@@ -132,6 +203,9 @@ fr:
       contact_owner: "Demande d'info"
       book: "Réserver"
       unwish: "Délister"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     edit:
       update_description: "Modifiez facilement vos annonces pour mettre à jour vos tarifs, photo ou encore description !"
       update: "Modifier"
@@ -273,6 +347,10 @@ fr:
       like_this: "aiment ça"
       people: "personne"
       and: "et"
+    offer:
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     post:
       unlike: "Je n'aime plus"
       like: "J'aime"
@@ -545,3 +623,6 @@ fr:
       otc_reviews: 'Commentaires des "propriétaires"'
       no_cto_yet: "Pas encore de commentaire rédigé à propos d'une annonce publiée par %{name}"
       no_otc_yet: "Pas encore de commentaire rédigé à propos d'une réservation réalisée par %{name}"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"

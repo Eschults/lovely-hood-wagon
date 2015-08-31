@@ -31,24 +31,24 @@
             </table>
             <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                Bonjour <%= @booking.offer.user.first_name %>,
+                <%= t('.hello') %> <%= @booking.offer.user.first_name %>,
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                Bonne nouvelle ! <%= @booking.user.first_name %> a acheté votre article <%= @booking.offer.nature %> !
+                <%= t('.first_sentence', first_name: @booking.user.first_name, offer: @booking.offer.nature) %>
                 <br>
-                Nous déclenchons le paiement de <%= (@booking.booking_price * 0.96).floor %>€ sur votre compte.
+                <%= t('.second_sentence', price: (@booking.booking_price * 0.96).floor) %>
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                Pensez à laisser un commentaire à <%= @booking.user.first_name %> !
+                <%= t('.comment', first_name: @booking.user.first_name) %>
               </div>
               <br>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
                 <%= link_to new_booking_review_url(@booking), style: "margin:0;font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;border:1px solid;display:block;padding:10px 16px;text-decoration:none;border-radius:1px;text-align:center;vertical-align:middle;font-weight:bold;white-space:nowrap;background:#ffffff;border-color:transparent;background-color:#22A7F0;color:#ffffff;border-top-width:1px", target: "_blank" do %>
-                  Laisser un commentaire à <%= @booking.user.first_name %>
+                  <%= t('.go_to_lh', first_name: @booking.user.first_name) %>
                 <% end %>
               </div>
               <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:1em">
-                L'équipe Lovely Hood
+                <%= t('.lh_team') %>
               </div>
             </div>
             <br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"><br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
@@ -56,7 +56,6 @@
         </td>
         <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"></td>
       </tr>
-
       <tr style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
         <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"></td>
         <td style="padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;display:block;margin:0 auto;clear:both;max-width:610px">
@@ -74,26 +73,6 @@
                                 <img src="https://openmerchantaccount.com/img/lovely_hood%20(1).png" border="0" alt="Airbnb" width="133" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
                               </a>
                             </div>
-                            <!-- <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://www.facebook.com" title="Facebook" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Facebook" height="42" src="https://ci4.googleusercontent.com/proxy/sDMYDPzBfqtgHoO3sXXhp-_CacPVGdz6HBRtYzIpaLNHuHUqNuvz4vGQCSmYcOHkExGPjFWTTLO_UruodubCpvwPgdZ8kbzD4xa1XBOcNQ-WPv8kH2funAlb-Omvy0Wlgd38jmUu8TOyq99K3IVP4fhYVxueiw=s0-d-e1-ft#http://a0.muscache.com/airbnb/rookery/email/footer/facebook-3c1b46bf609e7b12c2b8b9576911e11a.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td>
-                            <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://twitter.com/" title="Twitter" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Twitter" height="42" src="https://ci3.googleusercontent.com/proxy/ZVeNUdDWMyk2wH0L-I8ns9mtbfG1596_3kgJINLJUXeD6o72_omNx7lBi0M0aO8GjoE-K9bgaD4pdkEUsHbX07qJHLRtyv6RKMnK7BFXxnJKrTgLAPZq0XePges_JL8NgJPldOZhF9hMsc3Z2V2BP7-9p4o6=s0-d-e1-ft#http://a0.muscache.com/airbnb/rookery/email/footer/twitter-380e6f33075cc0e9c18231507ae93684.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td>
-                            <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://plus.google.com" title="Google+" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Google+" height="42" src="https://ci5.googleusercontent.com/proxy/qahUs94EjMdsHpWyORDfEVwe-GOmxvMuaUZ3sVr-J6147He-e0oarDuAQOlHlhFhds_B0yzZZ1onxuIl61jAJmdQM7Vd0nRKsuidQkblm5Hd4iDVRAbfQpgecWTPOuYS0CM5goSkBcOxRsvU4kTqJ-Aj0Q=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/gplus-ecd915cbce9c4696bd2cbfaf05631547.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td>
-                            <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:5px">
-                              <a href="https://www.pinterest.com/" title="Pinterest" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#ff5a5f;text-decoration:none" target="_blank">
-                                <img alt="Pinterest" height="42" src="https://ci3.googleusercontent.com/proxy/0dXVP5MqXTfAVa7bxDiZ5KSSFZIrgrPtCmLqpfN-jusfUjhnLbcBCdpCDZXHzO9l9-Yd79wY0e4jamQ4ih__vBNLMTMT2JDYRyxiscMU36eTANu10QCYZXMgEPk65iIvJAe_IiZun9ZesvroWuRjf41GZGaTguY=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/pinterest-3d350b44ba720d4d254d59b9014d3838.png" width="42" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0" class="CToWUd">
-                              </a>
-                            </td> -->
                           </tr>
                         </tbody>
                       </table>
@@ -107,7 +86,7 @@
                     <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"></td>
                     <td style="padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;display:block;margin:0 auto;clear:both;max-width:610px">
                       <div style="font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding:15px;max-width:600px;margin:0 auto;display:block;padding-left:5px;padding-right:5px;padding-bottom:5px;padding-top:0px;color:#9ca299;font-size:14px;text-align:center">
-                        Envoyé avec <img alt="&amp;#9829;" height="10" src="https://ci6.googleusercontent.com/proxy/rU4UoU_vqkBhbK2IMvTnXyDDVUMWfLUHM9VjqTkWnNJ9tXhlBI81LeYdHR0qtRXSZzh3xOO1-N-3JopJWF6YXn9I7qk_ZNPfDKmueqVgbFD-pDon0f8IgOfnAky4DEHteSMtXtr_rNxcgyQj_lG6q12P_A=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/heart-eeaa9b6467981f6b84031fc9570ed630.png" width="12" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%" class="CToWUd"> depuis le siège de Lovely Hood<br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
+                        <%= t('.sent_with') %> <img alt="&amp;#9829;" height="10" src="https://ci6.googleusercontent.com/proxy/rU4UoU_vqkBhbK2IMvTnXyDDVUMWfLUHM9VjqTkWnNJ9tXhlBI81LeYdHR0qtRXSZzh3xOO1-N-3JopJWF6YXn9I7qk_ZNPfDKmueqVgbFD-pDon0f8IgOfnAky4DEHteSMtXtr_rNxcgyQj_lG6q12P_A=s0-d-e1-ft#http://a1.muscache.com/airbnb/rookery/email/footer/heart-eeaa9b6467981f6b84031fc9570ed630.png" width="12" style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%" class="CToWUd"> <%= t('.from-lh') %><br style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
                       </div>
                     </td>
                     <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif"></td>

@@ -1,3 +1,9 @@
-Félicitations ! Vous avez une demande pour : <%= link_to @booking.offer.nature, offer_booking_url(@booking.offer, @booking) %>
+<%= t('.hello') %> <%= @booking.offer.user.first_name %>,
 
-<%= @booking.offer.user.first_name %>, tu as une demande de la part de <%= @booking.user.first_name %>. Consulte les détails de la demande https://www.lovely-hood.com.
+<%= t('.first_sentence', booking: @booking.offer.sell ? t('.rdv') : t('.booking'), first_name: @booking.user.name, offer: @booking.offer.nature) %>
+
+<%= t('.first_sentence', price: @booking.offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')), booking_price: (@booking.booking_price * 0.96).floor).html_safe %>
+
+<%= t('.go_to_lh') %> <%= "https://www.lovely-hood.com" %>
+
+<%= t('.lh_team') %>

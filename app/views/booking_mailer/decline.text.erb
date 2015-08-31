@@ -1,2 +1,9 @@
-Votre demande de réservation a été déclinée
-Retrouvez d'autres annonces <%= link_to "ici", offers_url %> !
+<%= t('.hello') %> <%= @booking.user.first_name %>,
+
+<%= t('.first_sentence', booking: @booking.offer.sell ? t('.rdv') : t('.booking') + @booking.offer.nature, owner_first_name: @booking.offer.user.first_name) %>
+
+<%= t('.second_sentence', price: @booking.offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')), booking_price: @booking.booking_price * 1.08).round) %>
+
+<%= t('.go_to_lh') %> <%= "https://www.lovely-hood.com" %>
+
+<%= t('.lh_team') %>

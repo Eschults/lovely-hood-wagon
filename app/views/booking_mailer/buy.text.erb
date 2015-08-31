@@ -1,7 +1,11 @@
-Bonjour <%= @booking.offer.user.first_name %>,
+<%= t('.hello') %> <%= @booking.offer.user.first_name %>,
 
-Bonne nouvelle ! <%= @booking.user.first_name %> a acheté votre article <%= @booking.offer.nature %> !
-Nous déclenchons le paiement de <%= (@booking.booking_price * 0.96).floor %>€ sur votre compte.
+<%= t('.first_sentence', first_name: @booking.user.first_name, offer: @booking.offer.nature) %>
 
-Pensez à laisser un <%= link_to "commentaire", new_booking_review_url(@booking) %> à <%= @booking.user.first_name %> !
+<%= t('.second_sentence', price: (@booking.booking_price * 0.96).floor) %>
 
+<%= t('.comment', first_name: @booking.user.first_name) %>
+
+<%= t('.go_to_lh', first_name: @booking.user.first_name) %> <%= "https://www.lovely-hood.com" %>
+
+<%= t('.lh_team') %>

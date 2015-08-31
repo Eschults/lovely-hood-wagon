@@ -56,6 +56,71 @@ en:
       message:
         read_at: "Read at"
         content: "Message"
+  booking_mailer:
+    accept:
+      hello: "Hello"
+      rdv: "appointment"
+      booking: "booking"
+      first_sentence: "Good news! Your %{booking} request was accepted by {owner_first_name}."
+      second_sentence: "On the basis of %{price} and service fees, you will be charged of %{booking_price}$."
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
+      go_to_lh: "Go to Lovely Hood"
+      lh_team: "Lovely Hood's team"
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+    book:
+      hello: "Hello"
+      rdv: "an appointment"
+      booking: "a booking"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
+      first_sentence: "Good news! You have %{booking} request from %{first_name} for your offer %{offer}."
+      second_sentence: "On the basis of %{price} and service fees, you could earn %{booking_price}$."
+      go_to_lh: "Accept / Decline"
+      lh_team: "Lovely Hood's team"
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+    decline:
+      hello: "Hello"
+      rdv: "appointment"
+      booking: "booking"
+      first_sentence: "Your %{booking} request was declined."
+      second_sentence: "Find other offers to satisfy your need:"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
+      go_to_lh: "Go to Lovely Hood"
+      lh_team: "Lovely Hood's team"
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+    buy:
+      hello: "Hello"
+      first_sentence: "Good news! %{first_name} purchased your item %{offer}."
+      second_sentence: "You will receive %{price}$ on your bank account."
+      comment: "Don't forget to leave a review to %{first_name}!"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
+      go_to_lh: "Leave a review to %{first_name}"
+      lh_team: "Lovely Hood's team"
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+  bookings:
+    form:
+      start_date: "Start"
+      end_date: ""
+      from:
+      at:
+      to:
+      hours:
+      end_date:
+      days:
+      pricing:
+      per_day:
+      per_week:
   layouts:
     footer:
       terms: "Terms and conditions"
@@ -93,6 +158,9 @@ en:
       set_notifs_2: "and go to Settings, Notifications."
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
   offers:
     client_actions:
       unwish: "Remove from wishlist"
@@ -274,6 +342,10 @@ en:
       like_this: "like this"
       people: "people"
       and: "and"
+    offer:
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     post:
       unlike: "Unlike"
       like: "Like"
@@ -548,3 +620,6 @@ en:
       otc_reviews: 'Reviews from "owners"'
       no_cto_yet: "No review yet on %{name}'s offers"
       no_otc_yet: "No review yet on %{name}'s bookings"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"

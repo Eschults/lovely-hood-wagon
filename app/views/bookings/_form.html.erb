@@ -1,25 +1,23 @@
 <%= form_for([@offer, @booking]) do |f| %>
   <% if @offer.type_of_offer == "rent" %>
     <div class="form-group">
-      <%= f.label :start_date, "Début", class: "col-xs-2 text-right control-label" %>
+      <%= f.label :start_date, t('.start_date'), class: "col-xs-2 text-right control-label" %>
       <div class="col-xs-10">
         <%= f.text_field :start_date, value: Date.today.strftime('%d/%m/%Y'), class: "form-control datepicker", id: "start-date" %>
       </div>
     </div>
-
     <div class="form-group">
-      <%= f.label :end_date, "Fin", class: "col-xs-2 text-right control-label" %>
+      <%= f.label :end_date, t('.end_date'), class: "col-xs-2 text-right control-label" %>
       <div class="col-xs-10">
         <%= f.text_field :end_date, value: (Date.today + 1).strftime('%d/%m/%Y'), class: "form-control datepicker", id: "end-date" %>
       </div>
     </div>
-
   <% elsif @offer.type_of_offer == "service" %>
     <div class="row">
       <div class="col-xs-12">
         <div class="col-xs-6">
           <div class="form-group">
-            <%= f.label :start_date, "Du", class: "col-xs-2 text-right control-label" %>
+            <%= f.label :start_date, t('.from'), class: "col-xs-2 text-right control-label" %>
             <div class="col-xs-10">
               <%= f.text_field :start_date, value: Date.today.strftime('%d/%m/%Y'), class: "form-control datepicker", id: "start-date" %>
             </div>
@@ -27,7 +25,7 @@
         </div>
         <div class="col-xs-6">
           <div class="form-group">
-            <%= f.label :start_hour, "à", class: "col-xs-2 text-right control-label" %>
+            <%= f.label :start_hour, t('.at'), class: "col-xs-2 text-right control-label" %>
             <div class="col-xs-10 padding-top-7">
               <%= f.time_select :start_hour, value: Time.new(Time.now.year, Time.now.month, Time.now.day, Time.now.hour + 3, 0), minute_step: 30, class: "form-control" %>
             </div>
@@ -39,7 +37,7 @@
       <div class="col-xs-12">
         <div class="col-xs-6">
           <div class="form-group">
-            <%= f.label :end_date, "au", class: "col-xs-2 text-right control-label" %>
+            <%= f.label :end_date, t('.to'), class: "col-xs-2 text-right control-label" %>
             <div class="col-xs-10">
               <%= f.text_field :end_date, value: (Date.today).strftime('%d/%m/%Y'), class: "form-control datepicker", id: "end-date" %>
             </div>
@@ -47,7 +45,7 @@
         </div>
         <div class="col-xs-6">
           <div class="form-group">
-            <%= f.label :end_hour, "à", class: "col-xs-2 text-right control-label" %>
+            <%= f.label :end_hour, t('.at'), class: "col-xs-2 text-right control-label" %>
             <div class="col-xs-10 padding-top-7">
               <%= f.time_select :end_hour, minute_step: 30, class: "form-control" %>
             </div>
@@ -60,7 +58,7 @@
         <div class="col-xs-6">
           <div class="form-group">
             <div class="col-xs-2 padding-left-none text-right">
-              <b>Heure(s)</b>
+              <b><%= t('.hours') %></b>
             </div>
             <div class="col-xs-10">
               <p id="service-hours">0</p>
@@ -69,7 +67,6 @@
         </div>
       </div>
     </div>
-
   <% elsif @offer.type_of_offer == "sell" %>
     <div class="form-group">
       <%= f.label :start_date, "Date", class: "col-xs-2 text-right control-label" %>
@@ -84,8 +81,6 @@
       </div>
     </div>
   <% end %>
-
-
   <% if @offer.type_of_offer == "rent" %>
     <div class="form-group margin-btm-none">
       <div class="col-xs-2">
@@ -113,14 +108,6 @@
           <% end %>
         </div>
       </div>
-      <!-- <div class="form-group margin-btm-none">
-        <div class="col-xs-2">
-          <b style="float:right;">Total</b>
-        </div>
-        <div class="col-xs-10">
-          <p id="renting-total-equation"><b id="renting-days-equation">1</b> x <b id="renting-price"><%= @offer.daily_price ? @offer.daily_price : @offer.weekly_price %></b> x (1 + 8%) = <b id="renting-total"><%= @offer.daily_price ? (@offer.daily_price * 1.08).round : (@offer.weekly_price / 7 * 1.08).round %></b><b>€</b></p>
-        </div>
-      </div> -->
     </div>
     <div class="form-group margin-btm-none">
       <div class="col-xs-2">

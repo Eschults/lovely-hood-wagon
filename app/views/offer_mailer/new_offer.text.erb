@@ -2,7 +2,7 @@
 
 <%= @offer.user.first_name %> <%= t('.created_an_offer') %>
 
-<%= @offer.nature %> <%= @offer.one_price ? @offer.one_price : "" %>
+<%= @offer.nature %> <%= @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) ? @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) : "" %>
 <%= @offer.description.size > 50 ? (@offer.description[0..49] + "...") : @offer.description %>
 
 <%= t('.go_to_lh') %> <%= "https://www.lovely-hood.com" %>

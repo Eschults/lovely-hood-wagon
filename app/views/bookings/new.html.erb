@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  Réserver <%= @booking.offer.nature %> - LH
+  <%= t('.title', offer: @booking.offer.nature) %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -27,33 +27,32 @@
           <% end %>
         </div>
       </div>
-
       <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-body border-none">
           <% if @booking.offer.type_of_offer == "service" %>
             <% if @booking.offer.hourly_price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li class="pull-right"><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="padding-top-5">Par heure</li>
+                <li class="pull-right"><h3 class="margin-none"><%= @offer.hourly_price %>€</h3></li><li class="padding-top-5"><%= t('.per_hour') %></li>
               </ul>
             <% end %>
           <% elsif @booking.offer.type_of_offer == "rent" %>
             <% if @booking.offer.daily_price %>
               <ul class="list-unstyled list-inline">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.daily_price %>€</h3></li><li class="padding-top-5">Par jour</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.daily_price %>€</h3></li><li class="padding-top-5"><%= t('.per_day') %></li>
               </ul>
             <% end %>
             <% if @booking.offer.weekly_price %>
               <ul class="list-unstyled list-inline">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.weekly_price %>€</h3></li><li class="padding-top-5">Par semaine</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.weekly_price %>€</h3></li><li class="padding-top-5"><%= t('.per_week') %></li>
               </ul>
             <% end %>
             <ul class="list-unstyled list-inline padding-top-10 border-top margin-btm-none">
-              <li class="pull-right"><%= @booking.offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class="">Caution</li>
+              <li class="pull-right"><%= @booking.offer.guarantee ? @offer.guarantee.to_s + "€" : "0€" %></li><li class=""><%= t('.guarantee') %></li>
             </ul>
           <% else %>
             <% if @booking.offer.price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.price %>€</h3></li><li class="padding-top-5">(achat seul)</li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.price %>€</h3></li><li class="padding-top-5"><%= ('purchase_only') %></li>
               </ul>
             <% end %>
           <% end %>

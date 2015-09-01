@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  Réservation de <%= @booking.offer.nature %> - LH
+  <%= t('.title', offer: @booking.offer.nature) %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -28,7 +28,7 @@
     </div>
     <div class="col-sm-9">
       <div class="booking">
-        <h1><%= @booking.offer.type_of_offer == "sell" ? "Demande d'achat" : "Réservation" %></h1>
+        <h1><%= @booking.offer.type_of_offer == "sell" ? t('.purchase_request') : t('.booking_request') %></h1>
         <h4><strong><%= link_to @booking.offer.nature, offer_path(@booking.offer), class: "nice-link" %></strong></h4>
         <p>
           <%= @booking.offer.user.zip_code %>
@@ -41,11 +41,11 @@
               <% (5 - @booking.offer.average_score.round).times do %>
                 <i class="fa fa-star small-star"></i>
               <% end %>
-              (<%= @booking.offer.cto_reviews.size.to_i %> commentaires)
+              (<%= @booking.offer.cto_reviews.size.to_i %> <%= t('.reviews') %>)
             <% end %>
           <% else %>
             <% unless @booking.offer.type_of_offer == "sell" %>
-              (Pas encore de commentaires)
+              <%= t('no_review_yet') %>
             <% end %>
           <% end %>
         </p>

@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Reservation de <%= @booking.offer.nature %> - LH
+  <%= t('.title', offer: @booking.offer.nature) %>
 <% end %>
 <%= content_for(:description) do %>
-  Vous avez une demande de réservation sur Lovely Hood. Vous pouvez accepter la réservation, la décliner, ou contacter le demandeur pour avoir plus d'info !
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -30,23 +30,23 @@
         <div class="panel-body border-none">
           <%= form_for([@booking.offer, @booking]) do |f| %>
             <%= f.text_field :accepted, class: "hidden", value: true %>
-            <%= f.submit 'Accepter', class: "btn btn-success btn-wide" %>
+            <%= f.submit t('.accept'), class: "btn btn-success btn-wide" %>
           <% end %>
           <br>
           <% if current_user.conversation_with(@booking.user) %>
             <%= link_to conversation_path(current_user.conversation_with(@booking.user), anchor: "message-input"), class: "btn btn-default btn-wide" do %>
-              Discuter
+              <%= t('.discuss') %>
             <% end %>
           <% else %>
             <%= link_to new_booking_conversation_path(@booking), class: "btn btn-default btn-wide" do %>
-              Discuter
+              <%= t('.discuss') %>
             <% end %>
           <% end %>
           <br>
           <br>
           <%= form_for([@booking.offer, @booking]) do |f| %>
             <%= f.text_field :accepted, class: "hidden", value: false %>
-            <%= f.submit 'Décliner', class: "btn btn-danger btn-wide" %>
+            <%= f.submit t('.decline'), class: "btn btn-danger btn-wide" %>
           <% end %>
         </div>
       </div>
@@ -64,7 +64,7 @@
         <% if (@booking.offer.type_of_offer == "service" && current_user == @booking.offer.user) || (@booking.offer.type_of_offer != "service" && current_user == @booking.user) %>
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4>Itinéraire</h4>
+              <h4><%= t('.route') %></h4>
             </div>
             <div class="panel-body padding-none">
               <div id="map" class="col-sm-9" style="height:300px"></div>

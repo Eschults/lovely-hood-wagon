@@ -1,6 +1,6 @@
-<h1>Vous avez une demande de service</h1>
+<h1><%= t('.booking_request') %></h1>
 <h4><strong><%= @booking.offer.nature %></strong></h4>
 
-<p><%= link_to @booking.user.first_name, user_path(@booking.user) %> vous sollicite pour un service : <%= @booking.offer.nature %>, du <strong><%= @booking.start_date.strftime("%-d %b %Y") %></strong> à <strong><%= @booking.start_hour.strftime("%H:%M") %></strong> au <strong><%= @booking.end_date.strftime("%-d %b %Y") %></strong> à <strong><%= @booking.end_hour.strftime("%H:%M") %></strong></p>
+<p><%= link_to @booking.user.first_name, user_path(@booking.user) %> <%= t('.would_like') %> <%= @booking.offer.nature %>, <%= t('.from') %> <strong><%= @booking.start_date.strftime("%-d %b %Y") %></strong> <%= t('.at') %> <strong><%= @booking.start_hour.strftime("%H:%M") %></strong> <%= t('.to') %> <strong><%= @booking.end_date.strftime("%-d %b %Y") %></strong> <%= t('.at') %> <strong><%= @booking.end_hour.strftime("%H:%M") %></strong></p>
 
-<p>Sur la base de votre prix de <%= @booking.offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) %> et des frais associés, vous pourriez gagner <strong><%= (@booking.booking_price * 0.96).floor %>€</strong></p>
+<p><%= t('.on_the_basis') %> <%= @booking.offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')) %> <%= t('.and_service_fees') %> <strong><%= (@booking.booking_price * 0.96).floor %><%= t('.currency') %></strong></p>

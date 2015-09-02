@@ -177,6 +177,27 @@ en:
       booking_request: "Booking request"
       reviews: "reviews"
       no_review_yet: "(No review yet)"
+      congrats: "Congratulations, your %{request} was accepted!"
+      request: "request"
+      booking: "booking request"
+      sent_on: "Sent on %{date}, pending."
+      declined: "Your booking request was declined. Browse "
+      offers: "offers"
+      rdv: "You're expected at %{address} on %{date}, cf route hereunder."
+      more_info: "For any further information, you can contact"
+      see: "View "
+      offer: "offer"
+      route: "Route"
+  comment_mailer:
+    new_comment:
+      commented_your_post: "commented your post:"
+      go_to_lh: "Go to Lovely Hood"
+      lh_team: "Lovely Hood's team"
+      set_notifs_1: "To set the events for which you would like to receive an email,"
+      connect: "sign in on LH"
+      set_notifs_2: "and go to Settings, Notifications."
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
   layouts:
     footer:
       terms: "Terms and conditions"

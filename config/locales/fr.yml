@@ -177,6 +177,27 @@ fr:
       booking_request: "Réservation"
       reviews: "commentaires"
       no_review_yet: "(Pas encore de commentaires)"
+      congrats: "Félicitations, votre %{request} a été acceptée !"
+      request: "demande"
+      booking: "réservation"
+      sent_on: "Envoyée le %{date}, en attente de la réponse du destinataire"
+      declined: "Votre réservation a été déclinée. Consulter d'autres"
+      offers: "annonces"
+      rdv: "Rendez-vous : le %{date}, au %{address}, voir itinéraire ci-dessous."
+      more_info: "Pour toute information complémentaire, n'hésitez pas à contacter"
+      see: "Revoir l'"
+      offer: "annonce"
+      route: "Itinéraire"
+  comment_mailer:
+    new_comment:
+      commented_your_post: "a commenté votre post :"
+      go_to_lh: "Voir / réagir sur Lovely Hood"
+      lh_team: "L'équipe Lovely Hood"
+      set_notifs_1: "Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir,"
+      connect: "connectez-vous à votre compte"
+      set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
+      sent_with: "Envoyé avec"
+      from_lh: "depuis le siège de Lovely Hood"
   layouts:
     footer:
       terms: "Conditions générales"

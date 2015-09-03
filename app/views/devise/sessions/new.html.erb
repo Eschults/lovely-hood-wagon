@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Connexion - LH
+  <%= t('.title') %>
 <% end %>
 <%= content_for(:description) do %>
-  Connectez vous sur Lovely Hood et recherchez les biens et services qui vous intéressent près de chez vous
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -12,18 +12,18 @@
           <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <%- if devise_mapping.omniauthable? %>
               <%- resource_class.omniauth_providers.each do |provider| %>
-                <%= link_to "Connexion avec #{provider.to_s}", omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide" %><br />
+                <%= link_to t('.sign_in_with', provider: provider.to_s), omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-wide" %><br />
               <% end -%>
             <% end -%>
             <br>
             <div class="form-inputs">
-              <%= f.email_field :email, label: "Adresse email", required: false, autofocus: true %>
-              <%= f.password_field :password, label: "Mot de passe", required: false %>
+              <%= f.email_field :email, label: t('.email'), required: false, autofocus: true %>
+              <%= f.password_field :password, label: t('.password'), required: false %>
               <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %>
             </div>
 
             <div class="form-actions">
-              <%= f.submit "Connexion" %>
+              <%= f.submit t('.sign_in') %>
             </div>
           <% end %>
           <%= render "devise/shared/links" %>

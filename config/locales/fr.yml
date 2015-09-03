@@ -204,9 +204,6 @@ fr:
       sent_you_a_message: "%{first_name} vous a envoyé un message sur Lovely Hood :"
       go_to_lh: "Répondre à %{first_name}"
       lh_team: "L'équipe Lovely Hood"
-      set_notifs_1: "Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir,"
-      connect: "connectez-vous à votre compte"
-      set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
   conversations:
@@ -242,6 +239,30 @@ fr:
       conversation_with: "Conversation avec"
       started_on: "débutée le"
       submit: "Envoyer"
+  devise:
+    passwords:
+      edit:
+        title: "Changer mon mot de passe - LH"
+        new_password: "Nouveau mot de passe"
+        confirm: "Confirmez mot de passe"
+        submit: "Changer de mot de passe"
+      new:
+        title: "Mot de passe oublié - LH"
+        submit: "Recevoir un lien par mail"
+    sessions:
+      new:
+        title: "Connexion - LH"
+        description: "Connectez vous sur Lovely Hood et recherchez les biens et services qui vous intéressent près de chez vous"
+        sign_in_with: "Connexion avec %{provider}"
+        email: "Adresse email"
+        password: "Mot de passe"
+        sign_in: "Connexion"
+    shared:
+      links:
+        sign_in: "Connexion"
+        sign_up: "S'inscrire"
+        password_forgotten: "Mot de passe oublié ?"
+        already_a_member: "Déjà membre ?"
   layouts:
     footer:
       terms: "Conditions générales"
@@ -257,6 +278,7 @@ fr:
       wishlist: "Ma wish list"
       log_out: "Deconnexion"
       new_offer: "Publier une annonce"
+      sign_in: "Connexion"
     navbar_map:
       wall: "Wall"
       offers: "Annonces"
@@ -268,6 +290,7 @@ fr:
       wishlist: "Ma wish list"
       log_out: "Deconnexion"
       new_offer: "Publier une annonce"
+      sign_in: "Connexion"
   offer_mailer:
     new_offer:
       dear_neighbors: "Chers voisins,"
@@ -417,6 +440,8 @@ fr:
       feature_1_content: "Votre communauté est constituée des utilisateurs résidant à moins de 10 min à pied de chez vous."
       feature_2_header: "Love & Care"
       feature_2_content: "Communiquez avec vos voisins sur le Wall ou en message privé, pour mieux vous connaitre et vous entraider."
+      feature_3_header: "Partage"
+      feature_3_content: "Créez des annonces pour les objets et les services que vous souhaitez proposer à vos voisins."
       location: "Lovely Hood est à"
       location_content: "...parce que la majorité de ses utilisateurs est à Paris."
       initiate: "Où que vous soyez, initiez le mouvement."

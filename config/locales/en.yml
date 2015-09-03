@@ -193,6 +193,9 @@ en:
       commented_your_post: "commented your post:"
       go_to_lh: "Go to Lovely Hood"
       lh_team: "Lovely Hood's team"
+      set_notifs_1: "To set the events for which you would like to receive an email,"
+      connect: "sign in on LH"
+      set_notifs_2: "and go to Settings, Notifications."
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
   conversation_mailer:
@@ -236,6 +239,30 @@ en:
       conversation_with: "Conversation with"
       started_on: "started on"
       submit: "Send"
+  devise:
+    passwords:
+      edit:
+        title: "Reset password - LH"
+        new_password: "New password"
+        confirm: "Confirm password"
+        submit: "Update password"
+      new:
+        title: "Forgot your password? - LH"
+        submit: "Receive a link in my emails"
+    sessions:
+      new:
+        title: "Sign in - LH"
+        description: "Connect with your neighbors on Lovely Hood"
+        sign_in_with: "Sign in with %{provider}"
+        email: "Email"
+        password: "Password"
+        sign_in: "Sign in"
+    shared:
+      links:
+        sign_in: "Sign in"
+        sign_up: "Sign up"
+        password_forgotten: "Forgot your password?"
+        already_a_member: "Already a member?"
   layouts:
     footer:
       terms: "Terms and conditions"
@@ -251,6 +278,7 @@ en:
       wishlist: "Wishlist"
       log_out: "Sign out"
       new_offer: "Create an offer"
+      sign_in: "Sign in"
     navbar_map:
       wall: "Wall"
       offers: "Offers"
@@ -262,6 +290,7 @@ en:
       wishlist: "Wishlist"
       log_out: "Sign out"
       new_offer: "Create an offer"
+      sign_in: "Sign in"
   offer_mailer:
     new_offer:
       dear_neighbors: "Dear neighbors,"
@@ -305,6 +334,9 @@ en:
       published: "Published"
       step: "step"
       to_publish: "to publish"
+      hourly_rate: "$/hour"
+      daily_rate: "$/day"
+      weekly_rate: "$/week"
     owner_actions:
       edit: "Edit offer"
     wishlisted_offer:
@@ -315,6 +347,9 @@ en:
       contact_owner: "Contact owner"
       book: "Book offer"
       unwish: "Remove from wishlist"
+      hourly_rate: "$/hour"
+      daily_rate: "$/day"
+      weekly_rate: "$/week"
     edit:
       update: "Update"
       update_description: "Update your offer in a few clicks."

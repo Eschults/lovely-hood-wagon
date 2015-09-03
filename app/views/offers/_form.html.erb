@@ -8,7 +8,7 @@
   <div class="form-group hidden show-service" id="nature-select-service">
     <%= f.label :nature, t('.nature'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.select :nature, NATURES[:service].sort,
+      <%= f.select :nature, @natures[:service].sort,
                    { include_blank: true },
                    { class: "chosen-select", id: 'service' } %>
       <p class="small">
@@ -27,7 +27,7 @@
   <div class="form-group show-rent">
     <%= f.label :nature, t('.nature'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.select :nature, NATURES[:rent].sort,
+      <%= f.select :nature, @natures[:rent].sort,
                    { include_blank: true },
                    { class: "chosen-select", id: 'rent' } %>
       <p class="small">

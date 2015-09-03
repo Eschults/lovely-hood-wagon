@@ -21,6 +21,11 @@ class OffersController < ApplicationController
     @offer = current_user.offers.new
     authorize @offer
     name_and_address_validations
+    if params[:locale]
+      @natures = NATURES[params[:locale].to_sym]
+    else
+      @natures = NATURES
+    end
   end
 
   def create
@@ -31,7 +36,10 @@ class OffersController < ApplicationController
       @offer.sell = true
     end
     if @offer.type_of_offer == "rent" || @offer.type_of_offer == "sell"
-      if @offer.one_price
+      if NATURES[:en][:rent].index(@offer.nature)
+        @offer.nature = NATURES[:rent][NATURES[:en][:rent].index(@offer.nature)]
+      end
+      if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
         # if @offer.picture_file_name
           if @offer.save
             if @offer.published
@@ -53,6 +61,9 @@ class OffersController < ApplicationController
       end
     end
     if @offer.type_of_offer == "service"
+      if NATURES[:en][:service].index(@offer.nature)
+        @offer.nature = NATURES[:service][index(NATURES[:en][:service].index(@offer.nature))]
+      end
       if @offer.one_price
         if @offer.save
           if @offer.published
@@ -76,7 +87,7 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      if @offer.one_price
+      if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
         respond_to do |format|
           format.html { redirect_to offer_path(@offer) }
           format.js

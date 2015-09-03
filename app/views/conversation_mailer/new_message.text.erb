@@ -1,9 +1,10 @@
-<%= @conversation.messages.last.writer.first_name %> vous a envoyé un message sur Lovely Hood :
+<%= t('.hello', first_name: @conversation.other_user(@conversation.messages.last.writer).first_name) %>
 
+<%= t('.sent_you_a_message', first_name: @conversation.messages.last.writer.first_name) %>
 
 <%= @conversation.messages.last.content %>
 
 
-Répondez à <%= @conversation.messages.last.writer.first_name %> >> https://www.lovely-hood.com
+<%= t('.go_to_lh', first_name: @conversation.messages.last.writer.first_name) %> https://www.lovely-hood.com
 
-A bientôt sur Lovely Hood !
+<%= t('.lh_team') %>

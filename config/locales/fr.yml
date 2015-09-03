@@ -198,6 +198,17 @@ fr:
       set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
+    conversation_mailer:
+      new_message:
+        hello: "Bonjour %{first_name},"
+        sent_you_a_message: "%{first_name} vous a envoyé un message sur Lovely Hood :"
+        go_to_lh: "Répondre à %{first_name}"
+        lh_team: "L'équipe Lovely Hood"
+        set_notifs_1: "Si vous ne souhaitez plus recevoir ce genre de mails à l'avenir,"
+        connect: "connectez-vous à votre compte"
+        set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
+        sent_with: "Envoyé avec"
+        from_lh: "depuis le siège de Lovely Hood"
   layouts:
     footer:
       terms: "Conditions générales"

@@ -193,9 +193,14 @@ en:
       commented_your_post: "commented your post:"
       go_to_lh: "Go to Lovely Hood"
       lh_team: "Lovely Hood's team"
-      set_notifs_1: "To set the events for which you would like to receive an email,"
-      connect: "sign in on LH"
-      set_notifs_2: "and go to Settings, Notifications."
+      sent_with: "Sent with"
+      from_lh: "from Lovely Hood's HQ"
+  conversation_mailer:
+    new_message:
+      hello: "Hi %{first_name},"
+      sent_you_a_message: "%{first_name} sent you a message on Lovely Hood:"
+      go_to_lh: "Go to Lovely Hood"
+      lh_team: "Lovely Hood's team"
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
   layouts:

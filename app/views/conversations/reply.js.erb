@@ -3,5 +3,5 @@
   $('#message-input').val("");
   $('#messages').scrollTop($('#messages')[0].scrollHeight);
 <% else %>
-  $('.notices').val("Votre message est vide !");
+  $('.notices').val("<%= t('.empty') %>");
 <% end %>

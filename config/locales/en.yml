@@ -720,6 +720,7 @@ en:
       offers: "Offers"
       no_offer_yet: "No offer yet"
       profile: "%{name}'s profile"
+      member_since: "Membre depuis"
       edit: "Edit profile"
       passed_bookings: "Passed bookings"
       you_were_asked: "Someone booked you:"

@@ -1,15 +1,15 @@
 <%= content_for(:title) do %>
-  Boîte de réception <%= current_user.unread_conversations > 0 ? "(" + current_user.unread_conversations.to_s + ") " : "" %>- LH
+  <%= t('.title', number: current_user.unread_conversations > 0 ? "(" + current_user.unread_conversations.to_s + ") " : "") %>
 <% end %>
 <%= content_for(:description) do %>
-  Communiquez facilement avec vos voisins grâce à notre messagerie interne, pour faciliter vos recherches de biens et services ou demander conseil pour créer des annonces !
+  <%= t('.description') %>
 <% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-4 inbox">
       <div class="panel panel-default margin-top-15 padding-none white-bg" id="panel-inbox">
         <div class="panel-heading border-btm-light">
-          <h4>Boîte de réception</h4>
+          <h4><%= t('.inbox') %></h4>
         </div>
         <div class="panel-body padding-none panel-body-inbox ">
           <% current_user.conversations.sort_by { |c| c.messages.last.created_at }.reverse.each do |conversation| %>
@@ -21,7 +21,7 @@
           <% end %>
           <div class="conversation-preview" id="no-highlight">
             <p class="small margin-btm-3 gray-lighter text-center">
-              Fin des messages
+              <%= t('.end_of_messages') %>
             </p>
           </div>
         </div>
@@ -42,12 +42,12 @@
           <div id="messages">
             <div class="stick-down-target padding-5">
               <p class="small gray-lighter text-center">
-                Conversation avec
+                <%= t('.conversation_with') %>
                 <% if @conversation.user1 == current_user %>
                   <%= @conversation.user2.first_name %>
                 <% else %>
                   <%= @conversation.user1.first_name %>
-                <% end %> débutée le <%= @conversation.created_at.strftime("%A, %e %B à %H:%M") %>
+                <% end %> <%= t('.started_on') %> <%= @conversation.created_at.strftime("%A, %e %B à %H:%M") %>
               </p>
             </div>
             <% @conversation.messages.sort_by(&:updated_at).each do |message| %>
@@ -60,7 +60,7 @@
                 <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
               </div>
               <div class="form-group margin-btm-none text-right">
-                <%= f.submit "Envoyer", class: "btn btn-primary" %>
+                <%= f.submit t('.submit'), class: "btn btn-primary" %>
               </div>
             <% end %>
           </div>

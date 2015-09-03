@@ -1,5 +1,5 @@
 <% if @message.content %>
-  $('#messages').append("<%= j render "message", message: @message %>");
+  $('#messages').append("<%= j render 'message', message: @message %>");
   $('#message-input').val("");
   $('#messages').scrollTop($('#messages')[0].scrollHeight);
 <% else %>

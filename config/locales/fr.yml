@@ -209,6 +209,39 @@ fr:
       set_notifs_2: "et gérez vos notifications en cliquant sur le menu Mon compte, à la rubrique Notifications."
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
+  conversations:
+    form:
+      submit: "Envoyer"
+    form_b:
+      submit: "Envoyer"
+    form_u:
+      submit: "Envoyer"
+    index:
+      title: "Boîte de réception - LH"
+      description: "Communiquez facilement avec vos voisins grâce à notre messagerie interne, pour faciliter vos recherches de biens et services ou demander conseil pour créer des annonces !"
+      inbox: "Boîte de réception"
+    new:
+      title: "Nouveau message - LH"
+      description: "Vous souhaitez des informations complémentaires à propos d'une annonce ? Contactez le propriétaire en un clic pour en savoir plus !"
+      contact_owner: "Demande d'info : %{offer}"
+    new_b:
+      title: "Nouveau message - LH"
+      description: "Besoin d'informations complémentaire avant d'accepter une réservation ? Envoyez à votre client un message sur Lovely Hood !"
+      contact_owner: "Demande d'info à %{first_name}"
+    new_u:
+      title: "Nouveau message - LH"
+      description: "Vous souhaitez contacter un voisin ? Envoyez-lui un message sur Lovely Hood !"
+      contact_owner: "Conversation avec %{first_name}"
+    reply:
+      empty: "Votre message est vide !"
+    show:
+      title: "Boîte de réception %{number} - LH"
+      description: "Communiquez facilement avec vos voisins grâce à notre messagerie interne, pour faciliter vos recherches de biens et services ou demander conseil pour créer des annonces !"
+      inbox: "Boîte de réception"
+      end_of_messages: "Fin des messages"
+      conversation_with: "Conversation avec"
+      started_on: "débutée le"
+      submit: "Envoyer"
   layouts:
     footer:
       terms: "Conditions générales"

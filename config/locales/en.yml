@@ -203,6 +203,39 @@ en:
       lh_team: "Lovely Hood's team"
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
+  conversations:
+    form:
+      submit: "Send"
+    form_b:
+      submit: "Send"
+    form_u:
+      submit: "Send"
+    index:
+      title: "Inbox - LH"
+      description: "Communicate easily with your neighbors!"
+      inbox: "Inbox"
+    new:
+      title: "New message - LH"
+      description: "Contact the author to get more information about an offer!"
+      contact_owner: "Contact owner: %{offer}"
+    new_b:
+      title: "New message - LH"
+      description: "Contact your neighbor to get more information about his request!"
+      contact_owner: "Contact owner: %{first_name}"
+    new_u:
+      title: "New message - LH"
+      description: "Connect with your neighbors!"
+      contact_owner: "Contact owner: %{offer}"
+    reply:
+      empty: "Your message is empty!"
+    show:
+      title: "Inbox %{number} - LH"
+      description: "Communicate easily with your neighbors with our internal messenger!"
+      inbox: "Inbox"
+      end_of_messages: "End of messages"
+      conversation_with: "Conversation with"
+      started_on: "started on"
+      submit: "Send"
   layouts:
     footer:
       terms: "Terms and conditions"

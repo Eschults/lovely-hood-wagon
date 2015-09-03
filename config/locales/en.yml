@@ -473,6 +473,7 @@ en:
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
     post:
+      dear_neighbors: "Dear neighbors,"
       posted: "posted on the Wall:"
       go_to_lh: "Go to Lovely Hood"
       lh_team: "Lovely Hood's team"
@@ -755,7 +756,7 @@ en:
       offers: "Offers"
       no_offer_yet: "No offer yet"
       profile: "%{name}'s profile"
-      member_since: "Membre depuis"
+      member_since: "Member since"
       edit: "Edit profile"
       passed_bookings: "Passed bookings"
       you_were_asked: "Someone booked you:"

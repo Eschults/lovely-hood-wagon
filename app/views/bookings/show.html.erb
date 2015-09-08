@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  <%= t('.title', offer: @booking.offer.nature) %>
+  <%= t('.title', offer: @booking.offer.i18n_nature(params[:locale])) %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -29,7 +29,7 @@
     <div class="col-sm-9">
       <div class="booking">
         <h1><%= @booking.offer.type_of_offer == "sell" ? t('.purchase_request') : t('.booking_request') %></h1>
-        <h4><strong><%= link_to @booking.offer.nature, offer_path(@booking.offer), class: "nice-link" %></strong></h4>
+        <h4><strong><%= link_to @booking.offer.i18n_nature(params[:locale]), offer_path(@booking.offer), class: "nice-link" %></strong></h4>
         <p>
           <%= @booking.offer.user.zip_code %>
           &nbsp;&nbsp;&nbsp;

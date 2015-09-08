@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  <%= t('.title', offer: @booking.offer.nature) %>
+  <%= t('.title', offer: @booking.offer.i18n_nature(params[:locale]) %>
 <% end %>
 <div class="container">
   <div class="row">
@@ -62,7 +62,7 @@
     <div class="col-sm-9">
       <div class="panel panel-default margin-top-15 padding-none">
         <div class="panel-heading">
-          <h3><%= @booking.offer.type_of_offer == "sell" ? "Demande de rendez-vous pour :" : "Réserver" %> <%= @booking.offer.nature %></h3>
+          <h3><%= @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking') %> <%= @booking.i18n_nature(params[:locale]) %></h3>
         </div>
         <div class="panel-body form-horizontal">
           <%= render "form" %>

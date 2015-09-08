@@ -14,7 +14,8 @@ function initAlgolia(
   markers,
   currentUserWishedItemsIds,
   admin,
-  i18nArray
+  i18nArray,
+  locale
 ) {
   // Replace the following values by your ApplicationID and ApiKey.
   var algolia = new AlgoliaSearch(
@@ -101,10 +102,17 @@ function initAlgolia(
 
     for (var i = 0; i < content.hits.length; i++) {
       latLng = new google.maps.LatLng(content.hits[i]._geoloc["lat"],content.hits[i]._geoloc["lng"]);
-      var infowindow = new google.maps.InfoWindow({
-        content: content.hits[i].nature,
-        maxWidth: '150'
-      });
+      if(locale == "en") {
+        var infowindow = new google.maps.InfoWindow({
+          content: content.hits[i].nature_en,
+          maxWidth: '150'
+        });
+      } else {
+        var infowindow = new google.maps.InfoWindow({
+          content: content.hits[i].nature,
+          maxWidth: '150'
+        });
+      }
       var marker = new google.maps.Marker({
         position: latLng,
         id: content.hits[i].id
@@ -156,11 +164,19 @@ function initAlgolia(
       content.hits[i].weekly_rate = weekly_rate;
       content.hits[i].hourly_rate = hourly_rate;
       // end of I18n
-      var infowindowContent = "<div class='text-center'>"
-        + "<img src='" + content.hits[i].asset_path +"' class='img-icon' width='50'>"
-        + "<a href='" + content.hits[i].offer_url + "' class='nice-link info-link'>" + content.hits[i].nature + "</a>"
-        + "</div>"
-        + "<p>" + content.hits[i].description + "</p>"
+      if(locale == "en") {
+        var infowindowContent = "<div class='text-center'>"
+          + "<img src='" + content.hits[i].asset_path +"' class='img-icon' width='50'>"
+          + "<a href='" + content.hits[i].offer_url + "' class='nice-link info-link'>" + content.hits[i].nature + "</a>"
+          + "</div>"
+          + "<p>" + content.hits[i].description + "</p>"
+      } else {
+        var infowindowContent = "<div class='text-center'>"
+          + "<img src='" + content.hits[i].asset_path +"' class='img-icon' width='50'>"
+          + "<a href='" + content.hits[i].offer_url + "' class='nice-link info-link'>" + content.hits[i].nature + "</a>"
+          + "</div>"
+          + "<p>" + content.hits[i].description + "</p>"
+      }
       bindInfoWindow(marker, map, infowindow, infowindowContent)
       html += $hitTemplate.render(content.hits[i]);
     }

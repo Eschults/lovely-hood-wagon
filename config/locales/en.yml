@@ -109,6 +109,9 @@ en:
       sent_with: "Sent with"
       from_lh: "from Lovely Hood's HQ"
   bookings:
+    new:
+      request: "Appointment request:"
+      booking: "Book"
     form:
       start_date: "Starts on"
       end_date: "Ends on"

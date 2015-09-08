@@ -87,10 +87,17 @@ class BookingsController < ApplicationController
     @booking.offer.sold = true
     @booking.offer.save
     @conversation = @booking.offer.user.conversation_with(lh)
-    @message = Message.new(
-      content: "Félicitations ! #{@booking.user.first_name} a acheté votre article #{@booking.offer.nature} !
-      Nous déclenchons le paiement de #{(@booking.booking_price * 0.96).floor}€ sur votre compte."
-    )
+    if params[:locale] == "en"
+      @message = Message.new(
+        content: "Congratulations! #{@booking.user.first_name} bought your item #{@booking.offer.18n_nature("en")}!
+        You will receive a #{(@booking.booking_price * 0.96).floor}$ payment on your account."
+      )
+    else
+      @message = Message.new(
+        content: "Félicitations ! #{@booking.user.first_name} a acheté votre article #{@booking.offer.nature} !
+        Nous déclenchons le paiement de #{(@booking.booking_price * 0.96).floor}€ sur votre compte."
+      )
+    end
     @message.writer = lh
     @message.conversation = @conversation
     @message.save

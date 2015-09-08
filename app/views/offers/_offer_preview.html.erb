@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-xs-9 padding-left-30">
-      <h4 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link" %></h4>
+      <h4 class="margin-none"><%= link_to offer.i18n_nature(params[:locale]), offer_path(offer), class: "offer-nature-link" %></h4>
       <p class="margin-top-10"><%= offer.description %> <%=link_to "Voir l'annonce complète", offer_path(offer) %></p>
       <ul class="list-unstyled list-inline">
         <li class="float-left">

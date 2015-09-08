@@ -1,4 +1,4 @@
-<%= @review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name %> <%= t('.left_a_comment') %> <%= @review.booking.offer.nature %>.
+<%= @review.review_type == "cto" ? @review.booking.user.first_name : @review.booking.offer.user.first_name %> <%= t('.left_a_comment') %> <%= @review.booking.offer.i18n_nature(params[:locale]) %>.
 
 <%= t('.read_comment') %> : https://www.lovely-hood.com
 

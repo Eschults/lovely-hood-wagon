@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  <%= @offer.nature %> - LH
+  <%= @offer.i18n_nature(params[:locale]) %> - LH
 <% end %>
 <%= content_for(:description) do %>
   <%= t('.description') %>
@@ -82,7 +82,7 @@
     </div>
     <div class="col-md-9">
       <div class="offer">
-        <h1><%= @offer.nature %></h1>
+        <h1><%= @offer.i18n_nature(params[:locale]) %></h1>
         <p>
           <%= @offer.user.zip_code %>
           &nbsp;&nbsp;&nbsp;

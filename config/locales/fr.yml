@@ -109,6 +109,9 @@ fr:
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
   bookings:
+    new:
+      request: "Demande de rendez-vous pour :"
+      booking: "Réserver"
     form:
       start_date: "Début"
       end_date: "Fin"

@@ -48,7 +48,7 @@
             <%= link_to offer_path(booking.offer) do %>
             <table>
               <td>
-                <%= booking.offer.nature %>
+                <%= booking.offer.i18n_nature(params[:locale]) %>
               </td>
               <td>&nbsp;&nbsp;</td>
               <td>

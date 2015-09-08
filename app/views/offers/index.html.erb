@@ -96,7 +96,15 @@
           </div>
         </div>
         <div class="col-xs-9 padding-left-30 padding-right-none">
-          <h5 class="margin-none"><a href="{{offer_url}}" class="offer-nature-link neutralize" id="offer_{{id}}">{{{ _highlightResult.nature.value }}}</a></h5>
+          <h5 class="margin-none">
+            <a href="{{offer_url}}" class="offer-nature-link neutralize" id="offer_{{id}}">
+              <% if params[:locale] == "en" %>
+                {{{ _highlightResult.nature_en.value }}}
+              <% else %>
+                {{{ _highlightResult.nature.value }}}
+              <% end %>
+            </a>
+          </h5>
           <p class="margin-top-10">{{{ _highlightResult.description.value }}} <a href="{{offer_url}}" class="neutralize" id="offer_{{id}}">{{show_offer}}</a></p>
         </div>
         <div class="col-xs-2 text-right padding-top-15 padding-left-none">
@@ -297,7 +305,8 @@
         markers,
         '<%= current_user.find_voted_items.map { |offer| offer.id } %>',
         '<%= current_user.admin? %>',
-        '<%= [t('.filter_by'), t('.on_rent'), t('.services'), t('.on_sale'), t('.show_offer'), t('.show_pic'), t('.hide_pic'), t('.unwish'), t('.wish'), t('.contact_owner'), t('.book'), t('.free'), t('.currency'), t('.daily_rate'), t('.weekly_rate'), t('.hourly_rate')] %>'
+        '<%= [t('.filter_by'), t('.on_rent'), t('.services'), t('.on_sale'), t('.show_offer'), t('.show_pic'), t('.hide_pic'), t('.unwish'), t('.wish'), t('.contact_owner'), t('.book'), t('.free'), t('.currency'), t('.daily_rate'), t('.weekly_rate'), t('.hourly_rate')] %>',
+        '<%= params[:locale] %>'
       );
 
       $('#default_sort').on('click', function(e) {

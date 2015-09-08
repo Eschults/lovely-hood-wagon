@@ -15,7 +15,7 @@
             </div>
             <div class="col-sm-9 text-left">
               <h4>
-                <%= @booking.offer.nature %>
+                <%= @booking.offer.i18n_nature(params[:locale]) %>
                 <% if current_user == @booking.user %>
                    (<%= @booking.offer.user.first_name %>)
                 <% else %>

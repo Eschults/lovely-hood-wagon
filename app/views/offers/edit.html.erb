@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  <%= t('.update') %> <%= @offer.nature %> - LH
+  <%= t('.update') %> <%= @offer.i18n_nature(params[:locale]) %> - LH
 <% end %>
 <%= content_for(:description) do %>
   <%= t('.update_description') %>

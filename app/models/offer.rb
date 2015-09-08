@@ -29,7 +29,7 @@ class Offer < ActiveRecord::Base
   algoliasearch if: :published, index_name: "#{self}#{ENV['ALGOLIA_SUFFIX']}" do
     # associated index settings can be configured from here
 
-    attributesToIndex ['nature', 'description']
+    attributesToIndex ['nature', 'nature_en', 'description']
 
     attributesForFaceting [ 'type_of_offer' ]
 
@@ -61,6 +61,10 @@ class Offer < ActiveRecord::Base
       free?
     end
 
+    add_attribute :nature_en do
+      nature_en
+    end
+
     add_attribute :picture? do
       if picture.url(:medium) == "/pictures/medium/missing.png"
         nil
@@ -75,6 +79,24 @@ class Offer < ActiveRecord::Base
       else
         '<img src="../assets/' + nature + '.png" width="32" />'
       end
+    end
+  end
+
+  def i18n_nature(locale)
+    if type_of_offer == "sell"
+      nature
+    elsif locale == "en"
+      NATURES[:en][type_of_offer.to_sym][NATURES[type_of_offer.to_sym].index(nature)]
+    else
+      nature
+    end
+  end
+
+  def nature_en
+    if type_of_offer == "sell"
+      nature
+    else
+      NATURES[:en][type_of_offer.to_sym][NATURES[type_of_offer.to_sym].index(nature)]
     end
   end
 

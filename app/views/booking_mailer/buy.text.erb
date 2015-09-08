@@ -1,6 +1,6 @@
 <%= t('.hello') %> <%= @booking.offer.user.first_name %>,
 
-<%= t('.first_sentence', first_name: @booking.user.first_name, offer: @booking.offer.nature) %>
+<%= t('.first_sentence', first_name: @booking.user.first_name, offer: @booking.offer.i18n_nature(params[:locale]) %>
 
 <%= t('.second_sentence', price: (@booking.booking_price * 0.96).floor) %>
 

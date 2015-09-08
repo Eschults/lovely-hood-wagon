@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-xs-9 padding-left-30">
-      <h5 class="margin-none"><%= link_to offer.nature, offer_path(offer), class: "offer-nature-link neutralize" %></h5>
+      <h5 class="margin-none"><%= link_to offer.i18n_nature(params[:locale]), offer_path(offer), class: "offer-nature-link neutralize" %></h5>
       <p class="margin-top-10"><%= offer.description %> <%=link_to t('.show_offer'), offer_path(offer), class: "neutralize" %></p>
     </div>
     <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">

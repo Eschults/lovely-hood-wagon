@@ -1,5 +1,5 @@
 <%= content_for(:title) do %>
-  <%= t('.title', offer: @booking.offer.nature) %>
+  <%= t('.title', offer: @booking.offer.i18n_nature(params[:locale]) %>
 <% end %>
 <%= content_for(:description) do %>
   <%= t('.description') %>

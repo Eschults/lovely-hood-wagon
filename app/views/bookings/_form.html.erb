@@ -114,7 +114,7 @@
       </div>
       <div class="col-xs-10">
         <p>
-          <%= t('.on_the_basis') %> <b id="renting-price"><%= @offer.daily_price ? @offer.daily_price : @offer.weekly_price %></b><b><%= t('.currency') %></b> <%= t('.and_service_fees') %> <%= @booking.offer.nature %> <%= t('.for') %> <b id="renting-days-sentence">1</b> <%= t('.days_amounts') %> <b id="renting-total"><%= @offer.daily_price ? (@offer.daily_price * 1.08).round : (@offer.weekly_price / 7 * 1.08).round %></b><b><%= t('.currency') %></b>
+          <%= t('.on_the_basis') %> <b id="renting-price"><%= @offer.daily_price ? @offer.daily_price : @offer.weekly_price %></b><b><%= t('.currency') %></b> <%= t('.and_service_fees') %> <%= @booking.offer.i18n_nature(params[:locale] %> <%= t('.for') %> <b id="renting-days-sentence">1</b> <%= t('.days_amounts') %> <b id="renting-total"><%= @offer.daily_price ? (@offer.daily_price * 1.08).round : (@offer.weekly_price / 7 * 1.08).round %></b><b><%= t('.currency') %></b>
         </p>
       </div>
     </div>
@@ -154,7 +154,7 @@
         </div>
         <div class="col-xs-11">
           <p>
-            <%= t('.on_the_basis') %> <b id="service-price"><%= @offer.hourly_price %></b><b><%= t('.currency') %></b> <%= t('.and_service_fees') %> <%= @booking.offer.nature %> <%= t('.for') %> <b id="service-hours-sentence">0</b> <%= t('.hours_amounts') %> <b id="service-total">0</b><b><%= t('.currency') %></b>
+            <%= t('.on_the_basis') %> <b id="service-price"><%= @offer.hourly_price %></b><b><%= t('.currency') %></b> <%= t('.and_service_fees') %> <%= @booking.offer.i18n_nature(params[:locale] %> <%= t('.for') %> <b id="service-hours-sentence">0</b> <%= t('.hours_amounts') %> <b id="service-total">0</b><b><%= t('.currency') %></b>
           </p>
         </div>
       </div>

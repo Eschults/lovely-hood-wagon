@@ -89,7 +89,7 @@ class BookingsController < ApplicationController
     @conversation = @booking.offer.user.conversation_with(lh)
     if params[:locale] == "en"
       @message = Message.new(
-        content: "Congratulations! #{@booking.user.first_name} bought your item #{@booking.offer.18n_nature("en")}!
+        content: "Congratulations! #{@booking.user.first_name} bought your item #{@booking.offer.18n_nature('en')}!
         You will receive a #{(@booking.booking_price * 0.96).floor}$ payment on your account."
       )
     else

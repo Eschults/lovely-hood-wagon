@@ -380,7 +380,7 @@ fr:
       currency: "€"
       daily_rate: "/ jour"
       weekly_rate: "/ semaine"
-      hourly_rate: "/ hour"
+      hourly_rate: "/ heure"
     mine:
       title: "Mes annonces - LH"
       description: "Visualisez vos annonces et décidez de celles que vous souhaitez publier ou masquer !"

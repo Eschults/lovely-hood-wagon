@@ -1,3 +1,4 @@
+<% params = ActionController::Parameters.new %>
 <%= t('.hello') %> <%= @booking.offer.user.first_name %>,
 
 <%= t('.first_sentence', booking: @booking.offer.sell ? t('.rdv') : t('.booking'), first_name: @booking.user.name, offer: @booking.offer.i18n_nature(params[:locale])) %>

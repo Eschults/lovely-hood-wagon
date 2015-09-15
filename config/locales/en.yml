@@ -140,6 +140,9 @@ en:
       on_the_basis: "On the basis of"
       and_service_fees: "and associated serices fees, you could earn"
       currency: "$"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     sell:
       booking_request: "You have a purchase request"
       is_interested: "is interested in your offer"
@@ -148,6 +151,9 @@ en:
       on_the_basis: "On the basis of"
       and_service_fees: "and associated serices fees, you could earn"
       currency: "$"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     service:
       booking_request: "You have a service request"
       would_like: "is asking you a service:"
@@ -157,6 +163,9 @@ en:
       on_the_basis: "On the basis of"
       and_service_fees: "and associated serices fees, you could earn"
       currency: "$"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     edit:
       title: "Booking request: %{offer} - LH"
       description: "You have a booking request on LH"

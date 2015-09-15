@@ -140,6 +140,9 @@ fr:
       on_the_basis: "Sur la base du prix de"
       and_service_fees: "et des frais de services associés, vous pourriez gagner"
       currency: "€"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     sell:
       booking_request: "Vous avez une demande d'achat"
       is_interested: "est intéressé par votre annonce"
@@ -148,6 +151,9 @@ fr:
       on_the_basis: "Sur la base de votre prix de"
       and_service_fees: "et des frais associés, vous pourriez gagner"
       currency: "€"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     service:
       booking_request: "Vous avez une demande de service"
       would_like: "vous sollicite pour un service :"
@@ -157,6 +163,9 @@ fr:
       on_the_basis: "Sur la base du prix de"
       and_service_fees: "et des frais de services associés, vous pourriez gagner"
       currency: "€"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     edit:
       title: "Réservation de %{offer} - LH"
       description: "Vous avez une demande de réservation sur Lovely Hood. Vous pouvez accepter la réservation, la décliner, ou contacter le demandeur pour avoir plus d'info !"

@@ -98,12 +98,12 @@
         <div class="col-xs-10">
           <% if @offer.daily_price %>
             <ul class="list-unstyled list-inline strong" id="daily-price">
-              <li><%= @offer.daily_price + t('.currency') %></li><li class="pull-right"><%= t('.per_day') %></li>
+              <li><%= @offer.daily_price.to_s + t('.currency') %></li><li class="pull-right"><%= t('.per_day') %></li>
             </ul>
           <% end %>
           <% if @offer.weekly_price %>
             <ul class="list-unstyled list-inline" id="weekly-price">
-              <li><%= @offer.weekly_price + t('.currency') %></li><li class="pull-right"><%= t('.per_week') %></li>
+              <li><%= @offer.weekly_price.to_s + t('.currency') %></li><li class="pull-right"><%= t('.per_week') %></li>
             </ul>
           <% end %>
         </div>
@@ -136,7 +136,7 @@
             <div class="col-xs-10">
               <% if @offer.hourly_price %>
                 <ul class="list-unstyled list-inline margin-btm-none">
-                  <li><%= @offer.hourly_price + t('.currency') %></li><li class="pull-right"><%= t('.per_hour') %></li>
+                  <li><%= @offer.hourly_price.to_s + t('.currency') %></li><li class="pull-right"><%= t('.per_hour') %></li>
                 </ul>
               <% end %>
             </div>

@@ -14,8 +14,7 @@
         <p class="margin-top-10 font-normal hidden-xs"><%= offer.description.size > 50 ? offer.description[0..49] + "..." : offer.description %></p>
       </div>
       <div class="col-sm-4 col-xs-5 padding-left-none" id="<%= "append-target_#{offer.id}" %>">
-        <% if current_user.authorized.nil? %>
-        <% elsif current_user.trust_steps == 0 %>
+        <% if current_user.trust_steps == 0 %>
           <%= form_for offer, method: :patch, remote: true, url: offer_path(offer), id: "publish-form"  do |f| %>
             <div class="col-xs-9 padding-left-none">
               <%= f.select :published, [[t('.hidden'), false], [t('.published'), true]], {}, { class: "form-control btn-margin height-40" } %>

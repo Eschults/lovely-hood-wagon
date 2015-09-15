@@ -6,14 +6,14 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def show?
-    user.authorized
+    (record.booking.offer.user == user || record.booking.user == user)
   end
 
   def create?
-    user.authorized && (record.booking.offer.user == user || record.booking.user == user)  # Anyone can create a booking)
+    (record.booking.offer.user == user || record.booking.user == user)
   end
 
   def update?
-    user.authorized && (record.booking.offer.user == user || record.booking.user == user)  # Anyone can create a booking)
+    (record.booking.offer.user == user || record.booking.user == user)
   end
 end

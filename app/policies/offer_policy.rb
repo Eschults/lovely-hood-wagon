@@ -22,11 +22,11 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def wish?
-    user.authorized
+    user.admin? || record.user == user || record.user.neighbors.include?(user) # Only offer creator, neighbors and admins can view an offer
   end
 
   def unwish?
-    user.authorized
+    user.admin? || record.user == user || record.user.neighbors.include?(user) # Only offer creator, neighbors and admins can view an offer
   end
 
 

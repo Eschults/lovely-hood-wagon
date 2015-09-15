@@ -342,6 +342,7 @@ fr:
       weekly_rate: "€/semaine"
     owner_actions:
       edit: "Modifier l'annonce"
+      to_publish: "pour publier"
     wishlisted_offer:
       show_offer: "Voir l'annonce complète"
       show_pic: "Voir photo"

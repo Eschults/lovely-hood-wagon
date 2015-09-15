@@ -342,6 +342,7 @@ en:
       weekly_rate: "$/week"
     owner_actions:
       edit: "Edit offer"
+      to_publish: "to publish"
     wishlisted_offer:
       show_offer: "Show details"
       show_pic: "Show image"

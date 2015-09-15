@@ -15,6 +15,6 @@
   <% end %>
 <% else %>
   <%= link_to edit_user_path(@offer.user, anchor: "my-trust"), class: "btn btn-default btn-wide" do %>
-    <%= pluralize(@offer.user.trust_steps, 'étape') %> <%= t('.offer .to_publish') %>
+    <%= pluralize(@offer.user.trust_steps, 'étape') %> <%= t('.to_publish') %>
   <% end %>
 <% end %>

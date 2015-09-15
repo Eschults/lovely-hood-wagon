@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   put 'users/:id', to: "users#update", as: "user"
   patch 'users/:id', to: "users#update", as: "user_2"
   post 'offers/:offer_id/bookings', to: "bookings#create", as: 'offer_bookings'
-  put 'offers/:offer_id/bookings/:id', to: "bookings#update", as: 'offer_booking_2'
+  put 'offers/:offer_id/bookings/:id', to: "bookings#update", as: 'offer_booking'
+  patch 'offers/:offer_id/bookings/:id', to: "bookings#update", as: 'offer_booking_2'
   post 'offers/:offer_id/conversations', to: "conversations#create", as: 'offer_conversations'
   post 'offers/:offer_id/stripe_customers', to: "stripe_customers#create", as: "offer_stripe_customers"
   put 'conversations/:id/reply', to: "conversations#reply", as: "reply_conversation"

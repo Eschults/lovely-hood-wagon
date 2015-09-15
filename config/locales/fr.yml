@@ -109,9 +109,6 @@ fr:
       sent_with: "Envoyé avec"
       from_lh: "depuis le siège de Lovely Hood"
   bookings:
-    new:
-      request: "Demande de rendez-vous pour :"
-      booking: "Réserver"
     form:
       start_date: "Début"
       end_date: "Fin"
@@ -174,6 +171,8 @@ fr:
       per_week: "Par semaine"
       guarantee: "Caution"
       purchase_only: "(achat seul)"
+      request: "Demande de rendez-vous pour :"
+      booking: "Réserver"
     show:
       title: "Réservation de %{offer} - LH"
       purchase_request: "Demande d'achat"

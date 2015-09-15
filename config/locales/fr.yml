@@ -173,6 +173,7 @@ fr:
       purchase_only: "(achat seul)"
       request: "Demande de rendez-vous pour :"
       booking: "Réserver"
+      you_need_a_cb: "Pour réserver cette prestation, vous devez renseigner une carte bancaire valide"
     show:
       title: "Réservation de %{offer} - LH"
       purchase_request: "Demande d'achat"

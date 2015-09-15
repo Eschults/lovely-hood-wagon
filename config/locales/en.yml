@@ -173,6 +173,7 @@ en:
       purchase_only: "(purchase only)"
       request: "Appointment request:"
       booking: "Book"
+      you_need_a_cb: "To create your request, you need to add a valid credit card"
     show:
       title: "Booking request: %{offer} - LH"
       purchase_request: "Purchase request"

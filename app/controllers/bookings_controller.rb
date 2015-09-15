@@ -4,8 +4,19 @@ class BookingsController < ApplicationController
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
 
   def new
-    @booking = set_offer.bookings.new
-    authorize @booking
+    @offer = Offer.find(params[:offer_id])
+    if current_user.stripe_customer_token
+      if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != ""
+        @booking = set_offer.bookings.new
+        authorize @booking
+      else
+        flash.keep[:alert] = t(".you_need_a_cb")
+        redirect_to new_offer_stripe_customer_path(@offer)
+      end
+    else
+      flash.keep[:alert] = t(".you_need_a_cb")
+      redirect_to new_offer_stripe_customer_path(@offer)
+    end
   end
 
   def create

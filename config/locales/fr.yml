@@ -635,6 +635,7 @@ fr:
       card_number: "Numéro de carte"
       expiry: "Expiration (MM / AAAA)"
       confirm: "Valider"
+      you_need_a_cb: "Pour réserver cette presation, vous devez renseigner une carte bancaire valide"
   user_mailer:
     new_neighbor:
       dear_neighbors: "Chers voisins,"

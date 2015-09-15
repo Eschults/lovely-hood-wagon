@@ -635,6 +635,7 @@ en:
       card_number: "Card number"
       expiry: "Expires on (MM / AAAA)"
       confirm: "Submit"
+      you_need_a_cb: "To create your request, you need to add a valid credit card"
   user_mailer:
     new_neighbor:
       dear_neighbors: "Dear neighbors,"

@@ -62,7 +62,7 @@
     <div class="col-sm-9">
       <div class="panel panel-default margin-top-15 padding-none">
         <div class="panel-heading">
-          <h3><%= @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking') %> <%= @booking.i18n_nature(params[:locale]) %></h3>
+          <h3><%= @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking') %> <%= @booking.offer.i18n_nature(params[:locale]) %></h3>
         </div>
         <div class="panel-body form-horizontal">
           <%= render "form" %>

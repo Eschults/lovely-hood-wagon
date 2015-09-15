@@ -1,7 +1,7 @@
 <% params = ActionController::Parameters.new %>
 <%= t('.hello') %> <%= @booking.user.first_name %>,
 
-<%= t('.first_sentence', booking: @booking.offer.sell ? t('.rdv') : t('.booking') + @booking.offer.i18n_nature(params[:locale], owner_first_name: @booking.offer.user.first_name) %>
+<%= t('.first_sentence', booking: @booking.offer.sell ? t('.rdv') : t('.booking') + @booking.offer.i18n_nature(params[:locale]), owner_first_name: @booking.offer.user.first_name) %>
 
 <%= t('.second_sentence', price: @booking.offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')), booking_price: @booking.booking_price * 1.08).round) %>
 

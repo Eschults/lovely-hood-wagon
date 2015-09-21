@@ -52,7 +52,7 @@
           <% else %>
             <% if @booking.offer.price %>
               <ul class="list-unstyled list-inline margin-btm-none">
-                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.price %>€</h3></li><li class="padding-top-5"><%= ('purchase_only') %></li>
+                <li class="pull-right"><h3 class="margin-none pull-right"><%= @booking.offer.price %>€</h3></li><li class="padding-top-5"><%= t('.purchase_only') %></li>
               </ul>
             <% end %>
           <% end %>

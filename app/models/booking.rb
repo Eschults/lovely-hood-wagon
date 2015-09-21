@@ -1,6 +1,5 @@
 class Booking < ActiveRecord::Base
   after_create :send_book_email
-  after_update :send_answer_email
 
   belongs_to :offer
   belongs_to :user

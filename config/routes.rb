@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   patch 'conversations/:id/reply_server', to: "conversations#reply_server", as: "reply_server_conversation_2"
   put 'bookings/:booking_id/buy', to: "bookings#buy", as: "buy_booking"
   patch 'bookings/:booking_id/buy', to: "bookings#buy", as: "buy_booking_2"
+  put 'bookings/:booking_id/cancel', to: "bookings#cancel", as: "cancel_booking"
+  patch 'bookings/:booking_id/cancel', to: "bookings#cancel", as: "cancel_booking_2"
   scope '(:locale)', locale: /en/ do
     root to: "pages#home"
     get "/legal", to: "pages#legal"

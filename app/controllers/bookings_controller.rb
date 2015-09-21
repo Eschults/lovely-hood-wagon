@@ -84,6 +84,7 @@ class BookingsController < ApplicationController
         @message.conversation = @conversation
         @message.save
       end
+      @booking.send_answer_email
       redirect_to user_path(current_user)
     else
       render :edit

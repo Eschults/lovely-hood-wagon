@@ -44,7 +44,7 @@
   <div class="form-group service show-service hidden">
     <%= f.label :hourly_price, t('.price'), class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-      <%= f.number_field :hourly_price, class: "form-control" %>
+      <%= f.number_field :hourly_price, min: 0, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
       <%= t('.hourly_rate') %>
@@ -53,7 +53,7 @@
   <div class="form-group show-rent">
     <%= f.label :daily_price, t('.price'), class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-      <%= f.number_field :daily_price, class: "form-control" %>
+      <%= f.number_field :daily_price, min: 0, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
       <%= t('.daily_rate') %>
@@ -62,7 +62,7 @@
   <div class="form-group show-rent">
     <%= f.label :weekly_price, "Prix", class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-      <%= f.number_field :weekly_price, class: "form-control" %>
+      <%= f.number_field :weekly_price, min: 0, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
       <%= t('.weekly_rate') %>
@@ -74,7 +74,7 @@
   <div class="form-group show-rent">
     <%= f.label :guarantee, t('.guarantee'), class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-      <%= f.number_field :guarantee, class: "form-control" %>
+      <%= f.number_field :guarantee, min: 0, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
       €
@@ -83,7 +83,7 @@
   <div class="form-group show-sell hidden">
     <%= f.label :price, t('.price'), class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-      <%= f.number_field :price, class: "form-control" %>
+      <%= f.number_field :price, min: 0, class: "form-control" %>
     </div>
     <div class="col-sm-5 padding-vertical-6">
       €

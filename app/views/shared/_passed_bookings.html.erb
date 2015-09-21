@@ -22,12 +22,12 @@
               <% if booking.offer.sold.nil? && booking.cancelled.nil? %>
                 <% if current_user == booking.user %>
                   <p>
-                    <% if booking.end_date == Date.today %>
+                    <% if booking.start_date == Date.today %>
                       <strong><%= t('.today') %></strong>
                     <% else %>
-                      <%= t('.time_ago', days: pluralize((Date.today - booking.end_date).to_i, t('.day'))) %>
+                      <%= t('.time_ago', days: pluralize((Date.today - booking.start_date).to_i, t('.day'))) %>
                     <% end %>
-                    (<%= booking.end_date.strftime("%d %b") %>).
+                    (<%= booking.start_date.strftime("%d %b") %>).
                   </p>
                   <p>
                     <ul class="confirmation list-unstyle list-inline">
@@ -59,12 +59,12 @@
               <% elsif booking.offer.sold %>
                 <% if current_user == booking.offer.user %>
                   <p>
-                    <% if booking.end_date == Date.today %>
+                    <% if booking.start_date == Date.today %>
                       <strong><%= t('.today') %></strong>
                     <% else %>
-                      <%= t('.time_ago', pluralize((Date.today - booking.end_date).to_i, t(".day"))) %>
+                      <%= t('.time_ago', pluralize((Date.today - booking.start_date).to_i, t(".day"))) %>
                     <% end %>
-                    (le <%= booking.end_date.strftime("%d %b") %>).
+                    (le <%= booking.start_date.strftime("%d %b") %>).
                   </p>
                   <p>
                     <%= t('.leave_a_review') %> <%= link_to t('.comment'), new_booking_review_path(booking) %> <%= t('.to') %> <%= booking.user.first_name %>.

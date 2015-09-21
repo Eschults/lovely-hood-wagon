@@ -42,7 +42,7 @@
                         <% end %>
                       </li>
                       <li class="confirmation-thumbs">
-                        <%= form_for booking, method: :put, url: cancel_offer_booking_path(booking.offer, booking) do |f| %>
+                        <%= form_for booking, method: :put, url: cancel_booking_path(booking) do |f| %>
                           <%= f.hidden_field :cancelled, value: true %>
                           <%= button_tag(type: 'submit', class: "btn btn-danger btn-margin btn-wide btn-circle") do %>
                             <i class="fa fa-close"></i>

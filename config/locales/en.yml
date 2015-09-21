@@ -269,6 +269,12 @@ en:
         email: "Email"
         password: "Password"
         sign_in: "Sign in"
+    registrations:
+      edit:
+        title: "Update password - LH"
+        new_password: "New password"
+        confirm: "Confirm new password"
+        submit: "Submit"
     shared:
       links:
         sign_in: "Sign in"
@@ -391,6 +397,7 @@ en:
       daily_rate: "/ day"
       weekly_rate: "/ week"
       hourly_rate: "/ hour"
+      complete_profile: "Thank you for completing fields with an *"
     mine:
       title: "My offers - LH"
       description: "Browse your own offers and manage which ones you want to publish!"
@@ -400,6 +407,7 @@ en:
       title: "New offer - LH"
       description: "Earn money by publishing offers of what you're enclined to share with your neighbors!"
       new_offer: "New offer"
+      complete_profile: "Thank you for completing fields with an *"
     show:
       description: "Discover the goods and services offers available less than 10 minutes away from your place!"
       hourly_rate: "Hourly rate"

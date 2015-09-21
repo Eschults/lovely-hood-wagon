@@ -269,6 +269,12 @@ fr:
         email: "Adresse email"
         password: "Mot de passe"
         sign_in: "Connexion"
+    registrations:
+      edit:
+        title: "Changer mon mot de passe - LH"
+        new_password: "Nouveau mot de passe"
+        confirm: "Confirmez mot de passe"
+        submit: "Changer de mot de passe"
     shared:
       links:
         sign_in: "Connexion"
@@ -391,6 +397,7 @@ fr:
       daily_rate: "/ jour"
       weekly_rate: "/ semaine"
       hourly_rate: "/ heure"
+      complete_profile: "Merci de compléter les champs avec une *"
     mine:
       title: "Mes annonces - LH"
       description: "Visualisez vos annonces et décidez de celles que vous souhaitez publier ou masquer !"
@@ -400,6 +407,7 @@ fr:
       title: "Nouvelle annonce - LH"
       description: "Location, vente, service, créez des annonces pour gagner de l'argent facilement avec ce que vous avez chez vous !"
       new_offer: "Nouvelle annonce"
+      complete_profile: "Merci de compléter les champs avec une *"
     show:
       description: "Parcourez les annonces des biens et services disponibles à moins de 10 min à pied de chez vous !"
       hourly_rate: "Par heure"

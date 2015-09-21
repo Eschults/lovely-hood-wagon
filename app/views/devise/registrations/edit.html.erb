@@ -1,3 +1,6 @@
+<%= content_for(:title) do %>
+  <%= t('.title') %>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
@@ -13,13 +16,13 @@
                 <p>En attente de confirmation pour : <%= resource.unconfirmed_email %></p>
               <% end %>
 
-              <%= f.password_field :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+              <%= f.password_field :password, label: t('.new_password'), autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
               <%= f.password_field :password_confirmation, required: false %>
               <%= f.password_field :current_password, hint: "we need your current password to confirm your changes", required: true %>
             </div>
 
             <div class="form-actions">
-              <%= f.submit "Sauvegarder" %>
+              <%= f.submit t('.submit') %>
             </div>
           <% end %>
           <br>

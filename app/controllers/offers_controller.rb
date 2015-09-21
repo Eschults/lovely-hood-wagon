@@ -20,7 +20,10 @@ class OffersController < ApplicationController
   def new
     @offer = current_user.offers.new
     authorize @offer
-    name_and_address_validations
+    if current_user.latitude.nil?
+      redirect_to edit_user_path(current_user)
+      flash.keep[:alert] = t(".complete_profile")
+    end
     if params[:locale]
       @natures = NATURES[params[:locale].to_sym]
     else

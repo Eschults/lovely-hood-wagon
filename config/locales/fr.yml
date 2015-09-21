@@ -432,8 +432,8 @@ fr:
       wish: "Enregistrer"
       unwish: "Délister"
     update:
-      published: "(published)"
-      hidden: "(hidden)"
+      published: "(publiée)"
+      hidden: "(masquée)"
       changes_saved: "Enregistré"
     wish:
       unwish: "Délister"

@@ -188,7 +188,7 @@ fr:
       purchase_request: "Demande d'achat"
       booking_request: "Réservation"
       reviews: "commentaires"
-      no_review_yet: "(Pas encore de commentaires)"
+      no_review_yet: "(Pas encore de commentaire)"
       congrats: "Félicitations, votre %{request} a été acceptée !"
       request: "demande"
       booking: "réservation"

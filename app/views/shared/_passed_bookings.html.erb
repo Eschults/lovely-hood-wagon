@@ -35,7 +35,7 @@
                         <%= t('.buy') %> <%= link_to booking.offer.i18n_nature(params[:locale]),  offer_path(booking.offer) %>
                       </li>
                       <li class="confirmation-thumbs">
-                        <%= form_for booking, method: :put, url: buy_offer_booking_path(booking.offer, booking) do |f| %>
+                        <%= form_for booking, method: :put, url: buy_booking_path(booking) do |f| %>
                           <%= button_tag(type: 'submit', class: "btn btn-success btn-margin btn-wide btn-circle") do %>
                             <i class="fa fa-check"></i>
                           <% end %>

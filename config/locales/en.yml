@@ -653,7 +653,7 @@ en:
   stripe_customers:
     new:
       title: "Lovely Hood - Credit card"
-      credit_card: "Carte de paiement"
+      credit_card: "Payment information"
       explanation: "In order to book an item, you have to enter a valid payment card, that will be charged once your booking is accepted."
       stripe: "Your card info is sent to our partner Stripe without passing through our servers."
       card_number: "Card number"

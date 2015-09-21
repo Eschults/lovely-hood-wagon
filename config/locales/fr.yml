@@ -653,7 +653,7 @@ fr:
   stripe_customers:
     new:
       title: "Lovely Hood - Carte de paiement"
-      credit_card: "Payment information"
+      credit_card: "Carte de paiement"
       explanation: "Avant de pouvoir réserver un article, vous devez saisir une carte bleue valide, qui sera débitée une fois la réservation acceptée par le propriétaire de l'annonce."
       stripe: "Vos coordonnées bancaires sont transmises à notre prestataire de paiement Stripe sans transiter par nos serveurs."
       card_number: "Numéro de carte"

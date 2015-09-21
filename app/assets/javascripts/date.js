@@ -141,6 +141,12 @@ function setHours() {
     } else {
       $('.btn').removeClass('disabled')
     }
+    var today = new Date()
+    if(startDateTime < today) {
+      $('.btn').addClass('disabled')
+    } else {
+      $('.btn').removeClass('disabled')
+    }
   }
 
   $('#booking_start_hour_4i').on('change', function() {

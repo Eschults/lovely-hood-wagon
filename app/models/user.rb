@@ -289,8 +289,8 @@ class User < ActiveRecord::Base
       end
     end
     {
-      client: client_bookings.sort { |booking| booking.start_date },
-      owner: owner_bookings.sort { |booking| booking.start_date }
+      client: client_bookings.sort_by(&:start_date),
+      owner: owner_bookings.sort_by(&:start_date),
     }
   end
 

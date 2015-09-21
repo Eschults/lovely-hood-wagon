@@ -57,9 +57,9 @@
                 <% if booking.accepted && booking.offer.type_of_offer == "service" %>
                   <%= t('.booking_accepted') %>. <%= t('.check') %> <%= link_to t('.route'), offer_booking_path(booking.offer, booking, anchor: "map") %> <%= t('.to') %> <%= booking.user.first_name %><%= t('.apostrophe_s') %>.
                 <% elsif booking.accepted && booking.offer.type_of_offer == "sell" %>
-                  <%= t('.you_may_earn') %> <%= booking.booking_price * 0.96 %><%= t('.currency') %>.
+                  <%= t('.you_may_earn') %> <%= (booking.booking_price * 0.96).round %><%= t('.currency') %>.
                 <% elsif booking.accepted %>
-                  <%= t('.you_will_earn') %> <%= booking.booking_price * 0.96 %><%= t('.currency') %>.
+                  <%= t('.you_will_earn') %> <%= (booking.booking_price * 0.96).round %><%= t('.currency') %>.
                 <% else %>
                   <%= t('.unanswered_request') %> <%= booking.user.first_name %><%= t('.request') %>. <%= link_to t('.reply'), edit_offer_booking_path(booking.offer, booking) %>
                 <% end %>

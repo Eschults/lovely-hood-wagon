@@ -61,7 +61,7 @@ fr:
       hello: "Bonjour"
       rdv: "rendez-vous pour"
       booking: "réservation de"
-      first_sentence: "Bonne nouvelle ! Votre demande de %{booking} a été acceptée par {owner_first_name}."
+      first_sentence: "Bonne nouvelle ! Votre demande de %{booking} a été acceptée par %{owner_first_name}."
       second_sentence: "Sur la base du prix de %{price} et des frais associés, vous allez être débité de %{booking_price}€."
       hourly_price: "€/heure"
       daily_price: "€/jour"

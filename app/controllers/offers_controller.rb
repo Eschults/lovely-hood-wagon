@@ -64,7 +64,7 @@ class OffersController < ApplicationController
       if NATURES[:en][:service].index(@offer.nature)
         @offer.nature = NATURES[:service][index(NATURES[:en][:service].index(@offer.nature))]
       end
-      if @offer.one_price
+      if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
         if @offer.save
           if @offer.published
             @offer.send_new_offer_email

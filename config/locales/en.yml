@@ -403,6 +403,9 @@ en:
       description: "Browse your own offers and manage which ones you want to publish!"
       my_offers: "My offers"
       no_offer: "You haven't created any offer yet."
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     new:
       title: "New offer - LH"
       description: "Earn money by publishing offers of what you're enclined to share with your neighbors!"

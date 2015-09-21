@@ -343,7 +343,7 @@ fr:
       hourly_rate: "€/heure"
       daily_rate: "€/jour"
       weekly_rate: "€/semaine"
-      price_helper: "Divisez le prix d'achat par cinq pour  approcher un prix raisonnable pour une utilisation."
+      price_helper: "Divisez le prix d'achat par cinq pour approcher un prix raisonnable pour une utilisation."
       guarantee: "Caution"
       picture: "Photo"
       save: "Sauvegarder"
@@ -403,6 +403,9 @@ fr:
       description: "Visualisez vos annonces et décidez de celles que vous souhaitez publier ou masquer !"
       my_offers: "Mes annonces"
       no_offer: "Vous n'avez pas encore publié d'annonce."
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     new:
       title: "Nouvelle annonce - LH"
       description: "Location, vente, service, créez des annonces pour gagner de l'argent facilement avec ce que vous avez chez vous !"

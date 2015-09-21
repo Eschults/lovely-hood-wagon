@@ -355,6 +355,9 @@ en:
       hourly_rate: "$/hour"
       daily_rate: "$/day"
       weekly_rate: "$/week"
+      hourly_price: "$/hour"
+      daily_price: "$/day"
+      weekly_price: "$/week"
     owner_actions:
       edit: "Edit offer"
       to_publish: "to publish"

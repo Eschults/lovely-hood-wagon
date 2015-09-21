@@ -355,6 +355,9 @@ fr:
       hourly_rate: "€/heure"
       daily_rate: "€/jour"
       weekly_rate: "€/semaine"
+      hourly_price: "€/heure"
+      daily_price: "€/jour"
+      weekly_price: "€/semaine"
     owner_actions:
       edit: "Modifier l'annonce"
       to_publish: "pour publier"

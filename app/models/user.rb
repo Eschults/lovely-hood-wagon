@@ -238,7 +238,6 @@ class User < ActiveRecord::Base
       owner: owner_bookings,
       client: client_bookings
     }
-
   end
 
   def passed_bookings_to_review
@@ -290,8 +289,8 @@ class User < ActiveRecord::Base
       end
     end
     {
-      client: client_bookings,
-      owner: owner_bookings
+      client: client_bookings.sort { |booking| booking.start_date },
+      owner: owner_bookings.sort { |booking| booking.start_date }
     }
   end
 

@@ -84,7 +84,7 @@ class BookingsController < ApplicationController
         @message.conversation = @conversation
         @message.save
       end
-      redirect_to offer_path(@booking.offer)
+      redirect_to user_path(current_user)
     else
       render :edit
     end

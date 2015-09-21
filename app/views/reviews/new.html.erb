@@ -28,7 +28,7 @@
         <div class="panel-body form-horizontal">
           <%= form_for([@booking, @review], url: booking_review_path(@booking, @review)) do |f| %>
             <div class="form-group">
-              <%= f.label :comment, t('.comments'), class: "col-sm-3 control-label" %>
+              <%= f.label :comment, t('.comment'), class: "col-sm-3 control-label" %>
               <div class="col-sm-9">
                 <%= f.text_area :comment, placeholder: t('.placeholder'), rows: 5, class: "form-control" %>
               </div>

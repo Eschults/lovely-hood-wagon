@@ -592,6 +592,7 @@ en:
     new:
       title: "Review - LH"
       description: "Don't forget to leave a review to improve confidence among your community!"
+      comment: "Review"
       comments: "Comments:"
       placeholder: "Describe your experiment, positive and negative points..."
       communication: "Communication:"

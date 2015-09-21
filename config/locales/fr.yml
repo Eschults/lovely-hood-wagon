@@ -592,7 +592,8 @@ fr:
     new:
       title: "Commentaire - LH"
       description: "Pensez à laisser un commentaire après chaque expérience, pour renforcer la confiance entre membres de la communauté Lovely Hood !"
-      comments: "Comments:"
+      comment: "Commentaire"
+      comments: "Commentaire :"
       placeholder: "Décrivez votre expérience, les points positifs, les points négatifs..."
       communication: "Communication :"
       punctuality: "Ponctualité :"

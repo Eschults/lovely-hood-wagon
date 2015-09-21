@@ -251,8 +251,14 @@ class User < ActiveRecord::Base
     owner_bookings = []
     offers.each do |offer|
       offer.bookings.each do |booking|
-        if booking.end_date <= Date.today && booking.accepted && booking.has_to_be_reviewed_by_owner?
-          owner_bookings << booking
+        if booking.offer.type_of_offer == "sell"
+          if booking.start_date <= Date.today && booking.accepted && booking.has_to_be_reviewed_by_owner?
+            owner_bookings << booking
+          end
+        else
+          if booking.end_date <= Date.today && booking.accepted && booking.has_to_be_reviewed_by_owner?
+            owner_bookings << booking
+          end
         end
       end
     end

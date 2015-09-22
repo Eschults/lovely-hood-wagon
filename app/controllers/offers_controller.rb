@@ -86,6 +86,11 @@ class OffersController < ApplicationController
   end
 
   def edit
+    if params[:locale]
+      @natures = NATURES[params[:locale].to_sym]
+    else
+      @natures = NATURES
+    end
   end
 
   def update

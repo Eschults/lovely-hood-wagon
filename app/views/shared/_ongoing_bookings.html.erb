@@ -36,7 +36,7 @@
               </p>
             <% end %>
             <% if current_user == booking.offer.user %>
-              <p><%= t('.you_will_earn') %> <%= booking.booking_price * 0.96 %><%= t('.currency') %>.</p>
+              <p><%= t('.you_will_earn') %> <%= (booking.booking_price * 0.96).round %><%= t('.currency') %>.</p>
             <% end %>
           </div>
         </div>

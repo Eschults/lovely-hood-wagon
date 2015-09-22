@@ -23,6 +23,15 @@ $(document).ready(function() {
       showRent();
     }
   })
+  $('#offer_picture').on('change', function(event) {
+    var files = event.target.files
+    var image = files[0]
+    var reader = new FileReader()
+    reader.onload = function(file) {
+      $('#target').attr('src', file.target.result).removeClass('hidden')
+    }
+    reader.readAsDataURL(image)
+  })
 });
 
 function showService() {

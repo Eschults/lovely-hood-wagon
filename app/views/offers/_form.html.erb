@@ -92,7 +92,12 @@
   <div class="form-group">
     <%= f.label :photo, t('.picture'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.file_field :picture, class: "margin-top-6" %>
+      <ul class="list-unstyled list-inline margin-top-7" id="image-upload-trigger">
+        <li style="font-size: 26"><i class="fa fa-camera"></i></li>
+        <li class=""><%= t('.upload', default: "Parcourir") %></li>
+      </ul>
+      <%= f.file_field :picture, class: "margin-top-6 hidden" %>
+      <%= image_tag "", class: "img hidden", id: "target" %>
     </div>
   </div>
   <br>
@@ -103,4 +108,13 @@
       <%= f.submit t('.save'), class: "btn btn-primary" %>
     </div>
   </div>
+<% end %>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#image-upload-trigger').on('click', function() {
+        $('#offer_picture').click();
+      })
+    });
+  <% end %>
 <% end %>

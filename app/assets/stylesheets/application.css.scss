@@ -215,6 +215,10 @@ input,
   margin-top: 10px;
 }
 
+.margin-top-7 {
+  margin-top: 7px;
+}
+
 .margin-top-18 {
   margin-top: 18px;
 }
@@ -1587,4 +1591,11 @@ i {
 .pic-path {
   color: #049372;
   font-size: 12px;
+}
+
+#image-upload-trigger {
+  color: #22A7F0;
+  &:hover {
+    cursor: pointer;
+  }
 }

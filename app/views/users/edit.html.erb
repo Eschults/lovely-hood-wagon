@@ -116,9 +116,9 @@
             <div class="form-group">
               <div class="col-sm-3">
                 <% if @user.picture_file_name %>
-                  <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail" }) %>
+                  <%= image_tag(@user.picture.url(:medium), { class: "img-thumbnail", id: "target" }) %>
                 <% else %>
-                  <%= image_tag "user_pic-225x225.png", class: "img-thumbnail bg-color" %>
+                  <%= image_tag "user_pic-225x225.png", class: "img-thumbnail bg-color", id: "target" %>
                 <% end %>
               </div>
               <div class="col-sm-9">

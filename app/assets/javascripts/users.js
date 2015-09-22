@@ -1,3 +1,15 @@
+$(document).ready(function() {
+  $('#user_picture').on('change', function(event) {
+    var files = event.target.files
+    var image = files[0]
+    var reader = new FileReader()
+    reader.onload = function(file) {
+      $('#target').attr('src', file.target.result)
+    }
+    reader.readAsDataURL(image)
+  })
+})
+
 function showInfo() {
   $('#user-info').removeClass("hidden");
   $('#user-picture').addClass("hidden");

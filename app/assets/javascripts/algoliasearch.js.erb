@@ -182,7 +182,19 @@ function initAlgolia(
     }
     $hits.html(html);
 
-    for (var i = 0; i < content.hits.length; ++i) {
+    if($('#hits').children().length == 0) {
+      $('#hits').html(
+        '<div class="padding-15" id="no-offer">' +
+          '<div class="row">' +
+            '<div class="col-xs-12">' +
+              '<div class="img-nature-box">' +
+                '<p>Pas encore d\'annonce dans les parages</p>' +
+                '<a href="offers/new">Je poste une annonce</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )
     }
 
     $('.offer-stream-box .neutralize').on('click', function(e) {

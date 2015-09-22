@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.latitude.nil?
       edit_user_path(resource)
+    elsif resource.passed_bookings_to_review[:owner].size >= 1 || resource.passed_bookings_to_review[:client].select { |booking| booking.owner_validation }.size >= 1 || resource.upcoming_bookings[:owner].select { |booking| booking.accepted.nil? }.size >= 1
+      user_path(resource)
     else
       posts_path
     end

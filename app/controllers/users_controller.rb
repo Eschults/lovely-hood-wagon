@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     name_and_address_validations
     if current_user.latitude.nil?
       redirect_to edit_user_path(current_user)
-      flash[:alert] = "Merci de renseigner votre adresse !"
+      flash.keep[:alert] = t(".complete_profile")
     end
   end
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     authorize @user
     if @user.latitude.nil?
       redirect_to edit_user_path(@user)
-      flash[:alert] = "Merci de renseigner votre adresse !"
+      flash.keep[:alert] = t(".complete_profile")
     end
   end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         @user.send_new_neighbor_email
         @user.create_activity :update, owner: current_user
       end
-      name_and_address_validations_with_redirection
+      test_profile_info_and_redirect
     else
       render :edit
     end
@@ -126,6 +126,15 @@ class UsersController < ApplicationController
     else
       redirect_to edit_user_path(current_user)
       flash.keep[:alert] = "Merci de renseigner votre prénom"
+    end
+  end
+
+  def test_profile_info_and_redirect
+    if @user.profile_not_ready?
+      redirect_to edit_user_path(@user)
+      flash.keep[:alert] = t(".complete_profile")
+    else
+      redirect_to posts_path
     end
   end
 

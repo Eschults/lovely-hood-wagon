@@ -804,3 +804,5 @@ en:
       hourly_price: "$/hour"
       daily_price: "$/day"
       weekly_price: "$/week"
+    update:
+      complete_profile: "Thank you for completing fields with an *"

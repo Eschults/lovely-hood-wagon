@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
 
+  def profile_not_ready?
+    first_name.nil? || last_name.nil? || city.nil? || street.nil? || first_name == "" || last_name == "" || city == "" || street == ""
+  end
+
   def age
     d = Date.today
     (d.year - birthday.year) - (d.month == birthday.month ? (d.day >= birthday.day ? 0 : 1) : (d.month > birthday.month ? 0 : 1))

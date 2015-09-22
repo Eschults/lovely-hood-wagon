@@ -804,3 +804,5 @@ fr:
       hourly_price: "€/heure"
       daily_price: "€/jour"
       weekly_price: "€/semaine"
+    update:
+      complete_profile: "Merci de compléter les champs avec une *"

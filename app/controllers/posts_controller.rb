@@ -147,4 +147,3 @@ class PostsController < ApplicationController
     params.require(:activity_comment).permit(:content)
   end
 end
-

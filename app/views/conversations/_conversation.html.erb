@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="col-xs-7 margin-top-10">
-      <p class="margin-btm-5 first-name"><strong><%= conversation.other_user(current_user).first_name %></strong></p>
+      <h5 class="margin-btm-5 first-name"><strong><%= conversation.other_user(current_user).first_name %></strong></h5>
       <% if conversation.user1.first_name == "Lovely Hood" %>
         <%= simple_format conversation.messages.sort_by(&:updated_at).last.content[0..4] + "..." %>
       <% else %>

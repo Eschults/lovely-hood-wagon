@@ -2,6 +2,7 @@
 //= depend_on_asset "background.png"
 
 $font-family-sans-serif: 'Open sans', sans-serif;
+$headings-font-family: 'Montserrat';
 $gray-base: #000;
 $gray: lighten($gray-base, 33.5%);
 $gray-darker: lighten($gray-base, 13.5%);
@@ -16,7 +17,7 @@ $lovely-dark-blue: rgb(68, 108, 179);
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico|Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico|Montserrat:400,700");
 @import "chosen";
 
 @import "navbar";
@@ -1612,4 +1613,16 @@ i {
 
 .max-width-180 {
   max-width: 180px;
+}
+
+.panel-body {
+  h1, h2, h3, h4, h5 {
+    // font-family: Helvetica;
+  }
+}
+
+#hits {
+  .offer-stream-box:last-child {
+    border-bottom: none !important;
+  }
 }

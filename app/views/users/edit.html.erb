@@ -15,7 +15,7 @@
           <li><a href="#" class="edit-link" id="my-bank"><%= t('.my_bank') %></a><% unless @user.money_step == 0 %><span class="badge pull-right margin-top-2"><%= @user.money_step %><% end %></span></li>
           <li><a href="#" class="edit-link" id="my-comments"><%= t('.my_comments') %></a></li>
           <li><a href="#" class="edit-link" id="my-notifs"><%= t('.my_notifs') %></a></li>
-          <li><%= link_to t('.see_profile'), user_path(@user), class: "btn btn-default" %></a></li>
+          <li><%= link_to t('.see_profile'), user_path(@user), class: "btn btn-default btn-wide margin-top-15" %></a></li>
           <li><%= link_to "Modifier mon mot de passe", edit_user_registration_path(@user), class: "password-link" %></li>
         </ul>
       </div>

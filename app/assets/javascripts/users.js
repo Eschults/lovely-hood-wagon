@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  $('#user_picture').on('change', function(event) {
+  $('.user_picture').on('change', function(event) {
     var files = event.target.files
     var image = files[0]
     var reader = new FileReader()
     reader.onload = function(file) {
-      $('#target').attr('src', file.target.result)
+      $('.target').attr('src', file.target.result)
     }
     reader.readAsDataURL(image)
   })
@@ -199,7 +199,6 @@ function formValidation() {
   test_field_at_focusout(street);
 
   zipCode = $("#zip_code");
-  filled(zipCode);
 
   city = $("#city");
   filled(city);

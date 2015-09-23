@@ -459,6 +459,10 @@ input,
   margin-top: -26px;
 }
 
+.margin-top-neg-65 {
+  margin-top: -65px;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -1593,9 +1597,19 @@ i {
   font-size: 12px;
 }
 
-#image-upload-trigger {
+.image-upload-trigger {
   color: #22A7F0;
   &:hover {
     cursor: pointer;
   }
+}
+
+.sidenav > ul > li > a.password-link {
+  color: #22A7F0;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.max-width-180 {
+  max-width: 180px;
 }

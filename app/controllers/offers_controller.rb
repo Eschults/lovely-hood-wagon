@@ -38,50 +38,22 @@ class OffersController < ApplicationController
     if @offer.type_of_offer == "sell"
       @offer.sell = true
     end
+    if params[:locale]
+      @natures = NATURES[params[:locale].to_sym]
+    else
+      @natures = NATURES
+    end
     if @offer.type_of_offer == "rent" || @offer.type_of_offer == "sell"
       if NATURES[:en][:rent].index(@offer.nature)
         @offer.nature = NATURES[:rent][NATURES[:en][:rent].index(@offer.nature)]
       end
-      if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
-        # if @offer.picture_file_name
-          if @offer.save
-            if @offer.published
-              @offer.send_new_offer_email
-              @offer.create_activity :create, owner: current_user
-            end
-            redirect_to offer_path(@offer)
-          else
-            flash.now[:alert] = "Merci d'ajouter une description"
-            render :new
-          end
-        # else
-        #   flash.now[:alert] = "Merci d'ajouter une photo"
-        #   render :new
-        # end
-      else
-        flash.now[:alert] = "Merci de renseigner un prix"
-        render :new
-      end
+      test_offer_info_and_redirect
     end
     if @offer.type_of_offer == "service"
       if NATURES[:en][:service].index(@offer.nature)
         @offer.nature = NATURES[:service][index(NATURES[:en][:service].index(@offer.nature))]
       end
-      if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
-        if @offer.save
-          if @offer.published
-            @offer.send_new_offer_email
-            @offer.create_activity :create, owner: current_user
-          end
-          redirect_to offer_path(@offer)
-        else
-          flash.now[:alert] = "Merci d'ajouter une description"
-          render :new
-        end
-      else
-        flash.now[:alert] = "Merci de renseigner un prix"
-        render :new
-      end
+      test_offer_info_and_redirect
     end
   end
 
@@ -136,36 +108,6 @@ class OffersController < ApplicationController
 
   private
 
-  def name_and_address_validations
-    if current_user.first_name != ""
-      if current_user.last_name != ""
-        if current_user.street != ""
-          if current_user.zip_code != ""
-            if current_user.city != ""
-
-            else
-              redirect_to edit_user_path(current_user)
-              flash.keep[:alert] = "Merci de renseigner votre ville"
-            end
-          else
-            redirect_to edit_user_path(current_user)
-            flash.keep[:alert] = "Merci de renseigner votre code postal"
-          end
-        else
-          redirect_to edit_user_path(current_user)
-          flash.keep[:alert] = "Merci de renseigner votre rue"
-        end
-      else
-        redirect_to edit_user_path(current_user)
-        flash.keep[:alert] = "Merci de renseigner votre nom de famille"
-      end
-    else
-      redirect_to edit_user_path(current_user)
-      flash.keep[:alert] = "Merci de renseigner votre prénom"
-    end
-  end
-
-
   def set_offer
     @offer = Offer.find(params[:id])
     authorize @offer
@@ -173,5 +115,23 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:type_of_offer, :nature, :description, :hourly_price, :daily_price, :weekly_price, :price, :picture, :public, :published, :guarantee)
+  end
+
+  def test_offer_info_and_redirect
+    if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
+      if @offer.save
+        if @offer.published
+          @offer.send_new_offer_email
+          @offer.create_activity :create, owner: current_user
+        end
+        redirect_to offer_path(@offer)
+      else
+        flash.now[:alert] = "Merci d'ajouter une description"
+        render :new
+      end
+    else
+      flash.now[:alert] = "Merci de renseigner un prix"
+      render :new
+    end
   end
 end

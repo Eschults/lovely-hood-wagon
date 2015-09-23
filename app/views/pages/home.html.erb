@@ -35,10 +35,11 @@
                     <div class="form-group">
                       <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email" %>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group margin-btm-5">
                       <%= f.password_field :password, required: true, autocomplete: "off", class: "form-control", placeholder: t('.password') %>
                     </div>
-                    <%= f.submit t('.connection'), class: "btn btn-primary btn-wide"%>
+                    <%= link_to t('.password_forgotten'), new_password_path(resource_name), class: "forgotten" %><br />
+                    <%= f.submit t('.connection'), class: "btn btn-primary btn-wide margin-top-5"%>
                   </div>
                 <% end %>
               </div>

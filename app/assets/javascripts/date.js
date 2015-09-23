@@ -112,7 +112,6 @@ function setDays() {
   })
 }
 
-
 function setHours() {
   var startHour = $('#booking_start_hour_4i').val();
   var startMin = $('#booking_start_hour_5i').val();
@@ -129,6 +128,7 @@ function setHours() {
   endDateTime.setMinutes(parseInt(endMin));
 
   var serviceHours = (endDateTime - startDateTime) / 3600000
+  serviceResult();
 
   function serviceResult() {
     serviceHours = (endDateTime - startDateTime) / 3600000
@@ -136,13 +136,9 @@ function setHours() {
     $('#service-hours-sentence').text(serviceHours);
     var total = serviceHours * parseInt($('#service-price').text()) * 1.08
     $('#service-total').text(Math.floor(total))
-    if(serviceHours <= 0) {
-      $('.btn').addClass('disabled')
-    } else {
-      $('.btn').removeClass('disabled')
-    }
     var today = new Date()
-    if(startDateTime < today) {
+    var totalHours = parseInt($('#service-hours').text())
+    if(serviceHours <= 0 || startDateTime < today || totalHours <= 0) {
       $('.btn').addClass('disabled')
     } else {
       $('.btn').removeClass('disabled')

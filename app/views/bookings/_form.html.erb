@@ -27,7 +27,7 @@
           <div class="form-group">
             <%= f.label :start_hour, t('.at'), class: "col-xs-2 text-right control-label" %>
             <div class="col-xs-10 padding-top-7">
-              <%= f.time_select :start_hour, value: Time.new(Time.now.year, Time.now.month, Time.now.day, Time.now.hour + 3, 0), minute_step: 30, class: "form-control" %>
+              <%= f.time_select :start_hour, minute_step: 30, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
           <div class="form-group">
             <%= f.label :end_hour, t('.at'), class: "col-xs-2 text-right control-label" %>
             <div class="col-xs-10 padding-top-7">
-              <%= f.time_select :end_hour, minute_step: 30, class: "form-control" %>
+              <%= f.time_select :end_hour, value: Time.new(Time.now.year, Time.now.month, Time.now.day, Time.now.hour + 5, 0), minute_step: 30, class: "form-control" %>
             </div>
           </div>
         </div>

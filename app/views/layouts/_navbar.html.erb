@@ -38,7 +38,6 @@
                   </span>
                 <% end %>
               <% end %>
-            <% else %>
             <% end %>
           </li>
           <li class="dropdown">
@@ -137,11 +136,12 @@
               <%= t('.new_offer') %>
             <% end %>
           </li>
-        <% else %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to t('.sign_in'), new_user_session_path, class: "btn margin-left-10", id: "nav-btn-default" %></li>
-        <% end %>
-      </ul>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to t('.sign_in'), new_user_session_path, class: "btn margin-left-10", id: "nav-btn-default" %></li>
+        </ul>
+      <% end %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

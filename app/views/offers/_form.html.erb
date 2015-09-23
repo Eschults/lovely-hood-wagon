@@ -36,9 +36,12 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :description, t('.description'), require: true, class: "col-sm-2 control-label" %>
+    <%= f.label :description, t('.description'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_area :description, class: "form-control" %>
+      <%= f.text_area :description, required: true, class: "form-control" %>
+      <p class="small">
+        <%= t('.complete_description') %>
+      </p>
     </div>
   </div>
   <div class="form-group service show-service hidden">
@@ -92,7 +95,7 @@
   <div class="form-group">
     <%= f.label :photo, t('.picture'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <ul class="list-unstyled list-inline margin-top-7" id="image-upload-trigger">
+      <ul class="list-unstyled list-inline margin-top-7 image-upload-trigger" id="image-upload-trigger">
         <li style="font-size: 26"><i class="fa fa-camera"></i></li>
         <li class=""><%= t('.upload', default: "Parcourir") %></li>
       </ul>

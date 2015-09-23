@@ -53,8 +53,6 @@ class Booking < ActiveRecord::Base
     end
   end
 
-  private
-
   def send_book_email
     BookingMailer.book(self).deliver
   end

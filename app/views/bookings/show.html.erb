@@ -51,7 +51,7 @@
         </p>
         <p>
           <% if @booking.accepted %>
-            <%= t('.congrats', request: @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking')) %>
+            <b><%= t('.congrats', request: @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking')) %></b>
           <% elsif @booking.accepted.nil? %>
             <%= t('.sent_on', date: @booking.created_at.strftime("%d %b %Y")) %>
           <% else %>

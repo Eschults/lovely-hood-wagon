@@ -21,8 +21,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     url = URI.extract(@post.content, /https?.*/)
-    unless url.first.match(/https:\/\/www.lovely-hood.com\//)
-      if url.size > 0
+    if url.size > 0
+      unless url.first.match(/https:\/\/www.lovely-hood.com\//)
         page = MetaInspector.new(url.first)
         @post.link_url = url.first
         @post.link_title = page.title

@@ -31,9 +31,9 @@
       </div>
       <div class="col-sm-4 hidden-xs padding-none">
         <div class="col-xs-12">
-          <%= link_to user_path(neighbor, anchor: "offers"), class: "btn btn-default btn-wide btn-margin" do %>
+          <%= link_to offers_path, class: "btn btn-default btn-wide btn-margin" do %>
             <% if neighbor.published_offers.size > 0 %>
-              <%= neighbor.published_offers.size %> <%= t(".offer").pluralize(neighbor.published_offers.size) + t('.published', default: "#{' publiée'.pluralize(neighbor.published_offers.size)}") %>
+              <%= neighbor.published_offers.size %> <%= t(".offer").pluralize(neighbor.published_offers.size) + t('.published', default: "#{' publiée'.pluralize(neighbor.published_offers.size)}").pluralize(neighbor.published_offers.size) %>
             <% else %>
               <%= t('.no_offer_yet') %>
             <% end %>

@@ -21,14 +21,16 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     url = URI.extract(@post.content, /https?.*/)
-    if url.size > 0
-      page = MetaInspector.new(url.first)
-      @post.link_url = url.first
-      @post.link_title = page.title
-      @post.link_image = page.images.best
-      @post.link_description = page.description
-      @post.content = @post.content.split(url.first).join
-      @post.content = "***" if @post.content == ""
+    unless url.first.match(/https:\/\/www.lovely-hood.com\//)
+      if url.size > 0
+        page = MetaInspector.new(url.first)
+        @post.link_url = url.first
+        @post.link_title = page.title
+        @post.link_image = page.images.best
+        @post.link_description = page.description
+        @post.content = @post.content.split(url.first).join
+        @post.content = "***" if @post.content == ""
+      end
     end
     if @post.save
       respond_to do |format|

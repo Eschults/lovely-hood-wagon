@@ -62,7 +62,7 @@
                     <% if booking.start_date == Date.today %>
                       <strong><%= t('.today') %></strong>
                     <% else %>
-                      <%= t('.time_ago', pluralize((Date.today - booking.start_date).to_i, t(".day"))) %>
+                      <%= t('.time_ago', days: pluralize((Date.today - booking.start_date).to_i, t(".day"))) %>
                     <% end %>
                     (le <%= booking.start_date.strftime("%d %b") %>).
                   </p>

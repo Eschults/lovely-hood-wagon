@@ -1,4 +1,4 @@
-<div class="card" data-toggle="tooltip" data-placement="top" title="<%= neighbor.description unless(neighbor.description == "" || neighbor.description.nil?) %>">
+<div class="card" data-toggle="tooltip" data-placement="top" title="<%= neighbor.description.html_safe unless(neighbor.description == "" || neighbor.description.nil?) %>">
   <span class="card-bg" style="background-image: url(<%= neighbor.picture_file_name.nil? ? image_url('user_pic-225x225.png') : neighbor.picture.url(:medium) %>)"></span>
   <span class="card-shadow"></span>
   <span class="card-description">

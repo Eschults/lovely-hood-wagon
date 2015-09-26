@@ -9,7 +9,7 @@
     <% end %>
   </span>
   <span class="card-text">
-    <h2><%= neighbor.first_name + (neighbor.birthday.nil? ? '' : ", #{neighbor.age.to_s}") %></h2>
+    <h2><%= neighbor.first_name + (neighbor.birthday.nil? ? '' : ", #{neighbor.age.to_s}") unless neighbor.first_name.nil? %></h2>
   </span>
   <span class="card-user">
   </span>

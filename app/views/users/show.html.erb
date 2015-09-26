@@ -67,7 +67,7 @@
         </div>
       </div>
       <% if current_user == @user %>
-        <div class="panel panel-default max-width-300 padding-none">
+        <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
           <div class="panel-heading">
             <h4>
               <% if @user.exclusive_neighbors(current_user).size > 0 %>
@@ -82,27 +82,8 @@
           <div class="panel-body">
             <% if @user.neighbors.size > 0 %>
               <% @user.neighbors.each do |neighbor| %>
-                <div class="row margin-vertical-5 padding-vertical-6">
-                  <div class="col-xs-4 padding-none">
-                    <div class="img-small">
-                      <% if neighbor.picture_file_name %>
-                        <%= image_tag(neighbor.picture.url(:medium), { class: "img-38" }) %>
-                      <% else %>
-                        <%= image_tag("user_pic-38.png", { class: "img-38" }) %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="col-xs-8 padding-none">
-                    <div class="small gray-lighter">
-                      <%= link_to user_path(neighbor), class: "text-decoration-none" do %>
-                        <%= ("<strong>" + neighbor.first_name + "</strong>").html_safe + (neighbor.birthday ? ", #{neighbor.age.to_s}" : "") %>
-                      <% end %>
-                      <br>
-                      <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none gray-lighter" do %>
-                        <i class="fa fa-send"></i> <%= t('.send_message') %>
-                      <% end %>
-                    </div>
-                  </div>
+                <div class="col-xs-6">
+                  <%= render "neighbor", neighbor: neighbor %>
                 </div>
               <% end %>
             <% else %>
@@ -111,7 +92,7 @@
           </div>
         </div>
       <% else %>
-        <div class="panel panel-default max-width-300 padding-none">
+        <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
           <div class="panel-heading">
             <h4>
               <% if current_user == @user && @user.common_neighbors(current_user).size > 0 %>
@@ -126,36 +107,19 @@
           <div class="panel-body">
             <% if @user.common_neighbors(current_user).size > 0 %>
               <% @user.common_neighbors(current_user).each do |neighbor| %>
-                <div class="row margin-vertical-5 padding-vertical-6">
-                  <div class="col-xs-4 padding-none">
-                    <div class="img-small">
-                      <% if neighbor.picture_file_name %>
-                        <%= image_tag(neighbor.picture.url(:medium), { class: "img-38" }) %>
-                      <% else %>
-                        <%= image_tag("user_pic-38.png", { class: "img-38" }) %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="col-xs-8 padding-none">
-                    <div class="small gray-lighter">
-                      <%= link_to user_path(neighbor), class: "text-decoration-none" do %>
-                        <%= ("<strong>" + neighbor.first_name + "</strong>").html_safe + (neighbor.birthday ? ", #{neighbor.age.to_s}" : "") %>
-                      <% end %>
-                      <br>
-                      <%= link_to new_user_conversation_path(neighbor), class: "text-decoration-none gray-lighter" do %>
-                        <i class="fa fa-send"></i> <%= t('.send_message') %>
-                      <% end %>
-                    </div>
-                  </div>
+                <div class="col-xs-6">
+                  <%= render "neighbor", neighbor: neighbor %>
                 </div>
               <% end %>
             <% else %>
-              <%= t('.no_common_neighbor') %>
+              <p>
+                <%= t('.no_common_neighbor') %>
+              </p>
             <% end %>
           </div>
         </div>
         <% if @user.exclusive_neighbors(current_user).size > 0 %>
-          <div class="panel panel-default max-width-300 padding-none">
+          <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
             <div class="panel-heading">
               <h4>
                 <%= "Autre".pluralize(@user.exclusive_neighbors(current_user).size) %><%= " voisin".pluralize(@user.exclusive_neighbors(current_user).size) %> (<%= @user.exclusive_neighbors(current_user).size %>)
@@ -163,23 +127,8 @@
             </div>
             <div class="panel-body">
               <% @user.exclusive_neighbors(current_user).each do |neighbor| %>
-                <div class="row margin-vertical-5 padding-vertical-6">
-                  <div class="col-xs-4 padding-none">
-                    <div class="img-small">
-                      <% if neighbor.picture_file_name %>
-                        <%= image_tag(neighbor.picture.url(:medium), { class: "img-38" }) %>
-                      <% else %>
-                        <%= image_tag("user_pic-38.png", { class: "img-38" }) %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="col-xs-8 padding-none">
-                    <div class="small">
-                      <%= ("<strong>" + neighbor.first_name + "</strong>").html_safe + (neighbor.birthday ? ", #{neighbor.age.to_s}" : "") %>
-                      <br>
-                      <%= (neighbor.description != "") ? (neighbor.description.size > 20 ? (neighbor.description[0..20] + "...") : neighbor.description) : t('.no_description') %>
-                    </div>
-                  </div>
+                <div class="col-xs-6">
+                  <%= render "neighbor", neighbor: neighbor %>
                 </div>
               <% end %>
             </div>
@@ -411,9 +360,13 @@
 <%= content_for :js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
+      var width = $('.card').css('width')
+      $('.card').css('height', width)
       adjustIconsSizeSimple(720);
       $(window).on('resize', function() {
         adjustIconsSizeSimple(720);
+        var width = $('.card').css('width')
+        $('.card').css('height', width)
       })
     })
   <% end %>

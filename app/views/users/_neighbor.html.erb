@@ -13,5 +13,7 @@
   </span>
   <span class="card-user">
   </span>
-  <%= link_to "", user_path(neighbor), class: "card-link" %>
+  <% if current_user.is_neighbors_with?(neighbor) || current_user.admin %>
+    <%= link_to "", user_path(neighbor), class: "card-link" %>
+  <% end %>
 </div>

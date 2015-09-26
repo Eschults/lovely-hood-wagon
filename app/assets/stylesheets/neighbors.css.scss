@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  height: 236px;
+  height: 136px;
   @media(max-width: 1200px) {
     // height: 200px;
   }
@@ -21,7 +21,7 @@
     }
   }
   @media(max-width: 400px) {
-    height: 100px;
+    height: 136px;
     .card-text {
       h2 {
         font-size: 12px !important;
@@ -88,8 +88,27 @@
 #neighbors {
   .panel-body {
     padding: 10px 0 0 10px;
-    .col-xs-4:nth-child(n) {
+    .col-sm-4:nth-child(n),
+    .col-xs-6:nth-child(n) {
       padding: 0 10px 10px 0;
     }
+  }
+}
+#neighbors_ {
+  .panel-body {
+    padding: 5px 0 0 5px;
+    .col-xs-6 {
+      .card-text {
+        h2 {
+          font-size: 14px;
+        }
+      }
+      .card-description {
+        font-size: 8px;
+      }
+    }
+  }
+  .col-xs-6:nth-child(n) {
+    padding: 0 5px 5px 0;
   }
 }

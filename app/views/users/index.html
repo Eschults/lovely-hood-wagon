@@ -7,14 +7,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default white-bg margin-top-15 padding-none">
+      <div class="panel panel-default white-bg margin-top-15 padding-none" id="neighbors">
         <div class="panel-heading border-btm-none">
           <h4><%= t('.my_neighbors') %></h4>
         </div>
-        <div class="panel-body padding-none">
+        <div class="panel-body padding-none border-top-221">
           <% if @users.size > 0 %>
             <% @users.sort_by(&:updated_at).reverse.each do |neighbor| %>
-              <%= render "neighbor", neighbor: neighbor %>
+              <div class="col-xs-4">
+                <%= render "neighbor", neighbor: neighbor %>
+              </div>
             <% end %>
           <% else %>
             <div class="offer-stream-box border-top">
@@ -29,6 +31,8 @@
 <%= content_for :js do %>
   <% javascript_tag do %>
     $(document).ready(function() {
+      var width = $('.card').css('width')
+      $('.card').css('height', width)
       adjustIconsSizeSimple(720);
       togglePaddingLeft();
       $(window).on('resize', function() {
@@ -41,6 +45,11 @@
       $('button').on('click', function(e) {
         e.preventDefault();
         $(this).parent().parent().submit();
+      })
+      $('.card').tooltip();
+      $(window).on('resize', function() {
+        var width = $('.card').css('width')
+        $('.card').css('height', width)
       })
     })
   <% end %>

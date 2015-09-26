@@ -13,12 +13,13 @@
           <h3>
             <%= t('.catchline') %>
           </h3>
+          <%= link_to t('.see_more'), "#product", class: "btn btn-default hidden-xs", id: "see-more" %>
         </div>
       </div>
       <div class="col-sm-5 padding-right-none">
         <% unless user_signed_in? %>
           <div class="text-center lead visible-xs padding-top-none">
-            <%= link_to t('.sign_up'), new_user_registration_path, class: "btn btn-default" %>
+            <%= link_to t('.sign_up'), new_user_registration_path, class: "btn btn-primary btn-default" %>
           </div>
           <div class="lead hidden-xs">
             <div class="panel panel-default pull-right max-width-300">
@@ -168,3 +169,14 @@
     </div>
   </div>
 </div>
+<%= content_for :js do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#see-more').on('click', function(){
+        var id = $(this).attr("href");
+        $('body').animate({scrollTop: $(id).offset().top}, "slow")
+        return false
+      })
+    })
+  <% end %>
+<% end %>

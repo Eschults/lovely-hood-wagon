@@ -1,45 +1,17 @@
-<%= link_to user_path(neighbor), class: "link-normal text-decoration-none" do %>
-  <div class="offer-stream-box border-top" id="<%= "user_#{neighbor.id}" %>">
-    <div class="row">
-      <div class="col-sm-1 col-xs-2">
-        <div class="img-medium">
-          <% if neighbor.picture_file_name.nil? %>
-            <%= image_tag "user_pic-225x225.png", class: "img img-60" %>
-          <% else %>
-            <%= image_tag neighbor.picture.url(:thumb), class: "img img-60" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-7 col-xs-8 padding-left-30">
-        <ul class="margin-none list-unstyled list-inline">
-          <li class="padding-left-none offer-nature-link"><%= neighbor.first_name %></li>
-          <li class="padding-left-none font-normal"><%= neighbor.age.to_s + t('.years_old') unless neighbor.birthday.nil? %></li>
-        </ul>
-        <div class="margin-top-10 margin-top-10 font-normal font-normal text-decoration-none">
-          <% if current_user.admin %>
-            <ul class="list-unstyled list-inline">
-              <li>Signins: <%= neighbor.sign_in_count %></li>
-              <li>Dernier: <%= "il y a " + time_ago_in_words(neighbor.current_sign_in_at) %></li>
-            </ul>
-          <% end %>
-          <%= simple_format neighbor.description[0..60] + "... "unless(neighbor.description == "" || neighbor.description.nil?) %>
-          <%= link_to new_user_conversation_path(neighbor), class: "" do %><i class="fa fa-send"></i> <%= t('.send_message') %> <% end %>
-          <% if current_user.admin %>
-            <p><%= neighbor.address %></p>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-4 hidden-xs padding-none">
-        <div class="col-xs-12">
-          <%= link_to offers_path, class: "btn btn-default btn-wide btn-margin" do %>
-            <% if neighbor.published_offers.size > 0 %>
-              <%= neighbor.published_offers.size %> <%= t(".offer").pluralize(neighbor.published_offers.size) + t('.published', default: "#{' publiée'.pluralize(neighbor.published_offers.size)}").pluralize(neighbor.published_offers.size) %>
-            <% else %>
-              <%= t('.no_offer_yet') %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<div class="card" data-toggle="tooltip" data-placement="top" title="<%= neighbor.description unless(neighbor.description == "" || neighbor.description.nil?) %>">
+  <span class="card-bg" style="background-image: url(<%= neighbor.picture_file_name.nil? ? image_url('user_pic-225x225.png') : neighbor.picture.url(:medium) %>)"></span>
+  <span class="card-shadow"></span>
+  <span class="card-description">
+    <% if neighbor.published_offers.size > 0 %>
+      <%= neighbor.published_offers.size %> <%= t(".offer").pluralize(neighbor.published_offers.size) + t('.published', default: "#{' publiée'.pluralize(neighbor.published_offers.size)}").pluralize(neighbor.published_offers.size) %>
+    <% else %>
+      <%= t('.no_offer_yet') %>
+    <% end %>
+  </span>
+  <span class="card-text">
+    <h2><%= neighbor.first_name + (neighbor.birthday.nil? ? '' : ", #{neighbor.age.to_s}") %></h2>
+  </span>
+  <span class="card-user">
+  </span>
+  <%= link_to "", user_path(neighbor), class: "card-link" %>
+</div>

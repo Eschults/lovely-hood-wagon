@@ -27,6 +27,7 @@ $lovely-dark-blue: rgb(68, 108, 179);
 @import 'bootstrap-datepicker3';
 @import "bootstrap3-switch";
 @import "compass/css3";
+@import "neighbors";
 // @import "home";
 
 // $bg-color: rgba(240, 240, 240, 1);
@@ -1625,4 +1626,16 @@ i {
   .offer-stream-box:last-child {
     border-bottom: none !important;
   }
+}
+.border-top-221 {
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+.tooltip-inner {
+  background-color: black;
+  // border: 1px solid rgb(221, 221, 221);
+  color: white;
+}
+.tooltip.top .tooltip-arrow {
+  // border-top-color: white;
 }

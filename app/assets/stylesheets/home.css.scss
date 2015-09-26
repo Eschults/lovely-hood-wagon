@@ -49,12 +49,37 @@ $border: 2px solid $color;
   z-index: 1;
 }
 
-#mosaic .lead {
-  color: white;
-  padding-top: 200px;
-  // padding-bottom: 50px;
-  .panel {
-    width: 300px !important;
+#mosaic {
+  .lead {
+    color: white;
+    padding-top: 200px;
+    // padding-bottom: 50px;
+    .panel {
+      width: 300px !important;
+    }
+    a.btn-default { // tes nouveaux buttons
+     float: left;
+     padding: 10px 40px;
+     background: rgb(35, 167, 240);
+     font-size: 20px;
+     color: white;
+     font-weight: normal;
+     /* text-transform: uppercase; */
+     text-shadow: 0px 1px 1px rgb(22, 136, 200);
+     letter-spacing: 2px;
+     border: 3px solid rgb(35, 167, 240);
+     border-radius: 20em;
+     transition: border 0.3s ease;
+
+     &:hover {
+      border: 3px solid darken(rgb(35, 167, 240), 10%);
+      color: white;
+      background: rgb(35, 167, 240);
+     }
+    }
+   #see-more {
+    margin-top: 120px;
+   }
   }
 }
 

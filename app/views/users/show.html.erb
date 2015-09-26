@@ -92,32 +92,34 @@
           </div>
         </div>
       <% else %>
-        <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
-          <div class="panel-heading">
-            <h4>
-              <% if current_user == @user && @user.common_neighbors(current_user).size > 0 %>
-                <%= link_to users_path, class: "nice-link" do %>
-                  <%= t('.neighbor').pluralize(@user.common_neighbors(current_user).size) %> en commun (<%= @user.common_neighbors(current_user).size %>)
+        <% if @user.common_neighbors(current_user).size > 0 %>
+          <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
+            <div class="panel-heading">
+              <h4>
+                <% if current_user == @user && @user.common_neighbors(current_user).size > 0 %>
+                  <%= link_to users_path, class: "nice-link" do %>
+                    <%= t('.neighbor').pluralize(@user.common_neighbors(current_user).size) %> en commun (<%= @user.common_neighbors(current_user).size %>)
+                  <% end %>
+                <% else %>
+                  <%= t('.common_neighbors') %> (<%= @user.common_neighbors(current_user).size %>)
+                <% end %>
+              </h4>
+            </div>
+            <div class="panel-body">
+              <% if @user.common_neighbors(current_user).size > 0 %>
+                <% @user.common_neighbors(current_user).each do |neighbor| %>
+                  <div class="col-xs-6">
+                    <%= render "neighbor", neighbor: neighbor %>
+                  </div>
                 <% end %>
               <% else %>
-                <%= t('.common_neighbors') %> (<%= @user.common_neighbors(current_user).size %>)
+                <p>
+                  <%= t('.no_common_neighbor') %>
+                </p>
               <% end %>
-            </h4>
+            </div>
           </div>
-          <div class="panel-body">
-            <% if @user.common_neighbors(current_user).size > 0 %>
-              <% @user.common_neighbors(current_user).each do |neighbor| %>
-                <div class="col-xs-6">
-                  <%= render "neighbor", neighbor: neighbor %>
-                </div>
-              <% end %>
-            <% else %>
-              <p>
-                <%= t('.no_common_neighbor') %>
-              </p>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
         <% if @user.exclusive_neighbors(current_user).size > 0 %>
           <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
             <div class="panel-heading">

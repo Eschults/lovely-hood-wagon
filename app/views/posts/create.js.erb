@@ -1,6 +1,7 @@
 <% if @post.errors.any? %>
   // Render new review form with errors
   $('#post_content').val("<%= t('.error') %>");
+  return false;
 <% else %>
   // Create a paragraph for the new review. But hide it.
   var new_post = $("<%= j render 'post', post: @post %>").hide();

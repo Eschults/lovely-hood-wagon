@@ -22,7 +22,11 @@
         </div>
         <div class="col-xs-12">
           <div class="row margin-top-15 margin-btm-13">
-            <%= image_tag post.picture.url(:large), class: "img img-meta" %>
+            <div class="col-xs-12">
+              <%= image_tag post.picture.url(:large), class: "img img-meta" %>
+              <div class="col-xs-12 total-width border-btm-light padding-none margin-top-15">
+              </div>
+            </div>
           </div>
           <% if current_user.find_voted_items.include? post %>
             <%= link_to "Je n'aime plus", unlike_post_path(post), method: :put, remote: true, class: "like-link", id: "unlike_link_#{post.id}" %>

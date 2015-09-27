@@ -68,3 +68,20 @@ function resizeStuff() {
     }
   })
 }
+
+$(document).ready(function() {
+  $('.img-meta').each(function() {
+    if($(this).height() < 394) {
+      $(this).css('width', '100%')
+    } else {
+      $(this).css('width', 'auto')
+    }
+  })
+  // $('.img-post').each(function() {
+  //   if($(this).height() < 394) {
+  //     $(this).css('padding-left', 0).css('padding-right', 0).css('padding-bottom', 0)
+  //   } else {
+  //     $(this).css('padding-left', '15px').css('padding-right', '15px').css('padding-bottom', '15px')
+  //   }
+  // })
+})

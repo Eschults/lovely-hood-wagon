@@ -616,9 +616,34 @@ a.gray-lighter {
   padding: auto;
 }
 
-.img-meta {
+.border-top-light {
   border-top: 1px solid rgb(240, 240, 240);
+}
+
+.border-btm-light {
   border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.img.img-meta {
+  // margin-bottom: 15px;
+  // padding-left: 15px;
+  // padding-right: 15px;
+  max-height: 394px;
+  float: left;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.img.img-post {
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-height: 394px;
+  float: left;
+  width: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .img-border-top {

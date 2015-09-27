@@ -93,6 +93,11 @@
       padding: 0 10px 10px 0;
     }
   }
+  @media(max-width: 400px) {
+    .card .card-description {
+      font-size: 8px;
+    }
+  }
 }
 #neighbors_ {
   .panel-body {

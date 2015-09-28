@@ -60,12 +60,7 @@
 <%= content_for :js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      imageUpload()
-      $('#wall-nav-link').addClass('hover');
-      comment();
-      adjustIconsSizeSimple(420);
-      likePopover()
-      resizeStuff()
+      postsIndex()
       $(window).on('scroll', function() {
         var more_posts_url = $('.next a').attr('href')
         if(more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
@@ -75,10 +70,7 @@
             url: more_posts_url,
             dataType: 'script',
             success: function() {
-              comment();
-              adjustIconsSizeSimple(420);
-              likePopover()
-              resizeStuff()
+              postsIndex()
             }
           })
         }

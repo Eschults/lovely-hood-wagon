@@ -47,7 +47,7 @@
                   <%= @conversation.user2.first_name %>
                 <% else %>
                   <%= @conversation.user1.first_name %>
-                <% end %> <%= t('.started_on') %> <%= @conversation.created_at.strftime("%A, %e %B à %H:%M") %>
+                <% end %> <%= t('.started_on') %> <%= l(@conversation.created_at, format: "%A %e %B à %Hh%M") %>
               </p>
             </div>
             <% @conversation.messages.sort_by(&:updated_at).each do |message| %>

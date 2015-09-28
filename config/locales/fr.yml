@@ -522,6 +522,8 @@ fr:
       like: "J'aime"
       comment: "Commenter"
       placeholder: "Votre commentaire..."
+    comment:
+      yesterday: "Hier,"
     likes:
       likes_this: "aime ça"
       like_this: "aiment ça"
@@ -536,6 +538,7 @@ fr:
       like: "J'aime"
       comment: "Commenter"
       placeholder: "Votre commentaire..."
+      yesterday: "Hier,"
     create:
       error: "Un problème est survenu"
     index:
@@ -546,8 +549,10 @@ fr:
       complete_profile: "Merci de compléter les champs avec une *"
     like:
       unlike: "Je n'aime plus"
+      yesterday: "Hier,"
     like_activity:
       unlike: "Je n'aime plus"
+      yesterday: "Hier,"
     unlike:
       like: "J'aime"
     unlike_activity:
@@ -555,6 +560,7 @@ fr:
   public_activity:
     comment:
       update:
+        yesterday: "Hier,"
         commented: "a commenté une publication"
         likes_number: "j'aime"
         likes_this: "aime ça"
@@ -564,6 +570,7 @@ fr:
         created: "a créé une annonce"
     post:
       like:
+        yesterday: "Hier,"
         likes_this: "aime ça"
         likes: "aime une publication"
         likes_number: "j'aime"

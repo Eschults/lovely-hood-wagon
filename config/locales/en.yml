@@ -362,6 +362,8 @@ en:
     owner_actions:
       edit: "Edit offer"
       to_publish: "to publish"
+      hidden: "Hidden"
+      published: "Published"
     wishlisted_offer:
       show_offer: "Show details"
       show_pic: "Show image"
@@ -520,6 +522,8 @@ en:
       like: "Like"
       comment: "Comment"
       placeholder: "Write a comment..."
+    comment:
+      yesterday: "Yesterday,"
     likes:
       likes_this: "likes this"
       like_this: "like this"
@@ -534,6 +538,7 @@ en:
       like: "Like"
       comment: "Comment"
       placeholder: "Write a comment..."
+      yesterday: "Yesterday,"
     create:
       error: "Oops... Try again"
     index:
@@ -544,8 +549,10 @@ en:
       complete_profile: "Thank you for completing fields with an *"
     like:
       unlike: "Unlike"
+      yesterday: "Yesterday,"
     like_activity:
       unlike: "Unlike"
+      yesterday: "Yesterday,"
     unlike:
       like: "Like"
     unlike_activity:
@@ -553,6 +560,7 @@ en:
   public_activity:
     comment:
       update:
+        yesterday: "Yesterday,"
         commented: "commented a post"
         likes_number: "likes"
         likes_this: "likes this"
@@ -562,6 +570,7 @@ en:
         created: "created an offer"
     post:
       like:
+        yesterday: "Yesterday,"
         likes_this: "likes this"
         likes: "likes a post"
         likes_number: "likes"

@@ -21,7 +21,7 @@
               </li>
             <% end %>
             <li class="padding-left-none gray-lighter font-size-12">
-              <%= (((Time.now - comment.created_at < 86400) && Date.today.day == comment.created_at.day) ? "" : (Time.now - comment.created_at < 86400 ? "Yesterday," : comment.created_at.strftime("%A, %e %B "))) + comment.created_at.strftime("%l:%M %p") %>
+              <%= (((Time.now - comment.created_at < 86400) && Date.today.day == comment.created_at.day) ? l(comment.created_at, format: :short)[-5..-1] : (Time.now - comment.created_at < 86400 ? (t('.yesterday') + ' ' + l(comment.created_at, format: :short)[-5..-1]) : l(comment.created_at, format: :short))) %>
             </li>
           </ul>
           <%= simple_format comment.content, class: "margin-btm-none" %>

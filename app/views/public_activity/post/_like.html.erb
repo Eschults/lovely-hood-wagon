@@ -22,7 +22,7 @@
             <li class="padding-left-none">
               <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link montserrat" %></li>
             <li class="hidden-xs padding-left-none gray-lighter font-size-12">
-              <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? "" : (Time.now - activity.trackable.created_at < 86400 ? "Yesterday," : activity.trackable.created_at.strftime("%A, %e %B "))) + activity.trackable.created_at.strftime("%l:%M %p") %>
+              <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? l(activity.trackable.created_at, format: :short)[-5..-1] : (Time.now - activity.trackable.created_at < 86400 ? (t('.yesterday') + ' ' + l(activity.trackable.created_at, format: :short)[-5..-1]) : l(activity.trackable.created_at, format: :short))) %>
             </li>
           </ul>
           <%= simple_format activity.trackable.content, class: "margin-btm-none" unless activity.trackable.content == "***" %>

@@ -1,4 +1,4 @@
-<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link" %> <%= t('.joined') %>
+<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link montserrat" %> <%= t('.joined') %>
 <br>
 <%= link_to user_path(activity.trackable) do %>
   <div class="panel panel-default white-bg margin-top-15 margin-btm-15 padding-none box-in-post">
@@ -15,7 +15,7 @@
         </div>
         <div class="col-xs-9 col-sm-10">
           <ul class="margin-none list-unstyled list-inline">
-            <li class="padding-left-none offer-nature-link"><%= activity.owner.first_name %></li>
+            <li class="padding-left-none offer-nature-link montserrat"><%= activity.owner.first_name %></li>
             <li class="padding-left-none font-normal"><%= activity.owner.age.to_s + t('.years_old') unless activity.owner.birthday.nil? %></li>
           </ul>
           <p class="margin-top-10 font-normal hidden-xs"><%= activity.owner.description != "" ? activity.owner.description : t('.no_desc') %></p>

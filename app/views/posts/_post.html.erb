@@ -12,7 +12,8 @@
         <div class="col-xs-9 padding-left-10">
           <ul class="margin-none list-unstyled list-inline">
             <li class="padding-left-none">
-              <%= link_to post.user.first_name, user_path(post.user), class: "offer-nature-link" %></li>
+              <%= link_to post.user.first_name, user_path(post.user), class: "offer-nature-link montserrat" %>
+            </li>
             <li class="padding-left-none gray-lighter font-size-12">
               <%= (((Time.now - post.created_at < 86400) && Date.today.day == post.created_at.day) ? "" : (Time.now - post.created_at < 86400 ? "Yesterday," : post.created_at.strftime("%A, %e %B "))) + post.created_at.strftime("%l:%M %p") %>
             </li>

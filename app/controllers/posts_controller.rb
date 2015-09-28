@@ -14,6 +14,11 @@ class PostsController < ApplicationController
       end
       @items = @posts + @activities
       @items = @items.sort_by(&:created_at).reverse
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(15)
+      respond_to do |format|
+        format.html {}
+        format.js
+      end
     end
   end
 

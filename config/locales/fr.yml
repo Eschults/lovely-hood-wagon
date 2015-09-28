@@ -557,12 +557,14 @@ fr:
       update:
         commented: "a commenté une publication"
         likes_number: "j'aime"
+        likes_this: "aime ça"
         comment: "commentaire"
     offer:
       create:
         created: "a créé une annonce"
     post:
       like:
+        likes_this: "aime ça"
         likes: "aime une publication"
         likes_number: "j'aime"
         comment: "commentaire"

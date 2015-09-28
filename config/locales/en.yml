@@ -555,12 +555,14 @@ en:
       update:
         commented: "commented a post"
         likes_number: "likes"
+        likes_this: "likes this"
         comment: "comment"
     offer:
       create:
         created: "created an offer"
     post:
       like:
+        likes_this: "likes this"
         likes: "likes a post"
         likes_number: "likes"
         comment: "comment"

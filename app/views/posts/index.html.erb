@@ -49,7 +49,11 @@
           <% end %>
         <% end %>
       </div>
-      <%= paginate @items %>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <%= paginate @items %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -57,19 +61,25 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       imageUpload()
+      $('#wall-nav-link').addClass('hover');
       comment();
       adjustIconsSizeSimple(420);
-      $('#wall-nav-link').addClass('hover');
       likePopover()
       resizeStuff()
       $(window).on('scroll', function() {
         var more_posts_url = $('.next a').attr('href')
         if(more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
-          $('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />')
+          $('.pagination').html('<img src="<%= asset_url('facebook.gif') %>" alt="Loading..." title="Loading..." />')
           $.ajax({
             type: 'GET',
             url: more_posts_url,
-            dataType: 'script'
+            dataType: 'script',
+            success: function() {
+              comment();
+              adjustIconsSizeSimple(420);
+              likePopover()
+              resizeStuff()
+            }
           })
         }
         return false

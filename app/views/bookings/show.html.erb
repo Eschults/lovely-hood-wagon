@@ -49,15 +49,17 @@
             <% end %>
           <% end %>
         </p>
-        <p>
-          <% if @booking.accepted %>
-            <b><%= t('.congrats', request: @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking')) %></b>
-          <% elsif @booking.accepted.nil? %>
-            <%= t('.sent_on', date: @booking.created_at.strftime("%d %b %Y")) %>
-          <% else %>
-            <%= t('.declined') %> <%= link_to t('.offers'), offers_path %>.
-          <% end %>
-        </p>
+        <% if current_user == @booking.user %>
+          <p>
+            <% if @booking.accepted %>
+              <b><%= t('.congrats', request: @booking.offer.type_of_offer == "sell" ? t('.request') : t('.booking')) %></b>
+            <% elsif @booking.accepted.nil? %>
+              <%= t('.sent_on', date: @booking.created_at.strftime("%d %b %Y")) %>
+            <% else %>
+              <%= t('.declined') %> <%= link_to t('.offers'), offers_path %>.
+            <% end %>
+          </p>
+        <% end %>
         <% if @booking.accepted %>
           <% if @booking.offer.type_of_offer == "rent" %>
             <p>Du <%= @booking.start_date.strftime("%d %b") %> au <%= @booking.end_date.strftime("%d %b") %>.</p>
@@ -66,8 +68,13 @@
           <% else %>
             <p><%= t('.rdv', date: @booking.start_date.strftime("%d %b"), address: @booking.offer.user.address) %></p>
           <% end %>
-          <p><%= t('.more_info') %> <%= link_to @booking.offer.user.first_name, user_path(@booking.offer.user) %>:</p>
-          <%= render "shared/contact_owner", booking: @booking %>
+          <% if current_user == @booking.user %>
+            <p><%= t('.more_info') %> <%= link_to @booking.offer.user.first_name, user_path(@booking.offer.user) %>:</p>
+            <%= render "shared/contact_owner", booking: @booking %>
+          <% elsif current_user == @booking.offer.user %>
+            <p><%= t('.more_info') %> <%= link_to @booking.user.first_name, user_path(@booking.user) %>:</p>
+            <%= render "shared/contact_client", booking: @booking %>
+          <% end %>
         <% end %>
         <p><%= t('.see') %><%= link_to t('.offer'), offer_path(@booking.offer) %></p>
         <% if @booking.accepted %>

@@ -1,0 +1,5 @@
+<% @users.sort_by(&:updated_at).reverse.each do |neighbor| %>
+  <div class="col-xs-6 col-sm-4">
+    <%= render "neighbor", neighbor: neighbor %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+$('#neighbors-stream').append('<%= j render "users" %>');
+<% if @users.next_page %>
+  $('.pagination').replaceWith('<%= j paginate @users %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

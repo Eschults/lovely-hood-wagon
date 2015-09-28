@@ -260,3 +260,26 @@ function togglePaddingLeft() {
     $('.padding-left-50').removeClass('padding-left-50').addClass('padding-left-30')
   }
 }
+
+function usersIndex() {
+  var width = $('.card').css('width')
+  $('.card').css('height', width)
+  adjustIconsSizeSimple(720);
+  togglePaddingLeft();
+  $(window).on('resize', function() {
+    adjustIconsSizeSimple(720);
+    togglePaddingLeft();
+  })
+  $('select').on('click', function(e) {
+    e.preventDefault();
+  })
+  $('button').on('click', function(e) {
+    e.preventDefault();
+    $(this).parent().parent().submit();
+  })
+  $('.card').tooltip();
+  $(window).on('resize', function() {
+    var width = $('.card').css('width')
+    $('.card').css('height', width)
+  })
+}

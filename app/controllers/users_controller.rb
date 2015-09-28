@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(12)
     if current_user.latitude.nil?
       redirect_to edit_user_path(current_user)
       flash.keep[:alert] = t(".complete_profile")

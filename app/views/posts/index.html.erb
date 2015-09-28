@@ -49,6 +49,7 @@
           <% end %>
         <% end %>
       </div>
+      <%= paginate @items %>
     </div>
   </div>
 </div>
@@ -61,6 +62,18 @@
       $('#wall-nav-link').addClass('hover');
       likePopover()
       resizeStuff()
+      $(window).on('scroll', function() {
+        var more_posts_url = $('.next a').attr('href')
+        if(more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
+          $('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />')
+          $.ajax({
+            type: 'GET',
+            url: more_posts_url,
+            dataType: 'script'
+          })
+        }
+        return false
+      })
     })
   <% end %>
 <% end %>

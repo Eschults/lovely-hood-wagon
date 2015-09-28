@@ -1,0 +1,7 @@
+$('#posts-stream').append('<%= j render "posts" %>');
+<% if @items.next_page %>
+  $('.pagination').replaceWith('<%= j paginate @items %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

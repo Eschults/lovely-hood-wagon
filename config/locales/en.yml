@@ -359,6 +359,7 @@ en:
       hourly_price: "$/hour"
       daily_price: "$/day"
       weekly_price: "$/week"
+      free: "Free"
     owner_actions:
       edit: "Edit offer"
       to_publish: "to publish"
@@ -412,6 +413,7 @@ en:
       hourly_price: "$/hour"
       daily_price: "$/day"
       weekly_price: "$/week"
+      free: "Free"
     new:
       title: "New offer - LH"
       description: "Earn money by publishing offers of what you're enclined to share with your neighbors!"

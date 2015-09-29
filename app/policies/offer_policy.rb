@@ -21,6 +21,14 @@ class OfferPolicy < ApplicationPolicy
     user.admin? || record.user == user  # Only offer creator can update it
   end
 
+  def publish?
+    user.admin? || record.user == user  # Only offer creator can publish it
+  end
+
+  def hide?
+    user.admin? || record.user == user  # Only offer creator can hide it
+  end
+
   def wish?
     user.admin? || record.user == user || record.user.neighbors.include?(user) # Only offer creator, neighbors and admins can view an offer
   end

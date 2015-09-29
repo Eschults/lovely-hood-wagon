@@ -1,0 +1,3 @@
+var flash = $('<%= j render "layouts/notices" %>').hide()
+$('nav.navbar').prepend(flash.slideDown())
+$('#popContainer_' + <%= @offer.id.to_s %> + ' .small-badge-off').removeClass("small-badge-off")

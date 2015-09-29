@@ -359,6 +359,7 @@ fr:
       hourly_price: "€/heure"
       daily_price: "€/jour"
       weekly_price: "€/semaine"
+      free: "Prêt"
     owner_actions:
       edit: "Modifier l'annonce"
       to_publish: "pour publier"
@@ -412,6 +413,7 @@ fr:
       hourly_price: "€/heure"
       daily_price: "€/jour"
       weekly_price: "€/semaine"
+      free: "Prêt"
     new:
       title: "Nouvelle annonce - LH"
       description: "Location, vente, service, créez des annonces pour gagner de l'argent facilement avec ce que vous avez chez vous !"

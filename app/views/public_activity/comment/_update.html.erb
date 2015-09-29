@@ -93,10 +93,10 @@
               <ul class="margin-none list-unstyled list-inline">
                 <% if current_user.neighbors.include?(activity.trackable.user) || current_user == activity.trackable.user %>
                   <li class="padding-left-none">
-                    <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link" %>
+                    <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link montserrat" %>
                   </li>
                 <% else %>
-                  <li class="padding-left-none">
+                  <li class="padding-left-none montserrat">
                     <%= ('<strong>' + activity.trackable.user.first_name + '</strong>').html_safe %>
                   </li>
                 <% end %>

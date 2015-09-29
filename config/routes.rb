@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       member do
         put :wish, to: "offers#wish"
         put :unwish, to: "offers#unwish"
+        put :publish, to: "offers#publish"
+        put :hide, to: "offers#hide"
       end
       resources :bookings, only: [:new, :edit, :show]
       resources :conversations, only: :new

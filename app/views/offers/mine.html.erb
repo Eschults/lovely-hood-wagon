@@ -7,14 +7,16 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
-      <div class="panel panel-default white-bg margin-top-15 padding-none">
+      <div class="panel panel-default white-bg margin-top-15 padding-none" id="mine">
         <div class="panel-heading border-btm-none">
           <h4><%= t('.my_offers') %></h4>
         </div>
-        <div class="panel-body padding-none">
+        <div class="panel-body padding-none border-top-221">
           <% if current_user.offers.size > 0 %>
             <% current_user.offers.sort_by(&:updated_at).reverse.each do |offer| %>
-              <%= render "offer", offer: offer %>
+              <div class="col-xs-6 col-sm-4" id="popContainer_<%= offer.id %>">
+                <%= render "offer", offer: offer %>
+              </div>
             <% end %>
           <% else %>
             <div class="offer-stream-box border-top">
@@ -30,18 +32,35 @@
 <%= content_for :js do %>
   <% javascript_tag do %>
     $(document).ready(function() {
-      adjustIconsSizeSimple(720);
-      togglePaddingRightOnSm4();
+      var width = $('.card').css('width')
+      $('.card').css('height', width)
+      $('.card').popover({ html: true })
       $(window).on('resize', function() {
-        adjustIconsSizeSimple(720);
-        togglePaddingRightOnSm4();
+        var width = $('.card').css('width')
+        $('.card').css('height', width)
       })
-      $('select').on('click', function(e) {
-        e.preventDefault();
+      $('.card').on('dblclick', function() {
+        location.href = $(this).children().last().attr('href')
       })
-      $('button').on('click', function(e) {
-        e.preventDefault();
-        $(this).parent().parent().submit();
+      $('.card').on('click', function(e) {
+        e.preventDefault()
+        $('.offer_published').on('change', function() {
+          var id = parseInt($(this).first().parent().parent().parent().parent().attr('id').slice($(this).first().parent().parent().parent().parent().attr('id').lastIndexOf("_") + 1))
+          var published = $(this).val()
+          if(published == "true") {
+            $.ajax({
+              type: "PUT",
+              url: "/offers/" + id + "/publish",
+              dataType: "script"
+            })
+          } else {
+            $.ajax({
+              type: "PUT",
+              url: "/offers/" + id + "/hide",
+              dataType: "script"
+            })
+          }
+        })
       })
     })
   <% end %>

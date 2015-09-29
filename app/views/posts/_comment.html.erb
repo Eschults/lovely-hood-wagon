@@ -13,10 +13,10 @@
           <ul class="margin-none list-unstyled list-inline">
             <% if current_user.neighbors.include?(comment.user) || current_user == comment.user %>
               <li class="padding-left-none">
-                <%= link_to comment.user.first_name, user_path(comment.user), class: "offer-nature-link" %>
+                <%= link_to comment.user.first_name, user_path(comment.user), class: "offer-nature-link montserrat" %>
               </li>
             <% else %>
-              <li class="padding-left-none">
+              <li class="padding-left-none montserrat">
                 <%= ('<strong>' + comment.user.first_name + '</strong>').html_safe %>
               </li>
             <% end %>

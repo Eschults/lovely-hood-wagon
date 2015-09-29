@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update]
+  before_action :set_offer, only: [:show, :edit, :update, :wish, :unwish, :publish, :hide]
   after_action :verify_policy_scoped, :only => [:index]
   after_action :verify_authorized, :except => [:index, :wishlist], unless: :devise_controller?
   layout 'map', only: [:index]
@@ -81,6 +81,24 @@ class OffersController < ApplicationController
     end
   end
 
+  def publish
+    @offer.published = true
+    @offer.save
+    respond_to do |format|
+      format.html {}
+      format.js { flash.now[:notice] = t('.successfully_published', default: "Votre annonce %{offer} est désormais visible par vos voisins", offer: @offer.i18n_nature(params[:locale])) }
+    end
+  end
+
+  def hide
+    @offer.published = false
+    @offer.save
+    respond_to do |format|
+      format.html {}
+      format.js { flash.now[:notice] = t('.successfully_hidden', default: "Votre annonce %{offer} est désormais masquée", offer: @offer.i18n_nature(params[:locale])) }
+    end
+  end
+
   def show
   end
 
@@ -89,7 +107,6 @@ class OffersController < ApplicationController
   end
 
   def wish
-    set_offer
     @offer.liked_by current_user
     respond_to do |format|
       format.html { redirect_to offer_path(@offer) }
@@ -98,7 +115,6 @@ class OffersController < ApplicationController
   end
 
   def unwish
-    set_offer
     @offer.unliked_by current_user
     respond_to do |format|
       format.html { redirect_to offer_path(@offer) }

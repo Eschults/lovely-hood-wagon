@@ -22,11 +22,21 @@
     bottom: -15px;
     margin-left: -7px;
   }
+  .popover.bottom > .arrow {
+    border-top-width: 3px;
+    // bottom: -15px;
+    // margin-left: -7px;
+  }
   .popover > .arrow:after {
     // border-width: 7px;
   }
-  .popover {
+  .popover.bottom {
+    margin-top: 7px;
+  }
+  .popover.top {
     margin-top: -7px;
+  }
+  .popover {
     min-width: 215px;
     max-width: 215px;
     border: none;
@@ -45,6 +55,7 @@
         height: 80px;
         background-size: cover;
         background-position: center center;
+        text-align: center;
         // -webkit-filter: blur(2px);
         // -moz-filter: blur(2px);
         // -o-filter: blur(2px);
@@ -52,9 +63,14 @@
         // filter: blur(2px);
         opacity: 1;
         // transform: scale(1.2);
+        img {
+          width: 80px;
+          margin-top: 46px;
+        }
       }
       p {
-        margin-top: 80px;
+        margin-top: 115px;
+        font-size: 12px;
       }
       .small-badge {
         margin: 0 auto;

@@ -1,7 +1,9 @@
-<div id="myOffer_<%= offer.id %>" class="card" data-container="#popContainer_<%= offer.id %>" data-toggle="popover" data-trigger="click" data-placement="top" data-container="body" data-content="<%= (
-  '<div class=popover-header style=background-image:url(' + (offer.picture_file_name.nil? ? image_url('no-image.png') : offer.picture.url(:medium)) + ')></div>' +
-  '<p>' + (offer.description.gsub('"', '&quot').gsub("'", "&#39;") unless (offer.description == "" || offer.description.nil?)) + '</p>' +
-  '<div class=form-group>' +
+<div id="myOffer_<%= offer.id %>" class="card" data-container="#popContainer_<%= offer.id %>" data-toggle="popover" data-trigger="click" data-container="body" data-content="<%= (
+  '<div class=popover-header style=background-image:url(' + (offer.picture_file_name.nil? ? image_url('no-image.png') : offer.picture.url(:medium)) + ')>' +
+    '<img src=&quot;' + asset_url(offer.type_of_offer == 'sell' ? 'sell' : offer.nature).gsub('3000/', '3000/assets/').gsub('.com/', '.com/assets/') + '.png&quot; />' +
+  '</div>' +
+  '<p>' + (offer.description.gsub('"', '&quot;  ').gsub("'", "&#39;") unless (offer.description == "" || offer.description.nil?)) + '</p>' +
+  '<div class=&quot;form-group montserrat&quot;>' +
     '<select class=&quot;form-control offer_published&quot;>' +
       '<option ' + (offer.published ? '' : 'selected=selected') + ' value=false>' + t('.hidden') + '</option>' +
       '<option ' + (offer.published ? 'selected=selected' : '') + ' value=true>' + t('.published') + '</option>' +

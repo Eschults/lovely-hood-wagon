@@ -1,6 +1,7 @@
+<% path = asset_path("#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png") %>
 <div id="myOffer_<%= offer.id %>" class="card" data-container="#popContainer_<%= offer.id %>" data-toggle="popover" data-trigger="click" data-container="body" data-content="<%= (
   '<div class=popover-header style=background-image:url(' + (offer.picture_file_name.nil? ? image_url('no-image.png') : offer.picture.url(:medium)) + ')>' +
-    '<img src=&quot;' + asset_path(offer.type_of_offer == 'sell' ? 'sell' : offer.nature).gsub('/', '/assets/') + '.png&quot; />' +
+    '<img src=&quot;' + path + '&quot; />' +
   '</div>' +
   '<p>' + (offer.description.gsub('"', '&quot;  ').gsub("'", "&#39;") unless (offer.description == "" || offer.description.nil?)) + '</p>' +
   '<div class=&quot;form-group montserrat&quot;>' +

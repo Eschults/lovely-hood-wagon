@@ -49,6 +49,9 @@
         var width = $('.card').css('width')
         $('.card').css('height', width)
       })
+      $('.card').on('mouseenter', function(){
+        $(this).click()
+      })
       $('.card').on('dblclick', function() {
         location.href = $(this).children().last().attr('href')
       })

@@ -360,6 +360,7 @@ en:
       daily_price: "$/day"
       weekly_price: "$/week"
       free: "Free"
+      edit: "Edit "
     owner_actions:
       edit: "Edit offer"
       to_publish: "to publish"
@@ -379,6 +380,7 @@ en:
     edit:
       update: "Update"
       update_description: "Update your offer in a few clicks."
+      edit: "Edit offer %{offer}"
     index:
       title: "Offers - LH"
       description: "Browse all offers in your hood"
@@ -414,6 +416,7 @@ en:
       daily_price: "$/day"
       weekly_price: "$/week"
       free: "Free"
+      dbl_click: "Double-click on a picture to view offer"
     new:
       title: "New offer - LH"
       description: "Earn money by publishing offers of what you're enclined to share with your neighbors!"

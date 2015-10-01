@@ -1,9 +1,12 @@
 <% path = asset_path("#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png") %>
 <div id="myOffer_<%= offer.id %>" class="card" data-container="#popContainer_<%= offer.id %>" data-toggle="popover" data-trigger="click" data-container="body" data-content="<%= (
-  '<div class=popover-header style=background-image:url(' + (offer.picture_file_name.nil? ? image_url('no-image.png') : offer.picture.url(:medium)) + ')>' +
-    '<img src=&quot;' + path + '&quot; />' +
-  '</div>' +
+  '<a href=' + offer_path(offer) + '>' +
+    '<div class=popover-header style=background-image:url(' + (offer.picture_file_name.nil? ? image_url('no-image.png') : offer.picture.url(:medium)) + ')>' +
+      '<img src=&quot;' + path + '&quot; />' +
+    '</div>' +
+  '</a>' +
   '<p>' + (offer.description.gsub('"', '&quot;  ').gsub("'", "&#39;") unless (offer.description == "" || offer.description.nil?)) + '</p>' +
+  '<a href=&quot;' + edit_offer_path(offer) + '&quot;>' + t(".edit") + (offer.i18n_nature(params[:locale])) + '</a>' +
   '<div class=&quot;form-group montserrat&quot;>' +
     '<select class=&quot;form-control offer_published&quot;>' +
       '<option ' + (offer.published ? '' : 'selected=selected') + ' value=false>' + t('.hidden') + '</option>' +

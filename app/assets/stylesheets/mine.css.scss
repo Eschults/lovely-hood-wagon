@@ -37,6 +37,7 @@
     margin-top: -7px;
   }
   .popover {
+    z-index: 1029;
     min-width: 215px;
     max-width: 215px;
     border: none;
@@ -77,6 +78,12 @@
       }
       .small-badge-off {
         background-color: #edefed;
+      }
+      a {
+        font-size: 12px;
+      }
+      .form-group {
+        margin-top: 10px;
       }
     }
   }

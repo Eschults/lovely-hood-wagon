@@ -360,6 +360,7 @@ fr:
       daily_price: "€/jour"
       weekly_price: "€/semaine"
       free: "Prêt"
+      edit: "Modifier "
     owner_actions:
       edit: "Modifier l'annonce"
       to_publish: "pour publier"
@@ -379,6 +380,7 @@ fr:
     edit:
       update_description: "Modifiez facilement vos annonces pour mettre à jour vos tarifs, photo ou encore description !"
       update: "Modifier"
+      edit: "Modifier %{offer}"
     index:
       title: "Annonces - LH"
       description: "Accèdez aux annonces de tous les biens et services disponibles à moins de 10 min à pied de chez vous"
@@ -414,6 +416,7 @@ fr:
       daily_price: "€/jour"
       weekly_price: "€/semaine"
       free: "Prêt"
+      dbl_click: "Double-cliquez sur une photo pour accéder à l'annonce"
     new:
       title: "Nouvelle annonce - LH"
       description: "Location, vente, service, créez des annonces pour gagner de l'argent facilement avec ce que vous avez chez vous !"

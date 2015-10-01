@@ -55,6 +55,9 @@
       $('.card').on('dblclick', function() {
         location.href = $(this).children().last().attr('href')
       })
+      $('.card').on('dbltap', function() {
+        location.href = $(this).children().last().attr('href')
+      })
       var popover
       $('.card').on('click', function(e) {
         e.preventDefault()

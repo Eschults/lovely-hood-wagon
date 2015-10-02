@@ -448,8 +448,9 @@ en:
       wish: "Save to wishlist"
       unwish: "Remove from wishlist"
     update:
-      published: "(published)"
-      hidden: "(hidden)"
+      published: "published"
+      hidden: "hidden"
+      visible: "visible to your neighbors"
       changes_saved: "Changes saved"
     wish:
       unwish: "Remove from wishlist"

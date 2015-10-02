@@ -1,14 +1,11 @@
 <%= link_to t('.edit') , edit_offer_path(@offer), class: "btn btn-primary btn-wide margin-btm-15" %>
-<%= form_for @offer, remote: true, method: :patch, url: offer_path(@offer)  do |f| %>
-<div class="row">
-  <div class="col-xs-9 padding-right-10">
-    <%= f.select :published, [[t('.hidden'), false], [t('.published'), true]], {}, { class: "form-control height-40" } %>
+<%= form_for @offer, remote: true, method: :patch, url: offer_path(@offer) do |f| %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.select :published, [[t('.hidden'), false], [t('.published'), true]], {}, { class: "form-control height-40 margin-btm-10", id: "hideOrPublish" } %>
+    </div>
+    <div class="text-center">
+      <span class="badge small-badge margin-btm-10 <%= @offer.published ? '' : 'small-badge-off' %>"> </span>
+    </div>
   </div>
-  <div class="col-xs-3 padding-left-none">
-    <%= button_tag(type: 'submit', class: "btn btn-success btn-wide") do %>
-      <i class="fa fa-save"></i>
-    <% end %>
-  </div>
-  <div class="col-xs-12 hidden margin-top-10" id="<%= "append-target_#{@offer.id}" %>"></div>
-</div>
 <% end %>

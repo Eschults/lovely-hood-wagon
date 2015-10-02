@@ -33,7 +33,6 @@
           <% end %>
         </div>
       </div>
-
       <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-body border-none">
           <% if @offer.type_of_offer == "service" %>
@@ -65,12 +64,10 @@
           <% end %>
         </div>
       </div>
-
       <div class="panel panel-default max-width-300 padding-none">
         <div class="panel-body border-none">
           <% if current_user.admin? %>
             <%= render "owner_actions" %>
-            <br>
             <%= render "client_actions" %>
           <% elsif policy(@offer).update? %>
             <%= render "owner_actions" %>
@@ -122,7 +119,6 @@
             <div class="col-lg-6 hidden-xs">
             </div>
           </div>
-
           <div class="ratings">
             <div class="row">
               <div class="col-lg-3 col-xs-6">
@@ -171,7 +167,7 @@
           <p><%= t('.no_review') %></p>
         <% end %>
       </div>
-      <% unless current_user == @offer.user || @offer.type_of_offer == "service" || current_user.address_verified != true %>
+      <% unless current_user == @offer.user || @offer.type_of_offer == "service" %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4><%= t('.route') %></h4>
@@ -191,11 +187,16 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       $(".fancybox").fancybox();
-      var lat = <%= current_user.latitude %>
-      var lng = <%= current_user.longitude %>
-      var userLocation = new google.maps.LatLng(lat, lng);
-      initializeDirections(userLocation);
-      calcRoute(userLocation, '<%= @offer.user.address %>')
+      if('<%= current_user == @offer.user || @offer.type_of_offer == 'service' %>' == 'false') {
+        var lat = <%= current_user.latitude %>
+        var lng = <%= current_user.longitude %>
+        var userLocation = new google.maps.LatLng(lat, lng);
+        initializeDirections(userLocation);
+        calcRoute(userLocation, '<%= @offer.user.address %>')
+      }
+      $('#hideOrPublish').on('change', function() {
+        $(this).parent().parent().parent().submit()
+      })
     });
   <% end %>
 <% end %>

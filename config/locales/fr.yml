@@ -448,8 +448,9 @@ fr:
       wish: "Enregistrer"
       unwish: "Délister"
     update:
-      published: "(publiée)"
-      hidden: "(masquée)"
+      published: "publiée"
+      hidden: "masquée"
+      visible: "visible par vos voisins"
       changes_saved: "Enregistré"
     wish:
       unwish: "Délister"

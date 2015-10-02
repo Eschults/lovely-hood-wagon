@@ -71,7 +71,7 @@ class OffersController < ApplicationController
       if @offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price'))
         respond_to do |format|
           format.html { redirect_to offer_path(@offer) }
-          format.js
+          format.js { flash.now[:notice] = t('.successfully_published', default: "Votre annonce %{offer} est désormais %{state}", offer: @offer.i18n_nature(params[:locale]), state: @offer.published ? t('.visible') : t('.hidden') ) }
         end
       else
         flash.now[:alert] = "Merci de renseigner un prix"

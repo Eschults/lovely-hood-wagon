@@ -1,9 +1,8 @@
-if($('#append-target_' + '<%= @offer.id %>' + ' .saved').size() == 1) {
-  var wish = '<i class="fa fa-check"></i><i class="hidden-xs"> ' + '<%= t(".changes_saved") %>' + '</i>'
-  $('.saved').html(wish + '<%= @offer.published ? (" " + t(".published")) : (" " + t(".hidden")) %>')
-} else {
-  $('#append-target_' + '<%= @offer.id %>').append('<p class="saved"><i class="fa fa-check"></i> ' + '<%= t(".changes_saved") %>' + '</p>')
-  if($('#append-target_' + '<%= @offer.id %>').attr('class').indexOf('hidden') > -1) {
-    $('#append-target_' + '<%= @offer.id %>').removeClass('hidden')
-  }
-}
+var flash = $('<%= j render "layouts/notices" %>').hide()
+$('nav.navbar-wagon').prepend(flash.slideDown())
+<% if @offer.published %>
+  $('.small-badge').removeClass('small-badge-off')
+<% else %>
+  $('.small-badge').addClass('small-badge-off')
+<% end %>
+notices()

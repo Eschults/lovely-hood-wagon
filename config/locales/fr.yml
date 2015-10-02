@@ -324,6 +324,14 @@ fr:
       daily_price: "€/jour"
       weekly_price: "€/semaine"
   offers:
+    publish:
+      edit: "Modifier "
+      hidden: "Masquée"
+      published: "Publiée"
+    hide:
+      edit: "Modifier "
+      hidden: "Masquée"
+      published: "Publiée"
     client_actions:
       unwish: "Délister"
       wish: "Enregistrer"

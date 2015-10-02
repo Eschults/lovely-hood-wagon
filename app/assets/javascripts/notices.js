@@ -3,6 +3,9 @@ function notices() {
     $('body').addClass('margin-top-56')
     setTimeout(function(){
       $('.alert').addClass('is-hidden')
+      setTimeout(function() {
+        $('.alert').remove()
+      }, 1000)
       $('body').removeClass('margin-top-56')
     }, 10000)
   }

@@ -324,6 +324,14 @@ en:
       daily_price: "$/day"
       weekly_price: "$/week"
   offers:
+    publish:
+      edit: "Edit "
+      hidden: "Hidden"
+      published: "Published"
+    hide:
+      edit: "Edit "
+      hidden: "Hidden"
+      published: "Published"
     client_actions:
       unwish: "Remove from wishlist"
       wish: "Save to wishlist"

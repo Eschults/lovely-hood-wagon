@@ -1,3 +1,24 @@
 var flash = $('<%= j render "layouts/notices" %>').hide()
 $('nav.navbar-wagon').prepend(flash.slideDown())
 $('#popContainer_' + <%= @offer.id.to_s %> + ' .small-badge-off').removeClass("small-badge-off")
+<% path = asset_path("#{@offer.type_of_offer == "sell" ? "sell" : @offer.nature}.png").gsub(' ', '%20') %>
+$('#myOffer_' + <%= @offer.id.to_s %>).attr('data-content',
+  '<%= (
+    '<a href=' + offer_path(@offer) + '>' +
+      '<div class=popover-header style=background-image:url(' + (@offer.picture_file_name.nil? ? image_url('no-image.png') : @offer.picture.url(:medium)) + ')>' +
+        '<img src=' + path + ' />' +
+      '</div>' +
+    '</a>' +
+    '<p>' + (@offer.description.gsub('\"', '&quot;  ').gsub("'", "&#39;") unless (@offer.description == "" || @offer.description.nil?)) + '</p>' +
+    '<a href=' + edit_offer_path(@offer) + '>' + t(".edit") + (@offer.i18n_nature(params[:locale])) + '</a>' +
+    '<div class=form-group>' +
+      '<select class=offer_published>' +
+        '<option value=false>' + t('.hidden') + '</option>' +
+        '<option selected=selected value=true>' + t('.published') + '</option>' +
+      '</select>' +
+    '</div>' +
+    '<div class=text-center>' +
+      '<span class=small-badge> </span>' +
+    '</div>'
+   ).html_safe %>'
+)

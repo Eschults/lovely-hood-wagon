@@ -1,5 +1,5 @@
 var flash = $('<%= j render "layouts/notices" %>').hide()
-$('nav.navbar-wagon').prepend(flash.slideDown())
+$('nav.navbar').prepend(flash.slideDown())
 $('#popContainer_' + <%= @offer.id.to_s %> + ' .small-badge-off').removeClass("small-badge-off")
 <% path = asset_path("#{@offer.type_of_offer == "sell" ? "sell" : @offer.nature}.png").gsub(' ', '%20') %>
 $('#myOffer_' + <%= @offer.id.to_s %>).attr('data-content',

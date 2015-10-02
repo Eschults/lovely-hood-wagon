@@ -70,11 +70,11 @@ function resizeStuff() {
 }
 
 function postsPicMaxSize() {
-  $('.img-meta').each(function() {
-    if($(this).height() < 394) {
-      $(this).css('width', '100%')
+  $.each($('.img-meta'), function(index, item) {
+    if(parseInt($(item).height()) < 394) {
+      $(item).css('width', '100%')
     } else {
-      $(this).css('width', 'auto')
+      $(item).css('width', 'auto')
     }
   })
   // $('.img-post').each(function() {

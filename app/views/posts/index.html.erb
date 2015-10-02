@@ -71,6 +71,9 @@
             dataType: 'script',
             success: function() {
               postsIndex()
+              setTimeout(function() {
+                postsPicMaxSize()
+              }, 1500)
             }
           })
         }

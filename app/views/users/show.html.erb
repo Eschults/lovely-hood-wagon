@@ -309,7 +309,7 @@
             </h4>
           </div>
           <div class="panel-body">
-            <% @user.offers.each do |offer| %>
+            <% @user.published_offers.each do |offer| %>
               <div class="col-xs-6 col-sm-3">
                 <%= render "offers/offer", offer: offer %>
               </div>

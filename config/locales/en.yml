@@ -814,6 +814,8 @@ en:
       no_common_neighbor: "No shared neighbor yet"
       no_description: "No description"
       offers: "Offers"
+      offer: "Offer"
+      publish_an_offer: "Publish an offer"
       no_offer_yet: "No offer yet"
       profile: "%{name}'s profile"
       member_since: "Member since"

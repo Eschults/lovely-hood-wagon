@@ -1,3 +1,4 @@
+#offers,
 #mine {
   .panel-body {
     padding: 10px 0 0 10px;
@@ -133,4 +134,9 @@
 }
 .small-badge-off {
   background-color: #edefed !important;
+}
+#offers {
+  .card-text h2 {
+    font-size: 20px;
+  }
 }

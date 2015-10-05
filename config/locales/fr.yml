@@ -814,6 +814,8 @@ fr:
       no_common_neighbor: "Pas de voisin en commun"
       no_description: "Pas de description"
       offers: "Annonces"
+      offer: "Annonce"
+      publish_an_offer: "Publier une annonce"
       no_offer_yet: "Pas encore d'annonce"
       profile: "Profil de %{name}"
       member_since: "Membre depuis"

@@ -354,8 +354,10 @@ fr:
       weekly_rate: "€/semaine"
       price_helper: "Divisez le prix d'achat par cinq pour approcher un prix raisonnable pour une utilisation."
       guarantee: "Caution"
+      currency: "€"
       picture: "Photo"
       save: "Publier"
+      upload: "Parcourir"
     offer:
       hidden: "Masquée"
       published: "Publiée"

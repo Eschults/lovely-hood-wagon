@@ -37,6 +37,10 @@ class OfferPolicy < ApplicationPolicy
     user.admin? || record.user == user || record.user.neighbors.include?(user) # Only offer creator, neighbors and admins can view an offer
   end
 
+  def map?
+    user.admin?
+  end
+
 
   # def destroy?
   #   record.user == user  # Only offer creator can destroy it

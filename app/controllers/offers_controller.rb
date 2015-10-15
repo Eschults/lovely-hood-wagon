@@ -2,7 +2,7 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :wish, :unwish, :publish, :hide]
   after_action :verify_policy_scoped, :only => [:index]
   after_action :verify_authorized, :except => [:index, :wishlist], unless: :devise_controller?
-  layout 'map', only: [:index]
+  layout 'map', only: [:index, :map]
 
   def index
     if current_user.latitude.nil?
@@ -120,6 +120,23 @@ class OffersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to offer_path(@offer) }
       format.js
+    end
+  end
+
+  def map
+    @offers = Offer.all
+    authorize @offers
+
+    @markers = Gmaps4rails.build_markers(@offers) do |offer, marker|
+      marker.lat offer.user.latitude
+      marker.lng offer.user.longitude
+      marker.title offer.user.first_name
+      marker.infowindow "
+            <div class='text-center'>
+              <img src='#{offer.user.picture.url(:thumb)}' class='img-nice' width='50'>
+              <a href='#{offer_path(offer)}' class='nice-link info-link'>#{offer.nature}</a>
+            </div>
+            <p>#{offer.user.address}</p>"
     end
   end
 

@@ -136,7 +136,8 @@ class OffersController < ApplicationController
               <img src='#{offer.user.picture.url(:thumb)}' class='img-nice' width='50'>
               <a href='#{offer_path(offer)}' class='nice-link info-link'>#{offer.nature}</a>
             </div>
-            <p>#{offer.user.address}</p>"
+            <p>#{offer.user.address}</p>
+            <p>#{offer.one_price('€/heure', '€/semaine', '€/jour')}</p>"
     end
   end
 

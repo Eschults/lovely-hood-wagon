@@ -61,6 +61,9 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       postsIndex()
+      setTimeout(function() {
+        postsPicMaxSize()
+      }, 400)
       $(window).on('scroll', function() {
         var more_posts_url = $('.next a').attr('href')
         if(more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
@@ -73,7 +76,7 @@
               postsIndex()
               setTimeout(function() {
                 postsPicMaxSize()
-              }, 1500)
+              }, 400)
             }
           })
         }

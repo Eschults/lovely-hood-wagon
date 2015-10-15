@@ -93,5 +93,5 @@ function postsIndex() {
   adjustIconsSizeSimple(420);
   likePopover()
   resizeStuff()
-  postsPicMaxSize()
+  // postsPicMaxSize()
 }

@@ -10,20 +10,8 @@
 <div class="container margin-none margin-top-15 total-width">
   <div class="row total-width margin-none">
     <div class="col-md-6 padding-left-none">
-      <div class="map-box bg-color" id="map-box">
-        <div class="panel panel-default white-bg panel-map">
-          <div class="panel-heading">
-            <h4><%= t('.hood') %></h4>
-          </div>
-          <div class="panel-body padding-none" id="panel-body-map">
-            <div id="map"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 padding-none">
       <div class="bg-color" id="sidebar">
-        <div class="panel panel-default margin-btm-none white-bg">
+        <div class="panel panel-default white-bg">
           <div class="panel-heading">
             <h4><%= t('.offers') %></h4>
             <div class="btn-group float-right margin-top-neg-26">
@@ -50,6 +38,19 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-md-6 padding-none">
+      <div class="map-box bg-color" id="map-box">
+        <div class="panel panel-default white-bg panel-map">
+          <div class="panel-heading">
+            <h4><%= t('.hood') %></h4>
+          </div>
+          <div class="panel-body padding-none" id="panel-body-map">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -227,8 +228,6 @@
   <!-- Fancybox -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
   <%= javascript_tag do %>
     $(document).ready(function() {
       $('#offers-nav-link').addClass("hover");
@@ -237,7 +236,7 @@
         adjustNatureIconsSize();
         toggleFacets();
         adjustDivsHeights();
-        $('#sidebar').click();
+        //$('#sidebar').click();
       });
       var myLatlng = new google.maps.LatLng(
         '<%= current_user.latitude %>',

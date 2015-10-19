@@ -121,7 +121,7 @@
           </div>
         <% end %>
         <% if @user.exclusive_neighbors(current_user).size > 0 %>
-          <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
+          <div class="panel panel-default max-width-300 padding-none hidden-xs" id="neighbors_">
             <div class="panel-heading">
               <h4>
                 <%= "Autre".pluralize(@user.exclusive_neighbors(current_user).size) %><%= " voisin".pluralize(@user.exclusive_neighbors(current_user).size) %> (<%= @user.exclusive_neighbors(current_user).size %>)

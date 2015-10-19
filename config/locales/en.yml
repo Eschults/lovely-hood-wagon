@@ -469,6 +469,7 @@ en:
       first_sentence: "I am new to Lovely Hood, a peer-to-peer platform to share good deals between neighbors and consume smarter."
       second_sentence: "The more users we are in the neighborhood, the more useful it gets, so come and join me!"
       footnote: "For a neighborhood with more"
+      your_neighbor: "Your neighbor"
     home:
       title: "Welcome on Lovely Hood"
       description: "Lovely Hood is a peer-to-peer platform to share good deals between neighbors and consume smarter!"
@@ -487,7 +488,7 @@ en:
       lead_header: "What happens on Lovely Hood is between you and your neighbors"
       lead_content: "Lovely Hood makes you love your neighbors! Looking for a last-minute baby-sitter, two more chairs for a diner with friends, or some advice to find a good doctor in town? Publish a post on the Wall and wait for your neighbors inputs!"
       feature_1_header: "Connect"
-      feature_1_content: "Your community is composed of users living less than 10 minutes away from your home."
+      feature_1_content: "Your community is composed of users living less than 2km away from your home."
       feature_2_header: "Love & Care"
       feature_2_content: "Get to know your neighbors. Look after them, they'll look after you in return."
       feature_3_header: "Share"

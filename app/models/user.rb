@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
   end
 
   def neighbors
-    User.all.reject { |u1| u1.latitude.nil? }.select { |u| is_distant_in_km_from(u) <= 1.1 }.reject { |moi| moi == self }
+    User.all.reject { |u1| u1.latitude.nil? }.select { |u| is_distant_in_km_from(u) <= 2.1 }.reject { |moi| moi == self }
   end
 
   def neighbors_and_lh
@@ -491,7 +491,7 @@ class User < ActiveRecord::Base
 
       Avant tout, complétez votre <a href='/users/#{self.id}/edit'>profil</a>.
 
-      Ensuite, pour améliorer l'activité de votre quartier sur le site, nous vous invitons à ouvrir <a href='https://www.lovely-hood.com/early_birds_poster' target='_blank'>cette page</a> et à l'imprimer en quelques exemplaires.
+      Ensuite, pour améliorer l'activité de votre quartier sur le site, nous vous invitons à ouvrir <a target='_blank' href='https://www.lovely-hood.com/early_birds_poster' target='_blank'>cette page</a> et à l'imprimer en quelques exemplaires.
 
       Affichez ce petit mot dans les zones de passage de votre voisinage (le hall de votre immeuble, votre boulangerie, votre pharmacie, votre supermarché, votre bar ou restaurant préféré, etc...).
 

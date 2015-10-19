@@ -469,6 +469,7 @@ fr:
       first_sentence: "J'ai découvert Lovely Hood, une plateforme pour faciliter les échanges de bons procédés entre voisins."
       second_sentence: "Plus nous sommes nombreux à être inscrits dans le quartier, plus le service est utile, alors rejoignez-moi !"
       footnote: "Pour une vie de quartier plus"
+      your_neighbor: "Votre voisin(e)"
     home:
       title: "Bienvenue sur Lovely Hood"
       description: "Lovely Hood vous permet d'accéder à tous les biens et services proposés par des particuliers, à moins de 10 min à pied !"
@@ -487,7 +488,7 @@ fr:
       lead_header: "Tout se passe à moins de 10 min à pied de chez vous"
       lead_content: "Lovely Hood vous fait aimer vos voisins ! Besoin d'un baby-sitter d'urgence, de 2 chaises supplémentaires pour un dîner entre amis ou d'une bonne adresse de médecin généraliste dans le quartier ? Publiez un message sur le Wall et attendez les retours de vos voisins !"
       feature_1_header: "Proximité"
-      feature_1_content: "Votre communauté est constituée des utilisateurs résidant à moins de 10 min à pied de chez vous."
+      feature_1_content: "Votre communauté est constituée des utilisateurs résidant à moins de 2km à pied de chez vous."
       feature_2_header: "Love & Care"
       feature_2_content: "Communiquez avec vos voisins sur le Wall ou en message privé, pour mieux vous connaitre et vous entraider."
       feature_3_header: "Partage"

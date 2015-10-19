@@ -67,7 +67,7 @@
         </div>
       </div>
       <% if current_user == @user %>
-        <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
+        <div class="panel panel-default max-width-300 padding-none hidden-xs" id="neighbors_">
           <div class="panel-heading">
             <h4>
               <% if @user.exclusive_neighbors(current_user).size > 0 %>
@@ -93,7 +93,7 @@
         </div>
       <% else %>
         <% if @user.common_neighbors(current_user).size > 0 %>
-          <div class="panel panel-default max-width-300 padding-none" id="neighbors_">
+          <div class="panel panel-default max-width-300 padding-none hidden-xs" id="neighbors_">
             <div class="panel-heading">
               <h4>
                 <% if current_user == @user && @user.common_neighbors(current_user).size > 0 %>

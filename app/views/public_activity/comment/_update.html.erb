@@ -1,4 +1,11 @@
-<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link montserrat" %> <%= t('.commented') %>
+<%= link_to activity.owner.first_name, user_path(activity.owner), class: "nice-link montserrat" %>
+<% if activity.trackable.post.comments.size == 1 %>
+  <%= t('.commented') %>
+<% elsif activity.trackable.post.comments.size == 2 %>
+  <%= t('.and') %> <%= link_to activity.trackable.post.comments.first.user.first_name, user_path(activity.trackable.post.comments.first.user), class: "nice-link montserrat" %> <%= t('.two_comments') %>
+<% else %>
+  <%= t('.and') %> <%= link_to t('.people', number: activity.trackable.post.comments.size - 1), "#", class: "" %> <%= t('.two_comments') %>
+<% end %>
 <br>
 <% if activity.trackable.post.link_url || activity.trackable.post.picture_file_name %>
 </div>

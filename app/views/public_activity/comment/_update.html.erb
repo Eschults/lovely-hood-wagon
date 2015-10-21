@@ -5,7 +5,7 @@
   <%= t('.and') %> <%= link_to activity.trackable.post.comments.first.user.first_name, user_path(activity.trackable.post.comments.first.user), class: "nice-link montserrat" %> <%= t('.two_comments') %>
 <% else %>
   <% comment_list_string = "" %>
-  <% comment_list = activity.trackable.post.comments[0..-2].each { |comment| comment_list_string += ("<li>" + comment.user.first_name + "</li>") } %>
+  <% comment_list = activity.trackable.post.comments.map { |comment| comment.user }.uniq[0..-2].each { |comment| comment_list_string += ("<li>" + comment.user.first_name + "</li>") } %>
   <%= t('.and') %> <%= link_to t('.people', number: activity.trackable.post.comments.map { |comment| comment.user }.uniq.size - 1), "#", class: "link-popover people-link", data: { content: "<ul class='list-unstyled'>#{comment_list_string}</ul>" } %> <%= t('.two_comments') %>
 <% end %>
 <br>

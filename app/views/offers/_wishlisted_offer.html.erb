@@ -1,15 +1,15 @@
 <div class="offer-stream-box border-top" id="<%="offer_#{offer.id}"%>">
   <div class="row">
-    <div class="col-xs-1">
+    <div class="col-xs-1 padding-right-none">
       <div class="img-nature-box">
         <%= image_tag "#{offer.type_of_offer == "sell" ? "sell" : offer.nature}.png", class: "img-nature" %>
       </div>
     </div>
-    <div class="col-xs-9 padding-left-30">
+    <div class="col-xs-9 padding-left-30 padding-right-none">
       <h5 class="margin-none"><%= link_to offer.i18n_nature(params[:locale]), offer_path(offer), class: "offer-nature-link neutralize" %></h5>
       <p class="margin-top-10"><%= offer.description %> <%=link_to t('.show_offer'), offer_path(offer), class: "neutralize" %></p>
     </div>
-    <div class="col-xs-2 text-right padding-top-15 padding-left-none padding-right-20">
+    <div class="col-xs-2 text-right padding-top-15 padding-left-none">
       <h4 class="margin-none text-right price">
         <%= offer.one_price(t('.hourly_price'), t('.weekly_price'), t('.daily_price')).match(/^.*[€$]/)[0] %>
       </h4>
@@ -36,38 +36,38 @@
         <ul class="list-unstyled list-inline small">
           <% if offer.picture_file_name %>
             <li class="float-left">
-              <a href="#" class="see-img" id="<%="show_picture_#{offer.id}"%>">
+              <a href="#" class="see-img hidden-xs" id="<%="show_picture_#{offer.id}"%>">
                 <%= t('.show_pic') %>
               </a>
-              <a href="#" class="see-img hidden" id="<%="hide_picture_#{offer.id}"%>">
+              <a href="#" class="see-img hidden hidden-xs" id="<%="hide_picture_#{offer.id}"%>">
                 <%= t('.hide_pic') %>
               </a>
             </li>
           <% else %>
             <li class="float-left">
-              <a href="#" class="disabled">
+              <a href="#" class="disabled hidden-xs">
                 <%= t('.show_pic') %>
               </a>
             </li>
           <% end %>
           <li class="float-right">
             <%= link_to new_offer_booking_path(offer), class: "neutralize", id: "offer_#{offer.id}" do %>
-              <i class="fa fa-check"></i> <%= t('.book') %>
+              <i class="fa fa-check"></i> <span class="hidden-xs"><%= t('.book') %></span>
             <% end %>
           </li>
           <li class="float-right">
             <%= link_to new_offer_conversation_path(offer), class: "neutralize", id: "offer_#{offer.id}" do %>
-              <i class="fa fa-envelope"></i> <%= t('.contact_owner') %>
+              <i class="fa fa-envelope"></i> <span class="hidden-xs"><%= t('.contact_owner') %></span>
             <% end %>
           </li>
           <li class="float-right">
             <% if current_user.find_voted_items.include? offer %>
               <%= link_to unwish_offer_path(offer), remote: true, class: "neutralize wished", id: "wishOffer_#{offer.id}", method: :put do %>
-                <i class="fa fa-star"></i> <%= t('.unwish') %>
+                <i class="fa fa-star"></i> <span class="hidden-xs"><%= t('.unwish') %></span>
               <% end %>
             <% else %>
               <%= link_to wish_offer_path(offer), remote: true, class: "neutralize", id: "wishOffer_#{offer.id}", method: :put do %>
-                <i class="fa fa-star"></i> <%= t('.wish') %>
+                <i class="fa fa-star"></i> <span class="hidden-xs"><%= t('.wish') %></span>
               <% end %>
             <% end %>
           </li>

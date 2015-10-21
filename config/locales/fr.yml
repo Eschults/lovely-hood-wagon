@@ -595,6 +595,7 @@ fr:
         likes_this: "aime ça"
         likes: "aime une publication"
         and: "et "
+        people: "%{number} personnes"
         two_likes: "aiment une plublication"
         multiple_likes: "et %{number} personnes aiment une plublication"
         likes_number: "j'aime"

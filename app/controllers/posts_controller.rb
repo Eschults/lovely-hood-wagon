@@ -8,10 +8,13 @@ class PostsController < ApplicationController
       @posts = current_user.posts_in_scope
       @post = Post.new
       if current_user.admin
-        @activities = PublicActivity::Activity.order("created_at desc")
+        @comments = PublicActivity::Activity.order("created_at desc").where(key: "comment.update").group_by { |a| a.trackable.post }.values.map { |g| g.first }
+        @other_activities = PublicActivity::Activity.order("created_at desc").where(key: ["offer.create", "user.update", "post.like"]).group_by(&:trackable_id).values.map { |g| g.first }
       else
-        @activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self)
+        @comments = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self).where(key: "comment.update").group_by { |a| a.trackable.post }.values.map { |g| g.first }
+        @other_activities = PublicActivity::Activity.order("created_at desc").where(owner: current_user.neighbors_lh_and_self).where(key: ["offer.create", "user.update", "post.like"]).group_by(&:trackable_id).values.map { |g| g.first }
       end
+      @activities = @comments + @other_activities
       @items = @posts + @activities
       @items = @items.sort_by(&:created_at).reverse
       @items = Kaminari.paginate_array(@items).page(params[:page]).per(15)

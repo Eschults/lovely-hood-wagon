@@ -1460,6 +1460,15 @@ i {
   }
 }
 
+.people-link {
+  color: rgb(109, 132, 180);
+  &:hover,
+  &:active,
+  &:focus {
+    color: rgb(109, 132, 180);
+  }
+}
+
 #posts-stream {
   .popover {
     background-color: black;

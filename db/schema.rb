@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724093552) do
+ActiveRecord::Schema.define(version: 20151021133458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,8 +222,8 @@ ActiveRecord::Schema.define(version: 20150724093552) do
     t.boolean  "post_notif"
     t.boolean  "user_notif"
     t.boolean  "offer_notif"
-    t.boolean  "comment_notif"
-    t.boolean  "like_notif"
+    t.boolean  "comment_notif",               default: true
+    t.boolean  "like_notif",                  default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

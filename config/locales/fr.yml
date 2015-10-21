@@ -731,7 +731,7 @@ fr:
       from_lh: "depuis le siège de Lovely Hood"
   users:
     data_sharing_message:
-      data-sharing: "Cette information n'est partagée qu'une fois que vous avec confirmé une réservation avec un autre membre de Lovely Hood."
+      data-sharing: "Cette information n'est partagée qu'une fois que vous avez confirmé une réservation avec un autre membre de Lovely Hood."
     neighbor:
       years_old: " ans"
       send_message: "Envoyer un message"

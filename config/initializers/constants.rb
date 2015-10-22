@@ -170,7 +170,8 @@ NATURES = {
     'Cuiseur vapeur',
     'Centrifugeuse',
     'Boules de pétanque',
-    'Malette de poker'
+    'Malette de poker',
+    'Remorque'
   ],
   service: [
     'Baby-sitting',
@@ -370,7 +371,8 @@ NATURES = {
       'Steam cooker',
       'Centrifuge',
       'Petanque set',
-      'Poker set'
+      'Poker set',
+      'Trailer'
     ],
 
     service: [

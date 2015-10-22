@@ -463,6 +463,20 @@ en:
       no_offer: "Your wishlist is empty."
       browse_offers: "Browse offers"
   pages:
+    raclette:
+      title: "Lovely Hood"
+      description: "Inscrivez-vous et trouvez l'appareil à raclette qui vous manque pour votre soirée entre amis"
+      value_prop: "Nous avons l'appareil à raclette qu'il vous manque "
+      sign_up: "Sign up for free"
+      fb_connect: "Sign in with facebook"
+      password: "Password"
+      confirm: "Confirm password"
+      create_account: "Create account"
+      warning: "By signing up, you're agreeing the"
+      terms: "Terms and conditions"
+      connection: "Sign in"
+      password_forgotten: "Forgot your password?"
+      no_account: "No account yet?"
     early_birds_poster:
       title: "Print note - LH"
       dear_neighbors: "Dear neighbors,"
@@ -473,6 +487,7 @@ en:
     home:
       title: "Welcome on Lovely Hood"
       description: "Lovely Hood is a peer-to-peer platform to share good deals between neighbors and consume smarter!"
+      motto: "Spread #love in your #hood"
       catchline_1: "Share good deals, stuff and services with your neighbors."
       catchline_2: "Share good deals, stuff and services with your neighbors."
       see_more: "Learn more"

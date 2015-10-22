@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
-  layout 'home', only: :home
+  layout 'home', only: [:home, :raclette]
 
 
   def home
@@ -30,5 +30,9 @@ class PagesController < ApplicationController
 
   def sitemap
     authorize :page, :sitemap?
+  end
+
+  def raclette
+    authorize :page, :raclette?
   end
 end

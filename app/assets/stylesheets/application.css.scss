@@ -29,6 +29,7 @@ $lovely-dark-blue: rgb(68, 108, 179);
 @import "compass/css3";
 @import "neighbors";
 @import "mine";
+@import "raclette";
 // @import "home";
 
 // $bg-color: rgba(240, 240, 240, 1);
@@ -247,7 +248,7 @@ input,
 }
 
 .padding-btm-none {
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 }
 
 .padding-top-7 {

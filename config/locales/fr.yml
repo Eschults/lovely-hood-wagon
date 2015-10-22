@@ -463,6 +463,20 @@ fr:
       no_offer: "Vous n'avez pas d'annonce dans votre wish list."
       browse_offers: "Voir les annonces"
   pages:
+    raclette:
+      title: "Lovely Hood"
+      description: "Inscrivez-vous et trouvez l'appareil à raclette qui vous manque pour votre soirée entre amis"
+      value_prop: "Nous avons l'appareil à raclette qu'il vous manque "
+      sign_up: "Je m'inscris gratuitement"
+      fb_connect: "Connexion avec facebook"
+      password: "Mot de passe"
+      confirm: "Confirmation mot de passe"
+      create_account: "Créer un compte"
+      warning: "En créant un compte, vous acceptez les"
+      terms: "Conditions générales"
+      connection: "Se connecter"
+      password_forgotten: "Mot de passe oublié ?"
+      no_account: "Pas encore inscrit ?"
     early_birds_poster:
       title: "Mot à imprimer - LH"
       dear_neighbors: "Chers voisins,"
@@ -473,6 +487,7 @@ fr:
     home:
       title: "Bienvenue sur Lovely Hood"
       description: "Lovely Hood vous permet d'accéder à tous les biens et services proposés par des particuliers, à moins de 10 min à pied !"
+      motto: "Tout ce qu'il vous manque, près de chez vous"
       catchline_1: "La plateforme de partage entre voisins."
       catchline_2: "Votre réseau social de proximité."
       see_more: "En savoir plus"
@@ -486,7 +501,7 @@ fr:
       connection: "Se connecter"
       password_forgotten: "Mot de passe oublié ?"
       no_account: "Pas encore inscrit ?"
-      lead_header: "Tout se passe à moins de 10 min à pied de chez vous"
+      lead_header: "Tout se passe à moins de 10 min de chez vous"
       lead_content: "Lovely Hood vous fait aimer vos voisins ! Besoin d'un baby-sitter d'urgence, de 2 chaises supplémentaires pour un dîner entre amis ou d'un appareil à raclette ? Publiez un message sur le Wall et attendez les retours de vos voisins !"
       feature_1_header: "Proximité"
       feature_1_content: "Votre communauté est constituée des utilisateurs résidant à moins de 2km à pied de chez vous."

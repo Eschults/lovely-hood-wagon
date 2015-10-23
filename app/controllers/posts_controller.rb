@@ -64,7 +64,7 @@ class PostsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
-      @comment.send_comment_email if @post.user.comment_notif
+      @comment.send_comment_email if (@post.user.comment_notif && @post.user != @comment.user)
       @comment.create_activity :update, owner: current_user
       respond_to do |format|
         format.html { redirect_to :back }

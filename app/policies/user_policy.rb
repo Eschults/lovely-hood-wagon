@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.latitude.nil? || user.neighbors.include?(record) || user == record || user.admin? || record.admin?
+    true
   end
 
   def create?

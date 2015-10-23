@@ -190,7 +190,7 @@
           <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} - " : "" %><%= t('.member_since') %> <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
-          <% unless current_user == @user %>
+          <% unless current_user == @user || !current_user.is_neighbors_with?(@user) %>
             <%= link_to new_user_conversation_path(@user), class: "contact-user-link", class: "btn btn-success" do %>
               <i class="fa fa-send"></i> <%= t('.send_message') %>
             <% end %>

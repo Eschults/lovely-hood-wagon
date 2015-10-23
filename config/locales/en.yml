@@ -825,6 +825,7 @@ en:
       my_neighbors: "My neighbors"
       no_neighbor_yet: "You don't have any neighbor yet."
     show:
+      not_a_neighbor: "%{first_name} doesn't belong to your hood"
       complete_profile: "Thank you for completing fields with an *"
       title: "%{name}"
       description: "Get access to your passed, ongoing or upcoming bookings on your profile"

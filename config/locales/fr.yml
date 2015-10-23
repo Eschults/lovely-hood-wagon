@@ -825,6 +825,7 @@ fr:
       my_neighbors: "Mes voisins"
       no_neighbor_yet: "Vous n'avez pas encore de voisin sur Lovely Hood."
     show:
+      not_a_neighbor: "%{first_name} ne fait pas partie de votre voisinage"
       complete_profile: "Merci de compléter les champs avec une *"
       title: "%{name}"
       description: "Accéder à vos réservations passées, en cours et à venir directement sur votre profil Lovely Hood"

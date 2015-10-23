@@ -40,6 +40,15 @@ gem 'metainspector'
 gem "bootstrap-switch-rails"
 gem "kaminari"
 
+# React gems
+
+gem 'js-routes'
+gem 'react-rails', '1.2.0'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-classnames'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use postgresql as the database for Active Record

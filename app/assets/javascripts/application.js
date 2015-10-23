@@ -18,6 +18,9 @@
 //= require gmaps/google
 //= require chosen
 //= require scrollReveal
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 //= require bootstrap-datepicker
 //= require bootstrap-switch

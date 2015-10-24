@@ -20,8 +20,24 @@
 //= require scrollReveal
 //= require react
 //= require react_ujs
+//= require react-bootstrap
 //= require components
-//= require_tree .
+//= require mine
+//= require algoliasearch
+//= require chosen
+//= require date
+//= require directions
+//= require doubletap
+//= require googlemaps
+//= require home
+//= require jquery.nicescroll
+//= require messages
+//= require notices
+//= require offers
+//= require posts
+//= require reviews
+//= require stripe_customers
+//= require users
 //= require bootstrap-datepicker
 //= require bootstrap-switch
 

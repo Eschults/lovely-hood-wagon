@@ -171,7 +171,11 @@ NATURES = {
     'Centrifugeuse',
     'Boules de pétanque',
     'Malette de poker',
-    'Remorque'
+    'Remorque',
+    'Livres',
+    'Guides de voyage',
+    'DVD',
+    'Jeux vidéo'
   ],
   service: [
     'Baby-sitting',
@@ -372,7 +376,11 @@ NATURES = {
       'Centrifuge',
       'Petanque set',
       'Poker set',
-      'Trailer'
+      'Trailer',
+      'Books',
+      'Traveler\'s guides',
+      'DVD',
+      'Video games'
     ],
 
     service: [

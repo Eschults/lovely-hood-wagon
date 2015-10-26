@@ -25,8 +25,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     lh = User.find_by_first_name("Lovely Hood")
     authorize @booking
-    if current_user.stripe_customer_token
-      if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != ""
+    if current_user.stripe_customer_token || @booking.offer.one_price_int == 0
+      if Stripe::Customer.retrieve(current_user.stripe_customer_token).default_source != "" || @booking.offer.one_price_int == 0
         if @booking.save
           if @offer.user.conversation_with(lh)
             @conversation = @offer.user.conversation_with(lh)

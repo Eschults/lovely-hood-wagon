@@ -1693,3 +1693,24 @@ i {
   }
   margin-bottom: 15px;
 }
+
+@media(max-width: 768px) {
+  #users-show .col-sm-9 .panel,
+  #user-comments {
+    margin-left: -13px;
+    margin-right: -13px;
+    .img-review-box {
+      margin-left: -15px;
+      padding-left: 0;
+      .img-medium {
+        vertical-align: top;
+        height: 42px;
+        .img-60 {
+          width: 42px;
+          border-radius: 50%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

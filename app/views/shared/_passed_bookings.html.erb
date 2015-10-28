@@ -9,7 +9,7 @@
             <%= image_tag "#{booking.offer.nature}.png", width: "60" %>
           <% end %>
       </div>
-      <div class="user-name">
+      <div class="user-name hidden-xs">
           <%= booking.offer.i18n_nature(params[:locale]) %>
         <% end %>
       </div>
@@ -104,8 +104,8 @@
         </div>
         <br>
         <div class="booking-footer">
-          <div class="booking-date">
-            <%= booking.created_at.strftime("%b %Y") %>
+          <div class="booking-date hidden-xs">
+            <%= l(booking.created_at, format: "%B %Y") %>
           </div>
           <div class="user-link">
             <% if booking.offer.user == current_user %>

@@ -20,12 +20,17 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="disappear middle-weight">
             <%= link_to posts_path, class: "nav-btn-default", id: "wall-nav-link" do %>
-              <i class="fa fa-users"></i> <%= t('.wall') %>
+              <i class="fa fa-comments"></i> <%= t('.wall') %>
             <% end %>
           </li>
           <li class="disappear middle-weight">
             <%= link_to offers_path, class: "nav-btn-default", id: "offers-nav-link" do %>
               <i class="fa fa-home"></i> <%= t('.offers') %>
+            <% end %>
+          </li>
+          <li class="disappear middle-weight">
+            <%= link_to users_path, class: "nav-btn-default", id: "users-nav-link" do %>
+              <i class="fa fa-users"></i> <%= t('.neighbors') %>
             <% end %>
           </li>
           <li class="disappear middle-weight">
@@ -92,7 +97,7 @@
                   <%= t('.wall') %>
                 <% end %>
               </li>
-              <li>
+              <li class="appear">
                 <%= link_to users_path do %>
                   <%= t('.neighbors') %>
                 <% end %>

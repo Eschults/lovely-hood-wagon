@@ -97,7 +97,7 @@
             <%= t('.no_review') %>
           <% end %>
         </p>
-        <p><%= simple_format(@offer.description, {}, sanitize: false) %></p>
+        <p><%= simple_format(auto_link(@offer.description), {}, sanitize: false) %></p>
       </div>
       <div class="reviews" id="comments">
         <% if @offer.cto_reviews.size >= 1 %>

@@ -29,6 +29,11 @@
             <% end %>
           </li>
           <li class="disappear middle-weight">
+            <%= link_to users_path, class: "nav-btn-default", id: "users-nav-link" do %>
+              <i class="fa fa-users"></i> <%= t('.neighbors') %>
+            <% end %>
+          </li>
+          <li class="disappear middle-weight">
             <% if current_user.conversations.size > 0 %>
               <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), class: "nav-btn-default", id: "messages-nav-link" do %>
                 <i class="fa fa-envelope"></i> <%= t('.inbox') %>

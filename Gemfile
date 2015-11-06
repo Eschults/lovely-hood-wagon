@@ -31,6 +31,7 @@ gem 'rails_autolink'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "pry-rails"
 end
 
 gem "rails-i18n", "~> 4.0.0"

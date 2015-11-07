@@ -317,3 +317,19 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
+
+#share {
+  padding-top: 12px;
+  padding-bottom: 8px;
+  .share {
+    text-align: center;
+    .social-share-button-facebook {
+      display: inline-block;
+      width: 100px;
+      height: 40px;
+      background: image-url("fb-share.jpeg") no-repeat;
+      background-size: 100px 40px;
+      margin: 0 10px;
+    }
+  }
+}

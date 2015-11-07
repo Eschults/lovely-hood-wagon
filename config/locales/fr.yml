@@ -297,6 +297,7 @@ fr:
       log_out: "Deconnexion"
       new_offer: "Publier une annonce"
       sign_in: "Connexion"
+      share: "Faitez découvrir Lovely Hood à vos amis "
     navbar_map:
       wall: "Wall"
       offers: "Annonces"

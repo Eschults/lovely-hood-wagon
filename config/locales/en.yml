@@ -297,6 +297,7 @@ en:
       log_out: "Sign out"
       new_offer: "Create an offer"
       sign_in: "Sign in"
+      share: "Share Lovely Hood on "
     navbar_map:
       wall: "Wall"
       offers: "Offers"

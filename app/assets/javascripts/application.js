@@ -21,4 +21,4 @@
 //= require_tree .
 //= require bootstrap-datepicker
 //= require bootstrap-switch
-
+//= require social-share-button

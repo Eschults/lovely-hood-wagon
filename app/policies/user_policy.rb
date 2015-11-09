@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    !record.latitude.nil?
+    user.admin || !record.latitude.nil?
   end
 
   def create?

@@ -5,7 +5,9 @@ camille       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 pierre        = User.create(
                   first_name: "Pierre",
@@ -14,7 +16,9 @@ pierre        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 marie         = User.create(
                   first_name: "Marie",
@@ -23,7 +27,9 @@ marie         = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 amaury        = User.create(
                   first_name: "Amaury",
@@ -32,7 +38,9 @@ amaury        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 clement       = User.create(
                   first_name: "Clément",
@@ -41,7 +49,9 @@ clement       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 lucas         = User.create(
                   first_name: "Lucas",
@@ -50,7 +60,9 @@ lucas         = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 mohamed       = User.create(
                   first_name: "Mohamed",
@@ -59,16 +71,20 @@ mohamed       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 paul          = User.create(
-                  first_name: "Paul Adrien",
+                  first_name: "Paul-Adrien",
                   last_name: "JACQUES".downcase.capitalize,
                   email: "paul-adrien.jacques@hec.edu",
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 hamza         = User.create(
                   first_name: "Hamza",
@@ -77,7 +93,9 @@ hamza         = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 orlane        = User.create(
                   first_name: "Orlane",
@@ -86,7 +104,9 @@ orlane        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 laurie        = User.create(
                   first_name: "Laurie",
@@ -95,7 +115,9 @@ laurie        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 lorene        = User.create(
                   first_name: "Lorène",
@@ -104,7 +126,9 @@ lorene        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 marine        = User.create(
                   first_name: "Marine",
@@ -113,7 +137,9 @@ marine        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 leo           = User.create(
                   first_name: "Léo",
@@ -122,7 +148,9 @@ leo           = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 thierry       = User.create(
                   first_name: "Thierry",
@@ -131,7 +159,9 @@ thierry       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 benjamin      = User.create(
                   first_name: "Benjamin",
@@ -140,7 +170,9 @@ benjamin      = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 julie         = User.create(
                   first_name: "Julie",
@@ -149,7 +181,9 @@ julie         = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 morgane       = User.create(
                   first_name: "Morgane",
@@ -158,7 +192,9 @@ morgane       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 balthazar     = User.create(
                   first_name: "Balthazar",
@@ -167,7 +203,9 @@ balthazar     = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 younes        = User.create(
                   first_name: "Younes",
@@ -176,16 +214,20 @@ younes        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 jean_baptiste = User.create(
-                  first_name: "Jean Baptiste",
+                  first_name: "Jean-Baptiste",
                   last_name: "GUYOT".downcase.capitalize,
                   email: "jean-baptiste.guyot@hec.edu",
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 guillaume     = User.create(
                   first_name: "Guillaume",
@@ -194,7 +236,9 @@ guillaume     = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 martin        = User.create(
                   first_name: "Martin",
@@ -203,7 +247,9 @@ martin        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 hawai         = User.create(
                   first_name: "Hawaï",
@@ -212,7 +258,9 @@ hawai         = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 vianney       = User.create(
                   first_name: "Vianney",
@@ -221,7 +269,9 @@ vianney       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 clemence      = User.create(
                   first_name: "Clémence",
@@ -230,7 +280,9 @@ clemence      = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 marief        = User.create(
                   first_name: "Marie",
@@ -239,7 +291,9 @@ marief        = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )
 edouard       = User.create(
                   first_name: "Edouard",
@@ -248,5 +302,7 @@ edouard       = User.create(
                   password: "hec2015$",
                   street: "1 Rue de la Libération",
                   zip_code: "78350",
-                  city: "Jouy-en-Josas"
+                  city: "Jouy-en-Josas",
+                  identity_verified: true,
+                  address_verified: true
                 )

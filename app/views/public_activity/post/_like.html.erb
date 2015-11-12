@@ -2,7 +2,7 @@
 <% if activity.trackable.activities.size == 1 %>
   <%= t('.likes') %>
 <% elsif activity.trackable.activities.size == 2 %>
-  <%= t('.and') %> <%= link_to activity.trackable.activities.first.owner.first_name, user_path(activity.trackable.activities.first.owner), class: "nice-link montserrat" %> <%= t('.two_likes') %>
+  <%= t('.and') %> <%= link_to activity.trackable.activities.reject {|ac| ac.owner == activity.owner }.first.owner.first_name, user_path(activity.trackable.activities.reject {|ac| ac.owner == activity.owner }.first.owner), class: "nice-link montserrat" %> <%= t('.two_likes') %>
 <% else %>
   <% like_list_string = "" %>
   <% like_list = activity.trackable.activities[0..-2].each { |like| like_list_string += ("<li>" + like.owner.first_name + "</li>")} %>

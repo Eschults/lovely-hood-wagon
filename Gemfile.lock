@@ -410,14 +410,10 @@ DEPENDENCIES
   rails-assets-underscore!
   rails-i18n (~> 4.0.0)
   rails_12factor
-<<<<<<< HEAD
   react-rails (= 1.4.0)
-  sass-rails
-=======
   rails_autolink
   sass-rails (~> 4.0.5)
   sdoc (~> 0.4.0)
->>>>>>> master
   simple_form
   social-share-button
   spring

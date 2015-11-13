@@ -19,6 +19,7 @@
 //= require chosen
 //= require scrollReveal
 //= require react
+//= require react/react-dom
 //= require react_ujs
 //= require react-bootstrap
 //= require components

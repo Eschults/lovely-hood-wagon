@@ -42,7 +42,7 @@ gem "kaminari"
 # React gems
 
 gem 'js-routes'
-gem 'react-rails', '1.4.0'
+gem 'react-rails', '1.4.2'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-classnames'

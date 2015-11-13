@@ -80,7 +80,7 @@ GEM
     aws-sdk-v1 (1.59.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
-    babel-source (5.8.26)
+    babel-source (5.8.34)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
@@ -118,7 +118,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1.1)
+    coffee-script-source (1.10.0)
     compass (1.0.3)
       chunky_png (~> 1.2)
       compass-core (~> 1.0.2)
@@ -217,11 +217,11 @@ GEM
       faraday_middleware (~> 0.9.1)
       fastimage
       nokogiri (~> 1.6)
+    method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile (0.6.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     multi_json (1.11.2)
-    method_source (0.8.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     netrc (0.10.3)
@@ -318,7 +318,7 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    react-rails (1.4.0)
+    react-rails (1.4.2)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -410,10 +410,9 @@ DEPENDENCIES
   rails-assets-underscore!
   rails-i18n (~> 4.0.0)
   rails_12factor
-  react-rails (= 1.4.0)
   rails_autolink
-  sass-rails (~> 4.0.5)
-  sdoc (~> 0.4.0)
+  react-rails (= 1.4.2)
+  sass-rails
   simple_form
   social-share-button
   spring

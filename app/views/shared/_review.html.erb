@@ -8,12 +8,12 @@
               <% if booking.user.picture_file_name %>
                 <%= image_tag(booking.user.picture.url(:medium), { class: "img-60" }) %>
               <% else %>
-                <%= image_tag "user_pic-60.png" %>
+                <%= image_tag "user_pic-60.png", class: 'img-60' %>
               <% end %>
             </div>
           </div>
         <% end %>
-        <div class="user-name">
+        <div class="user-name hidden-xs">
           <%= link_to booking.user.first_name, user_path(booking.user), class: "link-unstyled" %>
         </div>
       <% elsif review.review_type == "otc" %>
@@ -23,12 +23,12 @@
               <% if booking.offer.user.picture_file_name %>
                 <%= image_tag(booking.offer.user.picture.url(:medium), { class: "img-60" }) %>
               <% else %>
-                <%= image_tag "user_pic-60.png"%>
+                <%= image_tag "user_pic-60.png", class: 'img-60' %>
               <% end %>
             </div>
           </div>
         <% end %>
-        <div class="user-name">
+        <div class="user-name hidden-xs">
           <%= link_to booking.offer.user.first_name, user_path(booking.offer.user), class: "link-unstyled" %>
         </div>
       <% end %>
@@ -41,8 +41,8 @@
           </div>
         </div>
         <div class="review-footer">
-          <div class="review-date">
-            <%= review.created_at.strftime("%b %Y") %>
+          <div class="review-date hidden-xs">
+            <%= l(review.created_at, format: "%B %Y") %>
           </div>
           <div class="offer-link">
             <%= link_to offer_path(booking.offer) do %>

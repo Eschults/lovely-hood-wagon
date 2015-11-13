@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   put 'bookings/:id/cancel', to: "bookings#cancel", as: "cancel_booking_2"
   scope '(:locale)', locale: /en/ do
     root to: "pages#home"
+    get "/raclette", to: "pages#raclette"
     get "/legal", to: "pages#legal"
     get "/terms", to: "pages#terms"
     get "/sitemap", to:"pages#sitemap"

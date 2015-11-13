@@ -18,6 +18,9 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(@user)
       flash.keep[:alert] = t(".complete_profile")
     end
+    unless @user.is_neighbors_with?(current_user) || @user == current_user
+      flash.now[:alert] = t(".not_a_neighbor", first_name: @user.first_name)
+    end
   end
 
   def edit

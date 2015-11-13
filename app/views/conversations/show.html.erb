@@ -50,7 +50,7 @@
                 <% end %> <%= t('.started_on') %> <%= l(@conversation.created_at, format: "%A %e %B à %Hh%M") %>
               </p>
             </div>
-            <% @conversation.messages.sort_by(&:updated_at).each do |message| %>
+            <% @conversation.messages.sort_by(&:created_at).each do |message| %>
               <%= render "message", message: message %>
             <% end %>
           </div>

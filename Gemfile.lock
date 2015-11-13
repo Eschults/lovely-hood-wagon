@@ -221,6 +221,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.8.1)
     multi_json (1.11.2)
+    method_source (0.8.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     netrc (0.10.3)
@@ -251,6 +252,12 @@ GEM
     pg (0.17.1)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -292,6 +299,8 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_autolink (1.1.6)
+      rails (> 3.1)
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
     railties (4.2.3)
@@ -331,6 +340,10 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    slop (3.6.0)
+    social-share-button (0.1.10)
+      coffee-rails
+      sass-rails
     spring (1.2.0)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -387,6 +400,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip
   pg
+  pry-rails
   public_activity
   pundit
   rails (= 4.2.3)
@@ -396,9 +410,16 @@ DEPENDENCIES
   rails-assets-underscore!
   rails-i18n (~> 4.0.0)
   rails_12factor
+<<<<<<< HEAD
   react-rails (= 1.4.0)
   sass-rails
+=======
+  rails_autolink
+  sass-rails (~> 4.0.5)
+  sdoc (~> 0.4.0)
+>>>>>>> master
   simple_form
+  social-share-button
   spring
   stripe!
   uglifier (>= 1.3.0)

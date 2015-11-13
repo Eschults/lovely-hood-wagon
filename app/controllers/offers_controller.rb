@@ -1,3 +1,4 @@
+require 'rails_autolink'
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :wish, :unwish, :publish, :hide]
   after_action :verify_policy_scoped, :only => [:index]

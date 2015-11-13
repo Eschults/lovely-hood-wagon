@@ -40,4 +40,4 @@
 //= require users
 //= require bootstrap-datepicker
 //= require bootstrap-switch
-
+//= require social-share-button

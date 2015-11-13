@@ -6,13 +6,13 @@ class UserPolicy < ApplicationPolicy
       elsif user.latitude.nil?
         scope.all.reject { |u| u.id }
       else
-        scope.all.reject { |u1| u1.latitude.nil? || u1.id == user.id }.select { |u| user.is_distant_in_km_from(u) <= 1.1 }.sort_by(&:updated_at).reverse
+        scope.all.reject { |u1| u1.latitude.nil? || u1.id == user.id }.select { |u| user.is_distant_in_km_from(u) <= 2.1 }.sort_by(&:updated_at).reverse
       end
     end
   end
 
   def show?
-    user.latitude.nil? || user.neighbors.include?(record) || user == record || user.admin?
+    user.admin || !record.latitude.nil?
   end
 
   def create?

@@ -38,6 +38,7 @@
 <%= content_for :js do %>
   <% javascript_tag do %>
     $(document).ready(function() {
+      $('#users-nav-link').addClass("hover");
       usersIndex()
       $(window).on('scroll', function() {
         var more_neighbors_url = $('.next a').attr('href')

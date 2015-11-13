@@ -75,7 +75,11 @@ function setDays() {
       $('#daily-price').removeClass('strong');
       $('#weekly-price').addClass('strong');
       $('#renting-price').text($('#weekly-price').text().split("€")[0])
-      total = parseInt(nbDays) / 7 * parseInt($('#weekly-price').text().split("€")[0]) * 1.08;
+      if(parseInt($('#weekly-price').text().split("€")[0])) {
+        total = parseInt(nbDays) / 7 * parseInt($('#weekly-price').text().split("€")[0]) * 1.08;
+      } else {
+        total = parseInt(nbDays) * parseInt($('#daily-price').text().split("€")[0]) * 1.08;
+      }
       $('#renting-total').text(Math.floor(total))
     } else {
       $('#renting-days-equation').text(nbDays);

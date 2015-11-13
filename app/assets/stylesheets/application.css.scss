@@ -19,6 +19,7 @@ $lovely-dark-blue: rgb(68, 108, 179);
 @import "font-awesome";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico|Montserrat:400,700");
 @import "chosen";
+@import "social-share-button";
 
 @import "navbar";
 @import "footer";
@@ -29,6 +30,7 @@ $lovely-dark-blue: rgb(68, 108, 179);
 @import "compass/css3";
 @import "neighbors";
 @import "mine";
+@import "raclette";
 // @import "home";
 
 // $bg-color: rgba(240, 240, 240, 1);
@@ -247,7 +249,7 @@ input,
 }
 
 .padding-btm-none {
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 }
 
 .padding-top-7 {
@@ -1460,6 +1462,15 @@ i {
   }
 }
 
+.people-link {
+  color: rgb(109, 132, 180);
+  &:hover,
+  &:active,
+  &:focus {
+    color: rgb(109, 132, 180);
+  }
+}
+
 #posts-stream {
   .popover {
     background-color: black;
@@ -1682,4 +1693,25 @@ i {
     margin: 0 auto;
   }
   margin-bottom: 15px;
+}
+
+@media(max-width: 768px) {
+  #users-show .col-sm-9 .panel,
+  #user-comments {
+    margin-left: -13px;
+    margin-right: -13px;
+    .img-review-box {
+      margin-left: -15px;
+      padding-left: 0;
+      .img-medium {
+        vertical-align: top;
+        height: 42px;
+        .img-60 {
+          width: 42px;
+          border-radius: 50%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
 }

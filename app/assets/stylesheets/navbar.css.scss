@@ -218,7 +218,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   left: 85%;
   margin-left: -5px;
   position: absolute;
-  bottom: 162px; // 26 * nb of lines + 6 + 19
+  bottom: 136px; // 26 * nb of lines + 6 + 19
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   border-top: 1px solid #cccccc;
@@ -316,4 +316,20 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   -webkit-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+}
+
+#share {
+  padding-top: 12px;
+  padding-bottom: 8px;
+  .share {
+    text-align: center;
+    .social-share-button-facebook {
+      display: inline-block;
+      width: 100px;
+      height: 40px;
+      background: image-url("fb-share.jpeg") no-repeat;
+      background-size: 100px 40px;
+      margin: 0 10px;
+    }
+  }
 }

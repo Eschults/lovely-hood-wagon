@@ -22,10 +22,13 @@ gem 'paperclip'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'rails_12factor', group: :production
 gem 'bootstrap-datepicker-rails'
+gem 'rails_autolink'
+gem 'social-share-button'
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "pry-rails"
 end
 
 gem "rails-i18n", "~> 4.0.0"

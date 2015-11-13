@@ -22,4 +22,8 @@ class PagePolicy < Struct.new(:user, :page)
   def sitemap?
     true
   end
+
+  def raclette?
+    true
+  end
 end

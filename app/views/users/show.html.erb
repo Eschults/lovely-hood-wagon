@@ -4,7 +4,7 @@
 <%= content_for(:description) do %>
   <%= t('.description') %>
 <% end %>
-<div class="container">
+<div class="container" id="users-show">
   <div class="row">
     <div class="col-sm-3">
       <div class="panel panel-default margin-top-20 max-width-300 padding-none border-none transparent-bg">
@@ -190,7 +190,7 @@
           <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} - " : "" %><%= t('.member_since') %> <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
-          <% unless current_user == @user %>
+          <% unless (current_user == @user || (!current_user.is_neighbors_with?(@user) && !current_user.admin?)) %>
             <%= link_to new_user_conversation_path(@user), class: "contact-user-link", class: "btn btn-success" do %>
               <i class="fa fa-send"></i> <%= t('.send_message') %>
             <% end %>
@@ -334,6 +334,8 @@
         adjustIconsSizeSimple(720);
         var neighborWidth = $('#neighbors .card').css('width')
         $('#neighbors .card').css('height', neighborWidth)
+        var neighborWidth2 = $('#neighbors_ .card').css('width')
+        $('#neighbors_ .card').css('height', neighborWidth2)
         var offerWidth = $('#offers .card').css('width')
         $('#offers .card').css('height', offerWidth)
       })

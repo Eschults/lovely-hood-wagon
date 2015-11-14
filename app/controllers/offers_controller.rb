@@ -84,21 +84,12 @@ class OffersController < ApplicationController
   end
 
   def publish
-    @offer.published = true
-    @offer.save
-    respond_to do |format|
-      format.html {}
-      format.js { flash.now[:notice] = t('.successfully_published', default: "Votre annonce %{offer} est désormais visible par vos voisins", offer: @offer.i18n_nature(params[:locale])) }
+    if @offer.published
+      @offer.published = false
+    else
+      @offer.published = true
     end
-  end
-
-  def hide
-    @offer.published = false
     @offer.save
-    respond_to do |format|
-      format.html {}
-      format.js { flash.now[:notice] = t('.successfully_hidden', default: "Votre annonce %{offer} est désormais masquée", offer: @offer.i18n_nature(params[:locale])) }
-    end
   end
 
   def show

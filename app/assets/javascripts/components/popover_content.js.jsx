@@ -4,7 +4,7 @@ var PopoverContent = React.createClass({
       backgroundImage: 'url(' + this.props.offer.pictureUrl + ')'
     }
     return(
-      <div>
+      <div className="popover-react">
         <a href={this.props.offer.offer_path}>
           <div className="popover-header" style={style}>
             <img src={this.props.offer.icon_path} />
@@ -14,15 +14,7 @@ var PopoverContent = React.createClass({
           {this.props.offer.description}
         </p>
         <a href={this.props.offer.edit_offer_path}>{this.props.offer.edit}</a>
-        <div className="form-group montserrat">
-          <select className="form-control offer_published">
-            <option>{this.props.offer.hidden}</option>
-            <option>{this.props.offer.published}</option>
-          </select>
-        </div>
-        <div className="text-center">
-          <span className="badge small-badge"> </span>
-        </div>
+        <Publish offer={this.props.offer} />
       </div>
     )
   }

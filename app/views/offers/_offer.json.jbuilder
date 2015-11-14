@@ -8,5 +8,6 @@ json.icon_path asset_path("#{offer.type_of_offer == "sell" ? "sell" : offer.natu
 json.edit t(".edit") + (offer.i18n_nature(params[:locale]))
 json.edit_offer_path edit_offer_path(offer)
 json.offer_path offer_path(offer)
-json.hidden t('.hidden')
-json.publbished t('.publbished')
+json.i18n_hidden t('.hidden')
+json.i18n_published t('.published')
+json.published offer.published

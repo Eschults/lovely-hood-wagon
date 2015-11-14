@@ -6,6 +6,7 @@ JsRoutes.setup do |config|
   #       before restarting your `rails s`.
   config.include = [
     /^offer$/,
-    /^edit_offer$/
+    /^edit_offer$/,
+    /^publish_offer$/
   ]
 end

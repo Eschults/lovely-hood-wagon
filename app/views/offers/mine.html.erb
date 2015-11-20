@@ -8,11 +8,11 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
       <div class="panel panel-default white-bg margin-top-15 padding-none" id="mine">
-        <div class="panel-heading border-btm-none">
+        <div class="panel-heading">
           <h4><%= t('.my_offers') %></h4>
         </div>
         <% if current_user.offers.size > 0 %>
-          <div class="loader panel-body border-top-221"> </div>
+          <div class="loader"> </div>
           <%= react_component "OfferList",
             render(template: 'offers/mine.json.jbuilder')
           %>

@@ -1,6 +1,7 @@
 function mine() {
   $(document).ready(function() {
     $('.loader').remove()
+    $('.panel-heading').addClass('border-btm-none')
     var width = $('.card').css('width')
     $('.card').css('height', width)
     $(window).on('resize', function() {

@@ -11,20 +11,17 @@
         <div class="panel-heading border-btm-none">
           <h4><%= t('.my_offers') %></h4>
         </div>
-        <div class="panel-body padding-none border-top-221">
-          <% if current_user.offers.size > 0 %>
-            <% current_user.offers.sort_by(&:updated_at).reverse.each do |offer| %>
-              <div class="col-xs-6 col-sm-4" id="popContainer_<%= offer.id %>">
-                <%= render "offer", offer: offer %>
-              </div>
-            <% end %>
-          <% else %>
-            <div class="offer-stream-box border-top">
-              <p><%= t('.no_offer') %></p>
-              <p><%= link_to "Publier une annonce", new_offer_path %></p>
-            </div>
-          <% end %>
-        </div>
+        <% if current_user.offers.size > 0 %>
+          <div class="loader panel-body border-top-221"> </div>
+          <%= react_component "OfferList",
+            render(template: 'offers/mine.json.jbuilder')
+          %>
+        <% else %>
+          <div class="offer-stream-box border-top-221">
+            <p><%= t('.no_offer') %></p>
+            <p><%= link_to "Publier une annonce", new_offer_path %></p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

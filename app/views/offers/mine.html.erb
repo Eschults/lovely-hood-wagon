@@ -12,11 +12,12 @@
           <h4><%= t('.my_offers') %></h4>
         </div>
         <% if current_user.offers.size > 0 %>
+          <div class="loader panel-body border-top-221"> </div>
           <%= react_component "OfferList",
             render(template: 'offers/mine.json.jbuilder')
           %>
         <% else %>
-          <div class="offer-stream-box border-top">
+          <div class="offer-stream-box border-top-221">
             <p><%= t('.no_offer') %></p>
             <p><%= link_to "Publier une annonce", new_offer_path %></p>
           </div>

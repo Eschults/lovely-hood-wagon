@@ -1,18 +1,19 @@
 function mine() {
   $(document).ready(function() {
+    $('.loader').remove()
     var width = $('.card').css('width')
     $('.card').css('height', width)
-    $('.card').popover({
-      html: true,
-      placement: function(context, source) {
-        var position = $(source).offset().top;
-        if(position < 300) {
-          return "bottom"
-        } else {
-          return "top"
-        }
-      }
-    })
+    // $('.card').popover({
+    //   html: true,
+    //   placement: function(context, source) {
+    //     var position = $(source).offset().top;
+    //     if(position < 300) {
+    //       return "bottom"
+    //     } else {
+    //       return "top"
+    //     }
+    //   }
+    // })
     $(window).on('resize', function() {
       var width = $('.card').css('width')
       $('.card').css('height', width)
@@ -21,7 +22,7 @@ function mine() {
     //   $(this).click()
     // })
     $('.card').on('dblclick', function() {
-      location.href = $(this).children().last().attr('href')
+      location.href = $(this).children().last().data('href')
     })
     // $('.card').on('dbltap', function() {
     //   location.href = $(this).children().last().attr('href')

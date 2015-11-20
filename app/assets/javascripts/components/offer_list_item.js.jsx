@@ -3,6 +3,7 @@ var Popover = ReactBootstrap.Popover
 
 var OfferListItem = React.createClass({
   render: function() {
+    var position = this.props.reactKey > 2 ? "top" : "bottom"
     var style = {
       backgroundImage: 'url(' + this.props.offer.pictureUrl + ')'
     }
@@ -20,12 +21,13 @@ var OfferListItem = React.createClass({
           <span className="card-user">
             <img src={this.props.offer.icon} />
           </span>
-          <OverlayTrigger trigger="click" placement="top" positionLeft={200} positionTop={50} overlay={
+          <OverlayTrigger trigger="click" rootClose placement={position} overlay={
             <Popover id={'popover_' + this.props.offer.id}>
               <PopoverContent offer={this.props.offer} />
             </Popover>
           }>
-            <div className="card-link" id={'myOffer_' + this.props.offer.id}></div>
+            <div className="card-link" id={'myOffer_' + this.props.offer.id} data-href={this.props.offer.offer_path}>
+            </div>
           </OverlayTrigger>
         </div>
       </div>

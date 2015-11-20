@@ -23,31 +23,37 @@ class ReviewsController < ApplicationController
     if @review.review_type == "cto"
       if @review.quality_price_rating
       else
-        flash[:alert] = "Merci de noter entre 1 et 5 le rapport qualité/prix"
+        flash.now[:alert] = "Merci de noter entre 1 et 5 le rapport qualité/prix"
+        render :new
       end
     elsif @review.booking.offer.type_of_offer == "rent"
       if @review.respect_rating
       else
-        flash[:alert] = "Merci de noter entre 1 et 5 le respect du matériel"
+        flash.now[:alert] = "Merci de noter entre 1 et 5 le respect du matériel"
+        render :new
       end
     end
 
-    if @review.save
-      # validations générales
-      if @review.communication_rating
-        if @review.punctuality_rating
-          if @review.recommendation != nil
+    # validations générales
+    if @review.communication_rating
+      if @review.punctuality_rating
+        if @review.recommendation != nil
+          if @review.save
             redirect_to user_path(@booking.other_user(current_user), anchor: "reviews")
           else
-            flash[:alert] = "Merci de nous donner votre recommandation"
+            flash.now[:alert] = "Merci de mettre un commentaire"
+            render :new
           end
         else
-          flash[:alert] = "Merci de noter entre 1 et 5 la ponctualité"
+          flash.now[:alert] = "Merci de nous donner votre recommandation"
+          render :new
         end
       else
-        flash[:alert] = "Merci de noter entre 1 et 5 la communication"
+        flash.now[:alert] = "Merci de noter entre 1 et 5 la ponctualité"
+        render :new
       end
     else
+      flash.now[:alert] = "Merci de noter entre 1 et 5 la communication"
       render :new
     end
   end

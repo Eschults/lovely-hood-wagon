@@ -755,6 +755,7 @@ en:
       offer: "offer"
       published: " published"
       no_offer_yet: "No offer yet"
+      no_desc: "No description yet"
     edit:
       title: "My account - %{name} - LH"
       description: "Settings"

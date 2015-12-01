@@ -36,16 +36,6 @@
         </div>
         <div class="panel-body panel-body-conversation padding-none">
           <div id="messages">
-            <div class="stick-down-target padding-5">
-              <p class="small gray-lighter text-center">
-                <%= t('.conversation_with') %>
-                <% if @conversation.user1 == current_user %>
-                  <%= @conversation.user2.first_name %>
-                <% else %>
-                  <%= @conversation.user1.first_name %>
-                <% end %> <%= t('.started_on') %> <%= l(@conversation.created_at, format: "%A %e %B à %Hh%M") %>
-              </p>
-            </div>
             <div class="loader"> </div>
             <%= react_component "MessageList",
               render(template: 'conversations/show.json.jbuilder') %>

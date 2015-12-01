@@ -12,13 +12,9 @@
           <h4><%= t('.inbox') %></h4>
         </div>
         <div class="panel-body padding-none panel-body-inbox ">
-          <% current_user.conversations.sort_by { |c| c.messages.last.created_at }.reverse.each do |conversation| %>
-            <% if conversation.messages.select { |message| message.writer != current_user }.map { |message| message.read_at }.include? nil %>
-              <%= render "conversation_with_unread_messages", conversation: conversation %>
-            <% else %>
-              <%= render "conversation", conversation: conversation %>
-            <% end %>
-          <% end %>
+          <div class="loader"> </div>
+          <%= react_component "ConversationList",
+              render(template: 'conversations/show.json.jbuilder') %>
           <div class="conversation-preview" id="no-highlight">
             <p class="small margin-btm-3 gray-lighter text-center">
               <%= t('.end_of_messages') %>
@@ -50,9 +46,9 @@
                 <% end %> <%= t('.started_on') %> <%= l(@conversation.created_at, format: "%A %e %B à %Hh%M") %>
               </p>
             </div>
-            <% @conversation.messages.sort_by(&:created_at).each do |message| %>
-              <%= render "message", message: message %>
-            <% end %>
+            <div class="loader"> </div>
+            <%= react_component "MessageList",
+              render(template: 'conversations/show.json.jbuilder') %>
           </div>
           <div class="col-xs-12 stick-down-target reply">
             <%= form_for([@conversation, @message], method: :put, remote: true, url: reply_conversation_path(@conversation)) do |f| %>
@@ -72,6 +68,7 @@
 <%= content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
+      $('.loader').remove()
       togglePaddingAndBorder();
       stickDown();
       $(window).on('resize', function() {

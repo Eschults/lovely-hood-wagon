@@ -93,6 +93,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @conversations = current_user.conversations.sort_by{ |c| c.messages.last.created_at }.reverse
     @conversation.messages.each do |message|
       unless message.writer == current_user
         message.read_at = Time.now unless message.read_at

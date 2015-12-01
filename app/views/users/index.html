@@ -11,24 +11,23 @@
         <div class="panel-heading border-btm-none">
           <h4><%= t('.my_neighbors') %></h4>
         </div>
-        <div class="panel-body padding-none border-top-221">
-          <div id="neighbors-stream">
-            <% if @users.size > 0 %>
-              <% @users.sort_by(&:updated_at).reverse.each do |neighbor| %>
-                <div class="col-xs-6 col-sm-4">
-                  <%= render "neighbor", neighbor: neighbor %>
-                </div>
-              <% end %>
-            <% else %>
+        <div class="border-top-221">
+          <% if @users.size > 0 %>
+            <div class="loader"> </div>
+            <%= react_component "NeighborList",
+              render(template: 'users/index.json.jbuilder')
+            %>
+          <% else %>
+            <div class="panel-body padding-none border-top-221">
               <div class="offer-stream-box border-top">
                 <p><%= t('.no_neighbor_yet') %></p>
               </div>
-            <% end %>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 text-center">
-              <%= paginate @users %>
             </div>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <%= paginate @users %>
           </div>
         </div>
       </div>
@@ -38,6 +37,7 @@
 <%= content_for :js do %>
   <% javascript_tag do %>
     $(document).ready(function() {
+      $('.loader').remove()
       $('#users-nav-link').addClass("hover");
       usersIndex()
       $(window).on('scroll', function() {

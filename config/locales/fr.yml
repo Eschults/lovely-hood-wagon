@@ -755,6 +755,7 @@ fr:
       offer: "annonce"
       published: " publiée"
       no_offer_yet: "Pas encore d'annonce"
+      no_desc: "Pas encore de description"
     edit:
       title: "Mon compte - %{name} - LH"
       description: "Gérez votre compte"

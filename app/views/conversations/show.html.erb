@@ -43,7 +43,7 @@
           <div class="stick-down-target reply">
             <%= form_for([@conversation, @message], method: :put, remote: true, url: reply_conversation_path(@conversation)) do |f| %>
               <div class="form-group margin-btm-10">
-                <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
+                <%= f.text_area :content, value:"", placeholder: t('.write_a_reply', default: "Votre réponse..."), class: "form-control", id: "message-input" %>
               </div>
               <div class="form-group margin-btm-none text-right">
                 <%= f.submit t('.submit'), class: "btn btn-primary" %>

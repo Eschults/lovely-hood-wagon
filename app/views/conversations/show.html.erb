@@ -40,7 +40,7 @@
             <%= react_component "MessageList",
               render(template: 'conversations/show.json.jbuilder') %>
           </div>
-          <div class="col-xs-12 stick-down-target reply">
+          <div class="stick-down-target reply">
             <%= form_for([@conversation, @message], method: :put, remote: true, url: reply_conversation_path(@conversation)) do |f| %>
               <div class="form-group margin-btm-10">
                 <%= f.text_area :content, value:"", placeholder: "Votre réponse...", class: "form-control", id: "message-input" %>
@@ -60,10 +60,8 @@
     $(document).ready(function(e) {
       $('.loader').remove()
       togglePaddingAndBorder();
-      stickDown();
       $(window).on('resize', function() {
         togglePaddingAndBorder();
-        stickDown();
       })
       $('#messages-nav-link').addClass("hover");
       $("#messages").niceScroll({

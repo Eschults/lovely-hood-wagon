@@ -1,7 +1,7 @@
 var ConversationListItem = React.createClass({
   getInitialState() {
     return {
-      read: this.props.read
+      read: this.props.conversation.read
     };
   },
   render: function() {

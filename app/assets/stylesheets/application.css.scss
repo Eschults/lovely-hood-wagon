@@ -1170,6 +1170,15 @@ a.disabled {
   }
 }
 
+.one-line {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
 .panel-body {
   border-bottom: none;
 }

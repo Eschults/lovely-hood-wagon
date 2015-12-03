@@ -11,7 +11,7 @@
         <div class="panel-heading border-btm-light">
           <h4><%= t('.inbox') %></h4>
         </div>
-        <div class="panel-body padding-none panel-body-inbox ">
+        <div class="panel-body padding-none panel-body-inbox" id="conversations">
           <div class="loader"> </div>
           <%= react_component "ConversationList",
               render(template: 'conversations/show.json.jbuilder') %>

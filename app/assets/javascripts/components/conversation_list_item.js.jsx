@@ -1,13 +1,14 @@
 var ConversationListItem = React.createClass({
   getInitialState() {
     return {
-      conversation: this.props.conversation
+      conversation: this.props.conversation,
+      selected: this.props.conversation.is_selected_conversation
     };
   },
   render: function() {
     var read = this.state.conversation.read
     var isSenderCurrentUser = this.props.conversation.is_last_message_sender_current_user
-    var isSelectedConversation = this.props.conversation.is_selected_conversation
+    var isSelectedConversation = this.state.selected
     var iClasses = classNames({
       "fa": isSenderCurrentUser,
       "gray-lighter": isSenderCurrentUser,
@@ -53,11 +54,13 @@ var ConversationListItem = React.createClass({
         })
         var heroConversation = conversation[0]
         that.setState({
-          conversation: heroConversation
+          conversation: heroConversation,
+          selected: heroConversation.is_selected_conversation
         });
         ReactDOM.render(<MessageList messages={data.messages} />, document.getElementById('messages'))
         $('#messages').animate({scrollTop: $('#message_' + data.lastMessageId).offset().top + 74}, "slow")
         $('#first-name').text(data.firstName)
+        ReactDOM.render(<ConversationList conversations={data.conversations} />, document.getElementById('conversations'))
       }
     });
   }

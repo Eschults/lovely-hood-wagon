@@ -240,6 +240,10 @@ input,
   margin-top: -10px;
 }
 
+.margin-top-none {
+  margin-top: 0 !important;
+}
+
 .padding-btm-5 {
   padding-bottom: 5px;
 }
@@ -1752,5 +1756,13 @@ i {
         }
       }
     }
+  }
+}
+
+.selected-conversation {
+  background-color: #22A7F0;
+  color: white;
+  h5.first-name {
+    color: white !important;
   }
 }

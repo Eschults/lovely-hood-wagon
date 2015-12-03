@@ -7,6 +7,7 @@ JsRoutes.setup do |config|
   config.include = [
     /^offer$/,
     /^edit_offer$/,
-    /^publish_offer$/
+    /^publish_offer$/,
+    /^conversation$/
   ]
 end

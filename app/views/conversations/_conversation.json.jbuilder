@@ -6,3 +6,4 @@ json.last_content conversation.messages.sort_by(&:created_at).last.content
 json.read conversation.messages.sort_by(&:created_at).last.read_at ? true : false
 json.last_message_created_at l(conversation.messages.sort_by(&:created_at).last.created_at, format: "%e %b")
 json.is_last_message_sender_current_user conversation.messages.sort_by(&:created_at).last.writer == current_user ? true : false
+json.is_selected_conversation @conversation.id == conversation.id

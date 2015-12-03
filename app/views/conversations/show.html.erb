@@ -26,7 +26,7 @@
     <div class="col-md-8 conversation">
       <div class="panel panel-default margin-top-15 padding-none" id="panel-conversation">
         <div class="panel-heading border-btm-light">
-          <h4>
+          <h4 id="first-name">
             <% if @conversation.user1 == current_user %>
               <%= @conversation.user2.first_name %>
             <% else %>

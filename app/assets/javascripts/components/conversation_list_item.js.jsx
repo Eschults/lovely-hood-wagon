@@ -1,17 +1,15 @@
 var ConversationListItem = React.createClass({
   getInitialState() {
     return {
-      conversation: this.props.conversation,
-      selected: this.props.conversation.is_selected_conversation
+      conversation: this.props.conversation
     };
   },
   render: function() {
     var read = this.state.conversation.read
     var isSenderCurrentUser = this.props.conversation.is_last_message_sender_current_user
-    var isSelectedConversation = this.state.selected
+    var isSelectedConversation = this.props.conversation.is_selected_conversation
     var iClasses = classNames({
       "fa": isSenderCurrentUser,
-      "gray-lighter": isSenderCurrentUser,
       "fa-check": isSenderCurrentUser && read,
       "fa-reply": isSenderCurrentUser && !read,
       "badge": !isSenderCurrentUser,
@@ -49,18 +47,19 @@ var ConversationListItem = React.createClass({
       type: 'GET',
       url: Routes.conversation_path(this.props.conversation.id, { format: 'json' }),
       success: function(data) {
+        ReactDOM.render(<MessageList messages={data.messages} started_at={data.started_at} lastMessageId={data.lastMessageId}/>, document.getElementById('messages'))
+        $('#messages').scrollTop($('#messages')[0].scrollHeight);
+        $('#first-name').text(data.firstName)
+        ReactDOM.render(<ConversationList conversations={data.conversations} conversation_id={data.conversation_id} />, document.getElementById('conversations'))
         var conversation = data.conversations.filter(function(item) {
           return item.id == data.conversation_id
         })
         var heroConversation = conversation[0]
         that.setState({
-          conversation: heroConversation,
-          selected: heroConversation.is_selected_conversation
+          conversation: heroConversation
         });
-        ReactDOM.render(<MessageList messages={data.messages} />, document.getElementById('messages'))
-        $('#messages').animate({scrollTop: $('#message_' + data.lastMessageId).offset().top + 74}, "slow")
-        $('#first-name').text(data.firstName)
-        ReactDOM.render(<ConversationList conversations={data.conversations} />, document.getElementById('conversations'))
+        ReactDOM.render(<CreateMessage conversation_id={data.conversation_id} write_a_reply={data.write_a_reply} submit={data.submit} />, document.getElementById('new_message'))
+        $('#message-input').focus()
       }
     });
   }

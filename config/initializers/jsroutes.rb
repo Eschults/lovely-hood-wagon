@@ -8,6 +8,7 @@ JsRoutes.setup do |config|
     /^offer$/,
     /^edit_offer$/,
     /^publish_offer$/,
-    /^conversation$/
+    /^conversation$/,
+    /^reply_conversation$/
   ]
 end

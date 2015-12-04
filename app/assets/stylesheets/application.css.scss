@@ -540,6 +540,18 @@ input,
   height: 10px;
 }
 
+.conversation-preview {
+  cursor: pointer;
+  .fa-reply,
+  .fa-check {
+    color: rgb(237, 239, 237);
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+}
+
 .gray-lighter,
 a.gray-lighter {
   color: $gray-lighter !important;
@@ -837,7 +849,7 @@ a.gray-lighter {
 }
 
 #messages {
-  max-height: 376px;
+  max-height: 386px;
   scroll: auto;
 }
 
@@ -1072,7 +1084,13 @@ a.disabled {
 }
 
 .conversation-preview:hover {
-  background-color: #F2F2F2;
+  background-color: rgb(251, 251, 251);
+  i.small-badge-off {
+    background-color: white !important;
+  }
+  i.fa {
+    color: white !important;
+  }
 }
 
 .review {
@@ -1763,10 +1781,18 @@ i {
   }
 }
 
-.selected-conversation {
-  background-color: #22A7F0;
-  color: white;
-  h5.first-name {
+.selected-conversation,
+.selected-conversation:hover {
+  .gray-lighter {
+    color: white !important;
+  }
+  background-color: #3A5795;
+  .small-badge-off {
+    background-color: white !important;
+  }
+  color: white ;
+  h5.first-name,
+  i {
     color: white !important;
   }
 }

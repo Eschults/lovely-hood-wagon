@@ -5,7 +5,7 @@
   <%= t('.description') %>
 <% end %>
 <div class="container">
-  <div class="row">
+  <div class="row prerender">
     <div class="col-md-4 inbox">
       <div class="panel panel-default margin-top-15 padding-none white-bg" id="panel-inbox">
         <div class="panel-heading border-btm-light">
@@ -13,13 +13,6 @@
         </div>
         <div class="panel-body padding-none panel-body-inbox" id="conversations">
           <div class="loader"> </div>
-          <%= react_component "ConversationList",
-              render(template: 'conversations/show.json.jbuilder') %>
-          <div class="conversation-preview" id="no-highlight">
-            <p class="small margin-btm-3 gray-lighter text-center">
-              <%= t('.end_of_messages') %>
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -37,22 +30,28 @@
         <div class="panel-body panel-body-conversation padding-none">
           <div id="messages">
             <div class="loader"> </div>
-            <%= react_component "MessageList",
-              render(template: 'conversations/show.json.jbuilder') %>
           </div>
           <div id="new_message">
-            <%= react_component "CreateMessage",
-              render(template: 'conversations/show.json.jbuilder') %>
+            <div class="stick-down-target reply" >
+              <div class="form-group margin-btm-10">
+                <textarea class="form-control" id="message-input"></textarea>
+              </div>
+              <div class="form-group margin-btm-none text-right">
+                <button class="btn btn-post"><%= t('.submit', default: 'Envoyer') %></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <%= react_component "Inbox",
+    render(template: 'conversations/show.json.jbuilder') %>
 </div>
 <%= content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(e) {
-      $('.loader').remove()
+      $('.prerender').remove()
       togglePaddingAndBorder();
       $(window).on('resize', function() {
         togglePaddingAndBorder();

@@ -1261,12 +1261,12 @@ a.disabled {
   border-top-left-radius: 0;
 }
 
-.container > .row > .inbox {
+.container .row > .inbox {
   padding-right: 0;
   border-right: none;
 }
 
-.container > .row > .conversation {
+.container .row > .conversation {
   padding-left: 0;
 }
 

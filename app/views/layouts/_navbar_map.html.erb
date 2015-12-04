@@ -35,7 +35,7 @@
           </li>
           <li class="disappear middle-weight">
             <% if current_user.conversations.size > 0 %>
-              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.updated_at }.last, anchor: "message-input")), class: "nav-btn-default", id: "messages-nav-link" do %>
+              <%= link_to (conversation_path(current_user.conversations.sort_by { |c| c.messages.last.created_at }.last)), class: "nav-btn-default", id: "messages-nav-link" do %>
                 <i class="fa fa-envelope"></i> <%= t('.inbox') %>
                 <% if current_user.unread_conversations > 0 %>
                   <span class="badge">

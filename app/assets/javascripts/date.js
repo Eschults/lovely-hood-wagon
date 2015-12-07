@@ -27,6 +27,7 @@ function month(date) {
   }
 }
 
+
 function year(date) {
   // Tue Feb 24 2015 01:00:00 GMT+0100 (CET)
   return date.slice(11, 15);

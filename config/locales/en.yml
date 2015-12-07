@@ -251,6 +251,7 @@ en:
       conversation_with: "Conversation with"
       started_on: "started on"
       submit: "Send"
+      write_a_reply: "Write a reply..."
   devise:
     passwords:
       edit:

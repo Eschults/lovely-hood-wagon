@@ -251,6 +251,7 @@ fr:
       conversation_with: "Conversation avec"
       started_on: "débutée le"
       submit: "Envoyer"
+      write_a_reply: "Votre réponse..."
   devise:
     passwords:
       edit:

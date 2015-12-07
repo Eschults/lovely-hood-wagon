@@ -93,6 +93,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @conversations = current_user.conversations.sort_by{ |c| c.messages.last.created_at }.reverse
     @conversation.messages.each do |message|
       unless message.writer == current_user
         message.read_at = Time.now unless message.read_at
@@ -107,8 +108,8 @@ class ConversationsController < ApplicationController
     @message.writer = current_user
     @message.conversation = @conversation
     @message.save
-    @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
-    respond_with(@message)
+    @conversations = current_user.conversations.sort_by{ |c| c.messages.last.created_at }.reverse
+    # @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
   end
 
   def reply_server

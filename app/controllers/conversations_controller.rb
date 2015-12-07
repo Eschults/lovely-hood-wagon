@@ -109,7 +109,7 @@ class ConversationsController < ApplicationController
     @message.conversation = @conversation
     @message.save
     @conversations = current_user.conversations.sort_by{ |c| c.messages.last.created_at }.reverse
-    # @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
+    @conversation.send_new_message_email unless @conversation.user1_id == 2 || @conversation.user2_id == 2
   end
 
   def reply_server

@@ -4,13 +4,24 @@ var Inbox = React.createClass({
       conversations: this.props.conversations,
       selectedConversationId: this.props.conversation_id,
       firstName: this.props.first_name,
-      messages: this.props.messages
+      messages: this.props.messages,
+      focus: true
     }
   },
   render: function() {
+    var inboxClasses = classNames({
+      "col-sm-4": true,
+      "inbox": true,
+      "hidden-xs": this.state.focus
+    })
+    var conversationClasses = classNames({
+      "col-sm-8": true,
+      "conversation": true,
+      "hidden-xs": !this.state.focus
+    })
     return(
       <div className="row">
-        <div className="col-md-4 inbox">
+        <div className={inboxClasses}>
           <div className="panel panel-default margin-top-15 padding-none white-bg" id="panel-inbox">
             <div className="panel-heading border-btm-light">
               <h4>{this.props.inbox}</h4>
@@ -25,11 +36,11 @@ var Inbox = React.createClass({
             </div>
           </div>
         </div>
-        <div className="col-md-8 conversation">
+        <div className={conversationClasses}>
           <div className="panel panel-default margin-top-15 padding-none" id="panel-conversation">
             <div className="panel-heading border-btm-light">
-              <h4 id="first-name">
-                {this.state.firstName}
+              <h4 className="montserrat" id="first-name">
+                <a className="hidden-sm hidden-md hidden-lg text-decoration-none" onClick={this.handleBack}>{this.props.inbox} > </a>{this.state.firstName}
               </h4>
             </div>
             <div className="panel-body panel-body-conversation padding-none">
@@ -46,7 +57,7 @@ var Inbox = React.createClass({
     )
   },
   handleConversationSelection: function(conversationId) {
-    var that = this;
+    var that = this
     $.ajax({
       type: 'GET',
       url: Routes.conversation_path(conversationId, { format: 'json' }),
@@ -55,7 +66,8 @@ var Inbox = React.createClass({
           conversations: data.conversations,
           selectedConversationId: data.conversation_id,
           firstName: data.first_name,
-          messages: data.messages
+          messages: data.messages,
+          focus: true
         })
         $('#messages').scrollTop($('#messages')[0].scrollHeight);
         $('#message-input').focus()
@@ -83,6 +95,11 @@ var Inbox = React.createClass({
         $('#message-input').val('').focus()
       }
 
+    })
+  },
+  handleBack: function() {
+    this.setState({
+      focus: false
     })
   }
 })

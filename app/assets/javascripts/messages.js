@@ -62,14 +62,10 @@ function colorMessagesBadgeOnHover() {
 
 function togglePaddingAndBorder() {
   if($(window).width() > 991) {
-    $('.col-md-4').addClass('inbox');
-    $('.col-md-4 .panel').attr('id', 'panel-inbox');
-    $('.col-md-8').addClass('conversation');
-    $('.col-md-8 .panel').attr('id', 'panel-conversation');
+    $('.col-sm-4').css('padding-left', 15);;
+    $('.col-sm-8').css('padding-right', 15);
   } else {
-    $('.col-md-4').removeClass('inbox');
-    $('.col-md-4 .panel').attr('id', '');
-    $('.col-md-8').removeClass('conversation');
-    $('.col-md-8 .panel').attr('id', '');
+    $('.col-sm-4').css('padding', 0);
+    $('.col-sm-8').css('padding', 0);
   }
 }

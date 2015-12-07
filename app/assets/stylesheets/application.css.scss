@@ -51,6 +51,10 @@ h1, h2, h3, h4, h5 {
   color: rgb(79, 79, 79);
 }
 
+a.visible-xs.inline {
+  display: inline !important;
+}
+
 .tooltip {
   z-index: 1029;
 }
@@ -1275,9 +1279,15 @@ a.disabled {
   background-color: white;
   border-top: 1px solid rgb(220, 220, 220);
   position: absolute;
-  bottom: 21px;
   left: 1px;
+  bottom: 21px;
   right: 16px;
+  @media(max-width: 991px) {
+    right: 1px;
+  }
+  @media(max-width: 768px) {
+    bottom: 1px;
+  }
   .form-control:focus,
   .form-control:active {
     border: 1px solid #ccc;

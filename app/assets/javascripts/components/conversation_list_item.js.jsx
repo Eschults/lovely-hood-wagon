@@ -22,7 +22,7 @@ var ConversationListItem = React.createClass({
           <div className="col-xs-3 img-medium-square padding-none">
             <img src={this.props.conversation.picture} className="img"/>
           </div>
-          <div className="col-xs-9 overflow-hidden padding-right-none">
+          <div className="col-md-9 col-sm-7 col-xs-9 overflow-hidden padding-right-none">
             <ul className="list-inline list-unstyled margin-btm-none">
               <li><h5 className="margin-btm-5 first-name"><strong>{this.props.conversation.first_name}</strong></h5></li>
               <li className="pull-right margin-top-10 padding-sides-none"><p className="small-o gray-lighter text-right">{this.props.conversation.last_message_created_at}</p></li>

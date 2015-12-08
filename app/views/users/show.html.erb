@@ -187,7 +187,7 @@
       <div class="user-info">
         <h1><%= t('.profile', name: @user.first_name) %></h1>
         <p>
-          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= @user.birthday ? "#{@user.age} - " : "" %><%= t('.member_since') %> <%= @user.created_at.strftime("%b %Y") %>
+          <strong><%= @user.city ? @user.city.capitalize : "Paris" %></strong> - <%= t('.member_since') %> <%= @user.created_at.strftime("%b %Y") %>
         </p>
         <p>
           <% unless (current_user == @user || (!current_user.is_neighbors_with?(@user) && !current_user.admin?)) %>

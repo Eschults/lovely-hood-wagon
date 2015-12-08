@@ -45,7 +45,8 @@ class User < ActiveRecord::Base
       nil
     else
       d = Date.today
-      return (d.year - birthday.year) - (d.month == birthday.month ? (d.day >= birthday.day ? 0 : 1) : (d.month > birthday.month ? 0 : 1))
+      age = (d.year - birthday.year) - (d.month == birthday.month ? (d.day >= birthday.day ? 0 : 1) : (d.month > birthday.month ? 0 : 1))
+      age > 0 ? age : nil
     end
   end
 

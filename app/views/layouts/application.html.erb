@@ -39,7 +39,7 @@
     ga('send', 'pageview');
   </script>
 </head>
-<body>
+<body class=<%= @class ? @class : "" %>>
   <div class="bg-color" id="wrapper">
     <%= render "layouts/navbar" %>
     <%= yield %>

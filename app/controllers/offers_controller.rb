@@ -14,6 +14,7 @@ class OffersController < ApplicationController
   end
 
   def mine
+    @class = 'mine'
     @offers = current_user.offers
     # flash.now[:alert] = t(".dbl_click")
     authorize @offers

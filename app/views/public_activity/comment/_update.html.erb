@@ -101,15 +101,9 @@
           <div class="col-xs-9 padding-left-10">
             <div class="font-size-12">
               <ul class="margin-none list-unstyled list-inline">
-                <% if current_user.neighbors.include?(activity.trackable.user) || current_user == activity.trackable.user %>
-                  <li class="padding-left-none">
-                    <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link montserrat" %>
-                  </li>
-                <% else %>
-                  <li class="padding-left-none montserrat">
-                    <%= ('<strong>' + activity.trackable.user.first_name + '</strong>').html_safe %>
-                  </li>
-                <% end %>
+                <li class="padding-left-none">
+                  <%= link_to activity.trackable.user.first_name, user_path(activity.trackable.user), class: "offer-nature-link montserrat" %>
+                </li>
                 <li class="hidden-xs padding-left-none gray-lighter font-size-12">
                   <%= (((Time.now - activity.trackable.created_at < 86400) && Date.today.day == activity.trackable.created_at.day) ? l(activity.trackable.created_at, format: :short)[-5..-1] : (Time.now - activity.trackable.created_at < 86400 ? (t('.yesterday') + ' ' + l(activity.trackable.created_at, format: :short)[-5..-1]) : l(activity.trackable.created_at, format: :short))) %>
                 </li>

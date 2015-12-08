@@ -45,7 +45,7 @@ var Inbox = React.createClass({
             </div>
             <div className="panel-body panel-body-conversation padding-none">
               <div id="messages">
-                <MessageList messages={this.state.messages} />
+                <MessageList started_at={this.props.started_at} messages={this.state.messages} />
               </div>
               <div id="new_message">
                 <CreateMessage conversationId={this.state.selectedConversationId} write_a_reply={this.props.write_a_reply} submit={this.props.submit} onMessageCreation={this.handleMessageCreation} />

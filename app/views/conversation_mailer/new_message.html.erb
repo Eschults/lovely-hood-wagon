@@ -41,12 +41,12 @@
                   <%= t('.sent_you_a_message', first_name: @conversation.messages.last.writer.first_name) %>
                 </div>
                 <br>
-                <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;border-bottom-width:1px;background-color:#ffffff;border-top-left-radius:3px;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-top-right-radius:3px;border-style:solid;min-height:32px;border-top:1px solid #dbdbdb">
+                <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;padding-top:11px;padding-bottom:15px;padding-left:15px;padding-right:15px;border-bottom-width:1px;background-color:#ffffff;border-top-left-radius:3px;border-color:#dbdbdb;border-left-width:1px;border-right-width:1px;border-top-width:0;border-top-right-radius:3px;border-style:solid;min-height:32px;border-top:1px solid #dbdbdb">
                   <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
                     <table style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:150%;width:100%;border-spacing:0">
                       <tbody>
                         <tr style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                          <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;width:78px;line-height:0;vertical-align:top;">
+                          <td style="margin:0;padding:0;padding-top:4px;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;width:78px;line-height:0;vertical-align:top;">
                             <%= link_to conversation_url(@conversation, locale: I18n.locale).gsub('/fr', ''), style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;color:#565a5c;text-decoration:none", target: "_blank" do %>
                               <% if @conversation.messages.last.writer.picture_file_name %>
                                 <%= image_tag @conversation.messages.last.writer.picture.url(:medium), width: "68", height: "68", style: "margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;max-width:100%;border:0;border-radius:2px" %>
@@ -56,7 +56,7 @@
                             <% end %>
                           </td>
                           <td style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;vertical-align:top;">
-                            <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;margin-top:-4px;">
+                            <div style="margin:0;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;">
                               <strong style="font-family:Montserrat,&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;"><%= @conversation.messages.last.writer.first_name %></strong>
                               <%= simple_format(@conversation.messages.sort_by(&:created_at).last.content, style: "margin-top:0!important;") %>
                             </div>

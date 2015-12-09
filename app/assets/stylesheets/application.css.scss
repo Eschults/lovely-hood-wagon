@@ -1655,6 +1655,13 @@ i {
   font-size: 10px;
 }
 
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
+  background: transparent;
+}
+
 .bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label {
   transition: 250ms ease-in-out;
   border-left: 1px solid #00FFC9;

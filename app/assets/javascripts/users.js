@@ -173,6 +173,10 @@ function showTheRightDiv() {
     }
     if(id == "my-notifs") {
       showNotifs();
+      setTimeout(function() {
+        $('.bootstrap-switch-wrapper').css('width', 61)
+        $('.bootstrap-switch-container').css('width', 88)
+      }, 100)
     }
   });
 }

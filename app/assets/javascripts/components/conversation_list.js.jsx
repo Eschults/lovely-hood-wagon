@@ -4,7 +4,7 @@ var ConversationList = React.createClass({
     return(
       <div>
         {this.props.conversations.map(function(conversation, index){
-          return <ConversationListItem conversation={conversation} key={index} onConversationSelection={that.props.onConversationSelection} />;
+          return <ConversationListItem conversation={conversation} key={index} selectedConversationId={that.props.selectedConversationId} onConversationSelection={that.props.onConversationSelection} />;
         })}
       </div>
     )

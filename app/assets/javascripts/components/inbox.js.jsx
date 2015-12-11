@@ -5,7 +5,8 @@ var Inbox = React.createClass({
       selectedConversationId: this.props.conversation_id,
       firstName: this.props.first_name,
       messages: this.props.messages,
-      focus: true
+      focus: true,
+      loadingConversation: false
     }
   },
   render: function() {
@@ -19,6 +20,14 @@ var Inbox = React.createClass({
       "conversation": true,
       "hidden-xs": !this.state.focus
     })
+    var messages
+    if(this.state.loadingConversation) {
+      messages = <div className="loader"></div>
+    } else {
+      messages =  <div id="messages">
+                    <MessageList started_at={this.props.started_at} messages={this.state.messages} />
+                  </div>
+    }
     return(
       <div className="row">
         <div className={inboxClasses}>
@@ -27,7 +36,7 @@ var Inbox = React.createClass({
               <h4>{this.props.inbox}</h4>
             </div>
             <div className="panel-body padding-none panel-body-inbox" id="conversations">
-              <ConversationList conversations={this.state.conversations} onConversationSelection={this.handleConversationSelection} />
+              <ConversationList conversations={this.state.conversations} selectedConversationId={this.state.selectedConversationId}  onConversationSelection={this.handleConversationSelection} />
               <div className="conversation-preview" id="no-highlight">
                 <p className="small margin-btm-3 gray-lighter text-center">
                   {this.props.end}
@@ -44,9 +53,7 @@ var Inbox = React.createClass({
               </h4>
             </div>
             <div className="panel-body panel-body-conversation padding-none">
-              <div id="messages">
-                <MessageList started_at={this.props.started_at} messages={this.state.messages} />
-              </div>
+              {messages}
               <div id="new_message">
                 <CreateMessage conversationId={this.state.selectedConversationId} write_a_reply={this.props.write_a_reply} submit={this.props.submit} onMessageCreation={this.handleMessageCreation} />
               </div>
@@ -57,6 +64,10 @@ var Inbox = React.createClass({
     )
   },
   handleConversationSelection: function(conversationId) {
+    this.setState({
+      selectedConversationId: conversationId,
+      loadingConversation: true
+    })
     var that = this
     $.ajax({
       type: 'GET',
@@ -67,7 +78,8 @@ var Inbox = React.createClass({
           selectedConversationId: data.conversation_id,
           firstName: data.first_name,
           messages: data.messages,
-          focus: true
+          focus: true,
+          loadingConversation: false
         })
         $('#messages').scrollTop($('#messages')[0].scrollHeight);
         $('#message-input').focus()

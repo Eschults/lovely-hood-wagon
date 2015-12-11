@@ -2,7 +2,7 @@ var ConversationListItem = React.createClass({
   render: function() {
     var read = this.props.conversation.read
     var isSenderCurrentUser = this.props.conversation.is_last_message_sender_current_user
-    var isSelectedConversation = this.props.conversation.is_selected_conversation
+    var isSelectedConversation = this.props.conversation.id == this.props.selectedConversationId
     var iClasses = classNames({
       "fa": isSenderCurrentUser,
       "fa-check": isSenderCurrentUser && read,

@@ -20,7 +20,7 @@
         <ul class="nav navbar-nav navbar-right" style="margin-right: -15px;">
           <li class="disappear middle-weight">
             <%= link_to posts_path, class: "nav-btn-default", id: "wall-nav-link" do %>
-              <i class="fa fa-users"></i> <%= t('.wall') %>
+              <i class="fa fa-comments"></i> <%= t('.wall') %>
             <% end %>
           </li>
           <li class="disappear middle-weight">
@@ -43,7 +43,6 @@
                   </span>
                 <% end %>
               <% end %>
-            <% else %>
             <% end %>
           </li>
           <li class="dropdown">
@@ -55,7 +54,8 @@
                   <%= image_tag "user_pic-225x225.png", class: "img-logo-small" %>
                 <% end %>
               </div>
-              <%= current_user.first_name %><span class="caret"></span></a>
+              <%= current_user.first_name %><span class="caret"></span>
+            </a>
             <ul class="dropdown-menu" role="menu">
               <% if current_user.passed_bookings_to_review[:owner].size >= 1 || current_user.passed_bookings_to_review[:client].select { |booking| booking.owner_validation }.size >= 1 || current_user.upcoming_bookings[:owner].select { |booking| booking.accepted.nil? }.size >= 1 %>
                 <li style="background-color: rgb(250,250,250);">
@@ -97,7 +97,7 @@
                   <%= t('.wall') %>
                 <% end %>
               </li>
-              <li>
+              <li class="appear">
                 <%= link_to users_path do %>
                   <%= t('.neighbors') %>
                 <% end %>

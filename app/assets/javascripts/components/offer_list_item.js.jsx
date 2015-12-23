@@ -2,11 +2,21 @@ var OverlayTrigger = ReactBootstrap.OverlayTrigger
 var Popover = ReactBootstrap.Popover
 
 var OfferListItem = React.createClass({
+  getInitialState: function() {
+    return {
+      offer: this.props.offer
+    };
+  },
   render: function() {
     var position = this.props.reactKey > 2 ? "top" : "bottom"
     var style = {
       backgroundImage: 'url(' + this.props.offer.pictureUrl + ')'
     }
+    var divClasses = classNames({
+      "badge": true,
+      "small-badge": true,
+      "small-badge-off": !this.state.offer.published
+    })
     return (
       <div className="col-xs-6 col-sm-4">
         <div className="card">
@@ -23,7 +33,10 @@ var OfferListItem = React.createClass({
           </span>
           <OverlayTrigger trigger="click" rootClose placement={position} overlay={
             <Popover id={'popover_' + this.props.offer.id}>
-              <PopoverContent offer={this.props.offer} />
+              <PopoverContent offer={this.state.offer} onPublish={this.handlePublish}/>
+              <div className="text-center">
+                <span className={divClasses}> </span>
+              </div>
             </Popover>
           }>
             <div className="card-link" id={'myOffer_' + this.props.offer.id} data-href={this.props.offer.offer_path}>
@@ -32,5 +45,15 @@ var OfferListItem = React.createClass({
         </div>
       </div>
     )
+  },
+  handlePublish: function() {
+    var that = this
+    $.ajax({
+      type: 'PUT',
+      url: Routes.publish_offer_path(this.props.offer.id, {format: 'json'}),
+      success: function(data) {
+        that.setState({ offer: data })
+      }
+    })
   }
 })

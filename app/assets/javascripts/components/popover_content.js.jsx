@@ -14,7 +14,7 @@ var PopoverContent = React.createClass({
           {this.props.offer.description}
         </p>
         <a href={this.props.offer.edit_offer_path}>{this.props.offer.edit}</a>
-        <Publish offer={this.props.offer} />
+        <Publish offer={this.props.offer} onPublish={this.props.onPublish}/>
       </div>
     )
   }

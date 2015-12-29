@@ -1,5 +1,5 @@
 function notices() {
-  if($('.alert').length > 0 ) {
+  if($('.alert').length > 0) {
     $('body').addClass('margin-top-56')
     if($('#share').length == 0) {
       setTimeout(function(){
@@ -9,8 +9,15 @@ function notices() {
         }, 1000)
         $('body').removeClass('margin-top-56')
       }, 10000)
+    } else if($('.alert').length > 1){
+      setTimeout(function() {
+        $('.alert').last().remove()
+      })
     }
   }
+  $('#share .close').on('click', function() {
+    $('.margin-top-56').removeClass('margin-top-56')
+  })
 }
 
 function noticesHome() {

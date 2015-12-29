@@ -36,6 +36,20 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
 
+  def hood_offers
+    offers = []
+    neighbors.each do |neighbor|
+      neighbor.offers.each do |offer|
+        offers << offer if offer.published
+      end
+    end
+    offers
+  end
+
+  def hood_offers_count
+    hood_offers.count
+  end
+
   def profile_not_ready?
     first_name.nil? || last_name.nil? || city.nil? || street.nil? || first_name == "" || last_name == "" || city == "" || street == ""
   end

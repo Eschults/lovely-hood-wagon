@@ -298,7 +298,9 @@ fr:
       log_out: "Deconnexion"
       new_offer: "Publier une annonce"
       sign_in: "Connexion"
-      share: "Faitez découvrir Lovely Hood à vos amis "
+    share:
+      simple_share: "Faites découvrir LH à vos amis Facebook"
+      share: "Vous avez %{number} voisins sur LH, dites-le à vos amis Facebook !"
     navbar_map:
       wall: "Wall"
       offers: "Annonces"

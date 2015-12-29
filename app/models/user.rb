@@ -46,6 +46,12 @@ class User < ActiveRecord::Base
     offers
   end
 
+  def self.ranking
+    all.each do |user|
+      puts "#{user.id} - #{user.first_name}: #{user.neighbors.count}"
+    end
+  end
+
   def hood_offers_count
     hood_offers.count
   end

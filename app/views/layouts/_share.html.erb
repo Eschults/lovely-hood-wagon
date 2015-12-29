@@ -1,10 +1,10 @@
-<div class="alert alert-info alert-dismissible" role="alert" id="share">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <div class="share">
-    <%= link_to current_user.neighbors.count < 5 ? t('.simple_share') : t('.share', number: current_user.neighbors.count), "https://www.facebook.com/sharer/sharer.php?u=https://www.lovely-hood.com", class: "social-share-button-facebook", target: "_blank" %>
-  </div>
-</div>
 <% if user_signed_in? %>
+  <div class="alert alert-info alert-dismissible" role="alert" id="share">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="share">
+      <%= link_to current_user.neighbors.count < 5 ? t('.simple_share') : t('.share', number: current_user.neighbors.count), "https://www.facebook.com/sharer/sharer.php?u=https://www.lovely-hood.com", class: "social-share-button-facebook", target: "_blank" %>
+    </div>
+  </div>
   <%= content_for :js do %>
     <%= javascript_tag do %>
       $(document).ready(function() {

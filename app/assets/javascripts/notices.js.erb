@@ -23,7 +23,7 @@ function notices() {
 function noticesHome() {
   if($('.alert').length > 0 ) {
     setTimeout(function(){
-      $('.alert').addClass('is-hidden')
+      $('.alert').remove()
     }, 10000)
   }
 }

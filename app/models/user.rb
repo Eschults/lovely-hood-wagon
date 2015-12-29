@@ -47,8 +47,8 @@ class User < ActiveRecord::Base
   end
 
   def self.ranking
-    all.each do |user|
-      puts "#{user.id} - #{user.first_name ? user.first_name : ''}: #{user.neighbors.count}"
+    all.sort_by{ |u| u.neighbors.count }.each do |user|
+      puts "#{user.id} - #{user.first_name ? user.first_name : ''}: #{user.neighbors.count}" unless user.latitude.nil?
     end
   end
 

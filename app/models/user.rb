@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   def self.ranking
     all.each do |user|
-      puts "#{user.id} - #{user.first_name}: #{user.neighbors.count}"
+      puts "#{user.id} - #{user.first_name ? user.first_name : ''}: #{user.neighbors.count}"
     end
   end
 

@@ -11,8 +11,8 @@ function notices() {
       }, 10000)
     } else if($('.alert').length > 1){
       setTimeout(function() {
-        $('.alert').last().remove()
-      })
+        $('.alert').last().addClass('is-hidden').remove()
+      }, 5000)
     }
   }
   $('#share .close').on('click', function() {

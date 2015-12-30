@@ -827,6 +827,7 @@ en:
       description: "Browse your neighbors and engage a conversation to get to know you!"
       my_neighbors: "My neighbors"
       no_neighbor_yet: "You don't have any neighbor yet."
+      complete_profile: "Thank you for completing fields with an *"
     show:
       not_a_neighbor: "%{first_name} doesn't belong to your hood"
       complete_profile: "Thank you for completing fields with an *"

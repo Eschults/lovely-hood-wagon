@@ -24,6 +24,7 @@ gem 'rails_12factor', group: :production
 gem 'bootstrap-datepicker-rails'
 gem 'rails_autolink'
 gem 'social-share-button'
+gem 'raygun4ruby'
 
 group :development do
   gem "better_errors"

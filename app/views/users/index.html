@@ -35,11 +35,11 @@
   </div>
 </div>
 <%= content_for :js do %>
-  <% javascript_tag do %>
+  <script>
     $(document).ready(function() {
-      $('.loader').remove()
+      $('.loader').remove();
       $('#users-nav-link').addClass("hover");
-      usersIndex()
+      usersIndex();
       $(window).on('scroll', function() {
         var more_neighbors_url = $('.next a').attr('href')
         if(more_neighbors_url && $(window).scrollTop() > $(document).height() - $(window).height() - 230) {
@@ -49,12 +49,12 @@
             url: more_neighbors_url,
             dataType: 'script',
             success: function() {
-              usersIndex()
+              usersIndex();
             }
           })
         }
         return false
       })
     })
-  <% end %>
+  </script>
 <% end %>

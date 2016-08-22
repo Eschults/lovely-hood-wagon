@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_not_ready?
-    first_name.nil? || last_name.nil? || city.nil? || street.nil? || first_name == "" || last_name == "" || city == "" || street == ""
+    first_name.blank? || last_name.blank? || city.blank? || street.blank?
   end
 
   def age

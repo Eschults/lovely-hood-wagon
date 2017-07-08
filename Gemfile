@@ -25,6 +25,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'rails_autolink'
 gem 'social-share-button'
 gem 'raygun4ruby'
+gem 'postmark-rails'
 
 group :development do
   gem "better_errors"

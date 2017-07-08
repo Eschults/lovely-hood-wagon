@@ -253,6 +253,12 @@ GEM
     pg (0.17.1)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
+    postmark (1.10.0)
+      json
+      rake
+    postmark-rails (0.15.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.10.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -405,6 +411,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip
   pg
+  postmark-rails
   pry-rails
   public_activity
   pundit

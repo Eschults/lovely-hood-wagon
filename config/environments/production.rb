@@ -1,8 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { host: 'https://www.lovely-hood.com/' }
   config.action_mailer.asset_host = "https://www.lovely-hood.com"
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
+  config.action_mailer.default_url_options = { host: 'https://www.lovely-hood.com/' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -79,6 +81,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  ActionMailer::Base.delivery_method = :smtp
   config.react.variant = :production
 end

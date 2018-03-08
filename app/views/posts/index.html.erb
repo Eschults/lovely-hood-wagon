@@ -43,7 +43,7 @@
           <% if item.class == Post %>
             <%= render "post", post: item %>
           <% else %>
-            <% unless item.trackable_type == "Offer" && item.trackable.published == false %>
+            <% unless item.trackable_type == "Offer" && item.trackable.try(:published) == false %>
               <%# render "activity", activity: item if (item.owner && item.trackable) %>
             <% end %>
           <% end %>

@@ -44,7 +44,7 @@
             <%= render "post", post: item %>
           <% else %>
             <% unless item.trackable_type == "Offer" && item.trackable.published == false %>
-              <%= render "activity", activity: item if (item.owner && item.trackable) %>
+              <%# render "activity", activity: item if (item.owner && item.trackable) %>
             <% end %>
           <% end %>
         <% end %>
